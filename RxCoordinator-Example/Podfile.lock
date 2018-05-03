@@ -1,0 +1,19 @@
+PODS:
+  - rx-coordinator (0.2.0):
+    - RxCocoa (~> 4.0)
+    - RxSwift (~> 4.0)
+  - RxCocoa (4.1.2):
+    - RxSwift (~> 4.0)
+  - RxSwift (4.1.2)
+
+DEPENDENCIES:
+  - rx-coordinator
+
+SPEC CHECKSUMS:
+  rx-coordinator: e7f1061762b0257fde6579b8e3876e2f24ee6bf8
+  RxCocoa: d88ba0f1f6abf040011a9eb4b539324fc426843a
+  RxSwift: e49536837d9901277638493ea537394d4b55f570
+
+PODFILE CHECKSUM: cbbf701db8d22a9139c369fad21b564942239719
+
+COCOAPODS: 1.4.0

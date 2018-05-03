@@ -1,0 +1,6 @@
+framework module rx_coordinator {
+  umbrella header "rx-coordinator-umbrella.h"
+
+  export *
+  module * { export * }
+}

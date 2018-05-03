@@ -1,0 +1,6 @@
+framework module Pods_RxCoordinator_Example {
+  umbrella header "Pods-RxCoordinator-Example-umbrella.h"
+
+  export *
+  module * { export * }
+}
