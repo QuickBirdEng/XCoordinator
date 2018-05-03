@@ -11,22 +11,20 @@ import UIKit
 import RxSwift
 import RxCocoa
 
-public protocol Coordinator: Presentable {
+protocol Coordinator: Presentable {
     associatedtype CoordinatorScene: Scene
 
     var context: UIViewController { get }
     var navigationController: UINavigationController { get }
 
-    @discardableResult
-    func transition(to scene: CoordinatorScene, with options: TransitionOptions) -> TransitionObservables
+    @discardableResult func transition(to scene: CoordinatorScene, with options: TransitionOptions) -> TransitionObservables
 
     func start()
-
 }
 
 extension Coordinator {
 
-    var viewController: UIViewController! {
+    public var viewController: UIViewController! {
         start()
         return navigationController
     }
@@ -39,9 +37,12 @@ extension Coordinator {
         return transition(to: scene, with: TransitionOptions.defaultOptions)
     }
 
+    public func start() {}
+
     // MARK: Implementations
 
-    @discardableResult func transition(to scene: CoordinatorScene, with options: TransitionOptions) -> TransitionObservables {
+    @discardableResult
+    public func transition(to scene: CoordinatorScene, with options: TransitionOptions) -> TransitionObservables {
         let transition = scene.prepareTransition()
 
         switch transition.type {
