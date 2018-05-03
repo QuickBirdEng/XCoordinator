@@ -24,6 +24,16 @@
 		DC09428620973C130067ECAC /* TransitionOptions.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC09428420973C130067ECAC /* TransitionOptions.swift */; };
 		DC09428920973C570067ECAC /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC09428820973C570067ECAC /* Coordinator.swift */; };
 		DC09428A20973C570067ECAC /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC09428820973C570067ECAC /* Coordinator.swift */; };
+		DCB2964C209B156B00698A44 /* Presentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCB2964B209B156B00698A44 /* Presentable.swift */; };
+		DCB2964D209B156B00698A44 /* Presentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCB2964B209B156B00698A44 /* Presentable.swift */; };
+		DCB2964F209B15E400698A44 /* TransitionAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCB2964E209B15E400698A44 /* TransitionAnimation.swift */; };
+		DCB29650209B15E400698A44 /* TransitionAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCB2964E209B15E400698A44 /* TransitionAnimation.swift */; };
+		DCB29652209B161300698A44 /* StaticTransitionAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCB29651209B161300698A44 /* StaticTransitionAnimation.swift */; };
+		DCB29653209B161300698A44 /* StaticTransitionAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCB29651209B161300698A44 /* StaticTransitionAnimation.swift */; };
+		DCB29655209B164E00698A44 /* InteractiveTransitionAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCB29654209B164E00698A44 /* InteractiveTransitionAnimation.swift */; };
+		DCB29656209B164E00698A44 /* InteractiveTransitionAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCB29654209B164E00698A44 /* InteractiveTransitionAnimation.swift */; };
+		DCB29658209B16D900698A44 /* Animation.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCB29657209B16D900698A44 /* Animation.swift */; };
+		DCB29659209B16D900698A44 /* Animation.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCB29657209B16D900698A44 /* Animation.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,6 +63,11 @@
 		DC09428120973BF70067ECAC /* TransitionObservables.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransitionObservables.swift; sourceTree = "<group>"; };
 		DC09428420973C130067ECAC /* TransitionOptions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransitionOptions.swift; sourceTree = "<group>"; };
 		DC09428820973C570067ECAC /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
+		DCB2964B209B156B00698A44 /* Presentable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Presentable.swift; sourceTree = "<group>"; };
+		DCB2964E209B15E400698A44 /* TransitionAnimation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransitionAnimation.swift; sourceTree = "<group>"; };
+		DCB29651209B161300698A44 /* StaticTransitionAnimation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StaticTransitionAnimation.swift; sourceTree = "<group>"; };
+		DCB29654209B164E00698A44 /* InteractiveTransitionAnimation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InteractiveTransitionAnimation.swift; sourceTree = "<group>"; };
+		DCB29657209B16D900698A44 /* Animation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Animation.swift; sourceTree = "<group>"; };
 		E27F78B6BB25507F57BC9DDE /* Pods-RxCoordinator.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RxCoordinator.release.xcconfig"; path = "Pods/Target Support Files/Pods-RxCoordinator/Pods-RxCoordinator.release.xcconfig"; sourceTree = "<group>"; };
 		F5C82DE6A5617E79260FEBEB /* Pods-RxCoordinatorTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RxCoordinatorTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-RxCoordinatorTests/Pods-RxCoordinatorTests.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -141,6 +156,11 @@
 			isa = PBXGroup;
 			children = (
 				DC09427820973A490067ECAC /* Transition.swift */,
+				DCB2964E209B15E400698A44 /* TransitionAnimation.swift */,
+				DCB29651209B161300698A44 /* StaticTransitionAnimation.swift */,
+				DCB29654209B164E00698A44 /* InteractiveTransitionAnimation.swift */,
+				DCB29657209B16D900698A44 /* Animation.swift */,
+				DCB2964B209B156B00698A44 /* Presentable.swift */,
 				DC09427B20973A980067ECAC /* Container.swift */,
 				DC09427E20973AF00067ECAC /* Scene.swift */,
 				DC09428120973BF70067ECAC /* TransitionObservables.swift */,
@@ -353,12 +373,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DCB29658209B16D900698A44 /* Animation.swift in Sources */,
 				DC09427920973A490067ECAC /* Transition.swift in Sources */,
 				DC09428520973C130067ECAC /* TransitionOptions.swift in Sources */,
 				DC09428920973C570067ECAC /* Coordinator.swift in Sources */,
+				DCB29652209B161300698A44 /* StaticTransitionAnimation.swift in Sources */,
 				DC09428220973BF70067ECAC /* TransitionObservables.swift in Sources */,
 				DC09427C20973A980067ECAC /* Container.swift in Sources */,
 				DC09427F20973AF00067ECAC /* Scene.swift in Sources */,
+				DCB2964C209B156B00698A44 /* Presentable.swift in Sources */,
+				DCB29655209B164E00698A44 /* InteractiveTransitionAnimation.swift in Sources */,
+				DCB2964F209B15E400698A44 /* TransitionAnimation.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -367,11 +392,16 @@
 			buildActionMask = 2147483647;
 			files = (
 				DC09428020973AF00067ECAC /* Scene.swift in Sources */,
+				DCB29653209B161300698A44 /* StaticTransitionAnimation.swift in Sources */,
+				DCB2964D209B156B00698A44 /* Presentable.swift in Sources */,
+				DCB29650209B15E400698A44 /* TransitionAnimation.swift in Sources */,
 				DC09427A20973A490067ECAC /* Transition.swift in Sources */,
+				DCB29656209B164E00698A44 /* InteractiveTransitionAnimation.swift in Sources */,
 				DC09428320973BF70067ECAC /* TransitionObservables.swift in Sources */,
 				DC09428620973C130067ECAC /* TransitionOptions.swift in Sources */,
 				DC09427D20973A980067ECAC /* Container.swift in Sources */,
 				DC09426C2097393C0067ECAC /* RxCoordinatorTests.swift in Sources */,
+				DCB29659209B16D900698A44 /* Animation.swift in Sources */,
 				DC09428A20973C570067ECAC /* Coordinator.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

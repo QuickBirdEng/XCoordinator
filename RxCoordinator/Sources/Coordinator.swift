@@ -11,7 +11,7 @@ import UIKit
 import RxSwift
 import RxCocoa
 
-public protocol Coordinator {
+public protocol Coordinator: Presentable {
     associatedtype CoordinatorScene: Scene
 
     var context: UIViewController { get }
@@ -26,6 +26,12 @@ public protocol Coordinator {
 
 extension Coordinator {
 
+    var viewController: UIViewController! {
+        start()
+        return navigationController
+    }
+
+
     // MARK: Convenience methods
 
     @discardableResult
@@ -35,29 +41,31 @@ extension Coordinator {
 
     // MARK: Implementations
 
-    @discardableResult
-    public func transition(to scene: CoordinatorScene, with options: TransitionOptions) -> TransitionObservables {
+    @discardableResult func transition(to scene: CoordinatorScene, with options: TransitionOptions) -> TransitionObservables {
         let transition = scene.prepareTransition()
 
-        switch transition {
-        case let .push(viewController):
-            return push(viewController, with: options)
-        case let .present(viewController):
-            return present(viewController, with: options)
-        case let .embed(viewController, container):
+        switch transition.type {
+        case .push(let viewController):
+            return push(viewController, with: options, animation: transition.animation)
+        case .present(let viewController):
+            return present(viewController, with: options, animation: transition.animation)
+        case .embed(let viewController, let container):
             return embed(viewController, in: container, with: options)
         case .pop:
-            return pop(with: options, toRoot: false)
+            return pop(with: options, toRoot: false, animation: transition.animation)
         case .popToRoot:
-            return pop(with: options, toRoot: true)
+            return pop(with: options, toRoot: true, animation: transition.animation)
         case .dismiss:
-            return dismiss(with: options)
+            return dismiss(with: options, animation: transition.animation)
+        case .none:
+            return TransitionObservables(presentation: .empty(), dismissal: .empty())
         }
     }
 
+
     // MARK: Transitions
 
-    private func push(_ viewController: UIViewController, with options: TransitionOptions) -> TransitionObservables {
+    private func push(_ viewController: UIViewController, with options: TransitionOptions, animation: Animation?) -> TransitionObservables {
         let presentationObservable = navigationController.rx.delegate
             .sentMessage(#selector(UINavigationControllerDelegate.navigationController(_:didShow:animated:)))
             .map { _ in () }
@@ -65,26 +73,30 @@ extension Coordinator {
 
         let dismissalObservable = self.dismissalObservable(for: viewController)
 
+        viewController.transitioningDelegate = animation
         navigationController.pushViewController(viewController, animated: options.animated)
 
         return TransitionObservables(presentation: presentationObservable, dismissal: dismissalObservable)
     }
 
-    private func present(_ viewController: UIViewController, with options: TransitionOptions) -> TransitionObservables {
+    private func present(_ viewController: UIViewController, with options: TransitionOptions, animation: Animation?) -> TransitionObservables {
         let presentationObservable = self.presentationObservable(for: viewController)
         let dismissalObservable = self.dismissalObservable(for: viewController)
 
+        viewController.transitioningDelegate = animation
         navigationController.present(viewController, animated: options.animated, completion: nil)
 
         return TransitionObservables(presentation: presentationObservable, dismissal: dismissalObservable)
     }
 
-    private func pop(with options: TransitionOptions, toRoot: Bool) -> TransitionObservables {
+    private func pop(with options: TransitionOptions, toRoot: Bool, animation: Animation?) -> TransitionObservables {
         let transitionObservable = navigationController.rx.delegate
             .sentMessage(#selector(UINavigationControllerDelegate.navigationController(_:didShow:animated:)))
             .map { _ in () }
             .take(1)
 
+        let currentVC = navigationController.visibleViewController
+        currentVC?.transitioningDelegate = animation
         if toRoot {
             navigationController.popToRootViewController(animated: options.animated)
         } else {
@@ -94,7 +106,8 @@ extension Coordinator {
         return TransitionObservables(presentation: transitionObservable, dismissal: transitionObservable)
     }
 
-    private func dismiss(with options: TransitionOptions) -> TransitionObservables {
+    private func dismiss(with options: TransitionOptions, animation: Animation?) -> TransitionObservables {
+        navigationController.transitioningDelegate = animation
         let transitionObservable = Observable<Void>.create { [unowned context] observer -> Disposable in
             context.dismiss(animated: options.animated, completion: {
                 observer.onNext(())
@@ -139,5 +152,4 @@ extension Coordinator {
             .map { _ in () }
             .take(1)
     }
-
 }

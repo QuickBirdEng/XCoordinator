@@ -14,7 +14,7 @@ public protocol Container {
     var viewController: UIViewController! { get }
 }
 
-// MARK: Extension
+// MARK: Extensions
 
 extension UIViewController: Container {
     public var viewController: UIViewController! { return self }
