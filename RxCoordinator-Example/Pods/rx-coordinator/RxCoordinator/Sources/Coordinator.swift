@@ -26,7 +26,7 @@ public protocol Coordinator: Presentable {
 
 extension Coordinator {
 
-    var viewController: UIViewController! {
+    public var viewController: UIViewController! {
         start()
         return navigationController
     }
@@ -39,9 +39,12 @@ extension Coordinator {
         return transition(to: scene, with: TransitionOptions.defaultOptions)
     }
 
+    public func start() {}
+
     // MARK: Implementations
 
-    @discardableResult func transition(to scene: CoordinatorScene, with options: TransitionOptions) -> TransitionObservables {
+    @discardableResult
+    public func transition(to scene: CoordinatorScene, with options: TransitionOptions) -> TransitionObservables {
         let transition = scene.prepareTransition()
 
         switch transition.type {

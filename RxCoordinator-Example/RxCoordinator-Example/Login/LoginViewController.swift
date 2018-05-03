@@ -1,5 +1,5 @@
 //  
-//  LoginViewControllerViewController.swift
+//  LoginViewController.swift
 //  RxCoordinator-Example
 //
 //  Created by Joan Disho on 03.05.18.
@@ -10,9 +10,9 @@ import UIKit
 import RxSwift
 import RxCocoa
 
-class LoginViewControllerViewController: UIViewController, BindableType {
+class LoginViewController: UIViewController, BindableType {
 
-    var viewModel: LoginViewControllerViewModel!
+    var viewModel: LoginViewModel!
 
     // MARK: - Init
 
