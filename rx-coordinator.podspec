@@ -1,5 +1,5 @@
 Pod::Spec.new do |spec|
-  spec.name         = 'RxCoordinator'
+  spec.name         = 'rx-coordinator'
   spec.version      = '0.2.0'
   spec.license      = { :type => 'MIT' }
   spec.homepage     = 'https://github.com/jdisho/RxCoordinator'
