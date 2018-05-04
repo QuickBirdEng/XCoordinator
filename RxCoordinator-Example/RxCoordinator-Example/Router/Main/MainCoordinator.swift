@@ -1,5 +1,5 @@
 //
-//  AppCoordinator.swift
+//  MainCoordinator.swift
 //  RxCoordinator-Example
 //
 //  Created by Joan Disho on 03.05.18.
@@ -9,8 +9,8 @@
 import Foundation
 import rx_coordinator
 
-class AppCoordinator: Coordinator {
-    typealias CoordinatorScene = AppScene
+class MainCoordinator: Coordinator {
+    typealias CoordinatorScene = MainScene
 
     var context: UIViewController
     var navigationController: UINavigationController
@@ -21,7 +21,7 @@ class AppCoordinator: Coordinator {
     }
 
     func start() {
-        let viewModel = LoginViewModelImpl()
+        let viewModel = LoginViewModelImpl(coordinator: self)
         transition(to: .login(viewModel))
     }
 }

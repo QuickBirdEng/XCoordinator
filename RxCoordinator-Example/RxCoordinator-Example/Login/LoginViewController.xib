@@ -11,6 +11,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="LoginViewController" customModule="RxCoordinator_Example" customModuleProvider="target">
             <connections>
+                <outlet property="loginButton" destination="qKx-eb-3nt" id="spP-XB-sPg"/>
                 <outlet property="view" destination="56L-3g-zvt" id="99K-US-EIL"/>
             </connections>
         </placeholder>

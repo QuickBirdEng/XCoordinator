@@ -8,8 +8,10 @@
 
 import Foundation
 import RxSwift
+import Action
 
 protocol LoginViewModelInput {
+    var loginTrigger: InputSubject<Void>! { get }
 }
 
 protocol LoginViewModelOutput {
@@ -26,15 +28,25 @@ class LoginViewModelImpl: LoginViewModel, LoginViewModelInput, LoginViewModelOut
     var output: LoginViewModelOutput { return self }
 
     // MARK: - Inputs
+    var loginTrigger: InputSubject<Void>!
 
     // MARK: - Outputs
 
     // MARK: - Private
+    private let coordinator: MainCoordinator
+    private lazy var loginAction: CocoaAction = {
+        return CocoaAction {
+            let homeCoordinator = HomeCoordinator(context: self.coordinator.navigationController)
+            self.coordinator.transition(to: MainScene.home(homeCoordinator))
+            return .empty()
+        }
+    }()
 
     // MARK: - Init
 
-    init() {
-        // TODO: Inject dependencies
-    }
+    init(coordinator: MainCoordinator) {
+       self.coordinator = coordinator
 
+        loginTrigger = loginAction.inputs
+    }
 }

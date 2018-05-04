@@ -111,13 +111,13 @@ extension Coordinator {
 
     private func dismiss(with options: TransitionOptions, animation: Animation?) -> TransitionObservables {
         navigationController.transitioningDelegate = animation
-        let transitionObservable = Observable<Void>.create { [unowned context] observer -> Disposable in
-            context.dismiss(animated: options.animated, completion: {
-                observer.onNext(())
-                observer.onCompleted()
-            })
-            return Disposables.create()
-        }
+
+        let transitionObservable = navigationController.rx.delegate
+            .sentMessage(#selector(UINavigationControllerDelegate.navigationController(_:didShow:animated:)))
+            .map { _ in () }
+            .take(1)
+
+        context.dismiss(animated: options.animated, completion: nil)
 
         return TransitionObservables(presentation: transitionObservable, dismissal: transitionObservable)
     }

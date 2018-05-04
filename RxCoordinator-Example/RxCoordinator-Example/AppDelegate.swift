@@ -12,7 +12,7 @@ import UIKit
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
-    var coordinator: AppCoordinator!
+    var coordinator: MainCoordinator!
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         guard let window = self.window else { return false }
@@ -20,7 +20,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let rootVC = UINavigationController()
         window.rootViewController = rootVC
 
-        coordinator = AppCoordinator(context: rootVC)
+        coordinator = MainCoordinator(context: rootVC)
         coordinator.start()
 
         return true

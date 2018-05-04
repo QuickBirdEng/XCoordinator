@@ -1,4 +1,7 @@
 PODS:
+  - Action (3.5.0):
+    - RxCocoa (~> 4.0)
+    - RxSwift (~> 4.0)
   - rx-coordinator (0.2.0):
     - RxCocoa (~> 4.0)
     - RxSwift (~> 4.0)
@@ -7,13 +10,15 @@ PODS:
   - RxSwift (4.1.2)
 
 DEPENDENCIES:
+  - Action
   - rx-coordinator
 
 SPEC CHECKSUMS:
+  Action: d60087ebce41b969d1afdad01e2fa1372a82f26e
   rx-coordinator: e7f1061762b0257fde6579b8e3876e2f24ee6bf8
   RxCocoa: d88ba0f1f6abf040011a9eb4b539324fc426843a
   RxSwift: e49536837d9901277638493ea537394d4b55f570
 
-PODFILE CHECKSUM: cbbf701db8d22a9139c369fad21b564942239719
+PODFILE CHECKSUM: 9825c9e2eea608fb9980f2cfe5f71659b1107278
 
 COCOAPODS: 1.4.0
