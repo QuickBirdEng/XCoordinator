@@ -13,6 +13,23 @@ RxCoordinator is a lightweight navigation framework based on coordinator pattern
 
 Allowing to remove the navigation code from `UIViewControllers`, reusing `UIViewControllers` in different contexts and providing ease the use of **dependency injection**.
 
+### Components
+
+#### 📲 Scene
+Refers to a screen managed by a view controller together with the transition type. It can be a regular screen, a modal dialog or a coordinator.
+
+#### 👨‍✈️ Coordinator
+An object that bosses around the view controllers.
+
+#### 🏗 Transition Types
+  - push: push view controller to navigation stack.
+  - present: present view controller.
+  - embed: embed view controller to a container view.
+  - pop: pop the top view controller from the navigation stack and updates the display.
+  - popToRoot: pop all the view controllers on the navigation stack except the root view controller and updates the display.
+  - dismiss: dismissthe view controller that was presented modally by the view controller.
+  - none: does nothing to the view controller
+
 ## 🛠 Installation
 
 ### CocoaPods
