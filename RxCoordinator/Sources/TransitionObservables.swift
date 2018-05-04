@@ -10,6 +10,6 @@ import Foundation
 import RxSwift
 
 public struct TransitionObservables {
-    let presentation: Observable<Void>
-    let dismissal: Observable<Void>
+    public let presentation: Observable<Void>
+    public let dismissal: Observable<Void>
 }

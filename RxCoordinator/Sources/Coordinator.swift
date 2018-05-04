@@ -11,15 +11,17 @@ import UIKit
 import RxSwift
 import RxCocoa
 
-protocol Coordinator: Presentable {
+public protocol Coordinator: Presentable {
     associatedtype CoordinatorScene: Scene
 
     var context: UIViewController { get }
     var navigationController: UINavigationController { get }
 
-    @discardableResult func transition(to scene: CoordinatorScene, with options: TransitionOptions) -> TransitionObservables
+    @discardableResult
+    func transition(to scene: CoordinatorScene, with options: TransitionOptions) -> TransitionObservables
 
     func start()
+
 }
 
 extension Coordinator {
@@ -109,13 +111,13 @@ extension Coordinator {
 
     private func dismiss(with options: TransitionOptions, animation: Animation?) -> TransitionObservables {
         navigationController.transitioningDelegate = animation
-        let transitionObservable = Observable<Void>.create { [unowned context] observer -> Disposable in
-            context.dismiss(animated: options.animated, completion: {
-                observer.onNext(())
-                observer.onCompleted()
-            })
-            return Disposables.create()
-        }
+
+        let transitionObservable = navigationController.rx.delegate
+            .sentMessage(#selector(UINavigationControllerDelegate.navigationController(_:didShow:animated:)))
+            .map { _ in () }
+            .take(1)
+
+        context.dismiss(animated: options.animated, completion: nil)
 
         return TransitionObservables(presentation: transitionObservable, dismissal: transitionObservable)
     }
