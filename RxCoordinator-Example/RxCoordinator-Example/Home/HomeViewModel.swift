@@ -9,6 +9,7 @@
 import Foundation
 import RxSwift
 import Action
+import rx_coordinator
 
 protocol HomeViewModelInput {
     var logoutTrigger: InputSubject<Void>! { get }
@@ -35,7 +36,7 @@ class HomeViewModelImpl: HomeViewModel, HomeViewModelInput, HomeViewModelOutput 
     // MARK: - Outputs
 
     // MARK: - Private
-    private let coordinator: HomeCoordinator
+    private let coordinator: AnyCoordinator<HomeRoute>
 
     private lazy var logoutAction: CocoaAction = {
         return CocoaAction {
@@ -46,15 +47,14 @@ class HomeViewModelImpl: HomeViewModel, HomeViewModelInput, HomeViewModelOutput 
 
     private lazy var usersAction: CocoaAction = {
         return CocoaAction {
-            let viewModel = UsersViewModelImpl(coordinator: self.coordinator)
-            self.coordinator.transition(to: .users(viewModel))
+            self.coordinator.transition(to: .users)
             return .empty()
         }
     }()
 
     // MARK: - Init
 
-    init(coodinator: HomeCoordinator) {
+    init(coodinator: AnyCoordinator<HomeRoute>) {
         self.coordinator = coodinator
 
         logoutTrigger = logoutAction.inputs

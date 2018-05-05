@@ -43,7 +43,7 @@ extension Coordinator {
 
     @discardableResult
     public func transition(to route: CoordinatorRoute, with options: TransitionOptions) -> TransitionObservables {
-        let transition = route.prepareTransition()
+        let transition = route.prepareTransition(coordinator: AnyCoordinator(self))
 
         switch transition.type {
         case .push(let presentable):

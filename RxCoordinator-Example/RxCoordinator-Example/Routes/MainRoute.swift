@@ -10,17 +10,18 @@ import Foundation
 import rx_coordinator
 
 enum MainRoute: Route {
-    case login(LoginViewModel)
+    case login
     case home
 
-    func prepareTransition() -> Transition {
+    func prepareTransition(coordinator: AnyCoordinator<MainRoute>) -> Transition {
         switch self {
-        case let .login(viewModel):
+        case .login:
             var vc = LoginViewController.instantiateFromNib()
+            let viewModel = LoginViewModelImpl(coordinator: coordinator)
             vc.bind(to: viewModel)
             return .push(vc)
         case .home:
-            let coordinator = HomeCoordinator()
+            let coordinator = BasicCoordinator<HomeRoute>(initalRoute: .home)
             let animation = Animation(presentationAnimation: CustomPresentations.flippingPresentation, dismissalAnimation: nil)
             return .present(coordinator, animation: animation)
         }

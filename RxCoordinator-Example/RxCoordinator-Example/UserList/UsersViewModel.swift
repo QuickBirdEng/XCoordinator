@@ -9,6 +9,7 @@
 import Foundation
 import RxSwift
 import Action
+import rx_coordinator
 
 protocol UsersViewModelInput {
 }
@@ -31,11 +32,11 @@ class UsersViewModelImpl: UsersViewModel, UsersViewModelInput, UsersViewModelOut
     // MARK: - Outputs
 
     // MARK: - Private
-    private let coordinator: HomeCoordinator
+    private let coordinator: AnyCoordinator<HomeRoute>
 
     // MARK: - Init
 
-    init(coordinator: HomeCoordinator) {
+    init(coordinator: AnyCoordinator<HomeRoute>) {
         self.coordinator = coordinator
     }
 

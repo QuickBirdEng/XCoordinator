@@ -9,6 +9,7 @@
 import Foundation
 import RxSwift
 import Action
+import rx_coordinator
 
 protocol LoginViewModelInput {
     var loginTrigger: InputSubject<Void>! { get }
@@ -33,7 +34,7 @@ class LoginViewModelImpl: LoginViewModel, LoginViewModelInput, LoginViewModelOut
     // MARK: - Outputs
 
     // MARK: - Private
-    private let coordinator: MainCoordinator
+    private let coordinator: AnyCoordinator<MainRoute>
     private lazy var loginAction: CocoaAction = {
         return CocoaAction {
             self.coordinator.transition(to: .home)
@@ -43,8 +44,8 @@ class LoginViewModelImpl: LoginViewModel, LoginViewModelInput, LoginViewModelOut
 
     // MARK: - Init
 
-    init(coordinator: MainCoordinator) {
-       self.coordinator = coordinator
+    init(coordinator: AnyCoordinator<MainRoute>) {
+        self.coordinator = coordinator
 
         loginTrigger = loginAction.inputs
     }

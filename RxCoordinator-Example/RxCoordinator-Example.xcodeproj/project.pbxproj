@@ -18,8 +18,6 @@
 		DC36CC9F209B4436009EB669 /* LoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = DC36CC99209B4436009EB669 /* LoginViewController.xib */; };
 		DC36CCA4209B469F009EB669 /* MainRoute.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC36CCA3209B469F009EB669 /* MainRoute.swift */; };
 		DC36CCA5209B469F009EB669 /* MainRoute.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC36CCA3209B469F009EB669 /* MainRoute.swift */; };
-		DC36CCA7209B46A9009EB669 /* MainCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC36CCA6209B46A9009EB669 /* MainCoordinator.swift */; };
-		DC36CCA8209B46A9009EB669 /* MainCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC36CCA6209B46A9009EB669 /* MainCoordinator.swift */; };
 		DCB29667209B3F9A00698A44 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCB29666209B3F9A00698A44 /* AppDelegate.swift */; };
 		DCB29669209B3F9A00698A44 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCB29668209B3F9A00698A44 /* ViewController.swift */; };
 		DCB2966C209B3F9A00698A44 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DCB2966A209B3F9A00698A44 /* Main.storyboard */; };
@@ -36,8 +34,6 @@
 		DCB6B9A7209C4BE200829EFB /* HomeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = DCB6B9A1209C4BE200829EFB /* HomeViewController.xib */; };
 		DCB6B9AA209C4DC200829EFB /* HomeRoute.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCB6B9A9209C4DC200829EFB /* HomeRoute.swift */; };
 		DCB6B9AB209C4DC200829EFB /* HomeRoute.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCB6B9A9209C4DC200829EFB /* HomeRoute.swift */; };
-		DCB6B9AD209C4DCE00829EFB /* HomeCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCB6B9AC209C4DCE00829EFB /* HomeCoordinator.swift */; };
-		DCB6B9AE209C4DCE00829EFB /* HomeCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCB6B9AC209C4DCE00829EFB /* HomeCoordinator.swift */; };
 		DCB6B9B3209C77B500829EFB /* UsersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCB6B9B0209C77B500829EFB /* UsersViewController.swift */; };
 		DCB6B9B4209C77B500829EFB /* UsersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCB6B9B0209C77B500829EFB /* UsersViewController.swift */; };
 		DCB6B9B5209C77B500829EFB /* UsersViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCB6B9B1209C77B500829EFB /* UsersViewModel.swift */; };
@@ -71,7 +67,6 @@
 		DC36CC98209B4436009EB669 /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
 		DC36CC99209B4436009EB669 /* LoginViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LoginViewController.xib; sourceTree = "<group>"; };
 		DC36CCA3209B469F009EB669 /* MainRoute.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainRoute.swift; sourceTree = "<group>"; };
-		DC36CCA6209B46A9009EB669 /* MainCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainCoordinator.swift; sourceTree = "<group>"; };
 		DCB29663209B3F9A00698A44 /* RxCoordinator-Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "RxCoordinator-Example.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		DCB29666209B3F9A00698A44 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		DCB29668209B3F9A00698A44 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -87,7 +82,6 @@
 		DCB6B9A0209C4BE200829EFB /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
 		DCB6B9A1209C4BE200829EFB /* HomeViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HomeViewController.xib; sourceTree = "<group>"; };
 		DCB6B9A9209C4DC200829EFB /* HomeRoute.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeRoute.swift; sourceTree = "<group>"; };
-		DCB6B9AC209C4DCE00829EFB /* HomeCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCoordinator.swift; sourceTree = "<group>"; };
 		DCB6B9B0209C77B500829EFB /* UsersViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsersViewController.swift; sourceTree = "<group>"; };
 		DCB6B9B1209C77B500829EFB /* UsersViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsersViewModel.swift; sourceTree = "<group>"; };
 		DCB6B9B2209C77B500829EFB /* UsersViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = UsersViewController.xib; sourceTree = "<group>"; };
@@ -134,22 +128,13 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		DC36CCA0209B465A009EB669 /* Router */ = {
-			isa = PBXGroup;
-			children = (
-				DCB6B9A8209C4DB100829EFB /* Home */,
-				DC36CCA1209B4678009EB669 /* Main */,
-			);
-			path = Router;
-			sourceTree = "<group>";
-		};
-		DC36CCA1209B4678009EB669 /* Main */ = {
+		DC36CCA0209B465A009EB669 /* Routes */ = {
 			isa = PBXGroup;
 			children = (
 				DC36CCA3209B469F009EB669 /* MainRoute.swift */,
-				DC36CCA6209B46A9009EB669 /* MainCoordinator.swift */,
+				DCB6B9A9209C4DC200829EFB /* HomeRoute.swift */,
 			);
-			path = Main;
+			path = Routes;
 			sourceTree = "<group>";
 		};
 		DC36CCA2209B4689009EB669 /* Home */ = {
@@ -185,11 +170,11 @@
 		DCB29665209B3F9A00698A44 /* RxCoordinator-Example */ = {
 			isa = PBXGroup;
 			children = (
-				DCB6B9B9209C7AB500829EFB /* Utils */,
-				DC36CCA0209B465A009EB669 /* Router */,
+				DC36CCA0209B465A009EB669 /* Routes */,
 				DCB6B9AF209C778F00829EFB /* UserList */,
 				DC36CCA2209B4689009EB669 /* Home */,
 				DCB29689209B41C900698A44 /* Login */,
+				DCB6B9B9209C7AB500829EFB /* Utils */,
 				DCB29666209B3F9A00698A44 /* AppDelegate.swift */,
 				DCB29668209B3F9A00698A44 /* ViewController.swift */,
 				DCB2966A209B3F9A00698A44 /* Main.storyboard */,
@@ -217,15 +202,6 @@
 				DC36CC99209B4436009EB669 /* LoginViewController.xib */,
 			);
 			path = Login;
-			sourceTree = "<group>";
-		};
-		DCB6B9A8209C4DB100829EFB /* Home */ = {
-			isa = PBXGroup;
-			children = (
-				DCB6B9A9209C4DC200829EFB /* HomeRoute.swift */,
-				DCB6B9AC209C4DCE00829EFB /* HomeCoordinator.swift */,
-			);
-			path = Home;
 			sourceTree = "<group>";
 		};
 		DCB6B9AF209C778F00829EFB /* UserList */ = {
@@ -428,8 +404,6 @@
 				DC36CCA4209B469F009EB669 /* MainRoute.swift in Sources */,
 				DCB6B9A4209C4BE200829EFB /* HomeViewModel.swift in Sources */,
 				DCB29687209B415700698A44 /* NibIdentifiable.swift in Sources */,
-				DCB6B9AD209C4DCE00829EFB /* HomeCoordinator.swift in Sources */,
-				DC36CCA7209B46A9009EB669 /* MainCoordinator.swift in Sources */,
 				DCB6B9A2209C4BE200829EFB /* HomeViewController.swift in Sources */,
 				DC36CC9C209B4436009EB669 /* LoginViewModel.swift in Sources */,
 				DCB6B9BB209C7AE500829EFB /* CustomPresentations.swift in Sources */,
@@ -454,9 +428,7 @@
 				DC36CC9B209B4436009EB669 /* LoginViewController.swift in Sources */,
 				DC36CC96209B440D009EB669 /* BindableType.swift in Sources */,
 				DCB29688209B415700698A44 /* NibIdentifiable.swift in Sources */,
-				DC36CCA8209B46A9009EB669 /* MainCoordinator.swift in Sources */,
 				DCB6B9BC209C7AE500829EFB /* CustomPresentations.swift in Sources */,
-				DCB6B9AE209C4DCE00829EFB /* HomeCoordinator.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -612,7 +584,10 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = W44QDC3NZM;
 				INFOPLIST_FILE = "RxCoordinator-Example/Info.plist";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = "disho.RxCoordinator-Example";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
@@ -628,7 +603,10 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = W44QDC3NZM;
 				INFOPLIST_FILE = "RxCoordinator-Example/Info.plist";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = "disho.RxCoordinator-Example";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
@@ -644,7 +622,11 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = W44QDC3NZM;
 				INFOPLIST_FILE = "RxCoordinator-ExampleUITests/Info.plist";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = "disho.RxCoordinator-ExampleUITests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
@@ -661,7 +643,11 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = W44QDC3NZM;
 				INFOPLIST_FILE = "RxCoordinator-ExampleUITests/Info.plist";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = "disho.RxCoordinator-ExampleUITests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;

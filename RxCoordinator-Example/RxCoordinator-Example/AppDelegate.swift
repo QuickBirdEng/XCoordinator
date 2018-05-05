@@ -7,17 +7,18 @@
 //
 
 import UIKit
+import rx_coordinator
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
-    var coordinator: MainCoordinator!
+    var coordinator: AnyCoordinator<MainRoute>!
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         guard let window = self.window else { return false }
 
-        coordinator = MainCoordinator()
+        coordinator = AnyCoordinator(BasicCoordinator<MainRoute>(initalRoute: .login, initalLoadingType: .immediately))
         window.rootViewController = coordinator.navigationController
 
         return true

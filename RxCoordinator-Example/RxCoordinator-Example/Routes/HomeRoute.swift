@@ -10,19 +10,21 @@ import Foundation
 import rx_coordinator
 
 enum HomeRoute: Route {
-    case home(HomeViewModel)
-    case users(UsersViewModel)
+    case home
+    case users
     case logout
 
-    func prepareTransition() -> Transition {
+    func prepareTransition(coordinator: AnyCoordinator<HomeRoute>) -> Transition {
         switch self {
-        case let .home(viewModel):
+        case .home:
             var vc = HomeViewController.instantiateFromNib()
+            let viewModel = HomeViewModelImpl(coodinator: coordinator)
             vc.bind(to: viewModel)
             return .push(vc)
-        case let .users(viewModel):
+        case .users:
             let animation = Animation(presentationAnimation: CustomPresentations.fadePresentation, dismissalAnimation: nil)
             var vc = UsersViewController.instantiateFromNib()
+            let viewModel = UsersViewModelImpl(coordinator: coordinator)
             vc.bind(to: viewModel)
             return .push(vc, animation: animation)
         case .logout:

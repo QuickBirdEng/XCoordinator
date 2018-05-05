@@ -303,6 +303,8 @@
 		F2D3DC515E1151F751564771EA0217CC /* KVORepresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AC8091C23B7EE5153CF7F695741D003 /* KVORepresentable.swift */; };
 		F3C1E2CB844F46AF3AF8E5427C81CB30 /* Do.swift in Sources */ = {isa = PBXBuildFile; fileRef = B148E0D8106EB3B28421C9117CE7861F /* Do.swift */; };
 		F5D9B43990D49CA87F78B5546A7E0FA2 /* RxPickerViewDataSourceType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E6F13FB89AE04EF3306BF3EC4F9E8D5 /* RxPickerViewDataSourceType.swift */; };
+		F65D45DB209E1B7C007772EA /* BasicCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = F65D45DA209E1B7C007772EA /* BasicCoordinator.swift */; };
+		F65D45DF209E3E53007772EA /* AnyCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = F65D45DE209E3E53007772EA /* AnyCoordinator.swift */; };
 		F6602118CE0A9F8A5F5C3D57FD82EDD9 /* Maybe.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DD871E2FC9DB0BCAEAAFA0BD174071E /* Maybe.swift */; };
 		F680516CE95AE4345255E6D4FFA37618 /* Deprecated.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED3FE117ECC30C21013AFE034CCD68B0 /* Deprecated.swift */; };
 		F9767BA8D3A7037A40186D15F8864436 /* NSObject+Rx.swift in Sources */ = {isa = PBXBuildFile; fileRef = 047521A41AF851D9867D700817DDE856 /* NSObject+Rx.swift */; };
@@ -712,6 +714,8 @@
 		F0BB06131E5AD0B2981300C0DD2E5AAF /* InvocableScheduledItem.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = InvocableScheduledItem.swift; path = RxSwift/Schedulers/Internal/InvocableScheduledItem.swift; sourceTree = "<group>"; };
 		F3352E8FF90281381D11A2FF3ADD4219 /* SchedulerType+SharedSequence.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "SchedulerType+SharedSequence.swift"; path = "RxCocoa/Traits/SharedSequence/SchedulerType+SharedSequence.swift"; sourceTree = "<group>"; };
 		F501ED854E228DC0D545D1D607476DF8 /* ConnectableObservableType.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ConnectableObservableType.swift; path = RxSwift/ConnectableObservableType.swift; sourceTree = "<group>"; };
+		F65D45DA209E1B7C007772EA /* BasicCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BasicCoordinator.swift; path = RxCoordinator/Sources/BasicCoordinator.swift; sourceTree = "<group>"; };
+		F65D45DE209E3E53007772EA /* AnyCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AnyCoordinator.swift; path = RxCoordinator/Sources/AnyCoordinator.swift; sourceTree = "<group>"; };
 		F6A43405E9CE870497CDADF077333ED6 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F6CC2820D0BB9CC9220C28F064C495E0 /* RecursiveLock.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = RecursiveLock.swift; path = Platform/RecursiveLock.swift; sourceTree = "<group>"; };
 		F71FF5E86EAAFBA2DF8EDAD65B279567 /* OperationQueueScheduler.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = OperationQueueScheduler.swift; path = RxSwift/Schedulers/OperationQueueScheduler.swift; sourceTree = "<group>"; };
@@ -1166,6 +1170,8 @@
 			isa = PBXGroup;
 			children = (
 				B428D3DCA93FF59DDD24073BB62F2A9C /* Animation.swift */,
+				F65D45DE209E3E53007772EA /* AnyCoordinator.swift */,
+				F65D45DA209E1B7C007772EA /* BasicCoordinator.swift */,
 				88503D553C1CD2BD722639B7147E9F2F /* Container.swift */,
 				44B40BE1AE73B9E17C2F317E0CDF66C7 /* Coordinator.swift */,
 				B12F8083B3372B29E3D76E70B9441AB5 /* InteractiveTransitionAnimation.swift */,
@@ -1610,7 +1616,9 @@
 				51AE4325FEFBD348C20C42C799CB9E38 /* Coordinator.swift in Sources */,
 				6384A79A43718EAB82CE6700624819E7 /* InteractiveTransitionAnimation.swift in Sources */,
 				9D30FD62DD6060B2A21A18FF3AB45DB1 /* Presentable.swift in Sources */,
+				F65D45DF209E3E53007772EA /* AnyCoordinator.swift in Sources */,
 				D8EF2DA7DF09E536A7F98506FF0AEE83 /* rx-coordinator-dummy.m in Sources */,
+				F65D45DB209E1B7C007772EA /* BasicCoordinator.swift in Sources */,
 				049FA04A11DE0F5A1FBCCC5B109AF848 /* Route.swift in Sources */,
 				4B8336D02ABA5FCDF50FB15777ACBF51 /* StaticTransitionAnimation.swift in Sources */,
 				8EDB44F97A7ECF02D94DD3B265107FD3 /* Transition.swift in Sources */,
