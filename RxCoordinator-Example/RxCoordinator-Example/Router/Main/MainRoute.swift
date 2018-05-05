@@ -1,5 +1,5 @@
 //
-//  MainScene.swift
+//  MainRoute.swift
 //  RxCoordinator-Example
 //
 //  Created by Joan Disho on 03.05.18.
@@ -9,9 +9,9 @@
 import Foundation
 import rx_coordinator
 
-enum MainScene: Scene {
+enum MainRoute: Route {
     case login(LoginViewModel)
-    case home(HomeCoordinator)
+    case home
 
     func prepareTransition() -> Transition {
         switch self {
@@ -19,7 +19,8 @@ enum MainScene: Scene {
             var vc = LoginViewController.instantiateFromNib()
             vc.bind(to: viewModel)
             return .push(vc)
-        case let .home(coordinator):
+        case .home:
+            let coordinator = HomeCoordinator()
             let animation = Animation(presentationAnimation: CustomPresentations.flippingPresentation, dismissalAnimation: nil)
             return .present(coordinator, animation: animation)
         }

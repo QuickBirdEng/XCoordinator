@@ -17,11 +17,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         guard let window = self.window else { return false }
 
-        let rootVC = UINavigationController()
-        window.rootViewController = rootVC
-
-        coordinator = MainCoordinator(context: rootVC)
-        coordinator.start()
+        coordinator = MainCoordinator()
+        window.rootViewController = coordinator.navigationController
 
         return true
     }

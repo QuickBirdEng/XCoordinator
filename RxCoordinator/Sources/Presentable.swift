@@ -11,4 +11,10 @@ import UIKit
 
 public protocol Presentable {
     var viewController: UIViewController! { get }
+
+    func presented(from presentable: Presentable?)
+}
+
+extension UIViewController: Presentable {
+    public func presented(from presentingVC: Presentable?) {}
 }

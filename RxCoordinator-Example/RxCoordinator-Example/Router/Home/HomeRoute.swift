@@ -1,5 +1,5 @@
 //
-//  HomeScene.swift
+//  HomeRoute.swift
 //  RxCoordinator-Example
 //
 //  Created by Joan Disho on 04.05.18.
@@ -9,7 +9,7 @@
 import Foundation
 import rx_coordinator
 
-enum HomeScene: Scene {
+enum HomeRoute: Route {
     case home(HomeViewModel)
     case users(UsersViewModel)
     case logout

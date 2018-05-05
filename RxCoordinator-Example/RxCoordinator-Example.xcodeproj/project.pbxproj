@@ -16,8 +16,8 @@
 		DC36CC9D209B4436009EB669 /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC36CC98209B4436009EB669 /* LoginViewModel.swift */; };
 		DC36CC9E209B4436009EB669 /* LoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = DC36CC99209B4436009EB669 /* LoginViewController.xib */; };
 		DC36CC9F209B4436009EB669 /* LoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = DC36CC99209B4436009EB669 /* LoginViewController.xib */; };
-		DC36CCA4209B469F009EB669 /* MainScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC36CCA3209B469F009EB669 /* MainScene.swift */; };
-		DC36CCA5209B469F009EB669 /* MainScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC36CCA3209B469F009EB669 /* MainScene.swift */; };
+		DC36CCA4209B469F009EB669 /* MainRoute.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC36CCA3209B469F009EB669 /* MainRoute.swift */; };
+		DC36CCA5209B469F009EB669 /* MainRoute.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC36CCA3209B469F009EB669 /* MainRoute.swift */; };
 		DC36CCA7209B46A9009EB669 /* MainCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC36CCA6209B46A9009EB669 /* MainCoordinator.swift */; };
 		DC36CCA8209B46A9009EB669 /* MainCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC36CCA6209B46A9009EB669 /* MainCoordinator.swift */; };
 		DCB29667209B3F9A00698A44 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCB29666209B3F9A00698A44 /* AppDelegate.swift */; };
@@ -34,8 +34,8 @@
 		DCB6B9A5209C4BE200829EFB /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCB6B9A0209C4BE200829EFB /* HomeViewModel.swift */; };
 		DCB6B9A6209C4BE200829EFB /* HomeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = DCB6B9A1209C4BE200829EFB /* HomeViewController.xib */; };
 		DCB6B9A7209C4BE200829EFB /* HomeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = DCB6B9A1209C4BE200829EFB /* HomeViewController.xib */; };
-		DCB6B9AA209C4DC200829EFB /* HomeScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCB6B9A9209C4DC200829EFB /* HomeScene.swift */; };
-		DCB6B9AB209C4DC200829EFB /* HomeScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCB6B9A9209C4DC200829EFB /* HomeScene.swift */; };
+		DCB6B9AA209C4DC200829EFB /* HomeRoute.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCB6B9A9209C4DC200829EFB /* HomeRoute.swift */; };
+		DCB6B9AB209C4DC200829EFB /* HomeRoute.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCB6B9A9209C4DC200829EFB /* HomeRoute.swift */; };
 		DCB6B9AD209C4DCE00829EFB /* HomeCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCB6B9AC209C4DCE00829EFB /* HomeCoordinator.swift */; };
 		DCB6B9AE209C4DCE00829EFB /* HomeCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCB6B9AC209C4DCE00829EFB /* HomeCoordinator.swift */; };
 		DCB6B9B3209C77B500829EFB /* UsersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCB6B9B0209C77B500829EFB /* UsersViewController.swift */; };
@@ -70,7 +70,7 @@
 		DC36CC97209B4436009EB669 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		DC36CC98209B4436009EB669 /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
 		DC36CC99209B4436009EB669 /* LoginViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LoginViewController.xib; sourceTree = "<group>"; };
-		DC36CCA3209B469F009EB669 /* MainScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainScene.swift; sourceTree = "<group>"; };
+		DC36CCA3209B469F009EB669 /* MainRoute.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainRoute.swift; sourceTree = "<group>"; };
 		DC36CCA6209B46A9009EB669 /* MainCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainCoordinator.swift; sourceTree = "<group>"; };
 		DCB29663209B3F9A00698A44 /* RxCoordinator-Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "RxCoordinator-Example.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		DCB29666209B3F9A00698A44 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -86,7 +86,7 @@
 		DCB6B99F209C4BE200829EFB /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		DCB6B9A0209C4BE200829EFB /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
 		DCB6B9A1209C4BE200829EFB /* HomeViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HomeViewController.xib; sourceTree = "<group>"; };
-		DCB6B9A9209C4DC200829EFB /* HomeScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeScene.swift; sourceTree = "<group>"; };
+		DCB6B9A9209C4DC200829EFB /* HomeRoute.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeRoute.swift; sourceTree = "<group>"; };
 		DCB6B9AC209C4DCE00829EFB /* HomeCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCoordinator.swift; sourceTree = "<group>"; };
 		DCB6B9B0209C77B500829EFB /* UsersViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsersViewController.swift; sourceTree = "<group>"; };
 		DCB6B9B1209C77B500829EFB /* UsersViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsersViewModel.swift; sourceTree = "<group>"; };
@@ -146,7 +146,7 @@
 		DC36CCA1209B4678009EB669 /* Main */ = {
 			isa = PBXGroup;
 			children = (
-				DC36CCA3209B469F009EB669 /* MainScene.swift */,
+				DC36CCA3209B469F009EB669 /* MainRoute.swift */,
 				DC36CCA6209B46A9009EB669 /* MainCoordinator.swift */,
 			);
 			path = Main;
@@ -222,7 +222,7 @@
 		DCB6B9A8209C4DB100829EFB /* Home */ = {
 			isa = PBXGroup;
 			children = (
-				DCB6B9A9209C4DC200829EFB /* HomeScene.swift */,
+				DCB6B9A9209C4DC200829EFB /* HomeRoute.swift */,
 				DCB6B9AC209C4DCE00829EFB /* HomeCoordinator.swift */,
 			);
 			path = Home;
@@ -260,7 +260,6 @@
 				DCB29660209B3F9A00698A44 /* Frameworks */,
 				DCB29661209B3F9A00698A44 /* Resources */,
 				57370787201A71E6C1ABF3DB /* [CP] Embed Pods Frameworks */,
-				7EB2EA923941D33E9CDA4642 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -279,8 +278,6 @@
 				DCB29673209B3F9D00698A44 /* Sources */,
 				DCB29674209B3F9D00698A44 /* Frameworks */,
 				DCB29675209B3F9D00698A44 /* Resources */,
-				1ABF8BD4F92991AB6EA176EA /* [CP] Embed Pods Frameworks */,
-				2B564382CC23942BE60A68DC /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -357,36 +354,6 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		1ABF8BD4F92991AB6EA176EA /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-RxCoordinator-ExampleUITests/Pods-RxCoordinator-ExampleUITests-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		2B564382CC23942BE60A68DC /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-RxCoordinator-ExampleUITests/Pods-RxCoordinator-ExampleUITests-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
 		3F7F125FF98F603EC5C9C875 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -429,21 +396,6 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-RxCoordinator-Example/Pods-RxCoordinator-Example-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		7EB2EA923941D33E9CDA4642 /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-RxCoordinator-Example/Pods-RxCoordinator-Example-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
 		F5DBB855F4C838F547DC6EEF /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -473,7 +425,7 @@
 				DCB6B9B5209C77B500829EFB /* UsersViewModel.swift in Sources */,
 				DC36CC95209B440D009EB669 /* BindableType.swift in Sources */,
 				DCB6B9B3209C77B500829EFB /* UsersViewController.swift in Sources */,
-				DC36CCA4209B469F009EB669 /* MainScene.swift in Sources */,
+				DC36CCA4209B469F009EB669 /* MainRoute.swift in Sources */,
 				DCB6B9A4209C4BE200829EFB /* HomeViewModel.swift in Sources */,
 				DCB29687209B415700698A44 /* NibIdentifiable.swift in Sources */,
 				DCB6B9AD209C4DCE00829EFB /* HomeCoordinator.swift in Sources */,
@@ -481,7 +433,7 @@
 				DCB6B9A2209C4BE200829EFB /* HomeViewController.swift in Sources */,
 				DC36CC9C209B4436009EB669 /* LoginViewModel.swift in Sources */,
 				DCB6B9BB209C7AE500829EFB /* CustomPresentations.swift in Sources */,
-				DCB6B9AA209C4DC200829EFB /* HomeScene.swift in Sources */,
+				DCB6B9AA209C4DC200829EFB /* HomeRoute.swift in Sources */,
 				DCB29669209B3F9A00698A44 /* ViewController.swift in Sources */,
 				DCB29667209B3F9A00698A44 /* AppDelegate.swift in Sources */,
 			);
@@ -491,12 +443,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				DC36CCA5209B469F009EB669 /* MainScene.swift in Sources */,
+				DC36CCA5209B469F009EB669 /* MainRoute.swift in Sources */,
 				DCB6B9B6209C77B500829EFB /* UsersViewModel.swift in Sources */,
 				DCB6B9B4209C77B500829EFB /* UsersViewController.swift in Sources */,
 				DCB6B9A5209C4BE200829EFB /* HomeViewModel.swift in Sources */,
 				DCB2967C209B3F9D00698A44 /* RxCoordinator_ExampleUITests.swift in Sources */,
-				DCB6B9AB209C4DC200829EFB /* HomeScene.swift in Sources */,
+				DCB6B9AB209C4DC200829EFB /* HomeRoute.swift in Sources */,
 				DC36CC9D209B4436009EB669 /* LoginViewModel.swift in Sources */,
 				DCB6B9A3209C4BE200829EFB /* HomeViewController.swift in Sources */,
 				DC36CC9B209B4436009EB669 /* LoginViewController.swift in Sources */,
@@ -660,10 +612,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = W44QDC3NZM;
 				INFOPLIST_FILE = "RxCoordinator-Example/Info.plist";
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "disho.RxCoordinator-Example";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
@@ -679,10 +628,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = W44QDC3NZM;
 				INFOPLIST_FILE = "RxCoordinator-Example/Info.plist";
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "disho.RxCoordinator-Example";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
@@ -698,11 +644,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = W44QDC3NZM;
 				INFOPLIST_FILE = "RxCoordinator-ExampleUITests/Info.plist";
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "disho.RxCoordinator-ExampleUITests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
@@ -719,11 +661,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = W44QDC3NZM;
 				INFOPLIST_FILE = "RxCoordinator-ExampleUITests/Info.plist";
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "disho.RxCoordinator-ExampleUITests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;

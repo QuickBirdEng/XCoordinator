@@ -1,5 +1,5 @@
 //
-//  Scene.swift
+//  Route.swift
 //  RxCoordinator
 //
 //  Created by Stefan Kofler on 30.04.18.
@@ -8,6 +8,6 @@
 
 import Foundation
 
-public protocol Scene {
+public protocol Route {
     func prepareTransition() -> Transition
 }

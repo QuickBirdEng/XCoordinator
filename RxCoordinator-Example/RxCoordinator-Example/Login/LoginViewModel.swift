@@ -36,8 +36,7 @@ class LoginViewModelImpl: LoginViewModel, LoginViewModelInput, LoginViewModelOut
     private let coordinator: MainCoordinator
     private lazy var loginAction: CocoaAction = {
         return CocoaAction {
-            let homeCoordinator = HomeCoordinator(context: self.coordinator.navigationController)
-            self.coordinator.transition(to: MainScene.home(homeCoordinator))
+            self.coordinator.transition(to: .home)
             return .empty()
         }
     }()

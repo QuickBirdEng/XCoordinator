@@ -12,48 +12,49 @@ import RxSwift
 import RxCocoa
 
 public protocol Coordinator: Presentable {
-    associatedtype CoordinatorScene: Scene
+    associatedtype CoordinatorRoute: Route
 
-    var context: UIViewController { get }
+    var context: UIViewController! { get }
     var navigationController: UINavigationController { get }
 
     @discardableResult
-    func transition(to scene: CoordinatorScene, with options: TransitionOptions) -> TransitionObservables
+    func transition(to route: CoordinatorRoute, with options: TransitionOptions) -> TransitionObservables
 
-    func start()
+    func presented(from presentable: Presentable?)
 
 }
 
 extension Coordinator {
 
     public var viewController: UIViewController! {
-        start()
         return navigationController
     }
 
+    public func presented(from presentable: Presentable?) {}
 
     // MARK: Convenience methods
 
     @discardableResult
-    public func transition(to scene: CoordinatorScene) -> TransitionObservables {
-        return transition(to: scene, with: TransitionOptions.defaultOptions)
+    public func transition(to route: CoordinatorRoute) -> TransitionObservables {
+        return transition(to: route, with: TransitionOptions.defaultOptions)
     }
-
-    public func start() {}
 
     // MARK: Implementations
 
     @discardableResult
-    public func transition(to scene: CoordinatorScene, with options: TransitionOptions) -> TransitionObservables {
-        let transition = scene.prepareTransition()
+    public func transition(to route: CoordinatorRoute, with options: TransitionOptions) -> TransitionObservables {
+        let transition = route.prepareTransition()
 
         switch transition.type {
-        case .push(let viewController):
-            return push(viewController, with: options, animation: transition.animation)
-        case .present(let viewController):
-            return present(viewController, with: options, animation: transition.animation)
-        case .embed(let viewController, let container):
-            return embed(viewController, in: container, with: options)
+        case .push(let presentable):
+            presentable.presented(from: self)
+            return push(presentable.viewController, with: options, animation: transition.animation)
+        case .present(let presentable):
+            presentable.presented(from: self)
+            return present(presentable.viewController, with: options, animation: transition.animation)
+        case .embed(let presentable, let container):
+            presentable.presented(from: self)
+            return embed(presentable.viewController, in: container, with: options)
         case .pop:
             return pop(with: options, toRoot: false, animation: transition.animation)
         case .popToRoot:

@@ -36,4 +36,3 @@ public class Animation: NSObject, UIViewControllerTransitioningDelegate {
     }
 
 }
-

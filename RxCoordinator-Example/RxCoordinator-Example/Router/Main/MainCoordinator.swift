@@ -10,18 +10,16 @@ import Foundation
 import rx_coordinator
 
 class MainCoordinator: Coordinator {
-    typealias CoordinatorScene = MainScene
+    typealias CoordinatorRoute = MainRoute
 
-    var context: UIViewController
-    var navigationController: UINavigationController
+    var context: UIViewController!
+    var navigationController = UINavigationController()
 
-    init(context: UINavigationController) {
-        self.context = context
-        self.navigationController = context
-    }
+    init() {
+        self.context = navigationController
 
-    func start() {
         let viewModel = LoginViewModelImpl(coordinator: self)
         transition(to: .login(viewModel))
     }
+
 }

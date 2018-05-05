@@ -6,7 +6,8 @@ target 'RxCoordinator-Example' do
   use_frameworks!
 
   # Pods for RxCoordinator-Example
-  pod 'rx-coordinator'
+
+  pod 'rx-coordinator', :path => '../'
   pod 'Action'
 
   target 'RxCoordinator-ExampleUITests' do

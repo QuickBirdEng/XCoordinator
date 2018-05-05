@@ -11,9 +11,9 @@ import UIKit
 
 public struct Transition {
     internal enum `Type` {
-        case push(UIViewController)
-        case present(UIViewController)
-        case embed(viewController: UIViewController, container: Container)
+        case push(Presentable)
+        case present(Presentable)
+        case embed(viewController: Presentable, container: Container)
         case pop
         case popToRoot
         case dismiss
@@ -24,15 +24,15 @@ public struct Transition {
     internal let animation: Animation?
 
     public static func push(_ presentable: Presentable, animation: Animation? = nil) -> Transition {
-        return Transition(type: .push(presentable.viewController), animation: animation)
+        return Transition(type: .push(presentable), animation: animation)
     }
 
     public static func present(_ presentable: Presentable, animation: Animation? = nil) -> Transition {
-        return Transition(type: .present(presentable.viewController), animation: animation)
+        return Transition(type: .present(presentable), animation: animation)
     }
 
     public static func embed(_ presentable: Presentable, in container: Container) -> Transition {
-        return Transition(type: .embed(viewController: presentable.viewController, container: container), animation: nil)
+        return Transition(type: .embed(viewController: presentable, container: container), animation: nil)
     }
 
     public static func pop(animation: Animation? = nil) -> Transition {
@@ -45,6 +45,10 @@ public struct Transition {
 
     public static func dismiss(animation: Animation? = nil) -> Transition {
         return Transition(type: .dismiss, animation: animation)
+    }
+
+    public static func none() -> Transition {
+        return Transition(type: .none, animation: nil)
     }
 
 }

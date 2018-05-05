@@ -10,17 +10,14 @@ import Foundation
 import rx_coordinator
 
 class HomeCoordinator: Coordinator {
-    typealias CoordinatorScene = HomeScene
+    typealias CoordinatorRoute = HomeRoute
 
-    var context: UIViewController
-    var navigationController: UINavigationController
+    var context: UIViewController!
+    var navigationController = UINavigationController()
 
-    init(context: UIViewController) {
-        self.context = context
-        navigationController = UINavigationController()
-    }
+    func presented(from presentable: Presentable?) {
+        context = presentable?.viewController
 
-    func start() {
         let viewModel = HomeViewModelImpl(coodinator: self)
         transition(to: .home(viewModel))
     }

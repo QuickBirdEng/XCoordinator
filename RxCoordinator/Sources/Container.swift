@@ -16,7 +16,7 @@ public protocol Container {
 
 // MARK: Extensions
 
-extension UIViewController: Container, Presentable {
+extension UIViewController: Container {
     public var viewController: UIViewController! { return self }
 }
 
