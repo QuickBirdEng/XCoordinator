@@ -44,6 +44,10 @@ Describes presentation/dismissal of a view including the type of the transition 
   - popToRoot: pop all the view controllers on the navigation stack except the root view controller and updates the display.
   - dismiss: dismissthe view controller that was presented modally by the view controller.
   - none: does nothing to the view controller
+  
+<p align="center">
+  <img src="https://github.com/jdisho/RxCoordinator/blob/master/Images/mvvmc.png">
+</p>
 
 ## 🛠 Installation
 
