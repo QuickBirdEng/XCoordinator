@@ -2,7 +2,7 @@
   <img src="https://github.com/jdisho/RxCoordinator/blob/master/Images/munich.png">
 </p>
 
-# RxCoordinator
+# 🏄‍♂️ RxCoordinator
 “How does an app transition from a ViewController to another?”. 
 This question is common and puzzling regarding MVVM. There are many answers, as every architecture has different implementation variations. Some do it from the ViewController, while some do it using a router, which is an object that connects view models.
 
@@ -22,7 +22,7 @@ To better answer the question, we are building **RxCoordinator**, a navigation f
 
 > [The Coordinator](http://khanlou.com/2015/01/the-coordinator/) by **Soroush Khanlou**
 
-## ⛵️ Why RxCoordinator
+## Why RxCoordinator
 * Actual **navigation code is already written** and abstracted away
 
 * Clear **separation of concerns**:
