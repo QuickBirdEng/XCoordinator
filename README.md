@@ -2,26 +2,40 @@
   <img src="https://github.com/jdisho/RxCoordinator/blob/master/Images/munich.png">
 </p>
 
+##  Why coordinators:
+* **Separation of responsibilities** by coordinator being only component knowing anything related to the flow of your application
+* **Reusable View ands ViewModels** because the don't contain any navigation logic
+* **Less coupling between components**
+* **Changeable navigation**: Each coordinator is only responsible for one component and makes no assumptions about its parent. It can therefore be placed wherever we want to.
 
-## 👨‍✈️ Coordinator
->  A coordinator is an object that bosses one or more view controllers around. Taking all of the driving logic out of your view controllers, and moving that stuff one layer up. 
->
-> Soroush Khanlou [Coordinators Redux](http://khanlou.com/2015/10/coordinators-redux/)
+> [The Coordinator](http://khanlou.com/2015/01/the-coordinator/) by **Soroush Khanlou**
 
 ## ⛵️ What is RxCoordinator
-RxCoordinator is a lightweight navigation framework based on coordinator pattern.
+* Actual **navigation code is already written** and abstracted away
 
-Allowing to remove the navigation code from `UIViewControllers`, reusing `UIViewControllers` in different contexts and providing ease the use of **dependency injection**.
+* Clear **separation of concerns**:
+  - Coordinator: Coordinates routing of a set of routes
+  - Route: Describes navigation path
+  - Transition: Describe transition type and animation to new view
+* **Reuse** coordinators, routers and transitions in different combinations
+* Full support for **custom transitions/animations**
+* Support for **embedding child views** / container views
+* Provides **observables for presentation / dismissal** of views (E.g. block button until presentation is done)
+* Generic BasicCoordinator class suitable for most use cases and therefore **less** need to write your **own coordinators**
+* Still full **support** for your **own coordinator classes** conforming to our Coordinator protocol
+* Generic AnyCoordinator type erasure class encapsulates all types of coordinators supporting the same set of routes. Therefor you can **easily replace coordinators**
+* Use of enum for routes gives you **autocompletion** and **type safety** to perform only transition to routes supported by the coordinator.
 
 ### Components
 
-#### 📲 Scene
-Refers to a screen managed by a view controller together with the transition type. It can be a regular screen, a modal dialog or a coordinator.
+### 🎢 Route
+Describes a navigation path. Creates transition and loads View (and corresponding ViewModel) with the help of the coordinator performing the transition.
 
 #### 👨‍✈️ Coordinator
-An object that bosses around the view controllers.
+An object coordinating the transition to a set of routes pointing to views or other coordinators.
 
 #### 🏗 Transition Types
+Describes presentation/dismissal of a view including the type of the transition and the animation used.
   - push: push view controller to navigation stack.
   - present: present view controller.
   - embed: embed view controller to a container view.
