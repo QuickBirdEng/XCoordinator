@@ -6,6 +6,7 @@
 * **Separation of responsibilities** by coordinator being only component knowing anything related to the flow of your application
 * **Reusable View ands ViewModels** because the don't contain any navigation logic
 * **Less coupling between components**
+
 * **Changeable navigation**: Each coordinator is only responsible for one component and makes no assumptions about its parent. It can therefore be placed wherever we want to.
 
 > [The Coordinator](http://khanlou.com/2015/01/the-coordinator/) by **Soroush Khanlou**
