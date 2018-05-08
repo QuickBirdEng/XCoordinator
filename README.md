@@ -70,6 +70,58 @@ pod 'rx-coordinator'
 
 If you prefer not to use any of the dependency managers, you can integrate RxCoordinator into your project manually, by downloading the source code and placing the files on your project directory.
 
+## 🏃‍♂️Getting started
+Set up an enum with all of the navigation paths for a particular flow. (It is up to you when to create a `Route/Coordinator`, but as **our rule of thumb**, create a new `Route/Coordinator` whenever is needed a new navigation controller.)
+
+```swift 
+enum HomeRoute: Route {
+    case home
+    case users
+    case logout
+
+    func prepareTransition(coordinator: AnyCoordinator<HomeRoute>) -> Transition {
+        switch self {
+        case .home:
+            var vc = HomeViewController()
+            let viewModel = HomeViewModel(coodinator: coordinator)
+            vc.bind(to: viewModel)
+            return .push(vc)
+        case .users:
+            var vc = UsersViewController()
+            let viewModel = UsersViewModel(coodinator: coordinator)
+            vc.bind(to: viewModel)
+            return .push(vc)
+        case .logout:
+            return .dismiss()
+        }
+    }
+}
+```
 ## 👨🏻‍💻 Usage
 
+In viewModel you can do:
+
+```swift
+    ...
+    
+    init(coodinator: AnyCoordinator<HomeRoute>) {
+        self.coordinator = coodinator
+    }
+    
+    private lazy var usersAction: CocoaAction = {
+        return CocoaAction {
+            self.coordinator.transition(to: .users)
+            return .empty()
+        }
+    }()
+    
+    ...
+```
+
+## 👤 Author
+This tiny library is created with ❤️ by [QuickBird Studios](www.quickbirdstudios.com)
+
+### 📃 License
+
+RxCoordinator is released under an MIT license. See [License.md](https://github.com/jdisho/RxCoordinator/blob/master/LICENSE) for more information.
 
