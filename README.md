@@ -2,6 +2,17 @@
   <img src="https://github.com/jdisho/RxCoordinator/blob/master/Images/munich.png">
 </p>
 
+# RxCoordinator
+“How does an app transition from a ViewController to another?”. 
+This question is common and puzzling regarding MVVM. There are many answers, as every architecture has different implementation variations. Some do it from the ViewController, while some do it using a router, which is an object that connects view models.
+
+To better answer the question, we are building **RxCoordinator**, a navigation framework based on the **Coordinator** pattern.
+
+<p align="center">
+  <img src="https://github.com/jdisho/RxCoordinator/blob/master/Images/mvvmc.png">
+</p>
+
+
 ##  Why coordinators:
 * **Separation of responsibilities** by coordinator being only component knowing anything related to the flow of your application
 * **Reusable View ands ViewModels** because the don't contain any navigation logic
@@ -11,7 +22,7 @@
 
 > [The Coordinator](http://khanlou.com/2015/01/the-coordinator/) by **Soroush Khanlou**
 
-## ⛵️ What is RxCoordinator
+## ⛵️ Why RxCoordinator
 * Actual **navigation code is already written** and abstracted away
 
 * Clear **separation of concerns**:
@@ -44,10 +55,6 @@ Describes presentation/dismissal of a view including the type of the transition 
   - popToRoot: pop all the view controllers on the navigation stack except the root view controller and updates the display.
   - dismiss: dismissthe view controller that was presented modally by the view controller.
   - none: does nothing to the view controller
-  
-<p align="center">
-  <img src="https://github.com/jdisho/RxCoordinator/blob/master/Images/mvvmc.png">
-</p>
 
 ## 🛠 Installation
 
