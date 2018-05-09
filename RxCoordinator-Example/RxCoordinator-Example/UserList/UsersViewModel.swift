@@ -12,9 +12,11 @@ import Action
 import rx_coordinator
 
 protocol UsersViewModelInput {
+    var showUserTrigger: InputSubject<String>! { get }
 }
 
 protocol UsersViewModelOutput {
+    var usernames: Observable<[String]>! { get }
 }
 
 protocol UsersViewModel {
@@ -28,16 +30,29 @@ class UsersViewModelImpl: UsersViewModel, UsersViewModelInput, UsersViewModelOut
     var output: UsersViewModelOutput { return self }
 
     // MARK: - Inputs
+    var showUserTrigger: InputSubject<String>!
 
     // MARK: - Outputs
+    var usernames: Observable<[String]>!
 
     // MARK: - Private
     private let coordinator: AnyCoordinator<HomeRoute>
+    private lazy var showUserAction: Action<String, Void> = {
+        return Action<String, Void> { username in
+            self.coordinator.transition(to: HomeRoute.user(username))
+            return .empty()
+        }
+    }()
 
     // MARK: - Init
 
     init(coordinator: AnyCoordinator<HomeRoute>) {
         self.coordinator = coordinator
+
+        showUserTrigger = showUserAction.inputs
+        usernames = Observable.of(["Joan", "Stefan", "Malte",
+                                   "Sebi", "Patric", "Julian",
+                                   "Quirin", "Paul"])
     }
 
 }

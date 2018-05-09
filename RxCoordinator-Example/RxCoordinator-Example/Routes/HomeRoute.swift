@@ -12,6 +12,7 @@ import rx_coordinator
 enum HomeRoute: Route {
     case home
     case users
+    case user(String)
     case logout
 
     func prepareTransition(coordinator: AnyCoordinator<HomeRoute>) -> Transition {
@@ -22,11 +23,14 @@ enum HomeRoute: Route {
             vc.bind(to: viewModel)
             return .push(vc)
         case .users:
-            let animation = Animation(presentationAnimation: CustomPresentations.fadePresentation, dismissalAnimation: nil)
+            let animation = Animation(presentationAnimation: CustomPresentations.flippingPresentation, dismissalAnimation: nil)
             var vc = UsersViewController.instantiateFromNib()
             let viewModel = UsersViewModelImpl(coordinator: coordinator)
             vc.bind(to: viewModel)
             return .push(vc, animation: animation)
+        case .user(let username):
+            let coordinator = BasicCoordinator<UserRoute>(initalRoute: .user(username))
+            return .present(coordinator)
         case .logout:
             return .dismiss()
         }

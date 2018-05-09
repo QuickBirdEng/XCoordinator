@@ -14,18 +14,42 @@ class UsersViewController: UIViewController, BindableType {
 
     var viewModel: UsersViewModel!
 
+    @IBOutlet var tableView: UITableView!
+
+    private let disposeBag = DisposeBag()
+
     // MARK: - Init
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        title = "Users"
+        configureTableViewCell()
+        configureNavBar()
     }
 
     // MARK: - BindableType
 
     func bindViewModel() {
-        // TODO: Bind view model to UI
+        viewModel.output.usernames
+        .bind(to: tableView.rx.items(cellIdentifier: "UserCell", cellType: UITableViewCell.self)) { (_, element, cell) in
+           cell.textLabel?.text = element
+        }
+        .disposed(by: disposeBag)
+
+        tableView.rx.modelSelected(String.self)
+            .bind(to: viewModel.input.showUserTrigger)
+            .disposed(by: disposeBag)
+    }
+
+    private func configureTableViewCell() {
+        tableView.register(UITableViewCell.self, forCellReuseIdentifier: "UserCell")
+    }
+
+    private func configureNavBar() {
+        title = "Users"
     }
   
 }
+
+
+

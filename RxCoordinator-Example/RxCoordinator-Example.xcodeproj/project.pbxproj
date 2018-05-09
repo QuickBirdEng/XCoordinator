@@ -18,6 +18,10 @@
 		DC36CC9F209B4436009EB669 /* LoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = DC36CC99209B4436009EB669 /* LoginViewController.xib */; };
 		DC36CCA4209B469F009EB669 /* MainRoute.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC36CCA3209B469F009EB669 /* MainRoute.swift */; };
 		DC36CCA5209B469F009EB669 /* MainRoute.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC36CCA3209B469F009EB669 /* MainRoute.swift */; };
+		DCB0DD0320A320D600BC79B6 /* UserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCB0DD0020A320D600BC79B6 /* UserViewController.swift */; };
+		DCB0DD0420A320D600BC79B6 /* UserViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCB0DD0120A320D600BC79B6 /* UserViewModel.swift */; };
+		DCB0DD0520A320D600BC79B6 /* UserViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = DCB0DD0220A320D600BC79B6 /* UserViewController.xib */; };
+		DCB0DD0820A330F000BC79B6 /* UserRoute.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCB0DD0720A330F000BC79B6 /* UserRoute.swift */; };
 		DCB29667209B3F9A00698A44 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCB29666209B3F9A00698A44 /* AppDelegate.swift */; };
 		DCB29669209B3F9A00698A44 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCB29668209B3F9A00698A44 /* ViewController.swift */; };
 		DCB2966C209B3F9A00698A44 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DCB2966A209B3F9A00698A44 /* Main.storyboard */; };
@@ -42,6 +46,7 @@
 		DCB6B9B8209C77B500829EFB /* UsersViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = DCB6B9B2209C77B500829EFB /* UsersViewController.xib */; };
 		DCB6B9BB209C7AE500829EFB /* CustomPresentations.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCB6B9BA209C7AE500829EFB /* CustomPresentations.swift */; };
 		DCB6B9BC209C7AE500829EFB /* CustomPresentations.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCB6B9BA209C7AE500829EFB /* CustomPresentations.swift */; };
+		DCDCA6A020A31BA80014212F /* UserCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = DCDCA69E20A31BA80014212F /* UserCell.xib */; };
 		EE7FF70FFBA5DF08B02B9334 /* Pods_RxCoordinator_Example.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9F89A32927ECF9B9844FD892 /* Pods_RxCoordinator_Example.framework */; };
 /* End PBXBuildFile section */
 
@@ -67,6 +72,10 @@
 		DC36CC98209B4436009EB669 /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
 		DC36CC99209B4436009EB669 /* LoginViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LoginViewController.xib; sourceTree = "<group>"; };
 		DC36CCA3209B469F009EB669 /* MainRoute.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainRoute.swift; sourceTree = "<group>"; };
+		DCB0DD0020A320D600BC79B6 /* UserViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserViewController.swift; sourceTree = "<group>"; };
+		DCB0DD0120A320D600BC79B6 /* UserViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserViewModel.swift; sourceTree = "<group>"; };
+		DCB0DD0220A320D600BC79B6 /* UserViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = UserViewController.xib; sourceTree = "<group>"; };
+		DCB0DD0720A330F000BC79B6 /* UserRoute.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserRoute.swift; sourceTree = "<group>"; };
 		DCB29663209B3F9A00698A44 /* RxCoordinator-Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "RxCoordinator-Example.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		DCB29666209B3F9A00698A44 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		DCB29668209B3F9A00698A44 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -86,6 +95,7 @@
 		DCB6B9B1209C77B500829EFB /* UsersViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsersViewModel.swift; sourceTree = "<group>"; };
 		DCB6B9B2209C77B500829EFB /* UsersViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = UsersViewController.xib; sourceTree = "<group>"; };
 		DCB6B9BA209C7AE500829EFB /* CustomPresentations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomPresentations.swift; sourceTree = "<group>"; };
+		DCDCA69E20A31BA80014212F /* UserCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = UserCell.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -133,6 +143,7 @@
 			children = (
 				DC36CCA3209B469F009EB669 /* MainRoute.swift */,
 				DCB6B9A9209C4DC200829EFB /* HomeRoute.swift */,
+				DCB0DD0720A330F000BC79B6 /* UserRoute.swift */,
 			);
 			path = Routes;
 			sourceTree = "<group>";
@@ -145,6 +156,16 @@
 				DCB6B9A1209C4BE200829EFB /* HomeViewController.xib */,
 			);
 			path = Home;
+			sourceTree = "<group>";
+		};
+		DCB0DCFF20A320C200BC79B6 /* User */ = {
+			isa = PBXGroup;
+			children = (
+				DCB0DD0020A320D600BC79B6 /* UserViewController.swift */,
+				DCB0DD0120A320D600BC79B6 /* UserViewModel.swift */,
+				DCB0DD0220A320D600BC79B6 /* UserViewController.xib */,
+			);
+			path = User;
 			sourceTree = "<group>";
 		};
 		DCB2965A209B3F9A00698A44 = {
@@ -171,6 +192,7 @@
 			isa = PBXGroup;
 			children = (
 				DC36CCA0209B465A009EB669 /* Routes */,
+				DCB0DCFF20A320C200BC79B6 /* User */,
 				DCB6B9AF209C778F00829EFB /* UserList */,
 				DC36CCA2209B4689009EB669 /* Home */,
 				DCB29689209B41C900698A44 /* Login */,
@@ -207,6 +229,7 @@
 		DCB6B9AF209C778F00829EFB /* UserList */ = {
 			isa = PBXGroup;
 			children = (
+				DCDCA69C20A31B6A0014212F /* Cell */,
 				DCB6B9B0209C77B500829EFB /* UsersViewController.swift */,
 				DCB6B9B1209C77B500829EFB /* UsersViewModel.swift */,
 				DCB6B9B2209C77B500829EFB /* UsersViewController.xib */,
@@ -222,6 +245,14 @@
 				DCB6B9BA209C7AE500829EFB /* CustomPresentations.swift */,
 			);
 			path = Utils;
+			sourceTree = "<group>";
+		};
+		DCDCA69C20A31B6A0014212F /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				DCDCA69E20A31BA80014212F /* UserCell.xib */,
+			);
+			path = Cell;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -313,7 +344,9 @@
 				DC36CC9E209B4436009EB669 /* LoginViewController.xib in Resources */,
 				DCB6B9A6209C4BE200829EFB /* HomeViewController.xib in Resources */,
 				DCB2966E209B3F9D00698A44 /* Assets.xcassets in Resources */,
+				DCB0DD0520A320D600BC79B6 /* UserViewController.xib in Resources */,
 				DCB2966C209B3F9A00698A44 /* Main.storyboard in Resources */,
+				DCDCA6A020A31BA80014212F /* UserCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -397,13 +430,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DCB0DD0820A330F000BC79B6 /* UserRoute.swift in Sources */,
 				DC36CC9A209B4436009EB669 /* LoginViewController.swift in Sources */,
+				DCB0DD0320A320D600BC79B6 /* UserViewController.swift in Sources */,
 				DCB6B9B5209C77B500829EFB /* UsersViewModel.swift in Sources */,
 				DC36CC95209B440D009EB669 /* BindableType.swift in Sources */,
 				DCB6B9B3209C77B500829EFB /* UsersViewController.swift in Sources */,
 				DC36CCA4209B469F009EB669 /* MainRoute.swift in Sources */,
 				DCB6B9A4209C4BE200829EFB /* HomeViewModel.swift in Sources */,
 				DCB29687209B415700698A44 /* NibIdentifiable.swift in Sources */,
+				DCB0DD0420A320D600BC79B6 /* UserViewModel.swift in Sources */,
 				DCB6B9A2209C4BE200829EFB /* HomeViewController.swift in Sources */,
 				DC36CC9C209B4436009EB669 /* LoginViewModel.swift in Sources */,
 				DCB6B9BB209C7AE500829EFB /* CustomPresentations.swift in Sources */,
