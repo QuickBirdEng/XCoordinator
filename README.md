@@ -71,7 +71,8 @@ pod 'rx-coordinator'
 If you prefer not to use any of the dependency managers, you can integrate RxCoordinator into your project manually, by downloading the source code and placing the files on your project directory.
 
 ## 🏃‍♂️Getting started
-Set up an enum with all of the navigation paths for a particular flow. (It is up to you when to create a `Route/Coordinator`, but as **our rule of thumb**, create a new `Route/Coordinator` whenever is needed a new navigation controller.)
+
+Create an enum with all of the navigation paths for a particular flow. (It is up to you when to create a `Route/Coordinator`, but as **our rule of thumb**, create a new `Route/Coordinator` whenever is needed a new navigation controller.)
 
 ```swift 
 enum HomeRoute: Route {
@@ -97,9 +98,69 @@ enum HomeRoute: Route {
     }
 }
 ```
+
+Setup the root view controller in the AppDelegate.
+```swift 
+  ...
+  var coordinator: AnyCoordinator<MainRoute>!
+
+    func application(_ application:didFinishLaunchingWithOptions) -> Bool {
+        guard let window = self.window else { return false }
+        
+        let basicCoordinator = BasicCoordinator<HomeRoute>(initalRoute: .home, initalLoadingType: .immediately)
+        coordinator = AnyCoordinator(basicCoordinator)
+        window.rootViewController = coordinator.navigationController
+
+        return true
+    }
+```
+
+## 🤸‍♂️Custom Transitions
+RxCoordinator supports cases for custom transitions between view controllers. In the `switch case` in `prepareTransition(coordinator:)` create an `Animation` while specifying your custom presentation transition or/and dismissal transition. 
+
+```swift 
+  ...
+  func prepareTransition(coordinator: AnyCoordinator<HomeRoute>) -> Transition {
+        switch self {
+        ...
+        
+        case .users(let string):
+            *let animation = Animation(presentationAnimation: YourAwesomePresentationTransitionAnimation(), dismissalAnimation: YourAwesomeDismissalTransitionAnimation())*
+            var vc = UsersViewController.instantiateFromNib()
+            let viewModel = UsersViewModelImpl(coordinator: coordinator, string: string)
+            vc.bind(to: viewModel)
+            return *.push(vc, animation: animation)*
+        ...
+    }
+```
+
+## 🧙‍♂️Custom Coordinators
+In RxCoordinator is possible to create custom coordinators. For example, a custom coordinator can be created to show Home if the user is logged in otehrwise Login.
+
+```swift 
+
+class CustomCoordinator<R: Route>: Coordinator {
+    typealias CoordinatorRoute = R
+
+    var context: UIViewController
+    var navigationController = UINavigationController()
+    
+    init() {}
+    
+    func presented(from presentable: Presentable?) {
+        if isLoggedIn {
+          transition(to: .home)
+        } else {
+          transition(to: .login)
+        }
+    }
+}
+
+```
+
 ## 👨🏻‍💻 Usage
 
-In viewModel you can do:
+Implementation in the viewModel:
 
 ```swift
     ...
@@ -117,6 +178,8 @@ In viewModel you can do:
     
     ...
 ```
+
+[**Example**](https://github.com/jdisho/RxCoordinator/tree/master/RxCoordinator-Example/RxCoordinator-Example) for more!
 
 ## 👤 Author
 This tiny library is created with ❤️ by [QuickBird Studios](www.quickbirdstudios.com)
