@@ -2,7 +2,7 @@
   <img src="https://github.com/jdisho/RxCoordinator/blob/master/Images/logo.png">
 </p>
 
-
+#
 “How does an app transition from a ViewController to another?”. 
 This question is common and puzzling regarding iOS development. There are many answers, as every architecture has different implementation variations. Some do it from the view controller, while some do it using a router, which is an object that connects view models.
 
@@ -179,6 +179,7 @@ This tiny library is created with ❤️ by [QuickBird Studios](www.quickbirdstu
 
 ## ❤️ Contributing 
 Open an issue if you need help, if you found a bug, or if you want to discuss a feature request.
+
 Open a PR if you want to make some changes to RxCoordinator.
 
 ## 📃 License
