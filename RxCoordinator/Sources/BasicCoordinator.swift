@@ -19,23 +19,23 @@ open class BasicCoordinator<BasicRoute: Route>: Coordinator {
     public var context: UIViewController!
     public var navigationController = UINavigationController()
 
-    private let initalRoute: BasicRoute?
-    private let initalLoadingType: InitalLoadingType
+    private let initialRoute: BasicRoute?
+    private let initialLoadingType: InitalLoadingType
 
-    public init(initalRoute: BasicRoute? = nil, initalLoadingType: InitalLoadingType = .presented) {
-        self.initalRoute = initalRoute
-        self.initalLoadingType = initalLoadingType
+    public init(initialRoute: BasicRoute? = nil, initialLoadingType: InitalLoadingType = .presented) {
+        self.initialRoute = initialRoute
+        self.initialLoadingType = initialLoadingType
 
-        if let initalRoute = initalRoute, initalLoadingType == .immediately {
-            transition(to: initalRoute)
+        if let initialRoute = initialRoute, initialLoadingType == .immediately {
+            transition(to: initialRoute)
         }
     }
 
     open func presented(from presentable: Presentable?) {
         context = presentable?.viewController
 
-        if let initalRoute = initalRoute, initalLoadingType == .presented {
-            transition(to: initalRoute)
+        if let initialRoute = initialRoute, initialLoadingType == .presented {
+            transition(to: initialRoute)
         }
     }
 
