@@ -9,6 +9,9 @@
 /* Begin PBXBuildFile section */
 		15D57C14F36441EFABAB45EF /* Pods_RxCoordinator.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5A1FFC2512856697D4549784 /* Pods_RxCoordinator.framework */; };
 		5D6FF8FC951132AEDC65E8CF /* Pods_RxCoordinatorTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7C06B27ABF1F374CC63A400F /* Pods_RxCoordinatorTests.framework */; };
+		9B490E0B20ADFE4F00436E6B /* AnyCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B490E0820ADFE4E00436E6B /* AnyCoordinator.swift */; };
+		9B490E0C20ADFE4F00436E6B /* BasicCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B490E0920ADFE4E00436E6B /* BasicCoordinator.swift */; };
+		9B490E0D20ADFE4F00436E6B /* Route.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B490E0A20ADFE4F00436E6B /* Route.swift */; };
 		DC0942672097393C0067ECAC /* RxCoordinator.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DC09425D2097393C0067ECAC /* RxCoordinator.framework */; };
 		DC09426C2097393C0067ECAC /* RxCoordinatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC09426B2097393C0067ECAC /* RxCoordinatorTests.swift */; };
 		DC09426E2097393C0067ECAC /* RxCoordinator.h in Headers */ = {isa = PBXBuildFile; fileRef = DC0942602097393C0067ECAC /* RxCoordinator.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -16,8 +19,6 @@
 		DC09427A20973A490067ECAC /* Transition.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC09427820973A490067ECAC /* Transition.swift */; };
 		DC09427C20973A980067ECAC /* Container.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC09427B20973A980067ECAC /* Container.swift */; };
 		DC09427D20973A980067ECAC /* Container.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC09427B20973A980067ECAC /* Container.swift */; };
-		DC09427F20973AF00067ECAC /* Scene.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC09427E20973AF00067ECAC /* Scene.swift */; };
-		DC09428020973AF00067ECAC /* Scene.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC09427E20973AF00067ECAC /* Scene.swift */; };
 		DC09428220973BF70067ECAC /* TransitionObservables.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC09428120973BF70067ECAC /* TransitionObservables.swift */; };
 		DC09428320973BF70067ECAC /* TransitionObservables.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC09428120973BF70067ECAC /* TransitionObservables.swift */; };
 		DC09428520973C130067ECAC /* TransitionOptions.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC09428420973C130067ECAC /* TransitionOptions.swift */; };
@@ -51,6 +52,9 @@
 		53A1419FF8468E585A47EC9E /* Pods-RxCoordinatorTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RxCoordinatorTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-RxCoordinatorTests/Pods-RxCoordinatorTests.debug.xcconfig"; sourceTree = "<group>"; };
 		5A1FFC2512856697D4549784 /* Pods_RxCoordinator.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RxCoordinator.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7C06B27ABF1F374CC63A400F /* Pods_RxCoordinatorTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RxCoordinatorTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		9B490E0820ADFE4E00436E6B /* AnyCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnyCoordinator.swift; sourceTree = "<group>"; };
+		9B490E0920ADFE4E00436E6B /* BasicCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BasicCoordinator.swift; sourceTree = "<group>"; };
+		9B490E0A20ADFE4F00436E6B /* Route.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Route.swift; sourceTree = "<group>"; };
 		DC09425D2097393C0067ECAC /* RxCoordinator.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = RxCoordinator.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		DC0942602097393C0067ECAC /* RxCoordinator.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RxCoordinator.h; sourceTree = "<group>"; };
 		DC0942612097393C0067ECAC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -59,7 +63,6 @@
 		DC09426D2097393C0067ECAC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		DC09427820973A490067ECAC /* Transition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Transition.swift; sourceTree = "<group>"; };
 		DC09427B20973A980067ECAC /* Container.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Container.swift; sourceTree = "<group>"; };
-		DC09427E20973AF00067ECAC /* Scene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Scene.swift; sourceTree = "<group>"; };
 		DC09428120973BF70067ECAC /* TransitionObservables.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransitionObservables.swift; sourceTree = "<group>"; };
 		DC09428420973C130067ECAC /* TransitionOptions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransitionOptions.swift; sourceTree = "<group>"; };
 		DC09428820973C570067ECAC /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
@@ -155,6 +158,9 @@
 		DC09427720973A360067ECAC /* Sources */ = {
 			isa = PBXGroup;
 			children = (
+				9B490E0820ADFE4E00436E6B /* AnyCoordinator.swift */,
+				9B490E0920ADFE4E00436E6B /* BasicCoordinator.swift */,
+				DC09428820973C570067ECAC /* Coordinator.swift */,
 				DC09427820973A490067ECAC /* Transition.swift */,
 				DCB2964E209B15E400698A44 /* TransitionAnimation.swift */,
 				DCB29651209B161300698A44 /* StaticTransitionAnimation.swift */,
@@ -162,10 +168,9 @@
 				DCB29657209B16D900698A44 /* Animation.swift */,
 				DCB2964B209B156B00698A44 /* Presentable.swift */,
 				DC09427B20973A980067ECAC /* Container.swift */,
-				DC09427E20973AF00067ECAC /* Scene.swift */,
 				DC09428120973BF70067ECAC /* TransitionObservables.swift */,
 				DC09428420973C130067ECAC /* TransitionOptions.swift */,
-				DC09428820973C570067ECAC /* Coordinator.swift */,
+				9B490E0A20ADFE4F00436E6B /* Route.swift */,
 			);
 			path = Sources;
 			sourceTree = "<group>";
@@ -377,13 +382,15 @@
 				DC09427920973A490067ECAC /* Transition.swift in Sources */,
 				DC09428520973C130067ECAC /* TransitionOptions.swift in Sources */,
 				DC09428920973C570067ECAC /* Coordinator.swift in Sources */,
+				9B490E0D20ADFE4F00436E6B /* Route.swift in Sources */,
 				DCB29652209B161300698A44 /* StaticTransitionAnimation.swift in Sources */,
 				DC09428220973BF70067ECAC /* TransitionObservables.swift in Sources */,
 				DC09427C20973A980067ECAC /* Container.swift in Sources */,
-				DC09427F20973AF00067ECAC /* Scene.swift in Sources */,
+				9B490E0B20ADFE4F00436E6B /* AnyCoordinator.swift in Sources */,
 				DCB2964C209B156B00698A44 /* Presentable.swift in Sources */,
 				DCB29655209B164E00698A44 /* InteractiveTransitionAnimation.swift in Sources */,
 				DCB2964F209B15E400698A44 /* TransitionAnimation.swift in Sources */,
+				9B490E0C20ADFE4F00436E6B /* BasicCoordinator.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -391,7 +398,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				DC09428020973AF00067ECAC /* Scene.swift in Sources */,
 				DCB29653209B161300698A44 /* StaticTransitionAnimation.swift in Sources */,
 				DCB2964D209B156B00698A44 /* Presentable.swift in Sources */,
 				DCB29650209B15E400698A44 /* TransitionAnimation.swift in Sources */,
