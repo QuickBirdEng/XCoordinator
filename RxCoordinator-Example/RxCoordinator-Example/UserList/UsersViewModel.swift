@@ -9,7 +9,7 @@
 import Foundation
 import RxSwift
 import Action
-import rx_coordinator
+import RxCoordinator
 
 protocol UsersViewModelInput {
     var showUserTrigger: InputSubject<String>! { get }

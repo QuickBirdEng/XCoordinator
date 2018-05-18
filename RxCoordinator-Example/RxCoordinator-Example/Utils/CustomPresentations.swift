@@ -8,7 +8,7 @@
 
 
 import UIKit
-import rx_coordinator
+import RxCoordinator
 
 struct CustomPresentations {
 

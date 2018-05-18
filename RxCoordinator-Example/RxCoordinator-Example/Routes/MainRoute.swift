@@ -7,7 +7,7 @@
 //
 
 import Foundation
-import rx_coordinator
+import RxCoordinator
 
 enum MainRoute: Route {
     case login

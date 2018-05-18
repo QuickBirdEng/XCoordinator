@@ -9,7 +9,7 @@
 import Foundation
 import RxSwift
 import Action
-import rx_coordinator
+import RxCoordinator
 
 protocol UserViewModelInput {
     var alertTrigger: InputSubject<Void>! { get }

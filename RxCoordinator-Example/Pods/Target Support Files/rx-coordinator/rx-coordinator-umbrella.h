@@ -11,6 +11,6 @@
 #endif
 
 
-FOUNDATION_EXPORT double rx_coordinatorVersionNumber;
-FOUNDATION_EXPORT const unsigned char rx_coordinatorVersionString[];
+FOUNDATION_EXPORT double RxCoordinatorVersionNumber;
+FOUNDATION_EXPORT const unsigned char RxCoordinatorVersionString[];
 

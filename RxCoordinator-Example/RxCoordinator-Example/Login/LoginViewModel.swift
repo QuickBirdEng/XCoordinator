@@ -9,7 +9,7 @@
 import Foundation
 import RxSwift
 import Action
-import rx_coordinator
+import RxCoordinator
 
 protocol LoginViewModelInput {
     var loginTrigger: InputSubject<Void>! { get }

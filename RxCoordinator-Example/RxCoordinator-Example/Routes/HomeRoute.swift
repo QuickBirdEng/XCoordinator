@@ -7,7 +7,7 @@
 //
 
 import Foundation
-import rx_coordinator
+import RxCoordinator
 
 enum HomeRoute: Route {
     case home
