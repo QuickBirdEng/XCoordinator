@@ -18,7 +18,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         guard let window = self.window else { return false }
 
-        coordinator = BasicCoordinator<MainRoute>(initalRoute: .login, initalLoadingType: .immediately)
+        coordinator = BasicCoordinator<MainRoute>(initialRoute: .login, initialLoadingType: .immediately)
         window.rootViewController = coordinator.navigationController
 
         return true

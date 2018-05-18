@@ -29,7 +29,7 @@ enum HomeRoute: Route {
             vc.bind(to: viewModel)
             return .push(vc, animation: animation)
         case .user(let username):
-            let coordinator = BasicCoordinator<UserRoute>(initalRoute: .user(username))
+            let coordinator = BasicCoordinator<UserRoute>(initialRoute: .user(username))
             return .present(coordinator)
         case .logout:
             return .dismiss()

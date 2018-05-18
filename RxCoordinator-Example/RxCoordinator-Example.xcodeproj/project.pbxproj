@@ -48,6 +48,7 @@
 		DCB6B9BC209C7AE500829EFB /* CustomPresentations.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCB6B9BA209C7AE500829EFB /* CustomPresentations.swift */; };
 		DCDCA6A020A31BA80014212F /* UserCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = DCDCA69E20A31BA80014212F /* UserCell.xib */; };
 		EE7FF70FFBA5DF08B02B9334 /* Pods_RxCoordinator_Example.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9F89A32927ECF9B9844FD892 /* Pods_RxCoordinator_Example.framework */; };
+		F6E0371420AF77DF0027EE31 /* UserRoute.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCB0DD0720A330F000BC79B6 /* UserRoute.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -464,6 +465,7 @@
 				DC36CC9B209B4436009EB669 /* LoginViewController.swift in Sources */,
 				DC36CC96209B440D009EB669 /* BindableType.swift in Sources */,
 				DCB29688209B415700698A44 /* NibIdentifiable.swift in Sources */,
+				F6E0371420AF77DF0027EE31 /* UserRoute.swift in Sources */,
 				DCB6B9BC209C7AE500829EFB /* CustomPresentations.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -620,7 +622,10 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = W44QDC3NZM;
 				INFOPLIST_FILE = "RxCoordinator-Example/Info.plist";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = "disho.RxCoordinator-Example";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
@@ -636,7 +641,10 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = W44QDC3NZM;
 				INFOPLIST_FILE = "RxCoordinator-Example/Info.plist";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = "disho.RxCoordinator-Example";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
@@ -652,7 +660,11 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = W44QDC3NZM;
 				INFOPLIST_FILE = "RxCoordinator-ExampleUITests/Info.plist";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = "disho.RxCoordinator-ExampleUITests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
@@ -669,7 +681,11 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = W44QDC3NZM;
 				INFOPLIST_FILE = "RxCoordinator-ExampleUITests/Info.plist";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = "disho.RxCoordinator-ExampleUITests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;

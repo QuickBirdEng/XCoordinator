@@ -21,7 +21,7 @@ enum MainRoute: Route {
             vc.bind(to: viewModel)
             return .push(vc)
         case .home:
-            let coordinator = BasicCoordinator<HomeRoute>(initalRoute: .home)
+            let coordinator = BasicCoordinator<HomeRoute>(initialRoute: .home)
             let animation = Animation(presentationAnimation: CustomPresentations.flippingPresentation, dismissalAnimation: nil)
             return .present(coordinator, animation: animation)
         }
