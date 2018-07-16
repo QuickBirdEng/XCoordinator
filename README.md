@@ -7,6 +7,7 @@
 This question is common and puzzling regarding iOS development. There are many answers, as every architecture has different implementation variations. Some do it from the view controller, while some do it using a router/coordinator, which is an object that connects view models.
 
 To better answer the question, we are building **RxCoordinator**, a navigation framework based on the **Coordinator** pattern.
+It's especially useful for implementing MVVM-C, Model-View-ViewModel-Coordinator:
 
 <p align="center">
   <img src="https://github.com/quickbirdstudios/RxCoordinator/blob/master/Images/mvvmc.png">
@@ -43,8 +44,9 @@ Setup the root view controller in the AppDelegate.
 ```swift
   ...
 
+    let basicCoordinator = BasicCoordinator<HomeRoute>(initialRoute: .home)
+
     func application(_ application:didFinishLaunchingWithOptions) -> Bool {
-        let basicCoordinator = BasicCoordinator<HomeRoute>(initalRoute: .home)
         window.rootViewController = basicCoordinator.navigationController
 
         return true
@@ -118,7 +120,7 @@ Check out this [repository](https://github.com/quickbirdstudios/RxCoordinator/tr
 
 ## 👨‍✈️ Why coordinators
 * **Separation of responsibilities** by coordinator being only component knowing anything related to the flow of your application.
-* **Reusable View ands ViewModels** because they do not contain any navigation logic.
+* **Reusable Views and ViewModels** because they do not contain any navigation logic.
 * **Less coupling between components**
 
 * **Changeable navigation**: Each coordinator is only responsible for one component and makes no assumptions about its parent. It can therefore be placed wherever we want to.
