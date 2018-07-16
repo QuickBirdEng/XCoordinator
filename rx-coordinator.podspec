@@ -7,6 +7,7 @@ Pod::Spec.new do |spec|
   spec.summary      = 'Navigation framework based on coordinator pattern.'
   spec.source       = { :git => 'https://github.com/quickbirdstudios/RxCoordinator.git', :tag => spec.version }
   spec.module_name = 'RxCoordinator'
+  spec.swift_version = '4.1'
   spec.ios.deployment_target = '9.0'
   spec.tvos.deployment_target = '9.0'
   spec.source_files = 'RxCoordinator/Sources/*.swift'
