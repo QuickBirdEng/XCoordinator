@@ -19,7 +19,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         guard let window = self.window else { return false }
 
         coordinator = BasicCoordinator<MainRoute>(initialRoute: .login, initialLoadingType: .immediately)
-        window.rootViewController = coordinator.navigationController
+        window.rootViewController = coordinator.rootViewController
 
         return true
     }

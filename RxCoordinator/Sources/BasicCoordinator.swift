@@ -17,7 +17,7 @@ open class BasicCoordinator<BasicRoute: Route>: Coordinator {
     }
 
     public var context: UIViewController!
-    public var navigationController = UINavigationController()
+    public var rootViewController: UIViewController = UINavigationController()
 
     private let initialRoute: BasicRoute?
     private let initialLoadingType: InitalLoadingType
@@ -36,6 +36,48 @@ open class BasicCoordinator<BasicRoute: Route>: Coordinator {
 
         if let initialRoute = initialRoute, initialLoadingType == .presented {
             transition(to: initialRoute)
+        }
+    }
+
+    public func transition(to route: BasicRoute, with options: TransitionOptions) -> TransitionObservables {
+        let transition = route.prepareTransition(coordinator: AnyCoordinator(self))
+
+        switch transition.type {
+        case let transitionType as TransitionTypeVC:
+            switch transitionType {
+            case .present(let presentable):
+                presentable.presented(from: self)
+                return present(presentable.viewController, with: options, animation: transition.animation)
+            case .embed(let presentable, let container):
+                presentable.presented(from: self)
+                return embed(presentable.viewController, in: container, with: options)
+            case .dismiss:
+                return dismiss(with: options, animation: transition.animation)
+            case .none:
+                return TransitionObservables(presentation: .empty(), dismissal: .empty())
+            }
+        case let transitionType as TransitionTypeNC:
+            switch transitionType {
+            case .push(let presentable):
+                presentable.presented(from: self)
+                return push(presentable.viewController, with: options, animation: transition.animation)
+            case .present(let presentable):
+                presentable.presented(from: self)
+                return present(presentable.viewController, with: options, animation: transition.animation)
+            case .embed(let presentable, let container):
+                presentable.presented(from: self)
+                return embed(presentable.viewController, in: container, with: options)
+            case .pop:
+                return pop(with: options, toRoot: false, animation: transition.animation)
+            case .popToRoot:
+                return pop(with: options, toRoot: true, animation: transition.animation)
+            case .dismiss:
+                return dismiss(with: options, animation: transition.animation)
+            case .none:
+                return TransitionObservables(presentation: .empty(), dismissal: .empty())
+            }
+        default:
+            return TransitionObservables(presentation: .empty(), dismissal: .empty())
         }
     }
 

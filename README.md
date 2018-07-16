@@ -1,28 +1,28 @@
 <p align="center">
-  <img src="https://github.com/jdisho/RxCoordinator/blob/master/Images/logo.png">
+  <img src="https://github.com/quickbirdstudios/RxCoordinator/blob/master/Images/logo.png">
 </p>
 
 #
-“How does an app transition from a ViewController to another?”. 
-This question is common and puzzling regarding iOS development. There are many answers, as every architecture has different implementation variations. Some do it from the view controller, while some do it using a router, which is an object that connects view models.
+“How does an app transition from a ViewController to another?”.
+This question is common and puzzling regarding iOS development. There are many answers, as every architecture has different implementation variations. Some do it from the view controller, while some do it using a router/coordinator, which is an object that connects view models.
 
 To better answer the question, we are building **RxCoordinator**, a navigation framework based on the **Coordinator** pattern.
 
 <p align="center">
-  <img src="https://github.com/jdisho/RxCoordinator/blob/master/Images/mvvmc.png">
+  <img src="https://github.com/quickbirdstudios/RxCoordinator/blob/master/Images/mvvmc.png">
 </p>
 
 ## 🏃‍♂️Getting started
 
 Create an enum with all of the navigation paths for a particular flow. (It is up to you when to create a `Route/Coordinator`, but as **our rule of thumb**, create a new `Route/Coordinator` whenever is needed a new `navigation controller`.)
 
-```swift 
+```swift
 enum HomeRoute: Route {
     case home
     case users
     case logout
 
-    func prepareTransition(coordinator: AnyCoordinator<HomeRoute>) -> Transition {
+    func prepareTransition(coordinator: AnyCoordinator<HomeRoute>) -> NavigationTransition {
         switch self {
         case .home:
             let viewModel = HomeViewModel(coodinator: coordinator)
@@ -40,9 +40,9 @@ enum HomeRoute: Route {
 ```
 
 Setup the root view controller in the AppDelegate.
-```swift 
+```swift
   ...
-  
+
     func application(_ application:didFinishLaunchingWithOptions) -> Bool {
         let basicCoordinator = BasicCoordinator<HomeRoute>(initalRoute: .home)
         window.rootViewController = basicCoordinator.navigationController
@@ -55,29 +55,29 @@ Implementation:
 
 ```swift
     ...
-    
+
     init(coodinator: AnyCoordinator<HomeRoute>) {
         self.coordinator = coodinator
     }
-    
+
     func onUsersButtonPress() {
       self.coordinator.transition(to: .users)
     }
-    
+
     ...
 ```
 
-## 🤸‍♂️ Extras 
+## 🤸‍♂️ Extras
 
 ### Custom Transitions
-RxCoordinator supports cases for custom transitions between view controllers. In the `switch case` in `prepareTransition(coordinator:)` create an `Animation` while specifying your custom presentation transition or/and dismissal transition. 
+RxCoordinator supports cases for custom transitions between view controllers. In the `switch case` in `prepareTransition(coordinator:)` create an `Animation` while specifying your custom presentation transition or/and dismissal transition.
 
-```swift 
+```swift
   ...
   func prepareTransition(coordinator: AnyCoordinator<HomeRoute>) -> Transition {
         switch self {
         ...
-        
+
         case .users(let string):
             let animation = Animation(presentationAnimation: yourAnimation, dismissalAnimation: YourAwesomeDismissalTransitionAnimation())
             var vc = UsersViewController.instantiateFromNib()
@@ -91,16 +91,16 @@ RxCoordinator supports cases for custom transitions between view controllers. In
 ### Custom Coordinators
 In RxCoordinator is possible to create custom coordinators. For example, a custom coordinator can be created to show Home if the user is logged in otehrwise Login.
 
-```swift 
+```swift
 
 class AppCoordinator: Coordinator {
     typealias CoordinatorRoute = HomeRoute
 
     var context: UIViewController!
-    var navigationController = UINavigationController()
-    
+    var navigationController: UIViewController = UINavigationController()
+
     init() {}
-    
+
     func presented(from presentable: Presentable?) {
         if isLoggedIn {
           transition(to: .home)
@@ -113,7 +113,7 @@ class AppCoordinator: Coordinator {
 ```
 
 ## 🎭 Example
-Check out this [repository](https://github.com/jdisho/RxCoordinator/tree/master/RxCoordinator-Example/RxCoordinator-Example) as an example project using RxCoordinator.
+Check out this [repository](https://github.com/quickbirdstudios/RxCoordinator/tree/master/RxCoordinator-Example/RxCoordinator-Example) as an example project using RxCoordinator.
 
 
 ## 👨‍✈️ Why coordinators
@@ -150,15 +150,20 @@ Describes a navigation path. Creates transition and loads view (and correspondin
 #### 👨‍✈️ Coordinator
 An object coordinating the transition to a set of routes pointing to views or other coordinators.
 
+#### ✈️ Transition
+Transitions describe the navigation from one view to another view.
+  - ViewTransition: Supports basic transitions that every view controller supports
+  - NavigationTransition: Adds navigation controller specific transitions
+
 #### 🏗 Transition Types
 Describes presentation/dismissal of a view including the type of the transition and the animation used.
-  - push: push view controller to navigation stack.
   - present: present view controller.
   - embed: embed view controller to a container view.
-  - pop: pop the top view controller from the navigation stack and updates the display.
-  - popToRoot: pop all the view controllers on the navigation stack except the root view controller and updates the display.
-  - dismiss: dismissthe view controller that was presented modally by the view controller.
-  - none: does nothing to the view controller.
+  - dismiss: dismiss the view controller that was presented modally by the view controller.
+  - none: does nothing to the view controller (allows you to handle case later without touching the ViewController)
+  - push: push view controller to navigation stack. (only in NavigationTransition)
+  - pop: pop the top view controller from the navigation stack and updates the display. (only in NavigationTransition)
+  - popToRoot: pop all the view controllers on the navigation stack except the root view controller and updates the display. (only in NavigationTransition)
 
 ## 🛠 Installation
 
@@ -177,12 +182,11 @@ If you prefer not to use any of the dependency managers, you can integrate RxCoo
 ## 👤 Author
 This tiny library is created with ❤️ by [QuickBird Studios](www.quickbirdstudios.com).
 
-## ❤️ Contributing 
+## ❤️ Contributing
 Open an issue if you need help, if you found a bug, or if you want to discuss a feature request.
 
 Open a PR if you want to make some changes to RxCoordinator.
 
 ## 📃 License
 
-RxCoordinator is released under an MIT license. See [License.md](https://github.com/jdisho/RxCoordinator/blob/master/LICENSE) for more information.
-
+RxCoordinator is released under an MIT license. See [License.md](https://github.com/quickbirdstudios/RxCoordinator/blob/master/LICENSE) for more information.

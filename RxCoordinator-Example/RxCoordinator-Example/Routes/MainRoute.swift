@@ -13,7 +13,7 @@ enum MainRoute: Route {
     case login
     case home
 
-    func prepareTransition(coordinator: AnyCoordinator<MainRoute>) -> Transition {
+    func prepareTransition(coordinator: AnyCoordinator<MainRoute>) -> NavigationTransition {
         switch self {
         case .login:
             var vc = LoginViewController.instantiateFromNib()

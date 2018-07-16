@@ -14,7 +14,7 @@ enum UserRoute: Route {
     case alert(title: String, message: String)
     case users
 
-    func prepareTransition(coordinator: AnyCoordinator<UserRoute>) -> Transition {
+    func prepareTransition(coordinator: AnyCoordinator<UserRoute>) -> NavigationTransition {
         switch self {
         case let .user(username):
             var vc = UserViewController.instantiateFromNib()

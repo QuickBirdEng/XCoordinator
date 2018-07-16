@@ -12,19 +12,25 @@ public final class AnyCoordinator<AnyRoute: Route>: Coordinator {
     public typealias CoordinatorRoute = AnyRoute
 
     private let _context: () -> UIViewController
-    private let _navigationController: () -> UINavigationController
+    private let _rootViewController: () -> UIViewController
+    private let _transition: (AnyRoute,TransitionOptions) -> TransitionObservables
 
     public init<U: Coordinator>(_ coordinator: U) where U.CoordinatorRoute == AnyRoute {
         _context = { coordinator.context }
-        _navigationController = { coordinator.navigationController }
+        _rootViewController = { coordinator.rootViewController }
+        _transition = coordinator.transition
     }
 
     public var context: UIViewController! {
         return _context()
     }
 
-    public var navigationController: UINavigationController {
-        return _navigationController()
+    public var rootViewController: UIViewController {
+        return _rootViewController()
+    }
+
+    public func transition(to route: AnyRoute, with options: TransitionOptions) -> TransitionObservables {
+        return _transition(route, options)
     }
 
 }

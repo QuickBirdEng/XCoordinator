@@ -48,6 +48,7 @@
 		DCB6B9BC209C7AE500829EFB /* CustomPresentations.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCB6B9BA209C7AE500829EFB /* CustomPresentations.swift */; };
 		DCDCA6A020A31BA80014212F /* UserCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = DCDCA69E20A31BA80014212F /* UserCell.xib */; };
 		EE7FF70FFBA5DF08B02B9334 /* Pods_RxCoordinator_Example.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9F89A32927ECF9B9844FD892 /* Pods_RxCoordinator_Example.framework */; };
+		F63A7E0020FC979900E2E3D0 /* UserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCB0DD0020A320D600BC79B6 /* UserViewController.swift */; };
 		F6E0371420AF77DF0027EE31 /* UserRoute.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCB0DD0720A330F000BC79B6 /* UserRoute.swift */; };
 /* End PBXBuildFile section */
 
@@ -461,6 +462,7 @@
 				DCB2967C209B3F9D00698A44 /* RxCoordinator_ExampleUITests.swift in Sources */,
 				DCB6B9AB209C4DC200829EFB /* HomeRoute.swift in Sources */,
 				DC36CC9D209B4436009EB669 /* LoginViewModel.swift in Sources */,
+				F63A7E0020FC979900E2E3D0 /* UserViewController.swift in Sources */,
 				DCB6B9A3209C4BE200829EFB /* HomeViewController.swift in Sources */,
 				DC36CC9B209B4436009EB669 /* LoginViewController.swift in Sources */,
 				DC36CC96209B440D009EB669 /* BindableType.swift in Sources */,

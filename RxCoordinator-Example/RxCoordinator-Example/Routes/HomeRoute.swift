@@ -15,7 +15,7 @@ enum HomeRoute: Route {
     case user(String)
     case logout
 
-    func prepareTransition(coordinator: AnyCoordinator<HomeRoute>) -> Transition {
+    func prepareTransition(coordinator: AnyCoordinator<HomeRoute>) -> NavigationTransition {
         switch self {
         case .home:
             var vc = HomeViewController.instantiateFromNib()
