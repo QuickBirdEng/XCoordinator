@@ -171,11 +171,23 @@ Describes presentation/dismissal of a view including the type of the transition 
 
 ### CocoaPods
 
-To integrate RxCoordinator into your Xcode project using CocoaPods, specify it in your `Podfile`:
+To integrate RxCoordinator into your Xcode project using CocoaPods, add this to your `Podfile`:
 
 ```ruby
 pod 'rx-coordinator'
 ```
+
+### Carthage
+
+To integrate RxCoordinator into your Xcode project using Carthage, add this to your `Cartfile`:
+
+```
+github "quickbirdstudios/RxCoordinator" ~> 0.5
+```
+
+Then run `carthage update`.
+
+If this is your first time using Carthage in the project, you'll need to go through some additional steps as explained [over at Carthage](https://github.com/Carthage/Carthage#adding-frameworks-to-an-application).
 
 ### Manually
 
