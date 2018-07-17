@@ -15,7 +15,7 @@ It's especially useful for implementing MVVM-C, Model-View-ViewModel-Coordinator
 
 ## 🏃‍♂️Getting started
 
-Create an enum with all of the navigation paths for a particular flow. (It is up to you when to create a `Route/Coordinator`, but as **our rule of thumb**, create a new `Route/Coordinator` whenever is needed a new `navigation controller`.)
+Create an enum with all of the navigation paths for a particular flow. (It is up to you when to create a `Route/Coordinator`, but as **our rule of thumb**, create a new `Route/Coordinator` whenever a new `navigation controller` is needed.)
 
 ```swift
 enum HomeRoute: Route {
@@ -91,7 +91,7 @@ RxCoordinator supports cases for custom transitions between view controllers. In
 ```
 
 ### Custom Coordinators
-In RxCoordinator is possible to create custom coordinators. For example, a custom coordinator can be created to show Home if the user is logged in otehrwise Login.
+In RxCoordinator is possible to create custom coordinators. For example, a custom coordinator can be created to show Home if the user is logged in, otherwise Login.
 
 ```swift
 
@@ -119,7 +119,7 @@ Check out this [repository](https://github.com/quickbirdstudios/RxCoordinator/tr
 
 
 ## 👨‍✈️ Why coordinators
-* **Separation of responsibilities** by coordinator being only component knowing anything related to the flow of your application.
+* **Separation of responsibilities** by coordinator being the only component knowing anything related to the flow of your application.
 * **Reusable Views and ViewModels** because they do not contain any navigation logic.
 * **Less coupling between components**
 
@@ -141,7 +141,7 @@ Check out this [repository](https://github.com/quickbirdstudios/RxCoordinator/tr
 * Provides **observables for presentation / dismissal** of views (E.g. block button until presentation is done).
 * Generic BasicCoordinator class suitable for most use cases and therefore **less** need to write your **own coordinators**.
 * Still full **support** for your **own coordinator classes** conforming to our Coordinator protocol.
-* Generic AnyCoordinator type erasure class encapsulates all types of coordinators supporting the same set of routes Therefor you can **easily replace coordinators**.
+* Generic AnyCoordinator type erasure class encapsulates all types of coordinators supporting the same set of routes. Therefore you can **easily replace coordinators**.
 * Use of enum for routes gives you **autocompletion** and **type safety** to perform only transition to routes supported by the coordinator.
 
 ### Components
@@ -163,9 +163,9 @@ Describes presentation/dismissal of a view including the type of the transition 
   - embed: embed view controller to a container view.
   - dismiss: dismiss the view controller that was presented modally by the view controller.
   - none: does nothing to the view controller (allows you to handle case later without touching the ViewController)
-  - push: push view controller to navigation stack. (only in NavigationTransition)
-  - pop: pop the top view controller from the navigation stack and updates the display. (only in NavigationTransition)
-  - popToRoot: pop all the view controllers on the navigation stack except the root view controller and updates the display. (only in NavigationTransition)
+  - push: push view controller to navigation stack. (only in `NavigationTransition`)
+  - pop: pop the top view controller from the navigation stack and updates the display. (only in `NavigationTransition`)
+  - popToRoot: pop all the view controllers on the navigation stack except the root view controller and updates the display. (only in `NavigationTransition`)
 
 ## 🛠 Installation
 
