@@ -17,14 +17,23 @@ open class BasicCoordinator<BasicRoute: Route>: Coordinator {
     }
 
     public var context: UIViewController!
-    public var rootViewController: UIViewController = UINavigationController()
+    public var rootViewController: UIViewController {
+        get {
+            return rootVCReferenceBox.get()!
+        }
+        set {
+            rootVCReferenceBox.set(newValue)
+        }
+    }
 
     private let initialRoute: BasicRoute?
     private let initialLoadingType: InitalLoadingType
+    private let rootVCReferenceBox = ReferenceBox<UIViewController>()
 
     public init(initialRoute: BasicRoute? = nil, initialLoadingType: InitalLoadingType = .presented) {
         self.initialRoute = initialRoute
         self.initialLoadingType = initialLoadingType
+        self.rootVCReferenceBox.set(UINavigationController())
 
         if let initialRoute = initialRoute, initialLoadingType == .immediately {
             transition(to: initialRoute)
@@ -37,6 +46,8 @@ open class BasicCoordinator<BasicRoute: Route>: Coordinator {
         if let initialRoute = initialRoute, initialLoadingType == .presented {
             transition(to: initialRoute)
         }
+
+        rootVCReferenceBox.releaseStrongReference()
     }
 
     public func transition(to route: BasicRoute, with options: TransitionOptions) -> TransitionObservables {

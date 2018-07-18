@@ -35,6 +35,9 @@
 		DCB29656209B164E00698A44 /* InteractiveTransitionAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCB29654209B164E00698A44 /* InteractiveTransitionAnimation.swift */; };
 		DCB29658209B16D900698A44 /* Animation.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCB29657209B16D900698A44 /* Animation.swift */; };
 		DCB29659209B16D900698A44 /* Animation.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCB29657209B16D900698A44 /* Animation.swift */; };
+		F601D0FA20FF7979009DF7E5 /* ReferenceBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = F601D0F920FF7979009DF7E5 /* ReferenceBox.swift */; };
+		F601D0FB20FF8157009DF7E5 /* Route.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B490E0A20ADFE4F00436E6B /* Route.swift */; };
+		F601D0FC20FF8159009DF7E5 /* ReferenceBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = F601D0F920FF7979009DF7E5 /* ReferenceBox.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -73,6 +76,7 @@
 		DCB29657209B16D900698A44 /* Animation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Animation.swift; sourceTree = "<group>"; };
 		E27F78B6BB25507F57BC9DDE /* Pods-RxCoordinator.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RxCoordinator.release.xcconfig"; path = "Pods/Target Support Files/Pods-RxCoordinator/Pods-RxCoordinator.release.xcconfig"; sourceTree = "<group>"; };
 		F5C82DE6A5617E79260FEBEB /* Pods-RxCoordinatorTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RxCoordinatorTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-RxCoordinatorTests/Pods-RxCoordinatorTests.release.xcconfig"; sourceTree = "<group>"; };
+		F601D0F920FF7979009DF7E5 /* ReferenceBox.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReferenceBox.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -171,6 +175,7 @@
 				DC09428120973BF70067ECAC /* TransitionObservables.swift */,
 				DC09428420973C130067ECAC /* TransitionOptions.swift */,
 				9B490E0A20ADFE4F00436E6B /* Route.swift */,
+				F601D0F920FF7979009DF7E5 /* ReferenceBox.swift */,
 			);
 			path = Sources;
 			sourceTree = "<group>";
@@ -379,6 +384,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				DCB29658209B16D900698A44 /* Animation.swift in Sources */,
+				F601D0FA20FF7979009DF7E5 /* ReferenceBox.swift in Sources */,
 				DC09427920973A490067ECAC /* Transition.swift in Sources */,
 				DC09428520973C130067ECAC /* TransitionOptions.swift in Sources */,
 				DC09428920973C570067ECAC /* Coordinator.swift in Sources */,
@@ -407,7 +413,9 @@
 				DC09428620973C130067ECAC /* TransitionOptions.swift in Sources */,
 				DC09427D20973A980067ECAC /* Container.swift in Sources */,
 				DC09426C2097393C0067ECAC /* RxCoordinatorTests.swift in Sources */,
+				F601D0FB20FF8157009DF7E5 /* Route.swift in Sources */,
 				DCB29659209B16D900698A44 /* Animation.swift in Sources */,
+				F601D0FC20FF8159009DF7E5 /* ReferenceBox.swift in Sources */,
 				DC09428A20973C570067ECAC /* Coordinator.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
