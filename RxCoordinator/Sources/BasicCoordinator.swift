@@ -11,7 +11,7 @@ import Foundation
 open class BasicCoordinator<BasicRoute: Route>: Coordinator {
     public typealias CoordinatorRoute = BasicRoute
 
-    public enum InitalLoadingType {
+    public enum InitialLoadingType {
         case immediately
         case presented
     }
@@ -27,10 +27,10 @@ open class BasicCoordinator<BasicRoute: Route>: Coordinator {
     }
 
     private let initialRoute: BasicRoute?
-    private let initialLoadingType: InitalLoadingType
+    private let initialLoadingType: InitialLoadingType
     private let rootVCReferenceBox = ReferenceBox<UIViewController>()
 
-    public init(initialRoute: BasicRoute? = nil, initialLoadingType: InitalLoadingType = .presented) {
+    public init(initialRoute: BasicRoute? = nil, initialLoadingType: InitialLoadingType = .presented) {
         self.initialRoute = initialRoute
         self.initialLoadingType = initialLoadingType
         self.rootVCReferenceBox.set(UINavigationController())
