@@ -12,11 +12,10 @@ import Action
 import RxCoordinator
 
 protocol LoginViewModelInput {
-    var loginTrigger: InputSubject<Void>! { get }
+    var loginTrigger: InputSubject<Void> { get }
 }
 
-protocol LoginViewModelOutput {
-}
+protocol LoginViewModelOutput {}
 
 protocol LoginViewModel {
     var input: LoginViewModelInput { get }
@@ -29,24 +28,20 @@ class LoginViewModelImpl: LoginViewModel, LoginViewModelInput, LoginViewModelOut
     var output: LoginViewModelOutput { return self }
 
     // MARK: - Inputs
-    var loginTrigger: InputSubject<Void>!
-
-    // MARK: - Outputs
+    lazy var loginTrigger: InputSubject<Void> = loginAction.inputs
 
     // MARK: - Private
     private let coordinator: AnyCoordinator<MainRoute>
-    private lazy var loginAction: CocoaAction = {
-        return CocoaAction {
-            self.coordinator.transition(to: .home)
-            return .empty()
-        }
-    }()
+
+    private lazy var loginAction = CocoaAction { [weak self] in
+        guard let `self` = self else { return .empty() }
+        return self.coordinator.transition(to: .home).presentation
+    }
 
     // MARK: - Init
 
     init(coordinator: AnyCoordinator<MainRoute>) {
         self.coordinator = coordinator
-
-        loginTrigger = loginAction.inputs
     }
+
 }

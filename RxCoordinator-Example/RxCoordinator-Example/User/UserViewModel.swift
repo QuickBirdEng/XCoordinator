@@ -12,12 +12,12 @@ import Action
 import RxCoordinator
 
 protocol UserViewModelInput {
-    var alertTrigger: InputSubject<Void>! { get }
-    var closeTrigger: InputSubject<Void>! { get }
+    var alertTrigger: InputSubject<Void> { get }
+    var closeTrigger: InputSubject<Void> { get }
 }
 
 protocol UserViewModelOutput {
-    var username: Observable<String>! { get }
+    var username: Observable<String> { get }
 }
 
 protocol UserViewModel {
@@ -31,34 +31,31 @@ class UserViewModelImpl: UserViewModel, UserViewModelInput, UserViewModelOutput 
     var output: UserViewModelOutput { return self }
 
     // MARK: - Inputs
-    var alertTrigger: InputSubject<Void>!
-    var closeTrigger: InputSubject<Void>!
+    lazy var alertTrigger: InputSubject<Void> = alertAction.inputs
+    lazy var closeTrigger: InputSubject<Void> = closeAction.inputs
 
     // MARK: - Outputs
-    var username: Observable<String>!
+    let username: Observable<String>
 
     // MARK: - Private
     private let coordinator: AnyCoordinator<UserRoute>
-    private lazy var alertAction: CocoaAction = {
-        return CocoaAction {
-            self.coordinator.transition(to: .alert(title: "Hey", message: "You are awesome!"))
-            return .empty()
-        }
-    }()
 
-    private lazy var closeAction: CocoaAction = {
-        return CocoaAction {
-            self.coordinator.transition(to: .users)
-            return .empty()
-        }
-    }()
+    private lazy var alertAction = CocoaAction { [weak self] in
+        guard let `self` = self else { return .empty() }
+        return self.coordinator.transition(to: .alert(title: "Hey", message: "You are awesome!"))
+            .presentation
+    }
+
+    private lazy var closeAction = CocoaAction { [weak self] in
+        guard let `self` = self else { return .empty() }
+        return self.coordinator.transition(to: .users).presentation
+    }
+
     // MARK: - Init
 
     init(coordinator: AnyCoordinator<UserRoute>, username: String) {
         self.coordinator = coordinator
-        self.username = Observable.just(username)
-        alertTrigger = alertAction.inputs
-        closeTrigger = closeAction.inputs
+        self.username = .just(username)
     }
 
 }
