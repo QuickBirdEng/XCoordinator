@@ -174,7 +174,7 @@ Describes presentation/dismissal of a view including the type of the transition 
 To integrate RxCoordinator into your Xcode project using CocoaPods, add this to your `Podfile`:
 
 ```ruby
-pod 'rx-coordinator', :git =>  'https://github.com/quickbirdstudios/RxCoordinator.git'
+pod 'rx-coordinator'
 ```
 
 ### Carthage
