@@ -38,6 +38,8 @@
 		F601D0FA20FF7979009DF7E5 /* ReferenceBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = F601D0F920FF7979009DF7E5 /* ReferenceBox.swift */; };
 		F601D0FB20FF8157009DF7E5 /* Route.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B490E0A20ADFE4F00436E6B /* Route.swift */; };
 		F601D0FC20FF8159009DF7E5 /* ReferenceBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = F601D0F920FF7979009DF7E5 /* ReferenceBox.swift */; };
+		F64B989D2100002C00337388 /* AnyCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B490E0820ADFE4E00436E6B /* AnyCoordinator.swift */; };
+		F64B989E2100003100337388 /* BasicCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B490E0920ADFE4E00436E6B /* BasicCoordinator.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -409,11 +411,13 @@
 				DCB29650209B15E400698A44 /* TransitionAnimation.swift in Sources */,
 				DC09427A20973A490067ECAC /* Transition.swift in Sources */,
 				DCB29656209B164E00698A44 /* InteractiveTransitionAnimation.swift in Sources */,
+				F64B989D2100002C00337388 /* AnyCoordinator.swift in Sources */,
 				DC09428320973BF70067ECAC /* TransitionObservables.swift in Sources */,
 				DC09428620973C130067ECAC /* TransitionOptions.swift in Sources */,
 				DC09427D20973A980067ECAC /* Container.swift in Sources */,
 				DC09426C2097393C0067ECAC /* RxCoordinatorTests.swift in Sources */,
 				F601D0FB20FF8157009DF7E5 /* Route.swift in Sources */,
+				F64B989E2100003100337388 /* BasicCoordinator.swift in Sources */,
 				DCB29659209B16D900698A44 /* Animation.swift in Sources */,
 				F601D0FC20FF8159009DF7E5 /* ReferenceBox.swift in Sources */,
 				DC09428A20973C570067ECAC /* Coordinator.swift in Sources */,
