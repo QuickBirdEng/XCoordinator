@@ -88,6 +88,22 @@ extension Coordinator {
         return TransitionObservables(presentation: presentationObservable, dismissal: dismissalObservable)
     }
 
+    func registerPeek<T>(from sourceView: UIView, transitionGenerator: @escaping () -> Transition<T>) -> TransitionObservables {
+        guard let viewController = viewController else {
+            return TransitionObservables(presentation: .empty(), dismissal: .empty())
+        }
+
+        let presentationObservable = self.presentationObservable(for: viewController)
+        let dismissalObservable = self.dismissalObservable(for: viewController)
+
+        let delegate = CoordinatorPreviewingDelegateObject(transition: transitionGenerator, coordinator: AnyCoordinator(self))
+        navigationController.strongReferences.append(delegate)
+        
+        navigationController.registerForPreviewing(with: delegate, sourceView: sourceView)
+
+        return TransitionObservables(presentation: presentationObservable, dismissal: dismissalObservable)
+    }
+
     func push(_ viewController: UIViewController, with options: TransitionOptions, animation: Animation?) -> TransitionObservables {
         let presentationObservable = navigationController.rx.delegate
             .sentMessage(#selector(UINavigationControllerDelegate.navigationController(_:didShow:animated:)))
@@ -131,6 +147,8 @@ extension Coordinator {
             case .embed(let presentable, let container):
                 presentable.presented(from: self)
                 return embed(presentable.viewController, in: container, with: options)
+            case .registerPeek(let source, let transitionGenerator):
+                return registerPeek(from: source.view, transitionGenerator: transitionGenerator)
             case .dismiss:
                 return dismiss(with: options, animation: transition.animation)
             case .none:
@@ -147,6 +165,8 @@ extension Coordinator {
             case .embed(let presentable, let container):
                 presentable.presented(from: self)
                 return embed(presentable.viewController, in: container, with: options)
+            case .registerPeek(let source, let transitionGenerator):
+                return registerPeek(from: source.view, transitionGenerator: transitionGenerator)
             case .pop:
                 return pop(with: options, toRoot: false, animation: transition.animation)
             case .popToRoot:

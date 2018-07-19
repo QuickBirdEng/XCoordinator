@@ -13,7 +13,8 @@ public protocol TransitionType {}
 
 public enum TransitionTypeVC: TransitionType {
     case present(Presentable)
-    case embed(viewController: Presentable, container: Container)
+    case embed(presentable: Presentable, container: Container)
+    case registerPeek(source: Container, transitionGenerator: () -> ViewTransition)
     case dismiss
     case none
 }
@@ -21,7 +22,8 @@ public enum TransitionTypeVC: TransitionType {
 public enum TransitionTypeNC: TransitionType {
     case push(Presentable)
     case present(Presentable)
-    case embed(viewController: Presentable, container: Container)
+    case embed(presentable: Presentable, container: Container)
+    case registerPeek(source: Container, transitionGenerator: () -> NavigationTransition)
     case pop
     case popToRoot
     case dismiss
@@ -43,7 +45,11 @@ extension Transition where RootType == TransitionTypeVC {
     }
 
     public static func embed(_ presentable: Presentable, in container: Container) -> Transition {
-        return Transition(type: .embed(viewController: presentable, container: container), animation: nil)
+        return Transition(type: .embed(presentable: presentable, container: container), animation: nil)
+    }
+
+    public static func registerPeek(from source: Container, popTransition: @escaping () -> ViewTransition) -> Transition {
+        return Transition(type: .registerPeek(source: source, transitionGenerator: popTransition), animation: nil)
     }
 
     public static func dismiss(animation: Animation? = nil) -> Transition {
@@ -63,7 +69,11 @@ extension Transition where RootType == TransitionTypeNC {
     }
 
     public static func embed(_ presentable: Presentable, in container: Container) -> Transition {
-        return Transition(type: .embed(viewController: presentable, container: container), animation: nil)
+        return Transition(type: .embed(presentable: presentable, container: container), animation: nil)
+    }
+
+    public static func peek(from source: Container, popTransition: @escaping () -> NavigationTransition) -> Transition {
+        return Transition(type: .registerPeek(source: source, transitionGenerator: popTransition), animation: nil)
     }
 
     public static func dismiss(animation: Animation? = nil) -> Transition {

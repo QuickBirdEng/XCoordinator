@@ -306,6 +306,9 @@
 		F3C1E2CB844F46AF3AF8E5427C81CB30 /* Do.swift in Sources */ = {isa = PBXBuildFile; fileRef = B148E0D8106EB3B28421C9117CE7861F /* Do.swift */; };
 		F5D9B43990D49CA87F78B5546A7E0FA2 /* RxPickerViewDataSourceType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E6F13FB89AE04EF3306BF3EC4F9E8D5 /* RxPickerViewDataSourceType.swift */; };
 		F601D0F720FF7096009DF7E5 /* ReferenceBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = F601D0F620FF7096009DF7E5 /* ReferenceBox.swift */; };
+		F64B98B42101338900337388 /* UIViewController+Store.swift in Sources */ = {isa = PBXBuildFile; fileRef = F64B98B32101338900337388 /* UIViewController+Store.swift */; };
+		F64B98B6210139EE00337388 /* CoordinatorPreviewingDelegateObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = F64B98B5210139EE00337388 /* CoordinatorPreviewingDelegateObject.swift */; };
+		F64B98B8210141C100337388 /* Transition+Presentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = F64B98B7210141C100337388 /* Transition+Presentable.swift */; };
 		F6602118CE0A9F8A5F5C3D57FD82EDD9 /* Maybe.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DD871E2FC9DB0BCAEAAFA0BD174071E /* Maybe.swift */; };
 		F680516CE95AE4345255E6D4FFA37618 /* Deprecated.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED3FE117ECC30C21013AFE034CCD68B0 /* Deprecated.swift */; };
 		F9767BA8D3A7037A40186D15F8864436 /* NSObject+Rx.swift in Sources */ = {isa = PBXBuildFile; fileRef = 047521A41AF851D9867D700817DDE856 /* NSObject+Rx.swift */; };
@@ -719,6 +722,9 @@
 		F3352E8FF90281381D11A2FF3ADD4219 /* SchedulerType+SharedSequence.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "SchedulerType+SharedSequence.swift"; path = "RxCocoa/Traits/SharedSequence/SchedulerType+SharedSequence.swift"; sourceTree = "<group>"; };
 		F501ED854E228DC0D545D1D607476DF8 /* ConnectableObservableType.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ConnectableObservableType.swift; path = RxSwift/ConnectableObservableType.swift; sourceTree = "<group>"; };
 		F601D0F620FF7096009DF7E5 /* ReferenceBox.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ReferenceBox.swift; path = RxCoordinator/Sources/ReferenceBox.swift; sourceTree = "<group>"; };
+		F64B98B32101338900337388 /* UIViewController+Store.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "UIViewController+Store.swift"; path = "RxCoordinator/Sources/UIViewController+Store.swift"; sourceTree = "<group>"; };
+		F64B98B5210139EE00337388 /* CoordinatorPreviewingDelegateObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = CoordinatorPreviewingDelegateObject.swift; path = RxCoordinator/Sources/CoordinatorPreviewingDelegateObject.swift; sourceTree = "<group>"; };
+		F64B98B7210141C100337388 /* Transition+Presentable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Transition+Presentable.swift"; sourceTree = "<group>"; };
 		F6A43405E9CE870497CDADF077333ED6 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F6CC2820D0BB9CC9220C28F064C495E0 /* RecursiveLock.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = RecursiveLock.swift; path = Platform/RecursiveLock.swift; sourceTree = "<group>"; };
 		F71FF5E86EAAFBA2DF8EDAD65B279567 /* OperationQueueScheduler.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = OperationQueueScheduler.swift; path = RxSwift/Schedulers/OperationQueueScheduler.swift; sourceTree = "<group>"; };
@@ -1244,6 +1250,9 @@
 				DE89B76777C10607892E8CE221348378 /* TransitionObservables.swift */,
 				0BAC35C394D11A3950984FF0A74B81A5 /* TransitionOptions.swift */,
 				F601D0F620FF7096009DF7E5 /* ReferenceBox.swift */,
+				F64B98B5210139EE00337388 /* CoordinatorPreviewingDelegateObject.swift */,
+				F64B98B32101338900337388 /* UIViewController+Store.swift */,
+				F64B98B7210141C100337388 /* Transition+Presentable.swift */,
 				FCB26319AF40FDA28FE2261DA40C48FF /* Pod */,
 				CD1FD486A6589A2C4FCAFC3D373BDE4D /* Support Files */,
 			);
@@ -1624,10 +1633,13 @@
 				19345C116E2F42B7FC5565DDD921240F /* Coordinator.swift in Sources */,
 				CE43AA22835BEDC521FA8652F7219291 /* InteractiveTransitionAnimation.swift in Sources */,
 				1FCD881EB42B6EF49A31E7202E1C2FE1 /* Presentable.swift in Sources */,
+				F64B98B8210141C100337388 /* Transition+Presentable.swift in Sources */,
 				EB317BA3F5F4E35E2E039D7DC80550E3 /* Route.swift in Sources */,
 				260F876D368D489F7DACCB5381BCC60B /* rx-coordinator-dummy.m in Sources */,
 				CF066E83BC944B0069D873BFFE8AE346 /* StaticTransitionAnimation.swift in Sources */,
 				E78CD3FB07BB70D7F6D7201215A7DD1C /* Transition.swift in Sources */,
+				F64B98B6210139EE00337388 /* CoordinatorPreviewingDelegateObject.swift in Sources */,
+				F64B98B42101338900337388 /* UIViewController+Store.swift in Sources */,
 				71E95C9553B29CD361ABB35629B6F5AF /* TransitionAnimation.swift in Sources */,
 				BEAD2E736311D3021B3C70C06D1FD0DE /* TransitionObservables.swift in Sources */,
 				7B407A308EC9730C39C9CEC12AC0EA32 /* TransitionOptions.swift in Sources */,

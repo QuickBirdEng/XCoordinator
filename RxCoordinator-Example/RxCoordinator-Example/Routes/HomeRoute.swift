@@ -13,6 +13,7 @@ enum HomeRoute: Route {
     case home
     case users
     case user(String)
+    case peekUser(from: Container)
     case logout
 
     func prepareTransition(coordinator: AnyCoordinator<HomeRoute>) -> NavigationTransition {
@@ -31,6 +32,10 @@ enum HomeRoute: Route {
         case .user(let username):
             let coordinator = BasicCoordinator<UserRoute>(initialRoute: .user(username))
             return .present(coordinator)
+        case .peekUser(let source):
+            return .peek(from: source, popTransition: {
+                HomeRoute.user("Test").prepareTransition(coordinator: coordinator)
+            })
         case .logout:
             return .dismiss()
         }
