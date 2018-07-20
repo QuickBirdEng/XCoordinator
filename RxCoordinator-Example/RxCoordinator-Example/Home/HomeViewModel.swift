@@ -54,7 +54,7 @@ class HomeViewModelImpl: HomeViewModel, HomeViewModelInput, HomeViewModelOutput 
     }
 
     func peekUser(from sourceView: Container) {
-        coordinator.transition(to: .peekUser(from: sourceView))
+        coordinator.transition(to: .registerUserPeek(from: sourceView))
     }
 
 }

@@ -48,8 +48,10 @@ extension Transition where RootType == TransitionTypeVC {
         return Transition(type: .embed(presentable: presentable, container: container), animation: nil)
     }
 
-    public static func registerPeek(from source: Container, popTransition: @escaping () -> ViewTransition) -> Transition {
-        return Transition(type: .registerPeek(source: source, transitionGenerator: popTransition), animation: nil)
+    public static func registerPeek<R: Route>(from source: Container, route: R, coordinator: AnyCoordinator<R>) -> Transition where R.RootType == TransitionTypeVC {
+        return Transition(type: .registerPeek(source: source, transitionGenerator: {
+            route.prepareTransition(coordinator: coordinator)
+        }), animation: nil)
     }
 
     public static func dismiss(animation: Animation? = nil) -> Transition {
@@ -72,8 +74,10 @@ extension Transition where RootType == TransitionTypeNC {
         return Transition(type: .embed(presentable: presentable, container: container), animation: nil)
     }
 
-    public static func peek(from source: Container, popTransition: @escaping () -> NavigationTransition) -> Transition {
-        return Transition(type: .registerPeek(source: source, transitionGenerator: popTransition), animation: nil)
+    public static func registerPeek<R: Route>(from source: Container, route: R, coordinator: AnyCoordinator<R>) -> Transition where R.RootType == TransitionTypeNC {
+        return Transition(type: .registerPeek(source: source, transitionGenerator: {
+            route.prepareTransition(coordinator: coordinator)
+        }), animation: nil)
     }
 
     public static func dismiss(animation: Animation? = nil) -> Transition {
