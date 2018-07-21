@@ -38,7 +38,7 @@ class HomeViewController: UIViewController, BindableType {
             .bind(to: viewModel.input.usersTrigger)
             .disposed(by: disposeBag)
 
-        viewModel.peekUser(from: usersButton)
+        viewModel.registerUserPeek(from: usersButton)
     }
   
 }

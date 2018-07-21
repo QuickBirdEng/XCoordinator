@@ -22,7 +22,7 @@ protocol HomeViewModel {
     var input: HomeViewModelInput { get }
     var output: HomeViewModelOutput { get }
 
-    func peekUser(from sourceView: Container)
+    func registerUserPeek(from sourceView: Container)
 }
 
 class HomeViewModelImpl: HomeViewModel, HomeViewModelInput, HomeViewModelOutput {
@@ -53,7 +53,7 @@ class HomeViewModelImpl: HomeViewModel, HomeViewModelInput, HomeViewModelOutput 
         self.coordinator = coodinator
     }
 
-    func peekUser(from sourceView: Container) {
+    func registerUserPeek(from sourceView: Container) {
         coordinator.transition(to: .registerUserPeek(from: sourceView))
     }
 
