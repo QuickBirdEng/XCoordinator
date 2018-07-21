@@ -23,57 +23,6 @@ public protocol Coordinator: Presentable {
     func presented(from presentable: Presentable?)
 }
 
-extension Coordinator where CoordinatorRoute.RootType == TransitionTypeVC {
-
-    @discardableResult
-    public func transition(to route: CoordinatorRoute, with options: TransitionOptions) -> TransitionObservables {
-        let transition = route.prepareTransition(coordinator: AnyCoordinator(self))
-
-        switch transition.type {
-        case .present(let presentable):
-            presentable.presented(from: self)
-            return present(presentable.viewController, with: options, animation: transition.animation)
-        case .embed(let presentable, let container):
-            presentable.presented(from: self)
-            return embed(presentable.viewController, in: container, with: options)
-        case .dismiss:
-            return dismiss(with: options, animation: transition.animation)
-        case .none:
-            return TransitionObservables(presentation: .empty(), dismissal: .empty())
-        }
-    }
-
-}
-
-extension Coordinator where CoordinatorRoute.RootType == TransitionTypeNC {
-
-    @discardableResult
-    public func transition(to route: CoordinatorRoute, with options: TransitionOptions) -> TransitionObservables {
-        let transition = route.prepareTransition(coordinator: AnyCoordinator(self))
-
-        switch transition.type {
-        case .push(let presentable):
-            presentable.presented(from: self)
-            return push(presentable.viewController, with: options, animation: transition.animation)
-        case .present(let presentable):
-            presentable.presented(from: self)
-            return present(presentable.viewController, with: options, animation: transition.animation)
-        case .embed(let presentable, let container):
-            presentable.presented(from: self)
-            return embed(presentable.viewController, in: container, with: options)
-        case .pop:
-            return pop(with: options, toRoot: false, animation: transition.animation)
-        case .popToRoot:
-            return pop(with: options, toRoot: true, animation: transition.animation)
-        case .dismiss:
-            return dismiss(with: options, animation: transition.animation)
-        case .none:
-            return TransitionObservables(presentation: .empty(), dismissal: .empty())
-        }
-    }
-
-}
-
 extension Coordinator {
 
     public var viewController: UIViewController! {
@@ -85,6 +34,11 @@ extension Coordinator {
     }
 
     public func presented(from presentable: Presentable?) {}
+
+    public func transition(to route: CoordinatorRoute, with options: TransitionOptions) -> TransitionObservables {
+        let transition = route.prepareTransition(coordinator: AnyCoordinator(self))
+        return performTransition(transition, with: options)
+    }
 
     // MARK: Convenience methods
 
@@ -134,6 +88,22 @@ extension Coordinator {
         return TransitionObservables(presentation: presentationObservable, dismissal: dismissalObservable)
     }
 
+    func registerPeek<T>(from sourceView: UIView, transitionGenerator: @escaping () -> Transition<T>) -> TransitionObservables {
+        guard let viewController = viewController else {
+            return TransitionObservables(presentation: .empty(), dismissal: .empty())
+        }
+
+        let presentationObservable = self.presentationObservable(for: viewController)
+        let dismissalObservable = self.dismissalObservable(for: viewController)
+
+        let delegate = CoordinatorPreviewingDelegateObject(transition: transitionGenerator, coordinator: AnyCoordinator(self))
+        sourceView.strongReferences.append(delegate)
+        
+        navigationController.registerForPreviewing(with: delegate, sourceView: sourceView)
+
+        return TransitionObservables(presentation: presentationObservable, dismissal: dismissalObservable)
+    }
+
     func push(_ viewController: UIViewController, with options: TransitionOptions, animation: Animation?) -> TransitionObservables {
         let presentationObservable = navigationController.rx.delegate
             .sentMessage(#selector(UINavigationControllerDelegate.navigationController(_:didShow:animated:)))
@@ -166,6 +136,50 @@ extension Coordinator {
     }
 
     // MARK: Helpers
+
+    func performTransition<T>(_ transition: Transition<T>, with options: TransitionOptions) -> TransitionObservables {
+        switch transition.type {
+        case let transitionType as TransitionTypeVC:
+            switch transitionType {
+            case .present(let presentable):
+                presentable.presented(from: self)
+                return present(presentable.viewController, with: options, animation: transition.animation)
+            case .embed(let presentable, let container):
+                presentable.presented(from: self)
+                return embed(presentable.viewController, in: container, with: options)
+            case .registerPeek(let source, let transitionGenerator):
+                return registerPeek(from: source.view, transitionGenerator: transitionGenerator)
+            case .dismiss:
+                return dismiss(with: options, animation: transition.animation)
+            case .none:
+                return TransitionObservables(presentation: .empty(), dismissal: .empty())
+            }
+        case let transitionType as TransitionTypeNC:
+            switch transitionType {
+            case .push(let presentable):
+                presentable.presented(from: self)
+                return push(presentable.viewController, with: options, animation: transition.animation)
+            case .present(let presentable):
+                presentable.presented(from: self)
+                return present(presentable.viewController, with: options, animation: transition.animation)
+            case .embed(let presentable, let container):
+                presentable.presented(from: self)
+                return embed(presentable.viewController, in: container, with: options)
+            case .registerPeek(let source, let transitionGenerator):
+                return registerPeek(from: source.view, transitionGenerator: transitionGenerator)
+            case .pop:
+                return pop(with: options, toRoot: false, animation: transition.animation)
+            case .popToRoot:
+                return pop(with: options, toRoot: true, animation: transition.animation)
+            case .dismiss:
+                return dismiss(with: options, animation: transition.animation)
+            case .none:
+                return TransitionObservables(presentation: .empty(), dismissal: .empty())
+            }
+        default:
+            return TransitionObservables(presentation: .empty(), dismissal: .empty())
+        }
+    }
 
     private func presentationObservable(for viewController: UIViewController) -> Observable<Void> {
         return viewController.rx.sentMessage(#selector(UIViewController.viewDidAppear(_:)))

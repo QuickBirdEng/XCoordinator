@@ -21,6 +21,8 @@ protocol HomeViewModelOutput {}
 protocol HomeViewModel {
     var input: HomeViewModelInput { get }
     var output: HomeViewModelOutput { get }
+
+    func registerUserPeek(from sourceView: Container)
 }
 
 class HomeViewModelImpl: HomeViewModel, HomeViewModelInput, HomeViewModelOutput {
@@ -49,6 +51,10 @@ class HomeViewModelImpl: HomeViewModel, HomeViewModelInput, HomeViewModelOutput 
 
     init(coodinator: AnyCoordinator<HomeRoute>) {
         self.coordinator = coodinator
+    }
+
+    func registerUserPeek(from sourceView: Container) {
+        coordinator.transition(to: .registerUserPeek(from: sourceView))
     }
 
 }
