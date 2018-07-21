@@ -5,7 +5,7 @@
 //  Created by Stefan Kofler on 19.07.18.
 //
 
-import Foundation
+import UIKit
 
 class CoordinatorPreviewingDelegateObject<T: TransitionType, R: Route>: NSObject, UIViewControllerPreviewingDelegate {
 

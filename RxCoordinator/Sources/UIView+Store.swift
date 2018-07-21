@@ -1,16 +1,16 @@
 //
-//  UIViewController+Store.swift
+//  UIView+Store.swift
 //  rx-coordinator
 //
 //  Created by Stefan Kofler on 19.07.18.
 //
 
-import Foundation
+import UIKit
 import ObjectiveC
 
 private var AssociatedObjectHandle: UInt8 = 0
 
-extension UIViewController {
+extension UIView {
 
     var strongReferences: [Any] {
         get {

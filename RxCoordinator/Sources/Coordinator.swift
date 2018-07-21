@@ -97,7 +97,7 @@ extension Coordinator {
         let dismissalObservable = self.dismissalObservable(for: viewController)
 
         let delegate = CoordinatorPreviewingDelegateObject(transition: transitionGenerator, coordinator: AnyCoordinator(self))
-        navigationController.strongReferences.append(delegate)
+        sourceView.strongReferences.append(delegate)
         
         navigationController.registerForPreviewing(with: delegate, sourceView: sourceView)
 
