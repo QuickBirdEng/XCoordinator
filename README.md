@@ -2,6 +2,12 @@
   <img src="https://github.com/quickbirdstudios/RxCoordinator/blob/master/Images/logo.png">
 </p>
 
+[![Build Status](https://travis-ci.com/quickbirdstudios/RxCoordinator.svg?branch=master)](https://travis-ci.org/quickbirdstudios/RxCoordinator)
+[![CocoaPods Compatible](https://img.shields.io/cocoapods/v/rx-coordinator.svg)](https://img.shields.io/cocoapods/v/rx-coordinator.svg)
+[![Carthage Compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage)
+[![Platform](https://img.shields.io/badge/platform-iOS-lightgrey.svg)](https://github.com/quickbirdstudios/RxCoordinator)
+[![License](https://img.shields.io/cocoapods/l/AFNetworking.svg)](https://github.com/quickbirdstudios/RxCoordinator)
+
 #
 “How does an app transition from a ViewController to another?”.
 This question is common and puzzling regarding iOS development. There are many answers, as every architecture has different implementation variations. Some do it from the view controller, while some do it using a router/coordinator, which is an object that connects view models.
