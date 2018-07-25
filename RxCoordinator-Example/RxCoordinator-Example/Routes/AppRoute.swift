@@ -22,6 +22,12 @@ class AppCoordinator: BasicCoordinator<AppRoute> {
         super.init(initialRoute: .login, initialLoadingType: .immediately)
     }
 
+    override func presented(from presentable: Presentable?) {
+        super.presented(from: presentable)
+
+        self.trigger(.home, with: TransitionOptions(animated: false), completion: nil)
+    }
+
     override func prepareTransition(for route: AppRoute) -> NavigationTransition {
         switch route {
         case .login:
