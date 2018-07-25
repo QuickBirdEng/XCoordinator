@@ -15,12 +15,14 @@ public final class AnyCoordinator<AnyRoute: Route>: Coordinator {
     private let _rootViewController: () -> UIViewController
     private let _transition: (AnyRoute, TransitionOptions, PresentationHandler?) -> Void
     private let _prepareTransition: (CoordinatorRoute) -> Transition<CoordinatorRoute.RootType>
+    private let _presented: (Presentable?) -> Void
 
     public init<U: Coordinator>(_ coordinator: U) where U.CoordinatorRoute == AnyRoute {
         _context = { coordinator.context }
         _rootViewController = { coordinator.rootViewController }
         _transition = coordinator.trigger
         _prepareTransition = coordinator.prepareTransition
+        _presented = coordinator.presented
     }
 
     public var context: UIViewController! {
@@ -37,6 +39,10 @@ public final class AnyCoordinator<AnyRoute: Route>: Coordinator {
 
     public func prepareTransition(for route: AnyRoute) -> Transition<AnyRoute.RootType> {
         return _prepareTransition(route)
+    }
+
+    public func presented(from presentable: Presentable?) {
+        return _presented(presentable)
     }
 
 }

@@ -118,48 +118,8 @@ extension Coordinator {
     // MARK: Helpers
 
     func performTransition<T>(_ transition: Transition<T>, with options: TransitionOptions, completion: PresentationHandler? = nil) {
-        switch transition.type {
-        case let transitionType as TransitionTypeVC:
-            switch transitionType {
-            case .present(let presentable):
-                presentable.presented(from: self)
-                return present(presentable.viewController, with: options, animation: transition.animation, completion: completion)
-            case .embed(let presentable, let container):
-                presentable.presented(from: self)
-                return embed(presentable.viewController, in: container, with: options, completion: completion)
-            case .registerPeek(let source, let transitionGenerator):
-                return registerPeek(from: source.view, transitionGenerator: transitionGenerator, completion: completion)
-            case .dismiss:
-                return dismiss(with: options, animation: transition.animation, completion: completion)
-            case .none:
-                return
-            }
-        case let transitionType as TransitionTypeNC:
-            switch transitionType {
-            case .push(let presentable):
-                presentable.presented(from: self)
-                return push(presentable.viewController, with: options, animation: transition.animation, completion: completion)
-            case .present(let presentable):
-                presentable.presented(from: self)
-                return present(presentable.viewController, with: options, animation: transition.animation, completion: completion)
-            case .embed(let presentable, let container):
-                presentable.presented(from: self)
-                return embed(presentable.viewController, in: container, with: options, completion: completion)
-            case .registerPeek(let source, let transitionGenerator):
-                return registerPeek(from: source.view, transitionGenerator: transitionGenerator, completion: completion)
-            case .pop:
-                return pop(with: options, toRoot: false, animation: transition.animation, completion: completion)
-            case .popToRoot:
-                return pop(with: options, toRoot: true, animation: transition.animation, completion: completion)
-            case .dismiss:
-                return dismiss(with: options, animation: transition.animation, completion: completion)
-            case .none:
-                return
-            }
-        default:
-            print("Unknown tranisition type can't be handled. Ignoring transition...")
-            return
-        }
+        transition.type.performTransition(options: options, animation: transition.animation,
+                                          coordinator: AnyCoordinator(self), completion: completion)
     }
 
 }

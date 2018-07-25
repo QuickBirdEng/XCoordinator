@@ -9,7 +9,10 @@
 import Foundation
 import UIKit
 
-public protocol TransitionType {}
+public protocol TransitionType {
+    func performTransition<R: Route>(options: TransitionOptions, animation: Animation?,
+                                     coordinator: AnyCoordinator<R>, completion: PresentationHandler?)
+}
 
 public enum TransitionTypeVC: TransitionType {
     case present(Presentable)
@@ -17,6 +20,24 @@ public enum TransitionTypeVC: TransitionType {
     case registerPeek(source: Container, transitionGenerator: () -> ViewTransition)
     case dismiss
     case none
+
+    public func performTransition<R: Route>(options: TransitionOptions, animation: Animation?,
+                                            coordinator: AnyCoordinator<R>, completion: PresentationHandler?) {
+        switch self {
+        case .present(let presentable):
+            presentable.presented(from: coordinator)
+            return coordinator.present(presentable.viewController, with: options, animation: animation, completion: completion)
+        case .embed(let presentable, let container):
+            presentable.presented(from: coordinator)
+            return coordinator.embed(presentable.viewController, in: container, with: options, completion: completion)
+        case .registerPeek(let source, let transitionGenerator):
+            return coordinator.registerPeek(from: source.view, transitionGenerator: transitionGenerator, completion: completion)
+        case .dismiss:
+            return coordinator.dismiss(with: options, animation: animation, completion: completion)
+        case .none:
+            return
+        }
+    }
 }
 
 public enum TransitionTypeNC: TransitionType {
@@ -28,6 +49,31 @@ public enum TransitionTypeNC: TransitionType {
     case popToRoot
     case dismiss
     case none
+
+    public func performTransition<R: Route>(options: TransitionOptions, animation: Animation?,
+                                            coordinator: AnyCoordinator<R>, completion: PresentationHandler?) {
+        switch self {
+        case .push(let presentable):
+            presentable.presented(from: coordinator)
+            return coordinator.push(presentable.viewController, with: options, animation: animation, completion: completion)
+        case .present(let presentable):
+            presentable.presented(from: coordinator)
+            return coordinator.present(presentable.viewController, with: options, animation: animation, completion: completion)
+        case .embed(let presentable, let container):
+            presentable.presented(from: coordinator)
+            return coordinator.embed(presentable.viewController, in: container, with: options, completion: completion)
+        case .registerPeek(let source, let transitionGenerator):
+            return coordinator.registerPeek(from: source.view, transitionGenerator: transitionGenerator, completion: completion)
+        case .pop:
+            return coordinator.pop(with: options, toRoot: false, animation: animation, completion: completion)
+        case .popToRoot:
+            return coordinator.pop(with: options, toRoot: true, animation: animation, completion: completion)
+        case .dismiss:
+            return coordinator.dismiss(with: options, animation: animation, completion: completion)
+        case .none:
+            return
+        }
+    }
 }
 
 public struct Transition<RootType: TransitionType> {
