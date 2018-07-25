@@ -2,8 +2,11 @@ PODS:
   - Action (3.5.0):
     - RxCocoa (~> 4.0)
     - RxSwift (~> 4.0)
-  - rx-coordinator (0.4.0):
-    - RxCocoa (~> 4.0)
+  - rx-coordinator (0.7.0):
+    - rx-coordinator/Core (= 0.7.0)
+  - rx-coordinator/Core (0.7.0)
+  - rx-coordinator/RxSwift (0.7.0):
+    - rx-coordinator/Core
     - RxSwift (~> 4.0)
   - RxCocoa (4.1.2):
     - RxSwift (~> 4.0)
@@ -12,9 +15,10 @@ PODS:
 DEPENDENCIES:
   - Action
   - rx-coordinator (from `../`)
+  - rx-coordinator/RxSwift (from `../`)
 
 SPEC REPOS:
-  https://github.com/CocoaPods/Specs.git:
+  https://github.com/cocoapods/specs.git:
     - Action
     - RxCocoa
     - RxSwift
@@ -25,10 +29,10 @@ EXTERNAL SOURCES:
 
 SPEC CHECKSUMS:
   Action: d60087ebce41b969d1afdad01e2fa1372a82f26e
-  rx-coordinator: 269ba31345f8cf3b66fd1e23ccec37f6398383b8
+  rx-coordinator: c1c4ab11c37973529cc7e72a4c8370fefd8aa066
   RxCocoa: d88ba0f1f6abf040011a9eb4b539324fc426843a
   RxSwift: e49536837d9901277638493ea537394d4b55f570
 
-PODFILE CHECKSUM: 6fa5f83dedc8b0e0bf81a21a2656b87ed12c7549
+PODFILE CHECKSUM: 7917dab9b19fd556a6384836d5a8135cc54d0f83
 
-COCOAPODS: 1.5.0
+COCOAPODS: 1.5.3

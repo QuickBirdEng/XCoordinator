@@ -13,7 +13,7 @@ public final class AnyCoordinator<AnyRoute: Route>: Coordinator {
 
     private let _context: () -> UIViewController
     private let _rootViewController: () -> UIViewController
-    private let _transition: (AnyRoute,TransitionOptions) -> TransitionObservables
+    private let _transition: (AnyRoute, TransitionOptions, PresentationHandler?) -> Void
     private let _prepareTransition: (CoordinatorRoute) -> Transition<CoordinatorRoute.RootType>
 
     public init<U: Coordinator>(_ coordinator: U) where U.CoordinatorRoute == AnyRoute {
@@ -31,8 +31,8 @@ public final class AnyCoordinator<AnyRoute: Route>: Coordinator {
         return _rootViewController()
     }
 
-    public func trigger(_ route: AnyRoute, with options: TransitionOptions) -> TransitionObservables {
-        return _transition(route, options)
+    public func trigger(_ route: AnyRoute, with options: TransitionOptions, completion: PresentationHandler?) {
+        return _transition(route, options, completion)
     }
 
     public func prepareTransition(for route: AnyRoute) -> Transition<AnyRoute.RootType> {

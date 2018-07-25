@@ -11,12 +11,14 @@ class CoordinatorPreviewingDelegateObject<T: TransitionType, R: Route>: NSObject
 
     let transition: () -> Transition<T>
     let coordinator: AnyCoordinator<R>
+    let completion: PresentationHandler?
 
     weak var viewController: UIViewController?
 
-    init(transition: @escaping () -> Transition<T>, coordinator: AnyCoordinator<R>) {
+    init(transition: @escaping () -> Transition<T>, coordinator: AnyCoordinator<R>, completion: PresentationHandler?) {
         self.transition = transition
         self.coordinator = coordinator
+        self.completion = completion
     }
 
     func previewingContext(_ previewingContext: UIViewControllerPreviewing, viewControllerForLocation location: CGPoint) -> UIViewController? {
@@ -32,6 +34,7 @@ class CoordinatorPreviewingDelegateObject<T: TransitionType, R: Route>: NSObject
 
     func previewingContext(_ previewingContext: UIViewControllerPreviewing, commit viewControllerToCommit: UIViewController) {
         _ = coordinator.performTransition(transition(), with: TransitionOptions.defaultOptions)
+        completion?()
     }
 
 }

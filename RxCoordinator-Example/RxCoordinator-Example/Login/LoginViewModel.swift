@@ -35,7 +35,7 @@ class LoginViewModelImpl: LoginViewModel, LoginViewModelInput, LoginViewModelOut
 
     private lazy var loginAction = CocoaAction { [weak self] in
         guard let `self` = self else { return .empty() }
-        return self.coordinator.trigger(.home).presentation
+        return self.coordinator.rx.trigger(.home)
     }
 
     // MARK: - Init

@@ -7,6 +7,7 @@ target 'RxCoordinator-Example' do
 
   # Pods for RxCoordinator-Example
   pod 'rx-coordinator', :path => '../'
+  pod 'rx-coordinator/RxSwift', :path => '../'
   pod 'Action'
 
   target 'RxCoordinator-ExampleUITests' do

@@ -39,12 +39,12 @@ class HomeViewModelImpl: HomeViewModel, HomeViewModelInput, HomeViewModelOutput 
 
     private lazy var logoutAction = CocoaAction { [weak self] in
         guard let `self` = self else { return .empty() }
-        return self.coordinator.trigger(.logout).presentation
+        return self.coordinator.rx.trigger(.logout)
     }
 
     private lazy var usersAction = CocoaAction { [weak self] in
         guard let `self` = self else { return .empty() }
-        return self.coordinator.trigger(.users).presentation
+        return self.coordinator.rx.trigger(.users)
     }
 
     // MARK: - Init

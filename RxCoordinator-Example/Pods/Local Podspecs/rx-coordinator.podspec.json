@@ -1,31 +1,43 @@
 {
   "name": "rx-coordinator",
-  "version": "0.4.0",
+  "version": "0.7.0",
   "license": {
     "type": "MIT"
   },
-  "homepage": "https://github.com/jdisho/RxCoordinator",
+  "homepage": "https://github.com/quickbirdstudios/RxCoordinator",
   "authors": {
     "Stefan Kofler": "stefan.kofler@quickbirdstudios.com"
   },
   "summary": "Navigation framework based on coordinator pattern.",
   "source": {
-    "git": "https://github.com/jdisho/RxCoordinator.git",
-    "tag": "0.4.0"
+    "git": "https://github.com/quickbirdstudios/RxCoordinator.git",
+    "tag": "0.7.0"
   },
   "module_name": "RxCoordinator",
+  "swift_version": "4.1",
   "platforms": {
     "ios": "9.0",
     "tvos": "9.0"
   },
   "source_files": "RxCoordinator/Sources/*.swift",
-  "frameworks": "UIKit",
-  "dependencies": {
-    "RxSwift": [
-      "~> 4.0"
-    ],
-    "RxCocoa": [
-      "~> 4.0"
-    ]
-  }
+  "default_subspecs": "Core",
+  "subspecs": [
+    {
+      "name": "Core",
+      "source_files": "RxCoordinator/Sources/*.swift",
+      "frameworks": "UIKit"
+    },
+    {
+      "name": "RxSwift",
+      "dependencies": {
+        "rx-coordinator/Core": [
+
+        ],
+        "RxSwift": [
+          "~> 4.0"
+        ]
+      },
+      "source_files": "RxCoordinator/Sources/RxSwift/*.swift"
+    }
+  ]
 }
