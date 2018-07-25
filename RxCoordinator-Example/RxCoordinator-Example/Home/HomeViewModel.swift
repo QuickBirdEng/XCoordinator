@@ -39,12 +39,12 @@ class HomeViewModelImpl: HomeViewModel, HomeViewModelInput, HomeViewModelOutput 
 
     private lazy var logoutAction = CocoaAction { [weak self] in
         guard let `self` = self else { return .empty() }
-        return self.coordinator.transition(to: .logout).presentation
+        return self.coordinator.trigger(.logout).presentation
     }
 
     private lazy var usersAction = CocoaAction { [weak self] in
         guard let `self` = self else { return .empty() }
-        return self.coordinator.transition(to: .users).presentation
+        return self.coordinator.trigger(.users).presentation
     }
 
     // MARK: - Init
@@ -54,7 +54,7 @@ class HomeViewModelImpl: HomeViewModel, HomeViewModelInput, HomeViewModelOutput 
     }
 
     func registerUserPeek(from sourceView: Container) {
-        coordinator.transition(to: .registerUserPeek(from: sourceView))
+        coordinator.trigger(.registerUserPeek(from: sourceView))
     }
 
 }

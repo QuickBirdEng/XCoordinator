@@ -31,16 +31,16 @@ class LoginViewModelImpl: LoginViewModel, LoginViewModelInput, LoginViewModelOut
     lazy var loginTrigger: InputSubject<Void> = loginAction.inputs
 
     // MARK: - Private
-    private let coordinator: AnyCoordinator<MainRoute>
+    private let coordinator: AnyCoordinator<AppRoute>
 
     private lazy var loginAction = CocoaAction { [weak self] in
         guard let `self` = self else { return .empty() }
-        return self.coordinator.transition(to: .home).presentation
+        return self.coordinator.trigger(.home).presentation
     }
 
     // MARK: - Init
 
-    init(coordinator: AnyCoordinator<MainRoute>) {
+    init(coordinator: AnyCoordinator<AppRoute>) {
         self.coordinator = coordinator
     }
 

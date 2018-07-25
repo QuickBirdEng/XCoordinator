@@ -10,5 +10,4 @@ import Foundation
 
 public protocol Route {
     associatedtype RootType: TransitionType
-    func prepareTransition(coordinator: AnyCoordinator<Self>) -> Transition<RootType>
 }

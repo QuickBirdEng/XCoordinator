@@ -18,7 +18,9 @@ public protocol Coordinator: Presentable {
     var rootViewController: UIViewController { get }
 
     @discardableResult
-    func transition(to route: CoordinatorRoute, with options: TransitionOptions) -> TransitionObservables
+    func trigger(_ route: CoordinatorRoute, with options: TransitionOptions) -> TransitionObservables
+
+    func prepareTransition(for route: CoordinatorRoute) -> Transition<CoordinatorRoute.RootType>
 
     func presented(from presentable: Presentable?)
 }
@@ -35,16 +37,16 @@ extension Coordinator {
 
     public func presented(from presentable: Presentable?) {}
 
-    public func transition(to route: CoordinatorRoute, with options: TransitionOptions) -> TransitionObservables {
-        let transition = route.prepareTransition(coordinator: AnyCoordinator(self))
+    public func trigger(_ route: CoordinatorRoute, with options: TransitionOptions) -> TransitionObservables {
+        let transition = prepareTransition(for: route)
         return performTransition(transition, with: options)
     }
 
     // MARK: Convenience methods
 
     @discardableResult
-    public func transition(to route: CoordinatorRoute) -> TransitionObservables {
-        return transition(to: route, with: TransitionOptions.defaultOptions)
+    public func trigger(_ route: CoordinatorRoute) -> TransitionObservables {
+        return trigger(route, with: TransitionOptions.defaultOptions)
     }
 
     // MARK: Transitions

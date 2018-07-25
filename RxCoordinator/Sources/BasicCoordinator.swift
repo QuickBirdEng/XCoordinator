@@ -6,7 +6,7 @@
 //  Copyright © 2018 Stefan Kofler. All rights reserved.
 //
 
-import Foundation
+import UIKit
 
 open class BasicCoordinator<BasicRoute: Route>: Coordinator {
     public typealias CoordinatorRoute = BasicRoute
@@ -28,15 +28,19 @@ open class BasicCoordinator<BasicRoute: Route>: Coordinator {
 
     private let initialRoute: BasicRoute?
     private let initialLoadingType: InitialLoadingType
+    private let prepareTransition: ((BasicRoute) -> Transition<BasicRoute.RootType>)?
     private let rootVCReferenceBox = ReferenceBox<UIViewController>()
 
-    public init(initialRoute: BasicRoute? = nil, initialLoadingType: InitialLoadingType = .presented) {
+    public init(initialRoute: BasicRoute? = nil,
+                initialLoadingType: InitialLoadingType = .presented,
+                prepareTransition: ((BasicRoute) -> Transition<BasicRoute.RootType>)? = nil) {
         self.initialRoute = initialRoute
         self.initialLoadingType = initialLoadingType
+        self.prepareTransition = prepareTransition
         self.rootVCReferenceBox.set(UINavigationController())
 
         if let initialRoute = initialRoute, initialLoadingType == .immediately {
-            transition(to: initialRoute)
+            trigger(initialRoute)
         }
     }
 
@@ -44,10 +48,18 @@ open class BasicCoordinator<BasicRoute: Route>: Coordinator {
         context = presentable?.viewController
 
         if let initialRoute = initialRoute, initialLoadingType == .presented {
-            transition(to: initialRoute)
+            trigger(initialRoute)
         }
 
         rootVCReferenceBox.releaseStrongReference()
+    }
+
+    open func prepareTransition(for route: BasicRoute) -> Transition<BasicRoute.RootType> {
+        if let prepareTransition = prepareTransition {
+            return prepareTransition(route)
+        } else {
+            fatalError("Either pass a prepareTransition closure to the initalizer or override this method")
+        }
     }
 
 }

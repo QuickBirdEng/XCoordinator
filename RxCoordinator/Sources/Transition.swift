@@ -50,7 +50,7 @@ extension Transition where RootType == TransitionTypeVC {
 
     public static func registerPeek<R: Route>(from source: Container, route: R, coordinator: AnyCoordinator<R>) -> Transition where R.RootType == TransitionTypeVC {
         return Transition(type: .registerPeek(source: source, transitionGenerator: {
-            route.prepareTransition(coordinator: coordinator)
+            coordinator.prepareTransition(for: route)
         }), animation: nil)
     }
 
@@ -76,7 +76,7 @@ extension Transition where RootType == TransitionTypeNC {
 
     public static func registerPeek<R: Route>(from source: Container, route: R, coordinator: AnyCoordinator<R>) -> Transition where R.RootType == TransitionTypeNC {
         return Transition(type: .registerPeek(source: source, transitionGenerator: {
-            route.prepareTransition(coordinator: coordinator)
+            coordinator.prepareTransition(for: route)
         }), animation: nil)
     }
 

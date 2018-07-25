@@ -10,32 +10,43 @@ import Foundation
 import RxCoordinator
 
 enum HomeRoute: Route {
+    typealias RootType = TransitionTypeNC
+
     case home
     case users
     case user(String)
     case registerUserPeek(from: Container)
     case logout
+}
 
-    func prepareTransition(coordinator: AnyCoordinator<HomeRoute>) -> NavigationTransition {
-        switch self {
+class HomeCoordinator: BasicCoordinator<HomeRoute> {
+
+    init() {
+        super.init(initialRoute: .home, initialLoadingType: .presented)
+    }
+
+    override func prepareTransition(for route: HomeRoute) -> NavigationTransition {
+        switch route {
         case .home:
             var vc = HomeViewController.instantiateFromNib()
-            let viewModel = HomeViewModelImpl(coodinator: coordinator)
+            let viewModel = HomeViewModelImpl(coodinator: AnyCoordinator(self))
             vc.bind(to: viewModel)
             return .push(vc)
         case .users:
             let animation = Animation(presentationAnimation: CustomPresentations.flippingPresentation, dismissalAnimation: nil)
             var vc = UsersViewController.instantiateFromNib()
-            let viewModel = UsersViewModelImpl(coordinator: coordinator)
+            let viewModel = UsersViewModelImpl(coordinator: AnyCoordinator(self))
             vc.bind(to: viewModel)
             return .push(vc, animation: animation)
         case .user(let username):
-            let coordinator = BasicCoordinator<UserRoute>(initialRoute: .user(username))
+            let coordinator = UserCoordinator(initialRoute: .user(username))
             return .present(coordinator)
         case .registerUserPeek(let source):
-            return .registerPeek(from: source, route: .user("Test"), coordinator: coordinator)
+            return .registerPeek(from: source, route: .user("Test"), coordinator: AnyCoordinator(self))
         case .logout:
             return .dismiss()
         }
     }
+
 }
+

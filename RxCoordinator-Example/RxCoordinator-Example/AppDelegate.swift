@@ -13,12 +13,12 @@ import RxCoordinator
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
-    var coordinator: BasicCoordinator<MainRoute>!
+    var coordinator: BasicCoordinator<AppRoute>!
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         guard let window = self.window else { return false }
 
-        coordinator = BasicCoordinator<MainRoute>(initialRoute: .login, initialLoadingType: .immediately)
+        coordinator = AppCoordinator()
         window.rootViewController = coordinator.rootViewController
 
         return true

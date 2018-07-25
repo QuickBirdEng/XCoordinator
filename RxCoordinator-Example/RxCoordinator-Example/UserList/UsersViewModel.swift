@@ -42,7 +42,7 @@ class UsersViewModelImpl: UsersViewModel, UsersViewModelInput, UsersViewModelOut
 
     private lazy var showUserAction = Action<String, Void> { [weak self] username in
         guard let `self` = self else { return .empty() }
-        return self.coordinator.transition(to: .user(username)).presentation
+        return self.coordinator.trigger(.user(username)).presentation
     }
 
     // MARK: - Init

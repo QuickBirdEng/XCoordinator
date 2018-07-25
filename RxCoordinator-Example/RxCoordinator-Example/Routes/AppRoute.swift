@@ -9,21 +9,31 @@
 import Foundation
 import RxCoordinator
 
-enum MainRoute: Route {
+enum AppRoute: Route {
+    typealias RootType = TransitionTypeNC
+
     case login
     case home
+}
 
-    func prepareTransition(coordinator: AnyCoordinator<MainRoute>) -> NavigationTransition {
-        switch self {
+class AppCoordinator: BasicCoordinator<AppRoute> {
+
+    init() {
+        super.init(initialRoute: .login, initialLoadingType: .immediately)
+    }
+
+    override func prepareTransition(for route: AppRoute) -> NavigationTransition {
+        switch route {
         case .login:
             var vc = LoginViewController.instantiateFromNib()
-            let viewModel = LoginViewModelImpl(coordinator: coordinator)
+            let viewModel = LoginViewModelImpl(coordinator: AnyCoordinator(self))
             vc.bind(to: viewModel)
             return .push(vc)
         case .home:
-            let coordinator = BasicCoordinator<HomeRoute>(initialRoute: .home)
+            let coordinator = HomeCoordinator()
             let animation = Animation(presentationAnimation: CustomPresentations.flippingPresentation, dismissalAnimation: nil)
             return .present(coordinator, animation: animation)
         }
     }
+
 }

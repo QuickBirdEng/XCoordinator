@@ -42,13 +42,13 @@ class UserViewModelImpl: UserViewModel, UserViewModelInput, UserViewModelOutput 
 
     private lazy var alertAction = CocoaAction { [weak self] in
         guard let `self` = self else { return .empty() }
-        return self.coordinator.transition(to: .alert(title: "Hey", message: "You are awesome!"))
+        return self.coordinator.trigger(.alert(title: "Hey", message: "You are awesome!"))
             .presentation
     }
 
     private lazy var closeAction = CocoaAction { [weak self] in
         guard let `self` = self else { return .empty() }
-        return self.coordinator.transition(to: .users).presentation
+        return self.coordinator.trigger(.users).presentation
     }
 
     // MARK: - Init
