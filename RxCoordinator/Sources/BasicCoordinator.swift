@@ -30,6 +30,7 @@ open class BasicCoordinator<BasicRoute: Route>: Coordinator {
     private let initialLoadingType: InitialLoadingType
     private let prepareTransition: ((BasicRoute) -> Transition<BasicRoute.RootType>)?
     private let rootVCReferenceBox = ReferenceBox<UIViewController>()
+    private var notificationObserver: Any?
 
     public init(initialRoute: BasicRoute? = nil,
                 initialLoadingType: InitialLoadingType = .presented,
@@ -40,7 +41,7 @@ open class BasicCoordinator<BasicRoute: Route>: Coordinator {
         self.rootVCReferenceBox.set(UINavigationController())
 
         if let initialRoute = initialRoute, initialLoadingType == .immediately {
-            trigger(initialRoute)
+            triggerRouteAfterWindowAppeared(initialRoute)
         }
     }
 
@@ -48,7 +49,7 @@ open class BasicCoordinator<BasicRoute: Route>: Coordinator {
         context = presentable?.viewController
 
         if let initialRoute = initialRoute, initialLoadingType == .presented {
-            trigger(initialRoute)
+            trigger(initialRoute, with: TransitionOptions(animated: false), completion: nil)
         }
 
         rootVCReferenceBox.releaseStrongReference()
@@ -59,6 +60,31 @@ open class BasicCoordinator<BasicRoute: Route>: Coordinator {
             return prepareTransition(route)
         } else {
             fatalError("Either pass a prepareTransition closure to the initalizer or override this method")
+        }
+    }
+
+    // MARK: Deinit
+
+    deinit {
+        removeWindowObserver()
+    }
+
+    // MARK: Helpers
+
+    private func triggerRouteAfterWindowAppeared(_ route: BasicRoute) {
+        guard UIApplication.shared.keyWindow == nil else {
+            return trigger(route, with: TransitionOptions(animated: false), completion: nil)
+        }
+
+        notificationObserver = NotificationCenter.default.addObserver(forName: Notification.Name.UIWindowDidBecomeVisible, object: nil, queue: OperationQueue.main) { [weak self] notifcation in
+            self?.removeWindowObserver()
+            self?.trigger(route, with: TransitionOptions(animated: false), completion: nil)
+        }
+    }
+
+    private func removeWindowObserver() {
+        if let observer = self.notificationObserver {
+            NotificationCenter.default.removeObserver(observer)
         }
     }
 

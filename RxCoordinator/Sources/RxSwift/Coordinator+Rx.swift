@@ -31,7 +31,7 @@ extension Reactive where Base: Coordinator {
     // MARK: Convenience methods
 
     public func trigger(_ route: Base.CoordinatorRoute) -> Observable<Void> {
-        return trigger(route, with: TransitionOptions.defaultOptions)
+        return trigger(route, with: TransitionOptions.default)
     }
 
 }

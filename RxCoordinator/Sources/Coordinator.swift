@@ -38,13 +38,21 @@ extension Coordinator {
 
     public func trigger(_ route: CoordinatorRoute, with options: TransitionOptions, completion: PresentationHandler?) {
         let transition = prepareTransition(for: route)
-        return performTransition(transition, with: options, completion: completion)
+        performTransition(transition, with: options, completion: completion)
+
+        // Detect first app start and call presented method manually
+        // App doesn't have key window set yet, but the coordinators rootViewController has already it's window
+        if UIApplication.shared.keyWindow == nil && rootViewController.view.window != nil {
+            DispatchQueue.main.async {
+                self.presented(from: nil)
+            }
+        }
     }
 
     // MARK: Convenience methods
 
     public func trigger(_ route: CoordinatorRoute, completion: PresentationHandler? = nil)  {
-        return trigger(route, with: TransitionOptions.defaultOptions, completion: completion)
+        return trigger(route, with: TransitionOptions.default, completion: completion)
     }
 
     // MARK: Transitions

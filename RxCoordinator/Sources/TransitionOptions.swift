@@ -11,7 +11,11 @@ import Foundation
 public struct TransitionOptions {
     let animated: Bool
 
-    static var defaultOptions: TransitionOptions {
+    public init(animated: Bool) {
+        self.animated = animated
+    }
+
+    static var `default`: TransitionOptions {
         return TransitionOptions(animated: true)
     }
 }

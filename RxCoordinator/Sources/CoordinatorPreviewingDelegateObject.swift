@@ -33,7 +33,7 @@ class CoordinatorPreviewingDelegateObject<T: TransitionType, R: Route>: NSObject
     }
 
     func previewingContext(_ previewingContext: UIViewControllerPreviewing, commit viewControllerToCommit: UIViewController) {
-        _ = coordinator.performTransition(transition(), with: TransitionOptions.defaultOptions)
+        _ = coordinator.performTransition(transition(), with: TransitionOptions.default)
         completion?()
     }
 
