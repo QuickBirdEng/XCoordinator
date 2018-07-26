@@ -77,9 +77,19 @@ extension Coordinator {
 
     func registerPeek<T>(from sourceView: UIView, transitionGenerator: @escaping () -> Transition<T>, completion: PresentationHandler?) {
         let delegate = CoordinatorPreviewingDelegateObject(transition: transitionGenerator, coordinator: AnyCoordinator(self), completion: completion)
+
+        if let existingContextIndex = sourceView.strongReferences
+            .index(where: {
+                $0 is CoordinatorPreviewingDelegateObject<T, CoordinatorRoute>
+            }),
+            let contextDelegate = sourceView.strongReferences.remove(at: existingContextIndex) as? CoordinatorPreviewingDelegateObject<T, CoordinatorRoute>,
+            let context = contextDelegate.context {
+            navigationController.unregisterForPreviewing(withContext: context)
+        }
+
         sourceView.strongReferences.append(delegate)
 
-        navigationController.registerForPreviewing(with: delegate, sourceView: sourceView)
+        delegate.context = navigationController.registerForPreviewing(with: delegate, sourceView: sourceView)
     }
 
     func push(_ viewController: UIViewController, with options: TransitionOptions, animation: Animation?, completion: PresentationHandler?) {

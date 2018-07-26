@@ -12,6 +12,7 @@ class CoordinatorPreviewingDelegateObject<T: TransitionType, R: Route>: NSObject
     let transition: () -> Transition<T>
     let coordinator: AnyCoordinator<R>
     let completion: PresentationHandler?
+    var context: UIViewControllerPreviewing? = nil
 
     weak var viewController: UIViewController?
 
