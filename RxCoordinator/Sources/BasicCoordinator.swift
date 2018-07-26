@@ -59,7 +59,7 @@ open class BasicCoordinator<BasicRoute: Route>: Coordinator {
         if let prepareTransition = prepareTransition {
             return prepareTransition(route)
         } else {
-            fatalError("Either pass a prepareTransition closure to the initalizer or override this method")
+            fatalError("Either pass a prepareTransition closure to the initializer or override this method")
         }
     }
 
@@ -76,7 +76,9 @@ open class BasicCoordinator<BasicRoute: Route>: Coordinator {
             return trigger(route, with: TransitionOptions(animated: false), completion: nil)
         }
 
-        notificationObserver = NotificationCenter.default.addObserver(forName: Notification.Name.UIWindowDidBecomeVisible, object: nil, queue: OperationQueue.main) { [weak self] notifcation in
+        rootViewController.beginAppearanceTransition(true, animated: false)
+        notificationObserver = NotificationCenter.default.addObserver(forName: Notification.Name.UIApplicationDidFinishLaunching, object: nil, queue: OperationQueue.main) { [weak self] notifcation in
+            self?.rootViewController.endAppearanceTransition()
             self?.removeWindowObserver()
             self?.trigger(route, with: TransitionOptions(animated: false), completion: nil)
         }
@@ -85,6 +87,7 @@ open class BasicCoordinator<BasicRoute: Route>: Coordinator {
     private func removeWindowObserver() {
         if let observer = self.notificationObserver {
             NotificationCenter.default.removeObserver(observer)
+            self.notificationObserver = nil
         }
     }
 

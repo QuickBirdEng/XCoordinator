@@ -39,14 +39,6 @@ extension Coordinator {
     public func trigger(_ route: CoordinatorRoute, with options: TransitionOptions, completion: PresentationHandler?) {
         let transition = prepareTransition(for: route)
         performTransition(transition, with: options, completion: completion)
-
-        // Detect first app start and call presented method manually
-        // App doesn't have key window set yet, but the coordinators rootViewController has already it's window
-        if UIApplication.shared.keyWindow == nil && rootViewController.view.window != nil {
-            DispatchQueue.main.async {
-                self.presented(from: nil)
-            }
-        }
     }
 
     // MARK: Convenience methods
@@ -64,7 +56,7 @@ extension Coordinator {
 
     func dismiss(with options: TransitionOptions, animation: Animation?, completion: PresentationHandler?) {
         rootViewController.transitioningDelegate = animation
-        context.dismiss(animated: options.animated, completion: completion)
+        (context ?? rootViewController).dismiss(animated: options.animated, completion: completion)
     }
 
     func embed(_ viewController: UIViewController, in container: Container, with options: TransitionOptions, completion: PresentationHandler?) {
@@ -86,7 +78,7 @@ extension Coordinator {
     func registerPeek<T>(from sourceView: UIView, transitionGenerator: @escaping () -> Transition<T>, completion: PresentationHandler?) {
         let delegate = CoordinatorPreviewingDelegateObject(transition: transitionGenerator, coordinator: AnyCoordinator(self), completion: completion)
         sourceView.strongReferences.append(delegate)
-        
+
         navigationController.registerForPreviewing(with: delegate, sourceView: sourceView)
     }
 
@@ -122,4 +114,9 @@ extension Coordinator {
                                           coordinator: AnyCoordinator(self), completion: completion)
     }
 
+    public func setRoot(for window: UIWindow) {
+        window.rootViewController = rootViewController
+        window.makeKeyAndVisible()
+        presented(from: nil)
+    }
 }

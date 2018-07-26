@@ -11,7 +11,7 @@ import UIKit
 public final class AnyCoordinator<AnyRoute: Route>: Coordinator {
     public typealias CoordinatorRoute = AnyRoute
 
-    private let _context: () -> UIViewController
+    private let _context: () -> UIViewController!
     private let _rootViewController: () -> UIViewController
     private let _transition: (AnyRoute, TransitionOptions, PresentationHandler?) -> Void
     private let _prepareTransition: (CoordinatorRoute) -> Transition<CoordinatorRoute.RootType>
