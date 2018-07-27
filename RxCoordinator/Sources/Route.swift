@@ -9,5 +9,8 @@
 import Foundation
 
 public protocol Route {
-    associatedtype RootType: TransitionType
+    associatedtype TransitionType: Transition
 }
+
+public protocol NavigationRoute: Route where Self.TransitionType == NavigationTransition {}
+public protocol ViewRoute: Route where Self.TransitionType == ViewTransition {}

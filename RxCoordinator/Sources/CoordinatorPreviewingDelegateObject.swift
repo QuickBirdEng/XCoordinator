@@ -7,16 +7,16 @@
 
 import UIKit
 
-class CoordinatorPreviewingDelegateObject<T: TransitionType, R: Route>: NSObject, UIViewControllerPreviewingDelegate {
+class CoordinatorPreviewingDelegateObject<R: Route>: NSObject, UIViewControllerPreviewingDelegate {
 
-    let transition: () -> Transition<T>
+    let transition: () -> R.TransitionType
     let coordinator: AnyCoordinator<R>
     let completion: PresentationHandler?
     var context: UIViewControllerPreviewing? = nil
 
     weak var viewController: UIViewController?
 
-    init(transition: @escaping () -> Transition<T>, coordinator: AnyCoordinator<R>, completion: PresentationHandler?) {
+    init(transition: @escaping () -> R.TransitionType, coordinator: AnyCoordinator<R>, completion: PresentationHandler?) {
         self.transition = transition
         self.coordinator = coordinator
         self.completion = completion

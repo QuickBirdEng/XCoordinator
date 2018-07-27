@@ -9,9 +9,7 @@
 import Foundation
 import RxCoordinator
 
-enum HomeRoute: Route {
-    typealias RootType = TransitionTypeNC
-
+enum HomeRoute: NavigationRoute {
     case home
     case users
     case user(String)
@@ -19,10 +17,10 @@ enum HomeRoute: Route {
     case logout
 }
 
-class HomeCoordinator: BasicCoordinator<HomeRoute> {
+class HomeCoordinator: BaseCoordinator<HomeRoute> {
 
     init() {
-        super.init(initialRoute: .home, initialLoadingType: .presented)
+        super.init(initialRoute: .home)
     }
 
     override func prepareTransition(for route: HomeRoute) -> NavigationTransition {
@@ -42,7 +40,7 @@ class HomeCoordinator: BasicCoordinator<HomeRoute> {
             let coordinator = UserCoordinator(initialRoute: .user(username))
             return .present(coordinator)
         case .registerUserPeek(let source):
-            return .registerPeek(from: source, route: .user("Test"), coordinator: AnyCoordinator(self))
+            return .registerPeek(for: source, route: .user("Test"), coordinator: AnyCoordinator(self))
         case .logout:
             return .dismiss()
         }

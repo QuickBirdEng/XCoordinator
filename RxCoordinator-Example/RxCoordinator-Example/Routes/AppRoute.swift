@@ -9,22 +9,20 @@
 import Foundation
 import RxCoordinator
 
-enum AppRoute: Route {
-    typealias RootType = TransitionTypeNC
-
+enum AppRoute: NavigationRoute {
     case login
     case home
 }
 
-class AppCoordinator: BasicCoordinator<AppRoute> {
+class AppCoordinator: BaseCoordinator<AppRoute> {
 
     init() {
-        super.init(initialRoute: .login, initialLoadingType: .immediately)
+        super.init(initialRoute: .login)
     }
 
     override func presented(from presentable: Presentable?) {
         super.presented(from: presentable)
-
+        
         self.trigger(.home, with: TransitionOptions(animated: false), completion: nil)
     }
 

@@ -11,10 +11,10 @@ import UIKit
 public final class AnyCoordinator<AnyRoute: Route>: Coordinator {
     public typealias CoordinatorRoute = AnyRoute
 
-    private let _context: () -> UIViewController!
+    private let _context: () -> UIViewController?
     private let _rootViewController: () -> UIViewController
     private let _transition: (AnyRoute, TransitionOptions, PresentationHandler?) -> Void
-    private let _prepareTransition: (CoordinatorRoute) -> Transition<CoordinatorRoute.RootType>
+    private let _prepareTransition: (CoordinatorRoute) -> AnyRoute.TransitionType
     private let _presented: (Presentable?) -> Void
 
     public init<U: Coordinator>(_ coordinator: U) where U.CoordinatorRoute == AnyRoute {
@@ -25,7 +25,7 @@ public final class AnyCoordinator<AnyRoute: Route>: Coordinator {
         _presented = coordinator.presented
     }
 
-    public var context: UIViewController! {
+    public var context: UIViewController? {
         return _context()
     }
 
@@ -37,7 +37,7 @@ public final class AnyCoordinator<AnyRoute: Route>: Coordinator {
         return _transition(route, options, completion)
     }
 
-    public func prepareTransition(for route: AnyRoute) -> Transition<AnyRoute.RootType> {
+    public func prepareTransition(for route: AnyRoute) -> CoordinatorRoute.TransitionType {
         return _prepareTransition(route)
     }
 

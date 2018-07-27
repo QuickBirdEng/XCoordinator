@@ -14,24 +14,21 @@ public typealias PresentationHandler = () -> Void
 public protocol Coordinator: Presentable {
     associatedtype CoordinatorRoute: Route
 
-    var context: UIViewController! { get }
+    var context: UIViewController? { get } // TODO: Is this actually needed for every Coordinator?
     var rootViewController: UIViewController { get }
 
     func trigger(_ route: CoordinatorRoute, with options: TransitionOptions, completion: PresentationHandler?)
 
-    func prepareTransition(for route: CoordinatorRoute) -> Transition<CoordinatorRoute.RootType>
+    func prepareTransition(for route: CoordinatorRoute) -> CoordinatorRoute.TransitionType
 
     func presented(from presentable: Presentable?)
 }
 
 extension Coordinator {
+    public typealias TransitionType = CoordinatorRoute.TransitionType
 
     public var viewController: UIViewController! {
         return rootViewController
-    }
-
-    var navigationController: UINavigationController {
-        return viewController as! UINavigationController
     }
 
     public func presented(from presentable: Presentable?) {}
@@ -75,53 +72,31 @@ extension Coordinator {
         completion?()
     }
 
-    func registerPeek<T>(from sourceView: UIView, transitionGenerator: @escaping () -> Transition<T>, completion: PresentationHandler?) {
-        let delegate = CoordinatorPreviewingDelegateObject(transition: transitionGenerator, coordinator: AnyCoordinator(self), completion: completion)
+    func registerPeek(from sourceView: UIView, transitionGenerator: @escaping () -> TransitionType, completion: PresentationHandler?) {
+        let delegate = CoordinatorPreviewingDelegateObject(transition: transitionGenerator, coordinator: AnyCoordinator<CoordinatorRoute>(self), completion: completion)
 
         if let existingContextIndex = sourceView.strongReferences
             .index(where: {
-                $0 is CoordinatorPreviewingDelegateObject<T, CoordinatorRoute>
+                $0 is CoordinatorPreviewingDelegateObject<CoordinatorRoute>
             }),
-            let contextDelegate = sourceView.strongReferences.remove(at: existingContextIndex) as? CoordinatorPreviewingDelegateObject<T, CoordinatorRoute>,
+            let contextDelegate = sourceView.strongReferences.remove(at: existingContextIndex) as? CoordinatorPreviewingDelegateObject<CoordinatorRoute>,
             let context = contextDelegate.context {
-            navigationController.unregisterForPreviewing(withContext: context)
+            rootViewController.unregisterForPreviewing(withContext: context)
         }
 
         sourceView.strongReferences.append(delegate)
 
-        delegate.context = navigationController.registerForPreviewing(with: delegate, sourceView: sourceView)
-    }
-
-    func push(_ viewController: UIViewController, with options: TransitionOptions, animation: Animation?, completion: PresentationHandler?) {
-        CATransaction.begin()
-        CATransaction.setCompletionBlock(completion)
-
-        viewController.transitioningDelegate = animation
-        navigationController.pushViewController(viewController, animated: options.animated)
-
-        CATransaction.commit()
-    }
-
-    func pop(with options: TransitionOptions, toRoot: Bool, animation: Animation?, completion: PresentationHandler?) {
-        CATransaction.begin()
-        CATransaction.setCompletionBlock(completion)
-
-        let currentVC = navigationController.visibleViewController
-        currentVC?.transitioningDelegate = animation
-        if toRoot {
-            navigationController.popToRootViewController(animated: options.animated)
-        } else {
-            navigationController.popViewController(animated: options.animated)
-        }
-
-        CATransaction.commit()
+        delegate.context = rootViewController.registerForPreviewing(with: delegate, sourceView: sourceView)
     }
 
     // MARK: Helpers
 
-    func performTransition<T>(_ transition: Transition<T>, with options: TransitionOptions, completion: PresentationHandler? = nil) {
-        transition.type.performTransition(options: options, animation: transition.animation,
-                                          coordinator: AnyCoordinator(self), completion: completion)
+    func performTransition(_ transition: TransitionType, with options: TransitionOptions, completion: PresentationHandler? = nil) {
+        transition.perform(
+            options: options,
+            coordinator: AnyCoordinator<CoordinatorRoute>(self),
+            completion: completion
+        )
     }
 
     public func setRoot(for window: UIWindow) {
