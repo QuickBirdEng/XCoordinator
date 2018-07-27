@@ -10,6 +10,9 @@ import Foundation
 import UIKit
 
 public protocol Transition {
+    associatedtype RootViewController: UIViewController
+
+    static func generateRootViewController() -> RootViewController
     var presentable: Presentable? { get }
-    func perform<R: Route>(options: TransitionOptions, coordinator: AnyCoordinator<R>, completion: PresentationHandler?) where R.TransitionType == Self
+    func perform<C: Coordinator>(options: TransitionOptions, coordinator: C, completion: PresentationHandler?) where C.TransitionType == Self
 }

@@ -25,7 +25,11 @@ public struct NavigationTransition: Transition {
         self.init(type: .animated(type, animation: animation))
     }
 
-    public func perform<R: Route>(options: TransitionOptions, coordinator: AnyCoordinator<R>, completion: PresentationHandler?) where R.TransitionType == NavigationTransition {
+    public static func generateRootViewController() -> UINavigationController {
+        return UINavigationController()
+    }
+
+    public func perform<C: Coordinator>(options: TransitionOptions, coordinator: C, completion: PresentationHandler?) where NavigationTransition == C.TransitionType {
         return type.perform(options: options, animation: nil, coordinator: coordinator, completion: completion)
     }
     

@@ -18,11 +18,11 @@ open class BasicCoordinator<BasicRoute: Route>: BaseCoordinator<BasicRoute> {
 
     private let initialRoute: BasicRoute?
     private let initialLoadingType: InitialLoadingType
-    private let prepareTransition: ((BasicRoute) -> BasicRoute.TransitionType)?
+    private let prepareTransition: ((BasicRoute) -> TransitionType)?
 
     public init(initialRoute: BasicRoute? = nil,
                 initialLoadingType: InitialLoadingType = .presented,
-                prepareTransition: ((BasicRoute) -> BasicRoute.TransitionType)?) {
+                prepareTransition: ((BasicRoute) -> TransitionType)?) {
         self.initialRoute = initialRoute
         self.initialLoadingType = initialLoadingType
         self.prepareTransition = prepareTransition

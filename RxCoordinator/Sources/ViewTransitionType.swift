@@ -28,7 +28,7 @@ internal enum ViewTransitionType {
         }
     }
 
-    public func perform<R: Route>(options: TransitionOptions, animation: Animation?, coordinator: AnyCoordinator<R>, completion: PresentationHandler?) where R.TransitionType == ViewTransition {
+    public func perform<C: Coordinator>(options: TransitionOptions, animation: Animation?, coordinator: C, completion: PresentationHandler?) where ViewTransition == C.TransitionType {
         switch self {
         case .animated(let transition, let animation):
             return transition.perform(options: options, animation: animation, coordinator: coordinator, completion: completion)

@@ -15,17 +15,18 @@ public protocol Coordinator: Presentable {
     associatedtype CoordinatorRoute: Route
 
     var context: UIViewController? { get } // TODO: Is this actually needed for every Coordinator?
-    var rootViewController: UIViewController { get }
+    var rootViewController: RootViewController { get }
 
     func trigger(_ route: CoordinatorRoute, with options: TransitionOptions, completion: PresentationHandler?)
 
-    func prepareTransition(for route: CoordinatorRoute) -> CoordinatorRoute.TransitionType
+    func prepareTransition(for route: CoordinatorRoute) -> TransitionType
 
     func presented(from presentable: Presentable?)
 }
 
 extension Coordinator {
     public typealias TransitionType = CoordinatorRoute.TransitionType
+    public typealias RootViewController = TransitionType.RootViewController
 
     public var viewController: UIViewController! {
         return rootViewController
@@ -92,11 +93,7 @@ extension Coordinator {
     // MARK: Helpers
 
     func performTransition(_ transition: TransitionType, with options: TransitionOptions, completion: PresentationHandler? = nil) {
-        transition.perform(
-            options: options,
-            coordinator: AnyCoordinator<CoordinatorRoute>(self),
-            completion: completion
-        )
+        transition.perform(options: options, coordinator: self, completion: completion)
     }
 
     public func setRoot(for window: UIWindow) {

@@ -202,6 +202,10 @@
 		9AB2FC7E21D58D420F91CE2C7FD1F432 /* RxSwift-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 5DDE527BBCFC226BEE1E3B13EBBA94DA /* RxSwift-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		9ADCC5F6A43BAD8409CF17FA08D7CEDA /* UIPageControl+Rx.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7AB55F92B728F68ABDCDAD4CD64321D /* UIPageControl+Rx.swift */; };
 		9B49C7D8210B87FC00FE086A /* Coordinator+Navigation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B49C7D7210B87FC00FE086A /* Coordinator+Navigation.swift */; };
+		9B49C7DA210B8D5100FE086A /* Coordinator+TabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B49C7D9210B8D5100FE086A /* Coordinator+TabBar.swift */; };
+		9B49C7DC210B8D8800FE086A /* TabBarTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B49C7DB210B8D8800FE086A /* TabBarTransition.swift */; };
+		9B49C7DE210B8E1D00FE086A /* TabBarTransitionType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B49C7DD210B8E1D00FE086A /* TabBarTransitionType.swift */; };
+		9B49C7E0210B8E3000FE086A /* TabBarTransition+Init.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B49C7DF210B8E3000FE086A /* TabBarTransition+Init.swift */; };
 		9BADD9E4210B4D8D00070BD8 /* BaseCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BADD9E3210B4D8D00070BD8 /* BaseCoordinator.swift */; };
 		9BADD9E6210B64A600070BD8 /* NavigationTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BADD9E5210B64A600070BD8 /* NavigationTransition.swift */; };
 		9BADD9E8210B704900070BD8 /* ViewTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BADD9E7210B704900070BD8 /* ViewTransition.swift */; };
@@ -593,6 +597,10 @@
 		9A739E9484F83C50E8F6C2B2CEDABAAA /* Reduce.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Reduce.swift; path = RxSwift/Observables/Reduce.swift; sourceTree = "<group>"; };
 		9A8CFBBC7B8BAE292B8817A15450E05D /* Transition.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Transition.swift; path = RxCoordinator/Sources/Transition.swift; sourceTree = "<group>"; };
 		9B49C7D7210B87FC00FE086A /* Coordinator+Navigation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "Coordinator+Navigation.swift"; path = "RxCoordinator/Sources/Coordinator+Navigation.swift"; sourceTree = "<group>"; };
+		9B49C7D9210B8D5100FE086A /* Coordinator+TabBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "Coordinator+TabBar.swift"; path = "RxCoordinator/Sources/Coordinator+TabBar.swift"; sourceTree = "<group>"; };
+		9B49C7DB210B8D8800FE086A /* TabBarTransition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = TabBarTransition.swift; path = RxCoordinator/Sources/TabBarTransition.swift; sourceTree = "<group>"; };
+		9B49C7DD210B8E1D00FE086A /* TabBarTransitionType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = TabBarTransitionType.swift; path = RxCoordinator/Sources/TabBarTransitionType.swift; sourceTree = "<group>"; };
+		9B49C7DF210B8E3000FE086A /* TabBarTransition+Init.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "TabBarTransition+Init.swift"; path = "RxCoordinator/Sources/TabBarTransition+Init.swift"; sourceTree = "<group>"; };
 		9B6C91E20B25D6912714EFE4B4FE5F00 /* Lock.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Lock.swift; path = RxSwift/Concurrency/Lock.swift; sourceTree = "<group>"; };
 		9BADD9E3210B4D8D00070BD8 /* BaseCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = BaseCoordinator.swift; path = RxCoordinator/Sources/BaseCoordinator.swift; sourceTree = "<group>"; };
 		9BADD9E5210B64A600070BD8 /* NavigationTransition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = NavigationTransition.swift; path = RxCoordinator/Sources/NavigationTransition.swift; sourceTree = "<group>"; };
@@ -1273,6 +1281,7 @@
 				17EFAA1C40023BA8FBA0DA1EC21C95EE /* Container.swift */,
 				BA23F0778C4552C7A3FE35D2EB8BA624 /* Coordinator.swift */,
 				9B49C7D7210B87FC00FE086A /* Coordinator+Navigation.swift */,
+				9B49C7D9210B8D5100FE086A /* Coordinator+TabBar.swift */,
 				2E10C30C529DD7B6C928CE64FBA8F488 /* CoordinatorPreviewingDelegateObject.swift */,
 				B20B3033C566E71038A7664980FC4DD1 /* InteractiveTransitionAnimation.swift */,
 				3233D5252ADAFA37857DEBC28CADC36C /* Presentable.swift */,
@@ -1286,6 +1295,9 @@
 				9BADD9E5210B64A600070BD8 /* NavigationTransition.swift */,
 				9BADD9ED210B7A2500070BD8 /* NavigationTransition+Init.swift */,
 				9BADD9EB210B77DA00070BD8 /* NavigationTransitionType.swift */,
+				9B49C7DB210B8D8800FE086A /* TabBarTransition.swift */,
+				9B49C7DD210B8E1D00FE086A /* TabBarTransitionType.swift */,
+				9B49C7DF210B8E3000FE086A /* TabBarTransition+Init.swift */,
 				A39B84AAD8CED126AC4872B447033836 /* TransitionAnimation.swift */,
 				50E1DE218D628DCE142DEEFB8AAC8959 /* TransitionOptions.swift */,
 				000232415123AEC72FB7FBEE860B44D6 /* UIView+Store.swift */,
@@ -1830,13 +1842,17 @@
 				3A6A7C2194E762E1F308EE68AFCD6B90 /* Animation.swift in Sources */,
 				C2B7C7750CF84C07852694E583FC683D /* AnyCoordinator.swift in Sources */,
 				9B49C7D8210B87FC00FE086A /* Coordinator+Navigation.swift in Sources */,
+				9B49C7DC210B8D8800FE086A /* TabBarTransition.swift in Sources */,
+				9B49C7E0210B8E3000FE086A /* TabBarTransition+Init.swift in Sources */,
 				9BADD9E4210B4D8D00070BD8 /* BaseCoordinator.swift in Sources */,
 				9BADD9EC210B77DA00070BD8 /* NavigationTransitionType.swift in Sources */,
 				288DEDF068A7A1466D1A956179F94D9A /* BasicCoordinator.swift in Sources */,
 				CBCB6ADD702BAD0AC7AE8CBDD43CF6AE /* Container.swift in Sources */,
 				F9EB5BDB7783DA6554652E31D7C90A64 /* Coordinator+Rx.swift in Sources */,
+				9B49C7DA210B8D5100FE086A /* Coordinator+TabBar.swift in Sources */,
 				130C936A27CACE0418691611FCA610E2 /* Coordinator.swift in Sources */,
 				9BADD9EA210B77C600070BD8 /* ViewTransitionType.swift in Sources */,
+				9B49C7DE210B8E1D00FE086A /* TabBarTransitionType.swift in Sources */,
 				C1F1394D8C0932E598F3DEF97B9C42FE /* CoordinatorPreviewingDelegateObject.swift in Sources */,
 				DBFEE622AAB25AF7E7A76234E7FFD605 /* InteractiveTransitionAnimation.swift in Sources */,
 				C536B772C83F56C9D05802863EAB6201 /* Presentable.swift in Sources */,

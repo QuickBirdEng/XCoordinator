@@ -12,7 +12,7 @@ public final class AnyCoordinator<AnyRoute: Route>: Coordinator {
     public typealias CoordinatorRoute = AnyRoute
 
     private let _context: () -> UIViewController?
-    private let _rootViewController: () -> UIViewController
+    private let _rootViewController: () -> CoordinatorRoute.TransitionType.RootViewController
     private let _transition: (AnyRoute, TransitionOptions, PresentationHandler?) -> Void
     private let _prepareTransition: (CoordinatorRoute) -> AnyRoute.TransitionType
     private let _presented: (Presentable?) -> Void
@@ -29,7 +29,7 @@ public final class AnyCoordinator<AnyRoute: Route>: Coordinator {
         return _context()
     }
 
-    public var rootViewController: UIViewController {
+    public var rootViewController: CoordinatorRoute.TransitionType.RootViewController {
         return _rootViewController()
     }
 

@@ -7,10 +7,14 @@
 
 import UIKit
 
-open class BaseCoordinator<CoordinatorRoute: Route>: Coordinator {
+extension BaseCoordinator {
+    public typealias TransitionType = CoordinatorRoute.TransitionType
+    public typealias RootViewController = TransitionType.RootViewController
+}
 
+open class BaseCoordinator<CoordinatorRoute: Route>: Coordinator {
     public internal(set) var context: UIViewController?
-    public var rootViewController: UIViewController {
+    public var rootViewController: RootViewController {
         get {
             return rootVCReferenceBox.get()!
         }
@@ -19,11 +23,11 @@ open class BaseCoordinator<CoordinatorRoute: Route>: Coordinator {
         }
     }
 
-    private let rootVCReferenceBox = ReferenceBox<UIViewController>()
+    private let rootVCReferenceBox = ReferenceBox<RootViewController>()
     private var windowAppearanceObserver: Any?
 
     public init(initialRoute: CoordinatorRoute?) {
-        self.rootVCReferenceBox.set(UINavigationController())
+        self.rootVCReferenceBox.set(TransitionType.generateRootViewController())
         if let initialRoute = initialRoute {
             triggerRouteAfterWindowAppeared(initialRoute)
         }
