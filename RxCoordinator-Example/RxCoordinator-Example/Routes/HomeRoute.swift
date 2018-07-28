@@ -26,12 +26,10 @@ class HomeCoordinator: BaseCoordinator<HomeRoute> {
         trigger(.news)
     }
 
-    let newsVC: NewsViewController = {
-        var vc = NewsViewController.instantiateFromNib()
-        let viewModel = NewsViewModelImpl()
-        vc.bind(to: viewModel)
-        vc.tabBarItem = UITabBarItem(tabBarSystemItem: .featured, tag: 0)
-        return vc
+    let newsCoordinator: NewsCoordinator = {
+        let coordinator = NewsCoordinator()
+        coordinator.rootViewController.tabBarItem = UITabBarItem(tabBarSystemItem: .featured, tag: 0)
+        return coordinator
     }()
 
     let userListCoordinator: UserListCoordinator = {
@@ -43,9 +41,9 @@ class HomeCoordinator: BaseCoordinator<HomeRoute> {
     override func prepareTransition(for route: HomeRoute) -> TabBarTransition {
         switch route {
         case .news:
-            return .select(newsVC)
+            return .select(newsCoordinator)
         case .initialize:
-            return .set([newsVC, userListCoordinator])
+            return .set([newsCoordinator, userListCoordinator])
         case .userList:
             return .select(userListCoordinator)
         }

@@ -7,7 +7,7 @@
 
 import Foundation
 
-public struct TabBarTransition: Transition {
+public struct TabBarTransition {
     private let type: TabBarTransitionType
 
     private init(type: TabBarTransitionType) {
@@ -21,6 +21,9 @@ public struct TabBarTransition: Transition {
         }
         self.init(type: .animated(type, animation: animation))
     }
+}
+
+extension TabBarTransition: Transition {
     public static func generateRootViewController() -> UITabBarController {
         return UITabBarController()
     }

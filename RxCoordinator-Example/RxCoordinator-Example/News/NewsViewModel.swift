@@ -11,9 +11,12 @@ import RxSwift
 import Action
 
 protocol NewsViewModelInput {
+    var selectedNews: InputSubject<News> { get }
 }
 
 protocol NewsViewModelOutput {
+    var news: Observable<[News]> { get }
+    var title: Observable<String> { get }
 }
 
 protocol NewsViewModel {

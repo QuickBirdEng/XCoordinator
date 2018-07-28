@@ -44,7 +44,7 @@ open class BasicCoordinator<BasicRoute: Route>: BaseCoordinator<BasicRoute> {
         }
     }
 
-    open override func prepareTransition(for route: BasicRoute) -> BasicRoute.TransitionType {
+    open override func prepareTransition(for route: BasicRoute) -> TransitionType {
         if let prepareTransition = prepareTransition {
             return prepareTransition(route)
         } else {
