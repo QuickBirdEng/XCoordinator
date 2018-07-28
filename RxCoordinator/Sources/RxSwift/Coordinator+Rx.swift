@@ -7,7 +7,7 @@
 
 import RxSwift
 
-public extension Coordinator {
+public extension RouteTrigger {
 
     public var rx: Reactive<Self> {
         return Reactive(self)
@@ -15,9 +15,9 @@ public extension Coordinator {
 
 }
 
-extension Reactive where Base: Coordinator {
+extension Reactive where Base: RouteTrigger {
 
-    public func trigger(_ route: Base.CoordinatorRoute, with options: TransitionOptions) -> Observable<Void> {
+    public func trigger(_ route: Base.RouteType, with options: TransitionOptions) -> Observable<Void> {
         return Observable.create { observer -> Disposable in
             self.base.trigger(route, with: options) {
                 observer.onNext(())
@@ -30,7 +30,7 @@ extension Reactive where Base: Coordinator {
 
     // MARK: Convenience methods
 
-    public func trigger(_ route: Base.CoordinatorRoute) -> Observable<Void> {
+    public func trigger(_ route: Base.RouteType) -> Observable<Void> {
         return trigger(route, with: TransitionOptions.default)
     }
 

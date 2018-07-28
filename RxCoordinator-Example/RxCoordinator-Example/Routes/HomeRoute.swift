@@ -9,13 +9,13 @@
 import Foundation
 import RxCoordinator
 
-enum HomeRoute: TabBarRoute {
+enum HomeRoute: Route {
     case initialize
     case news
     case userList
 }
 
-class HomeCoordinator: BaseCoordinator<HomeRoute> {
+class HomeCoordinator: TabBarCoordinator<HomeRoute> {
 
     init() {
         super.init(initialRoute: .initialize)

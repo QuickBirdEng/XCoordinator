@@ -11,38 +11,31 @@ import UIKit
 
 public typealias PresentationHandler = () -> Void
 
-public protocol Coordinator: Presentable {
-    associatedtype CoordinatorRoute: Route
+public protocol Coordinator: RouteTrigger, Presentable {
+    associatedtype TransitionType: Transition
 
     var context: UIViewController? { get } // TODO: Is this actually needed for every Coordinator?
     var rootViewController: RootViewController { get }
 
-    func trigger(_ route: CoordinatorRoute, with options: TransitionOptions, completion: PresentationHandler?)
-
-    func prepareTransition(for route: CoordinatorRoute) -> TransitionType
-
-    func presented(from presentable: Presentable?)
+    func prepareTransition(for route: RouteType) -> TransitionType
 }
 
 extension Coordinator {
-    public typealias TransitionType = CoordinatorRoute.TransitionType
     public typealias RootViewController = TransitionType.RootViewController
 
     public var viewController: UIViewController! {
         return rootViewController
     }
 
-    public func presented(from presentable: Presentable?) {}
-
-    public func trigger(_ route: CoordinatorRoute, with options: TransitionOptions, completion: PresentationHandler?) {
-        let transition = prepareTransition(for: route)
-        performTransition(transition, with: options, completion: completion)
+    public var anyCoordinator: AnyCoordinator<RouteType> {
+        return AnyCoordinator(self)
     }
 
-    // MARK: Convenience methods
+    public func presented(from presentable: Presentable?) {}
 
-    public func trigger(_ route: CoordinatorRoute, completion: PresentationHandler? = nil)  {
-        return trigger(route, with: TransitionOptions.default, completion: completion)
+    public func trigger(_ route: RouteType, with options: TransitionOptions, completion: PresentationHandler?) {
+        let transition = prepareTransition(for: route)
+        performTransition(transition, with: options, completion: completion)
     }
 
     // MARK: Helpers

@@ -9,12 +9,12 @@
 import Foundation
 import RxCoordinator
 
-enum AppRoute: NavigationRoute {
+enum AppRoute: Route {
     case login
     case home
 }
 
-class AppCoordinator: BaseCoordinator<AppRoute> {
+class AppCoordinator: NavigationCoordinator<AppRoute> {
 
     init() {
         super.init(initialRoute: .login)
@@ -30,7 +30,7 @@ class AppCoordinator: BaseCoordinator<AppRoute> {
         switch route {
         case .login:
             var vc = LoginViewController.instantiateFromNib()
-            let viewModel = LoginViewModelImpl(coordinator: AnyCoordinator(self))
+            let viewModel = LoginViewModelImpl(coordinator: anyCoordinator)
             vc.bind(to: viewModel)
             return .push(vc)
         case .home:

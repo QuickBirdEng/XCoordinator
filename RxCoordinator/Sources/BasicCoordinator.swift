@@ -8,7 +8,11 @@
 
 import UIKit
 
-open class BasicCoordinator<BasicRoute: Route>: BaseCoordinator<BasicRoute> {
+public typealias BasicNavigationCoordinator<R: Route> = BasicCoordinator<R, NavigationTransition>
+public typealias BasicViewCoordinator<R: Route> = BasicCoordinator<R, ViewTransition>
+public typealias BasicTabBarCoordinator<R: Route> = BasicCoordinator<R, TabBarTransition>
+
+open class BasicCoordinator<BasicRoute: Route, TransitionType: Transition>: BaseCoordinator<BasicRoute, TransitionType> {
     public typealias CoordinatorRoute = BasicRoute
 
     public enum InitialLoadingType {

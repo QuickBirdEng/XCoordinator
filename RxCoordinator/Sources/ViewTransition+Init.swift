@@ -16,7 +16,7 @@ extension ViewTransition {
         return ViewTransition(type: .embed(presentable, in: container), animation: nil)
     }
 
-    public static func registerPeek<C: Coordinator>(from source: Container, route: C.CoordinatorRoute, coordinator: C) -> ViewTransition where C.CoordinatorRoute.TransitionType == ViewTransition {
+    public static func registerPeek<C: Coordinator>(from source: Container, route: C.RouteType, coordinator: C) -> ViewTransition where C.TransitionType == ViewTransition {
         return ViewTransition(type: .registerPeek(container: source, transitionGenerator: {
             coordinator.prepareTransition(for: route)
         }), animation: nil)

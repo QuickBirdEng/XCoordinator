@@ -8,10 +8,4 @@
 
 import Foundation
 
-public protocol Route {
-    associatedtype TransitionType: Transition
-}
-
-public protocol NavigationRoute: Route where Self.TransitionType == NavigationTransition {}
-public protocol ViewRoute: Route where Self.TransitionType == ViewTransition {}
-public protocol TabBarRoute: Route where Self.TransitionType == TabBarTransition {}
+public protocol Route {}

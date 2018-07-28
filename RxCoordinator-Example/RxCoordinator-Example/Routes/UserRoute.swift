@@ -9,19 +9,18 @@
 import Foundation
 import RxCoordinator
 
-enum UserRoute: NavigationRoute {
+enum UserRoute: Route {
     case user(String)
     case alert(title: String, message: String)
     case users
 }
 
-class UserCoordinator: BaseCoordinator<UserRoute> {
+class UserCoordinator: NavigationCoordinator<UserRoute> {
     override func prepareTransition(for route: UserRoute) -> NavigationTransition {
-        let coordinator = AnyCoordinator(self)
         switch route {
         case let .user(username):
             var vc = UserViewController.instantiateFromNib()
-            let viewModel = UserViewModelImpl(coordinator: coordinator, username: username)
+            let viewModel = UserViewModelImpl(coordinator: anyCoordinator, username: username)
             vc.bind(to: viewModel)
             return .push(vc)
         case let .alert(title, message):

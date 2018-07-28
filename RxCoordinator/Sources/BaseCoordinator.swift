@@ -7,12 +7,15 @@
 
 import UIKit
 
+public typealias NavigationCoordinator<R: Route> = BaseCoordinator<R, NavigationTransition>
+public typealias ViewCoordinator<R: Route> = BaseCoordinator<R, ViewTransition>
+public typealias TabBarCoordinator<R: Route> = BaseCoordinator<R, TabBarTransition>
+
 extension BaseCoordinator {
-    public typealias TransitionType = CoordinatorRoute.TransitionType
     public typealias RootViewController = TransitionType.RootViewController
 }
 
-open class BaseCoordinator<CoordinatorRoute: Route>: Coordinator {
+open class BaseCoordinator<RouteType: Route, TransitionType: Transition>: Coordinator {
     public internal(set) var context: UIViewController?
     public var rootViewController: RootViewController {
         get {
@@ -26,7 +29,7 @@ open class BaseCoordinator<CoordinatorRoute: Route>: Coordinator {
     private let rootVCReferenceBox = ReferenceBox<RootViewController>()
     private var windowAppearanceObserver: Any?
 
-    public init(initialRoute: CoordinatorRoute?) {
+    public init(initialRoute: RouteType?) {
         self.rootVCReferenceBox.set(TransitionType.generateRootViewController())
         if let initialRoute = initialRoute {
             triggerRouteAfterWindowAppeared(initialRoute)
@@ -39,13 +42,13 @@ open class BaseCoordinator<CoordinatorRoute: Route>: Coordinator {
         }
     }
 
-    open func prepareTransition(for route: CoordinatorRoute) -> TransitionType {
+    open func prepareTransition(for route: RouteType) -> TransitionType {
         fatalError("Please override the \(#function) method.")
     }
 
     // MARK: - Helper methods
 
-    private func triggerRouteAfterWindowAppeared(_ route: CoordinatorRoute) {
+    private func triggerRouteAfterWindowAppeared(_ route: RouteType) {
         guard UIApplication.shared.keyWindow == nil else {
             return trigger(route, with: TransitionOptions(animated: false), completion: nil)
         }

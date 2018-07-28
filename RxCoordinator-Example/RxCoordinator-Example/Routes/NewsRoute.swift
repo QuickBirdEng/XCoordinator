@@ -8,23 +8,23 @@
 
 import RxCoordinator
 
-enum NewsRoute: NavigationRoute {
+enum NewsRoute: Route {
     case news
     case newsDetail(News)
 }
 
-class NewsCoordinator: BaseCoordinator<NewsRoute> {
+class NewsCoordinator: NavigationCoordinator<NewsRoute> {
     init() {
         super.init(initialRoute: .news)
     }
 
     override func prepareTransition(for route: NewsRoute) -> NavigationTransition {
+        let `self` = AnyCoordinator(self)
         switch route {
         case .news:
-            let coordinator = AnyCoordinator(self)
             var vc = NewsViewController.instantiateFromNib()
             let service = MockNewsService()
-            let viewModel = NewsViewModelImpl(newsService: service, coordinator: coordinator)
+            let viewModel = NewsViewModelImpl(newsService: service, coordinator: self)
             vc.bind(to: viewModel)
             return .push(vc)
         case .newsDetail(let news):

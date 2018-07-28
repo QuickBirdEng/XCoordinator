@@ -8,7 +8,7 @@
 
 import RxCoordinator
 
-enum UserListRoute: NavigationRoute {
+enum UserListRoute: Route {
     case home
     case users
     case user(String)
@@ -16,30 +16,29 @@ enum UserListRoute: NavigationRoute {
     case logout
 }
 
-class UserListCoordinator: BaseCoordinator<UserListRoute> {
+class UserListCoordinator: NavigationCoordinator<UserListRoute> {
     init() {
         super.init(initialRoute: .home)
     }
 
     override func prepareTransition(for route: UserListRoute) -> NavigationTransition {
-        let coordinator = AnyCoordinator(self)
         switch route {
         case .home:
             var vc = HomeViewController.instantiateFromNib()
-            let vm = HomeViewModelImpl(coodinator: coordinator)
+            let vm = HomeViewModelImpl(coodinator: anyCoordinator)
             vc.bind(to: vm)
             return .push(vc)
         case .users:
             let animation = Animation(presentationAnimation: CustomPresentations.flippingPresentation, dismissalAnimation: nil)
             var vc = UsersViewController.instantiateFromNib()
-            let vm = UsersViewModelImpl.init(coordinator: coordinator)
+            let vm = UsersViewModelImpl(coordinator: anyCoordinator)
             vc.bind(to: vm)
             return .push(vc, animation: animation)
         case .user(let username):
             let coordinator = UserCoordinator(initialRoute: .user(username))
             return .present(coordinator)
         case .registerUserPeek(let source):
-            return .registerPeek(for: source, route: .user("Test"), coordinator: AnyCoordinator(self))
+            return .registerPeek(for: source, route: .user("Test"), coordinator: self)
         case .logout:
             return .dismiss()
         }

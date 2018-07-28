@@ -39,13 +39,13 @@ extension Coordinator {
     }
 
     func registerPeek(from sourceView: UIView, transitionGenerator: @escaping () -> TransitionType, completion: PresentationHandler?) {
-        let delegate = CoordinatorPreviewingDelegateObject(transition: transitionGenerator, coordinator: AnyCoordinator<CoordinatorRoute>(self), completion: completion)
+        let delegate = CoordinatorPreviewingDelegateObject(transition: transitionGenerator, coordinator: self, completion: completion)
 
         if let existingContextIndex = sourceView.strongReferences
             .index(where: {
-                $0 is CoordinatorPreviewingDelegateObject<CoordinatorRoute>
+                $0 is CoordinatorPreviewingDelegateObject<Self>
             }),
-            let contextDelegate = sourceView.strongReferences.remove(at: existingContextIndex) as? CoordinatorPreviewingDelegateObject<CoordinatorRoute>,
+            let contextDelegate = sourceView.strongReferences.remove(at: existingContextIndex) as? CoordinatorPreviewingDelegateObject<Self>,
             let context = contextDelegate.context {
             rootViewController.unregisterForPreviewing(withContext: context)
         }

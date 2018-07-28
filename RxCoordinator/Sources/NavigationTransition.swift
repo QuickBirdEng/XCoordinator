@@ -33,7 +33,7 @@ public struct NavigationTransition: Transition {
         return type.perform(options: options, animation: nil, coordinator: coordinator, completion: completion)
     }
     
-    public static func registerPeek<R: Route>(for source: Container, route: R, coordinator: AnyCoordinator<R>) -> NavigationTransition where R.TransitionType == NavigationTransition {
+    public static func registerPeek<C: Coordinator>(for source: Container, route: C.RouteType, coordinator: C) -> NavigationTransition where C.TransitionType == NavigationTransition {
         return NavigationTransition(type: .registerPeek(source: source, transitionGenerator: {
             coordinator.prepareTransition(for: route)
         }))
