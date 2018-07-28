@@ -17,6 +17,8 @@
 		9B49C7F0210BF49400FE086A /* NewsViewModelImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B49C7E6210BF21900FE086A /* NewsViewModelImpl.swift */; };
 		9B49C7F1210BF49700FE086A /* NewsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B49C7E7210BF21900FE086A /* NewsViewModel.swift */; };
 		9B49C7F2210BF49D00FE086A /* NewsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9B49C7E8210BF21900FE086A /* NewsViewController.xib */; };
+		9B49C7F3210C0DC400FE086A /* UserViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCB0DD0120A320D600BC79B6 /* UserViewModel.swift */; };
+		9B49C7F4210C0DCA00FE086A /* UserViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = DCB0DD0220A320D600BC79B6 /* UserViewController.xib */; };
 		D764127CE2E83540A6A04C85 /* Pods_RxCoordinator_ExampleUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 94C85FCF223E5BFA00F4C4AA /* Pods_RxCoordinator_ExampleUITests.framework */; };
 		DC36CC95209B440D009EB669 /* BindableType.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC36CC94209B440D009EB669 /* BindableType.swift */; };
 		DC36CC96209B440D009EB669 /* BindableType.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC36CC94209B440D009EB669 /* BindableType.swift */; };
@@ -382,6 +384,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				DC36CC9F209B4436009EB669 /* LoginViewController.xib in Resources */,
+				9B49C7F4210C0DCA00FE086A /* UserViewController.xib in Resources */,
 				DCB6B9B8209C77B500829EFB /* UsersViewController.xib in Resources */,
 				DCB6B9A7209C4BE200829EFB /* HomeViewController.xib in Resources */,
 				9B49C7F2210BF49D00FE086A /* NewsViewController.xib in Resources */,
@@ -498,6 +501,7 @@
 				9B49C7EE210BF48E00FE086A /* UserListRoute.swift in Sources */,
 				DCB6B9A3209C4BE200829EFB /* HomeViewController.swift in Sources */,
 				DC36CC9B209B4436009EB669 /* LoginViewController.swift in Sources */,
+				9B49C7F3210C0DC400FE086A /* UserViewModel.swift in Sources */,
 				DC36CC96209B440D009EB669 /* BindableType.swift in Sources */,
 				DCB29688209B415700698A44 /* NibIdentifiable.swift in Sources */,
 				F6E0371420AF77DF0027EE31 /* UserRoute.swift in Sources */,

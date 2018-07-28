@@ -13,7 +13,6 @@ enum UserRoute: NavigationRoute {
     case user(String)
     case alert(title: String, message: String)
     case users
-    case dismiss
 }
 
 class UserCoordinator: BaseCoordinator<UserRoute> {
@@ -27,13 +26,9 @@ class UserCoordinator: BaseCoordinator<UserRoute> {
             return .push(vc)
         case let .alert(title, message):
             let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
-            let doneAction = UIAlertAction(title: "Done", style: .default, handler: { _ in
-                self.trigger(.dismiss)
-            })
+            let doneAction = UIAlertAction(title: "Done", style: .default, handler: { _ in })
             alert.addAction(doneAction)
             return .present(alert)
-        case .dismiss:
-            return .dismiss()
         case .users:
             return .dismiss()
         }
