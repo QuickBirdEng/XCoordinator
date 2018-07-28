@@ -1,17 +1,14 @@
 //
-//  HomeRoute.swift
+//  UserListCoordinator.swift
 //  RxCoordinator-Example
 //
-//  Created by Joan Disho on 04.05.18.
+//  Created by Paul Kraft on 28.07.18.
 //  Copyright © 2018 Joan Disho. All rights reserved.
 //
 
-import Foundation
 import RxCoordinator
 
-enum HomeRoute: Route {
-    typealias RootType = TransitionTypeNC
-
+enum UserListRoute: Route {
     case home
     case users
     case user(String)
@@ -19,34 +16,31 @@ enum HomeRoute: Route {
     case logout
 }
 
-class HomeCoordinator: BasicCoordinator<HomeRoute> {
-
+class UserListCoordinator: NavigationCoordinator<UserListRoute> {
     init() {
-        super.init(initialRoute: .home, initialLoadingType: .presented)
+        super.init(initialRoute: .home)
     }
 
-    override func prepareTransition(for route: HomeRoute) -> NavigationTransition {
+    override func prepareTransition(for route: UserListRoute) -> NavigationTransition {
         switch route {
         case .home:
             var vc = HomeViewController.instantiateFromNib()
-            let viewModel = HomeViewModelImpl(coodinator: AnyCoordinator(self))
-            vc.bind(to: viewModel)
+            let vm = HomeViewModelImpl(coodinator: anyCoordinator)
+            vc.bind(to: vm)
             return .push(vc)
         case .users:
             let animation = Animation(presentationAnimation: CustomPresentations.flippingPresentation, dismissalAnimation: nil)
             var vc = UsersViewController.instantiateFromNib()
-            let viewModel = UsersViewModelImpl(coordinator: AnyCoordinator(self))
-            vc.bind(to: viewModel)
+            let vm = UsersViewModelImpl(coordinator: anyCoordinator)
+            vc.bind(to: vm)
             return .push(vc, animation: animation)
         case .user(let username):
             let coordinator = UserCoordinator(initialRoute: .user(username))
             return .present(coordinator)
         case .registerUserPeek(let source):
-            return .registerPeek(from: source, route: .user("Test"), coordinator: AnyCoordinator(self))
+            return .registerPeek(for: source, route: .user("Test"), coordinator: self)
         case .logout:
             return .dismiss()
         }
     }
-
 }
-

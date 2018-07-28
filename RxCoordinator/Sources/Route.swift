@@ -8,6 +8,4 @@
 
 import Foundation
 
-public protocol Route {
-    associatedtype RootType: TransitionType
-}
+public protocol Route {}

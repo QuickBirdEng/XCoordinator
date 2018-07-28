@@ -38,7 +38,7 @@ class UsersViewModelImpl: UsersViewModel, UsersViewModelInput, UsersViewModelOut
     ])
 
     // MARK: - Private
-    private let coordinator: AnyCoordinator<HomeRoute>
+    private let coordinator: AnyCoordinator<UserListRoute>
 
     private lazy var showUserAction = Action<String, Void> { [weak self] username in
         guard let `self` = self else { return .empty() }
@@ -47,7 +47,7 @@ class UsersViewModelImpl: UsersViewModel, UsersViewModelInput, UsersViewModelOut
 
     // MARK: - Init
 
-    init(coordinator: AnyCoordinator<HomeRoute>) {
+    init(coordinator: AnyCoordinator<UserListRoute>) {
         self.coordinator = coordinator
     }
 

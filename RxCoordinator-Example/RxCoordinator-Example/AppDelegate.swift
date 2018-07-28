@@ -11,16 +11,11 @@ import RxCoordinator
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
-
-    var window: UIWindow?
-    var coordinator: BasicCoordinator<AppRoute>!
+    let window: UIWindow! = UIWindow()
+    let coordinator = AppCoordinator()
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
-        guard let window = self.window else { return false }
-
-        coordinator = AppCoordinator()
-        window.rootViewController = coordinator.rootViewController
-
+        coordinator.setRoot(for: window)
         return true
     }
 }
