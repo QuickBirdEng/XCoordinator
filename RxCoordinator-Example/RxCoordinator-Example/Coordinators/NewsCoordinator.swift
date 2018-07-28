@@ -1,5 +1,5 @@
 //
-//  NewsRoute.swift
+//  NewsCoordinator.swift
 //  RxCoordinator-Example
 //
 //  Created by Paul Kraft on 28.07.18.

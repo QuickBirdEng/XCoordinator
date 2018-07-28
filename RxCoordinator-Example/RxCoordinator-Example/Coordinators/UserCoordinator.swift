@@ -1,5 +1,5 @@
 //
-//  UserRoute.swift
+//  UserCoordinator.swift
 //  RxCoordinator-Example
 //
 //  Created by Joan Disho on 09.05.18.

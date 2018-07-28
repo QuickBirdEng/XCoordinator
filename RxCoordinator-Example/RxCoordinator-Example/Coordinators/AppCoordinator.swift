@@ -1,5 +1,5 @@
 //
-//  MainRoute.swift
+//  AppCoordinator.swift
 //  RxCoordinator-Example
 //
 //  Created by Joan Disho on 03.05.18.

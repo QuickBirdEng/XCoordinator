@@ -1,5 +1,5 @@
 //
-//  UserListRoute.swift
+//  UserListCoordinator.swift
 //  RxCoordinator-Example
 //
 //  Created by Paul Kraft on 28.07.18.

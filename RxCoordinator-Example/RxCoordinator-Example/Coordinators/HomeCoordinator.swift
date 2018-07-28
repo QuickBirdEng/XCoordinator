@@ -1,5 +1,5 @@
 //
-//  HomeRoute.swift
+//  HomeCoordinator.swift
 //  RxCoordinator-Example
 //
 //  Created by Joan Disho on 04.05.18.
