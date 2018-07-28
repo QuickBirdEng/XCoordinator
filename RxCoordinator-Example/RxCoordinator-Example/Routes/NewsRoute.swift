@@ -23,7 +23,6 @@ class NewsCoordinator: BaseCoordinator<NewsRoute> {
         case .news:
             let coordinator = AnyCoordinator(self)
             var vc = NewsViewController.instantiateFromNib()
-            let qbURL = URL(string: "https://quickbirdstudios.com/blog/feed/")!
             let service = MockNewsService()
             let viewModel = NewsViewModelImpl(newsService: service, coordinator: coordinator)
             vc.bind(to: viewModel)
