@@ -15,26 +15,27 @@ class NewsViewController: UIViewController, BindableType {
     var viewModel: NewsViewModel!
 
     @IBOutlet var tableView: UITableView!
+
     private let disposeBag = DisposeBag()
+    private let tableViewCellIdentifier = String(describing: DetailTableViewCell.self)
 
     // MARK: - Init
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        tableView.register(DetailTableViewCell.self, forCellReuseIdentifier: tableViewCellIdentifier)
         tableView.rowHeight = 44
     }
 
     // MARK: - BindableType
 
     func bindViewModel() {
-        let cellID = String(describing: DetailTableViewCell.self)
-        tableView.register(DetailTableViewCell.self, forCellReuseIdentifier: cellID)
         viewModel.output.news
-            .bind(to: tableView.rx.items(cellIdentifier: cellID)) { index, model, cell in
-                cell.textLabel!.text = model.title
-                cell.detailTextLabel!.text = model.subtitle
-                cell.imageView!.image = model.image
+            .bind(to: tableView.rx.items(cellIdentifier: tableViewCellIdentifier)) { index, model, cell in
+                cell.textLabel?.text = model.title
+                cell.detailTextLabel?.text = model.subtitle
+                cell.imageView?.image = model.image
             }
             .disposed(by: disposeBag)
 

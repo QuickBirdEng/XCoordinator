@@ -26,7 +26,7 @@ class UserCoordinator: BaseCoordinator<UserRoute> {
             return .push(vc)
         case let .alert(title, message):
             let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
-            let doneAction = UIAlertAction(title: "Done", style: .default, handler: { _ in })
+            let doneAction = UIAlertAction(title: "Done", style: .default, handler: nil)
             alert.addAction(doneAction)
             return .present(alert)
         case .users:

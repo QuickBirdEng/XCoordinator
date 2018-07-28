@@ -22,10 +22,16 @@ extension Coordinator {
         viewController.view.translatesAutoresizingMaskIntoConstraints = false
         container.view.addSubview(viewController.view)
 
-        container.view.leadingAnchor.constraint(equalTo: viewController.view.leadingAnchor).isActive = true
-        container.view.rightAnchor.constraint(equalTo: viewController.view.rightAnchor).isActive = true
-        container.view.topAnchor.constraint(equalTo: viewController.view.topAnchor).isActive = true
-        container.view.bottomAnchor.constraint(equalTo: viewController.view.bottomAnchor).isActive = true
+        NSLayoutConstraint.activate([
+            container.view.leadingAnchor
+                .constraint(equalTo: viewController.view.leadingAnchor),
+            container.view.rightAnchor
+                .constraint(equalTo: viewController.view.rightAnchor),
+            container.view.topAnchor
+                .constraint(equalTo: viewController.view.topAnchor),
+            container.view.bottomAnchor
+                .constraint(equalTo: viewController.view.bottomAnchor)
+        ])
 
         viewController.didMove(toParentViewController: container.viewController)
 

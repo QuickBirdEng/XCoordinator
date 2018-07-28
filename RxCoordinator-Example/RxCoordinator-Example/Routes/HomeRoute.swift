@@ -34,7 +34,7 @@ class HomeCoordinator: BaseCoordinator<HomeRoute> {
 
     let userListCoordinator: UserListCoordinator = {
         let coordinator = UserListCoordinator()
-        coordinator.rootViewController.tabBarItem = UITabBarItem(tabBarSystemItem: UITabBarSystemItem.more, tag: 1)
+        coordinator.rootViewController.tabBarItem = UITabBarItem(tabBarSystemItem: .more, tag: 1)
         return coordinator
     }()
 
