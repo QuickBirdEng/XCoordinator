@@ -17,6 +17,7 @@ enum UserListRoute: Route {
 }
 
 class UserListCoordinator: NavigationCoordinator<UserListRoute> {
+    
     init() {
         super.init(initialRoute: .home)
     }
@@ -35,7 +36,7 @@ class UserListCoordinator: NavigationCoordinator<UserListRoute> {
             vc.bind(to: vm)
             return .push(vc, animation: animation)
         case .user(let username):
-            let coordinator = UserCoordinator(initialRoute: .user(username))
+            let coordinator = UserCoordinator(user: username)
             return .present(coordinator)
         case .registerUserPeek(let source):
             return .registerPeek(for: source, route: .user("Test"), coordinator: self)

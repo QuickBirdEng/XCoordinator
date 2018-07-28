@@ -39,5 +39,4 @@ class AppCoordinator: NavigationCoordinator<AppRoute> {
             return .present(coordinator, animation: animation)
         }
     }
-
 }

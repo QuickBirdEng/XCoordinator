@@ -48,6 +48,5 @@ class HomeCoordinator: TabBarCoordinator<HomeRoute> {
             return .select(userListCoordinator)
         }
     }
-
 }
 

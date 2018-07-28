@@ -16,6 +16,11 @@ enum UserRoute: Route {
 }
 
 class UserCoordinator: NavigationCoordinator<UserRoute> {
+    
+    init(user: String) {
+        super.init(initialRoute: .user(user))
+    }
+
     override func prepareTransition(for route: UserRoute) -> NavigationTransition {
         switch route {
         case let .user(username):
