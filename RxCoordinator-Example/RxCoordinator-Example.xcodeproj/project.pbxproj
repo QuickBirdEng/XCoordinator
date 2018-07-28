@@ -7,6 +7,16 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		9B49C7E4210BF10100FE086A /* UserListRoute.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B49C7E3210BF10100FE086A /* UserListRoute.swift */; };
+		9B49C7E9210BF21900FE086A /* NewsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B49C7E5210BF21900FE086A /* NewsViewController.swift */; };
+		9B49C7EA210BF21900FE086A /* NewsViewModelImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B49C7E6210BF21900FE086A /* NewsViewModelImpl.swift */; };
+		9B49C7EB210BF21900FE086A /* NewsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B49C7E7210BF21900FE086A /* NewsViewModel.swift */; };
+		9B49C7EC210BF21900FE086A /* NewsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9B49C7E8210BF21900FE086A /* NewsViewController.xib */; };
+		9B49C7EE210BF48E00FE086A /* UserListRoute.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B49C7E3210BF10100FE086A /* UserListRoute.swift */; };
+		9B49C7EF210BF49100FE086A /* NewsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B49C7E5210BF21900FE086A /* NewsViewController.swift */; };
+		9B49C7F0210BF49400FE086A /* NewsViewModelImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B49C7E6210BF21900FE086A /* NewsViewModelImpl.swift */; };
+		9B49C7F1210BF49700FE086A /* NewsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B49C7E7210BF21900FE086A /* NewsViewModel.swift */; };
+		9B49C7F2210BF49D00FE086A /* NewsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9B49C7E8210BF21900FE086A /* NewsViewController.xib */; };
 		D764127CE2E83540A6A04C85 /* Pods_RxCoordinator_ExampleUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 94C85FCF223E5BFA00F4C4AA /* Pods_RxCoordinator_ExampleUITests.framework */; };
 		DC36CC95209B440D009EB669 /* BindableType.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC36CC94209B440D009EB669 /* BindableType.swift */; };
 		DC36CC96209B440D009EB669 /* BindableType.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC36CC94209B440D009EB669 /* BindableType.swift */; };
@@ -66,6 +76,11 @@
 		074717F35D51EE2A707569E8 /* Pods-RxCoordinator-ExampleUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RxCoordinator-ExampleUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-RxCoordinator-ExampleUITests/Pods-RxCoordinator-ExampleUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		5EC604061561C97E10BD0439 /* Pods-RxCoordinator-ExampleUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RxCoordinator-ExampleUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-RxCoordinator-ExampleUITests/Pods-RxCoordinator-ExampleUITests.release.xcconfig"; sourceTree = "<group>"; };
 		94C85FCF223E5BFA00F4C4AA /* Pods_RxCoordinator_ExampleUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RxCoordinator_ExampleUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		9B49C7E3210BF10100FE086A /* UserListRoute.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserListRoute.swift; sourceTree = "<group>"; };
+		9B49C7E5210BF21900FE086A /* NewsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsViewController.swift; sourceTree = "<group>"; };
+		9B49C7E6210BF21900FE086A /* NewsViewModelImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsViewModelImpl.swift; sourceTree = "<group>"; };
+		9B49C7E7210BF21900FE086A /* NewsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsViewModel.swift; sourceTree = "<group>"; };
+		9B49C7E8210BF21900FE086A /* NewsViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NewsViewController.xib; sourceTree = "<group>"; };
 		9F89A32927ECF9B9844FD892 /* Pods_RxCoordinator_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RxCoordinator_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		ACBF7932442986D1F1366E36 /* Pods-RxCoordinator-Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RxCoordinator-Example.debug.xcconfig"; path = "Pods/Target Support Files/Pods-RxCoordinator-Example/Pods-RxCoordinator-Example.debug.xcconfig"; sourceTree = "<group>"; };
 		DC36CC94209B440D009EB669 /* BindableType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BindableType.swift; sourceTree = "<group>"; };
@@ -138,12 +153,24 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		9B49C7ED210BF22100FE086A /* News */ = {
+			isa = PBXGroup;
+			children = (
+				9B49C7E5210BF21900FE086A /* NewsViewController.swift */,
+				9B49C7E6210BF21900FE086A /* NewsViewModelImpl.swift */,
+				9B49C7E7210BF21900FE086A /* NewsViewModel.swift */,
+				9B49C7E8210BF21900FE086A /* NewsViewController.xib */,
+			);
+			path = News;
+			sourceTree = "<group>";
+		};
 		DC36CCA0209B465A009EB669 /* Routes */ = {
 			isa = PBXGroup;
 			children = (
 				DC36CCA3209B469F009EB669 /* AppRoute.swift */,
 				DCB6B9A9209C4DC200829EFB /* HomeRoute.swift */,
 				DCB0DD0720A330F000BC79B6 /* UserRoute.swift */,
+				9B49C7E3210BF10100FE086A /* UserListRoute.swift */,
 			);
 			path = Routes;
 			sourceTree = "<group>";
@@ -192,6 +219,7 @@
 			isa = PBXGroup;
 			children = (
 				DC36CCA0209B465A009EB669 /* Routes */,
+				9B49C7ED210BF22100FE086A /* News */,
 				DCB0DCFF20A320C200BC79B6 /* User */,
 				DCB6B9AF209C778F00829EFB /* UserList */,
 				DC36CCA2209B4689009EB669 /* Home */,
@@ -341,6 +369,7 @@
 				DCB29671209B3F9D00698A44 /* LaunchScreen.storyboard in Resources */,
 				DCB6B9B7209C77B500829EFB /* UsersViewController.xib in Resources */,
 				DC36CC9E209B4436009EB669 /* LoginViewController.xib in Resources */,
+				9B49C7EC210BF21900FE086A /* NewsViewController.xib in Resources */,
 				DCB6B9A6209C4BE200829EFB /* HomeViewController.xib in Resources */,
 				DCB2966E209B3F9D00698A44 /* Assets.xcassets in Resources */,
 				DCB0DD0520A320D600BC79B6 /* UserViewController.xib in Resources */,
@@ -355,6 +384,7 @@
 				DC36CC9F209B4436009EB669 /* LoginViewController.xib in Resources */,
 				DCB6B9B8209C77B500829EFB /* UsersViewController.xib in Resources */,
 				DCB6B9A7209C4BE200829EFB /* HomeViewController.xib in Resources */,
+				9B49C7F2210BF49D00FE086A /* NewsViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -435,6 +465,7 @@
 				DC36CC95209B440D009EB669 /* BindableType.swift in Sources */,
 				DCB6B9B3209C77B500829EFB /* UsersViewController.swift in Sources */,
 				DC36CCA4209B469F009EB669 /* AppRoute.swift in Sources */,
+				9B49C7EB210BF21900FE086A /* NewsViewModel.swift in Sources */,
 				DCB6B9A4209C4BE200829EFB /* HomeViewModel.swift in Sources */,
 				DCB29687209B415700698A44 /* NibIdentifiable.swift in Sources */,
 				DCB0DD0420A320D600BC79B6 /* UserViewModel.swift in Sources */,
@@ -443,7 +474,10 @@
 				DCB6B9BB209C7AE500829EFB /* CustomPresentations.swift in Sources */,
 				DCB6B9AA209C4DC200829EFB /* HomeRoute.swift in Sources */,
 				DCB29669209B3F9A00698A44 /* ViewController.swift in Sources */,
+				9B49C7E9210BF21900FE086A /* NewsViewController.swift in Sources */,
+				9B49C7EA210BF21900FE086A /* NewsViewModelImpl.swift in Sources */,
 				DCB29667209B3F9A00698A44 /* AppDelegate.swift in Sources */,
+				9B49C7E4210BF10100FE086A /* UserListRoute.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -452,6 +486,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				DC36CCA5209B469F009EB669 /* AppRoute.swift in Sources */,
+				9B49C7F1210BF49700FE086A /* NewsViewModel.swift in Sources */,
 				DCB6B9B6209C77B500829EFB /* UsersViewModel.swift in Sources */,
 				DCB6B9B4209C77B500829EFB /* UsersViewController.swift in Sources */,
 				DCB6B9A5209C4BE200829EFB /* HomeViewModel.swift in Sources */,
@@ -459,12 +494,15 @@
 				DCB6B9AB209C4DC200829EFB /* HomeRoute.swift in Sources */,
 				DC36CC9D209B4436009EB669 /* LoginViewModel.swift in Sources */,
 				F63A7E0020FC979900E2E3D0 /* UserViewController.swift in Sources */,
+				9B49C7F0210BF49400FE086A /* NewsViewModelImpl.swift in Sources */,
+				9B49C7EE210BF48E00FE086A /* UserListRoute.swift in Sources */,
 				DCB6B9A3209C4BE200829EFB /* HomeViewController.swift in Sources */,
 				DC36CC9B209B4436009EB669 /* LoginViewController.swift in Sources */,
 				DC36CC96209B440D009EB669 /* BindableType.swift in Sources */,
 				DCB29688209B415700698A44 /* NibIdentifiable.swift in Sources */,
 				F6E0371420AF77DF0027EE31 /* UserRoute.swift in Sources */,
 				DCB6B9BC209C7AE500829EFB /* CustomPresentations.swift in Sources */,
+				9B49C7EF210BF49100FE086A /* NewsViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

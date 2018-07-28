@@ -32,9 +32,11 @@ open class BaseCoordinator<CoordinatorRoute: Route>: Coordinator {
             triggerRouteAfterWindowAppeared(initialRoute)
         }
     }
-    
+
     open func presented(from presentable: Presentable?) {
-        rootVCReferenceBox.releaseStrongReference()
+        DispatchQueue.main.async {
+            self.rootVCReferenceBox.releaseStrongReference()
+        }
     }
 
     open func prepareTransition(for route: CoordinatorRoute) -> TransitionType {

@@ -8,16 +8,12 @@
 import UIKit
 
 extension Coordinator where Self.CoordinatorRoute.TransitionType == NavigationTransition {
-    var navigationController: UINavigationController {
-        return viewController as! UINavigationController
-    }
-
     func push(_ viewController: UIViewController, with options: TransitionOptions, animation: Animation?, completion: PresentationHandler?) {
         CATransaction.begin()
         CATransaction.setCompletionBlock(completion)
 
         viewController.transitioningDelegate = animation
-        navigationController.pushViewController(viewController, animated: options.animated)
+        rootViewController.pushViewController(viewController, animated: options.animated)
 
         CATransaction.commit()
     }
@@ -26,12 +22,12 @@ extension Coordinator where Self.CoordinatorRoute.TransitionType == NavigationTr
         CATransaction.begin()
         CATransaction.setCompletionBlock(completion)
 
-        let currentVC = navigationController.visibleViewController
+        let currentVC = rootViewController.visibleViewController
         currentVC?.transitioningDelegate = animation
         if toRoot {
-            navigationController.popToRootViewController(animated: options.animated)
+            rootViewController.popToRootViewController(animated: options.animated)
         } else {
-            navigationController.popViewController(animated: options.animated)
+            rootViewController.popViewController(animated: options.animated)
         }
 
         CATransaction.commit()

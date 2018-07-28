@@ -206,6 +206,7 @@
 		9B49C7DC210B8D8800FE086A /* TabBarTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B49C7DB210B8D8800FE086A /* TabBarTransition.swift */; };
 		9B49C7DE210B8E1D00FE086A /* TabBarTransitionType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B49C7DD210B8E1D00FE086A /* TabBarTransitionType.swift */; };
 		9B49C7E0210B8E3000FE086A /* TabBarTransition+Init.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B49C7DF210B8E3000FE086A /* TabBarTransition+Init.swift */; };
+		9B49C7E2210BED3100FE086A /* Coordinator+Transition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B49C7E1210BED3100FE086A /* Coordinator+Transition.swift */; };
 		9BADD9E4210B4D8D00070BD8 /* BaseCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BADD9E3210B4D8D00070BD8 /* BaseCoordinator.swift */; };
 		9BADD9E6210B64A600070BD8 /* NavigationTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BADD9E5210B64A600070BD8 /* NavigationTransition.swift */; };
 		9BADD9E8210B704900070BD8 /* ViewTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BADD9E7210B704900070BD8 /* ViewTransition.swift */; };
@@ -601,6 +602,7 @@
 		9B49C7DB210B8D8800FE086A /* TabBarTransition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = TabBarTransition.swift; path = RxCoordinator/Sources/TabBarTransition.swift; sourceTree = "<group>"; };
 		9B49C7DD210B8E1D00FE086A /* TabBarTransitionType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = TabBarTransitionType.swift; path = RxCoordinator/Sources/TabBarTransitionType.swift; sourceTree = "<group>"; };
 		9B49C7DF210B8E3000FE086A /* TabBarTransition+Init.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "TabBarTransition+Init.swift"; path = "RxCoordinator/Sources/TabBarTransition+Init.swift"; sourceTree = "<group>"; };
+		9B49C7E1210BED3100FE086A /* Coordinator+Transition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "Coordinator+Transition.swift"; path = "RxCoordinator/Sources/Coordinator+Transition.swift"; sourceTree = "<group>"; };
 		9B6C91E20B25D6912714EFE4B4FE5F00 /* Lock.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Lock.swift; path = RxSwift/Concurrency/Lock.swift; sourceTree = "<group>"; };
 		9BADD9E3210B4D8D00070BD8 /* BaseCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = BaseCoordinator.swift; path = RxCoordinator/Sources/BaseCoordinator.swift; sourceTree = "<group>"; };
 		9BADD9E5210B64A600070BD8 /* NavigationTransition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = NavigationTransition.swift; path = RxCoordinator/Sources/NavigationTransition.swift; sourceTree = "<group>"; };
@@ -1280,6 +1282,7 @@
 				9BADD9E3210B4D8D00070BD8 /* BaseCoordinator.swift */,
 				17EFAA1C40023BA8FBA0DA1EC21C95EE /* Container.swift */,
 				BA23F0778C4552C7A3FE35D2EB8BA624 /* Coordinator.swift */,
+				9B49C7E1210BED3100FE086A /* Coordinator+Transition.swift */,
 				9B49C7D7210B87FC00FE086A /* Coordinator+Navigation.swift */,
 				9B49C7D9210B8D5100FE086A /* Coordinator+TabBar.swift */,
 				2E10C30C529DD7B6C928CE64FBA8F488 /* CoordinatorPreviewingDelegateObject.swift */,
@@ -1854,6 +1857,7 @@
 				9BADD9EA210B77C600070BD8 /* ViewTransitionType.swift in Sources */,
 				9B49C7DE210B8E1D00FE086A /* TabBarTransitionType.swift in Sources */,
 				C1F1394D8C0932E598F3DEF97B9C42FE /* CoordinatorPreviewingDelegateObject.swift in Sources */,
+				9B49C7E2210BED3100FE086A /* Coordinator+Transition.swift in Sources */,
 				DBFEE622AAB25AF7E7A76234E7FFD605 /* InteractiveTransitionAnimation.swift in Sources */,
 				C536B772C83F56C9D05802863EAB6201 /* Presentable.swift in Sources */,
 				2AB16FD662FFA968DCE47F298D6A40BC /* ReferenceBox.swift in Sources */,

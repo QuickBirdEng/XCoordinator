@@ -14,3 +14,4 @@ public protocol Route {
 
 public protocol NavigationRoute: Route where Self.TransitionType == NavigationTransition {}
 public protocol ViewRoute: Route where Self.TransitionType == ViewTransition {}
+public protocol TabBarRoute: Route where Self.TransitionType == TabBarTransition {}

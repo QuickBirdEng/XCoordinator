@@ -9,40 +9,45 @@
 import Foundation
 import RxCoordinator
 
-enum HomeRoute: NavigationRoute {
-    case home
-    case users
-    case user(String)
-    case registerUserPeek(from: Container)
-    case logout
+enum HomeRoute: TabBarRoute {
+    case initialize
+    case news
+    case userList
 }
 
 class HomeCoordinator: BaseCoordinator<HomeRoute> {
 
     init() {
-        super.init(initialRoute: .home)
+        super.init(initialRoute: .initialize)
     }
 
-    override func prepareTransition(for route: HomeRoute) -> NavigationTransition {
+    override func presented(from presentable: Presentable?) {
+        super.presented(from: presentable)
+        trigger(.news)
+    }
+
+    let newsVC: NewsViewController = {
+        var vc = NewsViewController.instantiateFromNib()
+        let viewModel = NewsViewModelImpl()
+        vc.bind(to: viewModel)
+        vc.tabBarItem = UITabBarItem(tabBarSystemItem: .featured, tag: 0)
+        return vc
+    }()
+
+    let userListCoordinator: UserListCoordinator = {
+        let coordinator = UserListCoordinator()
+        coordinator.rootViewController.tabBarItem = UITabBarItem(tabBarSystemItem: UITabBarSystemItem.more, tag: 1)
+        return coordinator
+    }()
+
+    override func prepareTransition(for route: HomeRoute) -> TabBarTransition {
         switch route {
-        case .home:
-            var vc = HomeViewController.instantiateFromNib()
-            let viewModel = HomeViewModelImpl(coodinator: AnyCoordinator(self))
-            vc.bind(to: viewModel)
-            return .push(vc)
-        case .users:
-            let animation = Animation(presentationAnimation: CustomPresentations.flippingPresentation, dismissalAnimation: nil)
-            var vc = UsersViewController.instantiateFromNib()
-            let viewModel = UsersViewModelImpl(coordinator: AnyCoordinator(self))
-            vc.bind(to: viewModel)
-            return .push(vc, animation: animation)
-        case .user(let username):
-            let coordinator = UserCoordinator(initialRoute: .user(username))
-            return .present(coordinator)
-        case .registerUserPeek(let source):
-            return .registerPeek(for: source, route: .user("Test"), coordinator: AnyCoordinator(self))
-        case .logout:
-            return .dismiss()
+        case .news:
+            return .select(newsVC)
+        case .initialize:
+            return .set([newsVC, userListCoordinator])
+        case .userList:
+            return .select(userListCoordinator)
         }
     }
 
