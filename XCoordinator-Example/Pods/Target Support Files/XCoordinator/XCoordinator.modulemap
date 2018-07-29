@@ -1,0 +1,6 @@
+framework module XCoordinator {
+  umbrella header "XCoordinator-umbrella.h"
+
+  export *
+  module * { export * }
+}

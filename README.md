@@ -1,22 +1,22 @@
 <p align="center">
-  <img src="https://github.com/quickbirdstudios/RxCoordinator/blob/master/Images/logo.png">
+  <img src="https://github.com/quickbirdstudios/XCoordinator/blob/master/Images/logo.png">
 </p>
 
-[![Build Status](https://travis-ci.com/quickbirdstudios/RxCoordinator.svg?branch=master)](https://travis-ci.org/quickbirdstudios/RxCoordinator)
+[![Build Status](https://travis-ci.com/quickbirdstudios/XCoordinator.svg?branch=master)](https://travis-ci.org/quickbirdstudios/XCoordinator)
 [![CocoaPods Compatible](https://img.shields.io/cocoapods/v/rx-coordinator.svg)](https://img.shields.io/cocoapods/v/rx-coordinator.svg)
 [![Carthage Compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage)
-[![Platform](https://img.shields.io/badge/platform-iOS-lightgrey.svg)](https://github.com/quickbirdstudios/RxCoordinator)
-[![License](https://img.shields.io/cocoapods/l/AFNetworking.svg)](https://github.com/quickbirdstudios/RxCoordinator)
+[![Platform](https://img.shields.io/badge/platform-iOS-lightgrey.svg)](https://github.com/quickbirdstudios/XCoordinator)
+[![License](https://img.shields.io/cocoapods/l/AFNetworking.svg)](https://github.com/quickbirdstudios/XCoordinator)
 
 #
 “How does an app transition from a ViewController to another?”.
 This question is common and puzzling regarding iOS development. There are many answers, as every architecture has different implementation variations. Some do it from the view controller, while some do it using a router/coordinator, which is an object that connects view models.
 
-To better answer the question, we are building **RxCoordinator**, a navigation framework based on the **Coordinator** pattern.
+To better answer the question, we are building **XCoordinator**, a navigation framework based on the **Coordinator** pattern.
 It's especially useful for implementing MVVM-C, Model-View-ViewModel-Coordinator:
 
 <p align="center">
-  <img src="https://github.com/quickbirdstudios/RxCoordinator/blob/master/Images/mvvmc.png">
+  <img src="https://github.com/quickbirdstudios/XCoordinator/blob/master/Images/mvvmc.png">
 </p>
 
 ## 🏃‍♂️Getting started
@@ -78,7 +78,7 @@ Implementation:
 ## 🤸‍♂️ Extras
 
 ### Custom Transitions
-RxCoordinator supports cases for custom transitions between view controllers. In the `switch case` in `prepareTransition(coordinator:)` create an `Animation` while specifying your custom presentation transition or/and dismissal transition.
+XCoordinator supports cases for custom transitions between view controllers. In the `switch case` in `prepareTransition(coordinator:)` create an `Animation` while specifying your custom presentation transition or/and dismissal transition.
 
 ```swift
   ...
@@ -97,7 +97,7 @@ RxCoordinator supports cases for custom transitions between view controllers. In
 ```
 
 ### Custom Coordinators
-In RxCoordinator is possible to create custom coordinators. For example, a custom coordinator can be created to show Home if the user is logged in, otherwise Login.
+In XCoordinator is possible to create custom coordinators. For example, a custom coordinator can be created to show Home if the user is logged in, otherwise Login.
 
 ```swift
 
@@ -121,7 +121,7 @@ class AppCoordinator: Coordinator {
 ```
 
 ## 🎭 Example
-Check out this [repository](https://github.com/quickbirdstudios/RxCoordinator/tree/master/RxCoordinator-Example/RxCoordinator-Example) as an example project using RxCoordinator.
+Check out this [repository](https://github.com/quickbirdstudios/XCoordinator/tree/master/XCoordinator-Example/XCoordinator-Example) as an example project using XCoordinator.
 
 
 ## 👨‍✈️ Why coordinators
@@ -134,7 +134,7 @@ Check out this [repository](https://github.com/quickbirdstudios/RxCoordinator/tr
 > [The Coordinator](http://khanlou.com/2015/01/the-coordinator/) by **Soroush Khanlou**
 
 
-## 💁‍♂️ Why RxCoordinator
+## 💁‍♂️ Why XCoordinator
 * Actual **navigation code is already written** and abstracted away.
 
 * Clear **separation of concerns**:
@@ -177,7 +177,7 @@ Describes presentation/dismissal of a view including the type of the transition 
 
 ### CocoaPods
 
-To integrate RxCoordinator into your Xcode project using CocoaPods, add this to your `Podfile`:
+To integrate XCoordinator into your Xcode project using CocoaPods, add this to your `Podfile`:
 
 ```ruby
 pod 'rx-coordinator'
@@ -185,10 +185,10 @@ pod 'rx-coordinator'
 
 ### Carthage
 
-To integrate RxCoordinator into your Xcode project using Carthage, add this to your `Cartfile`:
+To integrate XCoordinator into your Xcode project using Carthage, add this to your `Cartfile`:
 
 ```
-github "quickbirdstudios/RxCoordinator" ~> 0.5
+github "quickbirdstudios/XCoordinator" ~> 0.5
 ```
 
 Then run `carthage update`.
@@ -197,7 +197,7 @@ If this is your first time using Carthage in the project, you'll need to go thro
 
 ### Manually
 
-If you prefer not to use any of the dependency managers, you can integrate RxCoordinator into your project manually, by downloading the source code and placing the files on your project directory.
+If you prefer not to use any of the dependency managers, you can integrate XCoordinator into your project manually, by downloading the source code and placing the files on your project directory.
 
 ## 👤 Author
 This tiny library is created with ❤️ by [QuickBird Studios](www.quickbirdstudios.com).
@@ -205,8 +205,8 @@ This tiny library is created with ❤️ by [QuickBird Studios](www.quickbirdstu
 ## ❤️ Contributing
 Open an issue if you need help, if you found a bug, or if you want to discuss a feature request.
 
-Open a PR if you want to make some changes to RxCoordinator.
+Open a PR if you want to make some changes to XCoordinator.
 
 ## 📃 License
 
-RxCoordinator is released under an MIT license. See [License.md](https://github.com/quickbirdstudios/RxCoordinator/blob/master/LICENSE) for more information.
+XCoordinator is released under an MIT license. See [License.md](https://github.com/quickbirdstudios/XCoordinator/blob/master/LICENSE) for more information.

@@ -1,3 +1,0 @@
-# RxCoordinator
-
-COMING SOON
