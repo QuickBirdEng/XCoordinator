@@ -23,4 +23,5 @@ public protocol Transition {
     static func embed(_ presentable: Presentable, in container: Container) -> Self
     static func dismiss(animation: Animation?) -> Self
     static func none() -> Self
+    // TODO: static func multiple(_ transitions: Self..., completion: PresentationHandler?) -> Self
 }

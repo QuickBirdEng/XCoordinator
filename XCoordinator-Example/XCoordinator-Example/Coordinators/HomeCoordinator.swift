@@ -34,7 +34,7 @@ class HomeCoordinator: TabBarCoordinator<HomeRoute> {
 
     override func presented(from presentable: Presentable?) {
         super.presented(from: presentable)
-        trigger(.news)
+        trigger(.userList)
     }
 
     override func prepareTransition(for route: HomeRoute) -> TabBarTransition {
