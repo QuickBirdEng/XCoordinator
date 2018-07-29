@@ -7,17 +7,22 @@
 
 import UIKit
 
-public typealias NavigationCoordinator<R: Route> = BaseCoordinator<R, NavigationTransition>
-public typealias ViewCoordinator<R: Route> = BaseCoordinator<R, ViewTransition>
-public typealias TabBarCoordinator<R: Route> = BaseCoordinator<R, TabBarTransition>
-
 extension BaseCoordinator {
     public typealias RootViewController = TransitionType.RootViewController
 }
 
 open class BaseCoordinator<RouteType: Route, TransitionType: Transition>: Coordinator {
+
+    // MARK: - Stored properties
+
     public internal(set) var context: UIViewController?
-    public var rootViewController: RootViewController {
+
+    private let rootVCReferenceBox = ReferenceBox<RootViewController>()
+    private var windowAppearanceObserver: Any?
+
+    // MARK: - Computed properties
+
+    public private(set) var rootViewController: RootViewController {
         get {
             return rootVCReferenceBox.get()!
         }
@@ -26,8 +31,7 @@ open class BaseCoordinator<RouteType: Route, TransitionType: Transition>: Coordi
         }
     }
 
-    private let rootVCReferenceBox = ReferenceBox<RootViewController>()
-    private var windowAppearanceObserver: Any?
+    // MARK: - Init
 
     public init(initialRoute: RouteType?) {
         self.rootVCReferenceBox.set(TransitionType.generateRootViewController())
@@ -35,6 +39,8 @@ open class BaseCoordinator<RouteType: Route, TransitionType: Transition>: Coordi
             triggerRouteAfterWindowAppeared(initialRoute)
         }
     }
+
+    // MARK: - Open methods
 
     open func presented(from presentable: Presentable?) {
         DispatchQueue.main.async {
@@ -46,7 +52,7 @@ open class BaseCoordinator<RouteType: Route, TransitionType: Transition>: Coordi
         fatalError("Please override the \(#function) method.")
     }
 
-    // MARK: - Helper methods
+    // MARK: - Private methods
 
     private func triggerRouteAfterWindowAppeared(_ route: RouteType) {
         guard UIApplication.shared.keyWindow == nil else {

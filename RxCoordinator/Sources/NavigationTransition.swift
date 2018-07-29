@@ -7,11 +7,18 @@
 //
 
 public struct NavigationTransition: Transition {
+
+    // MARK: - Stored properties
+
     private let type: NavigationTransitionType
+
+    // MARK: - Computed properties
 
     public var presentable: Presentable? {
         return type.presentable
     }
+
+    // MARK: - Init
 
     private init(type: NavigationTransitionType) {
         self.type = type
@@ -25,17 +32,15 @@ public struct NavigationTransition: Transition {
         self.init(type: .animated(type, animation: animation))
     }
 
+    // MARK: - Static functions
+
     public static func generateRootViewController() -> UINavigationController {
         return UINavigationController()
     }
 
+    // MARK: - Methods
+
     public func perform<C: Coordinator>(options: TransitionOptions, coordinator: C, completion: PresentationHandler?) where NavigationTransition == C.TransitionType {
         return type.perform(options: options, animation: nil, coordinator: coordinator, completion: completion)
-    }
-    
-    public static func registerPeek<C: Coordinator>(for source: Container, route: C.RouteType, coordinator: C) -> NavigationTransition where C.TransitionType == NavigationTransition {
-        return NavigationTransition(type: .registerPeek(source: source, transitionGenerator: {
-            coordinator.prepareTransition(for: route)
-        }))
     }
 }

@@ -13,6 +13,8 @@ internal enum ViewTransitionType {
     case dismiss
     case none
 
+    // MARK: - Computed properties
+
     public var presentable: Presentable? {
         switch self {
         case .present(let presentable):
@@ -27,6 +29,8 @@ internal enum ViewTransitionType {
             return transition.presentable
         }
     }
+
+    // MARK: - Methods
 
     public func perform<C: Coordinator>(options: TransitionOptions, animation: Animation?, coordinator: C, completion: PresentationHandler?) where ViewTransition == C.TransitionType {
         switch self {

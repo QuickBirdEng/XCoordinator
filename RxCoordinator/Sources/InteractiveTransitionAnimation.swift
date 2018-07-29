@@ -10,13 +10,18 @@ import Foundation
 import UIKit
 
 public class InteractiveTransitionAnimation: NSObject, TranistionAnimation, UIViewControllerInteractiveTransitioning {
+
+    // MARK: - Stored properties
+
     public let duration: TimeInterval
     public let completionSpeed: CGFloat
     public let completionCurve: UIViewAnimationCurve
     public let wantsInteractiveStart: Bool
 
     public let performAnimation: (_ transitionContext: UIViewControllerContextTransitioning) -> Void
-    let startInteractiveTransition: (_ transitionContext: UIViewControllerContextTransitioning) -> Void
+    private let startInteractiveTransition: (_ transitionContext: UIViewControllerContextTransitioning) -> Void
+
+    // MARK: - Init
 
     public init(duration: TimeInterval,
          completionSpeed: CGFloat,
@@ -31,6 +36,8 @@ public class InteractiveTransitionAnimation: NSObject, TranistionAnimation, UIVi
         self.performAnimation = performAnimation
         self.startInteractiveTransition = startInteractiveTransition
     }
+
+    // MARK: - Methods
 
     public func transitionDuration(using transitionContext: UIViewControllerContextTransitioning?) -> TimeInterval {
         return duration

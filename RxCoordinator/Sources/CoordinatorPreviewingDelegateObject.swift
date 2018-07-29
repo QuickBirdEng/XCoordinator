@@ -9,18 +9,24 @@ import UIKit
 
 class CoordinatorPreviewingDelegateObject<C: Coordinator>: NSObject, UIViewControllerPreviewingDelegate {
 
-    let transition: () -> C.TransitionType
-    let coordinator: C
-    let completion: PresentationHandler?
-    var context: UIViewControllerPreviewing? = nil
+    // MARK: - Stored properties
 
+    var context: UIViewControllerPreviewing? = nil
     weak var viewController: UIViewController?
+
+    private let transition: () -> C.TransitionType
+    private let coordinator: C
+    private let completion: PresentationHandler?
+
+    // MARK: - Init
 
     init(transition: @escaping () -> C.TransitionType, coordinator: C, completion: PresentationHandler?) {
         self.transition = transition
         self.coordinator = coordinator
         self.completion = completion
     }
+
+    // MARK: - Methods
 
     func previewingContext(_ previewingContext: UIViewControllerPreviewing, viewControllerForLocation location: CGPoint) -> UIViewController? {
         if let viewController = viewController {

@@ -8,14 +8,21 @@
 import Foundation
 
 public class ReferenceBox<T: AnyObject> {
+
+    // MARK: - Stored properties
+
     private weak var weakReference: T?
     private var strongReference: T?
+
+    // MARK: - Init
 
     public init(_ value: T? = nil) {
         if let value = value {
             set(value)
         }
     }
+
+    // MARK: - Methods
 
     public func set(_ value: T) {
         strongReference = value

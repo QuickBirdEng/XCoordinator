@@ -12,21 +12,26 @@ public typealias BasicNavigationCoordinator<R: Route> = BasicCoordinator<R, Navi
 public typealias BasicViewCoordinator<R: Route> = BasicCoordinator<R, ViewTransition>
 public typealias BasicTabBarCoordinator<R: Route> = BasicCoordinator<R, TabBarTransition>
 
-open class BasicCoordinator<BasicRoute: Route, TransitionType: Transition>: BaseCoordinator<BasicRoute, TransitionType> {
-    public typealias CoordinatorRoute = BasicRoute
+open class BasicCoordinator<RouteType: Route, TransitionType: Transition>: BaseCoordinator<RouteType, TransitionType> {
+
+    // MARK: - Nested types
 
     public enum InitialLoadingType {
         case immediately
         case presented
     }
 
-    private let initialRoute: BasicRoute?
-    private let initialLoadingType: InitialLoadingType
-    private let prepareTransition: ((BasicRoute) -> TransitionType)?
+    // MARK: - Stored properties
 
-    public init(initialRoute: BasicRoute? = nil,
+    private let initialRoute: RouteType?
+    private let initialLoadingType: InitialLoadingType
+    private let prepareTransition: ((RouteType) -> TransitionType)?
+
+    // MARK: - Init
+
+    public init(initialRoute: RouteType? = nil,
                 initialLoadingType: InitialLoadingType = .presented,
-                prepareTransition: ((BasicRoute) -> TransitionType)?) {
+                prepareTransition: ((RouteType) -> TransitionType)?) {
         self.initialRoute = initialRoute
         self.initialLoadingType = initialLoadingType
         self.prepareTransition = prepareTransition
@@ -38,6 +43,8 @@ open class BasicCoordinator<BasicRoute: Route, TransitionType: Transition>: Base
         }
     }
 
+    // MARK: - Open methods
+
     open override func presented(from presentable: Presentable?) {
         super.presented(from: presentable)
 
@@ -48,7 +55,7 @@ open class BasicCoordinator<BasicRoute: Route, TransitionType: Transition>: Base
         }
     }
 
-    open override func prepareTransition(for route: BasicRoute) -> TransitionType {
+    open override func prepareTransition(for route: RouteType) -> TransitionType {
         if let prepareTransition = prepareTransition {
             return prepareTransition(route)
         } else {

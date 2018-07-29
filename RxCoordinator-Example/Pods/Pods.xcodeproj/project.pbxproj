@@ -209,6 +209,9 @@
 		9B49C7E2210BED3100FE086A /* Coordinator+Transition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B49C7E1210BED3100FE086A /* Coordinator+Transition.swift */; };
 		9B4B9777210D007700EEEC7F /* AnyCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B4B9775210D007700EEEC7F /* AnyCoordinator.swift */; };
 		9B4B9779210D01DB00EEEC7F /* RouteTrigger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B4B9778210D01DB00EEEC7F /* RouteTrigger.swift */; };
+		9B77FEF9210DC1740043204F /* NavigationCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B77FEF8210DC1730043204F /* NavigationCoordinator.swift */; };
+		9B77FEFB210DC1960043204F /* ViewCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B77FEFA210DC1960043204F /* ViewCoordinator.swift */; };
+		9B77FEFD210DC1AA0043204F /* TabBarCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B77FEFC210DC1AA0043204F /* TabBarCoordinator.swift */; };
 		9BADD9E4210B4D8D00070BD8 /* BaseCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BADD9E3210B4D8D00070BD8 /* BaseCoordinator.swift */; };
 		9BADD9E6210B64A600070BD8 /* NavigationTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BADD9E5210B64A600070BD8 /* NavigationTransition.swift */; };
 		9BADD9E8210B704900070BD8 /* ViewTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BADD9E7210B704900070BD8 /* ViewTransition.swift */; };
@@ -606,6 +609,9 @@
 		9B4B9775210D007700EEEC7F /* AnyCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AnyCoordinator.swift; path = RxCoordinator/Sources/AnyCoordinator.swift; sourceTree = "<group>"; };
 		9B4B9778210D01DB00EEEC7F /* RouteTrigger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = RouteTrigger.swift; path = RxCoordinator/Sources/RouteTrigger.swift; sourceTree = "<group>"; };
 		9B6C91E20B25D6912714EFE4B4FE5F00 /* Lock.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Lock.swift; path = RxSwift/Concurrency/Lock.swift; sourceTree = "<group>"; };
+		9B77FEF8210DC1730043204F /* NavigationCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = NavigationCoordinator.swift; path = RxCoordinator/Sources/NavigationCoordinator.swift; sourceTree = "<group>"; };
+		9B77FEFA210DC1960043204F /* ViewCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ViewCoordinator.swift; path = RxCoordinator/Sources/ViewCoordinator.swift; sourceTree = "<group>"; };
+		9B77FEFC210DC1AA0043204F /* TabBarCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = TabBarCoordinator.swift; path = RxCoordinator/Sources/TabBarCoordinator.swift; sourceTree = "<group>"; };
 		9BADD9E3210B4D8D00070BD8 /* BaseCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = BaseCoordinator.swift; path = RxCoordinator/Sources/BaseCoordinator.swift; sourceTree = "<group>"; };
 		9BADD9E5210B64A600070BD8 /* NavigationTransition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = NavigationTransition.swift; path = RxCoordinator/Sources/NavigationTransition.swift; sourceTree = "<group>"; };
 		9BADD9E7210B704900070BD8 /* ViewTransition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ViewTransition.swift; path = RxCoordinator/Sources/ViewTransition.swift; sourceTree = "<group>"; };
@@ -1283,6 +1289,9 @@
 				9B4B9775210D007700EEEC7F /* AnyCoordinator.swift */,
 				8A7EC7924ADBC1E628C6474E5073EAA0 /* BasicCoordinator.swift */,
 				9BADD9E3210B4D8D00070BD8 /* BaseCoordinator.swift */,
+				9B77FEF8210DC1730043204F /* NavigationCoordinator.swift */,
+				9B77FEFA210DC1960043204F /* ViewCoordinator.swift */,
+				9B77FEFC210DC1AA0043204F /* TabBarCoordinator.swift */,
 				17EFAA1C40023BA8FBA0DA1EC21C95EE /* Container.swift */,
 				BA23F0778C4552C7A3FE35D2EB8BA624 /* Coordinator.swift */,
 				9B49C7E1210BED3100FE086A /* Coordinator+Transition.swift */,
@@ -1853,6 +1862,7 @@
 				9B49C7E0210B8E3000FE086A /* TabBarTransition+Init.swift in Sources */,
 				9BADD9E4210B4D8D00070BD8 /* BaseCoordinator.swift in Sources */,
 				9BADD9EC210B77DA00070BD8 /* NavigationTransitionType.swift in Sources */,
+				9B77FEF9210DC1740043204F /* NavigationCoordinator.swift in Sources */,
 				288DEDF068A7A1466D1A956179F94D9A /* BasicCoordinator.swift in Sources */,
 				CBCB6ADD702BAD0AC7AE8CBDD43CF6AE /* Container.swift in Sources */,
 				F9EB5BDB7783DA6554652E31D7C90A64 /* Coordinator+Rx.swift in Sources */,
@@ -1864,6 +1874,8 @@
 				9B49C7E2210BED3100FE086A /* Coordinator+Transition.swift in Sources */,
 				DBFEE622AAB25AF7E7A76234E7FFD605 /* InteractiveTransitionAnimation.swift in Sources */,
 				C536B772C83F56C9D05802863EAB6201 /* Presentable.swift in Sources */,
+				9B77FEFD210DC1AA0043204F /* TabBarCoordinator.swift in Sources */,
+				9B77FEFB210DC1960043204F /* ViewCoordinator.swift in Sources */,
 				2AB16FD662FFA968DCE47F298D6A40BC /* ReferenceBox.swift in Sources */,
 				9BADD9E8210B704900070BD8 /* ViewTransition.swift in Sources */,
 				9BADD9EE210B7A2500070BD8 /* NavigationTransition+Init.swift in Sources */,

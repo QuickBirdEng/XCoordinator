@@ -17,6 +17,8 @@ internal enum TabBarTransitionType {
     case dismiss
     case none
 
+    // MARK: - Computed properties
+
     var presentable: Presentable? {
         switch self {
         case .present(let presentable):
@@ -31,6 +33,8 @@ internal enum TabBarTransitionType {
             return nil
         }
     }
+
+    // MARK: - Methods
 
     public func perform<C: Coordinator>(options: TransitionOptions, animation: Animation?, coordinator: C, completion: PresentationHandler?) where TabBarTransition == C.TransitionType {
         switch self {

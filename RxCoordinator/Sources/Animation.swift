@@ -11,13 +11,19 @@ import UIKit
 
 public class Animation: NSObject, UIViewControllerTransitioningDelegate {
 
+    // MARK: - Stored properties
+
     public let presentationAnimation: TranistionAnimation?
     public let dismissalAnimation: TranistionAnimation?
+
+    // MARK: - Init
 
     public init(presentationAnimation: TranistionAnimation?, dismissalAnimation: TranistionAnimation?) {
         self.presentationAnimation = presentationAnimation
         self.dismissalAnimation = dismissalAnimation
     }
+
+    // MARK: - Public methods
 
     public func animationController(forPresented presented: UIViewController, presenting: UIViewController, source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
         return presentationAnimation

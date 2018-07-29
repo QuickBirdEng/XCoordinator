@@ -20,17 +20,33 @@ public protocol Coordinator: RouteTrigger, Presentable {
     func prepareTransition(for route: RouteType) -> TransitionType
 }
 
-extension Coordinator {
-    public typealias RootViewController = TransitionType.RootViewController
+// MARK: - Extension Coordinator: Presentable
 
+extension Coordinator {
     public var viewController: UIViewController! {
         return rootViewController
     }
+}
+
+// MARK: - Extension: Helpers
+
+extension Coordinator {
+    public typealias RootViewController = TransitionType.RootViewController
 
     public var anyCoordinator: AnyCoordinator<RouteType> {
         return AnyCoordinator(self)
     }
 
+    public func setRoot(for window: UIWindow) {
+        window.rootViewController = rootViewController
+        window.makeKeyAndVisible()
+        presented(from: nil)
+    }
+}
+
+// MARK: - Extension: Default implementations
+
+extension Coordinator {
     public func presented(from presentable: Presentable?) {}
 
     public func trigger(_ route: RouteType, with options: TransitionOptions, completion: PresentationHandler?) {
@@ -38,15 +54,7 @@ extension Coordinator {
         performTransition(transition, with: options, completion: completion)
     }
 
-    // MARK: Helpers
-
     func performTransition(_ transition: TransitionType, with options: TransitionOptions, completion: PresentationHandler? = nil) {
         transition.perform(options: options, coordinator: self, completion: completion)
-    }
-
-    public func setRoot(for window: UIWindow) {
-        window.rootViewController = rootViewController
-        window.makeKeyAndVisible()
-        presented(from: nil)
     }
 }

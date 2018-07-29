@@ -28,9 +28,9 @@ extension UIView: Container {
     public var view: UIView! { return self }
 }
 
-private extension UIView {
+extension UIView {
 
-    func viewController(for responder: UIResponder) -> UIViewController? {
+    private func viewController(for responder: UIResponder) -> UIViewController? {
         if let viewController = responder as? UIViewController {
             return viewController
         }
@@ -41,5 +41,4 @@ private extension UIView {
 
         return nil
     }
-
 }
