@@ -11,8 +11,12 @@ open class NavigationCoordinator<R: Route>: BaseCoordinator<R, NavigationTransit
 
     // MARK: - Init
 
-    public convenience init(root: Presentable) {
-        self.init(initialRoute: nil)
+    public override init(initialRoute: RouteType?) {
+        super.init(initialRoute: initialRoute)
+    }
+
+    public init(root: Presentable) {
+        super.init(initialRoute: nil)
         performTransition(.push(root), with: TransitionOptions(animated: false))
     }
 }

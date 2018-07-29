@@ -8,5 +8,10 @@
 import Foundation
 
 open class ViewCoordinator<R: Route>: BaseCoordinator<R, ViewTransition> {
-    
+
+    // MARK: - Init
+
+    public override init(initialRoute: RouteType?) {
+        super.init(initialRoute: initialRoute)
+    }
 }
