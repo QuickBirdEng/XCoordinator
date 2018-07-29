@@ -11,13 +11,9 @@ open class SplitCoordinator<RouteType: Route>: BaseCoordinator<RouteType, SplitV
 
     // MARK: - Init
 
-    public override init(initialRoute: RouteType?) {
-        super.init(initialRoute: initialRoute)
-    }
-
     public init(master: Presentable, detail: Presentable) {
-        super.init(initialRoute: nil)
-        performTransition(.show(master), with: TransitionOptions(animated: false))
-        performTransition(.showDetail(detail), with: TransitionOptions(animated: false))
+        super.init(initialTransition: .show(master)) { `self` in
+            self.performTransition(.showDetail(detail), with: TransitionOptions(animated: false))
+        }
     }
 }
