@@ -16,21 +16,18 @@ open class TabBarCoordinator<R: Route>: BaseCoordinator<R, TabBarTransition> {
     }
 
     public init(tabs: [Presentable]) {
-        super.init(initialRoute: nil)
-        performTransition(.set(tabs), with: TransitionOptions(animated: false))
+        super.init(initialTransition: .set(tabs), completion: nil)
     }
 
     public init(tabs: [Presentable], select: Presentable) {
-        super.init(initialRoute: nil)
-        performTransition(.set(tabs), with: TransitionOptions(animated: false), completion: {
+        super.init(initialTransition: .set(tabs)) { `self` in
             self.performTransition(.select(select), with: TransitionOptions(animated: false))
-        })
+        }
     }
 
     public init(tabs: [Presentable], select: Int) {
-        super.init(initialRoute: nil)
-        performTransition(.set(tabs), with: TransitionOptions(animated: false), completion: {
+        super.init(initialTransition: .set(tabs)) { `self` in
             self.performTransition(.select(index: select), with: TransitionOptions(animated: false))
-        })
+        }
     }
 }

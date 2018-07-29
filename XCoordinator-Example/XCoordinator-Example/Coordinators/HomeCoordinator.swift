@@ -10,21 +10,11 @@ import Foundation
 import XCoordinator
 
 enum HomeRoute: Route {
-    case initialize
     case news
     case userList
 }
 
 class HomeCoordinator: TabBarCoordinator<HomeRoute> {
-
-    init() {
-        super.init(initialRoute: .initialize)
-    }
-
-    override func presented(from presentable: Presentable?) {
-        super.presented(from: presentable)
-        trigger(.news)
-    }
 
     let newsCoordinator: NewsCoordinator = {
         let coordinator = NewsCoordinator()
@@ -38,12 +28,19 @@ class HomeCoordinator: TabBarCoordinator<HomeRoute> {
         return coordinator
     }()
 
+    init() {
+        super.init(tabs: [newsCoordinator, userListCoordinator])
+    }
+
+    override func presented(from presentable: Presentable?) {
+        super.presented(from: presentable)
+        trigger(.news)
+    }
+
     override func prepareTransition(for route: HomeRoute) -> TabBarTransition {
         switch route {
         case .news:
             return .select(newsCoordinator)
-        case .initialize:
-            return .set([newsCoordinator, userListCoordinator])
         case .userList:
             return .select(userListCoordinator)
         }
