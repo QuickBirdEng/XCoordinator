@@ -44,4 +44,13 @@ public struct PageViewTransition: Transition {
     }
 }
 
+extension PageViewTransition {
+    public static func multiple(_ transitions: [PageViewTransition], completion: PresentationHandler?) -> PageViewTransition {
+        return PageViewTransition(type: .multiple(transitions.map { $0.type }), animation: nil)
+    }
+
+    static func multiple(_ transitions: [PageViewTransitionType]) -> PageViewTransition {
+        return PageViewTransition(type: .multiple(transitions), animation: nil)
+    }
+}
 

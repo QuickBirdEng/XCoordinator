@@ -45,3 +45,13 @@ public struct TabBarTransition: Transition {
         return type.perform(options: options, animation: nil, coordinator: coordinator, completion: completion)
     }
 }
+
+extension TabBarTransition {
+    public static func multiple(_ transitions: [TabBarTransition], completion: PresentationHandler?) -> TabBarTransition {
+        return TabBarTransition(type: .multiple(transitions.map { $0.type }), animation: nil)
+    }
+
+    static func multiple(_ transitions: [TabBarTransitionType]) -> TabBarTransition {
+        return TabBarTransition(type: .multiple(transitions), animation: nil)
+    }
+}

@@ -16,6 +16,7 @@ internal enum TabBarTransitionType {
     case selectIndex(Int)
     case dismiss
     case none
+    case multiple([TabBarTransitionType])
 
     // MARK: - Computed properties
 
@@ -29,7 +30,7 @@ internal enum TabBarTransitionType {
             return type.presentable
         case .select(let presentable):
             return presentable
-        case .dismiss, .set, .none, .selectIndex:
+        case .dismiss, .set, .none, .selectIndex, .multiple:
             return nil
         }
     }
@@ -38,6 +39,15 @@ internal enum TabBarTransitionType {
 
     public func perform<C: Coordinator>(options: TransitionOptions, animation: Animation?, coordinator: C, completion: PresentationHandler?) where TabBarTransition == C.TransitionType {
         switch self {
+        case .multiple(let transitions):
+            guard let first = transitions.first else {
+                completion?()
+                return
+            }
+            first.perform(options: options, animation: animation, coordinator: coordinator, completion: {
+                let newTransitions = Array(transitions[1...])
+                coordinator.performTransition(.multiple(newTransitions), with: options, completion: completion)
+            })
         case .animated(let type, let animation):
             return type.perform(options: options, animation: animation, coordinator: coordinator, completion: completion)
         case .select(let presentable):

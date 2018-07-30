@@ -12,6 +12,7 @@ internal enum ViewTransitionType {
     case registerPeek(container: Container, transitionGenerator: () -> ViewTransition)
     case dismiss
     case none
+    case multiple([ViewTransitionType])
 
     // MARK: - Computed properties
 
@@ -21,7 +22,7 @@ internal enum ViewTransitionType {
             return presentable
         case .embed(let presentable, _):
             return presentable
-        case .dismiss, .none:
+        case .dismiss, .none, .multiple:
             return nil
         case .registerPeek(_, let popTransition):
             return popTransition().presentable
@@ -34,6 +35,15 @@ internal enum ViewTransitionType {
 
     public func perform<C: Coordinator>(options: TransitionOptions, animation: Animation?, coordinator: C, completion: PresentationHandler?) where ViewTransition == C.TransitionType {
         switch self {
+        case .multiple(let transitions):
+            guard let first = transitions.first else {
+                completion?()
+                return
+            }
+            first.perform(options: options, animation: animation, coordinator: coordinator, completion: {
+                let newTransitions = Array(transitions[1...])
+                coordinator.performTransition(.multiple(newTransitions), with: options, completion: completion)
+            })
         case .animated(let transition, let animation):
             return transition.perform(options: options, animation: animation, coordinator: coordinator, completion: completion)
         case .present(let presentable):

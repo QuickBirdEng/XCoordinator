@@ -43,3 +43,13 @@ public struct SplitViewTransition: Transition {
         type.perform(options: options, animation: nil, coordinator: coordinator, completion: completion)
     }
 }
+
+extension SplitViewTransition {
+    public static func multiple(_ transitions: [SplitViewTransition], completion: PresentationHandler?) -> SplitViewTransition {
+        return SplitViewTransition(type: .multiple(transitions.map { $0.type }), animation: nil)
+    }
+
+    static func multiple(_ transitions: [SplitViewTransitionType]) -> SplitViewTransition {
+        return SplitViewTransition(type: .multiple(transitions), animation: nil)
+    }
+}

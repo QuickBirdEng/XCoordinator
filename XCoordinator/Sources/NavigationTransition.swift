@@ -44,3 +44,13 @@ public struct NavigationTransition: Transition {
         return type.perform(options: options, animation: nil, coordinator: coordinator, completion: completion)
     }
 }
+
+extension NavigationTransition {
+    public static func multiple(_ transitions: [NavigationTransition], completion: PresentationHandler?) -> NavigationTransition {
+        return NavigationTransition(type: .multiple(transitions.map { $0.type }), animation: nil)
+    }
+
+    static func multiple(_ transitions: [NavigationTransitionType]) -> NavigationTransition {
+        return NavigationTransition(type: .multiple(transitions), animation: nil)
+    }
+}

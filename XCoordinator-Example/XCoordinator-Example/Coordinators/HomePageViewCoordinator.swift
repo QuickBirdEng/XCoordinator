@@ -1,20 +1,14 @@
 //
-//  HomeCoordinator.swift
+//  HomePageViewCoordinator.swift
 //  XCoordinator-Example
 //
-//  Created by Joan Disho on 04.05.18.
+//  Created by Paul Kraft on 30.07.18.
 //  Copyright © 2018 Joan Disho. All rights reserved.
 //
 
-import Foundation
 import XCoordinator
 
-enum HomeRoute: Route {
-    case news
-    case userList
-}
-
-class HomeCoordinator: TabBarCoordinator<HomeRoute> {
+class HomePageViewCoordinator: PageCoordinator<HomeRoute> {
 
     let newsCoordinator: NewsCoordinator = {
         let coordinator = NewsCoordinator()
@@ -29,20 +23,20 @@ class HomeCoordinator: TabBarCoordinator<HomeRoute> {
     }()
 
     init() {
-        super.init(tabs: [newsCoordinator, userListCoordinator], select: userListCoordinator)
+        super.init(pages: [newsCoordinator, userListCoordinator], direction: .forward, transitionStyle: .scroll, orientation: .horizontal, options: nil)
     }
 
     override func presented(from presentable: Presentable?) {
         super.presented(from: presentable)
-        // trigger(.userList)
+        trigger(.news)
     }
 
-    override func prepareTransition(for route: HomeRoute) -> TabBarTransition {
+    override func prepareTransition(for route: HomeRoute) -> PageViewTransition {
         switch route {
         case .news:
-            return .select(newsCoordinator)
+            return .set([newsCoordinator], direction: .forward)
         case .userList:
-            return .select(userListCoordinator)
+            return .set([userListCoordinator], direction: .forward)
         }
     }
 }

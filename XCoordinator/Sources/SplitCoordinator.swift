@@ -12,8 +12,7 @@ open class SplitCoordinator<RouteType: Route>: BaseCoordinator<RouteType, SplitV
     // MARK: - Init
 
     public init(master: Presentable, detail: Presentable) {
-        super.init(initialTransition: .show(master)) { `self` in
-            self.performTransition(.showDetail(detail), with: TransitionOptions(animated: false))
-        }
+        super.init(initialRoute: nil)
+        rootViewController.viewControllers = [master.viewController, detail.viewController]
     }
 }

@@ -13,6 +13,7 @@ enum SplitViewTransitionType {
     case showDetail(Presentable)
     case dismiss
     case none
+    case multiple([SplitViewTransitionType])
 
     var presentable: Presentable? {
         switch self {
@@ -20,7 +21,7 @@ enum SplitViewTransitionType {
             return presentable
         case .embed(let presentable, _):
             return presentable
-        case .dismiss, .none:
+        case .dismiss, .none, .multiple:
             return nil
         case .show(let presentable):
             return presentable
@@ -33,6 +34,15 @@ enum SplitViewTransitionType {
 
     public func perform<C: Coordinator>(options: TransitionOptions, animation: Animation?, coordinator: C, completion: PresentationHandler?) where SplitViewTransition == C.TransitionType {
         switch self {
+        case .multiple(let transitions):
+            guard let first = transitions.first else {
+                completion?()
+                return
+            }
+            first.perform(options: options, animation: animation, coordinator: coordinator, completion: {
+                let newTransitions = Array(transitions[1...])
+                coordinator.performTransition(.multiple(newTransitions), with: options, completion: completion)
+            })
         case .animated(let transition, let animation):
             return transition.perform(options: options, animation: animation, coordinator: coordinator, completion: completion)
         case .present(let presentable):

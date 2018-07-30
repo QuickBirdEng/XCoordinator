@@ -12,6 +12,7 @@ enum PageViewTransitionType {
     case set([Presentable], direction: UIPageViewControllerNavigationDirection)
     case dismiss
     case none
+    case multiple([PageViewTransitionType])
 
     var presentable: Presentable? {
         switch self {
@@ -19,7 +20,7 @@ enum PageViewTransitionType {
             return presentable
         case .embed(let presentable, _):
             return presentable
-        case .dismiss, .none, .set:
+        case .dismiss, .none, .set, .multiple:
             return nil
         case .animated(let transition, _):
             return transition.presentable
@@ -28,6 +29,15 @@ enum PageViewTransitionType {
 
     public func perform<C: Coordinator>(options: TransitionOptions, animation: Animation?, coordinator: C, completion: PresentationHandler?) where PageViewTransition == C.TransitionType {
         switch self {
+        case .multiple(let transitions):
+            guard let first = transitions.first else {
+                completion?()
+                return
+            }
+            first.perform(options: options, animation: animation, coordinator: coordinator, completion: {
+                let newTransitions = Array(transitions[1...])
+                coordinator.performTransition(.multiple(newTransitions), with: options, completion: completion)
+            })
         case .set(let presentables, let direction):
             return coordinator.set(presentables.map { $0.viewController }, direction: direction, with: options, animation: animation, completion: completion)
         case .animated(let transition, let animation):
