@@ -32,8 +32,6 @@ open class PageCoordinator<RouteType: Route>: BaseCoordinator<RouteType, PageVie
         } else {
             super.init(initialRoute: nil)
         }
-
-        rootViewController.loadViewIfNeeded()
     }
 
     open override func presented(from presentable: Presentable?) {
@@ -55,7 +53,7 @@ class PageCoordinatorDataSource: NSObject, UIPageViewControllerDataSource, UIPag
     init(pages: [Presentable]) {
         self.pages = pages
     }
-    
+
     func pageViewController(_ pageViewController: UIPageViewController, willTransitionTo pendingViewControllers: [UIViewController]) {
         print(#function)
     }
