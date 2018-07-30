@@ -10,17 +10,8 @@ import XCoordinator
 
 class HomeSplitViewCoordinator: SplitCoordinator<HomeRoute> {
 
-    let newsCoordinator: NewsCoordinator = {
-        let coordinator = NewsCoordinator()
-        coordinator.rootViewController.tabBarItem = UITabBarItem(tabBarSystemItem: .featured, tag: 0)
-        return coordinator
-    }()
-
-    let userListCoordinator: UserListCoordinator = {
-        let coordinator = UserListCoordinator()
-        coordinator.rootViewController.tabBarItem = UITabBarItem(tabBarSystemItem: .more, tag: 1)
-        return coordinator
-    }()
+    let newsCoordinator = NewsCoordinator()
+    let userListCoordinator = UserListCoordinator()
 
     init() {
         super.init(master: userListCoordinator, detail: newsCoordinator)

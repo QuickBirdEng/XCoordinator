@@ -27,7 +27,13 @@ open class PageCoordinator<RouteType: Route>: BaseCoordinator<RouteType, PageVie
         self.options = options
         self.dataSource = PageCoordinatorDataSource(pages: pages)
 
-        super.init(initialTransition: .set([pages.first!], direction: direction))
+        if let first = pages.first {
+            super.init(initialTransition: .set([first], direction: direction))
+        } else {
+            super.init(initialRoute: nil)
+        }
+
+        rootViewController.loadViewIfNeeded()
     }
 
     open override func presented(from presentable: Presentable?) {
@@ -49,11 +55,7 @@ class PageCoordinatorDataSource: NSObject, UIPageViewControllerDataSource, UIPag
     init(pages: [Presentable]) {
         self.pages = pages
     }
-
-    deinit {
-        print("deinit")
-    }
-
+    
     func pageViewController(_ pageViewController: UIPageViewController, willTransitionTo pendingViewControllers: [UIViewController]) {
         print(#function)
     }
@@ -62,7 +64,6 @@ class PageCoordinatorDataSource: NSObject, UIPageViewControllerDataSource, UIPag
         print(#function)
     }
 
-    /*
     func presentationCount(for pageViewController: UIPageViewController) -> Int {
         let isDisplaying = pageViewController.viewControllers?.first != nil
         let count = pages.count
@@ -80,7 +81,6 @@ class PageCoordinatorDataSource: NSObject, UIPageViewControllerDataSource, UIPag
         print(#function, presIndex)
         return presIndex
     }
-    */
 
     func pageViewController(_ pageViewController: UIPageViewController, viewControllerBefore viewController: UIViewController) -> UIViewController? {
         print(#function)
