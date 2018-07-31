@@ -32,11 +32,6 @@ class HomeCoordinator: TabBarCoordinator<HomeRoute> {
         super.init(tabs: [newsCoordinator, userListCoordinator], select: userListCoordinator)
     }
 
-    override func presented(from presentable: Presentable?) {
-        super.presented(from: presentable)
-        // trigger(.userList)
-    }
-
     override func prepareTransition(for route: HomeRoute) -> TabBarTransition {
         switch route {
         case .news:

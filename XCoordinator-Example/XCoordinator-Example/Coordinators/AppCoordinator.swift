@@ -26,7 +26,7 @@ class AppCoordinator: NavigationCoordinator<AppRoute> {
         self.trigger(.home, with: TransitionOptions(animated: false), completion: nil)
     }
 
-    var homeCoordinator: HomePageViewCoordinator?
+    var homeCoordinator: HomePageCoordinator!
 
     override func prepareTransition(for route: AppRoute) -> NavigationTransition {
         switch route {
@@ -36,7 +36,7 @@ class AppCoordinator: NavigationCoordinator<AppRoute> {
             vc.bind(to: viewModel)
             return .push(vc)
         case .home:
-            self.homeCoordinator = HomePageViewCoordinator()
+            self.homeCoordinator = HomePageCoordinator()
             let animation = Animation(presentationAnimation: CustomPresentations.flippingPresentation, dismissalAnimation: nil)
             return .present(homeCoordinator!, animation: animation)
         }

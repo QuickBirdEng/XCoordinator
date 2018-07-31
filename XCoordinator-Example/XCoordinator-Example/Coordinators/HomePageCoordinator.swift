@@ -1,5 +1,5 @@
 //
-//  HomePageViewCoordinator.swift
+//  HomePageCoordinator.swift
 //  XCoordinator-Example
 //
 //  Created by Paul Kraft on 30.07.18.
@@ -8,13 +8,13 @@
 
 import XCoordinator
 
-class HomePageViewCoordinator: PageCoordinator<HomeRoute> {
+class HomePageCoordinator: PageCoordinator<HomeRoute> {
 
     let newsCoordinator = NewsCoordinator()
     let userListCoordinator = UserListCoordinator()
 
     init() {
-        super.init(pages: [newsCoordinator, userListCoordinator], direction: .forward, transitionStyle: .scroll, orientation: .horizontal, options: nil)
+        super.init(pages: [newsCoordinator, userListCoordinator], direction: .forward, transitionStyle: .pageCurl, orientation: .horizontal, options: nil)
     }
 
     override func prepareTransition(for route: HomeRoute) -> PageViewTransition {

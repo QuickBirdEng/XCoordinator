@@ -27,19 +27,14 @@ open class PageCoordinator<RouteType: Route>: BaseCoordinator<RouteType, PageVie
         self.options = options
         self.dataSource = PageCoordinatorDataSource(pages: pages)
 
-        if let first = pages.first {
-            super.init(initialTransition: .set([first], direction: direction))
+        if let firstPage = pages.first {
+            super.init(initialTransition: .set([firstPage], direction: direction))
         } else {
             super.init(initialRoute: nil)
-        }
-    }
-
-    open override func presented(from presentable: Presentable?) {
-        // Not releasing page view controller here
+        }           
     }
 
     open override func generateRootViewController() -> UIPageViewController {
-        print(#function)
         let controller = UIPageViewController(transitionStyle: transitionStyle, navigationOrientation: orientation, options: options)
         controller.dataSource = dataSource
         controller.delegate = dataSource
@@ -54,34 +49,19 @@ class PageCoordinatorDataSource: NSObject, UIPageViewControllerDataSource, UIPag
         self.pages = pages
     }
 
-    func pageViewController(_ pageViewController: UIPageViewController, willTransitionTo pendingViewControllers: [UIViewController]) {
-        print(#function)
-    }
-
-    func pageViewController(_ pageViewController: UIPageViewController, didFinishAnimating finished: Bool, previousViewControllers: [UIViewController], transitionCompleted completed: Bool) {
-        print(#function)
-    }
-
     func presentationCount(for pageViewController: UIPageViewController) -> Int {
         let isDisplaying = pageViewController.viewControllers?.first != nil
-        let count = pages.count
-        print(#function, count)
-        return isDisplaying ? count : 0
+        return isDisplaying ? pages.count : 0
     }
 
     func presentationIndex(for pageViewController: UIPageViewController) -> Int {
         let viewController = pageViewController.viewControllers?.first
         let index = pages.index(where: { $0.viewController == viewController })
-        guard let presIndex = index else {
-            print("\(#function) \(viewController?.description ?? "nil")")
-            return 0
-        }
-        print(#function, presIndex)
+        guard let presIndex = index else { return 0 }
         return presIndex
     }
 
     func pageViewController(_ pageViewController: UIPageViewController, viewControllerBefore viewController: UIViewController) -> UIViewController? {
-        print(#function)
         guard let index = pages.index(where: { $0.viewController == viewController }) else {
             assertionFailure()
             return nil
@@ -92,7 +72,6 @@ class PageCoordinatorDataSource: NSObject, UIPageViewControllerDataSource, UIPag
     }
 
     func pageViewController(_ pageViewController: UIPageViewController, viewControllerAfter viewController: UIViewController) -> UIViewController? {
-        print(#function)
         guard let index = pages.index(where: { $0.viewController == viewController }) else {
             assertionFailure()
             return nil

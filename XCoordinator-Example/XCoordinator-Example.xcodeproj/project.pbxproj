@@ -9,8 +9,8 @@
 /* Begin PBXBuildFile section */
 		3933375BA780C51DB7B8357B /* Pods_XCoordinator_Example.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 46F571D13EFD76D6E4649AF5 /* Pods_XCoordinator_Example.framework */; };
 		8CD9A7878B53157729BEC245 /* Pods_XCoordinator_ExampleUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 86DF3D59B2A0567AB053945F /* Pods_XCoordinator_ExampleUITests.framework */; };
-		9B44F80A210EFD7E00FC9E15 /* HomePageViewCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B44F809210EFD7E00FC9E15 /* HomePageViewCoordinator.swift */; };
-		9B44F80C210F115300FC9E15 /* HomeSplitViewCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B44F80B210F115300FC9E15 /* HomeSplitViewCoordinator.swift */; };
+		9B44F80A210EFD7E00FC9E15 /* HomePageCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B44F809210EFD7E00FC9E15 /* HomePageCoordinator.swift */; };
+		9B44F80C210F115300FC9E15 /* HomeSplitCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B44F80B210F115300FC9E15 /* HomeSplitCoordinator.swift */; };
 		9B49C7E4210BF10100FE086A /* UserListCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B49C7E3210BF10100FE086A /* UserListCoordinator.swift */; };
 		9B49C7E9210BF21900FE086A /* NewsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B49C7E5210BF21900FE086A /* NewsViewController.swift */; };
 		9B49C7EA210BF21900FE086A /* NewsViewModelImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B49C7E6210BF21900FE086A /* NewsViewModelImpl.swift */; };
@@ -93,8 +93,8 @@
 		55EB5B0A5F36DF91310F3939 /* Pods-XCoordinator-Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-XCoordinator-Example.release.xcconfig"; path = "Pods/Target Support Files/Pods-XCoordinator-Example/Pods-XCoordinator-Example.release.xcconfig"; sourceTree = "<group>"; };
 		86DF3D59B2A0567AB053945F /* Pods_XCoordinator_ExampleUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_XCoordinator_ExampleUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8C5EB8C9580F4AB0A311207F /* Pods-XCoordinator-ExampleUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-XCoordinator-ExampleUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-XCoordinator-ExampleUITests/Pods-XCoordinator-ExampleUITests.release.xcconfig"; sourceTree = "<group>"; };
-		9B44F809210EFD7E00FC9E15 /* HomePageViewCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomePageViewCoordinator.swift; sourceTree = "<group>"; };
-		9B44F80B210F115300FC9E15 /* HomeSplitViewCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeSplitViewCoordinator.swift; sourceTree = "<group>"; };
+		9B44F809210EFD7E00FC9E15 /* HomePageCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomePageCoordinator.swift; sourceTree = "<group>"; };
+		9B44F80B210F115300FC9E15 /* HomeSplitCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeSplitCoordinator.swift; sourceTree = "<group>"; };
 		9B49C7E3210BF10100FE086A /* UserListCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserListCoordinator.swift; sourceTree = "<group>"; };
 		9B49C7E5210BF21900FE086A /* NewsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsViewController.swift; sourceTree = "<group>"; };
 		9B49C7E6210BF21900FE086A /* NewsViewModelImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsViewModelImpl.swift; sourceTree = "<group>"; };
@@ -226,8 +226,8 @@
 			isa = PBXGroup;
 			children = (
 				DC36CCA3209B469F009EB669 /* AppCoordinator.swift */,
-				9B44F809210EFD7E00FC9E15 /* HomePageViewCoordinator.swift */,
-				9B44F80B210F115300FC9E15 /* HomeSplitViewCoordinator.swift */,
+				9B44F809210EFD7E00FC9E15 /* HomePageCoordinator.swift */,
+				9B44F80B210F115300FC9E15 /* HomeSplitCoordinator.swift */,
 				DCB6B9A9209C4DC200829EFB /* HomeCoordinator.swift */,
 				9BECE276210CAB370051010B /* NewsCoordinator.swift */,
 				DCB0DD0720A330F000BC79B6 /* UserCoordinator.swift */,
@@ -517,7 +517,7 @@
 				DCB0DD0820A330F000BC79B6 /* UserCoordinator.swift in Sources */,
 				DC36CC9A209B4436009EB669 /* LoginViewController.swift in Sources */,
 				DCB0DD0320A320D600BC79B6 /* UserViewController.swift in Sources */,
-				9B44F80C210F115300FC9E15 /* HomeSplitViewCoordinator.swift in Sources */,
+				9B44F80C210F115300FC9E15 /* HomeSplitCoordinator.swift in Sources */,
 				9BECE274210C8E220051010B /* NewsService.swift in Sources */,
 				DCB6B9B5209C77B500829EFB /* UsersViewModel.swift in Sources */,
 				DC36CC95209B440D009EB669 /* BindableType.swift in Sources */,
@@ -532,7 +532,7 @@
 				DCB6B9A2209C4BE200829EFB /* HomeViewController.swift in Sources */,
 				DC36CC9C209B4436009EB669 /* LoginViewModel.swift in Sources */,
 				DCB6B9BB209C7AE500829EFB /* CustomPresentations.swift in Sources */,
-				9B44F80A210EFD7E00FC9E15 /* HomePageViewCoordinator.swift in Sources */,
+				9B44F80A210EFD7E00FC9E15 /* HomePageCoordinator.swift in Sources */,
 				DCB6B9AA209C4DC200829EFB /* HomeCoordinator.swift in Sources */,
 				9BECE277210CAB370051010B /* NewsCoordinator.swift in Sources */,
 				9B49C7E9210BF21900FE086A /* NewsViewController.swift in Sources */,

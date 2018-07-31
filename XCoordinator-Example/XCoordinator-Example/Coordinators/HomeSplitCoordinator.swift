@@ -1,5 +1,5 @@
 //
-//  HomeSplitViewCoordinator.swift
+//  HomeSplitCoordinator.swift
 //  XCoordinator-Example
 //
 //  Created by Paul Kraft on 30.07.18.
@@ -8,7 +8,7 @@
 
 import XCoordinator
 
-class HomeSplitViewCoordinator: SplitCoordinator<HomeRoute> {
+class HomeSplitCoordinator: SplitCoordinator<HomeRoute> {
 
     let newsCoordinator = NewsCoordinator()
     let userListCoordinator = UserListCoordinator()
