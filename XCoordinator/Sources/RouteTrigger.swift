@@ -11,7 +11,6 @@ public protocol RouteTrigger {
     associatedtype RouteType: Route
 
     func trigger(_ route: RouteType, with options: TransitionOptions, completion: PresentationHandler?)
-    func presented(from presentable: Presentable?)
 }
 
 extension RouteTrigger {

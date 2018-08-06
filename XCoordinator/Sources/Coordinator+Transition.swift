@@ -13,7 +13,7 @@ extension Coordinator {
 
     func dismiss(with options: TransitionOptions, animation: Animation?, completion: PresentationHandler?) {
         rootViewController.transitioningDelegate = animation
-        (context ?? rootViewController).dismiss(animated: options.animated, completion: completion)
+        rootViewController.dismiss(animated: options.animated, completion: completion)
     }
 
     func embed(_ viewController: UIViewController, in container: Container, with options: TransitionOptions, completion: PresentationHandler?) {
@@ -42,9 +42,7 @@ extension Coordinator {
         let delegate = CoordinatorPreviewingDelegateObject(transition: transitionGenerator, coordinator: self, completion: completion)
 
         if let existingContextIndex = sourceView.strongReferences
-            .index(where: {
-                $0 is CoordinatorPreviewingDelegateObject<Self>
-            }),
+            .index(where: { $0 is CoordinatorPreviewingDelegateObject<Self> }),
             let contextDelegate = sourceView.strongReferences.remove(at: existingContextIndex) as? CoordinatorPreviewingDelegateObject<Self>,
             let context = contextDelegate.context {
             rootViewController.unregisterForPreviewing(withContext: context)

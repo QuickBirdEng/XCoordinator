@@ -14,10 +14,10 @@ public typealias PresentationHandler = () -> Void
 public protocol Coordinator: RouteTrigger, Presentable {
     associatedtype TransitionType: Transition
 
-    var context: UIViewController? { get } // TODO: Is this actually needed for every Coordinator?
     var rootViewController: RootViewController { get }
 
     func prepareTransition(for route: RouteType) -> TransitionType
+    func presented(from presentable: Presentable?)
 }
 
 // MARK: - Extension Coordinator: Presentable
