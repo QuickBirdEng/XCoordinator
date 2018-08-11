@@ -23,6 +23,7 @@ enum UserRoute: Route {
             return .push(vc)
         case let .alert(title, message):
             let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+            alert.addAction(.init(title: "OK", style: .default, handler: nil))
             return .present(alert)
         case .users:
             return .dismiss()
