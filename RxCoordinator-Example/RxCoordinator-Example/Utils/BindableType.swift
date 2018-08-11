@@ -44,4 +44,3 @@ extension BindableType where Self: UICollectionViewCell {
     }
 
 }
-
