@@ -11,10 +11,10 @@ import UIKit
 
 public class Animation: NSObject, UIViewControllerTransitioningDelegate {
 
-    public let presentationAnimation: TranistionAnimation?
-    public let dismissalAnimation: TranistionAnimation?
+    public let presentationAnimation: TransitionAnimation?
+    public let dismissalAnimation: TransitionAnimation?
 
-    public init(presentationAnimation: TranistionAnimation?, dismissalAnimation: TranistionAnimation?) {
+    public init(presentationAnimation: TransitionAnimation?, dismissalAnimation: TransitionAnimation?) {
         self.presentationAnimation = presentationAnimation
         self.dismissalAnimation = dismissalAnimation
     }
