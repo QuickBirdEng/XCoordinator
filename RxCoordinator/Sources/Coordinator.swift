@@ -29,7 +29,7 @@ extension Coordinator {
         return rootViewController
     }
 
-    var navigationController: UINavigationController {
+    public var navigationController: UINavigationController {
         return viewController as! UINavigationController
     }
 
