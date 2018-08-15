@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-public class StaticTransitionAnimation: NSObject, TranistionAnimation {
+public class StaticTransitionAnimation: NSObject, TransitionAnimation {
     public let duration: TimeInterval
     public let performAnimation: (_ transitionContext: UIViewControllerContextTransitioning) -> Void
 
