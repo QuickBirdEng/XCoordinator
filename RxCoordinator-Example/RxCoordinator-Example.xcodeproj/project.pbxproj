@@ -23,8 +23,6 @@
 		DCB0DD0520A320D600BC79B6 /* UserViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = DCB0DD0220A320D600BC79B6 /* UserViewController.xib */; };
 		DCB0DD0820A330F000BC79B6 /* UserRoute.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCB0DD0720A330F000BC79B6 /* UserRoute.swift */; };
 		DCB29667209B3F9A00698A44 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCB29666209B3F9A00698A44 /* AppDelegate.swift */; };
-		DCB29669209B3F9A00698A44 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCB29668209B3F9A00698A44 /* ViewController.swift */; };
-		DCB2966C209B3F9A00698A44 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DCB2966A209B3F9A00698A44 /* Main.storyboard */; };
 		DCB2966E209B3F9D00698A44 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DCB2966D209B3F9D00698A44 /* Assets.xcassets */; };
 		DCB29671209B3F9D00698A44 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DCB2966F209B3F9D00698A44 /* LaunchScreen.storyboard */; };
 		DCB2967C209B3F9D00698A44 /* RxCoordinator_ExampleUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCB2967B209B3F9D00698A44 /* RxCoordinator_ExampleUITests.swift */; };
@@ -80,8 +78,6 @@
 		DCB0DD0720A330F000BC79B6 /* UserRoute.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserRoute.swift; sourceTree = "<group>"; };
 		DCB29663209B3F9A00698A44 /* RxCoordinator-Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "RxCoordinator-Example.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		DCB29666209B3F9A00698A44 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		DCB29668209B3F9A00698A44 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		DCB2966B209B3F9A00698A44 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		DCB2966D209B3F9D00698A44 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		DCB29670209B3F9D00698A44 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		DCB29672209B3F9D00698A44 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -193,15 +189,13 @@
 		DCB29665209B3F9A00698A44 /* RxCoordinator-Example */ = {
 			isa = PBXGroup;
 			children = (
+				DCB29666209B3F9A00698A44 /* AppDelegate.swift */,
 				DC36CCA0209B465A009EB669 /* Routes */,
 				DCB0DCFF20A320C200BC79B6 /* User */,
 				DCB6B9AF209C778F00829EFB /* UserList */,
 				DC36CCA2209B4689009EB669 /* Home */,
 				DCB29689209B41C900698A44 /* Login */,
 				DCB6B9B9209C7AB500829EFB /* Utils */,
-				DCB29666209B3F9A00698A44 /* AppDelegate.swift */,
-				DCB29668209B3F9A00698A44 /* ViewController.swift */,
-				DCB2966A209B3F9A00698A44 /* Main.storyboard */,
 				DCB2966D209B3F9D00698A44 /* Assets.xcassets */,
 				DCB2966F209B3F9D00698A44 /* LaunchScreen.storyboard */,
 				DCB29672209B3F9D00698A44 /* Info.plist */,
@@ -347,7 +341,6 @@
 				DCB6B9A6209C4BE200829EFB /* HomeViewController.xib in Resources */,
 				DCB2966E209B3F9D00698A44 /* Assets.xcassets in Resources */,
 				DCB0DD0520A320D600BC79B6 /* UserViewController.xib in Resources */,
-				DCB2966C209B3F9A00698A44 /* Main.storyboard in Resources */,
 				DCDCA6A020A31BA80014212F /* UserCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -446,7 +439,6 @@
 				DC36CC9C209B4436009EB669 /* LoginViewModel.swift in Sources */,
 				DCB6B9BB209C7AE500829EFB /* CustomPresentations.swift in Sources */,
 				DCB6B9AA209C4DC200829EFB /* HomeRoute.swift in Sources */,
-				DCB29669209B3F9A00698A44 /* ViewController.swift in Sources */,
 				DCB29667209B3F9A00698A44 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -483,14 +475,6 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		DCB2966A209B3F9A00698A44 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				DCB2966B209B3F9A00698A44 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		DCB2966F209B3F9D00698A44 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -622,8 +606,9 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = W44QDC3NZM;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = "RxCoordinator-Example/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -641,8 +626,9 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = W44QDC3NZM;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = "RxCoordinator-Example/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

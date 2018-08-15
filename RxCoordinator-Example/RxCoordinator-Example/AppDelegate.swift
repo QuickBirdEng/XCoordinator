@@ -16,12 +16,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var coordinator: BasicCoordinator<MainRoute>!
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
-        guard let window = self.window else { return false }
 
         coordinator = BasicCoordinator<MainRoute>(initialRoute: .login, initialLoadingType: .immediately)
+
+        let window = UIWindow(frame: UIScreen.main.bounds)
         window.rootViewController = coordinator.rootViewController
+        window.makeKeyAndVisible()
+        self.window = window
 
         return true
     }
+    
 }
-
