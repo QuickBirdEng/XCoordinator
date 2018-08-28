@@ -50,6 +50,3 @@ class UsersViewController: UIViewController, BindableType {
     }
   
 }
-
-
-

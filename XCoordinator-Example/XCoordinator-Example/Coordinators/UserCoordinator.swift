@@ -30,8 +30,7 @@ class UserCoordinator: NavigationCoordinator<UserRoute> {
             return .push(vc)
         case let .alert(title, message):
             let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
-            let doneAction = UIAlertAction(title: "Done", style: .default, handler: nil)
-            alert.addAction(doneAction)
+            alert.addAction(.init(title: "Ok", style: .default, handler: nil))
             return .present(alert)
         case .users:
             return .dismiss()

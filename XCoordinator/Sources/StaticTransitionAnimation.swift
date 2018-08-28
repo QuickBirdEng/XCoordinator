@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-public class StaticTransitionAnimation: NSObject, TranistionAnimation {
+public class StaticTransitionAnimation: NSObject, TransitionAnimation {
 
     // MARK: - Stored properties
 

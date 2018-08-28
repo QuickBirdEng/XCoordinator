@@ -13,12 +13,12 @@ public class Animation: NSObject, UIViewControllerTransitioningDelegate {
 
     // MARK: - Stored properties
 
-    public let presentationAnimation: TranistionAnimation?
-    public let dismissalAnimation: TranistionAnimation?
+    public let presentationAnimation: TransitionAnimation?
+    public let dismissalAnimation: TransitionAnimation?
 
     // MARK: - Init
 
-    public init(presentationAnimation: TranistionAnimation?, dismissalAnimation: TranistionAnimation?) {
+    public init(presentationAnimation: TransitionAnimation?, dismissalAnimation: TransitionAnimation?) {
         self.presentationAnimation = presentationAnimation
         self.dismissalAnimation = dismissalAnimation
     }

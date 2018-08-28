@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-public class InteractiveTransitionAnimation: NSObject, TranistionAnimation, UIViewControllerInteractiveTransitioning {
+public class InteractiveTransitionAnimation: NSObject, TransitionAnimation, UIViewControllerInteractiveTransitioning {
 
     // MARK: - Stored properties
 

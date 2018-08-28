@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-public protocol TranistionAnimation: UIViewControllerAnimatedTransitioning {
+public protocol TransitionAnimation: UIViewControllerAnimatedTransitioning {
     var duration: TimeInterval { get }
     var performAnimation: (_ transitionContext: UIViewControllerContextTransitioning) -> Void { get }
 }
