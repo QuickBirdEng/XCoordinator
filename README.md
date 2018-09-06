@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="https://github.com/quickbirdstudios/XCoordinator/blob/master/Images/logo.png">
+  <img src="https://quickbirdstudios.com/files/xcoordinator/logo.png">
 </p>
 
 [![Build Status](https://travis-ci.com/quickbirdstudios/XCoordinator.svg?branch=master)](https://travis-ci.org/quickbirdstudios/XCoordinator)
@@ -16,7 +16,7 @@ To better answer the question, we are building **XCoordinator**, a navigation fr
 It's especially useful for implementing MVVM-C, Model-View-ViewModel-Coordinator:
 
 <p align="center">
-  <img src="https://github.com/quickbirdstudios/XCoordinator/blob/master/Images/mvvmc.png">
+  <img src="https://quickbirdstudios.com/files/xcoordinator/mvvmc.png">
 </p>
 
 ## 🏃‍♂️Getting started
