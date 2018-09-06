@@ -18,7 +18,7 @@ class HomeCoordinator: TabBarCoordinator<HomeRoute> {
 
     let newsCoordinator: NewsCoordinator = {
         let coordinator = NewsCoordinator()
-        coordinator.rootViewController.tabBarItem = UITabBarItem(tabBarSystemItem: .featured, tag: 0)
+        coordinator.rootViewController.tabBarItem = UITabBarItem(tabBarSystemItem: .recents, tag: 0)
         return coordinator
     }()
 

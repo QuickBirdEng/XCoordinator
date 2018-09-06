@@ -73,6 +73,7 @@
 		DCB6B9BC209C7AE500829EFB /* CustomPresentations.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCB6B9BA209C7AE500829EFB /* CustomPresentations.swift */; };
 		DCDCA6A020A31BA80014212F /* UserCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = DCDCA69E20A31BA80014212F /* UserCell.xib */; };
 		F63A7E0020FC979900E2E3D0 /* UserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCB0DD0020A320D600BC79B6 /* UserViewController.swift */; };
+		F6D36D7221416DCA00FCD357 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F6D36D7121416DCA00FCD357 /* Default-568h@2x.png */; };
 		F6E0371420AF77DF0027EE31 /* UserCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCB0DD0720A330F000BC79B6 /* UserCoordinator.swift */; };
 /* End PBXBuildFile section */
 
@@ -133,6 +134,7 @@
 		DCB6B9B2209C77B500829EFB /* UsersViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = UsersViewController.xib; sourceTree = "<group>"; };
 		DCB6B9BA209C7AE500829EFB /* CustomPresentations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomPresentations.swift; sourceTree = "<group>"; };
 		DCDCA69E20A31BA80014212F /* UserCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = UserCell.xib; sourceTree = "<group>"; };
+		F6D36D7121416DCA00FCD357 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -259,6 +261,7 @@
 		DCB2965A209B3F9A00698A44 = {
 			isa = PBXGroup;
 			children = (
+				F6D36D7121416DCA00FCD357 /* Default-568h@2x.png */,
 				DCB29665209B3F9A00698A44 /* XCoordinator-Example */,
 				DCB2967A209B3F9D00698A44 /* XCoordinator-ExampleUITests */,
 				DCB29664209B3F9A00698A44 /* Products */,
@@ -422,6 +425,7 @@
 				DCB29671209B3F9D00698A44 /* LaunchScreen.storyboard in Resources */,
 				DCB6B9B7209C77B500829EFB /* UsersViewController.xib in Resources */,
 				DC36CC9E209B4436009EB669 /* LoginViewController.xib in Resources */,
+				F6D36D7221416DCA00FCD357 /* Default-568h@2x.png in Resources */,
 				9BECE283210CB97E0051010B /* NewsDetailViewController.xib in Resources */,
 				9B49C7EC210BF21900FE086A /* NewsViewController.xib in Resources */,
 				DCB6B9A6209C4BE200829EFB /* HomeViewController.xib in Resources */,
