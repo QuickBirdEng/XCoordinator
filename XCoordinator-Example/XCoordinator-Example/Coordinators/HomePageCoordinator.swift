@@ -10,10 +10,14 @@ import XCoordinator
 
 class HomePageCoordinator: PageCoordinator<HomeRoute> {
 
-    let newsCoordinator = NewsCoordinator()
-    let userListCoordinator = UserListCoordinator()
+    let newsCoordinator: AnyCoordinator<NewsRoute>
+    let userListCoordinator: AnyCoordinator<UserListRoute>
 
-    init() {
+    init(newsCoordinator: AnyCoordinator<NewsRoute> = NewsCoordinator().anyCoordinator,
+         userListCoordinator: AnyCoordinator<UserListRoute> = UserListCoordinator().anyCoordinator) {
+        self.newsCoordinator = newsCoordinator
+        self.userListCoordinator = userListCoordinator
+        
         super.init(pages: [newsCoordinator, userListCoordinator], direction: .forward, transitionStyle: .pageCurl, orientation: .horizontal, options: nil)
     }
 

@@ -20,7 +20,7 @@ class AppCoordinator: NavigationCoordinator<AppRoute> {
         super.init(initialRoute: .login)
     }
 
-    var homeCoordinator: HomeCoordinator!
+    var homeCoordinator: AnyCoordinator<HomeRoute>!
 
     override func prepareTransition(for route: AppRoute) -> NavigationTransition {
         switch route {
@@ -30,9 +30,9 @@ class AppCoordinator: NavigationCoordinator<AppRoute> {
             vc.bind(to: viewModel)
             return .push(vc)
         case .home:
-            self.homeCoordinator = HomeCoordinator()
+            self.homeCoordinator = HomeTabCoordinator().anyCoordinator
             let animation = Animation(presentationAnimation: CustomPresentations.flippingPresentation, dismissalAnimation: nil)
-            return .present(homeCoordinator!, animation: animation)
+            return .present(homeCoordinator, animation: animation)
         }
     }
 }

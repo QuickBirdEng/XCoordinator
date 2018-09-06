@@ -61,8 +61,8 @@
 		DCB6B9A5209C4BE200829EFB /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCB6B9A0209C4BE200829EFB /* HomeViewModel.swift */; };
 		DCB6B9A6209C4BE200829EFB /* HomeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = DCB6B9A1209C4BE200829EFB /* HomeViewController.xib */; };
 		DCB6B9A7209C4BE200829EFB /* HomeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = DCB6B9A1209C4BE200829EFB /* HomeViewController.xib */; };
-		DCB6B9AA209C4DC200829EFB /* HomeCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCB6B9A9209C4DC200829EFB /* HomeCoordinator.swift */; };
-		DCB6B9AB209C4DC200829EFB /* HomeCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCB6B9A9209C4DC200829EFB /* HomeCoordinator.swift */; };
+		DCB6B9AA209C4DC200829EFB /* HomeTabCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCB6B9A9209C4DC200829EFB /* HomeTabCoordinator.swift */; };
+		DCB6B9AB209C4DC200829EFB /* HomeTabCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCB6B9A9209C4DC200829EFB /* HomeTabCoordinator.swift */; };
 		DCB6B9B3209C77B500829EFB /* UsersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCB6B9B0209C77B500829EFB /* UsersViewController.swift */; };
 		DCB6B9B4209C77B500829EFB /* UsersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCB6B9B0209C77B500829EFB /* UsersViewController.swift */; };
 		DCB6B9B5209C77B500829EFB /* UsersViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCB6B9B1209C77B500829EFB /* UsersViewModel.swift */; };
@@ -128,7 +128,7 @@
 		DCB6B99F209C4BE200829EFB /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		DCB6B9A0209C4BE200829EFB /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
 		DCB6B9A1209C4BE200829EFB /* HomeViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HomeViewController.xib; sourceTree = "<group>"; };
-		DCB6B9A9209C4DC200829EFB /* HomeCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCoordinator.swift; sourceTree = "<group>"; };
+		DCB6B9A9209C4DC200829EFB /* HomeTabCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeTabCoordinator.swift; sourceTree = "<group>"; };
 		DCB6B9B0209C77B500829EFB /* UsersViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsersViewController.swift; sourceTree = "<group>"; };
 		DCB6B9B1209C77B500829EFB /* UsersViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsersViewModel.swift; sourceTree = "<group>"; };
 		DCB6B9B2209C77B500829EFB /* UsersViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = UsersViewController.xib; sourceTree = "<group>"; };
@@ -230,7 +230,7 @@
 				DC36CCA3209B469F009EB669 /* AppCoordinator.swift */,
 				9B44F809210EFD7E00FC9E15 /* HomePageCoordinator.swift */,
 				9B44F80B210F115300FC9E15 /* HomeSplitCoordinator.swift */,
-				DCB6B9A9209C4DC200829EFB /* HomeCoordinator.swift */,
+				DCB6B9A9209C4DC200829EFB /* HomeTabCoordinator.swift */,
 				9BECE276210CAB370051010B /* NewsCoordinator.swift */,
 				DCB0DD0720A330F000BC79B6 /* UserCoordinator.swift */,
 				9B49C7E3210BF10100FE086A /* UserListCoordinator.swift */,
@@ -537,7 +537,7 @@
 				DC36CC9C209B4436009EB669 /* LoginViewModel.swift in Sources */,
 				DCB6B9BB209C7AE500829EFB /* CustomPresentations.swift in Sources */,
 				9B44F80A210EFD7E00FC9E15 /* HomePageCoordinator.swift in Sources */,
-				DCB6B9AA209C4DC200829EFB /* HomeCoordinator.swift in Sources */,
+				DCB6B9AA209C4DC200829EFB /* HomeTabCoordinator.swift in Sources */,
 				9BECE277210CAB370051010B /* NewsCoordinator.swift in Sources */,
 				9B49C7E9210BF21900FE086A /* NewsViewController.swift in Sources */,
 				9B49C7EA210BF21900FE086A /* NewsViewModelImpl.swift in Sources */,
@@ -560,7 +560,7 @@
 				DCB6B9A5209C4BE200829EFB /* HomeViewModel.swift in Sources */,
 				DCB2967C209B3F9D00698A44 /* XCoordinator_ExampleUITests.swift in Sources */,
 				9BECE27E210CB97E0051010B /* NewsDetailViewController.swift in Sources */,
-				DCB6B9AB209C4DC200829EFB /* HomeCoordinator.swift in Sources */,
+				DCB6B9AB209C4DC200829EFB /* HomeTabCoordinator.swift in Sources */,
 				9BECE278210CAB9F0051010B /* NewsCoordinator.swift in Sources */,
 				DC36CC9D209B4436009EB669 /* LoginViewModel.swift in Sources */,
 				F63A7E0020FC979900E2E3D0 /* UserViewController.swift in Sources */,
