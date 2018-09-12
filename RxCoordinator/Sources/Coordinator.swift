@@ -189,7 +189,7 @@ extension Coordinator {
 
     private func dismissalObservable(for viewController: UIViewController) -> Observable<Void> {
         return viewController.rx.sentMessage(#selector(UIViewController.viewWillDisappear))
-            .filter { _ in viewController.isBeingDismissed }
+            .filter { _ in viewController.isBeingDismissed || viewController.isMovingFromParentViewController }
             .map { _ in () }
             .take(1)
     }
