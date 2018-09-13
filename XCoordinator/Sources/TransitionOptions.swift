@@ -6,8 +6,6 @@
 //  Copyright © 2018 Stefan Kofler. All rights reserved.
 //
 
-import Foundation
-
 public struct TransitionOptions {
 
     // MARK: - Stored properties

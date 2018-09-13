@@ -6,8 +6,6 @@
 //  Copyright © 2018 Stefan Kofler. All rights reserved.
 //
 
-import UIKit
-
 public typealias BasicNavigationCoordinator<R: Route> = BasicCoordinator<R, NavigationTransition>
 public typealias BasicViewCoordinator<R: Route> = BasicCoordinator<R, ViewTransition>
 public typealias BasicTabBarCoordinator<R: Route> = BasicCoordinator<R, TabBarTransition>

@@ -5,8 +5,6 @@
 //  Created by Stefan Kofler on 19.07.18.
 //
 
-import UIKit
-
 class CoordinatorPreviewingDelegateObject<TransitionType: TransitionProtocol>: NSObject, UIViewControllerPreviewingDelegate {
 
     // MARK: - Stored properties

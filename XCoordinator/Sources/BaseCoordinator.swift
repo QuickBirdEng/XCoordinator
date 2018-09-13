@@ -5,8 +5,6 @@
 //  Created by Paul Kraft on 27.07.18.
 //
 
-import UIKit
-
 extension BaseCoordinator {
     public typealias RootViewController = TransitionType.RootViewController
 }

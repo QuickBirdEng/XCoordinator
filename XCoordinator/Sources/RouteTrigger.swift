@@ -5,8 +5,6 @@
 //  Created by Paul Kraft on 28.07.18.
 //
 
-import Foundation
-
 public protocol RouteTrigger {
     associatedtype RouteType: Route
 

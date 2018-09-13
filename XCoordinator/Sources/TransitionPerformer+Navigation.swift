@@ -5,8 +5,6 @@
 //  Created by Paul Kraft on 27.07.18.
 //
 
-import UIKit
-
 extension TransitionPerformer where TransitionType.RootViewController: UINavigationController {
     func push(_ viewController: UIViewController, with options: TransitionOptions, animation: Animation?, completion: PresentationHandler?) {
         CATransaction.begin()

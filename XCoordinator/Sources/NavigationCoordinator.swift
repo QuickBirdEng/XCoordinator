@@ -5,8 +5,6 @@
 //  Created by Paul Kraft on 29.07.18.
 //
 
-import Foundation
-
 open class NavigationCoordinator<R: Route>: BaseCoordinator<R, NavigationTransition> {
 
     // MARK: - Init

@@ -5,8 +5,6 @@
 //  Created by Paul Kraft on 28.07.18.
 //
 
-import Foundation
-
 public final class AnyCoordinator<RouteType: Route>: RouteTrigger, Presentable {
 
     // MARK: - Stored properties

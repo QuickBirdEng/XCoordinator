@@ -6,9 +6,6 @@
 //  Copyright © 2018 Stefan Kofler. All rights reserved.
 //
 
-import Foundation
-import UIKit
-
 public protocol Container {
     var view: UIView! { get }
     var viewController: UIViewController! { get }

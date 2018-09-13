@@ -6,6 +6,4 @@
 //  Copyright © 2018 Stefan Kofler. All rights reserved.
 //
 
-import Foundation
-
 public protocol Route {}

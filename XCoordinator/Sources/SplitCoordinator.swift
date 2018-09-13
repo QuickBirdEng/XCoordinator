@@ -5,8 +5,6 @@
 //  Created by Paul Kraft on 30.07.18.
 //
 
-import Foundation
-
 open class SplitCoordinator<RouteType: Route>: BaseCoordinator<RouteType, SplitTransition> {
 
     // MARK: - Init

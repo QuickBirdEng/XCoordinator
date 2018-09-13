@@ -5,8 +5,6 @@
 //  Created by Paul Kraft on 13.09.18.
 //
 
-import Foundation
-
 public class AnyTransitionPerformer<TransitionType: TransitionProtocol>: TransitionPerformer {
 
     // MARK: - Stored properties

@@ -5,8 +5,6 @@
 //  Created by Paul Kraft on 29.07.18.
 //
 
-import Foundation
-
 open class TabBarCoordinator<R: Route>: BaseCoordinator<R, TabBarTransition> {
 
     // MARK: - Init

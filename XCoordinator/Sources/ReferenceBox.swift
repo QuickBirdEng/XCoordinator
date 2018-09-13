@@ -5,8 +5,6 @@
 //  Created by Stefan Kofler on 18.07.18.
 //
 
-import Foundation
-
 public class ReferenceBox<T: AnyObject> {
 
     // MARK: - Stored properties
