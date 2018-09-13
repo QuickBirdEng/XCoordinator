@@ -3,5 +3,5 @@ language: objective-c
 
 script:
 
-    - xcodebuild -workspace RxCoordinator.xcworkspace -scheme 'RxCoordinator' | xcpretty -c
-    - xcodebuild -workspace RxCoordinator-Example/RxCoordinator-Example.xcworkspace -scheme 'RxCoordinator-Example' | xcpretty -c
+    - xcodebuild -workspace XCoordinator.xcworkspace -scheme 'XCoordinator' | xcpretty -c
+    - xcodebuild -workspace XCoordinator-Example/XCoordinator-Example.xcworkspace -scheme 'XCoordinator-Example' | xcpretty -c
