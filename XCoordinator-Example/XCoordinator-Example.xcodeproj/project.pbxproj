@@ -759,7 +759,7 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = W44QDC3NZM;
+				DEVELOPMENT_TEAM = 77E79NGPCV;
 				INFOPLIST_FILE = "XCoordinator-ExampleUITests/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -780,7 +780,7 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = W44QDC3NZM;
+				DEVELOPMENT_TEAM = 77E79NGPCV;
 				INFOPLIST_FILE = "XCoordinator-ExampleUITests/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
