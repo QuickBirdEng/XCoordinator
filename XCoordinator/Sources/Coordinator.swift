@@ -11,13 +11,8 @@ import UIKit
 
 public typealias PresentationHandler = () -> Void
 
-public protocol Coordinator: RouteTrigger, Presentable {
-    associatedtype TransitionType: Transition
-
-    var rootViewController: RootViewController { get }
-
+public protocol Coordinator: RouteTrigger, TransitionPerformer {
     func prepareTransition(for route: RouteType) -> TransitionType
-    func presented(from presentable: Presentable?)
 }
 
 // MARK: - Extension Coordinator: Presentable

@@ -11,7 +11,7 @@ extension BaseCoordinator {
     public typealias RootViewController = TransitionType.RootViewController
 }
 
-open class BaseCoordinator<RouteType: Route, TransitionType: Transition>: Coordinator {
+open class BaseCoordinator<RouteType: Route, TransitionType: TransitionProtocol>: Coordinator {
 
     // MARK: - Stored properties
 

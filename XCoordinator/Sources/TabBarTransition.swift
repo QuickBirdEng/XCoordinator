@@ -5,53 +5,24 @@
 //  Created by Paul Kraft on 27.07.18.
 //
 
-import Foundation
+public typealias TabBarTransition = Transition<UITabBarController>
 
-public struct TabBarTransition: Transition {
-
-    // MARK: - Stored properties
-
-    private let type: TabBarTransitionType
-
-    // MARK: - Computed properties
-
-    public var presentable: Presentable? {
-        return type.presentable
-    }
-
-    // MARK: - Init
-
-    private init(type: TabBarTransitionType) {
-        self.type = type
-    }
-
-    internal init(type: TabBarTransitionType, animation: Animation?) {
-        guard let animation = animation else {
-            self.init(type: type)
-            return
+extension Transition where RootViewController: UITabBarController {
+    public static func set(_ presentables: [Presentable], animation: Animation? = nil) -> TabBarTransition {
+        return TabBarTransition(presentable: nil) { options, performer, completion in
+            performer.set(presentables.map { $0.viewController }, with: options, animation: animation, completion: completion)
         }
-        self.init(type: .animated(type, animation: animation))
     }
 
-    // MARK: - Static functions
-
-    public static func generateRootViewController() -> UITabBarController {
-        return UITabBarController()
+    public static func select(_ presentable: Presentable, animation: Animation? = nil) -> TabBarTransition {
+        return TabBarTransition(presentable: presentable) { options, performer, completion in
+            performer.select(presentable.viewController, with: options, animation: animation, completion: completion)
+        }
     }
 
-    // MARK: - Methods
-
-    public func perform<C: Coordinator>(options: TransitionOptions, coordinator: C, completion: PresentationHandler?) where TabBarTransition == C.TransitionType {
-        return type.perform(options: options, animation: nil, coordinator: coordinator, completion: completion)
-    }
-}
-
-extension TabBarTransition {
-    public static func multiple(_ transitions: [TabBarTransition], completion: PresentationHandler?) -> TabBarTransition {
-        return TabBarTransition(type: .multiple(transitions.map { $0.type }), animation: nil)
-    }
-
-    static func multiple(_ transitions: [TabBarTransitionType]) -> TabBarTransition {
-        return TabBarTransition(type: .multiple(transitions), animation: nil)
+    public static func select(index: Int, animation: Animation? = nil) -> TabBarTransition {
+        return TabBarTransition(presentable: nil) { options, performer, completion in
+            performer.select(index: index, with: options, animation: animation, completion: completion)
+        }
     }
 }

@@ -6,28 +6,44 @@
 //  Copyright © 2018 Stefan Kofler. All rights reserved.
 //
 
-import Foundation
-import UIKit
+public struct Transition<RootViewController: UIViewController>: TransitionProtocol {
 
-public protocol Transition {
-    associatedtype RootViewController: UIViewController
+    // MARK: - Typealias
 
-    var presentable: Presentable? { get }
-    func perform<C: Coordinator>(options: TransitionOptions, coordinator: C, completion: PresentationHandler?) where C.TransitionType == Self
+    public typealias Perform = (TransitionOptions, AnyTransitionPerformer<Transition<RootViewController>>, PresentationHandler?) -> Void
 
-    static func generateRootViewController() -> RootViewController
+    // MARK: - Stored properties
 
-    // MARK: - Always accessible transitions
+    private var _presentable: Presentable?
+    private var _perform: Perform
 
-    static func present(_ presentable: Presentable, animation: Animation?) -> Self
-    static func embed(_ presentable: Presentable, in container: Container) -> Self
-    static func dismiss(animation: Animation?) -> Self
-    static func none() -> Self
-    static func multiple(_ transitions: [Self], completion: PresentationHandler?) -> Self
-}
+    // MARK: - Computed properties
 
-extension Transition {
-    public static func multiple(_ transitions: Self..., completion: PresentationHandler?) -> Self {
-        return multiple(transitions, completion: completion)
+    public var presentable: Presentable? {
+        return _presentable
+    }
+
+    // MARK: - Init
+
+    public init(presentable: Presentable?, perform: @escaping Perform) {
+        self._presentable = presentable
+        self._perform = perform
+    }
+
+    // MARK: - Methods
+
+    public func perform<C: Coordinator>(options: TransitionOptions, coordinator: C, completion: PresentationHandler?) where C.TransitionType == Transition<RootViewController> {
+        let anyPerformer = AnyTransitionPerformer(coordinator)
+        perform(options: options, performer: anyPerformer, completion: completion)
+    }
+
+    func perform(options: TransitionOptions, performer: AnyTransitionPerformer<Transition>, completion: PresentationHandler?) {
+        _perform(options, performer, completion)
+    }
+
+    // MARK: - Static methods
+
+    public static func generateRootViewController() -> RootViewController {
+        return RootViewController()
     }
 }

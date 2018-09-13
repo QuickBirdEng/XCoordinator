@@ -6,51 +6,24 @@
 //  Copyright © 2018 Stefan Kofler. All rights reserved.
 //
 
-public struct NavigationTransition: Transition {
+public typealias NavigationTransition = Transition<UINavigationController>
 
-    // MARK: - Stored properties
-
-    private let type: NavigationTransitionType
-
-    // MARK: - Computed properties
-
-    public var presentable: Presentable? {
-        return type.presentable
-    }
-
-    // MARK: - Init
-
-    private init(type: NavigationTransitionType) {
-        self.type = type
-    }
-
-    internal init(type: NavigationTransitionType, animation: Animation?) {
-        guard let animation = animation else {
-            self.init(type: type)
-            return
+extension Transition where RootViewController: UINavigationController {
+    public static func push(_ presentable: Presentable, animation: Animation? = nil) -> NavigationTransition {
+        return NavigationTransition(presentable: presentable) { options, performer, completion in
+            performer.push(presentable.viewController, with: options, animation: animation, completion: completion)
         }
-        self.init(type: .animated(type, animation: animation))
     }
 
-    // MARK: - Static functions
-
-    public static func generateRootViewController() -> UINavigationController {
-        return UINavigationController()
+    public static func pop(animation: Animation? = nil) -> NavigationTransition {
+        return NavigationTransition(presentable: nil) { options, performer, completion in
+            performer.pop(with: options, toRoot: false, animation: animation, completion: completion)
+        }
     }
 
-    // MARK: - Methods
-
-    public func perform<C: Coordinator>(options: TransitionOptions, coordinator: C, completion: PresentationHandler?) where NavigationTransition == C.TransitionType {
-        return type.perform(options: options, animation: nil, coordinator: coordinator, completion: completion)
-    }
-}
-
-extension NavigationTransition {
-    public static func multiple(_ transitions: [NavigationTransition], completion: PresentationHandler?) -> NavigationTransition {
-        return NavigationTransition(type: .multiple(transitions.map { $0.type }), animation: nil)
-    }
-
-    static func multiple(_ transitions: [NavigationTransitionType]) -> NavigationTransition {
-        return NavigationTransition(type: .multiple(transitions), animation: nil)
+    public static func popToRoot(animation: Animation? = nil) -> NavigationTransition {
+        return NavigationTransition(presentable: nil) { options, performer, completion in
+            performer.pop(with: options, toRoot: true, animation: animation, completion: completion)
+        }
     }
 }

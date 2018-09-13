@@ -5,7 +5,7 @@
 //  Created by Paul Kraft on 30.07.18.
 //
 
-open class PageCoordinator<RouteType: Route>: BaseCoordinator<RouteType, PageViewTransition> {
+open class PageCoordinator<RouteType: Route>: BaseCoordinator<RouteType, PageTransition> {
 
     // MARK: - Stored properties
 

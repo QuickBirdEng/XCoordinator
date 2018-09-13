@@ -20,10 +20,10 @@ open class TabBarCoordinator<R: Route>: BaseCoordinator<R, TabBarTransition> {
     }
 
     public init(tabs: [Presentable], select: Presentable) {
-        super.init(initialTransition: .multiple(.set(tabs), .select(select), completion: nil))
+        super.init(initialTransition: .multiple(.set(tabs), .select(select)))
     }
 
     public init(tabs: [Presentable], select: Int) {
-        super.init(initialTransition: .multiple(.set(tabs), .select(index: select), completion: nil))
+        super.init(initialTransition: .multiple(.set(tabs), .select(index: select)))
     }
 }

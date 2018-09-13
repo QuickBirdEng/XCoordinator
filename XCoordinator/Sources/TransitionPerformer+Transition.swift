@@ -5,7 +5,7 @@
 //  Created by Paul Kraft on 28.07.18.
 //
 
-extension Coordinator {
+extension TransitionPerformer {
     func present(_ viewController: UIViewController, with options: TransitionOptions, animation: Animation?, completion: PresentationHandler?) {
         viewController.transitioningDelegate = animation
         rootViewController.present(viewController, animated: options.animated, completion: completion)
@@ -37,13 +37,15 @@ extension Coordinator {
 
         completion?()
     }
+}
 
+extension AnyTransitionPerformer {
     func registerPeek(from sourceView: UIView, transitionGenerator: @escaping () -> TransitionType, completion: PresentationHandler?) {
-        let delegate = CoordinatorPreviewingDelegateObject(transition: transitionGenerator, coordinator: self, completion: completion)
+        let delegate = CoordinatorPreviewingDelegateObject(transition: transitionGenerator, performer: self, completion: completion)
 
         if let existingContextIndex = sourceView.strongReferences
-            .index(where: { $0 is CoordinatorPreviewingDelegateObject<Self> }),
-            let contextDelegate = sourceView.strongReferences.remove(at: existingContextIndex) as? CoordinatorPreviewingDelegateObject<Self>,
+            .index(where: { $0 is CoordinatorPreviewingDelegateObject<TransitionType> }),
+            let contextDelegate = sourceView.strongReferences.remove(at: existingContextIndex) as? CoordinatorPreviewingDelegateObject<TransitionType>,
             let context = contextDelegate.context {
             rootViewController.unregisterForPreviewing(withContext: context)
         }

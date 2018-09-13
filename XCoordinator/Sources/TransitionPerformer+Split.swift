@@ -5,7 +5,7 @@
 //  Created by Paul Kraft on 30.07.18.
 //
 
-extension Coordinator where TransitionType == SplitViewTransition {
+extension TransitionPerformer where TransitionType.RootViewController: UISplitViewController {
     func show(_ viewController: UIViewController, with options: TransitionOptions, animation: Animation?, completion: PresentationHandler?) {
         CATransaction.begin()
         CATransaction.setCompletionBlock(completion)

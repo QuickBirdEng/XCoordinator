@@ -7,7 +7,7 @@
 
 import UIKit
 
-extension Coordinator where Self.TransitionType == NavigationTransition {
+extension TransitionPerformer where TransitionType.RootViewController: UINavigationController {
     func push(_ viewController: UIViewController, with options: TransitionOptions, animation: Animation?, completion: PresentationHandler?) {
         CATransaction.begin()
         CATransaction.setCompletionBlock(completion)

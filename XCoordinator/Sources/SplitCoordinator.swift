@@ -7,7 +7,7 @@
 
 import Foundation
 
-open class SplitCoordinator<RouteType: Route>: BaseCoordinator<RouteType, SplitViewTransition> {
+open class SplitCoordinator<RouteType: Route>: BaseCoordinator<RouteType, SplitTransition> {
 
     // MARK: - Init
 

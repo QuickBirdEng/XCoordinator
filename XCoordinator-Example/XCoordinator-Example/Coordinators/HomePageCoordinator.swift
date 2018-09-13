@@ -21,7 +21,7 @@ class HomePageCoordinator: PageCoordinator<HomeRoute> {
         super.init(pages: [newsCoordinator, userListCoordinator], direction: .forward, transitionStyle: .pageCurl, orientation: .horizontal, options: nil)
     }
 
-    override func prepareTransition(for route: HomeRoute) -> PageViewTransition {
+    override func prepareTransition(for route: HomeRoute) -> PageTransition {
         switch route {
         case .news:
             return .set([newsCoordinator], direction: .forward)
