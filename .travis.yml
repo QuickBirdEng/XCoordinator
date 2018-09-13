@@ -2,3 +2,4 @@ language: objective-c
 osx_image: xcode9.4
 xcode_workspace: XCoordinator-Example/XCoordinator-Example.xcworkspace
 xcode_scheme: XCoordinator-Example
+xcode_destination: platform=iOS Simulator,OS=10.0
