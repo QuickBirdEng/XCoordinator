@@ -719,6 +719,7 @@
 			baseConfigurationReference = 3939786355A7DBAE25D16664 /* Pods-XCoordinator-Example.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 77E79NGPCV;
 				INFOPLIST_FILE = "$(SRCROOT)/XCoordinator-Example/Common/Info.plist";
@@ -728,6 +729,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.quickbirdstudios.XCoordinator-Example";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -738,6 +740,7 @@
 			baseConfigurationReference = 55EB5B0A5F36DF91310F3939 /* Pods-XCoordinator-Example.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 77E79NGPCV;
 				INFOPLIST_FILE = "RxCoordinator-Example/Info.plist";
@@ -748,6 +751,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.quickbirdstudios.XCoordinator-Example";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -758,6 +762,7 @@
 			baseConfigurationReference = 17F74FE5A4C3B5CB174AA2C9 /* Pods-XCoordinator-ExampleUITests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 77E79NGPCV;
 				INFOPLIST_FILE = "XCoordinator-ExampleUITests/Info.plist";
@@ -768,6 +773,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.quickbirdstudios.XCoordinator-ExampleUITests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_TARGET_NAME = "XCoordinator-Example";
@@ -779,6 +785,7 @@
 			baseConfigurationReference = 8C5EB8C9580F4AB0A311207F /* Pods-XCoordinator-ExampleUITests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 77E79NGPCV;
 				INFOPLIST_FILE = "XCoordinator-ExampleUITests/Info.plist";
@@ -789,6 +796,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.quickbirdstudios.XCoordinator-ExampleUITests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_TARGET_NAME = "XCoordinator-Example";

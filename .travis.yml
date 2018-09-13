@@ -2,4 +2,4 @@ osx_image: xcode9.4
 language: objective-c
 
 script:
-    - xcodebuild -workspace XCoordinator-Example/XCoordinator-Example.xcworkspace -scheme 'XCoordinator-Example' | xcpretty -c; exit ${PIPESTATUS[0]}
+    - xctool -workspace XCoordinator-Example/XCoordinator-Example.xcworkspace -scheme 'XCoordinator-Example' clean build CODE_SIGN_IDENTITY="" CODE_SIGNING_REQUIRED=NO 
