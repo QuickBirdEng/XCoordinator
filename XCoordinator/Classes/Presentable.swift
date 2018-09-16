@@ -15,3 +15,7 @@ public protocol Presentable {
 extension UIViewController: Presentable {
     public func presented(from presentingVC: Presentable?) {}
 }
+
+extension UIWindow: Presentable {
+    public func presented(from presentable: Presentable?) {}
+}
