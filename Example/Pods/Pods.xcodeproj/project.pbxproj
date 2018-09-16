@@ -206,6 +206,9 @@
 		9955EB86FE57B5816D7766342B70A6C1 /* RxCocoaRuntime.h in Headers */ = {isa = PBXBuildFile; fileRef = 599A00C363454E2B1C3EFCFC0082F2F2 /* RxCocoaRuntime.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		9A40808222228BD0BCC01B44A6A2784D /* Driver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FEECCF306884E97F82AA40C34D7A887 /* Driver.swift */; };
 		9BAD055369BCF96DC1DA561AA931CC05 /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B3E27ABEC6E0F40D8954A59C93F204E /* Coordinator.swift */; };
+		9BC60B06214ED6B000ECFF9A /* Animation+Navigation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BC60B05214ED6B000ECFF9A /* Animation+Navigation.swift */; };
+		9BC60B0C214EE6A900ECFF9A /* Animation+TabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BC60B0B214EE6A900ECFF9A /* Animation+TabBar.swift */; };
+		9BC60B12214EEB0400ECFF9A /* CATransaction+Execute.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BC60B11214EEB0400ECFF9A /* CATransaction+Execute.swift */; };
 		9C0C92572F26ACA07353B2D0B0604508 /* DefaultIfEmpty.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2935B6CF5985726C2409D51079BBCD82 /* DefaultIfEmpty.swift */; };
 		9C4B9DD372FCB0B5D6B5B97002F5E5F2 /* RxSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 433D6F464DF5553729C2E50AE1507E33 /* RxSwift.framework */; };
 		9C6DAFC8DDC0578E84FFAD98C6164256 /* Control+Action.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AF1E700D32B2BD53CEC53DA40ECF128 /* Control+Action.swift */; };
@@ -649,6 +652,9 @@
 		9AA96A9497196D81806BD865BEBE9EEF /* UITableView+Rx.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "UITableView+Rx.swift"; path = "RxCocoa/iOS/UITableView+Rx.swift"; sourceTree = "<group>"; };
 		9B55575276D14DBC3748DBD7DD39CCEA /* RxSearchControllerDelegateProxy.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = RxSearchControllerDelegateProxy.swift; path = RxCocoa/iOS/Proxies/RxSearchControllerDelegateProxy.swift; sourceTree = "<group>"; };
 		9BADF51F5453C30A274C32B2678B7C3F /* RxMutableBox.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = RxMutableBox.swift; path = RxSwift/RxMutableBox.swift; sourceTree = "<group>"; };
+		9BC60B05214ED6B000ECFF9A /* Animation+Navigation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Animation+Navigation.swift"; sourceTree = "<group>"; };
+		9BC60B0B214EE6A900ECFF9A /* Animation+TabBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "Animation+TabBar.swift"; path = "XCoordinator/Classes/Animation+TabBar.swift"; sourceTree = "<group>"; };
+		9BC60B11214EEB0400ECFF9A /* CATransaction+Execute.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "CATransaction+Execute.swift"; path = "XCoordinator/Classes/CATransaction+Execute.swift"; sourceTree = "<group>"; };
 		9C0CB906B7F9ED0F3C0292F1F2D62805 /* ViewTransition.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ViewTransition.swift; path = XCoordinator/Classes/ViewTransition.swift; sourceTree = "<group>"; };
 		9C37A61A2C9751921AF6C5110DD6B767 /* ItemEvents.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ItemEvents.swift; path = RxCocoa/iOS/Events/ItemEvents.swift; sourceTree = "<group>"; };
 		9C3CAB4C3B62822713287E81F70AF77A /* _RXKVOObserver.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = _RXKVOObserver.m; path = RxCocoa/Runtime/_RXKVOObserver.m; sourceTree = "<group>"; };
@@ -846,6 +852,8 @@
 			isa = PBXGroup;
 			children = (
 				EBED7EAD0CCAC10BB30A28F467986709 /* Animation.swift */,
+				9BC60B05214ED6B000ECFF9A /* Animation+Navigation.swift */,
+				9BC60B0B214EE6A900ECFF9A /* Animation+TabBar.swift */,
 				4C276DA8DCCB6C64CAABC62A3C97B296 /* AnyCoordinator.swift */,
 				1CF8D797761E003E5F900045FA3C6587 /* AnyTransitionPerformer.swift */,
 				A04847FBDE69DA3EB5BD56357333E8C2 /* BaseCoordinator.swift */,
@@ -873,6 +881,7 @@
 				FF890571982308BDD9FC745C87BC98FB /* TransitionOptions.swift */,
 				3F77576199321CB785DB7886EF2A2CE1 /* TransitionPerformer.swift */,
 				E44100170C21C4DC0DAA1A02FE303989 /* TransitionPerformer+Navigation.swift */,
+				9BC60B11214EEB0400ECFF9A /* CATransaction+Execute.swift */,
 				A169C02BC35EC42883A1A49924BFBB9C /* TransitionPerformer+Page.swift */,
 				0321BDF81DB931A288793CE8DC366A2C /* TransitionPerformer+Split.swift */,
 				F401E037767188FA2271A342A54F2752 /* TransitionPerformer+TabBar.swift */,
@@ -1557,6 +1566,7 @@
 			attributes = {
 				LastSwiftUpdateCheck = 0930;
 				LastUpgradeCheck = 0930;
+				ORGANIZATIONNAME = "QuickBird Studios";
 			};
 			buildConfigurationList = 2D8E8EC45A3A1A1D94AE762CB5028504 /* Build configuration list for PBXProject "Pods" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -1897,6 +1907,7 @@
 				9BAD055369BCF96DC1DA561AA931CC05 /* Coordinator.swift in Sources */,
 				384D682FF6FD83CE4363B1F28F1FB762 /* CoordinatorPreviewingDelegateObject.swift in Sources */,
 				C2CA14F2A26694DCD19C258FB581E10E /* InteractiveTransitionAnimation.swift in Sources */,
+				9BC60B12214EEB0400ECFF9A /* CATransaction+Execute.swift in Sources */,
 				48AF7EBC7432830C55FC78AA2D3CFB2A /* NavigationCoordinator.swift in Sources */,
 				8C2B788B90CF26442BF301D936AD5DE7 /* NavigationTransition.swift in Sources */,
 				BFA7BC833122A294B84CBE93E9B8FC0B /* PageCoordinator.swift in Sources */,
@@ -1906,10 +1917,12 @@
 				3366BC3BECBE71443B9303F3785043D3 /* Route.swift in Sources */,
 				77C79F89CAAC6756243AD05B4E111BFE /* RouteTrigger.swift in Sources */,
 				B82B3EB037D85AB937654B5A7757DC03 /* SplitCoordinator.swift in Sources */,
+				9BC60B06214ED6B000ECFF9A /* Animation+Navigation.swift in Sources */,
 				33F44EA173B8C299CE3C1E119E26F5B7 /* SplitTransition.swift in Sources */,
 				EEDAAB9886C6C7C4B2C1E2ABB973EA63 /* StaticTransitionAnimation.swift in Sources */,
 				6932C1D2AD368E82CF47C446C8AFC3E2 /* TabBarCoordinator.swift in Sources */,
 				1F3A6B4446A4593A12A923B73907D7FB /* TabBarTransition.swift in Sources */,
+				9BC60B0C214EE6A900ECFF9A /* Animation+TabBar.swift in Sources */,
 				43C7062A2CC6A92F2712500F543E3225 /* Transition+Init.swift in Sources */,
 				09866BA4E3831493408C9349A6FFC588 /* Transition.swift in Sources */,
 				E89E79054FBB3B0192CCA0EC5A96FE98 /* TransitionAnimation.swift in Sources */,
@@ -2114,6 +2127,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MODULEMAP_FILE = "Target Support Files/XCoordinator/XCoordinator.modulemap";
+				PRODUCT_BUNDLE_IDENTIFIER = com.quickbirdstudios.XCoordinator;
 				PRODUCT_MODULE_NAME = XCoordinator;
 				PRODUCT_NAME = XCoordinator;
 				SDKROOT = iphoneos;
@@ -2500,6 +2514,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MODULEMAP_FILE = "Target Support Files/XCoordinator/XCoordinator.modulemap";
+				PRODUCT_BUNDLE_IDENTIFIER = com.quickbirdstudios.XCoordinator;
 				PRODUCT_MODULE_NAME = XCoordinator;
 				PRODUCT_NAME = XCoordinator;
 				SDKROOT = iphoneos;

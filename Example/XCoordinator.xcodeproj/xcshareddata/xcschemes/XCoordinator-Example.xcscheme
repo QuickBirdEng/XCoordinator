@@ -40,7 +40,6 @@
       buildConfiguration = "Debug"
       selectedDebuggerIdentifier = "Xcode.DebuggerFoundation.Debugger.LLDB"
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
-      language = ""
       shouldUseLaunchSchemeArgsEnv = "YES">
       <Testables>
          <TestableReference
@@ -50,6 +49,16 @@
                BlueprintIdentifier = "607FACE41AFB9204008FA782"
                BuildableName = "XCoordinator_Tests.xctest"
                BlueprintName = "XCoordinator_Tests"
+               ReferencedContainer = "container:XCoordinator.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "9BC60B16214EF8D900ECFF9A"
+               BuildableName = "XCoordinator_UITests.xctest"
+               BlueprintName = "XCoordinator_UITests"
                ReferencedContainer = "container:XCoordinator.xcodeproj">
             </BuildableReference>
          </TestableReference>
@@ -70,7 +79,6 @@
       buildConfiguration = "Debug"
       selectedDebuggerIdentifier = "Xcode.DebuggerFoundation.Debugger.LLDB"
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
-      language = ""
       launchStyle = "0"
       useCustomWorkingDirectory = "NO"
       ignoresPersistentStateOnLaunch = "NO"

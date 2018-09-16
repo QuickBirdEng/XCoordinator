@@ -8,6 +8,16 @@
 
 open class NavigationCoordinator<R: Route>: BaseCoordinator<R, NavigationTransition> {
 
+    // MARK: - Stored properties
+
+    internal var animationDelegate: NavigationControllerAnimationDelegate? = NavigationControllerAnimationDelegate()
+
+    // MARK: - Computed properties
+
+    public var delegate: UINavigationControllerDelegate? {
+        return rootViewController.coordinatorDelegate
+    }
+
     // MARK: - Init
 
     public override init(initialRoute: RouteType? = nil) {
@@ -16,5 +26,13 @@ open class NavigationCoordinator<R: Route>: BaseCoordinator<R, NavigationTransit
 
     public init(root: Presentable) {
         super.init(initialTransition: .push(root))
+    }
+
+    // MARK: - Overrides
+
+    open override func generateRootViewController() -> UINavigationController {
+        let navigationController = super.generateRootViewController()
+        navigationController.delegate = animationDelegate
+        return navigationController
     }
 }

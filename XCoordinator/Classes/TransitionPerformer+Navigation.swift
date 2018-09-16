@@ -6,29 +6,34 @@
 //  Copyright © 2018 QuickBird Studios. All rights reserved.
 //
 
+
+
 extension TransitionPerformer where TransitionType.RootViewController: UINavigationController {
     func push(_ viewController: UIViewController, with options: TransitionOptions, animation: Animation?, completion: PresentationHandler?) {
-        CATransaction.begin()
-        CATransaction.setCompletionBlock(completion)
 
-        viewController.transitioningDelegate = animation
-        rootViewController.pushViewController(viewController, animated: options.animated)
+        rootViewController.animationDelegate?.animation = animation
+        assert(animation == nil || rootViewController.animationDelegate != nil)
 
-        CATransaction.commit()
+        CATransaction.empty {
+            CATransaction.execute({
+                self.rootViewController.pushViewController(viewController, animated: options.animated)
+            }, completion: completion ?? {})
+        }
     }
 
     func pop(with options: TransitionOptions, toRoot: Bool, animation: Animation?, completion: PresentationHandler?) {
-        CATransaction.begin()
-        CATransaction.setCompletionBlock(completion)
 
-        let currentVC = rootViewController.visibleViewController
-        currentVC?.transitioningDelegate = animation
-        if toRoot {
-            rootViewController.popToRootViewController(animated: options.animated)
-        } else {
-            rootViewController.popViewController(animated: options.animated)
+        rootViewController.animationDelegate?.animation = animation
+        assert(animation == nil || rootViewController.animationDelegate != nil)
+
+        CATransaction.empty {
+            CATransaction.execute({
+                if toRoot {
+                    self.rootViewController.popToRootViewController(animated: options.animated)
+                } else {
+                    self.rootViewController.popViewController(animated: options.animated)
+                }
+            }, completion: completion ?? {})
         }
-
-        CATransaction.commit()
     }
 }
