@@ -93,18 +93,18 @@ XCoordinator supports cases for custom transitions between view controllers. In 
 
 ```swift
 
-class HomeCoordinator: NavigationCoordinator<HomeRoute> {
+class UsersCoordinator: NavigationCoordinator<UserRoute> {
     /* ... */
-    override func prepareTransition(for route: HomeRoute) -> NavigationTransition {
+    override func prepareTransition(for route: UserRoute) -> NavigationTransition {
         switch route {
         /* ... */
-        case .users(let string):
+        case .user(let name):
             let animation = Animation(
                 presentationAnimation: YourAwesomePresentationTransitionAnimation(),
                 dismissalAnimation: YourAwesomeDismissalTransitionAnimation()
             )
-            let viewModel = UsersViewModelImpl(coordinator: coordinator, string: string)
-            let viewController = UsersViewController(viewModel: viewModel)
+            let viewModel = UserViewModelImpl(coordinator: coordinator, name: name)
+            let viewController = UserViewController(viewModel: viewModel)
             return .push(viewController, animation: animation)
         /* ... */
         }
