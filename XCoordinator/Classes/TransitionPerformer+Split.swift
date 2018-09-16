@@ -7,6 +7,7 @@
 //
 
 extension TransitionPerformer where TransitionType.RootViewController: UISplitViewController {
+    // animate using delegate on UISplitViewController
     func show(_ viewController: UIViewController, with options: TransitionOptions, completion: PresentationHandler?) {
 
         CATransaction.begin()
@@ -17,6 +18,7 @@ extension TransitionPerformer where TransitionType.RootViewController: UISplitVi
         CATransaction.commit()
     }
 
+    // animate using delegate on UISplitViewController
     func showDetail(_ viewController: UIViewController, with options: TransitionOptions, completion: PresentationHandler?) {
 
         CATransaction.begin()

@@ -9,34 +9,31 @@
 public typealias TabBarTransition = Transition<UITabBarController>
 
 extension Transition where RootViewController: UITabBarController {
-    public static func set(_ presentables: [Presentable], animation: Animation? = nil) -> TabBarTransition {
+    public static func set(_ presentables: [Presentable]) -> TabBarTransition {
         return TabBarTransition(presentable: presentables.first) { options, performer, completion in
             performer.set(
                 presentables.map { $0.viewController },
                 with: options,
-                animation: animation,
                 completion: completion
             )
         }
     }
 
-    public static func select(_ presentable: Presentable, animation: Animation? = nil) -> TabBarTransition {
+    public static func select(_ presentable: Presentable) -> TabBarTransition {
         return TabBarTransition(presentable: presentable) { options, performer, completion in
             performer.select(
                 presentable.viewController,
                 with: options,
-                animation: animation,
                 completion: completion
             )
         }
     }
 
-    public static func select(index: Int, animation: Animation? = nil) -> TabBarTransition {
+    public static func select(index: Int) -> TabBarTransition {
         return TabBarTransition(presentable: nil) { options, performer, completion in
             performer.select(
                 index: index,
                 with: options,
-                animation: animation,
                 completion: completion
             )
         }

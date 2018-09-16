@@ -10,5 +10,18 @@ import XCTest
 @testable import XCoordinator
 
 class AnimationTests: XCTestCase {
-    
+
+//    func testTabBarAnimations() {
+//        let window = UIWindow()
+//        let master = UIViewController()
+//        let detail = UIViewController()
+//        let coordinator = TabBarCoordinator<TestRoute>(tabs: [master, detail])
+//        coordinator.setRoot(for: window)
+//
+//        let newVC = UIViewController()
+//        let presentation = expectation(description: "presentation")
+//        let animation = TestAnimation(presentation: presentation)
+//        waitForExpectations(timeout: 0.2, handler: nil)
+//    }
+
 }
