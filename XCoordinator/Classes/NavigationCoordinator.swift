@@ -10,7 +10,7 @@ open class NavigationCoordinator<R: Route>: BaseCoordinator<R, NavigationTransit
 
     // MARK: - Stored properties
 
-    internal var animationDelegate: NavigationControllerAnimationDelegate? = NavigationControllerAnimationDelegate()
+    internal var animationDelegate: NavigationAnimationDelegate? = NavigationAnimationDelegate()
 
     // MARK: - Computed properties
 

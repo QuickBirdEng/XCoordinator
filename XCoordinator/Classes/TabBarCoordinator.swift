@@ -10,7 +10,7 @@ open class TabBarCoordinator<R: Route>: BaseCoordinator<R, TabBarTransition> {
 
     // MARK: - Stored properties
 
-    internal var animationDelegate: TabBarControllerAnimationDelegate? = TabBarControllerAnimationDelegate()
+    internal var animationDelegate: TabBarAnimationDelegate? = TabBarAnimationDelegate()
 
     // MARK: - Computed properties
 

@@ -7,7 +7,7 @@
 //
 
 // TODO: Make this work and include into TabBarTransition
-class TabBarControllerAnimationDelegate: NSObject, UITabBarControllerDelegate {
+class TabBarAnimationDelegate: NSObject, UITabBarControllerDelegate {
 
     // MARK: - Stored properties
 
@@ -58,8 +58,8 @@ class TabBarControllerAnimationDelegate: NSObject, UITabBarControllerDelegate {
 }
 
 extension UITabBarController {
-    internal var animationDelegate: TabBarControllerAnimationDelegate? {
-        return delegate as? TabBarControllerAnimationDelegate
+    internal var animationDelegate: TabBarAnimationDelegate? {
+        return delegate as? TabBarAnimationDelegate
     }
 
     public var coordinatorDelegate: UITabBarControllerDelegate? {

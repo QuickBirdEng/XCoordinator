@@ -6,7 +6,7 @@
 //  Copyright © 2018 QuickBird Studios. All rights reserved.
 //
 
-class NavigationControllerAnimationDelegate: NSObject, UINavigationControllerDelegate {
+class NavigationAnimationDelegate: NSObject, UINavigationControllerDelegate {
 
     // MARK: - Stored properties
 
@@ -58,8 +58,8 @@ class NavigationControllerAnimationDelegate: NSObject, UINavigationControllerDel
 }
 
 extension UINavigationController {
-    internal var animationDelegate: NavigationControllerAnimationDelegate? {
-        return delegate as? NavigationControllerAnimationDelegate
+    internal var animationDelegate: NavigationAnimationDelegate? {
+        return delegate as? NavigationAnimationDelegate
     }
 
     public var coordinatorDelegate: UINavigationControllerDelegate? {
