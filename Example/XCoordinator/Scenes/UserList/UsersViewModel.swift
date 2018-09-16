@@ -34,7 +34,7 @@ class UsersViewModelImpl: UsersViewModel, UsersViewModelInput, UsersViewModelOut
 
     // MARK: - Outputs
     var usernames: Observable<[String]> = .just([
-        "Joan", "Stefan", "Malte", "Sebi", "Patric", "Julian", "Quirin", "Paul"
+        "Joan", "Stefan", "Malte", "Sebi", "Patrick", "Julian", "Quirin", "Paul"
     ])
 
     // MARK: - Private
