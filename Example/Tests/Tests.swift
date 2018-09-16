@@ -3,7 +3,7 @@
 //  XCoordinator_Example
 //
 //  Created by Paul Kraft on 16.09.18.
-//  Copyright © 2018 CocoaPods. All rights reserved.
+//  Copyright © 2018 QuickBird Studios. All rights reserved.
 //
 
 import XCTest

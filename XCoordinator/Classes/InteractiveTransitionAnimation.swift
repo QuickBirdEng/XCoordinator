@@ -3,7 +3,7 @@
 //  XCoordinator
 //
 //  Created by Joan Disho on 03.05.18.
-//  Copyright © 2018 Stefan Kofler. All rights reserved.
+//  Copyright © 2018 QuickBird Studios. All rights reserved.
 //
 
 public class InteractiveTransitionAnimation: NSObject, TransitionAnimation, UIViewControllerInteractiveTransitioning {

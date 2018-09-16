@@ -1,8 +1,9 @@
 //
 //  ReferenceBox.swift
-//  Action
+//  XCoordinator
 //
 //  Created by Stefan Kofler on 18.07.18.
+//  Copyright © 2018 QuickBird Studios. All rights reserved.
 //
 
 public class ReferenceBox<T: AnyObject> {

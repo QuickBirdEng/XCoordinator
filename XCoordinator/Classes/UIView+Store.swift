@@ -3,6 +3,7 @@
 //  XCoordinator
 //
 //  Created by Stefan Kofler on 19.07.18.
+//  Copyright © 2018 QuickBird Studios. All rights reserved.
 //
 
 private var AssociatedObjectHandle: UInt8 = 0

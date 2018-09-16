@@ -3,7 +3,7 @@
 //  XCoordinator
 //
 //  Created by Stefan Kofler on 05.05.18.
-//  Copyright © 2018 Stefan Kofler. All rights reserved.
+//  Copyright © 2018 QuickBird Studios. All rights reserved.
 //
 
 public typealias BasicNavigationCoordinator<R: Route> = BasicCoordinator<R, NavigationTransition>

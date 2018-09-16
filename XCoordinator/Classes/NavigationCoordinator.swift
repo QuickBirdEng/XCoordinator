@@ -1,8 +1,9 @@
 //
 //  NavigationCoordinator.swift
-//  rx-coordinator
+//  XCoordinator
 //
 //  Created by Paul Kraft on 29.07.18.
+//  Copyright © 2018 QuickBird Studios. All rights reserved.
 //
 
 open class NavigationCoordinator<R: Route>: BaseCoordinator<R, NavigationTransition> {
