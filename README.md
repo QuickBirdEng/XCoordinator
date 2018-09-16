@@ -145,10 +145,10 @@ Check out this [repository](https://github.com/quickbirdstudios/XCoordinator/tre
 ### Components
 
 #### 🎢 Route
-Describes possible navigation paths within a flow, i.e. a collection of closely related scenes.
+Describes possible navigation paths within a flow, a collection of closely related scenes.
 
 #### 👨‍✈️ Coordinator
-An object coordinating the transition to a set of routes pointing to views or other coordinators by creating and performing transitions, loading views and ViewModels.
+An object loading views and creating viewModels based on triggered routes. A Coordinator creates and performs transitions to these scenes based on the data transferred via the route.
 
 #### ✈️ Transition
 Transitions describe the navigation from one view to another view. Transitions are available based on the type of the root view controller in use. Example: Whereas `ViewTransition` only supports basic transitions that every view controller supports, `NavigationTransition` adds navigation controller specific transitions.
