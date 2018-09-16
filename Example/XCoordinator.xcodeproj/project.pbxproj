@@ -10,7 +10,6 @@
 		607FACD61AFB9204008FA782 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607FACD51AFB9204008FA782 /* AppDelegate.swift */; };
 		607FACDD1AFB9204008FA782 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 607FACDC1AFB9204008FA782 /* Images.xcassets */; };
 		607FACE01AFB9204008FA782 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 607FACDE1AFB9204008FA782 /* LaunchScreen.xib */; };
-		607FACEC1AFB9204008FA782 /* Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607FACEB1AFB9204008FA782 /* Tests.swift */; };
 		8FD8948D182C4083F453F873 /* Pods_XCoordinator_Example.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B299AC83F329D65CD398756E /* Pods_XCoordinator_Example.framework */; };
 		9BE022E3214DF6560093001A /* HomeTabCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BE022DC214DF6550093001A /* HomeTabCoordinator.swift */; };
 		9BE022E4214DF6560093001A /* NewsCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BE022DD214DF6550093001A /* NewsCoordinator.swift */; };
@@ -70,7 +69,6 @@
 		607FACDF1AFB9204008FA782 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		607FACE51AFB9204008FA782 /* XCoordinator_Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = XCoordinator_Tests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		607FACEA1AFB9204008FA782 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		607FACEB1AFB9204008FA782 /* Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tests.swift; sourceTree = "<group>"; };
 		8311BE8E1B21258643BC45D1 /* Pods-XCoordinator_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-XCoordinator_Tests.release.xcconfig"; path = "Pods/Target Support Files/Pods-XCoordinator_Tests/Pods-XCoordinator_Tests.release.xcconfig"; sourceTree = "<group>"; };
 		9BE022DC214DF6550093001A /* HomeTabCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeTabCoordinator.swift; sourceTree = "<group>"; };
 		9BE022DD214DF6550093001A /* NewsCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewsCoordinator.swift; sourceTree = "<group>"; };
@@ -188,7 +186,6 @@
 			isa = PBXGroup;
 			children = (
 				9BE02328214DF7970093001A /* TestRoute.swift */,
-				607FACEB1AFB9204008FA782 /* Tests.swift */,
 				9BE0232A214DF7BE0093001A /* TransitionTests.swift */,
 				607FACE91AFB9204008FA782 /* Supporting Files */,
 			);
@@ -554,7 +551,6 @@
 			files = (
 				9BE0232C214DF7E50093001A /* TransitionTests.swift in Sources */,
 				9BE0232D214DF7E80093001A /* TestRoute.swift in Sources */,
-				607FACEC1AFB9204008FA782 /* Tests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

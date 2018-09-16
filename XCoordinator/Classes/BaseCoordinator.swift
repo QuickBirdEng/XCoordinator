@@ -50,6 +50,8 @@ open class BaseCoordinator<RouteType: Route, TransitionType: TransitionProtocol>
     // MARK: - Open methods
 
     open func presented(from presentable: Presentable?) {
+        context = presentable?.viewController
+
         DispatchQueue.main.async {
             self.rootVCReferenceBox.releaseStrongReference()
         }

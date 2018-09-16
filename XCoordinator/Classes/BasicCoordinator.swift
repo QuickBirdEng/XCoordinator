@@ -46,8 +46,6 @@ open class BasicCoordinator<RouteType: Route, TransitionType: TransitionProtocol
     open override func presented(from presentable: Presentable?) {
         super.presented(from: presentable)
 
-        context = presentable?.viewController
-
         if let initialRoute = initialRoute, initialLoadingType == .presented {
             trigger(initialRoute, with: TransitionOptions(animated: false), completion: nil)
         }
