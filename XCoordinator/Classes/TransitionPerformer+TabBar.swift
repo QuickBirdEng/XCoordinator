@@ -8,6 +8,7 @@
 
 extension TransitionPerformer where TransitionType.RootViewController: UITabBarController {
     func set(_ viewControllers: [UIViewController], with options: TransitionOptions, animation: Animation?, completion: PresentationHandler?) {
+
         CATransaction.begin()
         CATransaction.setCompletionBlock(completion)
 
@@ -18,6 +19,7 @@ extension TransitionPerformer where TransitionType.RootViewController: UITabBarC
     }
 
     func select(_ viewController: UIViewController, with options: TransitionOptions, animation: Animation?, completion: PresentationHandler?) {
+
         CATransaction.begin()
         CATransaction.setCompletionBlock(completion)
 
@@ -28,6 +30,7 @@ extension TransitionPerformer where TransitionType.RootViewController: UITabBarC
     }
 
     func select(index: Int, with options: TransitionOptions, animation: Animation?, completion: PresentationHandler?) {
+        
         CATransaction.begin()
         CATransaction.setCompletionBlock(completion)
 

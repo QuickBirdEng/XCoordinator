@@ -8,6 +8,7 @@
 
 extension TransitionPerformer where TransitionType.RootViewController: UISplitViewController {
     func show(_ viewController: UIViewController, with options: TransitionOptions, animation: Animation?, completion: PresentationHandler?) {
+
         CATransaction.begin()
         CATransaction.setCompletionBlock(completion)
 
@@ -18,6 +19,7 @@ extension TransitionPerformer where TransitionType.RootViewController: UISplitVi
     }
 
     func showDetail(_ viewController: UIViewController, with options: TransitionOptions, animation: Animation?, completion: PresentationHandler?) {
+
         CATransaction.begin()
         CATransaction.setCompletionBlock(completion)
 
