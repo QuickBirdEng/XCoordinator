@@ -10,22 +10,16 @@ extension TransitionPerformer where TransitionType.RootViewController: UISplitVi
     // animate using delegate on UISplitViewController
     func show(_ viewController: UIViewController, with options: TransitionOptions, completion: PresentationHandler?) {
 
-        CATransaction.begin()
-        CATransaction.setCompletionBlock(completion)
-
-        rootViewController.show(viewController, sender: nil)
-
-        CATransaction.commit()
+        CATransaction.execute({
+            self.rootViewController.show(viewController, sender: nil)
+        }, completion: completion)
     }
 
     // animate using delegate on UISplitViewController
     func showDetail(_ viewController: UIViewController, with options: TransitionOptions, completion: PresentationHandler?) {
 
-        CATransaction.begin()
-        CATransaction.setCompletionBlock(completion)
-
-        rootViewController.showDetailViewController(viewController, sender: nil)
-
-        CATransaction.commit()
+        CATransaction.execute({
+            self.rootViewController.showDetailViewController(viewController, sender: nil)
+        }, completion: completion)
     }
 }

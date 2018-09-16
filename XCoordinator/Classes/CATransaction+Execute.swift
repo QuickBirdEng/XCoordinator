@@ -9,9 +9,9 @@
 import Foundation
 
 extension CATransaction {
-    internal static func execute(_ transaction: () -> Void, completion: @escaping () -> Void) {
+    internal static func execute(_ transaction: () -> Void, completion: (() -> Void)?) {
         begin()
-        setCompletionBlock(completion)
+        setCompletionBlock(completion ?? {})
         transaction()
         commit()
     }
