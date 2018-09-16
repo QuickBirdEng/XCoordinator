@@ -21,24 +21,30 @@ It's especially useful for implementing MVVM-C, Model-View-ViewModel-Coordinator
 
 ## 🏃‍♂️Getting started
 
-Create an enum with all of the navigation paths for a particular flow. (It is up to you when to create a `Route/Coordinator`, but as **our rule of thumb**, create a new `Route/Coordinator` whenever a new `navigation controller` is needed.)
+Create an enum with all of the navigation paths for a particular flow, i.e. a group of closely connected scenes. (It is up to you when to create a `Route/Coordinator`. As **our rule of thumb**, create a new `Route/Coordinator` whenever a new root view controller, e.g. a new `navigation controller`, is needed.)
+
+Whereas the `Route` describes, which routes can be triggered in a flow, the `Coordinator` is responsible for the preparation of transitions based on routes being triggered. We could, therefore, prepare multiple coordinators for the same route, which differ in which transitions are executed for each route.
+
+In the following example, we create the `HomeRoute` enum to define triggers of the main flow of our application. `HomeRoute` offers triggers to open the home screen, display users and to log out. The `HomeCoordinator` is implemented to prepare transitions for the triggered routes.
 
 ```swift
 enum HomeRoute: Route {
     case home
     case users
     case logout
+}
 
-    func prepareTransition(coordinator: AnyCoordinator<HomeRoute>) -> NavigationTransition {
+class HomeCoordinator: NavigationCoordinator<HomeRoute> {
+    override func prepareTransition(for route: HomeRoute) -> NavigationTransition {
         switch self {
         case .home:
             let viewModel = HomeViewModel(coodinator: coordinator)
-            let vc = HomeViewController(viewModel: viewModel)
-            return .push(vc)
+            let viewController = HomeViewController(viewModel: viewModel)
+            return .push(viewController)
         case .users:
             let viewModel = UsersViewModel(coodinator: coordinator)
-            let vc = UsersViewController(viewModel: viewModel)
-            return .push(vc)
+            let viewController = UsersViewController(viewModel: viewModel)
+            return .push(viewController)
         case .logout:
             return .dismiss()
         }
@@ -46,33 +52,38 @@ enum HomeRoute: Route {
 }
 ```
 
-Setup the root view controller in the AppDelegate.
+To use coordinators right from the launch of the app, make sure to create the app's window programmatically in `AppDelegate.swift`. set the coordinator as the root of the window's view hierarchy in the `didFinishLaunching`-method.
+
 ```swift
-  ...
+@UIApplicationMain
+class AppDelegate: UIResponder, UIApplicationDelegate {
+    let window: UIWindow! = UIWindow()
+    let coordinator = AppCoordinator().anyCoordinator
 
-    let basicCoordinator = BasicCoordinator<HomeRoute>(initialRoute: .home)
-
-    func application(_ application:didFinishLaunchingWithOptions) -> Bool {
-        window.rootViewController = basicCoordinator.navigationController
-
+    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
+        coordinator.setRoot(for: window)
         return true
     }
+}
 ```
 
-Implementation:
+Routes are triggered from within Coordinators or ViewModels. In the following, we describe how to trigger routes from within a ViewModel.
 
 ```swift
-    ...
 
-    init(coodinator: AnyCoordinator<HomeRoute>) {
-        self.coordinator = coodinator
+class HomeViewModel {
+    let coordinator: AnyCoordinator<HomeRoute>
+
+    init(coordinator: AnyCoordinator<HomeRoute>) {
+        self.coordinator = coordinator
     }
-
-    func onUsersButtonPress() {
-      self.coordinator.transition(to: .users)
+    
+    /* ... */
+    
+    func usersButtonPressed() {
+        coordinator.trigger(.users)
     }
-
-    ...
+}
 ```
 
 ## 🤸‍♂️ Extras
@@ -81,43 +92,24 @@ Implementation:
 XCoordinator supports cases for custom transitions between view controllers. In the `switch case` in `prepareTransition(coordinator:)` create an `Animation` while specifying your custom presentation transition or/and dismissal transition.
 
 ```swift
-  ...
-  func prepareTransition(coordinator: AnyCoordinator<HomeRoute>) -> Transition {
+
+class HomeCoordinator: NavigationCoordinator<HomeRoute> {
+    /* ... */
+    override func prepareTransition(for route: HomeRoute) -> NavigationTransition {
         switch self {
-        ...
-
+        /* ... */
         case .users(let string):
-            let animation = Animation(presentationAnimation: yourAnimation, dismissalAnimation: YourAwesomeDismissalTransitionAnimation())
-            var vc = UsersViewController.instantiateFromNib()
+            let animation = Animation(
+                presentationAnimation: YourAwesomePresentationTransitionAnimation(),
+                dismissalAnimation: YourAwesomeDismissalTransitionAnimation()
+            )
             let viewModel = UsersViewModelImpl(coordinator: coordinator, string: string)
-            vc.bind(to: viewModel)
-            return .push(vc, animation: animation)
-        ...
-    }
-```
-
-### Custom Coordinators
-In XCoordinator is possible to create custom coordinators. For example, a custom coordinator can be created to show Home if the user is logged in, otherwise Login.
-
-```swift
-
-class AppCoordinator: Coordinator {
-    typealias CoordinatorRoute = HomeRoute
-
-    var context: UIViewController!
-    var navigationController: UIViewController = UINavigationController()
-
-    init() {}
-
-    func presented(from presentable: Presentable?) {
-        if isLoggedIn {
-          transition(to: .home)
-        } else {
-          transition(to: .login)
+            let viewController = UsersViewController(viewModel: viewModel)
+            return .push(viewController, animation: animation)
+        /* ... */
         }
     }
 }
-
 ```
 
 ## 🎭 Example
@@ -153,18 +145,16 @@ Check out this [repository](https://github.com/quickbirdstudios/XCoordinator/tre
 ### Components
 
 #### 🎢 Route
-Describes a navigation path. Creates transition and loads view (and corresponding view model) with the help of the coordinator performing the transition.
+Describes possible navigation paths within a flow, i.e. a collection of closely related scenes.
 
 #### 👨‍✈️ Coordinator
-An object coordinating the transition to a set of routes pointing to views or other coordinators.
+An object coordinating the transition to a set of routes pointing to views or other coordinators by creating and performing transitions, loading views and ViewModels.
 
 #### ✈️ Transition
-Transitions describe the navigation from one view to another view.
-  - ViewTransition: Supports basic transitions that every view controller supports
-  - NavigationTransition: Adds navigation controller specific transitions
+Transitions describe the navigation from one view to another view. Transitions are available based on the type of the root view controller in use. Example: Whereas `ViewTransition` only supports basic transitions that every view controller supports, `NavigationTransition` adds navigation controller specific transitions.
 
 #### 🏗 Transition Types
-Describes presentation/dismissal of a view including the type of the transition and the animation used.
+Describes presentation/dismissal of a view including the type of the transition and the animation used. Most often used are the following transition types:
   - present: present view controller.
   - embed: embed view controller to a container view.
   - dismiss: dismiss the view controller that was presented modally by the view controller.
@@ -180,7 +170,7 @@ Describes presentation/dismissal of a view including the type of the transition 
 To integrate XCoordinator into your Xcode project using CocoaPods, add this to your `Podfile`:
 
 ```ruby
-pod 'rx-coordinator'
+pod 'XCoordinator'
 ```
 
 ### Carthage
