@@ -13,4 +13,13 @@ open class ViewCoordinator<R: Route>: BaseCoordinator<R, ViewTransition> {
     public override init(initialRoute: RouteType?) {
         super.init(initialRoute: initialRoute)
     }
+
+    public init(root: Presentable) {
+        super.init(initialTransition: nil, completion: { coordinator in
+            coordinator.performTransition(
+                .embed(root, in: coordinator.rootViewController.view),
+                with: TransitionOptions(animated: false)
+            )
+        })
+    }
 }

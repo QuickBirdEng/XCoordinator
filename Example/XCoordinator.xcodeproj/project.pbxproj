@@ -210,8 +210,8 @@
 			isa = PBXGroup;
 			children = (
 				9BE02328214DF7970093001A /* TestRoute.swift */,
-				9BE0232A214DF7BE0093001A /* TransitionTests.swift */,
 				9BC60AFF214EA71300ECFF9A /* TestAnimation.swift */,
+				9BE0232A214DF7BE0093001A /* TransitionTests.swift */,
 				9BC60AFC214EA6A500ECFF9A /* AnimationTests.swift */,
 				607FACE91AFB9204008FA782 /* Supporting Files */,
 			);
