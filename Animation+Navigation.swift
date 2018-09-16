@@ -3,6 +3,7 @@
 //  XCoordinator
 //
 //  Created by Paul Kraft on 16.09.18.
+//  Copyright © 2018 QuickBird Studios. All rights reserved.
 //
 
 class NavigationControllerAnimationDelegate: NSObject, UINavigationControllerDelegate {

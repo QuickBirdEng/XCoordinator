@@ -6,6 +6,7 @@
 //  Copyright © 2018 QuickBird Studios. All rights reserved.
 //
 
+// TODO: Make this work and include into TabBarTransition
 class TabBarControllerAnimationDelegate: NSObject, UITabBarControllerDelegate {
 
     // MARK: - Stored properties
