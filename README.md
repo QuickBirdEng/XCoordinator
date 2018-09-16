@@ -38,11 +38,11 @@ class HomeCoordinator: NavigationCoordinator<HomeRoute> {
     override func prepareTransition(for route: HomeRoute) -> NavigationTransition {
         switch self {
         case .home:
-            let viewModel = HomeViewModel(coodinator: coordinator)
+            let viewModel = HomeViewModel(coordinator: anyCoordinator)
             let viewController = HomeViewController(viewModel: viewModel)
             return .push(viewController)
         case .users:
-            let viewModel = UsersViewModel(coodinator: coordinator)
+            let viewModel = UsersViewModel(coordinator: anyCoordinator)
             let viewController = UsersViewController(viewModel: viewModel)
             return .push(viewController)
         case .logout:
