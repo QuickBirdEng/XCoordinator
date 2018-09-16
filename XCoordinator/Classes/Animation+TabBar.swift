@@ -49,7 +49,7 @@ class TabBarAnimationDelegate: NSObject, UITabBarControllerDelegate {
     func tabBarControllerPreferredInterfaceOrientationForPresentation(_ tabBarController: UITabBarController) -> UIInterfaceOrientation {
         return delegate?.tabBarControllerPreferredInterfaceOrientationForPresentation?(tabBarController)
             ?? tabBarController.selectedViewController?.preferredInterfaceOrientationForPresentation
-            ?? .unknown
+            ?? UIApplication.shared.statusBarOrientation
     }
 
     func tabBarController(_ tabBarController: UITabBarController, willEndCustomizing viewControllers: [UIViewController], changed: Bool) {

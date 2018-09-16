@@ -53,7 +53,7 @@ class NavigationAnimationDelegate: NSObject, UINavigationControllerDelegate {
     func navigationControllerPreferredInterfaceOrientationForPresentation(_ navigationController: UINavigationController) -> UIInterfaceOrientation {
         return delegate?.navigationControllerPreferredInterfaceOrientationForPresentation?(navigationController)
             ?? navigationController.visibleViewController?.preferredInterfaceOrientationForPresentation
-            ?? .unknown
+            ?? UIApplication.shared.statusBarOrientation
     }
 }
 
