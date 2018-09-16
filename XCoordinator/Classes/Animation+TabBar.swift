@@ -16,12 +16,10 @@ class TabBarControllerAnimationDelegate: NSObject, UITabBarControllerDelegate {
     // MARK: - Overrides
 
     func tabBarController(_ tabBarController: UITabBarController, interactionControllerFor animationController: UIViewControllerAnimatedTransitioning) -> UIViewControllerInteractiveTransitioning? {
-        print(#function)
         return animation?.presentationAnimation as? UIViewControllerInteractiveTransitioning
     }
 
     func tabBarController(_ tabBarController: UITabBarController, animationControllerForTransitionFrom fromVC: UIViewController, to toVC: UIViewController) -> UIViewControllerAnimatedTransitioning? {
-        print(#function)
         return animation?.presentationAnimation
     }
 

@@ -12,17 +12,6 @@ class NavigationControllerAnimationDelegate: NSObject, UINavigationControllerDel
     var animation: Animation?
     weak var delegate: UINavigationControllerDelegate?
 
-    // MARK: - Init
-
-    override init() {
-        print(NavigationControllerAnimationDelegate.self, #function)
-        super.init()
-    }
-
-    deinit {
-        print(NavigationControllerAnimationDelegate.self, #function)
-    }
-
     // MARK: - UINavigationControllerDelegate
 
     public func navigationController(_ navigationController: UINavigationController, interactionControllerFor animationController: UIViewControllerAnimatedTransitioning) -> UIViewControllerInteractiveTransitioning? {
