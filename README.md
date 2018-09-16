@@ -36,7 +36,7 @@ enum HomeRoute: Route {
 
 class HomeCoordinator: NavigationCoordinator<HomeRoute> {
     override func prepareTransition(for route: HomeRoute) -> NavigationTransition {
-        switch self {
+        switch route {
         case .home:
             let viewModel = HomeViewModel(coordinator: anyCoordinator)
             let viewController = HomeViewController(viewModel: viewModel)
@@ -96,7 +96,7 @@ XCoordinator supports cases for custom transitions between view controllers. In 
 class HomeCoordinator: NavigationCoordinator<HomeRoute> {
     /* ... */
     override func prepareTransition(for route: HomeRoute) -> NavigationTransition {
-        switch self {
+        switch route {
         /* ... */
         case .users(let string):
             let animation = Animation(
