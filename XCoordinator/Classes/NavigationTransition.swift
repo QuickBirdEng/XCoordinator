@@ -41,4 +41,15 @@ extension Transition where RootViewController: UINavigationController {
             )
         }
     }
+
+    public static func set(_ presentables: [Presentable], animation: Animation? = nil) -> NavigationTransition {
+        return NavigationTransition(presentable: presentables.last) { options, performer, completion in
+            performer.set(
+                presentables.map { $0.viewController },
+                with: options,
+                animation: animation,
+                completion: completion
+            )
+        }
+    }
 }

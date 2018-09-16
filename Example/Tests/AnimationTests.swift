@@ -48,6 +48,16 @@ class AnimationTests: XCTestCase {
         wait(for: [exp], timeout: 1)
     }
 
+    func testNavigationSet(coordinator: NavigationCoordinator<TestRoute>) {
+        let vcs = (0..<3).map { _ in UIViewController() }
+        print(coordinator.rootViewController.viewControllers)
+        viewControllers.append(contentsOf: vcs)
+        let exp = expectation(description: "set \(Date().timeIntervalSince1970)")
+        let animation = TestAnimation(presentation: exp)
+        coordinator.performTransition(.set(vcs, animation: animation), with: .default)
+        wait(for: [exp], timeout: 1)
+    }
+
     func testNavigationAnimations() {
         let exp = self.expectation(description: "done")
 
@@ -56,6 +66,7 @@ class AnimationTests: XCTestCase {
         testNavigationPop(coordinator: navigationCoordinator)
         testNavigationPush(coordinator: navigationCoordinator)
         testNavigationPopToRoot(coordinator: navigationCoordinator)
+        testNavigationSet(coordinator: navigationCoordinator)
         exp.fulfill()
 
         wait(for: [exp], timeout: 10)

@@ -36,4 +36,16 @@ extension TransitionPerformer where TransitionType.RootViewController: UINavigat
             }, completion: completion ?? {})
         }
     }
+
+    func set(_ viewControllers: [UIViewController], with options: TransitionOptions, animation: Animation?, completion: PresentationHandler?) {
+
+        rootViewController.animationDelegate?.animation = animation
+        assert(animation == nil || rootViewController.animationDelegate != nil)
+
+        CATransaction.empty {
+            CATransaction.execute({
+                self.rootViewController.setViewControllers(viewControllers, animated: options.animated)
+            }, completion: completion ?? {})
+        }
+    }
 }
