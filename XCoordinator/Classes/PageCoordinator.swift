@@ -51,7 +51,7 @@ class PageCoordinatorDataSource: NSObject, UIPageViewControllerDataSource, UIPag
     }
 
     func presentationCount(for pageViewController: UIPageViewController) -> Int {
-        let isDisplaying = pageViewController.viewControllers?.first != nil
+        let isDisplaying = pageViewController.viewControllers?.isEmpty ?? false
         return isDisplaying ? pages.count : 0
     }
 
