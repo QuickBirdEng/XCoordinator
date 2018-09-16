@@ -33,7 +33,7 @@ extension Transition {
         }
     }
 
-    public static func multiple(_ transitions: [Transition<RootViewController>]) -> Transition {
+    public static func multiple<C: Collection>(_ transitions: C) -> Transition where C.Element == Transition {
         return .init(presentable: nil) { options, performer, completion in
             guard let firstTransition = transitions.first else {
                 completion?()
