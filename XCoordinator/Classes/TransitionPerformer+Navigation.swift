@@ -17,11 +17,11 @@ extension TransitionPerformer where TransitionType.RootViewController: UINavigat
         CATransaction.empty {
             CATransaction.execute({
                 self.rootViewController.pushViewController(viewController, animated: options.animated)
-            }, completion: completion ?? {})
+            }, completion: completion)
         }
     }
 
-    func pop(with options: TransitionOptions, toRoot: Bool, animation: Animation?, completion: PresentationHandler?) {
+    func pop(toRoot: Bool, with options: TransitionOptions, animation: Animation?, completion: PresentationHandler?) {
 
         rootViewController.animationDelegate?.animation = animation
         assert(animation == nil || rootViewController.animationDelegate != nil)
@@ -33,7 +33,7 @@ extension TransitionPerformer where TransitionType.RootViewController: UINavigat
                 } else {
                     self.rootViewController.popViewController(animated: options.animated)
                 }
-            }, completion: completion ?? {})
+            }, completion: completion)
         }
     }
 
@@ -45,7 +45,7 @@ extension TransitionPerformer where TransitionType.RootViewController: UINavigat
         CATransaction.empty {
             CATransaction.execute({
                 self.rootViewController.setViewControllers(viewControllers, animated: options.animated)
-            }, completion: completion ?? {})
+            }, completion: completion)
         }
     }
 }
