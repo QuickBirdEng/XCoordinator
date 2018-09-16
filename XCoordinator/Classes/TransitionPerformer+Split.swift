@@ -7,23 +7,21 @@
 //
 
 extension TransitionPerformer where TransitionType.RootViewController: UISplitViewController {
-    func show(_ viewController: UIViewController, with options: TransitionOptions, animation: Animation?, completion: PresentationHandler?) {
+    func show(_ viewController: UIViewController, with options: TransitionOptions, completion: PresentationHandler?) {
 
         CATransaction.begin()
         CATransaction.setCompletionBlock(completion)
 
-        rootViewController.transitioningDelegate = animation
         rootViewController.show(viewController, sender: nil)
 
         CATransaction.commit()
     }
 
-    func showDetail(_ viewController: UIViewController, with options: TransitionOptions, animation: Animation?, completion: PresentationHandler?) {
+    func showDetail(_ viewController: UIViewController, with options: TransitionOptions, completion: PresentationHandler?) {
 
         CATransaction.begin()
         CATransaction.setCompletionBlock(completion)
 
-        rootViewController.transitioningDelegate = animation
         rootViewController.showDetailViewController(viewController, sender: nil)
 
         CATransaction.commit()

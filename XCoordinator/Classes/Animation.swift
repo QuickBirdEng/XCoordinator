@@ -6,12 +6,12 @@
 //  Copyright © 2018 QuickBird Studios. All rights reserved.
 //
 
-public class Animation: NSObject, UIViewControllerTransitioningDelegate {
+open class Animation: NSObject, UIViewControllerTransitioningDelegate {
 
     // MARK: - Stored properties
 
-    public let presentationAnimation: TransitionAnimation?
-    public let dismissalAnimation: TransitionAnimation?
+    open let presentationAnimation: TransitionAnimation?
+    open let dismissalAnimation: TransitionAnimation?
 
     // MARK: - Init
 
