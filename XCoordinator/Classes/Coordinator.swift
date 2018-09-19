@@ -31,8 +31,8 @@ extension Coordinator {
 
     public func setRoot(for window: UIWindow) {
         window.rootViewController = rootViewController
-        window.makeKeyAndVisible()
         presented(from: window)
+        window.makeKeyAndVisible()
     }
 }
 

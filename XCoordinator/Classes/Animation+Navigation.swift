@@ -10,18 +10,24 @@ class NavigationAnimationDelegate: NSObject, UINavigationControllerDelegate {
 
     // MARK: - Stored properties
 
-    var animation: Animation?
+    var animation: Animation? {
+        didSet {
+            print(animation)
+        }
+    }
     weak var delegate: UINavigationControllerDelegate?
 
     // MARK: - UINavigationControllerDelegate
 
     public func navigationController(_ navigationController: UINavigationController, interactionControllerFor animationController: UIViewControllerAnimatedTransitioning) -> UIViewControllerInteractiveTransitioning? {
+        print(#function)
         return animation?.presentationAnimation as? UIViewControllerInteractiveTransitioning
             ?? delegate?.navigationController?(navigationController, interactionControllerFor: animationController)
     }
 
     public func navigationController(_ navigationController: UINavigationController, animationControllerFor operation: UINavigationControllerOperation, from fromVC: UIViewController, to toVC: UIViewController) -> UIViewControllerAnimatedTransitioning? {
         func transitionAnimation() -> UIViewControllerAnimatedTransitioning? {
+            print(#function)
             switch operation {
             case .push:
                 return animation?.presentationAnimation

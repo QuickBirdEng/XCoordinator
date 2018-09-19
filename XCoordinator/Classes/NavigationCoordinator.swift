@@ -31,8 +31,20 @@ open class NavigationCoordinator<R: Route>: BaseCoordinator<R, NavigationTransit
     // MARK: - Overrides
 
     open override func generateRootViewController() -> UINavigationController {
-        let navigationController = super.generateRootViewController()
-        navigationController.delegate = animationDelegate
-        return navigationController
+        return AnimationNavigationController(animationDelegate: animationDelegate)
+    }
+}
+
+class AnimationNavigationController: UINavigationController {
+    var _delegate: NavigationAnimationDelegate?
+
+    convenience init(animationDelegate: NavigationAnimationDelegate?) {
+        self.init()
+        self._delegate = animationDelegate
+    }
+
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        self.delegate = _delegate
     }
 }

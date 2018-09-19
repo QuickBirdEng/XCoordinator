@@ -208,7 +208,6 @@
 		9BAD055369BCF96DC1DA561AA931CC05 /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B3E27ABEC6E0F40D8954A59C93F204E /* Coordinator.swift */; };
 		9BC60B06214ED6B000ECFF9A /* Animation+Navigation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BC60B05214ED6B000ECFF9A /* Animation+Navigation.swift */; };
 		9BC60B0C214EE6A900ECFF9A /* Animation+TabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BC60B0B214EE6A900ECFF9A /* Animation+TabBar.swift */; };
-		9BC60B12214EEB0400ECFF9A /* CATransaction+Execute.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BC60B11214EEB0400ECFF9A /* CATransaction+Execute.swift */; };
 		9C0C92572F26ACA07353B2D0B0604508 /* DefaultIfEmpty.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2935B6CF5985726C2409D51079BBCD82 /* DefaultIfEmpty.swift */; };
 		9C4B9DD372FCB0B5D6B5B97002F5E5F2 /* RxSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 433D6F464DF5553729C2E50AE1507E33 /* RxSwift.framework */; };
 		9C6DAFC8DDC0578E84FFAD98C6164256 /* Control+Action.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AF1E700D32B2BD53CEC53DA40ECF128 /* Control+Action.swift */; };
@@ -654,7 +653,6 @@
 		9BADF51F5453C30A274C32B2678B7C3F /* RxMutableBox.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = RxMutableBox.swift; path = RxSwift/RxMutableBox.swift; sourceTree = "<group>"; };
 		9BC60B05214ED6B000ECFF9A /* Animation+Navigation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Animation+Navigation.swift"; path = "XCoordinator/Classes/Animation+Navigation.swift"; sourceTree = "<group>"; };
 		9BC60B0B214EE6A900ECFF9A /* Animation+TabBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "Animation+TabBar.swift"; path = "XCoordinator/Classes/Animation+TabBar.swift"; sourceTree = "<group>"; };
-		9BC60B11214EEB0400ECFF9A /* CATransaction+Execute.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "CATransaction+Execute.swift"; path = "XCoordinator/Classes/CATransaction+Execute.swift"; sourceTree = "<group>"; };
 		9C0CB906B7F9ED0F3C0292F1F2D62805 /* ViewTransition.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ViewTransition.swift; path = XCoordinator/Classes/ViewTransition.swift; sourceTree = "<group>"; };
 		9C37A61A2C9751921AF6C5110DD6B767 /* ItemEvents.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ItemEvents.swift; path = RxCocoa/iOS/Events/ItemEvents.swift; sourceTree = "<group>"; };
 		9C3CAB4C3B62822713287E81F70AF77A /* _RXKVOObserver.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = _RXKVOObserver.m; path = RxCocoa/Runtime/_RXKVOObserver.m; sourceTree = "<group>"; };
@@ -858,7 +856,6 @@
 				1CF8D797761E003E5F900045FA3C6587 /* AnyTransitionPerformer.swift */,
 				A04847FBDE69DA3EB5BD56357333E8C2 /* BaseCoordinator.swift */,
 				9A4899A7B9CDF675E31FC8860506F613 /* BasicCoordinator.swift */,
-				9BC60B11214EEB0400ECFF9A /* CATransaction+Execute.swift */,
 				ABE1F2EBAFE2B4225BAB9AA14D6066A0 /* Container.swift */,
 				3B3E27ABEC6E0F40D8954A59C93F204E /* Coordinator.swift */,
 				5C06FCA1BCAF7950CB17126CC2D02069 /* CoordinatorPreviewingDelegateObject.swift */,
@@ -1907,7 +1904,6 @@
 				9BAD055369BCF96DC1DA561AA931CC05 /* Coordinator.swift in Sources */,
 				384D682FF6FD83CE4363B1F28F1FB762 /* CoordinatorPreviewingDelegateObject.swift in Sources */,
 				C2CA14F2A26694DCD19C258FB581E10E /* InteractiveTransitionAnimation.swift in Sources */,
-				9BC60B12214EEB0400ECFF9A /* CATransaction+Execute.swift in Sources */,
 				48AF7EBC7432830C55FC78AA2D3CFB2A /* NavigationCoordinator.swift in Sources */,
 				8C2B788B90CF26442BF301D936AD5DE7 /* NavigationTransition.swift in Sources */,
 				BFA7BC833122A294B84CBE93E9B8FC0B /* PageCoordinator.swift in Sources */,

@@ -16,56 +16,76 @@ class AnimationTests: XCTestCase {
     lazy var navigationCoordinator: NavigationCoordinator<TestRoute> = {
         let master = UIViewController()
         viewControllers.append(master)
+        master.view.backgroundColor = .yellow
         let c = NavigationCoordinator<TestRoute>(root: master)
         c.setRoot(for: window)
         return c
     }()
 
     func testNavigationPush(coordinator: NavigationCoordinator<TestRoute>) {
-        print(coordinator.rootViewController.viewControllers)
+        print("will push", coordinator.rootViewController.viewControllers)
         let detail = UIViewController()
         viewControllers.append(detail)
-        detail.loadViewIfNeeded()
+        detail.view.backgroundColor = .red
         let exp = expectation(description: "push \(Date().timeIntervalSince1970)")
+        let done = expectation(description: "push done \(Date().timeIntervalSince1970)")
         let animation = TestAnimation(presentation: exp)
-        coordinator.performTransition(.push(detail, animation: animation), with: .default)
-        wait(for: [exp], timeout: 1)
+        coordinator.performTransition(.push(detail, animation: animation), with: .default) {
+            done.fulfill()
+        }
+        wait(for: [exp, done], timeout: 1, enforceOrder: true)
     }
 
     func testNavigationPop(coordinator: NavigationCoordinator<TestRoute>) {
         print(coordinator.rootViewController.viewControllers)
         let exp = expectation(description: "pop \(Date().timeIntervalSince1970)")
+        let done = expectation(description: "pop done \(Date().timeIntervalSince1970)")
         let animation = TestAnimation(dismissal: exp)
-        coordinator.performTransition(.pop(animation: animation), with: .default)
-        wait(for: [exp], timeout: 1)
+        coordinator.performTransition(.pop(animation: animation), with: .default) {
+            done.fulfill()
+        }
+        wait(for: [exp, done], timeout: 1, enforceOrder: true)
     }
 
     func testNavigationPopToRoot(coordinator: NavigationCoordinator<TestRoute>) {
         print(coordinator.rootViewController.viewControllers)
         let exp = expectation(description: "popToRoot \(Date().timeIntervalSince1970)")
+        let done = expectation(description: "popToRoot done \(Date().timeIntervalSince1970)")
         let animation = TestAnimation(dismissal: exp)
-        coordinator.performTransition(.popToRoot(animation: animation), with: .default)
-        wait(for: [exp], timeout: 1)
+        coordinator.performTransition(.popToRoot(animation: animation), with: .default) {
+            done.fulfill()
+        }
+        wait(for: [exp, done], timeout: 1, enforceOrder: true)
     }
 
     func testNavigationSet(coordinator: NavigationCoordinator<TestRoute>) {
-        let vcs = (0..<3).map { _ in UIViewController() }
+        let vcs = [UIColor.black, .blue, .green].map { color -> UIViewController in
+            let vc = UIViewController()
+            vc.view.backgroundColor = color
+            return vc
+        }
         print(coordinator.rootViewController.viewControllers)
         viewControllers.append(contentsOf: vcs)
         let exp = expectation(description: "set \(Date().timeIntervalSince1970)")
+        let done = expectation(description: "set done \(Date().timeIntervalSince1970)")
         let animation = TestAnimation(presentation: exp)
-        coordinator.performTransition(.set(vcs, animation: animation), with: .default)
-        wait(for: [exp], timeout: 1)
+        coordinator.performTransition(.set(vcs, animation: animation), with: .default) {
+            done.fulfill()
+        }
+        wait(for: [exp, done], timeout: 1, enforceOrder: true)
     }
 
     func testNavigationAnimations() {
         let exp = self.expectation(description: "done")
 
-        navigationCoordinator.rootViewController.loadViewIfNeeded()
         testNavigationPush(coordinator: navigationCoordinator)
+        sleep(2)
         testNavigationPop(coordinator: navigationCoordinator)
+        sleep(2)
         testNavigationPush(coordinator: navigationCoordinator)
+        sleep(2)
         testNavigationPopToRoot(coordinator: navigationCoordinator)
+        sleep(2)
         testNavigationSet(coordinator: navigationCoordinator)
         exp.fulfill()
 

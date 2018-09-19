@@ -9,22 +9,25 @@
 extension TransitionPerformer where TransitionType.RootViewController: UITabBarController {
     func set(_ viewControllers: [UIViewController], with options: TransitionOptions, completion: PresentationHandler?) {
 
-        CATransaction.execute({
-            self.rootViewController.setViewControllers(viewControllers, animated: options.animated)
-        }, completion: completion)
+        CATransaction.begin()
+        CATransaction.setCompletionBlock(completion)
+        rootViewController.setViewControllers(viewControllers, animated: options.animated)
+        CATransaction.commit()
     }
 
     func select(_ viewController: UIViewController, with options: TransitionOptions, completion: PresentationHandler?) {
 
-        CATransaction.execute({
-            self.rootViewController.selectedViewController = viewController
-        }, completion: completion)
+        CATransaction.begin()
+        CATransaction.setCompletionBlock(completion)
+        rootViewController.selectedViewController = viewController
+        CATransaction.commit()
     }
 
     func select(index: Int, with options: TransitionOptions, completion: PresentationHandler?) {
 
-        CATransaction.execute({
-            self.rootViewController.selectedIndex = index
-        }, completion: completion)
+        CATransaction.begin()
+        CATransaction.setCompletionBlock(completion)
+        rootViewController.selectedIndex = index
+        CATransaction.commit()
     }
 }
