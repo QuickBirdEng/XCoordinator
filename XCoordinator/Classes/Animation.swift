@@ -10,8 +10,8 @@ open class Animation: NSObject, UIViewControllerTransitioningDelegate {
 
     // MARK: - Stored properties
 
-    open let presentationAnimation: TransitionAnimation?
-    open let dismissalAnimation: TransitionAnimation?
+    public let presentationAnimation: TransitionAnimation?
+    public let dismissalAnimation: TransitionAnimation?
 
     // MARK: - Init
 

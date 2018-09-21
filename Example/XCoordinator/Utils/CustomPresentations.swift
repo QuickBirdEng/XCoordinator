@@ -12,7 +12,7 @@ import XCoordinator
 
 struct CustomPresentations {
 
-    private static let defaultAnimationDuration = 0.5
+    private static let defaultAnimationDuration = 0.35
 
     static let fadePresentation = StaticTransitionAnimation(duration: defaultAnimationDuration, performAnimation: { transitionContext in
         let containerView = transitionContext.containerView
@@ -43,4 +43,5 @@ struct CustomPresentations {
         })
     })
 
+    static let interactiveFlippingPresentation = InteractiveTransitionAnimation(duration: defaultAnimationDuration, completionSpeed: 1, completionCurve: .easeInOut, wantsInteractiveStart: true, performAnimation: flippingPresentation.performAnimation, startInteractiveTransition: flippingPresentation.performAnimation)
 }

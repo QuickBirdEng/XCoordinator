@@ -3,9 +3,15 @@ import UIKit
 import RxSwift
 import RxCocoa
 
-public extension UIAlertAction {
+#if swift(>=4.2)
+public typealias ActionStyle = UIAlertAction.Style
+#else
+public typealias ActionStyle = UIAlertActionStyle
+#endif
 
-    public static func Action(_ title: String?, style: UIAlertActionStyle) -> UIAlertAction {
+public extension UIAlertAction {
+    
+    public static func Action(_ title: String?, style: ActionStyle) -> UIAlertAction {
         return UIAlertAction(title: title, style: style, handler: { action in
             action.rx.action?.execute(())
             return

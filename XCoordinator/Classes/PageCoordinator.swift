@@ -10,18 +10,18 @@ open class PageCoordinator<RouteType: Route>: BaseCoordinator<RouteType, PageTra
 
     // MARK: - Stored properties
 
-    private let transitionStyle: UIPageViewControllerTransitionStyle
-    private let orientation: UIPageViewControllerNavigationOrientation
-    private let options: [String: Any]?
+    private let transitionStyle: UIPageViewController.TransitionStyle
+    private let orientation: UIPageViewController.NavigationOrientation
+    private let options: [UIPageViewController.OptionsKey: Any]?
     private let dataSource: PageCoordinatorDataSource
 
     // MARK: - Init
 
     public init(pages: [Presentable],
-                direction: UIPageViewControllerNavigationDirection = .forward,
-                transitionStyle: UIPageViewControllerTransitionStyle = .pageCurl,
-                orientation: UIPageViewControllerNavigationOrientation = .horizontal,
-                options: [String: Any]? = nil) {
+                direction: UIPageViewController.NavigationDirection = .forward,
+                transitionStyle: UIPageViewController.TransitionStyle = .pageCurl,
+                orientation: UIPageViewController.NavigationOrientation = .horizontal,
+                options: [UIPageViewController.OptionsKey: Any]? = nil) {
 
         self.transitionStyle = transitionStyle
         self.orientation = orientation

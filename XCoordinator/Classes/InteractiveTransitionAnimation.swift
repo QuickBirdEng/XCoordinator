@@ -12,7 +12,7 @@ public class InteractiveTransitionAnimation: NSObject, TransitionAnimation, UIVi
 
     public let duration: TimeInterval
     public let completionSpeed: CGFloat
-    public let completionCurve: UIViewAnimationCurve
+    public let completionCurve: UIView.AnimationCurve
     public let wantsInteractiveStart: Bool
 
     public let performAnimation: (_ transitionContext: UIViewControllerContextTransitioning) -> Void
@@ -22,7 +22,7 @@ public class InteractiveTransitionAnimation: NSObject, TransitionAnimation, UIVi
 
     public init(duration: TimeInterval,
          completionSpeed: CGFloat,
-         completionCurve: UIViewAnimationCurve,
+         completionCurve: UIView.AnimationCurve,
          wantsInteractiveStart: Bool,
          performAnimation: @escaping (UIViewControllerContextTransitioning) -> Void,
          startInteractiveTransition: @escaping (UIViewControllerContextTransitioning) -> Void) {

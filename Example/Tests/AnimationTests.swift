@@ -30,8 +30,10 @@ class AnimationTests: XCTestCase {
         let exp = expectation(description: "push \(Date().timeIntervalSince1970)")
         let done = expectation(description: "push done \(Date().timeIntervalSince1970)")
         let animation = TestAnimation(presentation: exp)
-        coordinator.performTransition(.push(detail, animation: animation), with: .default) {
-            done.fulfill()
+        DispatchQueue.main.async {
+            coordinator.performTransition(.push(detail, animation: animation), with: .default) {
+                done.fulfill()
+            }
         }
         wait(for: [exp, done], timeout: 1, enforceOrder: true)
     }
@@ -41,8 +43,10 @@ class AnimationTests: XCTestCase {
         let exp = expectation(description: "pop \(Date().timeIntervalSince1970)")
         let done = expectation(description: "pop done \(Date().timeIntervalSince1970)")
         let animation = TestAnimation(dismissal: exp)
-        coordinator.performTransition(.pop(animation: animation), with: .default) {
-            done.fulfill()
+        DispatchQueue.main.async {
+            coordinator.performTransition(.pop(animation: animation), with: .default) {
+                done.fulfill()
+            }
         }
         wait(for: [exp, done], timeout: 1, enforceOrder: true)
     }
@@ -52,8 +56,10 @@ class AnimationTests: XCTestCase {
         let exp = expectation(description: "popToRoot \(Date().timeIntervalSince1970)")
         let done = expectation(description: "popToRoot done \(Date().timeIntervalSince1970)")
         let animation = TestAnimation(dismissal: exp)
-        coordinator.performTransition(.popToRoot(animation: animation), with: .default) {
-            done.fulfill()
+        DispatchQueue.main.async {
+            coordinator.performTransition(.popToRoot(animation: animation), with: .default) {
+                done.fulfill()
+            }
         }
         wait(for: [exp, done], timeout: 1, enforceOrder: true)
     }
@@ -69,8 +75,10 @@ class AnimationTests: XCTestCase {
         let exp = expectation(description: "set \(Date().timeIntervalSince1970)")
         let done = expectation(description: "set done \(Date().timeIntervalSince1970)")
         let animation = TestAnimation(presentation: exp)
-        coordinator.performTransition(.set(vcs, animation: animation), with: .default) {
-            done.fulfill()
+        DispatchQueue.main.async {
+            coordinator.performTransition(.set(vcs, animation: animation), with: .default) {
+                done.fulfill()
+            }
         }
         wait(for: [exp, done], timeout: 1, enforceOrder: true)
     }

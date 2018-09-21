@@ -9,7 +9,7 @@
 public typealias PageTransition = Transition<UIPageViewController>
 
 extension Transition where RootViewController: UIPageViewController {
-    public static func set(_ presentables: [Presentable], direction: UIPageViewControllerNavigationDirection) -> PageTransition {
+    public static func set(_ presentables: [Presentable], direction: UIPageViewController.NavigationDirection) -> PageTransition {
         return PageTransition(presentable: nil) { options, performer, completion in
             performer.set(
                 presentables.map { $0.viewController },

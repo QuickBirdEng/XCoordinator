@@ -21,7 +21,7 @@ extension TransitionPerformer {
 
     func embed(_ viewController: UIViewController, in container: Container, with options: TransitionOptions, completion: PresentationHandler?) {
 
-        container.viewController.addChildViewController(viewController)
+        container.viewController.addChild(viewController)
 
         viewController.view.translatesAutoresizingMaskIntoConstraints = false
         container.view.addSubview(viewController.view)
@@ -37,7 +37,7 @@ extension TransitionPerformer {
                 .constraint(equalTo: viewController.view.bottomAnchor)
         ])
 
-        viewController.didMove(toParentViewController: container.viewController)
+        viewController.didMove(toParent: container.viewController)
 
         completion?()
     }
