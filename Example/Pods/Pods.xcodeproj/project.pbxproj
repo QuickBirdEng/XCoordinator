@@ -228,7 +228,6 @@
 		AE5A8D28E70672C151031C25835759BF /* PublishSubject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FB50A6B2D5C7DF32FEB33DBFCD01DBD /* PublishSubject.swift */; };
 		AE7A174A996461A448031089E4C618A9 /* RxTextStorageDelegateProxy.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1F4D3FAD6C787E70AC26E3F6B94CFE2 /* RxTextStorageDelegateProxy.swift */; };
 		AEBCE63E0DE3F4373740C4F383631DC1 /* RecursiveLock.swift in Sources */ = {isa = PBXBuildFile; fileRef = D21BDE6FC840B12C69CA2DBE8F8BAD6A /* RecursiveLock.swift */; };
-		AEE677B7DB11C10B927A68CEFD24E0F5 /* Animation+Navigation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C77C0CD9C64ED0066EAD19435537E05 /* Animation+Navigation.swift */; };
 		AF5369DC4EBC15B67429B3229BF7D571 /* RxMutableBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BADF51F5453C30A274C32B2678B7C3F /* RxMutableBox.swift */; };
 		AF84A339FAECF71D38FFB75AF59D2901 /* PageCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = A74717B0C24D7BB02D2DF577A05214C0 /* PageCoordinator.swift */; };
 		B09E051C8A1F94ACBE918584E5715AFA /* BooleanDisposable.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD3494CECFFC7CB6CEC9014D76DF9E56 /* BooleanDisposable.swift */; };
@@ -253,7 +252,6 @@
 		BB08614CC538574D767690FFF18F8A71 /* Sink.swift in Sources */ = {isa = PBXBuildFile; fileRef = 902EBC844C0CD7570462E21A73898126 /* Sink.swift */; };
 		BB20706C06CCA59698F10A279144CB35 /* Create.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D96DB7C1FA942077D88130B98CAC825 /* Create.swift */; };
 		BBB2E36DB43BC0B9CE273814A2BAAE9B /* RxSearchBarDelegateProxy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9832E3BC0C67C6B1D362347935259831 /* RxSearchBarDelegateProxy.swift */; };
-		BD17D150C43F17B968989887D507B744 /* Animation+TabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3827CAAC317298B85854A4AAE60FDC05 /* Animation+TabBar.swift */; };
 		BD250F3CAE56EF54A8566971302A1916 /* PageTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 564424E503AF4F1B2034E106B68197D7 /* PageTransition.swift */; };
 		BDD9A87ED76978D01887B605D40A33A5 /* Debug.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AFB53C06296A62882DD765D48C43D98 /* Debug.swift */; };
 		BFB68002D26AAFCBA257F6A8DE437822 /* VirtualTimeScheduler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 149525FB575348FB6E98E99AF4F95BA2 /* VirtualTimeScheduler.swift */; };
@@ -496,13 +494,11 @@
 		35AF08C814D3243498C76DB32ABB441D /* UIApplication+Rx.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "UIApplication+Rx.swift"; path = "RxCocoa/iOS/UIApplication+Rx.swift"; sourceTree = "<group>"; };
 		36F03F4D6B1EA29E2F77E70C67F244E3 /* PrimitiveSequence+Zip+arity.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "PrimitiveSequence+Zip+arity.swift"; path = "RxSwift/Traits/PrimitiveSequence+Zip+arity.swift"; sourceTree = "<group>"; };
 		3790CB891102AA414D4275B27B4DD7EB /* NSObject+Rx.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "NSObject+Rx.swift"; path = "RxCocoa/Foundation/NSObject+Rx.swift"; sourceTree = "<group>"; };
-		3827CAAC317298B85854A4AAE60FDC05 /* Animation+TabBar.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "Animation+TabBar.swift"; path = "XCoordinator/Classes/Animation+TabBar.swift"; sourceTree = "<group>"; };
 		3877071ADB35A8A8AF0147469ADD0443 /* RxSwift-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "RxSwift-dummy.m"; sourceTree = "<group>"; };
 		3886FB1CFE1632ABE379832C8E3FE146 /* SharedSequence+Operators.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "SharedSequence+Operators.swift"; path = "RxCocoa/Traits/SharedSequence/SharedSequence+Operators.swift"; sourceTree = "<group>"; };
 		38DB11E7041571D203A4DE20DBC31DD5 /* Disposable.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Disposable.swift; path = RxSwift/Disposable.swift; sourceTree = "<group>"; };
 		38F7120E143DB349739D5A5254CE2991 /* UIControl+Rx.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "UIControl+Rx.swift"; path = "RxCocoa/iOS/UIControl+Rx.swift"; sourceTree = "<group>"; };
 		3C53BA495F6988CF6D166D4C9AFC6775 /* InvocableType.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = InvocableType.swift; path = RxSwift/Schedulers/Internal/InvocableType.swift; sourceTree = "<group>"; };
-		3C77C0CD9C64ED0066EAD19435537E05 /* Animation+Navigation.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "Animation+Navigation.swift"; path = "XCoordinator/Classes/Animation+Navigation.swift"; sourceTree = "<group>"; };
 		3D96DB7C1FA942077D88130B98CAC825 /* Create.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Create.swift; path = RxSwift/Observables/Create.swift; sourceTree = "<group>"; };
 		3DE0F41CC1016F71B26158985D1B29B1 /* RxTabBarDelegateProxy.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = RxTabBarDelegateProxy.swift; path = RxCocoa/iOS/Proxies/RxTabBarDelegateProxy.swift; sourceTree = "<group>"; };
 		3E3E1E202643D86604D3862B2978E623 /* Signal.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Signal.swift; path = RxCocoa/Traits/Signal/Signal.swift; sourceTree = "<group>"; };
@@ -1330,8 +1326,6 @@
 			isa = PBXGroup;
 			children = (
 				34043810214A65F64B36072A3AA0B073 /* Animation.swift */,
-				3C77C0CD9C64ED0066EAD19435537E05 /* Animation+Navigation.swift */,
-				3827CAAC317298B85854A4AAE60FDC05 /* Animation+TabBar.swift */,
 				884859BC058113F9BAFAC7F27F0394A3 /* AnyCoordinator.swift */,
 				0CDAA5F9BB426DDAA317E99122B3879B /* AnyTransitionPerformer.swift */,
 				60020B71BD64798EBE247F094C0EBF17 /* BaseCoordinator.swift */,
@@ -1898,8 +1892,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				AEE677B7DB11C10B927A68CEFD24E0F5 /* Animation+Navigation.swift in Sources */,
-				BD17D150C43F17B968989887D507B744 /* Animation+TabBar.swift in Sources */,
 				F2CD77EDC988764E61D05C915135A708 /* Animation.swift in Sources */,
 				56234C555161F0B4E1AE7B0E18C80227 /* AnyCoordinator.swift in Sources */,
 				B5E2329B19E9AAFCBCFABDCAF7DD930B /* AnyTransitionPerformer.swift in Sources */,
