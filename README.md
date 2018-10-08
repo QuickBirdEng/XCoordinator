@@ -197,7 +197,11 @@ If this is your first time using Carthage in the project, you'll need to go thro
 
 ### Manually
 
-If you prefer not to use any of the dependency managers, you can integrate RxCoordinator into your project manually, by downloading the source code and placing the files on your project directory.
+If you prefer not to use any of the dependency managers, you can integrate RxCoordinator into your project manually, by downloading the source code and placing the files on your project directory.  
+
+
+If you want more information on RxCoordinator check out this blog post: 
+https://quickbirdstudios.com/blog/ios-navigation-library-based-on-the-coordinator-pattern/
 
 ## 👤 Author
 This tiny library is created with ❤️ by [QuickBird Studios](www.quickbirdstudios.com).
