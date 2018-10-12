@@ -12,6 +12,7 @@ internal enum NavigationTransitionType {
     case embed(presentable: Presentable, container: Container)
     case registerPeek(source: Container, transitionGenerator: () -> NavigationTransition)
     case pop
+    case popTo(Presentable)
     case popToRoot
     case dismiss
     case none
@@ -29,7 +30,7 @@ internal enum NavigationTransitionType {
             return presentable.viewController
         case .registerPeek(_, let popTransition):
             return popTransition().presentable
-        case .pop, .popToRoot, .dismiss, .none, .multiple:
+        case .pop, .popTo(_), .popToRoot, .dismiss, .none, .multiple:
             return nil
         case .animated(let transition, _):
             return transition.presentable
@@ -64,6 +65,8 @@ internal enum NavigationTransitionType {
             return coordinator.registerPeek(from: source.view, transitionGenerator: transitionGenerator, completion: completion)
         case .pop:
             return coordinator.pop(with: options, toRoot: false, animation: animation, completion: completion)
+        case .popTo(let presentable):
+            return coordinator.popTo(presentable.viewController, options: options, animation: animation, completion: completion)
         case .popToRoot:
             return coordinator.pop(with: options, toRoot: true, animation: animation, completion: completion)
         case .dismiss:

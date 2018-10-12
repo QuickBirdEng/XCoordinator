@@ -35,6 +35,10 @@ extension NavigationTransition {
     public static func pop(animation: Animation? = nil) -> NavigationTransition {
         return NavigationTransition(type: .pop, animation: animation)
     }
+    
+    public static func popTo(_ presentable: Presentable, animation: Animation? = nil) -> NavigationTransition {
+        return NavigationTransition(type: .popTo(presentable), animation: animation)
+    }
 
     public static func popToRoot(animation: Animation? = nil) -> NavigationTransition {
         return NavigationTransition(type: .popToRoot, animation: animation)

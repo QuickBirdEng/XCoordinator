@@ -17,6 +17,16 @@ extension Coordinator where Self.TransitionType == NavigationTransition {
 
         CATransaction.commit()
     }
+    
+    func popTo(_ to: UIViewController, options: TransitionOptions, animation: Animation?, completion: PresentationHandler?) {
+        CATransaction.begin()
+        CATransaction.setCompletionBlock(completion)
+        
+        rootViewController.visibleViewController?.transitioningDelegate = animation
+        rootViewController.popToViewController(to, animated: options.animated)
+        
+        CATransaction.commit()
+    }
 
     func pop(with options: TransitionOptions, toRoot: Bool, animation: Animation?, completion: PresentationHandler?) {
         CATransaction.begin()
