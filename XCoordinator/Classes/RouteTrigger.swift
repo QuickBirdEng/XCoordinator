@@ -20,3 +20,12 @@ extension RouteTrigger {
         return trigger(route, with: .default, completion: completion)
     }
 }
+
+extension RouteTrigger where Self: Presentable {
+
+    // MARK: - Computed properties
+
+    internal var anyCoordinator: AnyCoordinator<RouteType> {
+        return AnyCoordinator(trigger: self)
+    }
+}

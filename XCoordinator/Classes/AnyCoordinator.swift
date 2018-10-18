@@ -24,6 +24,13 @@ public final class AnyCoordinator<RouteType: Route>: RouteTrigger, Presentable {
         _setRoot = coordinator.setRoot
     }
 
+    internal init<T: RouteTrigger & Presentable>(trigger: T) where T.RouteType == RouteType {
+        _trigger = trigger.trigger
+        _presented = trigger.presented
+        _viewController = { trigger.viewController }
+        _setRoot = trigger.setRoot
+    }
+
     // MARK: - Public methods
 
     public func trigger(_ route: RouteType, with options: TransitionOptions, completion: PresentationHandler?) {
@@ -41,5 +48,5 @@ public final class AnyCoordinator<RouteType: Route>: RouteTrigger, Presentable {
     public func setRoot(for window: UIWindow) {
         _setRoot(window)
     }
-    
+
 }

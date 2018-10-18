@@ -12,6 +12,14 @@ public protocol Presentable {
     func presented(from presentable: Presentable?)
 }
 
+extension Presentable {
+    func setRoot(for window: UIWindow) {
+        window.rootViewController = viewController
+        presented(from: window)
+        window.makeKeyAndVisible()
+    }
+}
+
 extension UIViewController: Presentable {
     public func presented(from presentingVC: Presentable?) {}
 }

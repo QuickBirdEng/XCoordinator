@@ -28,12 +28,6 @@ extension Coordinator {
     public var anyCoordinator: AnyCoordinator<RouteType> {
         return AnyCoordinator(self)
     }
-
-    public func setRoot(for window: UIWindow) {
-        window.rootViewController = rootViewController
-        presented(from: window)
-        window.makeKeyAndVisible()
-    }
 }
 
 // MARK: - Extension: Default implementations
