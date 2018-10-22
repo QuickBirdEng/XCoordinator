@@ -31,9 +31,9 @@ extension TransitionPerformer where TransitionType.RootViewController: UINavigat
         visibleViewController.transitioningDelegate = animation
 
         if toRoot {
-            self.rootViewController.popToRootViewController(animated: options.animated)
+            rootViewController.popToRootViewController(animated: options.animated)
         } else {
-            self.rootViewController.popViewController(animated: options.animated)
+            rootViewController.popViewController(animated: options.animated)
         }
 
         CATransaction.commit()
@@ -48,6 +48,16 @@ extension TransitionPerformer where TransitionType.RootViewController: UINavigat
         visibleViewController.transitioningDelegate = animation
 
         rootViewController.setViewControllers(viewControllers, animated: options.animated)
+
+        CATransaction.commit()
+    }
+
+    func pop(to viewController: UIViewController, options: TransitionOptions, animation: Animation?, completion: PresentationHandler?) {
+        CATransaction.begin()
+        CATransaction.setCompletionBlock(completion)
+
+        rootViewController.visibleViewController?.transitioningDelegate = animation
+        rootViewController.popToViewController(viewController, animated: options.animated)
 
         CATransaction.commit()
     }

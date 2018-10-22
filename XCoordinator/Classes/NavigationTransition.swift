@@ -31,6 +31,17 @@ extension Transition where RootViewController: UINavigationController {
         }
     }
 
+    public static func pop(to presentable: Presentable, animation: Animation? = nil) -> NavigationTransition {
+        return NavigationTransition(presentable: presentable) { options, performer, completion in
+            performer.pop(
+                to: presentable.viewController,
+                options: options,
+                animation: animation,
+                completion: completion
+            )
+        }
+    }
+
     public static func popToRoot(animation: Animation? = nil) -> NavigationTransition {
         return NavigationTransition(presentable: nil) { options, performer, completion in
             performer.pop(
