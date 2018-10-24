@@ -73,4 +73,11 @@ extension Transition {
             )
         }
     }
+
+    public static func route<C: Coordinator>(_ route: C.RouteType, on coordinator: C) -> Transition where C.TransitionType == Transition {
+        let transition = coordinator.prepareTransition(for: route)
+        return .init(presentable: transition.presentable) { options, _, completion in
+            coordinator.performTransition(transition, with: options, completion: completion)
+        }
+    }
 }
