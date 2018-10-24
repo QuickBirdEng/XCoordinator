@@ -80,4 +80,10 @@ extension Transition {
             coordinator.performTransition(transition, with: options, completion: completion)
         }
     }
+
+    public static func trigger<Trigger: RouteTrigger>(_ route: Trigger.RouteType, on routeTrigger: Trigger) -> Transition {
+        return .init(presentable: nil) { options, _, completion in
+            routeTrigger.trigger(route, with: options, completion: completion)
+        }
+    }
 }
