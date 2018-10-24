@@ -11,4 +11,31 @@ import XCTest
 
 class AnimationTests: XCTestCase {
     // TODO: Add tests to ensure animations are called
+
+    let window = UIWindow()
+
+    func testAnimationCalled() {
+        let tabs = [UIViewController(), UIViewController(), UIViewController(), UIViewController()]
+        let coordinator = TabBarCoordinator<TestRoute>(tabs: tabs)
+        coordinator.setRoot(for: window)
+        performTransition(on: coordinator, transition: { .set(tabs, animation: $0) })
+        performTransition(on: coordinator, transition: { .select(index: 2, animation: $0) })
+        performTransition(on: coordinator, transition: { .select(tabs[1], animation: $0) })
+        performTransition(on: coordinator, transition: { .set(tabs, animation: $0) })
+    }
+
+    func performTransition<C: Coordinator>(on coordinator: C, transition: (Animation) -> C.TransitionType) {
+        let expectation = XCTestExpectation(description: Date().timeIntervalSince1970.description)
+        let testAnimation = TestAnimation(presentation: expectation, dismissal: expectation)
+        let t = transition(testAnimation)
+        coordinator.performTransition(t, with: TransitionOptions(animated: true))
+        wait(for: [expectation], timeout: 0.5)
+    }
+
+    func testAnimationCalled<V: UIViewController>(for type: V.Type, including transitions: [Transition<V>], shouldCall: Bool) {
+        let coordinator = BasicCoordinator<TestRoute, Transition<V>> { _ in .none() }
+        for transition in transitions {
+            coordinator.performTransition(transition, with: TransitionOptions(animated: shouldCall))
+        }
+    }
 }

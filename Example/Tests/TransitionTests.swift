@@ -47,6 +47,7 @@ class TransitionTests: XCTestCase {
             let coordinator = BasicCoordinator<TestRoute, Transition<V>> { _ in .none() }
             let exp = expectation(description: "\(transition)")
             coordinator.performTransition(transition, with: .default) {
+                print("did perform")
                 exp.fulfill()
             }
             waitForExpectations(timeout: 0.5) { err in

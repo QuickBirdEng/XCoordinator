@@ -17,14 +17,7 @@ public final class AnyCoordinator<RouteType: Route>: RouteTrigger, Presentable {
 
     // MARK: - Init
 
-    public init<C: Coordinator>(_ coordinator: C) where C.RouteType == RouteType {
-        _trigger = coordinator.trigger
-        _presented = coordinator.presented
-        _viewController = { coordinator.viewController }
-        _setRoot = coordinator.setRoot
-    }
-
-    internal init<T: RouteTrigger & Presentable>(trigger: T) where T.RouteType == RouteType {
+    public init<T: RouteTrigger & Presentable>(_ trigger: T) where T.RouteType == RouteType {
         _trigger = trigger.trigger
         _presented = trigger.presented
         _viewController = { trigger.viewController }
@@ -44,9 +37,4 @@ public final class AnyCoordinator<RouteType: Route>: RouteTrigger, Presentable {
     public var viewController: UIViewController! {
         return _viewController()
     }
-
-    public func setRoot(for window: UIWindow) {
-        _setRoot(window)
-    }
-
 }

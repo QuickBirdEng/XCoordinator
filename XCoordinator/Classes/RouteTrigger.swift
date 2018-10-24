@@ -25,7 +25,7 @@ extension RouteTrigger where Self: Presentable {
 
     // MARK: - Computed properties
 
-    internal var anyCoordinator: AnyCoordinator<RouteType> {
-        return AnyCoordinator(trigger: self)
+    public var anyCoordinator: AnyCoordinator<RouteType> {
+        return AnyCoordinator(self)
     }
 }

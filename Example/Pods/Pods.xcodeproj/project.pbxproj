@@ -199,6 +199,8 @@
 		97FF6569E72E6338AFA2A2F3F3B173CA /* SingleAsync.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3554A1B1CB5A76AE6A8B8D489786A17B /* SingleAsync.swift */; };
 		9955EB86FE57B5816D7766342B70A6C1 /* RxCocoaRuntime.h in Headers */ = {isa = PBXBuildFile; fileRef = 599A00C363454E2B1C3EFCFC0082F2F2 /* RxCocoaRuntime.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		9A40808222228BD0BCC01B44A6A2784D /* Driver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FEECCF306884E97F82AA40C34D7A887 /* Driver.swift */; };
+		9BED793E21806DA7008A7B58 /* Animation+Navigation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BED793D21806DA7008A7B58 /* Animation+Navigation.swift */; };
+		9BED794021806DCF008A7B58 /* Animation+TabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BED793F21806DCF008A7B58 /* Animation+TabBar.swift */; };
 		9C0C92572F26ACA07353B2D0B0604508 /* DefaultIfEmpty.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2935B6CF5985726C2409D51079BBCD82 /* DefaultIfEmpty.swift */; };
 		9C4B9DD372FCB0B5D6B5B97002F5E5F2 /* RxSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 433D6F464DF5553729C2E50AE1507E33 /* RxSwift.framework */; };
 		9C6DAFC8DDC0578E84FFAD98C6164256 /* Control+Action.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AF1E700D32B2BD53CEC53DA40ECF128 /* Control+Action.swift */; };
@@ -654,6 +656,8 @@
 		9AA96A9497196D81806BD865BEBE9EEF /* UITableView+Rx.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "UITableView+Rx.swift"; path = "RxCocoa/iOS/UITableView+Rx.swift"; sourceTree = "<group>"; };
 		9B55575276D14DBC3748DBD7DD39CCEA /* RxSearchControllerDelegateProxy.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = RxSearchControllerDelegateProxy.swift; path = RxCocoa/iOS/Proxies/RxSearchControllerDelegateProxy.swift; sourceTree = "<group>"; };
 		9BADF51F5453C30A274C32B2678B7C3F /* RxMutableBox.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = RxMutableBox.swift; path = RxSwift/RxMutableBox.swift; sourceTree = "<group>"; };
+		9BED793D21806DA7008A7B58 /* Animation+Navigation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "Animation+Navigation.swift"; path = "XCoordinator/Classes/Animation+Navigation.swift"; sourceTree = "<group>"; };
+		9BED793F21806DCF008A7B58 /* Animation+TabBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "Animation+TabBar.swift"; path = "XCoordinator/Classes/Animation+TabBar.swift"; sourceTree = "<group>"; };
 		9C37A61A2C9751921AF6C5110DD6B767 /* ItemEvents.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ItemEvents.swift; path = RxCocoa/iOS/Events/ItemEvents.swift; sourceTree = "<group>"; };
 		9C3CAB4C3B62822713287E81F70AF77A /* _RXKVOObserver.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = _RXKVOObserver.m; path = RxCocoa/Runtime/_RXKVOObserver.m; sourceTree = "<group>"; };
 		9DE63A8870D9650393CAF39B8B705691 /* AsMaybe.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = AsMaybe.swift; path = RxSwift/Observables/AsMaybe.swift; sourceTree = "<group>"; };
@@ -1325,6 +1329,8 @@
 		F300BC09EC3B2E363CBA7DD6608CEA25 /* XCoordinator */ = {
 			isa = PBXGroup;
 			children = (
+				9BED793D21806DA7008A7B58 /* Animation+Navigation.swift */,
+				9BED793F21806DCF008A7B58 /* Animation+TabBar.swift */,
 				34043810214A65F64B36072A3AA0B073 /* Animation.swift */,
 				884859BC058113F9BAFAC7F27F0394A3 /* AnyCoordinator.swift */,
 				0CDAA5F9BB426DDAA317E99122B3879B /* AnyTransitionPerformer.swift */,
@@ -1911,10 +1917,12 @@
 				383447B9990202271AF08C17123AF6A8 /* Route.swift in Sources */,
 				706CD215BB10FE3C3D33368E6CC39C4A /* RouteTrigger.swift in Sources */,
 				ADFE3071F3BE639F875B82D293B5B1B2 /* SplitCoordinator.swift in Sources */,
+				9BED793E21806DA7008A7B58 /* Animation+Navigation.swift in Sources */,
 				DACE7C0C52E1ACD7034F7B4F62D37159 /* SplitTransition.swift in Sources */,
 				5EC38E486601828148EE73B8A519ADBB /* StaticTransitionAnimation.swift in Sources */,
 				66FC493F58F22E6A61C384B34B0B9451 /* TabBarCoordinator.swift in Sources */,
 				7DEB8DE99D6FD1DF23EBB2C3805E7EEA /* TabBarTransition.swift in Sources */,
+				9BED794021806DCF008A7B58 /* Animation+TabBar.swift in Sources */,
 				650B62DF7CB49D8A0C1592945DBEEA12 /* Transition+Init.swift in Sources */,
 				CE7FFC317E8D65D826760AD7144985BD /* Transition.swift in Sources */,
 				EC59F13632832A0BE8AD94CE75DBB41D /* TransitionAnimation.swift in Sources */,

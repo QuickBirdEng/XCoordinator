@@ -12,27 +12,17 @@ public protocol Coordinator: RouteTrigger, TransitionPerformer {
     func prepareTransition(for route: RouteType) -> TransitionType
 }
 
+// MARK: - Extension Coordinator: Typealiases
+
+extension Coordinator {
+    public typealias RootViewController = TransitionType.RootViewController
+}
+
 // MARK: - Extension Coordinator: Presentable
 
 extension Coordinator {
     public var viewController: UIViewController! {
         return rootViewController
-    }
-}
-
-// MARK: - Extension: Helpers
-
-extension Coordinator {
-    public typealias RootViewController = TransitionType.RootViewController
-
-    public var anyCoordinator: AnyCoordinator<RouteType> {
-        return AnyCoordinator(self)
-    }
-
-    public func setRoot(for window: UIWindow) {
-        window.rootViewController = rootViewController
-        presented(from: window)
-        window.makeKeyAndVisible()
     }
 }
 
