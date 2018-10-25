@@ -6,13 +6,13 @@
 //  Copyright © 2018 QuickBird Studios. All rights reserved.
 //
 
-public protocol RouteTrigger {
+public protocol Router {
     associatedtype RouteType: Route
 
     func trigger(_ route: RouteType, with options: TransitionOptions, completion: PresentationHandler?)
 }
 
-extension RouteTrigger {
+extension Router {
     
     // MARK: Convenience methods
 
@@ -21,11 +21,11 @@ extension RouteTrigger {
     }
 }
 
-extension RouteTrigger where Self: Presentable {
+extension Router where Self: Presentable {
 
     // MARK: - Computed properties
 
-    public var anyCoordinator: AnyCoordinator<RouteType> {
-        return AnyCoordinator(self)
+    public var anyRouter: AnyRouter<RouteType> {
+        return AnyRouter(self)
     }
 }

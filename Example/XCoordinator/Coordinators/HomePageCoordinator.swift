@@ -10,11 +10,11 @@ import XCoordinator
 
 class HomePageCoordinator: PageCoordinator<HomeRoute> {
 
-    let newsCoordinator: AnyCoordinator<NewsRoute>
-    let userListCoordinator: AnyCoordinator<UserListRoute>
+    let newsCoordinator: AnyRouter<NewsRoute>
+    let userListCoordinator: AnyRouter<UserListRoute>
 
-    init(newsCoordinator: AnyCoordinator<NewsRoute> = NewsCoordinator().anyCoordinator,
-         userListCoordinator: AnyCoordinator<UserListRoute> = UserListCoordinator().anyCoordinator) {
+    init(newsCoordinator: AnyRouter<NewsRoute> = NewsCoordinator().anyRouter,
+         userListCoordinator: AnyRouter<UserListRoute> = UserListCoordinator().anyRouter) {
         self.newsCoordinator = newsCoordinator
         self.userListCoordinator = userListCoordinator
         

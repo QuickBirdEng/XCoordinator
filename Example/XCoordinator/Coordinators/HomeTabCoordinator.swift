@@ -16,8 +16,8 @@ enum HomeRoute: Route {
 
 class HomeTabCoordinator: TabBarCoordinator<HomeRoute> {
 
-    let newsCoordinator: AnyCoordinator<NewsRoute>
-    let userListCoordinator: AnyCoordinator<UserListRoute>
+    let newsCoordinator: AnyRouter<NewsRoute>
+    let userListCoordinator: AnyRouter<UserListRoute>
 
     convenience init() {
         let newsCoordinator = NewsCoordinator()
@@ -26,12 +26,12 @@ class HomeTabCoordinator: TabBarCoordinator<HomeRoute> {
         let userListCoordinator = UserListCoordinator()
         userListCoordinator.rootViewController.tabBarItem = UITabBarItem(tabBarSystemItem: .more, tag: 1)
 
-        self.init(newsCoordinator: newsCoordinator.anyCoordinator,
-                  userListCoordinator: userListCoordinator.anyCoordinator)
+        self.init(newsCoordinator: newsCoordinator.anyRouter,
+                  userListCoordinator: userListCoordinator.anyRouter)
     }
 
-    init(newsCoordinator: AnyCoordinator<NewsRoute>,
-         userListCoordinator: AnyCoordinator<UserListRoute>) {
+    init(newsCoordinator: AnyRouter<NewsRoute>,
+         userListCoordinator: AnyRouter<UserListRoute>) {
         self.newsCoordinator = newsCoordinator
         self.userListCoordinator = userListCoordinator
 

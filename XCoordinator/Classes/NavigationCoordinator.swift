@@ -6,7 +6,7 @@
 //  Copyright © 2018 QuickBird Studios. All rights reserved.
 //
 
-open class NavigationCoordinator<R: Route>: BaseCoordinator<R, NavigationTransition> {
+open class NavigationCoordinator<RouteType: Route>: BaseCoordinator<RouteType, NavigationTransition> {
 
     // MARK: - Stored properties
 

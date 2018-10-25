@@ -25,7 +25,7 @@ class UserCoordinator: NavigationCoordinator<UserRoute> {
         switch route {
         case let .user(username):
             var vc = UserViewController.instantiateFromNib()
-            let viewModel = UserViewModelImpl(coordinator: anyCoordinator, username: username)
+            let viewModel = UserViewModelImpl(coordinator: anyRouter, username: username)
             vc.bind(to: viewModel)
             return .push(vc)
         case let .alert(title, message):

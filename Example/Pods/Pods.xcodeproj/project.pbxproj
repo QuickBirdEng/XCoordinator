@@ -90,7 +90,7 @@
 		53D1227D3B2A4003476ED894B3683305 /* Error.swift in Sources */ = {isa = PBXBuildFile; fileRef = B516CCB2D1BAE3B70D48E0ECB79BC436 /* Error.swift */; };
 		5467FD656EEA80509C17501769D2D4F2 /* TransitionProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27772890893FA41B8F8FD0530872BDF6 /* TransitionProtocol.swift */; };
 		549D7263A97AACB097A9A49CA4C22D78 /* SingleAssignmentDisposable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89868F16AE6D2E1243428D0AD3199C52 /* SingleAssignmentDisposable.swift */; };
-		56234C555161F0B4E1AE7B0E18C80227 /* AnyCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 884859BC058113F9BAFAC7F27F0394A3 /* AnyCoordinator.swift */; };
+		56234C555161F0B4E1AE7B0E18C80227 /* AnyRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 884859BC058113F9BAFAC7F27F0394A3 /* AnyRouter.swift */; };
 		5719B3CB5A598203103CBD48CFE09E58 /* Never.swift in Sources */ = {isa = PBXBuildFile; fileRef = E450FF503DA75DA834FC4D6AB5F8D845 /* Never.swift */; };
 		589D170F67F7CEB6EB06D33AC6EC569B /* PriorityQueue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C8003D18F25397A4771C3C70B92EA65 /* PriorityQueue.swift */; };
 		58CABA7BD10CCD40148B7783BD1618E9 /* BehaviorRelay+Driver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EF1371BB2268CCB53607A67DB455B03 /* BehaviorRelay+Driver.swift */; };
@@ -142,7 +142,7 @@
 		6EB615A94591D166760EA10FE662AD9F /* RxCollectionViewDelegateProxy.swift in Sources */ = {isa = PBXBuildFile; fileRef = E925545FF22BBAF89B25E6C19C03FE49 /* RxCollectionViewDelegateProxy.swift */; };
 		6F8AC54C4B17027D87E4B44587F9D5C2 /* CombineLatest+arity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15C33CAE20AA048B863576EE596F4A12 /* CombineLatest+arity.swift */; };
 		7060F6F7782D640906D95018593B1377 /* Throttle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46F374FF5E31828548CE2B592A99E1B1 /* Throttle.swift */; };
-		706CD215BB10FE3C3D33368E6CC39C4A /* RouteTrigger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8454ABA0225DB1955D2A98C667FB5F01 /* RouteTrigger.swift */; };
+		706CD215BB10FE3C3D33368E6CC39C4A /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8454ABA0225DB1955D2A98C667FB5F01 /* Router.swift */; };
 		70E01641960692EA95E0290E5C2136B3 /* RxTableViewDataSourceProxy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AA3BD351B87C9E49CD529D46BC9C5FC /* RxTableViewDataSourceProxy.swift */; };
 		719DA75273A43FAD678AF96CA963AC2D /* SwitchIfEmpty.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6CC5D2F10E3C909ABC82B76C949D8E2 /* SwitchIfEmpty.swift */; };
 		72C203BDC920093E757D78D2D97C59D1 /* ViewTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE4ADEF35F93A8D5D8E0AA4D3D4A4D3E /* ViewTransition.swift */; };
@@ -199,6 +199,7 @@
 		97FF6569E72E6338AFA2A2F3F3B173CA /* SingleAsync.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3554A1B1CB5A76AE6A8B8D489786A17B /* SingleAsync.swift */; };
 		9955EB86FE57B5816D7766342B70A6C1 /* RxCocoaRuntime.h in Headers */ = {isa = PBXBuildFile; fileRef = 599A00C363454E2B1C3EFCFC0082F2F2 /* RxCocoaRuntime.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		9A40808222228BD0BCC01B44A6A2784D /* Driver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FEECCF306884E97F82AA40C34D7A887 /* Driver.swift */; };
+		9B88C25A21814E28006DE0D3 /* AnyCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B88C25921814E28006DE0D3 /* AnyCoordinator.swift */; };
 		9BED793E21806DA7008A7B58 /* Animation+Navigation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BED793D21806DA7008A7B58 /* Animation+Navigation.swift */; };
 		9BED794021806DCF008A7B58 /* Animation+TabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BED793F21806DCF008A7B58 /* Animation+TabBar.swift */; };
 		9C0C92572F26ACA07353B2D0B0604508 /* DefaultIfEmpty.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2935B6CF5985726C2409D51079BBCD82 /* DefaultIfEmpty.swift */; };
@@ -611,7 +612,7 @@
 		818E213810ABCEEBB152FD3C1B6EB009 /* Pods-XCoordinator_Example-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-XCoordinator_Example-resources.sh"; sourceTree = "<group>"; };
 		8194E3E9F044125A5DBF1662E3E15D26 /* Reduce.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Reduce.swift; path = RxSwift/Observables/Reduce.swift; sourceTree = "<group>"; };
 		827EA193108D7E6ECD545C6C532F249F /* DisposeBase.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = DisposeBase.swift; path = RxSwift/Disposables/DisposeBase.swift; sourceTree = "<group>"; };
-		8454ABA0225DB1955D2A98C667FB5F01 /* RouteTrigger.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = RouteTrigger.swift; path = XCoordinator/Classes/RouteTrigger.swift; sourceTree = "<group>"; };
+		8454ABA0225DB1955D2A98C667FB5F01 /* Router.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Router.swift; path = XCoordinator/Classes/Router.swift; sourceTree = "<group>"; };
 		8547044A0D84653893BC2DCF4B23532E /* KVORepresentable.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = KVORepresentable.swift; path = RxCocoa/Foundation/KVORepresentable.swift; sourceTree = "<group>"; };
 		85DD7EBD3AC5BD5F3914C9DEAC9D48AA /* Window.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Window.swift; path = RxSwift/Observables/Window.swift; sourceTree = "<group>"; };
 		860CA7D56882D1737CB13ACC11CD2672 /* ObserveOn.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ObserveOn.swift; path = RxSwift/Observables/ObserveOn.swift; sourceTree = "<group>"; };
@@ -621,7 +622,7 @@
 		8713850314D17794AAA9F9B8945AC91B /* Coordinator+Rx.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "Coordinator+Rx.swift"; path = "XCoordinator/Classes/RxSwift/Coordinator+Rx.swift"; sourceTree = "<group>"; };
 		87CDCEA8488BA25D55325C2EB22E4984 /* TabBarTransition.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = TabBarTransition.swift; path = XCoordinator/Classes/TabBarTransition.swift; sourceTree = "<group>"; };
 		881F447AB346AD32F338BE7A8CC3DD04 /* TakeUntil.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = TakeUntil.swift; path = RxSwift/Observables/TakeUntil.swift; sourceTree = "<group>"; };
-		884859BC058113F9BAFAC7F27F0394A3 /* AnyCoordinator.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = AnyCoordinator.swift; path = XCoordinator/Classes/AnyCoordinator.swift; sourceTree = "<group>"; };
+		884859BC058113F9BAFAC7F27F0394A3 /* AnyRouter.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = AnyRouter.swift; path = XCoordinator/Classes/AnyRouter.swift; sourceTree = "<group>"; };
 		88A73B8BEB67B6A00099CD46BDF4C639 /* ScheduledDisposable.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ScheduledDisposable.swift; path = RxSwift/Disposables/ScheduledDisposable.swift; sourceTree = "<group>"; };
 		88F7B8C058EAEC0EB2E2264F3ED21417 /* Reactive.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Reactive.swift; path = RxSwift/Reactive.swift; sourceTree = "<group>"; };
 		894E6C71FF5F76201B1BE82C26030A21 /* DistinctUntilChanged.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = DistinctUntilChanged.swift; path = RxSwift/Observables/DistinctUntilChanged.swift; sourceTree = "<group>"; };
@@ -655,6 +656,7 @@
 		9992C8E93275BC06FBF5FC27181FC927 /* Route.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Route.swift; path = XCoordinator/Classes/Route.swift; sourceTree = "<group>"; };
 		9AA96A9497196D81806BD865BEBE9EEF /* UITableView+Rx.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "UITableView+Rx.swift"; path = "RxCocoa/iOS/UITableView+Rx.swift"; sourceTree = "<group>"; };
 		9B55575276D14DBC3748DBD7DD39CCEA /* RxSearchControllerDelegateProxy.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = RxSearchControllerDelegateProxy.swift; path = RxCocoa/iOS/Proxies/RxSearchControllerDelegateProxy.swift; sourceTree = "<group>"; };
+		9B88C25921814E28006DE0D3 /* AnyCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AnyCoordinator.swift; path = XCoordinator/Classes/AnyCoordinator.swift; sourceTree = "<group>"; };
 		9BADF51F5453C30A274C32B2678B7C3F /* RxMutableBox.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = RxMutableBox.swift; path = RxSwift/RxMutableBox.swift; sourceTree = "<group>"; };
 		9BED793D21806DA7008A7B58 /* Animation+Navigation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "Animation+Navigation.swift"; path = "XCoordinator/Classes/Animation+Navigation.swift"; sourceTree = "<group>"; };
 		9BED793F21806DCF008A7B58 /* Animation+TabBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "Animation+TabBar.swift"; path = "XCoordinator/Classes/Animation+TabBar.swift"; sourceTree = "<group>"; };
@@ -1332,7 +1334,8 @@
 				9BED793D21806DA7008A7B58 /* Animation+Navigation.swift */,
 				9BED793F21806DCF008A7B58 /* Animation+TabBar.swift */,
 				34043810214A65F64B36072A3AA0B073 /* Animation.swift */,
-				884859BC058113F9BAFAC7F27F0394A3 /* AnyCoordinator.swift */,
+				884859BC058113F9BAFAC7F27F0394A3 /* AnyRouter.swift */,
+				9B88C25921814E28006DE0D3 /* AnyCoordinator.swift */,
 				0CDAA5F9BB426DDAA317E99122B3879B /* AnyTransitionPerformer.swift */,
 				60020B71BD64798EBE247F094C0EBF17 /* BaseCoordinator.swift */,
 				E924B0A49BE068B6F7773AB13FB6232C /* BasicCoordinator.swift */,
@@ -1347,7 +1350,7 @@
 				741292AA31211A37F9CCC625CEBC74DE /* Presentable.swift */,
 				77D3A3798E41D7E548C4144BCF529F8F /* ReferenceBox.swift */,
 				9992C8E93275BC06FBF5FC27181FC927 /* Route.swift */,
-				8454ABA0225DB1955D2A98C667FB5F01 /* RouteTrigger.swift */,
+				8454ABA0225DB1955D2A98C667FB5F01 /* Router.swift */,
 				9657623B4E2A0D00DDD059C9544D20AB /* SplitCoordinator.swift */,
 				56E36B26B92F4476C5085F662EA2B814 /* SplitTransition.swift */,
 				5763F6C1E42D71E172C9973DE35328BA /* StaticTransitionAnimation.swift */,
@@ -1899,7 +1902,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F2CD77EDC988764E61D05C915135A708 /* Animation.swift in Sources */,
-				56234C555161F0B4E1AE7B0E18C80227 /* AnyCoordinator.swift in Sources */,
+				56234C555161F0B4E1AE7B0E18C80227 /* AnyRouter.swift in Sources */,
 				B5E2329B19E9AAFCBCFABDCAF7DD930B /* AnyTransitionPerformer.swift in Sources */,
 				15BC4FB6FDE0FD71D24D0D381835C73F /* BaseCoordinator.swift in Sources */,
 				51F4B265E741B11AB7556D76CD80C575 /* BasicCoordinator.swift in Sources */,
@@ -1911,11 +1914,12 @@
 				43A94C320B6236807D12EE0C8D6CCC06 /* NavigationCoordinator.swift in Sources */,
 				5D17E367B08FA33B1019175149470955 /* NavigationTransition.swift in Sources */,
 				AF84A339FAECF71D38FFB75AF59D2901 /* PageCoordinator.swift in Sources */,
+				9B88C25A21814E28006DE0D3 /* AnyCoordinator.swift in Sources */,
 				BD250F3CAE56EF54A8566971302A1916 /* PageTransition.swift in Sources */,
 				F908774665F75F841C803DA5F03007FD /* Presentable.swift in Sources */,
 				84CED585E1DE8D87B97A4D762759A702 /* ReferenceBox.swift in Sources */,
 				383447B9990202271AF08C17123AF6A8 /* Route.swift in Sources */,
-				706CD215BB10FE3C3D33368E6CC39C4A /* RouteTrigger.swift in Sources */,
+				706CD215BB10FE3C3D33368E6CC39C4A /* Router.swift in Sources */,
 				ADFE3071F3BE639F875B82D293B5B1B2 /* SplitCoordinator.swift in Sources */,
 				9BED793E21806DA7008A7B58 /* Animation+Navigation.swift in Sources */,
 				DACE7C0C52E1ACD7034F7B4F62D37159 /* SplitTransition.swift in Sources */,

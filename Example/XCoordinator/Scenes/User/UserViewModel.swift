@@ -38,7 +38,7 @@ class UserViewModelImpl: UserViewModel, UserViewModelInput, UserViewModelOutput 
     let username: Observable<String>
 
     // MARK: - Private
-    private let coordinator: AnyCoordinator<UserRoute>
+    private let coordinator: AnyRouter<UserRoute>
 
     private lazy var alertAction = CocoaAction { [weak self] in
         guard let `self` = self else { return .empty() }
@@ -52,7 +52,7 @@ class UserViewModelImpl: UserViewModel, UserViewModelInput, UserViewModelOutput 
 
     // MARK: - Init
 
-    init(coordinator: AnyCoordinator<UserRoute>, username: String) {
+    init(coordinator: AnyRouter<UserRoute>, username: String) {
         self.coordinator = coordinator
         self.username = .just(username)
     }

@@ -2,39 +2,37 @@
 //  AnyCoordinator.swift
 //  XCoordinator
 //
-//  Created by Paul Kraft on 28.07.18.
+//  Created by Paul Kraft on 25.10.18.
 //  Copyright © 2018 QuickBird Studios. All rights reserved.
 //
 
-public final class AnyCoordinator<RouteType: Route>: RouteTrigger, Presentable {
+public typealias AnyNavigationCoordinator<RouteType: Route> = AnyCoordinator<RouteType, Transition<UINavigationController>>
+public typealias AnyTabBarCoordinator<RouteType: Route> = AnyCoordinator<RouteType, Transition<UITabBarController>>
+public typealias AnyViewCoordinator<RouteType: Route> = AnyCoordinator<RouteType, Transition<UIViewController>>
+
+public class AnyCoordinator<RouteType: Route, TransitionType: TransitionProtocol>: Coordinator {
 
     // MARK: - Stored properties
 
-    private let _trigger: (RouteType, TransitionOptions, PresentationHandler?) -> Void
-    private let _presented: (Presentable?) -> Void
-    private let _viewController: () -> UIViewController
-    private let _setRoot: (UIWindow) -> Void
+    private var _prepareTransition: (RouteType) -> TransitionType
+    private var _rootViewController: () -> TransitionType.RootViewController
 
-    // MARK: - Init
+    // MARK: - Initializer
 
-    public init<T: RouteTrigger & Presentable>(_ trigger: T) where T.RouteType == RouteType {
-        _trigger = trigger.trigger
-        _presented = trigger.presented
-        _viewController = { trigger.viewController }
-        _setRoot = trigger.setRoot
+    public init<C: Coordinator>(_ coordinator: C) where C.RouteType == RouteType, C.TransitionType == TransitionType {
+        self._prepareTransition = coordinator.prepareTransition
+        self._rootViewController = { coordinator.rootViewController }
     }
 
-    // MARK: - Public methods
+    // MARK: - Computed properties
 
-    public func trigger(_ route: RouteType, with options: TransitionOptions, completion: PresentationHandler?) {
-        _trigger(route, options, completion)
+    public var rootViewController: TransitionType.RootViewController {
+        return _rootViewController()
     }
 
-    public func presented(from presentable: Presentable?) {
-        _presented(presentable)
-    }
+    // MARK: - Methods
 
-    public var viewController: UIViewController! {
-        return _viewController()
+    public func prepareTransition(for route: RouteType) -> TransitionType {
+        return _prepareTransition(route)
     }
 }

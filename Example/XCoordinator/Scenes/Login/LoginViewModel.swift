@@ -31,7 +31,7 @@ class LoginViewModelImpl: LoginViewModel, LoginViewModelInput, LoginViewModelOut
     lazy var loginTrigger: InputSubject<Void> = loginAction.inputs
 
     // MARK: - Private
-    private let coordinator: AnyCoordinator<AppRoute>
+    private let coordinator: AnyRouter<AppRoute>
 
     private lazy var loginAction = CocoaAction { [weak self] in
         guard let `self` = self else { return .empty() }
@@ -40,7 +40,7 @@ class LoginViewModelImpl: LoginViewModel, LoginViewModelInput, LoginViewModelOut
 
     // MARK: - Init
 
-    init(coordinator: AnyCoordinator<AppRoute>) {
+    init(coordinator: AnyRouter<AppRoute>) {
         self.coordinator = coordinator
     }
 

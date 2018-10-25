@@ -6,7 +6,7 @@
 //  Copyright © 2018 QuickBird Studios. All rights reserved.
 //
 
-open class ViewCoordinator<R: Route>: BaseCoordinator<R, ViewTransition> {
+open class ViewCoordinator<RouteType: Route>: BaseCoordinator<RouteType, ViewTransition> {
 
     // MARK: - Init
 

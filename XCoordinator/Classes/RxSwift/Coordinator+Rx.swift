@@ -7,7 +7,7 @@
 
 import RxSwift
 
-public extension RouteTrigger {
+public extension Router {
 
     public var rx: Reactive<Self> {
         return Reactive(self)
@@ -15,7 +15,7 @@ public extension RouteTrigger {
 
 }
 
-extension Reactive where Base: RouteTrigger {
+extension Reactive where Base: Router {
 
     public func trigger(_ route: Base.RouteType, with options: TransitionOptions) -> Observable<Void> {
         return Observable.create { observer -> Disposable in

@@ -35,7 +35,7 @@ class HomeViewModelImpl: HomeViewModel, HomeViewModelInput, HomeViewModelOutput 
     lazy var usersTrigger: InputSubject<Void> = usersAction.inputs
 
     // MARK: - Private
-    private let coordinator: AnyCoordinator<UserListRoute>
+    private let coordinator: AnyRouter<UserListRoute>
 
     private lazy var logoutAction = CocoaAction { [weak self] in
         guard let `self` = self else { return .empty() }
@@ -49,7 +49,7 @@ class HomeViewModelImpl: HomeViewModel, HomeViewModelInput, HomeViewModelOutput 
 
     // MARK: - Init
 
-    init(coodinator: AnyCoordinator<UserListRoute>) {
+    init(coodinator: AnyRouter<UserListRoute>) {
         self.coordinator = coodinator
     }
 

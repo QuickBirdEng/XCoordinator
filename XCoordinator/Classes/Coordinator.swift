@@ -8,7 +8,7 @@
 
 public typealias PresentationHandler = () -> Void
 
-public protocol Coordinator: RouteTrigger, TransitionPerformer {
+public protocol Coordinator: Router, TransitionPerformer {
     func prepareTransition(for route: RouteType) -> TransitionType
 }
 

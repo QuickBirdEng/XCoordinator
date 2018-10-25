@@ -6,7 +6,7 @@
 //  Copyright © 2018 QuickBird Studios. All rights reserved.
 //
 
-open class TabBarCoordinator<R: Route>: BaseCoordinator<R, TabBarTransition> {
+open class TabBarCoordinator<RouteType: Route>: BaseCoordinator<RouteType, TabBarTransition> {
 
     // MARK: - Stored properties
 

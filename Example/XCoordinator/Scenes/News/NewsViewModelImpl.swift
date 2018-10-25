@@ -33,11 +33,11 @@ class NewsViewModelImpl: NewsViewModel, NewsViewModelInput, NewsViewModelOutput 
     // MARK: - Private
 
     private let newsService: NewsService
-    private let coordinator: AnyCoordinator<NewsRoute>
+    private let coordinator: AnyRouter<NewsRoute>
 
     // MARK: - Init
 
-    init(newsService: NewsService, coordinator: AnyCoordinator<NewsRoute>) {
+    init(newsService: NewsService, coordinator: AnyRouter<NewsRoute>) {
         self.newsService = newsService
         self.newsObservable = newsService.mostRecentNews().share(replay: 1)
         self.coordinator = coordinator

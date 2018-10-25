@@ -20,17 +20,17 @@ class AppCoordinator: NavigationCoordinator<AppRoute> {
         super.init(initialRoute: .login)
     }
 
-    var homeCoordinator: AnyCoordinator<HomeRoute>!
+    var homeCoordinator: AnyRouter<HomeRoute>!
 
     override func prepareTransition(for route: AppRoute) -> NavigationTransition {
         switch route {
         case .login:
             var vc = LoginViewController.instantiateFromNib()
-            let viewModel = LoginViewModelImpl(coordinator: anyCoordinator)
+            let viewModel = LoginViewModelImpl(coordinator: anyRouter)
             vc.bind(to: viewModel)
             return .push(vc)
         case .home:
-            self.homeCoordinator = HomeTabCoordinator().anyCoordinator
+            self.homeCoordinator = HomeTabCoordinator().anyRouter
             let animation = Animation(presentationAnimation: CustomPresentations.flippingPresentation, dismissalAnimation: nil)
             return .present(homeCoordinator, animation: animation)
         }

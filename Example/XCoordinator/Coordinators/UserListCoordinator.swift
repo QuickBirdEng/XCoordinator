@@ -26,13 +26,13 @@ class UserListCoordinator: NavigationCoordinator<UserListRoute> {
         switch route {
         case .home:
             var vc = HomeViewController.instantiateFromNib()
-            let vm = HomeViewModelImpl(coodinator: anyCoordinator)
+            let vm = HomeViewModelImpl(coodinator: anyRouter)
             vc.bind(to: vm)
             return .push(vc)
         case .users:
             let animation = Animation(presentationAnimation: CustomPresentations.flippingPresentation, dismissalAnimation: nil)
             var vc = UsersViewController.instantiateFromNib()
-            let vm = UsersViewModelImpl(coordinator: anyCoordinator)
+            let vm = UsersViewModelImpl(coordinator: anyRouter)
             vc.bind(to: vm)
             return .push(vc, animation: animation)
         case .user(let username):

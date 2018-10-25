@@ -86,9 +86,9 @@ extension Transition {
     }
 
     /// Peeking is not supported with Transition.trigger. If needed, use Transition.route instead.
-    public static func trigger<Trigger: RouteTrigger>(_ route: Trigger.RouteType, on routeTrigger: Trigger) -> Transition {
+    public static func trigger<R: Router>(_ route: R.RouteType, on router: R) -> Transition {
         return .init(presentable: nil) { options, _, completion in
-            routeTrigger.trigger(route, with: options, completion: completion)
+            router.trigger(route, with: options, completion: completion)
         }
     }
 }
