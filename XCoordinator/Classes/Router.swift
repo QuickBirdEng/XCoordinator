@@ -6,7 +6,7 @@
 //  Copyright © 2018 QuickBird Studios. All rights reserved.
 //
 
-public protocol Router {
+public protocol Router: Presentable {
     associatedtype RouteType: Route
 
     func trigger(_ route: RouteType, with options: TransitionOptions, completion: PresentationHandler?)
@@ -15,6 +15,10 @@ public protocol Router {
 extension Router {
     
     // MARK: Convenience methods
+
+    public func trigger(_ route: RouteType, with options: TransitionOptions) {
+        return trigger(route, with: options, completion: nil)
+    }
 
     public func trigger(_ route: RouteType, completion: PresentationHandler? = nil)  {
         return trigger(route, with: .default, completion: completion)

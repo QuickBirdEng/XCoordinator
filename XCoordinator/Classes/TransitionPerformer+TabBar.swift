@@ -46,8 +46,18 @@ extension TransitionPerformer where TransitionType.RootViewController: UITabBarC
     func select(index: Int, with options: TransitionOptions, animation: Animation?, completion: PresentationHandler?) {
 
         CATransaction.begin()
-        CATransaction.setCompletionBlock(completion)
-        rootViewController.selectedIndex = index
+        CATransaction.setCompletionBlock {
+            CATransaction.begin()
+            CATransaction.setCompletionBlock(completion)
+
+            self.rootViewController.selectedIndex = index
+
+            CATransaction.commit()
+        }
+
+        rootViewController.animationDelegate?.animation = animation
+        assert(animation == nil || rootViewController.animationDelegate != nil)
+
         CATransaction.commit()
     }
 }

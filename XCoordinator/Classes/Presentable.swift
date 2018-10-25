@@ -10,6 +10,7 @@ public protocol Presentable {
     var viewController: UIViewController! { get }
 
     func presented(from presentable: Presentable?)
+    func setRoot(for window: UIWindow)
 }
 
 extension Presentable {
@@ -21,7 +22,7 @@ extension Presentable {
 }
 
 extension UIViewController: Presentable {
-    public func presented(from presentingVC: Presentable?) {}
+    public func presented(from presentable: Presentable?) {}
 }
 
 extension UIWindow: Presentable {

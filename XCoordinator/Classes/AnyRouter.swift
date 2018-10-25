@@ -6,7 +6,7 @@
 //  Copyright © 2018 QuickBird Studios. All rights reserved.
 //
 
-public final class AnyRouter<RouteType: Route>: Router, Presentable {
+public final class AnyRouter<RouteType: Route>: Router {
 
     // MARK: - Stored properties
 

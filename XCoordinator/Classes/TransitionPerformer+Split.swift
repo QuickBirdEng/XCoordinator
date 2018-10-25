@@ -7,24 +7,40 @@
 //
 
 extension TransitionPerformer where TransitionType.RootViewController: UISplitViewController {
-    // animate using delegate on UISplitViewController
-    func show(_ viewController: UIViewController, with options: TransitionOptions, completion: PresentationHandler?) {
+    // TODO: animate using delegate on UISplitViewController
+    func show(_ viewController: UIViewController, with options: TransitionOptions, animation: Animation?, completion: PresentationHandler?) {
 
         CATransaction.begin()
-        CATransaction.setCompletionBlock(completion)
+        CATransaction.setCompletionBlock {
+            CATransaction.begin()
+            CATransaction.setCompletionBlock(completion)
 
-        rootViewController.show(viewController, sender: nil)
+            self.rootViewController.show(viewController, sender: nil)
+
+            CATransaction.commit()
+        }
+
+//        rootViewController.animationDelegate?.animation = animation
+//        assert(animation == nil || rootViewController.animationDelegate != nil)
 
         CATransaction.commit()
     }
 
-    // animate using delegate on UISplitViewController
-    func showDetail(_ viewController: UIViewController, with options: TransitionOptions, completion: PresentationHandler?) {
+    // TODO: animate using delegate on UISplitViewController
+    func showDetail(_ viewController: UIViewController, with options: TransitionOptions, animation: Animation?, completion: PresentationHandler?) {
 
         CATransaction.begin()
-        CATransaction.setCompletionBlock(completion)
+        CATransaction.setCompletionBlock {
+            CATransaction.begin()
+            CATransaction.setCompletionBlock(completion)
 
-        rootViewController.showDetailViewController(viewController, sender: nil)
+            self.rootViewController.showDetailViewController(viewController, sender: nil)
+
+            CATransaction.commit()
+        }
+
+//        rootViewController.animationDelegate?.animation = animation
+//        assert(animation == nil || rootViewController.animationDelegate != nil)
 
         CATransaction.commit()
     }
