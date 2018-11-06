@@ -7,17 +7,18 @@
 //
 
 import Foundation
-import XCoordinator
+@testable import XCoordinator
 
 enum AppRoute: Route {
     case login
     case home
+    case deep
 }
 
 class AppCoordinator: NavigationCoordinator<AppRoute> {
 
     init() {
-        super.init(initialRoute: .login)
+        super.init(initialRoute: .deep)
     }
 
     var homeCoordinator: AnyRouter<HomeRoute>!
@@ -30,9 +31,11 @@ class AppCoordinator: NavigationCoordinator<AppRoute> {
             vc.bind(to: viewModel)
             return .push(vc)
         case .home:
-            self.homeCoordinator = HomeTabCoordinator().anyRouter
+            self.homeCoordinator = HomePageCoordinator().anyRouter
             let animation = Animation(presentationAnimation: CustomPresentations.flippingPresentation, dismissalAnimation: nil)
             return .present(homeCoordinator, animation: animation)
+        case .deep:
+            return deepLink(.login, AppRoute.home, HomeRoute.news)
         }
     }
 }

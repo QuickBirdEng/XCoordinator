@@ -9,6 +9,7 @@
 public protocol Router: Presentable {
     associatedtype RouteType: Route
 
+    func contextTrigger(_ route: RouteType, with options: TransitionOptions, completion: ContextPresentationHandler?)
     func trigger(_ route: RouteType, with options: TransitionOptions, completion: PresentationHandler?)
 }
 
@@ -31,5 +32,10 @@ extension Router where Self: Presentable {
 
     public var anyRouter: AnyRouter<RouteType> {
         return AnyRouter(self)
+    }
+
+    public func router<R: Route>(for route: R) -> AnyRouter<R>? {
+        print("perfect")
+        return anyRouter as? AnyRouter<R>
     }
 }

@@ -20,7 +20,7 @@ class TransitionTests: XCTestCase {
             .popToRoot()
         ])
         testCompletionBlockCalled(for: UIPageViewController.self, including: [
-            .set([presentable], direction: .forward)
+            .set(presentable, direction: .forward)
         ])
         testCompletionBlockCalled(for: UITabBarController.self, including: [
             .multiple(.set([presentable]), .select(presentable)),

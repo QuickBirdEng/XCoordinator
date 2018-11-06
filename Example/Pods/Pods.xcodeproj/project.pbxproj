@@ -199,6 +199,8 @@
 		97FF6569E72E6338AFA2A2F3F3B173CA /* SingleAsync.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3554A1B1CB5A76AE6A8B8D489786A17B /* SingleAsync.swift */; };
 		9955EB86FE57B5816D7766342B70A6C1 /* RxCocoaRuntime.h in Headers */ = {isa = PBXBuildFile; fileRef = 599A00C363454E2B1C3EFCFC0082F2F2 /* RxCocoaRuntime.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		9A40808222228BD0BCC01B44A6A2784D /* Driver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FEECCF306884E97F82AA40C34D7A887 /* Driver.swift */; };
+		9B269D4B218393EB0060DD94 /* RedirectionRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B269D4A218393EB0060DD94 /* RedirectionRouter.swift */; };
+		9B2F8CFE2188A798005BFD2D /* DeepLinking.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B2F8CFD2188A798005BFD2D /* DeepLinking.swift */; };
 		9B88C25A21814E28006DE0D3 /* AnyCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B88C25921814E28006DE0D3 /* AnyCoordinator.swift */; };
 		9BED793E21806DA7008A7B58 /* Animation+Navigation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BED793D21806DA7008A7B58 /* Animation+Navigation.swift */; };
 		9BED794021806DCF008A7B58 /* Animation+TabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BED793F21806DCF008A7B58 /* Animation+TabBar.swift */; };
@@ -655,6 +657,8 @@
 		995365A0A30DD06DE0C1FDEEBFFFAEAF /* Concat.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Concat.swift; path = RxSwift/Observables/Concat.swift; sourceTree = "<group>"; };
 		9992C8E93275BC06FBF5FC27181FC927 /* Route.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Route.swift; path = XCoordinator/Classes/Route.swift; sourceTree = "<group>"; };
 		9AA96A9497196D81806BD865BEBE9EEF /* UITableView+Rx.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "UITableView+Rx.swift"; path = "RxCocoa/iOS/UITableView+Rx.swift"; sourceTree = "<group>"; };
+		9B269D4A218393EB0060DD94 /* RedirectionRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = RedirectionRouter.swift; path = XCoordinator/Classes/RedirectionRouter.swift; sourceTree = "<group>"; };
+		9B2F8CFD2188A798005BFD2D /* DeepLinking.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = DeepLinking.swift; path = XCoordinator/Classes/DeepLinking.swift; sourceTree = "<group>"; };
 		9B55575276D14DBC3748DBD7DD39CCEA /* RxSearchControllerDelegateProxy.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = RxSearchControllerDelegateProxy.swift; path = RxCocoa/iOS/Proxies/RxSearchControllerDelegateProxy.swift; sourceTree = "<group>"; };
 		9B88C25921814E28006DE0D3 /* AnyCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AnyCoordinator.swift; path = XCoordinator/Classes/AnyCoordinator.swift; sourceTree = "<group>"; };
 		9BADF51F5453C30A274C32B2678B7C3F /* RxMutableBox.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = RxMutableBox.swift; path = RxSwift/RxMutableBox.swift; sourceTree = "<group>"; };
@@ -1346,8 +1350,10 @@
 				17166A90DEEFE622CFEECF4DF5A47646 /* NavigationCoordinator.swift */,
 				2819EF39A60912AD6E0D845B23B87E5D /* NavigationTransition.swift */,
 				A74717B0C24D7BB02D2DF577A05214C0 /* PageCoordinator.swift */,
+				9B2F8CFD2188A798005BFD2D /* DeepLinking.swift */,
 				564424E503AF4F1B2034E106B68197D7 /* PageTransition.swift */,
 				741292AA31211A37F9CCC625CEBC74DE /* Presentable.swift */,
+				9B269D4A218393EB0060DD94 /* RedirectionRouter.swift */,
 				77D3A3798E41D7E548C4144BCF529F8F /* ReferenceBox.swift */,
 				9992C8E93275BC06FBF5FC27181FC927 /* Route.swift */,
 				8454ABA0225DB1955D2A98C667FB5F01 /* Router.swift */,
@@ -1903,6 +1909,7 @@
 			files = (
 				F2CD77EDC988764E61D05C915135A708 /* Animation.swift in Sources */,
 				56234C555161F0B4E1AE7B0E18C80227 /* AnyRouter.swift in Sources */,
+				9B2F8CFE2188A798005BFD2D /* DeepLinking.swift in Sources */,
 				B5E2329B19E9AAFCBCFABDCAF7DD930B /* AnyTransitionPerformer.swift in Sources */,
 				15BC4FB6FDE0FD71D24D0D381835C73F /* BaseCoordinator.swift in Sources */,
 				51F4B265E741B11AB7556D76CD80C575 /* BasicCoordinator.swift in Sources */,
@@ -1935,6 +1942,7 @@
 				DE2269AFEF008D268DC2C4D51B1A6C38 /* TransitionPerformer+Page.swift in Sources */,
 				D285307A434AE3B6B6CE05E7E6D2DF8F /* TransitionPerformer+Split.swift in Sources */,
 				AD3FA631F652044B83D7D3F92765F619 /* TransitionPerformer+TabBar.swift in Sources */,
+				9B269D4B218393EB0060DD94 /* RedirectionRouter.swift in Sources */,
 				E6658A45D4C7B485C4E84485841DE6A4 /* TransitionPerformer+Transition.swift in Sources */,
 				CA810D283512CFAD04196583F8A23E59 /* TransitionPerformer.swift in Sources */,
 				5467FD656EEA80509C17501769D2D4F2 /* TransitionProtocol.swift in Sources */,

@@ -24,9 +24,9 @@ class HomePageCoordinator: PageCoordinator<HomeRoute> {
     override func prepareTransition(for route: HomeRoute) -> PageTransition {
         switch route {
         case .news:
-            return .set([newsCoordinator], direction: .forward)
+            return .set(newsCoordinator, direction: .forward)
         case .userList:
-            return .set([userListCoordinator], direction: .forward)
+            return .set(userListCoordinator, direction: .forward)
         }
     }
 }

@@ -7,6 +7,7 @@
 //
 
 public typealias PresentationHandler = () -> Void
+public typealias ContextPresentationHandler = (PresentationHandlerContext) -> Void
 
 public protocol Coordinator: Router, TransitionPerformer {
     func prepareTransition(for route: RouteType) -> TransitionType
@@ -34,6 +35,12 @@ extension Coordinator {
     public func trigger(_ route: RouteType, with options: TransitionOptions, completion: PresentationHandler?) {
         let transition = prepareTransition(for: route)
         performTransition(transition, with: options, completion: completion)
+    }
+
+    public func contextTrigger(_ route: RouteType, with options: TransitionOptions, completion: ContextPresentationHandler?) {
+        print(#function)
+        let transition = prepareTransition(for: route)
+        performTransition(transition, with: options, completion: { completion?(PresentationHandlerContext(presentable: transition.presentable)) })
     }
 
     func performTransition(_ transition: TransitionType, with options: TransitionOptions, completion: PresentationHandler? = nil) {

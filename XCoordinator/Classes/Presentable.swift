@@ -9,6 +9,7 @@
 public protocol Presentable {
     var viewController: UIViewController! { get }
 
+    func router<R: Route>(for route: R) -> AnyRouter<R>?
     func presented(from presentable: Presentable?)
     func setRoot(for window: UIWindow)
 }
@@ -18,6 +19,10 @@ extension Presentable {
         window.rootViewController = viewController
         presented(from: window)
         window.makeKeyAndVisible()
+    }
+
+    public func router<R: Route>(for route: R) -> AnyRouter<R>? {
+        return self as? AnyRouter<R>
     }
 }
 

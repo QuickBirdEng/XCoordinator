@@ -29,10 +29,10 @@ open class PageCoordinator<RouteType: Route>: BaseCoordinator<RouteType, PageTra
         self.dataSource = PageCoordinatorDataSource(pages: pages)
 
         if let firstPage = pages.first {
-            super.init(initialTransition: .set([firstPage], direction: direction))
+            super.init(initialTransition: .set(firstPage, direction: direction))
         } else {
             super.init(initialRoute: nil)
-        }           
+        }
     }
 
     open override func generateRootViewController() -> UIPageViewController {
