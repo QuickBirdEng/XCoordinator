@@ -53,3 +53,9 @@ class RedirectionRouter<SuperRoute: Route, RouteType: Route>: Router {
         superRouter.presented(from: presentable)
     }
 }
+
+extension RedirectionRouter {
+    public func router<R: Route>(for route: R) -> AnyRouter<R>? {
+        return (anyRouter as? AnyRouter<R>) ?? (superRouter as? AnyRouter<R>)
+    }
+}

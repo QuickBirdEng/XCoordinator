@@ -38,21 +38,21 @@ class NavigationAnimationDelegate: NSObject, UINavigationControllerDelegate {
             ?? delegate?.navigationController?(navigationController, animationControllerFor: operation, from: fromVC, to: toVC)
     }
 
-    func navigationController(_ navigationController: UINavigationController, didShow viewController: UIViewController, animated: Bool) {
+    public func navigationController(_ navigationController: UINavigationController, didShow viewController: UIViewController, animated: Bool) {
         delegate?.navigationController?(navigationController, didShow: viewController, animated: animated)
     }
 
-    func navigationController(_ navigationController: UINavigationController, willShow viewController: UIViewController, animated: Bool) {
+    public func navigationController(_ navigationController: UINavigationController, willShow viewController: UIViewController, animated: Bool) {
         delegate?.navigationController?(navigationController, willShow: viewController, animated: animated)
     }
 
-    func navigationControllerSupportedInterfaceOrientations(_ navigationController: UINavigationController) -> UIInterfaceOrientationMask {
+    public func navigationControllerSupportedInterfaceOrientations(_ navigationController: UINavigationController) -> UIInterfaceOrientationMask {
         return delegate?.navigationControllerSupportedInterfaceOrientations?(navigationController)
             ?? navigationController.visibleViewController?.supportedInterfaceOrientations
             ?? .all
     }
 
-    func navigationControllerPreferredInterfaceOrientationForPresentation(_ navigationController: UINavigationController) -> UIInterfaceOrientation {
+    public func navigationControllerPreferredInterfaceOrientationForPresentation(_ navigationController: UINavigationController) -> UIInterfaceOrientation {
         return delegate?.navigationControllerPreferredInterfaceOrientationForPresentation?(navigationController)
             ?? navigationController.visibleViewController?.preferredInterfaceOrientationForPresentation
             ?? UIApplication.shared.statusBarOrientation

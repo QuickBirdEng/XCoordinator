@@ -72,9 +72,11 @@ open class BaseCoordinator<RouteType: Route, TransitionType: TransitionProtocol>
             return performTransition(transition, with: TransitionOptions(animated: false), completion: completion)
         }
 
-        windowAppearanceObserver = NotificationCenter.default.addObserver(forName: UIWindow.didBecomeKeyNotification, object: nil, queue: OperationQueue.main) { [weak self] notifcation in
+        rootViewController.beginAppearanceTransition(true, animated: false)
+        windowAppearanceObserver = NotificationCenter.default.addObserver(forName: UIWindow.didBecomeKeyNotification, object: nil, queue: .main) { [weak self] notifcation in
             self?.removeWindowObserver()
             self?.performTransition(transition, with: TransitionOptions(animated: false), completion: completion)
+            self?.rootViewController.endAppearanceTransition()
         }
     }
 

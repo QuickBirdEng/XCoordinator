@@ -32,15 +32,10 @@ extension Coordinator {
 extension Coordinator {
     public func presented(from presentable: Presentable?) {}
 
-    public func trigger(_ route: RouteType, with options: TransitionOptions, completion: PresentationHandler?) {
-        let transition = prepareTransition(for: route)
-        performTransition(transition, with: options, completion: completion)
-    }
-
     public func contextTrigger(_ route: RouteType, with options: TransitionOptions, completion: ContextPresentationHandler?) {
-        print(#function)
         let transition = prepareTransition(for: route)
-        performTransition(transition, with: options, completion: { completion?(PresentationHandlerContext(presentable: transition.presentable)) })
+        let context = PresentationHandlerContext(presentable: transition.presentable)
+        performTransition(transition, with: options) { completion?(context) }
     }
 
     func performTransition(_ transition: TransitionType, with options: TransitionOptions, completion: PresentationHandler? = nil) {
