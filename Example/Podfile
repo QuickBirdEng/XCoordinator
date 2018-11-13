@@ -3,7 +3,7 @@ use_frameworks!
 target 'XCoordinator_Example' do
   pod 'XCoordinator', :path => '../'
   pod 'XCoordinator/RxSwift', :path => '../'
-  pod 'Action'
+  pod 'Action', '~> 4.3'
 
   target 'XCoordinator_Tests' do
     inherit! :search_paths

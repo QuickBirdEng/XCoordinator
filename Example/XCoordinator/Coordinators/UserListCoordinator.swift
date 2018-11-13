@@ -30,7 +30,7 @@ class UserListCoordinator: NavigationCoordinator<UserListRoute> {
             vc.bind(to: vm)
             return .push(vc)
         case .users:
-            let animation = Animation(presentationAnimation: CustomPresentations.flippingPresentation, dismissalAnimation: nil)
+            let animation = Animation(presentationAnimation: StaticTransitionAnimation.flippingPresentation, dismissalAnimation: nil)
             var vc = UsersViewController.instantiateFromNib()
             let vm = UsersViewModelImpl(coordinator: anyRouter)
             vc.bind(to: vm)

@@ -92,3 +92,9 @@ extension Transition {
         }
     }
 }
+
+extension Coordinator {
+    public func registerPeek<RootViewController>(for source: Container, route: RouteType) -> Transition<RootViewController> where Self.TransitionType == Transition<RootViewController> {
+        return .registerPeek(for: source, route: route, coordinator: self)
+    }
+}

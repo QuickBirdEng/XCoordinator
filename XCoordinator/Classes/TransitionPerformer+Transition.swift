@@ -8,15 +8,25 @@
 
 extension TransitionPerformer {
     func present(_ viewController: UIViewController, with options: TransitionOptions, animation: Animation?, completion: PresentationHandler?) {
-
-        viewController.transitioningDelegate = animation
-        rootViewController.present(viewController, animated: options.animated, completion: completion)
+        let previousTransitionDelegate = viewController.transitioningDelegate
+        if let animation = animation {
+            viewController.transitioningDelegate = animation
+        }
+        rootViewController.present(viewController, animated: options.animated) {
+            viewController.transitioningDelegate = previousTransitionDelegate
+            completion?()
+        }
     }
 
     func dismiss(with options: TransitionOptions, animation: Animation?, completion: PresentationHandler?) {
-
-        rootViewController.transitioningDelegate = animation
-        rootViewController.dismiss(animated: options.animated, completion: completion)
+        let previousTransitionDelegate = viewController.transitioningDelegate
+        if let animation = animation {
+            rootViewController.transitioningDelegate = animation
+        }
+        rootViewController.dismiss(animated: options.animated) {
+            self.rootViewController.transitioningDelegate = previousTransitionDelegate
+            completion?()
+        }
     }
 
     func embed(_ viewController: UIViewController, in container: Container, with options: TransitionOptions, completion: PresentationHandler?) {
@@ -45,24 +55,13 @@ extension TransitionPerformer {
 
 extension AnyTransitionPerformer {
     func registerPeek(from sourceView: UIView, transitionGenerator: @escaping () -> TransitionType, completion: PresentationHandler?) {
-
         let delegate = CoordinatorPreviewingDelegateObject(transition: transitionGenerator, performer: self, completion: completion)
 
-        if let existingContextIndex = sourceView.strongReferences
-            .index(where: { $0 is CoordinatorPreviewingDelegateObject<TransitionType> }),
-
-            let contextDelegate = sourceView.strongReferences
-                .remove(at: existingContextIndex)
-                as? CoordinatorPreviewingDelegateObject<TransitionType>,
-
-            let context = contextDelegate.context {
-
+        if let context = sourceView.removePreviewingContext(for: TransitionType.self) {
             rootViewController.unregisterForPreviewing(withContext: context)
         }
 
         sourceView.strongReferences.append(delegate)
-
-        delegate.context = rootViewController
-            .registerForPreviewing(with: delegate, sourceView: sourceView)
+        delegate.context = rootViewController.registerForPreviewing(with: delegate, sourceView: sourceView)
     }
 }

@@ -6,8 +6,6 @@
 //  Copyright © 2018 QuickBird Studios. All rights reserved.
 //
 
-import Foundation
-
 class NavigationAnimationDelegate: NSObject, UINavigationControllerDelegate {
 
     // MARK: - Stored properties
@@ -48,7 +46,7 @@ class NavigationAnimationDelegate: NSObject, UINavigationControllerDelegate {
 
     public func navigationControllerSupportedInterfaceOrientations(_ navigationController: UINavigationController) -> UIInterfaceOrientationMask {
         return delegate?.navigationControllerSupportedInterfaceOrientations?(navigationController)
-            ?? navigationController.visibleViewController?.supportedInterfaceOrientations
+            ?? navigationController.parent?.supportedInterfaceOrientations
             ?? .all
     }
 

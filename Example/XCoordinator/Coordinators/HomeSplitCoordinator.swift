@@ -10,14 +10,14 @@ import XCoordinator
 
 class HomeSplitCoordinator: SplitCoordinator<HomeRoute> {
 
-    let newsCoordinator: AnyRouter<NewsRoute>
-    let userListCoordinator: AnyRouter<UserListRoute>
+    let newsRouter: AnyRouter<NewsRoute>
+    let userListRouter: AnyRouter<UserListRoute>
 
-    init(newsCoordinator: AnyRouter<NewsRoute> = NewsCoordinator().anyRouter,
-         userListCoordinator: AnyRouter<UserListRoute> = UserListCoordinator().anyRouter) {
-        self.newsCoordinator = newsCoordinator
-        self.userListCoordinator = userListCoordinator
+    init(newsRouter: AnyRouter<NewsRoute> = NewsCoordinator().anyRouter,
+         userListRouter: AnyRouter<UserListRoute> = UserListCoordinator().anyRouter) {
+        self.newsRouter = newsRouter
+        self.userListRouter = userListRouter
 
-        super.init(master: userListCoordinator, detail: newsCoordinator)
+        super.init(master: userListRouter, detail: newsRouter)
     }
 }

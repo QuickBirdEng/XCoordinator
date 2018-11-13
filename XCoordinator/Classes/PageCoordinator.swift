@@ -51,8 +51,8 @@ class PageCoordinatorDataSource: NSObject, UIPageViewControllerDataSource, UIPag
     }
 
     func presentationCount(for pageViewController: UIPageViewController) -> Int {
-        let isDisplaying = pageViewController.viewControllers?.isEmpty ?? false
-        return isDisplaying ? pages.count : 0
+        let isNotDisplaying = pageViewController.viewControllers?.isEmpty ?? true
+        return isNotDisplaying ? 0 : pages.count
     }
 
     func presentationIndex(for pageViewController: UIPageViewController) -> Int {

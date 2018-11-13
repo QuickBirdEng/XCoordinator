@@ -10,8 +10,7 @@
 import UIKit
 import XCoordinator
 
-struct CustomPresentations {
-
+extension StaticTransitionAnimation {
     private static let defaultAnimationDuration = 0.35
 
     static let fadePresentation = StaticTransitionAnimation(duration: defaultAnimationDuration, performAnimation: { transitionContext in

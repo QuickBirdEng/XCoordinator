@@ -7,10 +7,8 @@
 //
 
 extension TransitionPerformer where TransitionType.RootViewController: UIPageViewController {
-    // animate using delegate on UIPageViewController
-    func set(_ viewControllers: [UIViewController], direction: UIPageViewController.NavigationDirection, with options: TransitionOptions, animation: Animation?, completion: PresentationHandler?) {
-
-        // TODO: Use animation
+    // TODO: Add animations
+    func set(_ viewControllers: [UIViewController], direction: UIPageViewController.NavigationDirection, with options: TransitionOptions, completion: PresentationHandler?) {
         rootViewController.setViewControllers(
             viewControllers,
             direction: direction,

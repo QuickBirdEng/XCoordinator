@@ -16,8 +16,8 @@ enum HomeRoute: Route {
 
 class HomeTabCoordinator: TabBarCoordinator<HomeRoute> {
 
-    let newsCoordinator: AnyRouter<NewsRoute>
-    let userListCoordinator: AnyRouter<UserListRoute>
+    let newsRouter: AnyRouter<NewsRoute>
+    let userListRouter: AnyRouter<UserListRoute>
 
     convenience init() {
         let newsCoordinator = NewsCoordinator()
@@ -26,24 +26,24 @@ class HomeTabCoordinator: TabBarCoordinator<HomeRoute> {
         let userListCoordinator = UserListCoordinator()
         userListCoordinator.rootViewController.tabBarItem = UITabBarItem(tabBarSystemItem: .more, tag: 1)
 
-        self.init(newsCoordinator: newsCoordinator.anyRouter,
-                  userListCoordinator: userListCoordinator.anyRouter)
+        self.init(newsRouter: newsCoordinator.anyRouter,
+                  userListRouter: userListCoordinator.anyRouter)
     }
 
-    init(newsCoordinator: AnyRouter<NewsRoute>,
-         userListCoordinator: AnyRouter<UserListRoute>) {
-        self.newsCoordinator = newsCoordinator
-        self.userListCoordinator = userListCoordinator
+    init(newsRouter: AnyRouter<NewsRoute>,
+         userListRouter: AnyRouter<UserListRoute>) {
+        self.newsRouter = newsRouter
+        self.userListRouter = userListRouter
 
-        super.init(tabs: [newsCoordinator, userListCoordinator], select: userListCoordinator)
+        super.init(tabs: [newsRouter, userListRouter], select: userListRouter)
     }
 
     override func prepareTransition(for route: HomeRoute) -> TabBarTransition {
         switch route {
         case .news:
-            return .select(newsCoordinator)
+            return .select(newsRouter)
         case .userList:
-            return .select(userListCoordinator)
+            return .select(userListRouter)
         }
     }
 }

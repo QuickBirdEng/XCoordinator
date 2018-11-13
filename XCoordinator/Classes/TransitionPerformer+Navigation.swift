@@ -6,8 +6,6 @@
 //  Copyright © 2018 QuickBird Studios. All rights reserved.
 //
 
-
-
 extension TransitionPerformer where TransitionType.RootViewController: UINavigationController {
     func push(_ viewController: UIViewController, with options: TransitionOptions, animation: Animation?, completion: PresentationHandler?) {
 

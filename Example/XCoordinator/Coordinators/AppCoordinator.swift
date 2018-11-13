@@ -7,7 +7,7 @@
 //
 
 import Foundation
-@testable import XCoordinator
+import XCoordinator
 
 enum AppRoute: Route {
     case login
@@ -21,7 +21,7 @@ class AppCoordinator: NavigationCoordinator<AppRoute> {
         super.init(initialRoute: .deep)
     }
 
-    var homeCoordinator: AnyRouter<HomeRoute>!
+    var homeRouter: AnyRouter<HomeRoute>!
 
     override func prepareTransition(for route: AppRoute) -> NavigationTransition {
         switch route {
@@ -31,9 +31,9 @@ class AppCoordinator: NavigationCoordinator<AppRoute> {
             vc.bind(to: viewModel)
             return .push(vc)
         case .home:
-            self.homeCoordinator = HomePageCoordinator().anyRouter
-            let animation = Animation(presentationAnimation: CustomPresentations.flippingPresentation, dismissalAnimation: nil)
-            return .present(homeCoordinator, animation: animation)
+            self.homeRouter = HomePageCoordinator().anyRouter
+            let animation = Animation(presentationAnimation: StaticTransitionAnimation.flippingPresentation, dismissalAnimation: nil)
+            return .present(homeRouter, animation: animation)
         case .deep:
             return deepLink(.login, AppRoute.home, HomeRoute.news)
         }

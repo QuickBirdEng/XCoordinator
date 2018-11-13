@@ -10,23 +10,23 @@ import XCoordinator
 
 class HomePageCoordinator: PageCoordinator<HomeRoute> {
 
-    let newsCoordinator: AnyRouter<NewsRoute>
-    let userListCoordinator: AnyRouter<UserListRoute>
+    let newsRouter: AnyRouter<NewsRoute>
+    let userListRouter: AnyRouter<UserListRoute>
 
-    init(newsCoordinator: AnyRouter<NewsRoute> = NewsCoordinator().anyRouter,
-         userListCoordinator: AnyRouter<UserListRoute> = UserListCoordinator().anyRouter) {
-        self.newsCoordinator = newsCoordinator
-        self.userListCoordinator = userListCoordinator
+    init(newsRouter: AnyRouter<NewsRoute> = NewsCoordinator().anyRouter,
+         userListRouter: AnyRouter<UserListRoute> = UserListCoordinator().anyRouter) {
+        self.newsRouter = newsRouter
+        self.userListRouter = userListRouter
         
-        super.init(pages: [newsCoordinator, userListCoordinator], direction: .forward, transitionStyle: .pageCurl, orientation: .horizontal, options: nil)
+        super.init(pages: [newsRouter, userListRouter], direction: .forward, transitionStyle: .pageCurl, orientation: .horizontal, options: nil)
     }
 
     override func prepareTransition(for route: HomeRoute) -> PageTransition {
         switch route {
         case .news:
-            return .set(newsCoordinator, direction: .forward)
+            return .set(newsRouter, direction: .forward)
         case .userList:
-            return .set(userListCoordinator, direction: .forward)
+            return .set(userListRouter, direction: .forward)
         }
     }
 }
