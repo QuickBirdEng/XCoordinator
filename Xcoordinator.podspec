@@ -3,7 +3,7 @@ Pod::Spec.new do |spec|
     spec.version      = '1.0.0'
     spec.license      = { :type => 'MIT' }
     spec.homepage     = 'https://github.com/quickbirdstudios/XCoordinator'
-    spec.authors      = { 'Stefan Kofler' => 'stefan.kofler@quickbirdstudios.com' }
+    spec.authors      = { 'Stefan Kofler' => 'stefan.kofler@quickbirdstudios.com', 'Paul Kraft' => 'pauljohannes.kraft@quickbirdstudios.com' }
     spec.summary      = 'Navigation framework based on coordinator pattern.'
     spec.source       = { :git => 'https://github.com/quickbirdstudios/XCoordinator.git', :tag => spec.version }
     spec.module_name = 'XCoordinator'
