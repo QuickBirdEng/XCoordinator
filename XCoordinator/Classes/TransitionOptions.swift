@@ -10,7 +10,7 @@ public struct TransitionOptions {
 
     // MARK: - Stored properties
 
-    let animated: Bool
+    public let animated: Bool
 
     // MARK: - Init
 

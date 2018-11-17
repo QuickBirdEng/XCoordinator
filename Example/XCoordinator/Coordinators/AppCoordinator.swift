@@ -18,7 +18,7 @@ enum AppRoute: Route {
 class AppCoordinator: NavigationCoordinator<AppRoute> {
 
     init() {
-        super.init(initialRoute: .deep)
+        super.init(initialRoute: .login)
     }
 
     var homeRouter: AnyRouter<HomeRoute>!
