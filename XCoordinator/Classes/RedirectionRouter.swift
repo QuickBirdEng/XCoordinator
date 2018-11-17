@@ -13,24 +13,29 @@ open class RedirectionRouter<SuperRoute: Route, RouteType: Route>: Router {
     public let superRouter: AnyRouter<SuperRoute>
 
     private let _map: ((RouteType) -> SuperRoute)?
-    private let _viewController: ReferenceBox<UIViewController>
+    private weak var _viewController: UIViewController?
 
     // MARK: - Computed properties
 
     open var viewController: UIViewController! {
-        return _viewController.get()
+        if let vc = _viewController {
+            return vc
+        }
+
+        let viewController = generateViewController()
+        _viewController = viewController
+        return viewController
     }
 
     // MARK: - Init
 
-    public init(viewController: UIViewController, superRouter: AnyRouter<SuperRoute>, map: ((RouteType) -> SuperRoute)?) {
+    public init(superRouter: AnyRouter<SuperRoute>, map: ((RouteType) -> SuperRoute)?) {
         self.superRouter = superRouter
         self._map = map
-        self._viewController = ReferenceBox(viewController)
     }
 
     public convenience init<RouterType: Router>(viewController: UIViewController, superRouter: RouterType, map: ((RouteType) -> SuperRoute)?) where RouterType.RouteType == SuperRoute {
-        self.init(viewController: viewController, superRouter: AnyRouter(superRouter), map: map)
+        self.init(superRouter: AnyRouter(superRouter), map: map)
     }
 
     // MARK: - Methods
@@ -47,7 +52,11 @@ open class RedirectionRouter<SuperRoute: Route, RouteType: Route>: Router {
     }
 
     open func presented(from presentable: Presentable?) {
-        _viewController.releaseStrongReference()
+        viewController.presented(from: presentable)
+    }
+
+    open func generateViewController() -> UIViewController! {
+        fatalError("Please override \(#function) to generate a viewController when needed.")
     }
 }
 
