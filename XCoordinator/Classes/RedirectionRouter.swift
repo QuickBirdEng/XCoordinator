@@ -17,7 +17,7 @@ open class RedirectionRouter<SuperRoute: Route, RouteType: Route>: Router {
 
     // MARK: - Computed properties
 
-    public var viewController: UIViewController! {
+    open var viewController: UIViewController! {
         return _viewController.get()
     }
 
@@ -35,22 +35,18 @@ open class RedirectionRouter<SuperRoute: Route, RouteType: Route>: Router {
 
     // MARK: - Methods
 
-    public func contextTrigger(_ route: RouteType, with options: TransitionOptions, completion: ContextPresentationHandler?) {
+    open func contextTrigger(_ route: RouteType, with options: TransitionOptions, completion: ContextPresentationHandler?) {
         superRouter.contextTrigger(mapToSuperRoute(route), with: options, completion: completion)
     }
 
-    func trigger(_ route: RouteType, with options: TransitionOptions, completion: PresentationHandler?) {
-        superRouter.trigger(mapToSuperRoute(route), with: options, completion: completion)
-    }
-
-    func mapToSuperRoute(_ route: RouteType) -> SuperRoute {
+    open func mapToSuperRoute(_ route: RouteType) -> SuperRoute {
         guard let map = self._map else {
             fatalError("Please implement \(#function) or override this method.")
         }
         return map(route)
     }
 
-    public func presented(from presentable: Presentable?) {
+    open func presented(from presentable: Presentable?) {
         _viewController.releaseStrongReference()
     }
 }
