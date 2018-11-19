@@ -114,10 +114,9 @@ class UsersCoordinator: NavigationCoordinator<UserRoute> {
 
 ### Deep Linking
 
-XCoordinator supports deep linking to chain different routes together. Instead of being restricted to one specific Route-type, XCoordinator can identify routers based on previous transitions (e.g. if you pushed or pushed a coordinator), so that you can link 
+XCoordinator supports deep linking to chain different routes together. In contract to the `.multiple(/* ... */)`-transition, deep-linking-transitions can identify routers based on previous transitions (e.g. when pushing or presenting a router) by building up a stack. Keep in mind, that you cannot access higher-level routers anymore once you trigger a route on a lower level on the stack.
 
 ```swift
-
 class AppCoordinator: NavigationCoordinator<AppRoute> {
 
     /* ... */
@@ -130,12 +129,9 @@ class AppCoordinator: NavigationCoordinator<AppRoute> {
         }
     }
 }
-
 ```
 
-Based on the results of Transition.presentable of the triggered transitions the following routers will automatically be detected and used to trigger the given routes. If a transition does not offer a presentable possible for executing the next route, it will fall back to the previous used router. 
-
-⚠️ We cannot make this safe at compile-time, which is why it might crash at runtime once you make changes to the structure of your app.
+⚠️ DeepLinking does not check, whether it can be executed at compile-time. Rather it uses assertionFailures to inform about incorrect chaining, when it cannot find an appriopriate router for a given route. Keep this in mind when changing the structure of your app.
 
 ## 🎭 Example
 Check out this [repository](https://github.com/quickbirdstudios/XCoordinator/tree/master/XCoordinator-Example/XCoordinator-Example) as an example project using XCoordinator.

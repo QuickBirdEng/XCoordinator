@@ -29,6 +29,7 @@ extension Transition {
         return Transition(presentable: nil) { [weak coordinator] options, performer, completion in
             guard let coordinator = coordinator else {
                 assertionFailure("Please use the coordinator responsible for executing a deepLink-Transition when initializing")
+                completion?()
                 return
             }
 
@@ -43,7 +44,6 @@ extension Transition {
 }
 
 extension Route {
-
     private func router(fromStack stack: inout [Presentable]) -> AnyRouter<Self>? {
         while !stack.isEmpty {
             if let router = stack.last?.router(for: self) {
@@ -58,7 +58,9 @@ extension Route {
         var stack = presentables
 
         guard let router = router(fromStack: &stack) else {
-            return assertionFailure("Could not find appropriate router for \(self). The following routes could not be triggered: \([self] + remainingRoutes).")
+            assertionFailure("Could not find appropriate router for \(self). The following routes could not be triggered: \([self] + remainingRoutes).")
+            completion?()
+            return
         }
 
         router.contextTrigger(self, with: options) { context in
