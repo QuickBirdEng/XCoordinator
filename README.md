@@ -52,7 +52,7 @@ class HomeCoordinator: NavigationCoordinator<HomeRoute> {
 }
 ```
 
-To use coordinators right from the launch of the app, make sure to create the app's window programmatically in `AppDelegate.swift`. set the coordinator as the root of the window's view hierarchy in the `didFinishLaunching`-method.
+To use coordinators right from the launch of the app, make sure to create the app's window programmatically in `AppDelegate.swift` (You will have to remove `Main.storyboard`, including the field `Main Storyboard file base name` in `Info.plist`). Set the coordinator as the root of the window's view hierarchy in the `AppDelegate.didFinishLaunching`-method.
 
 ```swift
 @UIApplicationMain
@@ -72,24 +72,27 @@ Routes are triggered from within Coordinators or ViewModels. In the following, w
 ```swift
 
 class HomeViewModel {
-    let coordinator: AnyCoordinator<HomeRoute>
+    let router: AnyRouter<HomeRoute>
 
-    init(coordinator: AnyCoordinator<HomeRoute>) {
-        self.coordinator = coordinator
+    init(router: AnyRouter<HomeRoute>) {
+        self.router = router
     }
     
     /* ... */
     
     func usersButtonPressed() {
-        coordinator.trigger(.users)
+        router.trigger(.users)
     }
 }
 ```
 
 ## 🤸‍♂️ Extras
 
+For more advanced use, XCoordinator offers many more customization options. In the following, we will introduce custom animated transitions and deep linking.
+
 ### Custom Transitions
-XCoordinator supports cases for custom transitions between view controllers. In the `switch case` in `prepareTransition(coordinator:)` create an `Animation` while specifying your custom presentation transition or/and dismissal transition.
+
+Custom animated transitions define presentation and dismissal animations. In the `switch case` in `prepareTransition(for:)` create an `Animation` and specify your custom presentation transition and/or dismissal animation. Custom animated transitions are available on the most common transitions, such as `present`, `dismiss`, `push` and `pop`.
 
 ```swift
 
@@ -114,7 +117,7 @@ class UsersCoordinator: NavigationCoordinator<UserRoute> {
 
 ### Deep Linking
 
-XCoordinator supports deep linking to chain different routes together. In contract to the `.multiple(/* ... */)`-transition, deep-linking-transitions can identify routers based on previous transitions (e.g. when pushing or presenting a router) by building up a stack. Keep in mind, that you cannot access higher-level routers anymore once you trigger a route on a lower level on the stack.
+Deep Linking is used to chain different routes together. In contract to the `.multiple(/* ... */)`-transition, deep-linking-transitions can identify routers based on previous transitions (e.g. when pushing or presenting a router) by building up a stack. Keep in mind, that you cannot access higher-level routers anymore once you trigger a route on a lower level on the stack.
 
 ```swift
 class AppCoordinator: NavigationCoordinator<AppRoute> {
@@ -138,11 +141,11 @@ Check out this [repository](https://github.com/quickbirdstudios/XCoordinator/tre
 
 
 ## 👨‍✈️ Why coordinators
-* **Separation of responsibilities** by coordinator being the only component knowing anything related to the flow of your application.
+* **Separation of responsibilities** with the coordinator being the only component knowing anything related to the flow of your application.
 * **Reusable Views and ViewModels** because they do not contain any navigation logic.
 * **Less coupling between components**
 
-* **Changeable navigation**: Each coordinator is only responsible for one component and makes no assumptions about its parent. It can therefore be placed wherever we want to.
+* **Changeable navigation**: Each coordinator is only responsible for one component and does not need to make assumptions about its parent. It can therefore be placed wherever we want to.
 
 > [The Coordinator](http://khanlou.com/2015/01/the-coordinator/) by **Soroush Khanlou**
 
@@ -158,9 +161,9 @@ Check out this [repository](https://github.com/quickbirdstudios/XCoordinator/tre
 * Full support for **custom transitions/animations**.
 * Support for **embedding child views** / container views.
 * Provides **observables for presentation / dismissal** of views (E.g. block button until presentation is done).
-* Generic BasicCoordinator class suitable for most use cases and therefore **less** need to write your **own coordinators**.
-* Still full **support** for your **own coordinator classes** conforming to our Coordinator protocol.
-* Generic AnyCoordinator type erasure class encapsulates all types of coordinators supporting the same set of routes. Therefore you can **easily replace coordinators**.
+* Generic BasicCoordinator classes suitable for many use cases and therefore **less** need to write your **own coordinators**.
+* Full **support** for your **own coordinator classes** conforming to our Coordinator protocol - You can also start with one of the following types to get a head start: `NavigationCoordinator`, `ViewCoordinator`, `TabBarCoordinator` and more.
+* Generic AnyRouter type erasure class encapsulates all types of coordinators and routers supporting the same set of routes. Therefore you can **easily replace coordinators**.
 * Use of enum for routes gives you **autocompletion** and **type safety** to perform only transition to routes supported by the coordinator.
 
 ### Components
@@ -169,7 +172,7 @@ Check out this [repository](https://github.com/quickbirdstudios/XCoordinator/tre
 Describes possible navigation paths within a flow, a collection of closely related scenes.
 
 #### 👨‍✈️ Coordinator
-An object loading views and creating viewModels based on triggered routes. A Coordinator creates and performs transitions to these scenes based on the data transferred via the route.
+An object loading views and creating viewModels based on triggered routes. A Coordinator creates and performs transitions to these scenes based on the data transferred via the route. In contrast to the coordinator, a router can be seen as an abstraction from that concept limited to triggering routes. Often, a Router is used to abstract away from a specific coordinator in ViewModels.
 
 #### ✈️ Transition
 Transitions describe the navigation from one view to another view. Transitions are available based on the type of the root view controller in use. Example: Whereas `ViewTransition` only supports basic transitions that every view controller supports, `NavigationTransition` adds navigation controller specific transitions.
@@ -191,7 +194,7 @@ Describes presentation/dismissal of a view including the type of the transition 
 To integrate XCoordinator into your Xcode project using CocoaPods, add this to your `Podfile`:
 
 ```ruby
-pod 'XCoordinator'
+pod 'XCoordinator', '~> 1.0'
 ```
 
 ### Carthage
@@ -199,7 +202,7 @@ pod 'XCoordinator'
 To integrate XCoordinator into your Xcode project using Carthage, add this to your `Cartfile`:
 
 ```
-github "quickbirdstudios/XCoordinator" ~> 0.5
+github "quickbirdstudios/XCoordinator" ~> 1.0
 ```
 
 Then run `carthage update`.
@@ -211,11 +214,11 @@ If this is your first time using Carthage in the project, you'll need to go thro
 If you prefer not to use any of the dependency managers, you can integrate XCoordinator into your project manually, by downloading the source code and placing the files on your project directory.  
 <br/><br/>
 
-If you want more information on RxCoordinator check out this blog post: 
+If you want more information on XCoordinator check out this blog post: 
 https://quickbirdstudios.com/blog/ios-navigation-library-based-on-the-coordinator-pattern/
 
 ## 👤 Author
-This tiny library is created with ❤️ by [QuickBird Studios](www.quickbirdstudios.com).
+This framework is created with ❤️ by [QuickBird Studios](www.quickbirdstudios.com).
 
 ## ❤️ Contributing
 Open an issue if you need help, if you found a bug, or if you want to discuss a feature request.
