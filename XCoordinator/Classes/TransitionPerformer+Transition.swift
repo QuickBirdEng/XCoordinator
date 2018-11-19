@@ -8,25 +8,17 @@
 
 extension TransitionPerformer {
     func present(_ viewController: UIViewController, with options: TransitionOptions, animation: Animation?, completion: PresentationHandler?) {
-        let previousTransitionDelegate = viewController.transitioningDelegate
         if let animation = animation {
             viewController.transitioningDelegate = animation
         }
-        rootViewController.present(viewController, animated: options.animated) {
-            viewController.transitioningDelegate = previousTransitionDelegate
-            completion?()
-        }
+        rootViewController.present(viewController, animated: options.animated, completion: completion)
     }
 
     func dismiss(with options: TransitionOptions, animation: Animation?, completion: PresentationHandler?) {
-        let previousTransitionDelegate = viewController.transitioningDelegate
         if let animation = animation {
-            rootViewController.transitioningDelegate = animation
+            (rootViewController.presentedViewController ?? rootViewController).transitioningDelegate = animation
         }
-        rootViewController.dismiss(animated: options.animated) {
-            self.rootViewController.transitioningDelegate = previousTransitionDelegate
-            completion?()
-        }
+        rootViewController.dismiss(animated: options.animated, completion: completion)
     }
 
     func embed(_ viewController: UIViewController, in container: Container, with options: TransitionOptions, completion: PresentationHandler?) {

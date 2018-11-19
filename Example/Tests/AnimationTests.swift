@@ -26,6 +26,11 @@ class AnimationTests: XCTestCase {
     func testNavigationCoordinatorAnimations() {
         let coordinator = NavigationCoordinator<TestRoute>(root: UIViewController())
         coordinator.setRoot(for: window)
+        print("present")
+        performTransition(on: coordinator, transition: { .present(UIViewController(), animation: $0) })
+        print("dismiss")
+        performTransition(on: coordinator, transition: { .dismiss(animation: $0) })
+
         performTransition(on: coordinator, transition: { .push(UIViewController(), animation: $0) })
         performTransition(on: coordinator, transition: { .pop(animation: $0) })
         performTransition(on: coordinator, transition: { .push(UIViewController(), animation: $0) })

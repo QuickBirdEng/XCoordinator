@@ -11,9 +11,13 @@ import XCoordinator
 enum NewsRoute: Route {
     case news
     case newsDetail(News)
+    case close
 }
 
 class NewsCoordinator: NavigationCoordinator<NewsRoute> {
+
+    let animation = Animation(presentationAnimation: StaticTransitionAnimation.flippingPresentation,
+                              dismissalAnimation: StaticTransitionAnimation.flippingPresentation)
     
     init() {
         super.init(initialRoute: .news)
@@ -31,7 +35,13 @@ class NewsCoordinator: NavigationCoordinator<NewsRoute> {
             var vc = NewsDetailViewController.instantiateFromNib()
             let vm = NewsDetailViewModelImpl(news: news)
             vc.bind(to: vm)
-            return .push(vc)
+            DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(3)) {
+                self.trigger(.close)
+            }
+            return .present(vc, animation: animation)
+        case .close:
+            let noAnimation = Animation(presentationAnimation: nil, dismissalAnimation: nil)
+            return .dismiss(animation: noAnimation)
         }
     }
 }

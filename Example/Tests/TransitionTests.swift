@@ -10,6 +10,7 @@ import XCTest
 @testable import XCoordinator
 
 class TransitionTests: XCTestCase {
+    let window = UIWindow()
 
     func testCompletionsCalled() {
         let presentable = UIViewController()
@@ -35,7 +36,7 @@ class TransitionTests: XCTestCase {
         let presentable = UIViewController()
         testCompletionCalled(transitionTypes: [
             .none(),
-            // .present(presentable),
+            .multiple(.present(presentable), .dismiss()),
             .embed(presentable, in: container),
             .multiple(.none()),
             .multiple()
@@ -45,6 +46,7 @@ class TransitionTests: XCTestCase {
     func testCompletionCalled<V: UIViewController>(transitionTypes: [Transition<V>]) {
         for (index, transition) in transitionTypes.enumerated() { // registerPeek does not call completion unless triggered
             let coordinator = BasicCoordinator<TestRoute, Transition<V>> { _ in .none() }
+            coordinator.setRoot(for: window)
             let exp = expectation(description: "\(transition)")
             coordinator.performTransition(transition, with: .default) {
                 exp.fulfill()
