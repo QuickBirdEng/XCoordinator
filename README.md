@@ -135,7 +135,7 @@ class AppCoordinator: NavigationCoordinator<AppRoute> {
 
 Based on the results of Transition.presentable of the triggered transitions the following routers will automatically be detected and used to trigger the given routes. If a transition does not offer a presentable possible for executing the next route, it will fall back to the previous used router. 
 
-⚠ We cannot make this safe at compile-time, which is why it might crash at runtime once you make changes to the structure of your app.
+⚠️ We cannot make this safe at compile-time, which is why it might crash at runtime once you make changes to the structure of your app.
 
 ## 🎭 Example
 Check out this [repository](https://github.com/quickbirdstudios/XCoordinator/tree/master/XCoordinator-Example/XCoordinator-Example) as an example project using XCoordinator.
