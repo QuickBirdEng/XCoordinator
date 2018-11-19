@@ -114,7 +114,7 @@ class UsersCoordinator: NavigationCoordinator<UserRoute> {
 
 ### Deep Linking
 
-XCoordinator supports deep linking as can be seen in the following example:
+XCoordinator supports deep linking to chain different routes together. Instead of being restricted to one specific Route-type, XCoordinator can identify routers based on previous transitions (e.g. if you pushed or pushed a coordinator), so that you can link 
 
 ```swift
 
@@ -126,7 +126,7 @@ class AppCoordinator: NavigationCoordinator<AppRoute> {
         switch route {
         /* ... */
         case .deep:
-            return deepLink(.login, AppRoute.home, HomeRoute.news)
+            return deepLink(.login, AppRoute.home, HomeRoute.news, HomeRoute.dismiss)
         }
     }
 }

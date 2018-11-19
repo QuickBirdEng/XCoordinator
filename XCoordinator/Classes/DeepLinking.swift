@@ -37,23 +37,41 @@ extension Transition {
                 return
             }
 
-            nextRoute.trigger(on: nil, or: coordinator, remainingRoutes: remainingRoutes.dropFirst(), with: options, completion: completion)
+            nextRoute.trigger(on: [coordinator], remainingRoutes: remainingRoutes.dropFirst(), with: options, completion: completion)
         }
     }
 }
 
 extension Route {
-    func trigger(on presentable: Presentable?, or alternativePresentable: Presentable, remainingRoutes: ArraySlice<Route>, with options: TransitionOptions, completion: PresentationHandler?) {
-        guard let router = presentable?.router(for: self) ?? alternativePresentable.router(for: self) else {
+
+    private func router(fromStack stack: inout [Presentable]) -> AnyRouter<Self>? {
+        while !stack.isEmpty {
+            if let router = stack.last?.router(for: self) {
+                return router
+            }
+            stack.removeLast()
+        }
+        return nil
+    }
+
+    func trigger(on presentables: [Presentable], remainingRoutes: ArraySlice<Route>, with options: TransitionOptions, completion: PresentationHandler?) {
+        var stack = presentables
+
+        guard let router = router(fromStack: &stack) else {
             return assertionFailure("Could not find appropriate router for \(self). The following routes could not be triggered: \([self] + remainingRoutes).")
         }
+
         router.contextTrigger(self, with: options) { context in
             guard let nextRoute = remainingRoutes.first else {
                 completion?()
                 return
             }
 
-            nextRoute.trigger(on: context.presentable, or: router, remainingRoutes: remainingRoutes.dropFirst(), with: options, completion: completion)
+            if let presentable = context.presentable {
+                stack.append(presentable)
+            }
+
+            nextRoute.trigger(on: stack, remainingRoutes: remainingRoutes.dropFirst(), with: options, completion: completion)
         }
     }
 }
