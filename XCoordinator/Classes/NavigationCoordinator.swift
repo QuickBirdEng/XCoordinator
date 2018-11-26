@@ -10,20 +10,21 @@ open class NavigationCoordinator<RouteType: Route>: BaseCoordinator<RouteType, N
 
     // MARK: - Stored properties
 
-    internal var animationDelegate: NavigationAnimationDelegate? = NavigationAnimationDelegate()
+    private let animationDelegate = NavigationAnimationDelegate()
 
     // MARK: - Computed properties
 
     public var delegate: UINavigationControllerDelegate? {
         get {
-            return rootViewController.coordinatorDelegate
+            return animationDelegate.delegate
         }
         set {
-            rootViewController.coordinatorDelegate = newValue
+            animationDelegate.delegate = newValue
         }
     }
 
     // MARK: - Init
+
     public override init(initialRoute: RouteType? = nil) {
         super.init(initialRoute: initialRoute)
     }
@@ -33,6 +34,7 @@ open class NavigationCoordinator<RouteType: Route>: BaseCoordinator<RouteType, N
     }
 
     // MARK: - Overrides
+    
     open override func generateRootViewController() -> UINavigationController {
         let navigationController = UINavigationController()
         navigationController.delegate = animationDelegate

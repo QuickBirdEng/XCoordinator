@@ -6,12 +6,22 @@
 //  Copyright © 2018 QuickBird Studios. All rights reserved.
 //
 
-public class StaticTransitionAnimation: NSObject, TransitionAnimation {
+open class StaticTransitionAnimation: NSObject, TransitionAnimation {
 
     // MARK: - Stored properties
 
-    public let duration: TimeInterval
+    internal let duration: TimeInterval
     public let performAnimation: (_ transitionContext: UIViewControllerContextTransitioning) -> Void
+
+    // MARK: - Computed properties
+
+    public var interactive: UIViewControllerInteractiveTransitioning? {
+        return self as? UIViewControllerInteractiveTransitioning
+    }
+
+    public var percentDrivenInteractive: UIPercentDrivenInteractiveTransition? {
+        return nil
+    }
 
     // MARK: - Init
 

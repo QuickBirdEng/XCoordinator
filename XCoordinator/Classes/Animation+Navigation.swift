@@ -10,29 +10,37 @@ class NavigationAnimationDelegate: NSObject, UINavigationControllerDelegate {
 
     // MARK: - Stored properties
 
-    var animation: Animation?
+    var animations = [Animation?]()
     weak var delegate: UINavigationControllerDelegate?
 
     // MARK: - UINavigationControllerDelegate
 
     public func navigationController(_ navigationController: UINavigationController, interactionControllerFor animationController: UIViewControllerAnimatedTransitioning) -> UIViewControllerInteractiveTransitioning? {
-        return animation?.presentationAnimation as? UIViewControllerInteractiveTransitioning
+        return animationController as? UIViewControllerInteractiveTransitioning
             ?? delegate?.navigationController?(navigationController, interactionControllerFor: animationController)
     }
 
     public func navigationController(_ navigationController: UINavigationController, animationControllerFor operation: UINavigationController.Operation, from fromVC: UIViewController, to toVC: UIViewController) -> UIViewControllerAnimatedTransitioning? {
-        func transitionAnimation() -> UIViewControllerAnimatedTransitioning? {
+        let transitionAnimation: UIViewControllerAnimatedTransitioning? = {
             switch operation {
             case .push:
-                return animation?.presentationAnimation
+                guard let animation = toVC.transitioningDelegate as? Animation else {
+                    return nil
+                }
+                animation.setup(for: toVC)
+                return animation.presentationAnimation
             case .pop:
-                return animation?.dismissalAnimation
+                guard let animation = fromVC.transitioningDelegate as? Animation else {
+                    return nil
+                }
+                animation.setup(for: fromVC)
+                return animation.dismissalAnimation
             case .none:
                 assertionFailure()
                 return nil
             }
-        }
-        return transitionAnimation()
+        }()
+        return transitionAnimation
             ?? delegate?.navigationController?(navigationController, animationControllerFor: operation, from: fromVC, to: toVC)
     }
 
@@ -43,31 +51,10 @@ class NavigationAnimationDelegate: NSObject, UINavigationControllerDelegate {
     public func navigationController(_ navigationController: UINavigationController, willShow viewController: UIViewController, animated: Bool) {
         delegate?.navigationController?(navigationController, willShow: viewController, animated: animated)
     }
-
-    public func navigationControllerSupportedInterfaceOrientations(_ navigationController: UINavigationController) -> UIInterfaceOrientationMask {
-        return delegate?.navigationControllerSupportedInterfaceOrientations?(navigationController)
-            ?? navigationController.parent?.supportedInterfaceOrientations
-            ?? .all
-    }
-
-    public func navigationControllerPreferredInterfaceOrientationForPresentation(_ navigationController: UINavigationController) -> UIInterfaceOrientation {
-        return delegate?.navigationControllerPreferredInterfaceOrientationForPresentation?(navigationController)
-            ?? navigationController.visibleViewController?.preferredInterfaceOrientationForPresentation
-            ?? UIApplication.shared.statusBarOrientation
-    }
 }
 
 extension UINavigationController {
     internal var animationDelegate: NavigationAnimationDelegate? {
         return delegate as? NavigationAnimationDelegate
-    }
-
-    public var coordinatorDelegate: UINavigationControllerDelegate? {
-        get {
-            return animationDelegate?.delegate
-        }
-        set {
-            animationDelegate?.delegate = newValue
-        }
     }
 }

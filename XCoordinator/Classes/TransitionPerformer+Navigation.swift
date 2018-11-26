@@ -9,40 +9,49 @@
 extension TransitionPerformer where TransitionType.RootViewController: UINavigationController {
     func push(_ viewController: UIViewController, with options: TransitionOptions, animation: Animation?, completion: PresentationHandler?) {
 
+        rootViewController.animationDelegate?.animations.append(animation)
+        if let animation = animation {
+            viewController.transitioningDelegate = animation
+        }
+        assert(animation == nil || rootViewController.animationDelegate != nil)
+
         CATransaction.begin()
         CATransaction.setCompletionBlock {
-            CATransaction.begin()
-            CATransaction.setCompletionBlock(completion)
-
-            self.rootViewController.pushViewController(viewController, animated: options.animated)
-
-            CATransaction.commit()
+            assert(self.rootViewController.animationDelegate?.animations.count == self.rootViewController.children.count)
+            completion?()
         }
 
-        rootViewController.animationDelegate?.animation = animation
-        assert(animation == nil || rootViewController.animationDelegate != nil)
+        self.rootViewController.pushViewController(viewController, animated: options.animated)
 
         CATransaction.commit()
     }
 
     func pop(toRoot: Bool, with options: TransitionOptions, animation: Animation?, completion: PresentationHandler?) {
 
+        if let animation = animation {
+            rootViewController.topViewController?.transitioningDelegate = animation
+        }
+        rootViewController.animationDelegate?.animations.append(animation)
+
         CATransaction.begin()
         CATransaction.setCompletionBlock {
-            CATransaction.begin()
-            CATransaction.setCompletionBlock(completion)
-
             if toRoot {
-                self.rootViewController.popToRootViewController(animated: options.animated)
+                guard let animationDelegate = self.rootViewController.animationDelegate else {
+                    return
+                }
+                animationDelegate.animations.removeLast(animationDelegate.animations.count - 1)
             } else {
-                self.rootViewController.popViewController(animated: options.animated)
+                self.rootViewController.animationDelegate?.animations.removeLast(2)
             }
-
-            CATransaction.commit()
+            assert(self.rootViewController.animationDelegate?.animations.count == self.rootViewController.children.count)
+            completion?()
         }
 
-        rootViewController.animationDelegate?.animation = animation
-        assert(animation == nil || rootViewController.animationDelegate != nil)
+        if toRoot {
+            self.rootViewController.popToRootViewController(animated: options.animated)
+        } else {
+            self.rootViewController.popViewController(animated: options.animated)
+        }
 
         CATransaction.commit()
     }
@@ -52,33 +61,49 @@ extension TransitionPerformer where TransitionType.RootViewController: UINavigat
         CATransaction.begin()
         CATransaction.setCompletionBlock {
             CATransaction.begin()
-            CATransaction.setCompletionBlock(completion)
+            CATransaction.setCompletionBlock {
+                self.rootViewController.animationDelegate?.animations = viewControllers.map { _ in animation }
+                assert(self.rootViewController.animationDelegate?.animations.count == self.rootViewController.children.count)
+                completion?()
+            }
 
             self.rootViewController.setViewControllers(viewControllers, animated: options.animated)
 
             CATransaction.commit()
         }
 
-        rootViewController.animationDelegate?.animation = animation
+        if let animation = animation {
+            viewControllers.last?.transitioningDelegate = animation
+        }
+        rootViewController.animationDelegate?.animations = [animation]
         assert(animation == nil || rootViewController.animationDelegate != nil)
 
         CATransaction.commit()
     }
 
     func pop(to viewController: UIViewController, options: TransitionOptions, animation: Animation?, completion: PresentationHandler?) {
+        guard let viewControllerIndex = rootViewController.viewControllers.firstIndex(of: viewController) else {
+            return assertionFailure()
+        }
+
+        let remainingCount = self.rootViewController.viewControllers.count - viewControllerIndex
+        rootViewController.animationDelegate?.animations.removeLast(remainingCount - 1)
+        rootViewController.animationDelegate?.animations.append(animation)
+        if let animation = animation {
+            rootViewController.topViewController?.transitioningDelegate = animation
+            viewController.transitioningDelegate = animation
+        }
+        assert(self.rootViewController.animationDelegate?.animations.count == self.rootViewController.children.count)
+        assert(animation == nil || rootViewController.animationDelegate != nil)
 
         CATransaction.begin()
         CATransaction.setCompletionBlock {
-            CATransaction.begin()
-            CATransaction.setCompletionBlock(completion)
-
-            self.rootViewController.popToViewController(viewController, animated: options.animated)
-
-            CATransaction.commit()
+            self.rootViewController.animationDelegate?.animations.removeLast()
+            assert(self.rootViewController.animationDelegate?.animations.count == self.rootViewController.children.count)
+            completion?()
         }
 
-        rootViewController.animationDelegate?.animation = animation
-        assert(animation == nil || rootViewController.animationDelegate != nil)
+        self.rootViewController.popToViewController(viewController, animated: options.animated)
 
         CATransaction.commit()
     }

@@ -10,15 +10,21 @@ open class TabBarCoordinator<RouteType: Route>: BaseCoordinator<RouteType, TabBa
 
     // MARK: - Stored properties
 
-    internal var animationDelegate: TabBarAnimationDelegate? = TabBarAnimationDelegate()
+    private let animationDelegate = TabBarAnimationDelegate()
 
     // MARK: - Computed properties
 
     public var delegate: UITabBarControllerDelegate? {
-        return rootViewController.coordinatorDelegate
+        get {
+            return animationDelegate.delegate
+        }
+        set {
+            animationDelegate.delegate = newValue
+        }
     }
 
     // MARK: - Init
+
     public override init(initialRoute: RouteType?) {
         super.init(initialRoute: initialRoute)
     }
@@ -36,6 +42,7 @@ open class TabBarCoordinator<RouteType: Route>: BaseCoordinator<RouteType, TabBa
     }
 
     // MARK: - Overrides
+
     open override func generateRootViewController() -> UITabBarController {
         let tabBarController = super.generateRootViewController()
         tabBarController.delegate = animationDelegate

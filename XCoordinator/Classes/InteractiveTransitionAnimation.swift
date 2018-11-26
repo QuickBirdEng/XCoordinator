@@ -15,23 +15,40 @@ public class InteractiveTransitionAnimation: NSObject, TransitionAnimation, UIVi
     public let completionCurve: UIView.AnimationCurve
     public let wantsInteractiveStart: Bool
 
-    public let performAnimation: (_ transitionContext: UIViewControllerContextTransitioning) -> Void
     private let startInteractiveTransition: (_ transitionContext: UIViewControllerContextTransitioning) -> Void
+
+    // MARK: - Computed properties
+
+    public var interactive: UIViewControllerInteractiveTransitioning? {
+        return self
+    }
+
+    public var percentDrivenInteractive: UIPercentDrivenInteractiveTransition? {
+        return nil
+    }
 
     // MARK: - Init
 
     public init(duration: TimeInterval,
-         completionSpeed: CGFloat,
-         completionCurve: UIView.AnimationCurve,
-         wantsInteractiveStart: Bool,
-         performAnimation: @escaping (UIViewControllerContextTransitioning) -> Void,
-         startInteractiveTransition: @escaping (UIViewControllerContextTransitioning) -> Void) {
+                completionSpeed: CGFloat,
+                completionCurve: UIView.AnimationCurve,
+                wantsInteractiveStart: Bool,
+                transition: @escaping (UIViewControllerContextTransitioning) -> Void) {
         self.duration = duration
         self.completionSpeed = completionSpeed
         self.completionCurve = completionCurve
         self.wantsInteractiveStart = wantsInteractiveStart
-        self.performAnimation = performAnimation
-        self.startInteractiveTransition = startInteractiveTransition
+        self.startInteractiveTransition = transition
+    }
+
+    public convenience init(completionSpeed: CGFloat = 1, completionCurve: UIView.AnimationCurve = .easeInOut, wantsInteractiveStart: Bool = true, transitionAnimation: StaticTransitionAnimation) {
+        self.init(
+            duration: transitionAnimation.duration,
+            completionSpeed: completionSpeed,
+            completionCurve: completionCurve,
+            wantsInteractiveStart: wantsInteractiveStart,
+            transition: transitionAnimation.performAnimation
+        )
     }
 
     // MARK: - Methods
@@ -41,7 +58,7 @@ public class InteractiveTransitionAnimation: NSObject, TransitionAnimation, UIVi
     }
 
     public func animateTransition(using transitionContext: UIViewControllerContextTransitioning) {
-        performAnimation(transitionContext)
+        startInteractiveTransition(transitionContext)
     }
 
     public func startInteractiveTransition(_ transitionContext: UIViewControllerContextTransitioning) {
@@ -49,4 +66,3 @@ public class InteractiveTransitionAnimation: NSObject, TransitionAnimation, UIVi
     }
 
 }
-

@@ -16,11 +16,14 @@ class TabBarAnimationDelegate: NSObject, UITabBarControllerDelegate {
     // MARK: - Overrides
 
     func tabBarController(_ tabBarController: UITabBarController, interactionControllerFor animationController: UIViewControllerAnimatedTransitioning) -> UIViewControllerInteractiveTransitioning? {
-        return animation?.presentationAnimation as? UIViewControllerInteractiveTransitioning
+        return (animationController as? TransitionAnimation)?.interactive
+            ?? animationController as? UIViewControllerInteractiveTransitioning
+            ?? delegate?.tabBarController?(tabBarController, interactionControllerFor: animationController)
     }
 
     func tabBarController(_ tabBarController: UITabBarController, animationControllerForTransitionFrom fromVC: UIViewController, to toVC: UIViewController) -> UIViewControllerAnimatedTransitioning? {
         return animation?.presentationAnimation
+            ?? delegate?.tabBarController?(tabBarController, animationControllerForTransitionFrom: fromVC, to: toVC)
     }
 
     func tabBarController(_ tabBarController: UITabBarController, didSelect viewController: UIViewController) {
@@ -35,20 +38,8 @@ class TabBarAnimationDelegate: NSObject, UITabBarControllerDelegate {
         delegate?.tabBarController?(tabBarController, willBeginCustomizing: viewControllers)
     }
 
-    func tabBarControllerSupportedInterfaceOrientations(_ tabBarController: UITabBarController) -> UIInterfaceOrientationMask {
-        return delegate?.tabBarControllerSupportedInterfaceOrientations?(tabBarController)
-            ?? tabBarController.selectedViewController?.supportedInterfaceOrientations
-            ?? .all
-    }
-
     func tabBarController(_ tabBarController: UITabBarController, didEndCustomizing viewControllers: [UIViewController], changed: Bool) {
         delegate?.tabBarController?(tabBarController, didEndCustomizing: viewControllers, changed: changed)
-    }
-
-    func tabBarControllerPreferredInterfaceOrientationForPresentation(_ tabBarController: UITabBarController) -> UIInterfaceOrientation {
-        return delegate?.tabBarControllerPreferredInterfaceOrientationForPresentation?(tabBarController)
-            ?? tabBarController.selectedViewController?.preferredInterfaceOrientationForPresentation
-            ?? UIApplication.shared.statusBarOrientation
     }
 
     func tabBarController(_ tabBarController: UITabBarController, willEndCustomizing viewControllers: [UIViewController], changed: Bool) {
@@ -59,9 +50,5 @@ class TabBarAnimationDelegate: NSObject, UITabBarControllerDelegate {
 extension UITabBarController {
     internal var animationDelegate: TabBarAnimationDelegate? {
         return delegate as? TabBarAnimationDelegate
-    }
-
-    public var coordinatorDelegate: UITabBarControllerDelegate? {
-        return animationDelegate?.delegate
     }
 }
