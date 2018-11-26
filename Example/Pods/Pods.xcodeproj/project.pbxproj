@@ -202,6 +202,8 @@
 		9B269D4B218393EB0060DD94 /* RedirectionRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B269D4A218393EB0060DD94 /* RedirectionRouter.swift */; };
 		9B2F8CFE2188A798005BFD2D /* DeepLinking.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B2F8CFD2188A798005BFD2D /* DeepLinking.swift */; };
 		9B88C25A21814E28006DE0D3 /* AnyCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B88C25921814E28006DE0D3 /* AnyCoordinator.swift */; };
+		9BD1EC8021AC3BB9002D13A9 /* TransitionAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BD1EC7F21AC3BB9002D13A9 /* TransitionAnimation.swift */; };
+		9BD1EC8221AC3D48002D13A9 /* PercentDrivenTransitionAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BD1EC8121AC3D48002D13A9 /* PercentDrivenTransitionAnimation.swift */; };
 		9BED793E21806DA7008A7B58 /* Animation+Navigation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BED793D21806DA7008A7B58 /* Animation+Navigation.swift */; };
 		9BED794021806DCF008A7B58 /* Animation+TabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BED793F21806DCF008A7B58 /* Animation+TabBar.swift */; };
 		9C0C92572F26ACA07353B2D0B0604508 /* DefaultIfEmpty.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2935B6CF5985726C2409D51079BBCD82 /* DefaultIfEmpty.swift */; };
@@ -309,7 +311,6 @@
 		EA83318AC4F3F71004CC94DF5090CC90 /* Multicast.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CF96B20B6F543F5A062CDE72AF427BA /* Multicast.swift */; };
 		EBA6EBF06F0F860ACCBDF812AFA0ABDC /* Driver+Subscription.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4982866DF7A4E1C6D43D61CE58E3C1BF /* Driver+Subscription.swift */; };
 		EBCD1AC66D2C3D9313B2215BDD4DF960 /* SchedulerServices+Emulation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76BD9D3F6556A912C1AA06B05FEC856B /* SchedulerServices+Emulation.swift */; };
-		EC59F13632832A0BE8AD94CE75DBB41D /* TransitionAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCE76BD97499CBB41BC9442B22714DDD /* TransitionAnimation.swift */; };
 		ED46CD5ED12F942FB7916788BD43940C /* RxSearchControllerDelegateProxy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B55575276D14DBC3748DBD7DD39CCEA /* RxSearchControllerDelegateProxy.swift */; };
 		EE6E5C93FF5B4F2CCC553FCE1890593C /* UIStepper+Rx.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B0C0B8CE731B4089C2AF10042802097 /* UIStepper+Rx.swift */; };
 		EE89B04384031097D61CB15EA1BF8313 /* TakeUntil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 881F447AB346AD32F338BE7A8CC3DD04 /* TakeUntil.swift */; };
@@ -662,6 +663,8 @@
 		9B55575276D14DBC3748DBD7DD39CCEA /* RxSearchControllerDelegateProxy.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = RxSearchControllerDelegateProxy.swift; path = RxCocoa/iOS/Proxies/RxSearchControllerDelegateProxy.swift; sourceTree = "<group>"; };
 		9B88C25921814E28006DE0D3 /* AnyCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AnyCoordinator.swift; path = XCoordinator/Classes/AnyCoordinator.swift; sourceTree = "<group>"; };
 		9BADF51F5453C30A274C32B2678B7C3F /* RxMutableBox.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = RxMutableBox.swift; path = RxSwift/RxMutableBox.swift; sourceTree = "<group>"; };
+		9BD1EC7F21AC3BB9002D13A9 /* TransitionAnimation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = TransitionAnimation.swift; path = XCoordinator/Classes/TransitionAnimation.swift; sourceTree = "<group>"; };
+		9BD1EC8121AC3D48002D13A9 /* PercentDrivenTransitionAnimation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = PercentDrivenTransitionAnimation.swift; path = XCoordinator/Classes/PercentDrivenTransitionAnimation.swift; sourceTree = "<group>"; };
 		9BED793D21806DA7008A7B58 /* Animation+Navigation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "Animation+Navigation.swift"; path = "XCoordinator/Classes/Animation+Navigation.swift"; sourceTree = "<group>"; };
 		9BED793F21806DCF008A7B58 /* Animation+TabBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "Animation+TabBar.swift"; path = "XCoordinator/Classes/Animation+TabBar.swift"; sourceTree = "<group>"; };
 		9C37A61A2C9751921AF6C5110DD6B767 /* ItemEvents.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ItemEvents.swift; path = RxCocoa/iOS/Events/ItemEvents.swift; sourceTree = "<group>"; };
@@ -746,7 +749,6 @@
 		DAE05BDE3AA0F1C289CD4EF6D7C78BFC /* RxSwift.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = RxSwift.xcconfig; sourceTree = "<group>"; };
 		DB9097EFE5E93E57FF8ED8FA7E1721BA /* AsyncSubject.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = AsyncSubject.swift; path = RxSwift/Subjects/AsyncSubject.swift; sourceTree = "<group>"; };
 		DC206F5DDF4FD20E92446CDD2CAFDC58 /* InfiniteSequence.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = InfiniteSequence.swift; path = Platform/DataStructures/InfiniteSequence.swift; sourceTree = "<group>"; };
-		DCE76BD97499CBB41BC9442B22714DDD /* TransitionAnimation.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = TransitionAnimation.swift; path = XCoordinator/Classes/TransitionAnimation.swift; sourceTree = "<group>"; };
 		DD678263D352F64BA7FF430EA58F498D /* Pods_XCoordinator_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_XCoordinator_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		DFC14871306214B9B0D77C29F81DAED1 /* ObservableType+Extensions.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "ObservableType+Extensions.swift"; path = "RxSwift/ObservableType+Extensions.swift"; sourceTree = "<group>"; };
 		E0EA1B5A7DD474B0C4438F23E7621ABD /* ImmediateSchedulerType.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ImmediateSchedulerType.swift; path = RxSwift/ImmediateSchedulerType.swift; sourceTree = "<group>"; };
@@ -1352,7 +1354,9 @@
 				A74717B0C24D7BB02D2DF577A05214C0 /* PageCoordinator.swift */,
 				9B2F8CFD2188A798005BFD2D /* DeepLinking.swift */,
 				564424E503AF4F1B2034E106B68197D7 /* PageTransition.swift */,
+				9BD1EC8121AC3D48002D13A9 /* PercentDrivenTransitionAnimation.swift */,
 				741292AA31211A37F9CCC625CEBC74DE /* Presentable.swift */,
+				9BD1EC7F21AC3BB9002D13A9 /* TransitionAnimation.swift */,
 				9B269D4A218393EB0060DD94 /* RedirectionRouter.swift */,
 				77D3A3798E41D7E548C4144BCF529F8F /* ReferenceBox.swift */,
 				9992C8E93275BC06FBF5FC27181FC927 /* Route.swift */,
@@ -1364,7 +1368,6 @@
 				87CDCEA8488BA25D55325C2EB22E4984 /* TabBarTransition.swift */,
 				55A33BEDDCE94E64C2F558F642199326 /* Transition.swift */,
 				6D5270F360F4C39BBD1B1496F00F15D7 /* Transition+Init.swift */,
-				DCE76BD97499CBB41BC9442B22714DDD /* TransitionAnimation.swift */,
 				45AAEC37DBCB977E4CCAF5E8312F304B /* TransitionOptions.swift */,
 				07C27AE3B27DE775757BDA9778A199CD /* TransitionPerformer.swift */,
 				AC59A6C2F75EA1FFF68BED30D6E9B5DF /* TransitionPerformer+Navigation.swift */,
@@ -1911,6 +1914,7 @@
 				56234C555161F0B4E1AE7B0E18C80227 /* AnyRouter.swift in Sources */,
 				9B2F8CFE2188A798005BFD2D /* DeepLinking.swift in Sources */,
 				B5E2329B19E9AAFCBCFABDCAF7DD930B /* AnyTransitionPerformer.swift in Sources */,
+				9BD1EC8221AC3D48002D13A9 /* PercentDrivenTransitionAnimation.swift in Sources */,
 				15BC4FB6FDE0FD71D24D0D381835C73F /* BaseCoordinator.swift in Sources */,
 				51F4B265E741B11AB7556D76CD80C575 /* BasicCoordinator.swift in Sources */,
 				DC8D291346190C672EB543FCA95BCE99 /* Container.swift in Sources */,
@@ -1936,9 +1940,9 @@
 				9BED794021806DCF008A7B58 /* Animation+TabBar.swift in Sources */,
 				650B62DF7CB49D8A0C1592945DBEEA12 /* Transition+Init.swift in Sources */,
 				CE7FFC317E8D65D826760AD7144985BD /* Transition.swift in Sources */,
-				EC59F13632832A0BE8AD94CE75DBB41D /* TransitionAnimation.swift in Sources */,
 				C217C47E0B3BDC3A19BAF824776EC4CE /* TransitionOptions.swift in Sources */,
 				40AFA4FE09141165C20EA48EDCC154F4 /* TransitionPerformer+Navigation.swift in Sources */,
+				9BD1EC8021AC3BB9002D13A9 /* TransitionAnimation.swift in Sources */,
 				DE2269AFEF008D268DC2C4D51B1A6C38 /* TransitionPerformer+Page.swift in Sources */,
 				D285307A434AE3B6B6CE05E7E6D2DF8F /* TransitionPerformer+Split.swift in Sources */,
 				AD3FA631F652044B83D7D3F92765F619 /* TransitionPerformer+TabBar.swift in Sources */,

@@ -8,53 +8,82 @@
 
 import XCTest
 @testable import XCoordinator
+import RxSwift
 
 class TransitionTests: XCTestCase {
+
+    // MARK: - Stored properties
+
     let window = UIWindow()
 
-    func testCompletionsCalled() {
-        let presentable = UIViewController()
-        testCompletionBlockCalled(for: UIViewController.self, including: [])
-        testCompletionBlockCalled(for: UINavigationController.self, including: [
-            .push(presentable),
-            .pop(),
-            .popToRoot()
-        ])
-        testCompletionBlockCalled(for: UIPageViewController.self, including: [
-            .set(presentable, direction: .forward)
-        ])
-        testCompletionBlockCalled(for: UITabBarController.self, including: [
-            .multiple(.set([presentable]), .select(presentable)),
-            .multiple(.set([presentable]), .select(index: 0)),
-        ])
+    // MARK: - Tests
+
+    func testPageCoordinator() {
+        let pages = [UIViewController(), UIViewController(), UIViewController()]
+        let coordinator = PageCoordinator<TestRoute>(pages: pages)
+        coordinator.setRoot(for: window)
+        testStandardTransitions(on: coordinator)
+        testCompletionCalled(on: coordinator, transition: .set(pages[0], direction: .forward))
+        coordinator.rootViewController.isDoubleSided = true
+        testCompletionCalled(on: coordinator, transition: .set(pages[1], pages[2], direction: .forward))
     }
 
-    func testCompletionBlockCalled<V: UIViewController>(for type: V.Type, including: [Transition<V>]) {
-        let containerVC = UIViewController()
-        containerVC.loadViewIfNeeded()
-        let container = containerVC.view!
-        let presentable = UIViewController()
-        testCompletionCalled(transitionTypes: [
-            .none(),
-            .multiple(.present(presentable), .dismiss()),
-            .embed(presentable, in: container),
-            .multiple(.none()),
-            .multiple()
-        ] + including)
+    func testSplitCoordinator() {
+        let coordinator = SplitCoordinator<TestRoute>(master: UIViewController(), detail: UIViewController())
+        coordinator.setRoot(for: window)
+        testStandardTransitions(on: coordinator)
+        testCompletionCalled(on: coordinator, transition: .multiple(.show(UIViewController()), .showDetail(UIViewController())))
     }
 
-    func testCompletionCalled<V: UIViewController>(transitionTypes: [Transition<V>]) {
-        for (index, transition) in transitionTypes.enumerated() { // registerPeek does not call completion unless triggered
-            let coordinator = BasicCoordinator<TestRoute, Transition<V>> { _ in .none() }
-            coordinator.setRoot(for: window)
-            let exp = expectation(description: "\(transition)")
+    func testTabBarCoordinator() {
+        let tabs0 = [UIViewController(), UIViewController()]
+        let coordinator = TabBarCoordinator<TestRoute>(tabs: tabs0)
+        coordinator.setRoot(for: window)
+        testStandardTransitions(on: coordinator)
+        let tabs1 = [UIViewController(), UIViewController()]
+        testCompletionCalled(on: coordinator, transition: .multiple(.set(tabs1), .select(tabs1[1])))
+        testCompletionCalled(on: coordinator, transition: .multiple(.set(tabs0), .select(index: 1)))
+    }
+
+    func testViewCoordinator() {
+        let coordinator = ViewCoordinator<TestRoute>(root: UIViewController())
+        coordinator.setRoot(for: window)
+        testStandardTransitions(on: coordinator)
+    }
+
+    func testNavigationCoordinator() {
+        let coordinator = NavigationCoordinator<TestRoute>(root: UIViewController())
+        coordinator.setRoot(for: window)
+        testStandardTransitions(on: coordinator)
+        testCompletionCalled(on: coordinator, transition: .push(UIViewController()))
+        testCompletionCalled(on: coordinator, transition: .pop())
+        testCompletionCalled(on: coordinator, transition: .push(UIViewController()))
+        testCompletionCalled(on: coordinator, transition: .popToRoot())
+
+        let viewControllers = [UIViewController(), UIViewController()]
+        testCompletionCalled(on: coordinator, transition: .set(viewControllers))
+        testCompletionCalled(on: coordinator, transition: .pop(to: viewControllers[0]))
+
+    }
+
+    // MARK: - Helpers
+
+    private func testStandardTransitions<C: Coordinator>(on coordinator: C) {
+        testCompletionCalled(on: coordinator, transition: .none())
+        testCompletionCalled(on: coordinator, transition: .present(UIViewController(), animation: nil))
+        testCompletionCalled(on: coordinator, transition: .dismiss(animation: nil))
+        testCompletionCalled(on: coordinator, transition: .embed(UIViewController(), in: UIViewController()))
+        testCompletionCalled(on: coordinator, transition: .multiple(.none()))
+        testCompletionCalled(on: coordinator, transition: .multiple())
+    }
+
+    private func testCompletionCalled<C: Coordinator>(on coordinator: C, transition: C.TransitionType) {
+        let exp = expectation(description: "\(Date().timeIntervalSince1970)")
+        DispatchQueue.main.async {
             coordinator.performTransition(transition, with: .default) {
                 exp.fulfill()
             }
-            waitForExpectations(timeout: 0.5) { err in
-                guard let error = err else { return }
-                print(error, transition, index)
-            }
         }
+        wait(for: [exp], timeout: 3)
     }
 }
