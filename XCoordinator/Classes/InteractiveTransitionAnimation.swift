@@ -19,11 +19,7 @@ public class InteractiveTransitionAnimation: NSObject, TransitionAnimation, UIVi
 
     // MARK: - Computed properties
 
-    public var interactive: UIViewControllerInteractiveTransitioning? {
-        return self
-    }
-
-    public var percentDrivenInteractive: UIPercentDrivenInteractiveTransition? {
+    public var percentDrivenTransition: UIPercentDrivenInteractiveTransition? {
         return nil
     }
 

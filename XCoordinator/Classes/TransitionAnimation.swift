@@ -9,18 +9,18 @@
 import Foundation
 
 public protocol TransitionAnimation: UIViewControllerAnimatedTransitioning {
-    var interactive: UIViewControllerInteractiveTransitioning? { get }
-    var percentDrivenInteractive: UIPercentDrivenInteractiveTransition? { get }
+    var interactionController: UIViewControllerInteractiveTransitioning? { get }
+    var percentDrivenTransition: UIPercentDrivenInteractiveTransition? { get }
 }
 
 extension TransitionAnimation where Self: UIViewControllerInteractiveTransitioning {
-    public var interactive: UIViewControllerInteractiveTransitioning? {
+    public var interactionController: UIViewControllerInteractiveTransitioning? {
         return self
     }
 }
 
 extension TransitionAnimation where Self: UIPercentDrivenInteractiveTransition {
-    public var percentDrivenInteractive: UIPercentDrivenInteractiveTransition? {
+    public var percentDrivenTransition: UIPercentDrivenInteractiveTransition? {
         return self
     }
 }

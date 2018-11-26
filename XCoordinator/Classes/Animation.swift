@@ -43,11 +43,11 @@ open class Animation: NSObject, UIViewControllerTransitioningDelegate {
     }
 
     public func interactionControllerForPresentation(using animator: UIViewControllerAnimatedTransitioning) -> UIViewControllerInteractiveTransitioning? {
-        return presentationAnimation?.interactive
+        return presentationAnimation?.interactionController
     }
 
     public func interactionControllerForDismissal(using animator: UIViewControllerAnimatedTransitioning) -> UIViewControllerInteractiveTransitioning? {
-        return dismissalAnimation?.interactive
+        return dismissalAnimation?.interactionController
     }
 
     internal func setup(for viewController: UIViewController) {
@@ -62,7 +62,7 @@ open class Animation: NSObject, UIViewControllerTransitioningDelegate {
         guard let viewController = self.viewController,
             let navigationController = viewController.navigationController,
             let recognizer = recognizer as? UIScreenEdgePanGestureRecognizer,
-            let animation = dismissalAnimation?.percentDrivenInteractive else {
+            let animation = dismissalAnimation?.percentDrivenTransition else {
                 return
         }
 

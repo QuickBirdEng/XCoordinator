@@ -16,7 +16,7 @@ class TabBarAnimationDelegate: NSObject, UITabBarControllerDelegate {
     // MARK: - Overrides
 
     func tabBarController(_ tabBarController: UITabBarController, interactionControllerFor animationController: UIViewControllerAnimatedTransitioning) -> UIViewControllerInteractiveTransitioning? {
-        return (animationController as? TransitionAnimation)?.interactive
+        return (animationController as? TransitionAnimation)?.interactionController
             ?? animationController as? UIViewControllerInteractiveTransitioning
             ?? delegate?.tabBarController?(tabBarController, interactionControllerFor: animationController)
     }

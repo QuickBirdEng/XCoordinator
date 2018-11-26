@@ -15,11 +15,11 @@ open class StaticTransitionAnimation: NSObject, TransitionAnimation {
 
     // MARK: - Computed properties
 
-    public var interactive: UIViewControllerInteractiveTransitioning? {
+    public var interactionController: UIViewControllerInteractiveTransitioning? {
         return self as? UIViewControllerInteractiveTransitioning
     }
 
-    public var percentDrivenInteractive: UIPercentDrivenInteractiveTransition? {
+    public var percentDrivenTransition: UIPercentDrivenInteractiveTransition? {
         return nil
     }
 
