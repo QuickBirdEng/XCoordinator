@@ -12,30 +12,39 @@ import XCoordinator
 enum AppRoute: Route {
     case login
     case home
-    case deep
+    case newsDetail(News)
 }
 
 class AppCoordinator: NavigationCoordinator<AppRoute> {
+
+    // MARK: - Init
 
     init() {
         super.init(initialRoute: .login)
     }
 
-    var homeRouter: AnyRouter<HomeRoute>!
+    // MARK: - Overrides
 
     override func prepareTransition(for route: AppRoute) -> NavigationTransition {
         switch route {
         case .login:
             var vc = LoginViewController.instantiateFromNib()
-            let viewModel = LoginViewModelImpl(coordinator: anyRouter)
+            let viewModel = LoginViewModelImpl(router: anyRouter)
             vc.bind(to: viewModel)
             return .push(vc)
         case .home:
-            self.homeRouter = HomePageCoordinator().anyRouter
-            let animation = Animation(presentationAnimation: StaticTransitionAnimation.flippingPresentation, dismissalAnimation: nil)
-            return .present(homeRouter, animation: animation)
-        case .deep:
-            return deepLink(.login, AppRoute.home, HomeRoute.news)
+            return .present(HomeTabCoordinator(), animation: .staticFade)
+        case .newsDetail(let news):
+            return deepLink(.home, HomeRoute.news, NewsRoute.newsDetail(news))
         }
+    }
+
+    // MARK: - Methods
+
+    func notificationReceived() {
+        guard let news = MockNewsService().mostRecentNews().articles.first else {
+            return
+        }
+        self.trigger(.newsDetail(news))
     }
 }
