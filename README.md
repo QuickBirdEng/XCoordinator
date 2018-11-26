@@ -38,11 +38,11 @@ class HomeCoordinator: NavigationCoordinator<HomeRoute> {
     override func prepareTransition(for route: HomeRoute) -> NavigationTransition {
         switch route {
         case .home:
-            let viewModel = HomeViewModel(coordinator: anyCoordinator)
+            let viewModel = HomeViewModel(router: anyRouter)
             let viewController = HomeViewController(viewModel: viewModel)
             return .push(viewController)
         case .users:
-            let viewModel = UsersViewModel(coordinator: anyCoordinator)
+            let viewModel = UsersViewModel(router: anyRouter)
             let viewController = UsersViewController(viewModel: viewModel)
             return .push(viewController)
         case .logout:
@@ -58,10 +58,10 @@ To use coordinators right from the launch of the app, make sure to create the ap
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
     let window: UIWindow! = UIWindow()
-    let coordinator = AppCoordinator().anyCoordinator
+    let router = AppCoordinator().anyRouter
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
-        coordinator.setRoot(for: window)
+        router.setRoot(for: window)
         return true
     }
 }
