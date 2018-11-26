@@ -88,7 +88,7 @@ class HomeViewModel {
 
 ## 🤸‍♂️ Extras
 
-For more advanced use, XCoordinator offers many more customization options. In the following, we will introduce custom animated transitions and deep linking.
+For more advanced use, XCoordinator offers many more customization options. In the following, we will introduce custom animated transitions and deep linking. Furthermore, extensions for use in reactive programming with RxSwift is introduced.
 
 ### Custom Transitions
 
@@ -135,6 +135,34 @@ class AppCoordinator: NavigationCoordinator<AppRoute> {
 ```
 
 ⚠️ DeepLinking does not check, whether it can be executed at compile-time. Rather it uses assertionFailures to inform about incorrect chaining, when it cannot find an appriopriate router for a given route. Keep this in mind when changing the structure of your app.
+
+### RxSwift extensions
+
+Reactive programming can be very useful to keep the state of View and Model consistent in a MVVM architecture. Instead of relying on the completion handler of the `trigger` method available in any `Router`, you can also use our RxSwift-extension. In the following example, we show how the trigger-extension can be used inside CocoaActions as developed in the Action-framework. As can be seen in the Example-application, on tap of the Login-button the loginAction is triggered, which in itself triggers its router to perform the `AppRoute.home` route.
+
+```swift
+class LoginViewModelImpl: LoginViewModel, LoginViewModelInput, LoginViewModelOutput {
+
+    private let router: AnyRouter<AppRoute>
+
+    private lazy var loginAction = CocoaAction { [unowned self] in
+        return self.router.rx.trigger(.home)
+    }
+
+    /* ... */
+}
+
+```
+
+In addition to the above-mentioned approach, the reactive `trigger`-extension can also be used to sequence different transitions by using the `flatMap`-operator, as can be seen in the following:
+
+```swift
+let doneWithBothTransitions = 
+    router.rx.trigger(.home)
+        .flatMap { [unowned self] in self.router.rx.trigger(.news) }
+        .map { true }
+        .startWith(false)
+```
 
 ## 🎭 Example
 Check out this [repository](https://github.com/quickbirdstudios/XCoordinator/tree/master/XCoordinator-Example/XCoordinator-Example) as an example project using XCoordinator.
@@ -195,6 +223,12 @@ To integrate XCoordinator into your Xcode project using CocoaPods, add this to y
 
 ```ruby
 pod 'XCoordinator', '~> 1.0'
+```
+
+To use the RxSwift extensions, add this to your `Podfile`:
+
+```ruby
+pod 'XCoordinator/RxSwift', '~> 1.0'
 ```
 
 ### Carthage
