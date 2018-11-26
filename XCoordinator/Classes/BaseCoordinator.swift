@@ -14,8 +14,6 @@ open class BaseCoordinator<RouteType: Route, TransitionType: TransitionProtocol>
 
     // MARK: - Stored properties
 
-    public internal(set) var context: UIViewController?
-
     private let rootVCReferenceBox = ReferenceBox<RootViewController>()
     private var windowAppearanceObserver: Any?
 
@@ -50,8 +48,6 @@ open class BaseCoordinator<RouteType: Route, TransitionType: TransitionProtocol>
     // MARK: - Open methods
 
     open func presented(from presentable: Presentable?) {
-        context = presentable?.viewController
-
         DispatchQueue.main.async {
             self.rootVCReferenceBox.releaseStrongReference()
         }
@@ -73,7 +69,7 @@ open class BaseCoordinator<RouteType: Route, TransitionType: TransitionProtocol>
         }
 
         rootViewController.beginAppearanceTransition(true, animated: false)
-        windowAppearanceObserver = NotificationCenter.default.addObserver(forName: UIWindow.didBecomeKeyNotification, object: nil, queue: .main) { [weak self] notifcation in
+        windowAppearanceObserver = NotificationCenter.default.addObserver(forName: UIWindow.didBecomeKeyNotification, object: nil, queue: .main) { [weak self] _ in
             self?.removeWindowObserver()
             self?.performTransition(transition, with: TransitionOptions(animated: false), completion: completion)
             self?.rootViewController.endAppearanceTransition()

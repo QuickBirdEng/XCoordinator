@@ -8,15 +8,12 @@
 import RxSwift
 
 public extension Router {
-
     public var rx: Reactive<Self> {
         return Reactive(self)
     }
-
 }
 
 extension Reactive where Base: Router {
-
     public func trigger(_ route: Base.RouteType, with options: TransitionOptions) -> Observable<Void> {
         return Observable.create { observer -> Disposable in
             self.base.trigger(route, with: options) {
@@ -31,7 +28,6 @@ extension Reactive where Base: Router {
     // MARK: Convenience methods
 
     public func trigger(_ route: Base.RouteType) -> Observable<Void> {
-        return trigger(route, with: TransitionOptions.default)
+        return trigger(route, with: .default)
     }
-
 }

@@ -17,8 +17,8 @@ public protocol Presentable {
 extension Presentable {
     public func setRoot(for window: UIWindow) {
         window.rootViewController = viewController
-        presented(from: window)
         window.makeKeyAndVisible()
+        presented(from: window)
     }
 
     public func router<R: Route>(for route: R) -> AnyRouter<R>? {

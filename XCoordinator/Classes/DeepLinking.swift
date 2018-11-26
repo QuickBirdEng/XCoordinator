@@ -33,12 +33,7 @@ extension Transition {
                 return
             }
 
-            guard let nextRoute = remainingRoutes.first else {
-                completion?()
-                return
-            }
-
-            nextRoute.trigger(on: [coordinator], remainingRoutes: remainingRoutes.dropFirst(), with: options, completion: completion)
+            route.trigger(on: [coordinator], remainingRoutes: ArraySlice(remainingRoutes), with: options, completion: completion)
         }
     }
 }
@@ -54,7 +49,7 @@ extension Route {
         return nil
     }
 
-    func trigger(on presentables: [Presentable], remainingRoutes: ArraySlice<Route>, with options: TransitionOptions, completion: PresentationHandler?) {
+    fileprivate func trigger(on presentables: [Presentable], remainingRoutes: ArraySlice<Route>, with options: TransitionOptions, completion: PresentationHandler?) {
         var stack = presentables
 
         guard let router = router(fromStack: &stack) else {
