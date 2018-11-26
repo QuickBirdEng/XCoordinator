@@ -14,9 +14,7 @@ protocol NewsDetailViewModelInput {
 }
 
 protocol NewsDetailViewModelOutput {
-    var title: Observable<String> { get }
-    var image: Observable<UIImage?> { get }
-    var content: Observable<String> { get }
+    var news: Observable<News> { get }
 }
 
 protocol NewsDetailViewModel {

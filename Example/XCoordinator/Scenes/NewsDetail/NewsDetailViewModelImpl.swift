@@ -12,22 +12,14 @@ import Action
 
 class NewsDetailViewModelImpl: NewsDetailViewModel, NewsDetailViewModelInput, NewsDetailViewModelOutput {
 
-    // MARK: - Inputs
-
     // MARK: - Outputs
 
-    let title: Observable<String>
-    let image: Observable<UIImage?>
-    let content: Observable<String>
-
-    // MARK: - Private
+    let news: Observable<News>
 
     // MARK: - Init
 
     init(news: News) {
-        self.title = .just(news.title)
-        self.content = .just(news.content)
-        self.image = .just(news.image)
+        self.news = .just(news)
     }
 
 }

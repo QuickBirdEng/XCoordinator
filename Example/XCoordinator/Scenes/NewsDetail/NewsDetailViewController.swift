@@ -11,12 +11,15 @@ import RxSwift
 import RxCocoa
 
 class NewsDetailViewController: UIViewController, BindableType {
-
     var viewModel: NewsDetailViewModel!
+
+    // MARK: - Views
 
     @IBOutlet private var imageView: UIImageView!
     @IBOutlet private var titleLabel: UILabel!
     @IBOutlet private var contentTextView: UITextView!
+
+    // MARK: - Stored properties
 
     private let disposeBag = DisposeBag()
 
@@ -30,17 +33,19 @@ class NewsDetailViewController: UIViewController, BindableType {
     // MARK: - BindableType
 
     func bindViewModel() {
-        viewModel.output.title
+        viewModel.output.news
+            .map { $0.title + "\n" + $0.subtitle }
             .bind(to: titleLabel.rx.text)
             .disposed(by: disposeBag)
 
-        viewModel.output.content
+        viewModel.output.news
+            .map { $0.content }
             .bind(to: contentTextView.rx.text)
             .disposed(by: disposeBag)
 
-        viewModel.output.image
+        viewModel.output.news
+            .map { $0.image }
             .bind(to: imageView.rx.image)
             .disposed(by: disposeBag)
     }
-
 }
