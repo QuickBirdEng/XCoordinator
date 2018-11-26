@@ -7,7 +7,10 @@
 //
 
 extension TransitionPerformer where TransitionType.RootViewController: UITabBarController {
-    func set(_ viewControllers: [UIViewController], with options: TransitionOptions, completion: PresentationHandler?) {
+    func set(_ viewControllers: [UIViewController], with options: TransitionOptions, animation: Animation?, completion: PresentationHandler?) {
+
+        rootViewController.animationDelegate?.animation = animation
+        assert(animation == nil || rootViewController.animationDelegate != nil)
 
         CATransaction.begin()
         CATransaction.setCompletionBlock(completion)
@@ -19,36 +22,26 @@ extension TransitionPerformer where TransitionType.RootViewController: UITabBarC
 
     func select(_ viewController: UIViewController, with options: TransitionOptions, animation: Animation?, completion: PresentationHandler?) {
 
-        CATransaction.begin()
-        CATransaction.setCompletionBlock {
-            CATransaction.begin()
-            CATransaction.setCompletionBlock(completion)
-
-            self.rootViewController.selectedViewController = viewController
-
-            CATransaction.commit()
-        }
-
         rootViewController.animationDelegate?.animation = animation
         assert(animation == nil || rootViewController.animationDelegate != nil)
+
+        CATransaction.begin()
+        CATransaction.setCompletionBlock(completion)
+
+        self.rootViewController.selectedViewController = viewController
 
         CATransaction.commit()
     }
 
     func select(index: Int, with options: TransitionOptions, animation: Animation?, completion: PresentationHandler?) {
 
-        CATransaction.begin()
-        CATransaction.setCompletionBlock {
-            CATransaction.begin()
-            CATransaction.setCompletionBlock(completion)
-
-            self.rootViewController.selectedIndex = index
-
-            CATransaction.commit()
-        }
-
         rootViewController.animationDelegate?.animation = animation
         assert(animation == nil || rootViewController.animationDelegate != nil)
+
+        CATransaction.begin()
+        CATransaction.setCompletionBlock(completion)
+
+        self.rootViewController.selectedIndex = index
 
         CATransaction.commit()
     }

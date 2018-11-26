@@ -42,6 +42,7 @@ class AnimationTests: XCTestCase {
         testStandardAnimationsCalled(on: coordinator)
         testStaticAnimationCalled(on: coordinator, transition: { .select(tabs[1], animation: $0) })
         testStaticAnimationCalled(on: coordinator, transition: { .select(index: 2, animation: $0) })
+        testStaticAnimationCalled(on: coordinator, transition: { .set([UIViewController(), UIViewController()], animation: $0) })
     }
 
     func testNavigationCoordinator() {
