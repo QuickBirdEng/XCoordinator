@@ -24,31 +24,7 @@ protocol UsersViewModel {
     var output: UsersViewModelOutput { get }
 }
 
-class UsersViewModelImpl: UsersViewModel, UsersViewModelInput, UsersViewModelOutput {
-
+extension UsersViewModel where Self: UsersViewModelInput & UsersViewModelOutput {
     var input: UsersViewModelInput { return self }
     var output: UsersViewModelOutput { return self }
-
-    // MARK: - Inputs
-    lazy var showUserTrigger: InputSubject<String> = showUserAction.inputs
-
-    // MARK: - Outputs
-    var usernames: Observable<[String]> = .just([
-        "Joan", "Stefan", "Malte", "Sebi", "Patrick", "Julian", "Quirin", "Paul"
-    ])
-
-    // MARK: - Private
-    private let coordinator: AnyRouter<UserListRoute>
-
-    private lazy var showUserAction = Action<String, Void> { [weak self] username in
-        guard let `self` = self else { return .empty() }
-        return self.coordinator.rx.trigger(.user(username))
-    }
-
-    // MARK: - Init
-
-    init(coordinator: AnyRouter<UserListRoute>) {
-        self.coordinator = coordinator
-    }
-
 }

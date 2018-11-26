@@ -10,8 +10,12 @@ import XCoordinator
 
 class HomeSplitCoordinator: SplitCoordinator<HomeRoute> {
 
+    // MARK: - Stored properties
+
     let newsRouter: AnyRouter<NewsRoute>
     let userListRouter: AnyRouter<UserListRoute>
+
+    // MARK: - Init
 
     init(newsRouter: AnyRouter<NewsRoute> = NewsCoordinator().anyRouter,
          userListRouter: AnyRouter<UserListRoute> = UserListCoordinator().anyRouter) {

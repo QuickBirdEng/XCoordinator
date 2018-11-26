@@ -10,9 +10,31 @@
 import UIKit
 import XCoordinator
 
-extension StaticTransitionAnimation {
-    private static let defaultAnimationDuration = 0.35
+private let defaultAnimationDuration: TimeInterval = 0.35
 
+extension Animation {
+    static let staticFlip = Animation(
+        presentation: StaticTransitionAnimation.flipPresentation,
+        dismissal: StaticTransitionAnimation.flipPresentation
+    )
+
+    static let interactiveFlip = Animation(
+        presentation: InteractiveTransitionAnimation.flipPresentation,
+        dismissal: InteractiveTransitionAnimation.flipPresentation
+    )
+
+    static let staticFade = Animation(
+        presentation: StaticTransitionAnimation.fadePresentation,
+        dismissal: StaticTransitionAnimation.fadePresentation
+    )
+
+    static let interactiveFade = Animation(
+        presentation: InteractiveTransitionAnimation.fadePresentation,
+        dismissal: InteractiveTransitionAnimation.fadePresentation
+    )
+}
+
+extension StaticTransitionAnimation {
     static let fadePresentation = StaticTransitionAnimation(duration: defaultAnimationDuration, performAnimation: { transitionContext in
         let containerView = transitionContext.containerView
         let toView = transitionContext.view(forKey: .to)!
@@ -27,7 +49,7 @@ extension StaticTransitionAnimation {
         })
     })
 
-    static let flippingPresentation = StaticTransitionAnimation(duration: defaultAnimationDuration, performAnimation: { transitionContext in
+    static let flipPresentation = StaticTransitionAnimation(duration: defaultAnimationDuration, performAnimation: { transitionContext in
         let containerView = transitionContext.containerView
         let toView = transitionContext.view(forKey: .to)!
 
@@ -41,6 +63,9 @@ extension StaticTransitionAnimation {
             transitionContext.completeTransition(true)
         })
     })
+}
 
-    static let interactiveFlippingPresentation = InteractiveTransitionAnimation(duration: defaultAnimationDuration, completionSpeed: 1, completionCurve: .easeInOut, wantsInteractiveStart: true, performAnimation: flippingPresentation.performAnimation, startInteractiveTransition: flippingPresentation.performAnimation)
+extension InteractiveTransitionAnimation {
+    static let fadePresentation = InteractiveTransitionAnimation(completionSpeed: 1, completionCurve: .easeInOut, wantsInteractiveStart: false, transitionAnimation: StaticTransitionAnimation.fadePresentation)
+    static let flipPresentation = InteractiveTransitionAnimation(completionSpeed: 1, completionCurve: .easeInOut, wantsInteractiveStart: false, transitionAnimation: StaticTransitionAnimation.flipPresentation)
 }

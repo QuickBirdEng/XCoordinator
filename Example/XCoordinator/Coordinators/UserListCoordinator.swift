@@ -12,34 +12,37 @@ enum UserListRoute: Route {
     case home
     case users
     case user(String)
-    case registerUserPeek(from: Container)
+    case registerUsersPeek(from: Container)
     case logout
 }
 
 class UserListCoordinator: NavigationCoordinator<UserListRoute> {
+
+    // MARK: - Init
     
     init() {
         super.init(initialRoute: .home)
     }
 
+    // MARK: - Overrides
+
     override func prepareTransition(for route: UserListRoute) -> NavigationTransition {
         switch route {
         case .home:
             var vc = HomeViewController.instantiateFromNib()
-            let vm = HomeViewModelImpl(coodinator: anyRouter)
+            let vm = HomeViewModelImpl(router: anyRouter)
             vc.bind(to: vm)
             return .push(vc)
         case .users:
-            let animation = Animation(presentationAnimation: StaticTransitionAnimation.flippingPresentation, dismissalAnimation: nil)
             var vc = UsersViewController.instantiateFromNib()
-            let vm = UsersViewModelImpl(coordinator: anyRouter)
+            let vm = UsersViewModelImpl(router: anyRouter)
             vc.bind(to: vm)
-            return .push(vc, animation: animation)
+            return .push(vc, animation: .staticFlip)
         case .user(let username):
             let coordinator = UserCoordinator(user: username)
-            return .present(coordinator)
-        case .registerUserPeek(let source):
-            return .registerPeek(for: source, route: .user("Test"), coordinator: self)
+            return .present(coordinator, animation: .default)
+        case .registerUsersPeek(let source):
+            return registerPeek(for: source, route: .users)
         case .logout:
             return .dismiss()
         }

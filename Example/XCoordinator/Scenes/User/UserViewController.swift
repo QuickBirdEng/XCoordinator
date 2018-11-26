@@ -11,15 +11,18 @@ import RxSwift
 import RxCocoa
 
 class UserViewController: UIViewController, BindableType {
-
     var viewModel: UserViewModel!
 
-    @IBOutlet var username: UILabel!
-    @IBOutlet var showAlertButton: UIButton!
+    // MARK: - Views
+
+    @IBOutlet private var username: UILabel!
+    @IBOutlet private var showAlertButton: UIButton!
+    private var closeBarButtonItem: UIBarButtonItem!
+
+    // MARK: - Stored properties
 
     private let disposeBag = DisposeBag()
-    private var closeBarButtonItem: UIBarButtonItem!
-    
+
     // MARK: - Init
 
     override func viewDidLoad() {
@@ -44,9 +47,10 @@ class UserViewController: UIViewController, BindableType {
             .disposed(by: disposeBag)
     }
 
+    // MARK: - Helpers
+
     private func configureNavBar() {
         closeBarButtonItem = UIBarButtonItem(title: "Close", style: .plain, target: self, action: nil)
         navigationItem.leftBarButtonItem = closeBarButtonItem
     }
-  
 }

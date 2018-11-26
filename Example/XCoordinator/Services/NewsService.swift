@@ -16,7 +16,7 @@ struct News {
 }
 
 protocol NewsService {
-    func mostRecentNews() -> Observable<(title: String, articles: [News])>
+    func mostRecentNews() -> (title: String, articles: [News])
 }
 
 class MockNewsService: NewsService {
@@ -30,8 +30,8 @@ class MockNewsService: NewsService {
         News(title: "Example article 6", subtitle: "Sebastian", image: UIImage.from(color: .white, size: CGSize(width: 44, height: 44)), content: loremIpsum)
     ]
 
-    func mostRecentNews() -> Observable<(title: String, articles: [News])> {
-        return .just((title: "QuickBird Studios Blog", articles: mockNews))
+    func mostRecentNews() -> (title: String, articles: [News]) {
+        return (title: "QuickBird Studios Blog", articles: mockNews)
     }
 }
 

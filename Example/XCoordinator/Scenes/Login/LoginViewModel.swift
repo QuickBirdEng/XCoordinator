@@ -22,26 +22,7 @@ protocol LoginViewModel {
     var output: LoginViewModelOutput { get }
 }
 
-class LoginViewModelImpl: LoginViewModel, LoginViewModelInput, LoginViewModelOutput {
-
+extension LoginViewModel where Self: LoginViewModelInput & LoginViewModelOutput {
     var input: LoginViewModelInput { return self }
     var output: LoginViewModelOutput { return self }
-
-    // MARK: - Inputs
-    lazy var loginTrigger: InputSubject<Void> = loginAction.inputs
-
-    // MARK: - Private
-    private let coordinator: AnyRouter<AppRoute>
-
-    private lazy var loginAction = CocoaAction { [weak self] in
-        guard let `self` = self else { return .empty() }
-        return self.coordinator.rx.trigger(.home)
-    }
-
-    // MARK: - Init
-
-    init(coordinator: AnyRouter<AppRoute>) {
-        self.coordinator = coordinator
-    }
-
 }

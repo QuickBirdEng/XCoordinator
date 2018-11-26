@@ -11,15 +11,18 @@ import RxSwift
 import RxCocoa
 
 class NewsViewController: UIViewController, BindableType {
-
     var viewModel: NewsViewModel!
 
+    // MARK: - Views
+
     @IBOutlet var tableView: UITableView!
+
+    // MARK: - Stored properties
 
     private let disposeBag = DisposeBag()
     private let tableViewCellIdentifier = String(describing: DetailTableViewCell.self)
 
-    // MARK: - Init
+    // MARK: - Overrides
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -36,6 +39,7 @@ class NewsViewController: UIViewController, BindableType {
                 cell.textLabel?.text = model.title
                 cell.detailTextLabel?.text = model.subtitle
                 cell.imageView?.image = model.image
+                cell.selectionStyle = .none
             }
             .disposed(by: disposeBag)
 
@@ -46,16 +50,5 @@ class NewsViewController: UIViewController, BindableType {
         viewModel.output.title
             .bind(to: navigationItem.rx.title)
             .disposed(by: disposeBag)
-    }
-
-}
-
-class DetailTableViewCell: UITableViewCell {
-    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
-        super.init(style: .subtitle, reuseIdentifier: reuseIdentifier)
-    }
-
-    required init?(coder aDecoder: NSCoder) {
-        super.init(coder: aDecoder)
     }
 }

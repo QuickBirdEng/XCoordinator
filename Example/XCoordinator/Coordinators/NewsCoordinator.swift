@@ -16,12 +16,13 @@ enum NewsRoute: Route {
 
 class NewsCoordinator: NavigationCoordinator<NewsRoute> {
 
-    let animation = Animation(presentationAnimation: StaticTransitionAnimation.flippingPresentation,
-                              dismissalAnimation: StaticTransitionAnimation.flippingPresentation)
-    
+    // MARK: - Init
+
     init() {
         super.init(initialRoute: .news)
     }
+
+    // MARK: - Overrides
 
     override func prepareTransition(for route: NewsRoute) -> NavigationTransition {
         switch route {
@@ -35,13 +36,9 @@ class NewsCoordinator: NavigationCoordinator<NewsRoute> {
             var vc = NewsDetailViewController.instantiateFromNib()
             let vm = NewsDetailViewModelImpl(news: news)
             vc.bind(to: vm)
-            DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(3)) {
-                self.trigger(.close)
-            }
-            return .present(vc, animation: animation)
+            return .push(vc, animation: .interactiveFlip)
         case .close:
-            let noAnimation = Animation(presentationAnimation: nil, dismissalAnimation: nil)
-            return .dismiss(animation: noAnimation)
+            return .dismiss()
         }
     }
 }

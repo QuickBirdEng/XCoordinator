@@ -11,15 +11,18 @@ import RxSwift
 import RxCocoa
 
 class HomeViewController: UIViewController, BindableType {
-
     var viewModel: HomeViewModel!
 
-    @IBOutlet var logoutButton: UIButton!
-    @IBOutlet var usersButton: UIButton!
+    // MARK: - Views
+
+    @IBOutlet private var logoutButton: UIButton!
+    @IBOutlet private var usersButton: UIButton!
+
+    // MARK: - Stored properties
 
     private let disposeBag = DisposeBag()
 
-    // MARK: - Init
+    // MARK: - Overrides
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -38,7 +41,6 @@ class HomeViewController: UIViewController, BindableType {
             .bind(to: viewModel.input.usersTrigger)
             .disposed(by: disposeBag)
 
-        viewModel.registerUserPeek(from: usersButton)
+        viewModel.registerPeek(for: usersButton)
     }
-  
 }

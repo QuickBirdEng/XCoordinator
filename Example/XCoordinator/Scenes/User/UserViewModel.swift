@@ -25,36 +25,7 @@ protocol UserViewModel {
     var output: UserViewModelOutput { get }
 }
 
-class UserViewModelImpl: UserViewModel, UserViewModelInput, UserViewModelOutput {
-
+extension UserViewModel where Self: UserViewModelInput & UserViewModelOutput {
     var input: UserViewModelInput { return self }
     var output: UserViewModelOutput { return self }
-
-    // MARK: - Inputs
-    lazy var alertTrigger: InputSubject<Void> = alertAction.inputs
-    lazy var closeTrigger: InputSubject<Void> = closeAction.inputs
-
-    // MARK: - Outputs
-    let username: Observable<String>
-
-    // MARK: - Private
-    private let coordinator: AnyRouter<UserRoute>
-
-    private lazy var alertAction = CocoaAction { [weak self] in
-        guard let `self` = self else { return .empty() }
-        return self.coordinator.rx.trigger(.alert(title: "Hey", message: "You are awesome!"))
-    }
-
-    private lazy var closeAction = CocoaAction { [weak self] in
-        guard let `self` = self else { return .empty() }
-        return self.coordinator.rx.trigger(.users)
-    }
-
-    // MARK: - Init
-
-    init(coordinator: AnyRouter<UserRoute>, username: String) {
-        self.coordinator = coordinator
-        self.username = .just(username)
-    }
-
 }

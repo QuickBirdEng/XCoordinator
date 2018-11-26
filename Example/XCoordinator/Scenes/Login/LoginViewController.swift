@@ -11,14 +11,17 @@ import RxSwift
 import RxCocoa
 
 class LoginViewController: UIViewController, BindableType {
-
     var viewModel: LoginViewModel!
 
-    @IBOutlet var loginButton: UIButton!
+    // MARK: - Views
 
+    @IBOutlet private var loginButton: UIButton!
+
+    // MARK: - Stored properties
+    
     private let disposeBag = DisposeBag()
 
-    // MARK: - Init
+    // MARK: - Overrides
 
     override func viewDidLoad() {
         super.viewDidLoad()

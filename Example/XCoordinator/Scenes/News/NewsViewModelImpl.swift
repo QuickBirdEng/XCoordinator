@@ -39,7 +39,7 @@ class NewsViewModelImpl: NewsViewModel, NewsViewModelInput, NewsViewModelOutput 
 
     init(newsService: NewsService, coordinator: AnyRouter<NewsRoute>) {
         self.newsService = newsService
-        self.newsObservable = newsService.mostRecentNews().share(replay: 1)
+        self.newsObservable = .just(newsService.mostRecentNews())
         self.coordinator = coordinator
     }
 

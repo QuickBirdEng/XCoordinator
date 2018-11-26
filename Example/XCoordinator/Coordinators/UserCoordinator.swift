@@ -16,21 +16,25 @@ enum UserRoute: Route {
 }
 
 class UserCoordinator: NavigationCoordinator<UserRoute> {
-    
+
+    // MARK: - Init
+
     init(user: String) {
         super.init(initialRoute: .user(user))
     }
+
+    // MARK: - Overrides
 
     override func prepareTransition(for route: UserRoute) -> NavigationTransition {
         switch route {
         case let .user(username):
             var vc = UserViewController.instantiateFromNib()
-            let viewModel = UserViewModelImpl(coordinator: anyRouter, username: username)
+            let viewModel = UserViewModelImpl(router: anyRouter, username: username)
             vc.bind(to: viewModel)
             return .push(vc)
         case let .alert(title, message):
             let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
-            alert.addAction(.init(title: "Ok", style: .default, handler: nil))
+            alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
             return .present(alert)
         case .users:
             return .dismiss()

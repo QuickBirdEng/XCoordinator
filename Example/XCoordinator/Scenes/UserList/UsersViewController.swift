@@ -11,12 +11,16 @@ import RxSwift
 import RxCocoa
 
 class UsersViewController: UIViewController, BindableType {
-
     var viewModel: UsersViewModel!
+
+    // MARK: - Views
 
     @IBOutlet var tableView: UITableView!
 
+    // MARK: - Stored properties
+
     private let disposeBag = DisposeBag()
+    private let cellIdentifier = String(describing: DetailTableViewCell.self)
 
     // MARK: - Init
 
@@ -31,8 +35,9 @@ class UsersViewController: UIViewController, BindableType {
 
     func bindViewModel() {
         viewModel.output.usernames
-        .bind(to: tableView.rx.items(cellIdentifier: "UserCell", cellType: UITableViewCell.self)) { (_, element, cell) in
-           cell.textLabel?.text = element
+        .bind(to: tableView.rx.items(cellIdentifier: cellIdentifier, cellType: UITableViewCell.self)) { (_, element, cell) in
+            cell.textLabel?.text = element
+            cell.selectionStyle = .none
         }
         .disposed(by: disposeBag)
 
@@ -41,12 +46,13 @@ class UsersViewController: UIViewController, BindableType {
             .disposed(by: disposeBag)
     }
 
+    // MARK: - Helpers
+
     private func configureTableViewCell() {
-        tableView.register(UITableViewCell.self, forCellReuseIdentifier: "UserCell")
+        tableView.register(DetailTableViewCell.self, forCellReuseIdentifier: String(describing: DetailTableViewCell.self))
     }
 
     private func configureNavBar() {
         title = "Users"
     }
-  
 }

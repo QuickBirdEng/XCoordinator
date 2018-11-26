@@ -16,8 +16,12 @@ enum HomeRoute: Route {
 
 class HomeTabCoordinator: TabBarCoordinator<HomeRoute> {
 
+    // MARK: - Stored properties
+
     let newsRouter: AnyRouter<NewsRoute>
     let userListRouter: AnyRouter<UserListRoute>
+
+    // MARK: - Init
 
     convenience init() {
         let newsCoordinator = NewsCoordinator()
@@ -37,6 +41,8 @@ class HomeTabCoordinator: TabBarCoordinator<HomeRoute> {
 
         super.init(tabs: [newsRouter, userListRouter], select: userListRouter)
     }
+
+    // MARK: - Overrides
 
     override func prepareTransition(for route: HomeRoute) -> TabBarTransition {
         switch route {
