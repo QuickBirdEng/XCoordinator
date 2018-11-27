@@ -64,6 +64,7 @@ extension Transition {
         }
     }
 
+    @available(iOS 9.0, *)
     public static func registerPeek(for source: Container, transition: @escaping @autoclosure () -> Transition) -> Transition {
         return .init(presentable: nil) { options, performer, completion in
             return performer.registerPeek(
@@ -74,6 +75,7 @@ extension Transition {
         }
     }
 
+    @available(iOS 9.0, *)
     public static func registerPeek<C: Coordinator>(for source: Container, route: C.RouteType, coordinator: C) -> Transition where C.TransitionType == Transition {
         return .registerPeek(for: source, transition: coordinator.prepareTransition(for: route))
     }
@@ -94,6 +96,7 @@ extension Transition {
 }
 
 extension Coordinator {
+    @available(iOS 9.0, *)
     public func registerPeek<RootViewController>(for source: Container, route: RouteType) -> Transition<RootViewController> where Self.TransitionType == Transition<RootViewController> {
         return .registerPeek(for: source, route: route, coordinator: self)
     }
