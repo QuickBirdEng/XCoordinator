@@ -6,7 +6,8 @@
   },
   "homepage": "https://github.com/quickbirdstudios/XCoordinator",
   "authors": {
-    "Stefan Kofler": "stefan.kofler@quickbirdstudios.com"
+    "Stefan Kofler": "stefan.kofler@quickbirdstudios.com",
+    "Paul Kraft": "pauljohannes.kraft@quickbirdstudios.com"
   },
   "summary": "Navigation framework based on coordinator pattern.",
   "source": {
@@ -14,10 +15,10 @@
     "tag": "1.0.0"
   },
   "module_name": "XCoordinator",
-  "swift_version": "4.1",
+  "swift_version": "4.2",
   "platforms": {
-    "ios": "9.0",
-    "tvos": "9.0"
+    "ios": "8.0",
+    "tvos": "8.0"
   },
   "source_files": "XCoordinator/Classes/*.swift",
   "default_subspecs": "Core",

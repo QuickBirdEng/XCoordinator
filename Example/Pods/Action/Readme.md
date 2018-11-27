@@ -64,12 +64,12 @@ If your scenario involves many buttons that needs to trigger the same `Action` p
 let button1 = UIButton()
 let button2 = UIButton()
 
-let action = Action<String,String> { input in
-  print(input)
-  return .just(input)
+let action = Action<String, String> { input in
+    print(input)
+    return .just(input)
 }
-button1.rx.bindTo(action) {_ in return "Hello"}
-button2.rx.bindTo(action) {_ in return "Goodbye"}
+button1.rx.bindTo(action) { _ in return "Hello"}
+button2.rx.bindTo(action) { _ in return "Goodbye"}
 ```
 
 `button1` and `button2` are sharing the same `Action`, but they are feeding it with different input (`Hello` and `Goodbye` that will be printed for corresponding tap).
