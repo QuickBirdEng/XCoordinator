@@ -29,22 +29,6 @@ class XCoordinator_ExampleUITests: XCTestCase {
     }
     
     func testExample() {
-        let app = XCUIApplication()
-        app.buttons["Login"].tap()
-        
-        let tabBarsQuery = app.tabBars
-        tabBarsQuery.buttons["Recents"].tap()
-        
-        let tablesQuery = app.tables
-        tablesQuery/*@START_MENU_TOKEN@*/.staticTexts["Example article 3"]/*[[".cells.staticTexts[\"Example article 3\"]",".staticTexts[\"Example article 3\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/.tap()
-        app.navigationBars["XCoordinator_Example.NewsDetailView"].buttons["QuickBird Studios Blog"].tap()
-        tabBarsQuery.buttons["More"].tap()
-        app.buttons["Users"].tap()
-        tablesQuery/*@START_MENU_TOKEN@*/.staticTexts["Sebi"]/*[[".cells.staticTexts[\"Sebi\"]",".staticTexts[\"Sebi\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/.tap()
-        app.buttons["Show alert"].tap()
-        app.alerts["Hey"].buttons["Ok"].tap()
-        app.navigationBars["XCoordinator_Example.UserView"].buttons["Close"].tap()
-
         // Use recording to get started writing UI tests.
         // Use XCTAssert and related functions to verify your tests produce the correct results.
     }
