@@ -10,8 +10,15 @@ class NavigationAnimationDelegate: NSObject, UINavigationControllerDelegate {
 
     // MARK: - Stored properties
 
-    var animations = [Animation?]()
+    private var animations = [Animation?]()
     weak var delegate: UINavigationControllerDelegate?
+
+    // MARK: - Methods
+
+    internal func resetChildrenAnimations(for navigationController: UINavigationController) {
+        animations = navigationController.children.map { $0.transitioningDelegate as? Animation }
+        assert(animations.count == navigationController.children.count)
+    }
 
     // MARK: - UINavigationControllerDelegate
 

@@ -7,9 +7,12 @@
 //
 
 extension TransitionPerformer where TransitionType.RootViewController: UINavigationController {
+    private func resetChildrenAnimations(holding: [Animation?]) {
+        rootViewController.animationDelegate?.resetChildrenAnimations(for: rootViewController)
+    }
+
     func push(_ viewController: UIViewController, with options: TransitionOptions, animation: Animation?, completion: PresentationHandler?) {
 
-        rootViewController.animationDelegate?.animations.append(animation)
         if let animation = animation {
             viewController.transitioningDelegate = animation
         }
@@ -17,7 +20,7 @@ extension TransitionPerformer where TransitionType.RootViewController: UINavigat
 
         CATransaction.begin()
         CATransaction.setCompletionBlock {
-            assert(self.rootViewController.animationDelegate?.animations.count == self.rootViewController.children.count)
+            self.resetChildrenAnimations(holding: [animation])
             completion?()
         }
 
@@ -31,19 +34,10 @@ extension TransitionPerformer where TransitionType.RootViewController: UINavigat
         if let animation = animation {
             rootViewController.topViewController?.transitioningDelegate = animation
         }
-        rootViewController.animationDelegate?.animations.append(animation)
 
         CATransaction.begin()
         CATransaction.setCompletionBlock {
-            if toRoot {
-                guard let animationDelegate = self.rootViewController.animationDelegate else {
-                    return
-                }
-                animationDelegate.animations.removeLast(animationDelegate.animations.count - 1)
-            } else {
-                self.rootViewController.animationDelegate?.animations.removeLast(2)
-            }
-            assert(self.rootViewController.animationDelegate?.animations.count == self.rootViewController.children.count)
+            self.resetChildrenAnimations(holding: [animation])
             completion?()
         }
 
@@ -58,48 +52,37 @@ extension TransitionPerformer where TransitionType.RootViewController: UINavigat
 
     func set(_ viewControllers: [UIViewController], with options: TransitionOptions, animation: Animation?, completion: PresentationHandler?) {
 
-        CATransaction.begin()
-        CATransaction.setCompletionBlock {
-            CATransaction.begin()
-            CATransaction.setCompletionBlock {
-                self.rootViewController.animationDelegate?.animations = viewControllers.map { _ in animation }
-                assert(self.rootViewController.animationDelegate?.animations.count == self.rootViewController.children.count)
-                completion?()
-            }
-
-            self.rootViewController.setViewControllers(viewControllers, animated: options.animated)
-
-            CATransaction.commit()
-        }
-
         if let animation = animation {
             viewControllers.last?.transitioningDelegate = animation
         }
-        rootViewController.animationDelegate?.animations = [animation]
+        resetChildrenAnimations(holding: [animation])
         assert(animation == nil || rootViewController.animationDelegate != nil)
+
+        CATransaction.begin()
+        CATransaction.setCompletionBlock {
+            if let animation = animation {
+                viewControllers.forEach { $0.transitioningDelegate = animation }
+            }
+            self.resetChildrenAnimations(holding: [animation])
+            completion?()
+        }
+
+        self.rootViewController.setViewControllers(viewControllers, animated: options.animated)
 
         CATransaction.commit()
     }
 
     func pop(to viewController: UIViewController, options: TransitionOptions, animation: Animation?, completion: PresentationHandler?) {
-        guard let viewControllerIndex = rootViewController.viewControllers.firstIndex(of: viewController) else {
-            return assertionFailure()
-        }
 
-        let remainingCount = self.rootViewController.viewControllers.count - viewControllerIndex
-        rootViewController.animationDelegate?.animations.removeLast(remainingCount - 1)
-        rootViewController.animationDelegate?.animations.append(animation)
         if let animation = animation {
             rootViewController.topViewController?.transitioningDelegate = animation
             viewController.transitioningDelegate = animation
         }
-        assert(self.rootViewController.animationDelegate?.animations.count == self.rootViewController.children.count)
         assert(animation == nil || rootViewController.animationDelegate != nil)
 
         CATransaction.begin()
         CATransaction.setCompletionBlock {
-            self.rootViewController.animationDelegate?.animations.removeLast()
-            assert(self.rootViewController.animationDelegate?.animations.count == self.rootViewController.children.count)
+            self.resetChildrenAnimations(holding: [animation])
             completion?()
         }
 
