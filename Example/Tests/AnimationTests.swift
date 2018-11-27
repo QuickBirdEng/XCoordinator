@@ -40,9 +40,15 @@ class AnimationTests: XCTestCase {
         let coordinator = TabBarCoordinator<TestRoute>(tabs: tabs)
         coordinator.setRoot(for: window)
         testStandardAnimationsCalled(on: coordinator)
+
         testStaticAnimationCalled(on: coordinator, transition: { .select(tabs[1], animation: $0) })
-        testStaticAnimationCalled(on: coordinator, transition: { .select(index: 2, animation: $0) })
+        testInteractiveAnimationCalled(on: coordinator, transition: { .select(tabs[2], animation: $0) })
+
+        testStaticAnimationCalled(on: coordinator, transition: { .select(index: 1, animation: $0) })
+        testInteractiveAnimationCalled(on: coordinator, transition: { .select(index: 2, animation: $0) })
+
         testStaticAnimationCalled(on: coordinator, transition: { .set([UIViewController(), UIViewController()], animation: $0) })
+        testInteractiveAnimationCalled(on: coordinator, transition: { .set([UIViewController(), UIViewController()], animation: $0) })
     }
 
     func testNavigationCoordinator() {
@@ -66,12 +72,10 @@ class AnimationTests: XCTestCase {
 
         let staticViewControllers = [UIViewController(), UIViewController()]
         testStaticAnimationCalled(on: coordinator, transition: { .set(staticViewControllers, animation: $0) })
-        print("popTo static")
         testStaticAnimationCalled(on: coordinator, transition: { .pop(to: staticViewControllers[0], animation: $0) })
 
         let interactiveViewControllers = [UIViewController(), UIViewController()]
         testInteractiveAnimationCalled(on: coordinator, transition: { .set(interactiveViewControllers, animation: $0) })
-        print("popTo interactive")
         testInteractiveAnimationCalled(on: coordinator, transition: { .pop(to: interactiveViewControllers[0], animation: $0) })
     }
 
