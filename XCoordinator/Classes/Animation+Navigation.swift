@@ -105,15 +105,6 @@ extension NavigationAnimationDelegate: UIGestureRecognizerDelegate {
         }
     }
 
-    open func cleanup(cancelled: Bool) {
-        popAnimation?.cleanup()
-        if !cancelled {
-            let popRecognizer = navigationController?.interactivePopGestureRecognizer
-            popRecognizer?.delegate = interactivePopGestureRecognizerDelegate
-            popRecognizer?.removeTarget(self, action: nil)
-        }
-    }
-
     @objc
     open func handleInteractivePopGestureRecognizer(_ gestureRecognizer: UIGestureRecognizer) {
         guard let viewController = self.navigationController?.topViewController,
@@ -135,14 +126,12 @@ extension NavigationAnimationDelegate: UIGestureRecognizerDelegate {
         case .changed:
             popAnimation?.interactionController?.update(transitionProgress)
         case .cancelled:
-            defer { cleanup(cancelled: true) }
+            defer { popAnimation?.cleanup() }
             popAnimation?.interactionController?.cancel()
         case .ended:
-            let exceedsVelocityThreshold = recognizer.velocity(in: recognizer.view).x > velocityThreshold
-            let exceedsProgressThreshold = transitionProgress > transitionProgressThreshold
-            let finish = exceedsVelocityThreshold || exceedsProgressThreshold
-            defer { cleanup(cancelled: !finish) }
-            if finish {
+            defer { popAnimation?.cleanup() }
+            if recognizer.velocity(in: recognizer.view).x > velocityThreshold
+                || transitionProgress > transitionProgressThreshold {
                 popAnimation?.interactionController?.finish()
             } else {
                 popAnimation?.interactionController?.cancel()

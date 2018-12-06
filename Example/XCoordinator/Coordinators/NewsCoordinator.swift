@@ -36,7 +36,7 @@ class NewsCoordinator: NavigationCoordinator<NewsRoute> {
             var vc = NewsDetailViewController.instantiateFromNib()
             let vm = NewsDetailViewModelImpl(news: news)
             vc.bind(to: vm)
-            return .push(vc, animation: .interactiveFlip)
+            return .push(vc, animation: .interactiveScale)
         case .close:
             return .dismiss()
         }

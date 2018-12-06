@@ -13,15 +13,15 @@ import XCoordinator
 private let defaultAnimationDuration: TimeInterval = 0.35
 
 extension Animation {
-    static let staticFlip = Animation(
-        presentation: StaticTransitionAnimation.flip,
-        dismissal: StaticTransitionAnimation.flip
+    static let staticScale = Animation(
+        presentation: StaticTransitionAnimation.scale,
+        dismissal: StaticTransitionAnimation.scale
     )
 
 
-    static let interactiveFlip = Animation(
-        presentation: InteractiveTransitionAnimation.flip,
-        dismissal: InteractiveTransitionAnimation.flip
+    static let interactiveScale = Animation(
+        presentation: InteractiveTransitionAnimation.scale,
+        dismissal: InteractiveTransitionAnimation.scale
     )
 
     static let staticFade = Animation(
@@ -36,37 +36,41 @@ extension Animation {
 }
 
 extension StaticTransitionAnimation {
-    static let fade = StaticTransitionAnimation(duration: defaultAnimationDuration, performAnimation: { transitionContext in
+    static let fade = StaticTransitionAnimation(duration: defaultAnimationDuration) { transitionContext in
         let containerView = transitionContext.containerView
         let toView = transitionContext.view(forKey: .to)!
 
         toView.alpha = 0.0
         containerView.addSubview(toView)
 
-        UIView.animate(withDuration: defaultAnimationDuration, animations: {
+        UIView.animate(withDuration: defaultAnimationDuration, delay: 0, options: [.curveLinear], animations: {
             toView.alpha = 1.0
         }, completion: { _ in
             transitionContext.completeTransition(!transitionContext.transitionWasCancelled)
         })
-    })
+    }
 
-    static let flip = StaticTransitionAnimation(duration: defaultAnimationDuration, performAnimation: { transitionContext in
+    static let scale = StaticTransitionAnimation(duration: defaultAnimationDuration) { transitionContext in
         let containerView = transitionContext.containerView
         let toView = transitionContext.view(forKey: .to)!
+        let fromView = transitionContext.view(forKey: .from)!
 
-        let snapshotView = toView.snapshotView(afterScreenUpdates: true)!
+        containerView.backgroundColor = .white
+        toView.transform = CGAffineTransform(scaleX: 0.0, y: 0.0)
+        containerView.addSubview(toView)
+        containerView.bringSubviewToFront(toView)
 
-        UIView.transition(with: containerView, duration: defaultAnimationDuration, options: [.transitionFlipFromLeft], animations: {
-            containerView.addSubview(snapshotView)
+        UIView.animate(withDuration: defaultAnimationDuration, animations: {
+            toView.transform = .identity
+            fromView.alpha = 0
         }, completion: { _ in
-            containerView.addSubview(toView)
-            snapshotView.removeFromSuperview()
+            fromView.alpha = 1
             transitionContext.completeTransition(!transitionContext.transitionWasCancelled)
         })
-    })
+    }
 }
 
 extension InteractiveTransitionAnimation {
     static let fade = InteractiveTransitionAnimation(transitionAnimation: StaticTransitionAnimation.fade)
-    static var flip = InteractiveTransitionAnimation(transitionAnimation: StaticTransitionAnimation.flip)
+    static let scale = InteractiveTransitionAnimation(transitionAnimation: StaticTransitionAnimation.scale)
 }
