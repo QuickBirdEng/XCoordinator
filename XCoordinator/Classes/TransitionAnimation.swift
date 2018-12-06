@@ -9,18 +9,16 @@
 import Foundation
 
 public protocol TransitionAnimation: UIViewControllerAnimatedTransitioning {
-    var interactionController: UIViewControllerInteractiveTransitioning? { get }
-    var percentDrivenTransition: UIPercentDrivenInteractiveTransition? { get }
+    var interactionController: PercentDrivenInteractionController? { get }
+
+    func start()
+    func cleanup()
 }
 
-extension TransitionAnimation where Self: UIViewControllerInteractiveTransitioning {
-    public var interactionController: UIViewControllerInteractiveTransitioning? {
-        return self
-    }
+public protocol PercentDrivenInteractionController: UIViewControllerInteractiveTransitioning {
+    func update(_ percentComplete: CGFloat)
+    func cancel()
+    func finish()
 }
 
-extension TransitionAnimation where Self: UIPercentDrivenInteractiveTransition {
-    public var percentDrivenTransition: UIPercentDrivenInteractiveTransition? {
-        return self
-    }
-}
+extension UIPercentDrivenInteractiveTransition: PercentDrivenInteractionController {}

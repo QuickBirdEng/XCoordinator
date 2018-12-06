@@ -14,28 +14,29 @@ private let defaultAnimationDuration: TimeInterval = 0.35
 
 extension Animation {
     static let staticFlip = Animation(
-        presentation: StaticTransitionAnimation.flipPresentation,
-        dismissal: StaticTransitionAnimation.flipPresentation
+        presentation: StaticTransitionAnimation.flip,
+        dismissal: StaticTransitionAnimation.flip
     )
 
+
     static let interactiveFlip = Animation(
-        presentation: InteractiveTransitionAnimation.flipPresentation,
-        dismissal: InteractiveTransitionAnimation.flipPresentation
+        presentation: InteractiveTransitionAnimation.flip,
+        dismissal: InteractiveTransitionAnimation.flip
     )
 
     static let staticFade = Animation(
-        presentation: StaticTransitionAnimation.fadePresentation,
-        dismissal: StaticTransitionAnimation.fadePresentation
+        presentation: StaticTransitionAnimation.fade,
+        dismissal: StaticTransitionAnimation.fade
     )
 
     static let interactiveFade = Animation(
-        presentation: InteractiveTransitionAnimation.fadePresentation,
-        dismissal: InteractiveTransitionAnimation.fadePresentation
+        presentation: InteractiveTransitionAnimation.fade,
+        dismissal: InteractiveTransitionAnimation.fade
     )
 }
 
 extension StaticTransitionAnimation {
-    static let fadePresentation = StaticTransitionAnimation(duration: defaultAnimationDuration, performAnimation: { transitionContext in
+    static let fade = StaticTransitionAnimation(duration: defaultAnimationDuration, performAnimation: { transitionContext in
         let containerView = transitionContext.containerView
         let toView = transitionContext.view(forKey: .to)!
 
@@ -45,11 +46,11 @@ extension StaticTransitionAnimation {
         UIView.animate(withDuration: defaultAnimationDuration, animations: {
             toView.alpha = 1.0
         }, completion: { _ in
-            transitionContext.completeTransition(true)
+            transitionContext.completeTransition(!transitionContext.transitionWasCancelled)
         })
     })
 
-    static let flipPresentation = StaticTransitionAnimation(duration: defaultAnimationDuration, performAnimation: { transitionContext in
+    static let flip = StaticTransitionAnimation(duration: defaultAnimationDuration, performAnimation: { transitionContext in
         let containerView = transitionContext.containerView
         let toView = transitionContext.view(forKey: .to)!
 
@@ -60,12 +61,12 @@ extension StaticTransitionAnimation {
         }, completion: { _ in
             containerView.addSubview(toView)
             snapshotView.removeFromSuperview()
-            transitionContext.completeTransition(true)
+            transitionContext.completeTransition(!transitionContext.transitionWasCancelled)
         })
     })
 }
 
 extension InteractiveTransitionAnimation {
-    static let fadePresentation = InteractiveTransitionAnimation(completionSpeed: 1, completionCurve: .easeInOut, wantsInteractiveStart: false, transitionAnimation: StaticTransitionAnimation.fadePresentation)
-    static let flipPresentation = InteractiveTransitionAnimation(completionSpeed: 1, completionCurve: .easeInOut, wantsInteractiveStart: false, transitionAnimation: StaticTransitionAnimation.flipPresentation)
+    static let fade = InteractiveTransitionAnimation(transitionAnimation: StaticTransitionAnimation.fade)
+    static var flip = InteractiveTransitionAnimation(transitionAnimation: StaticTransitionAnimation.flip)
 }
