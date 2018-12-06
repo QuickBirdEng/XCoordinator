@@ -6,43 +6,43 @@
 //  Copyright © 2018 QuickBird Studios. All rights reserved.
 //
 
-class TabBarAnimationDelegate: NSObject, UITabBarControllerDelegate {
+open class TabBarAnimationDelegate: NSObject, UITabBarControllerDelegate {
 
     // MARK: - Stored properties
 
-    var animation: Animation?
-    weak var delegate: UITabBarControllerDelegate?
+    internal var animation: Animation?
+    internal weak var delegate: UITabBarControllerDelegate?
 
     // MARK: - Overrides
 
-    func tabBarController(_ tabBarController: UITabBarController, interactionControllerFor animationController: UIViewControllerAnimatedTransitioning) -> UIViewControllerInteractiveTransitioning? {
+    open func tabBarController(_ tabBarController: UITabBarController, interactionControllerFor animationController: UIViewControllerAnimatedTransitioning) -> UIViewControllerInteractiveTransitioning? {
         return (animationController as? TransitionAnimation)?.interactionController
             ?? animationController as? UIViewControllerInteractiveTransitioning
             ?? delegate?.tabBarController?(tabBarController, interactionControllerFor: animationController)
     }
 
-    func tabBarController(_ tabBarController: UITabBarController, animationControllerForTransitionFrom fromVC: UIViewController, to toVC: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+    open func tabBarController(_ tabBarController: UITabBarController, animationControllerForTransitionFrom fromVC: UIViewController, to toVC: UIViewController) -> UIViewControllerAnimatedTransitioning? {
         return animation?.presentationAnimation
             ?? delegate?.tabBarController?(tabBarController, animationControllerForTransitionFrom: fromVC, to: toVC)
     }
 
-    func tabBarController(_ tabBarController: UITabBarController, didSelect viewController: UIViewController) {
+    open func tabBarController(_ tabBarController: UITabBarController, didSelect viewController: UIViewController) {
         delegate?.tabBarController?(tabBarController, didSelect: viewController)
     }
 
-    func tabBarController(_ tabBarController: UITabBarController, shouldSelect viewController: UIViewController) -> Bool {
+    open func tabBarController(_ tabBarController: UITabBarController, shouldSelect viewController: UIViewController) -> Bool {
         return delegate?.tabBarController?(tabBarController, shouldSelect: viewController) ?? true
     }
 
-    func tabBarController(_ tabBarController: UITabBarController, willBeginCustomizing viewControllers: [UIViewController]) {
+    open func tabBarController(_ tabBarController: UITabBarController, willBeginCustomizing viewControllers: [UIViewController]) {
         delegate?.tabBarController?(tabBarController, willBeginCustomizing: viewControllers)
     }
 
-    func tabBarController(_ tabBarController: UITabBarController, didEndCustomizing viewControllers: [UIViewController], changed: Bool) {
+    open func tabBarController(_ tabBarController: UITabBarController, didEndCustomizing viewControllers: [UIViewController], changed: Bool) {
         delegate?.tabBarController?(tabBarController, didEndCustomizing: viewControllers, changed: changed)
     }
 
-    func tabBarController(_ tabBarController: UITabBarController, willEndCustomizing viewControllers: [UIViewController], changed: Bool) {
+    open func tabBarController(_ tabBarController: UITabBarController, willEndCustomizing viewControllers: [UIViewController], changed: Bool) {
         delegate?.tabBarController?(tabBarController, willEndCustomizing: viewControllers, changed: changed)
     }
 }
