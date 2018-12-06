@@ -13,29 +13,29 @@ open class RedirectionRouter<SuperRoute: Route, RouteType: Route>: Router {
     public let superRouter: AnyRouter<SuperRoute>
 
     private let _map: ((RouteType) -> SuperRoute)?
-    private weak var _viewController: UIViewController?
+    private let viewControllerBox: ReferenceBox<UIViewController>
 
     // MARK: - Computed properties
 
-    open var viewController: UIViewController! {
-        if let vc = _viewController {
-            return vc
+    public var viewController: UIViewController! {
+        get {
+            return viewControllerBox.get()
         }
-
-        let viewController = generateViewController()
-        _viewController = viewController
-        return viewController
+        set {
+            viewControllerBox.set(newValue)
+        }
     }
 
     // MARK: - Init
 
-    public init(superRouter: AnyRouter<SuperRoute>, map: ((RouteType) -> SuperRoute)?) {
+    public init(viewController: UIViewController, superRouter: AnyRouter<SuperRoute>, map: ((RouteType) -> SuperRoute)?) {
         self.superRouter = superRouter
         self._map = map
+        self.viewControllerBox = ReferenceBox(viewController)
     }
 
     public convenience init<RouterType: Router>(viewController: UIViewController, superRouter: RouterType, map: ((RouteType) -> SuperRoute)?) where RouterType.RouteType == SuperRoute {
-        self.init(superRouter: AnyRouter(superRouter), map: map)
+        self.init(viewController: viewController, superRouter: AnyRouter(superRouter), map: map)
     }
 
     // MARK: - Methods
@@ -53,10 +53,9 @@ open class RedirectionRouter<SuperRoute: Route, RouteType: Route>: Router {
 
     open func presented(from presentable: Presentable?) {
         viewController.presented(from: presentable)
-    }
-
-    open func generateViewController() -> UIViewController! {
-        fatalError("Please override \(#function) to generate a viewController when needed.")
+        DispatchQueue.main.async {
+            self.viewControllerBox.releaseStrongReference()
+        }
     }
 }
 
