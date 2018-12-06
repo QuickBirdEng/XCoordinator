@@ -8,7 +8,7 @@
 
 extension Transition {
     public static func present(_ presentable: Presentable, animation: Animation? = nil) -> Transition {
-        return .init(presentable: presentable) { options, performer, completion in
+        return .init(presentables: [presentable]) { options, performer, completion in
             presentable.presented(from: performer)
             performer.present(
                 presentable.viewController,
@@ -20,7 +20,7 @@ extension Transition {
     }
 
     public static func embed(_ presentable: Presentable, in container: Container) -> Transition {
-        return .init(presentable: presentable) { options, performer, completion in
+        return .init(presentables: [presentable]) { options, performer, completion in
             presentable.presented(from: performer)
             performer.embed(
                 presentable.viewController,
@@ -32,7 +32,7 @@ extension Transition {
     }
 
     public static func dismiss(animation: Animation? = nil) -> Transition {
-        return .init(presentable: nil) { options, performer, completion in
+        return .init(presentables: []) { options, performer, completion in
             performer.dismiss(
                 with: options,
                 animation: animation,
@@ -42,13 +42,13 @@ extension Transition {
     }
 
     public static func none() -> Transition {
-        return .init(presentable: nil) { options, performer, completion in
+        return .init(presentables: []) { options, performer, completion in
             completion?()
         }
     }
 
     public static func multiple<C: Collection>(_ transitions: C) -> Transition where C.Element == Transition {
-        return .init(presentable: nil) { options, performer, completion in
+        return .init(presentables: transitions.flatMap { $0.presentables }) { options, performer, completion in
             guard let firstTransition = transitions.first else {
                 completion?()
                 return
@@ -66,7 +66,7 @@ extension Transition {
 
     @available(iOS 9.0, *)
     public static func registerPeek(for source: Container, transition: @escaping @autoclosure () -> Transition) -> Transition {
-        return .init(presentable: nil) { options, performer, completion in
+        return .init(presentables: []) { options, performer, completion in
             return performer.registerPeek(
                 from: source.view,
                 transitionGenerator: { transition() },
@@ -82,14 +82,14 @@ extension Transition {
 
     public static func route<C: Coordinator>(_ route: C.RouteType, on coordinator: C) -> Transition {
         let transition = coordinator.prepareTransition(for: route)
-        return .init(presentable: transition.presentable) { options, _, completion in
+        return .init(presentables: transition.presentables) { options, _, completion in
             coordinator.performTransition(transition, with: options, completion: completion)
         }
     }
 
     /// Peeking is not supported with Transition.trigger. If needed, use Transition.route instead.
     public static func trigger<R: Router>(_ route: R.RouteType, on router: R) -> Transition {
-        return .init(presentable: nil) { options, _, completion in
+        return .init(presentables: []) { options, _, completion in
             router.trigger(route, with: options, completion: completion)
         }
     }

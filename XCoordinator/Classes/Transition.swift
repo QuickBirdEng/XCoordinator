@@ -14,19 +14,19 @@ public struct Transition<RootViewController: UIViewController>: TransitionProtoc
 
     // MARK: - Stored properties
 
-    private var _presentable: Presentable?
+    private var _presentables: [Presentable]
     private var _perform: Perform
 
     // MARK: - Computed properties
 
-    public var presentable: Presentable? {
-        return _presentable
+    public var presentables: [Presentable] {
+        return _presentables
     }
 
     // MARK: - Init
 
-    public init(presentable: Presentable?, perform: @escaping Perform) {
-        self._presentable = presentable
+    public init(presentables: [Presentable], perform: @escaping Perform) {
+        self._presentables = presentables
         self._perform = perform
     }
 

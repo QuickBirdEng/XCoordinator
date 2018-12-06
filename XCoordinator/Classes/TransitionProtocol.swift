@@ -9,7 +9,7 @@
 public protocol TransitionProtocol {
     associatedtype RootViewController: UIViewController
 
-    var presentable: Presentable? { get }
+    var presentables: [Presentable] { get }
     func perform<C: Coordinator>(options: TransitionOptions, coordinator: C, completion: PresentationHandler?) where C.TransitionType == Self
 
     static func generateRootViewController() -> RootViewController

@@ -34,7 +34,7 @@ extension Coordinator {
 
     public func contextTrigger(_ route: RouteType, with options: TransitionOptions, completion: ContextPresentationHandler?) {
         let transition = prepareTransition(for: route)
-        let context = PresentationHandlerContext(presentable: transition.presentable)
+        let context = PresentationHandlerContext(presentables: transition.presentables)
         performTransition(transition, with: options) { completion?(context) }
     }
 

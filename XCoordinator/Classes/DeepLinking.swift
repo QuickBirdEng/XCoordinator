@@ -7,10 +7,10 @@
 //
 
 public struct PresentationHandlerContext {
-    internal var presentable: Presentable?
+    internal var presentables: [Presentable]
 
     internal static var empty: PresentationHandlerContext {
-        return PresentationHandlerContext(presentable: nil)
+        return PresentationHandlerContext(presentables: [])
     }
 }
 
@@ -26,7 +26,7 @@ extension Transition {
     }
 
     fileprivate static func deepLink<C: Coordinator>(with coordinator: C, _ route: C.RouteType,  array remainingRoutes: [Route]) -> Transition where C: AnyObject {
-        return Transition(presentable: nil) { [weak coordinator] options, performer, completion in
+        return Transition(presentables: []) { [weak coordinator] options, performer, completion in
             guard let coordinator = coordinator else {
                 assertionFailure("Please use the coordinator responsible for executing a deepLink-Transition when initializing")
                 completion?()
@@ -64,10 +64,7 @@ extension Route {
                 return
             }
 
-            if let presentable = context.presentable {
-                stack.append(presentable)
-            }
-
+            stack.append(contentsOf: context.presentables)
             nextRoute.trigger(on: stack, remainingRoutes: remainingRoutes.dropFirst(), with: options, completion: completion)
         }
     }

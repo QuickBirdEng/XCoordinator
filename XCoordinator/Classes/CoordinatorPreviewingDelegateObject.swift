@@ -32,7 +32,7 @@ class CoordinatorPreviewingDelegateObject<TransitionType: TransitionProtocol>: N
             return viewController
         }
 
-        let presentable = transition().presentable
+        let presentable = transition().presentables.last
         presentable?.presented(from: nil)
         viewController = presentable?.viewController
         return viewController

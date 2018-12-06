@@ -10,7 +10,7 @@ public typealias NavigationTransition = Transition<UINavigationController>
 
 extension Transition where RootViewController: UINavigationController {
     public static func push(_ presentable: Presentable, animation: Animation? = nil) -> NavigationTransition {
-        return NavigationTransition(presentable: presentable) { options, performer, completion in
+        return NavigationTransition(presentables: [presentable]) { options, performer, completion in
             performer.push(
                 presentable.viewController,
                 with: options,
@@ -21,7 +21,7 @@ extension Transition where RootViewController: UINavigationController {
     }
 
     public static func pop(animation: Animation? = nil) -> NavigationTransition {
-        return NavigationTransition(presentable: nil) { options, performer, completion in
+        return NavigationTransition(presentables: []) { options, performer, completion in
             performer.pop(
                 toRoot: false,
                 with: options,
@@ -32,7 +32,7 @@ extension Transition where RootViewController: UINavigationController {
     }
 
     public static func pop(to presentable: Presentable, animation: Animation? = nil) -> NavigationTransition {
-        return NavigationTransition(presentable: presentable) { options, performer, completion in
+        return NavigationTransition(presentables: [presentable]) { options, performer, completion in
             performer.pop(
                 to: presentable.viewController,
                 options: options,
@@ -43,7 +43,7 @@ extension Transition where RootViewController: UINavigationController {
     }
 
     public static func popToRoot(animation: Animation? = nil) -> NavigationTransition {
-        return NavigationTransition(presentable: nil) { options, performer, completion in
+        return NavigationTransition(presentables: []) { options, performer, completion in
             performer.pop(
                 toRoot: true,
                 with: options,
@@ -54,7 +54,7 @@ extension Transition where RootViewController: UINavigationController {
     }
 
     public static func set(_ presentables: [Presentable], animation: Animation? = nil) -> NavigationTransition {
-        return NavigationTransition(presentable: presentables.last) { options, performer, completion in
+        return NavigationTransition(presentables: presentables) { options, performer, completion in
             performer.set(
                 presentables.map { $0.viewController },
                 with: options,
