@@ -19,7 +19,6 @@ open class TabBarAnimationDelegate: NSObject {
 extension TabBarAnimationDelegate: UITabBarControllerDelegate {
     open func tabBarController(_ tabBarController: UITabBarController, interactionControllerFor animationController: UIViewControllerAnimatedTransitioning) -> UIViewControllerInteractiveTransitioning? {
         return (animationController as? TransitionAnimation)?.interactionController
-            ?? animationController as? UIViewControllerInteractiveTransitioning
             ?? delegate?.tabBarController?(tabBarController, interactionControllerFor: animationController)
     }
 
