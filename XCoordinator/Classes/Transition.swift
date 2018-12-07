@@ -37,7 +37,7 @@ public struct Transition<RootViewController: UIViewController>: TransitionProtoc
         perform(options: options, performer: anyPerformer, completion: completion)
     }
 
-    func perform(options: TransitionOptions, performer: AnyTransitionPerformer<Transition>, completion: PresentationHandler?) {
+    internal func perform(options: TransitionOptions, performer: AnyTransitionPerformer<Transition>, completion: PresentationHandler?) {
         _perform(options, performer, completion)
     }
 

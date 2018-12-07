@@ -14,21 +14,25 @@ public struct PresentationHandlerContext {
     }
 }
 
+// MARK: - Coordinator + DeepLinking
+
 extension Coordinator where Self: AnyObject {
     public func deepLink<RootViewController>(_ route: RouteType, _ remainingRoutes: Route...) -> Transition<RootViewController> where TransitionType == Transition<RootViewController> {
         return .deepLink(with: self, route, array: remainingRoutes)
     }
 }
 
+// MARK: - Transition + DeepLink
+
 extension Transition {
-    public static func deepLink<C: Coordinator>(with coordinator: C, _ route: C.RouteType, _ remainingRoutes: Route...) -> Transition where C: AnyObject {
+    public static func deepLink<C: Coordinator & AnyObject>(with coordinator: C, _ route: C.RouteType, _ remainingRoutes: Route...) -> Transition {
         return .deepLink(with: coordinator, route, array: remainingRoutes)
     }
 
-    fileprivate static func deepLink<C: Coordinator>(with coordinator: C, _ route: C.RouteType,  array remainingRoutes: [Route]) -> Transition where C: AnyObject {
+    fileprivate static func deepLink<C: Coordinator & AnyObject>(with coordinator: C, _ route: C.RouteType,  array remainingRoutes: [Route]) -> Transition {
         return Transition(presentables: []) { [weak coordinator] options, performer, completion in
             guard let coordinator = coordinator else {
-                assertionFailure("Please use the coordinator responsible for executing a deepLink-Transition when initializing")
+                assertionFailure("Please use the coordinator responsible for executing a deepLink-Transition when initializing.")
                 completion?()
                 return
             }
@@ -37,6 +41,8 @@ extension Transition {
         }
     }
 }
+
+// MARK: - Route + DeepLink
 
 extension Route {
     private func router(fromStack stack: inout [Presentable]) -> AnyRouter<Self>? {

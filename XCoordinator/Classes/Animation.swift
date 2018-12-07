@@ -6,7 +6,7 @@
 //  Copyright © 2018 QuickBird Studios. All rights reserved.
 //
 
-open class Animation: NSObject, UIViewControllerTransitioningDelegate {
+open class Animation: NSObject {
 
     // MARK: - Static properties
 
@@ -23,9 +23,11 @@ open class Animation: NSObject, UIViewControllerTransitioningDelegate {
         self.presentationAnimation = presentation
         self.dismissalAnimation = dismissal
     }
+}
 
-    // MARK: - Public methods
+// MARK: - Animation: UIViewControllerTransitioningDelegate
 
+extension Animation: UIViewControllerTransitioningDelegate {
     open func animationController(forPresented presented: UIViewController, presenting: UIViewController, source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
         return presentationAnimation
     }

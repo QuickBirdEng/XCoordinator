@@ -46,7 +46,7 @@ open class RedirectionRouter<SuperRoute: Route, RouteType: Route>: Router {
 
     open func mapToSuperRoute(_ route: RouteType) -> SuperRoute {
         guard let map = self._map else {
-            fatalError("Please implement \(#function) or override this method.")
+            fatalError("Please implement \(#function) or use the `map` closure in the initializer.")
         }
         return map(route)
     }

@@ -55,7 +55,7 @@ open class BasicCoordinator<RouteType: Route, TransitionType: TransitionProtocol
         if let prepareTransition = prepareTransition {
             return prepareTransition(route)
         } else {
-            fatalError("Either pass a prepareTransition closure to the initializer or override this method")
+            fatalError("Either pass a \(#function) closure to the initializer or override this method.")
         }
     }
 }

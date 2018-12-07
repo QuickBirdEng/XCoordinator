@@ -6,15 +6,17 @@
 //  Copyright © 2018 QuickBird Studios. All rights reserved.
 //
 
-open class TabBarAnimationDelegate: NSObject, UITabBarControllerDelegate {
+open class TabBarAnimationDelegate: NSObject {
 
     // MARK: - Stored properties
 
     internal var animation: Animation?
     internal weak var delegate: UITabBarControllerDelegate?
+}
 
-    // MARK: - Overrides
+// MARK: - TabBarAnimationDelegate: UITabBarControllerDelegate
 
+extension TabBarAnimationDelegate: UITabBarControllerDelegate {
     open func tabBarController(_ tabBarController: UITabBarController, interactionControllerFor animationController: UIViewControllerAnimatedTransitioning) -> UIViewControllerInteractiveTransitioning? {
         return (animationController as? TransitionAnimation)?.interactionController
             ?? animationController as? UIViewControllerInteractiveTransitioning
