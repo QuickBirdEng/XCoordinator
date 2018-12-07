@@ -16,7 +16,10 @@ extension Transition where RootViewController: UIPageViewController {
                 presentables.map { $0.viewController },
                 direction: direction,
                 with: options,
-                completion: completion
+                completion: {
+                    presentables.forEach { $0.presented(from: performer) }
+                    completion?()
+                }
             )
         }
     }

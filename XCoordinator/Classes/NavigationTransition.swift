@@ -15,7 +15,10 @@ extension Transition where RootViewController: UINavigationController {
                 presentable.viewController,
                 with: options,
                 animation: animation,
-                completion: completion
+                completion: {
+                    presentable.presented(from: performer)
+                    completion?()
+                }
             )
         }
     }
@@ -59,7 +62,10 @@ extension Transition where RootViewController: UINavigationController {
                 presentables.map { $0.viewController },
                 with: options,
                 animation: animation,
-                completion: completion
+                completion: {
+                    presentables.forEach { $0.presented(from: performer) }
+                    completion?()
+                }
             )
         }
     }

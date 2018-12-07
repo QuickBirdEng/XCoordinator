@@ -14,7 +14,10 @@ extension Transition where RootViewController: UISplitViewController {
             performer.show(
                 presentable.viewController,
                 with: options,
-                completion: completion
+                completion: {
+                    presentable.presented(from: performer)
+                    completion?()
+                }
             )
         }
     }
@@ -24,7 +27,10 @@ extension Transition where RootViewController: UISplitViewController {
             performer.showDetail(
                 presentable.viewController,
                 with: options,
-                completion: completion
+                completion: {
+                    presentable.presented(from: performer)
+                    completion?()
+                }
             )
         }
     }

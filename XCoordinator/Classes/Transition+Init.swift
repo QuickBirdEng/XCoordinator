@@ -9,25 +9,25 @@
 extension Transition {
     public static func present(_ presentable: Presentable, animation: Animation? = nil) -> Transition {
         return .init(presentables: [presentable]) { options, performer, completion in
-            presentable.presented(from: performer)
             performer.present(
                 presentable.viewController,
                 with: options,
-                animation: animation,
-                completion: completion
-            )
+                animation: animation) {
+                    presentable.presented(from: performer)
+                    completion?()
+            }
         }
     }
 
     public static func embed(_ presentable: Presentable, in container: Container) -> Transition {
         return .init(presentables: [presentable]) { options, performer, completion in
-            presentable.presented(from: performer)
             performer.embed(
                 presentable.viewController,
                 in: container,
-                with: options,
-                completion: completion
-            )
+                with: options) {
+                    presentable.presented(from: performer)
+                    completion?()
+            }
         }
     }
 
@@ -64,6 +64,20 @@ extension Transition {
         }
     }
 
+    public static func route<C: Coordinator>(_ route: C.RouteType, on coordinator: C) -> Transition {
+        let transition = coordinator.prepareTransition(for: route)
+        return .init(presentables: transition.presentables) { options, _, completion in
+            coordinator.performTransition(transition, with: options, completion: completion)
+        }
+    }
+
+    /// Peeking is not supported with Transition.trigger. If needed, use Transition.route instead.
+    public static func trigger<R: Router>(_ route: R.RouteType, on router: R) -> Transition {
+        return .init(presentables: []) { options, _, completion in
+            router.trigger(route, with: options, completion: completion)
+        }
+    }
+
     @available(iOS 9.0, *)
     public static func registerPeek(for source: Container, transition: @escaping @autoclosure () -> Transition) -> Transition {
         return .init(presentables: []) { options, performer, completion in
@@ -78,20 +92,6 @@ extension Transition {
     @available(iOS 9.0, *)
     public static func registerPeek<C: Coordinator>(for source: Container, route: C.RouteType, coordinator: C) -> Transition where C.TransitionType == Transition {
         return .registerPeek(for: source, transition: coordinator.prepareTransition(for: route))
-    }
-
-    public static func route<C: Coordinator>(_ route: C.RouteType, on coordinator: C) -> Transition {
-        let transition = coordinator.prepareTransition(for: route)
-        return .init(presentables: transition.presentables) { options, _, completion in
-            coordinator.performTransition(transition, with: options, completion: completion)
-        }
-    }
-
-    /// Peeking is not supported with Transition.trigger. If needed, use Transition.route instead.
-    public static func trigger<R: Router>(_ route: R.RouteType, on router: R) -> Transition {
-        return .init(presentables: []) { options, _, completion in
-            router.trigger(route, with: options, completion: completion)
-        }
     }
 }
 
