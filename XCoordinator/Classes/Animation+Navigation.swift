@@ -6,7 +6,7 @@
 //  Copyright © 2018 QuickBird Studios. All rights reserved.
 //
 
-open class NavigationAnimationDelegate: NSObject, UINavigationControllerDelegate {
+open class NavigationAnimationDelegate: NSObject {
 
     // MARK: - Static properties
 
@@ -15,15 +15,15 @@ open class NavigationAnimationDelegate: NSObject, UINavigationControllerDelegate
     // MARK: - Stored properties
 
     open var velocityThreshold: CGFloat { return UIScreen.main.bounds.width / 2 }
-    open private(set) var transitionProgressThreshold: CGFloat = 0.5
+    open var transitionProgressThreshold: CGFloat { return 0.5 }
 
     private var animations = [Animation?]()
+    private var interactivePopGestureRecognizerDelegate: UIGestureRecognizerDelegate?
 
     // MARK: - Weak properties
 
     internal weak var delegate: UINavigationControllerDelegate?
     private weak var navigationController: UINavigationController?
-    private weak var interactivePopGestureRecognizerDelegate: UIGestureRecognizerDelegate?
 
     // MARK: - Computed properties
 
@@ -37,9 +37,11 @@ open class NavigationAnimationDelegate: NSObject, UINavigationControllerDelegate
         animations = navigationController.children.map { $0.transitioningDelegate as? Animation }
         assert(animations.count == navigationController.children.count)
     }
+}
 
-    // MARK: - UINavigationControllerDelegate
+// MARK: - NavigationAnimationDelegate: UINavigationControllerDelegate
 
+extension NavigationAnimationDelegate: UINavigationControllerDelegate {
     open func navigationController(_ navigationController: UINavigationController, interactionControllerFor animationController: UIViewControllerAnimatedTransitioning) -> UIViewControllerInteractiveTransitioning? {
         return (animationController as? TransitionAnimation)?.interactionController
             ?? delegate?.navigationController?(navigationController, interactionControllerFor: animationController)
@@ -49,7 +51,6 @@ open class NavigationAnimationDelegate: NSObject, UINavigationControllerDelegate
         let transitionAnimation = { () -> UIViewControllerAnimatedTransitioning? in
             switch operation {
             case .push:
-                setupPopGestureRecognizer(for: navigationController)
                 return toVC.transitioningDelegate?
                     .animationController?(forPresented: toVC, presenting: navigationController, source: fromVC)
             case .pop:
@@ -70,40 +71,41 @@ open class NavigationAnimationDelegate: NSObject, UINavigationControllerDelegate
     open func navigationController(_ navigationController: UINavigationController, willShow viewController: UIViewController, animated: Bool) {
         delegate?.navigationController?(navigationController, willShow: viewController, animated: animated)
     }
-
-    open func setupPopGestureRecognizer(for navigationController: UINavigationController) {
-        self.navigationController = navigationController
-        guard let popRecognizer = navigationController.interactivePopGestureRecognizer,
-            popRecognizer.delegate !== self else {
-            return
-        }
-        interactivePopGestureRecognizerDelegate = popRecognizer.delegate
-        popRecognizer.delegate = self
-    }
 }
 
+// MARK: - NavigationAnimationDelegate: UIGestureRecognizerDelegate
+
 extension NavigationAnimationDelegate: UIGestureRecognizerDelegate {
+
+    // MARK: - Delegate methods
+
     open func gestureRecognizerShouldBegin(_ gestureRecognizer: UIGestureRecognizer) -> Bool {
         switch gestureRecognizer {
         case navigationController?.interactivePopGestureRecognizer:
+            let delegateAction = NavigationAnimationDelegate.interactivePopGestureRecognizerDelegateAction
+            let selfAction = #selector(handleInteractivePopGestureRecognizer(_:))
+
+            guard let delegate = interactivePopGestureRecognizerDelegate,
+                delegate.responds(to: delegateAction) else {
+                    assertionFailure("Please don't set your own delegate on \(String(describing: UINavigationController.self)).\(#selector(getter: UINavigationController.interactivePopGestureRecognizer)).")
+                    return false
+            }
+
+            gestureRecognizer.removeTarget(self, action: selfAction)
+            gestureRecognizer.removeTarget(delegate, action: delegateAction)
+
             if popAnimation != nil {
-                gestureRecognizer.removeTarget(nil, action: nil)
-                gestureRecognizer.addTarget(self, action: #selector(handleInteractivePopGestureRecognizer(_:)))
+                gestureRecognizer.addTarget(self, action: selfAction)
             } else {
-                let action = NavigationAnimationDelegate.interactivePopGestureRecognizerDelegateAction
-                guard let delegate = interactivePopGestureRecognizerDelegate,
-                    delegate.responds(to: action) else {
-                        assertionFailure("Please don't set your own delegate on \(String(describing: UINavigationController.self)).\(#selector(getter: UINavigationController.interactivePopGestureRecognizer)).")
-                        return false
-                }
-                gestureRecognizer.removeTarget(nil, action: nil)
-                gestureRecognizer.addTarget(delegate, action: action)
+                gestureRecognizer.addTarget(delegate, action: delegateAction)
             }
             return true
         default:
             return false
         }
     }
+
+    // MARK: - Target actions
 
     @objc
     open func handleInteractivePopGestureRecognizer(_ gestureRecognizer: UIGestureRecognizer) {
@@ -114,6 +116,7 @@ extension NavigationAnimationDelegate: UIGestureRecognizerDelegate {
 
         let viewTranslation = recognizer.translation(in: recognizer.view?.superview)
         let transitionProgress = min(max(viewTranslation.x / viewController.view.frame.width, 0), 1)
+        let interactionController = popAnimation?.interactionController
 
         switch recognizer.state {
         case .possible, .failed:
@@ -124,22 +127,33 @@ extension NavigationAnimationDelegate: UIGestureRecognizerDelegate {
             }
             navigationController?.popViewController(animated: true)
         case .changed:
-            popAnimation?.interactionController?.update(transitionProgress)
+            interactionController?.update(transitionProgress)
         case .cancelled:
             defer { popAnimation?.cleanup() }
-            popAnimation?.interactionController?.cancel()
+            interactionController?.cancel()
         case .ended:
             defer { popAnimation?.cleanup() }
             if recognizer.velocity(in: recognizer.view).x > velocityThreshold
                 || transitionProgress > transitionProgressThreshold {
-                popAnimation?.interactionController?.finish()
+                interactionController?.finish()
             } else {
-                popAnimation?.interactionController?.cancel()
+                interactionController?.cancel()
             }
         }
     }
-}
 
+    // MARK: - Helpers
+
+    open func setupPopGestureRecognizer(for navigationController: UINavigationController) {
+        self.navigationController = navigationController
+        guard let popRecognizer = navigationController.interactivePopGestureRecognizer,
+            popRecognizer.delegate !== self else {
+                return
+        }
+        interactivePopGestureRecognizerDelegate = popRecognizer.delegate
+        popRecognizer.delegate = self
+    }
+}
 
 extension UINavigationController {
     internal var animationDelegate: NavigationAnimationDelegate? {
