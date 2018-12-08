@@ -40,10 +40,4 @@ public struct Transition<RootViewController: UIViewController>: TransitionProtoc
     internal func perform(options: TransitionOptions, performer: AnyTransitionPerformer<Transition>, completion: PresentationHandler?) {
         _perform(options, performer, completion)
     }
-
-    // MARK: - Static methods
-
-    public static func generateRootViewController() -> RootViewController {
-        return RootViewController()
-    }
 }
