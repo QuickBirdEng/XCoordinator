@@ -15,11 +15,7 @@ open class ViewCoordinator<RouteType: Route>: BaseCoordinator<RouteType, ViewTra
     }
 
     public init(root: Presentable) {
-        super.init(initialTransition: nil, completion: { coordinator in
-            coordinator.performTransition(
-                .embed(root, in: coordinator.rootViewController.view),
-                with: TransitionOptions(animated: false)
-            )
-        })
+        super.init(initialRoute: nil)
+        embed(root.viewController, in: rootViewController, with: TransitionOptions(animated: false), completion: nil)
     }
 }

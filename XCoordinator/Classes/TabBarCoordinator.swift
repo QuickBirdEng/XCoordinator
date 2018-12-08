@@ -30,7 +30,7 @@ open class TabBarCoordinator<RouteType: Route>: BaseCoordinator<RouteType, TabBa
     }
 
     public init(tabs: [Presentable]) {
-        super.init(initialTransition: .set(tabs), completion: nil)
+        super.init(initialTransition: .set(tabs))
     }
 
     public init(tabs: [Presentable], select: Presentable) {
