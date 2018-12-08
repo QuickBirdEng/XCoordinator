@@ -25,7 +25,7 @@ extension Reactive where Base: Router {
         }
     }
 
-    // MARK: Convenience methods
+    // MARK: - Convenience methods
 
     public func trigger(_ route: Base.RouteType) -> Observable<Void> {
         return trigger(route, with: .default)
