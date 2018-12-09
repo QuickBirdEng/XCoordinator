@@ -1,6 +1,6 @@
 //
 //  HomePageCoordinator.swift
-//  XCoordinator-Example
+//  XCoordinator_Example
 //
 //  Created by Paul Kraft on 30.07.18.
 //  Copyright © 2018 QuickBird Studios. All rights reserved.

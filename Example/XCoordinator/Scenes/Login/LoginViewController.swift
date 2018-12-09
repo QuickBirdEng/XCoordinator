@@ -1,6 +1,6 @@
 //  
 //  LoginViewController.swift
-//  XCoordinator-Example
+//  XCoordinator_Example
 //
 //  Created by Joan Disho on 03.05.18.
 //  Copyright © 2018 QuickBird Studios. All rights reserved.

@@ -30,6 +30,10 @@ extension Coordinator {
 // MARK: - Extension: Default implementations
 
 extension Coordinator {
+    public var anyCoordinator: AnyCoordinator<RouteType, TransitionType> {
+        return AnyCoordinator(self)
+    }
+
     public func presented(from presentable: Presentable?) {}
 
     public func contextTrigger(_ route: RouteType, with options: TransitionOptions, completion: ContextPresentationHandler?) {
