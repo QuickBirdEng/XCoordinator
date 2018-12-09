@@ -38,7 +38,7 @@ extension Coordinator {
         performTransition(transition, with: options) { completion?(context) }
     }
 
-    public func merge(routes: [RouteType]) -> TransitionType {
+    public func chain(routes: [RouteType]) -> TransitionType {
         return .multiple(routes.map(prepareTransition))
     }
 
