@@ -65,6 +65,7 @@ extension NavigationAnimationDelegate: UINavigationControllerDelegate {
     }
 
     open func navigationController(_ navigationController: UINavigationController, didShow viewController: UIViewController, animated: Bool) {
+        setupPopGestureRecognizer(for: navigationController)
         delegate?.navigationController?(navigationController, didShow: viewController, animated: animated)
     }
 
@@ -83,7 +84,6 @@ extension NavigationAnimationDelegate: UIGestureRecognizerDelegate {
         switch gestureRecognizer {
         case navigationController?.interactivePopGestureRecognizer:
             let delegateAction = NavigationAnimationDelegate.interactivePopGestureRecognizerDelegateAction
-            let selfAction = #selector(handleInteractivePopGestureRecognizer(_:))
 
             guard let delegate = interactivePopGestureRecognizerDelegate,
                 delegate.responds(to: delegateAction) else {
@@ -91,11 +91,10 @@ extension NavigationAnimationDelegate: UIGestureRecognizerDelegate {
                     return false
             }
 
-            gestureRecognizer.removeTarget(self, action: selfAction)
-            gestureRecognizer.removeTarget(delegate, action: delegateAction)
+            gestureRecognizer.removeTarget(nil, action: nil)
 
             if popAnimation != nil {
-                gestureRecognizer.addTarget(self, action: selfAction)
+                gestureRecognizer.addTarget(self, action: #selector(handleInteractivePopGestureRecognizer(_:)))
             } else {
                 gestureRecognizer.addTarget(delegate, action: delegateAction)
             }

@@ -38,7 +38,6 @@ open class NavigationCoordinator<RouteType: Route>: BaseCoordinator<RouteType, N
     open override func generateRootViewController() -> UINavigationController {
         let navigationController = UINavigationController()
         navigationController.delegate = animationDelegate
-        animationDelegate.setupPopGestureRecognizer(for: navigationController)
         return navigationController
     }
 }
