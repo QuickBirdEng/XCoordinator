@@ -14,14 +14,14 @@ private let defaultAnimationDuration: TimeInterval = 0.35
 
 extension Animation {
     static let staticScale = Animation(
-        presentation: StaticTransitionAnimation.scale,
-        dismissal: StaticTransitionAnimation.scale
+        presentation: StaticTransitionAnimation.scalePresentation,
+        dismissal: StaticTransitionAnimation.scaleDismissal
     )
 
 
     static let interactiveScale = Animation(
-        presentation: InteractiveTransitionAnimation.scale,
-        dismissal: InteractiveTransitionAnimation.scale
+        presentation: InteractiveTransitionAnimation.scalePresentation,
+        dismissal: InteractiveTransitionAnimation.scaleDismissal
     )
 
     static let staticFade = Animation(
@@ -50,7 +50,7 @@ extension StaticTransitionAnimation {
         })
     }
 
-    static let scale = StaticTransitionAnimation(duration: defaultAnimationDuration) { transitionContext in
+    static let scalePresentation = StaticTransitionAnimation(duration: defaultAnimationDuration) { transitionContext in
         let containerView = transitionContext.containerView
         let toView = transitionContext.view(forKey: .to)!
         let fromView = transitionContext.view(forKey: .from)!
@@ -68,9 +68,33 @@ extension StaticTransitionAnimation {
             transitionContext.completeTransition(!transitionContext.transitionWasCancelled)
         })
     }
+
+    static let scaleDismissal = StaticTransitionAnimation(duration: defaultAnimationDuration) { transitionContext in
+        let containerView: UIView = transitionContext.containerView
+        let toView: UIView = transitionContext.view(forKey: .to)!
+        let fromView: UIView = transitionContext.view(forKey: .from)!
+
+        containerView.backgroundColor = .white
+        containerView.addSubview(toView)
+        containerView.sendSubviewToBack(toView)
+
+        toView.alpha = 0
+        let verySmall: CGFloat = 0.0001
+
+        UIView.animate(withDuration: defaultAnimationDuration, animations: {
+            fromView.transform = CGAffineTransform(scaleX: verySmall, y: verySmall)
+            toView.alpha = 1
+        }, completion: { _ in
+            if !transitionContext.transitionWasCancelled {
+                fromView.removeFromSuperview()
+            }
+            transitionContext.completeTransition(!transitionContext.transitionWasCancelled)
+        })
+    }
 }
 
 extension InteractiveTransitionAnimation {
     static let fade = InteractiveTransitionAnimation(transitionAnimation: StaticTransitionAnimation.fade)
-    static let scale = InteractiveTransitionAnimation(transitionAnimation: StaticTransitionAnimation.scale)
+    static let scalePresentation = InteractiveTransitionAnimation(transitionAnimation: StaticTransitionAnimation.scalePresentation)
+    static let scaleDismissal = InteractiveTransitionAnimation(transitionAnimation: StaticTransitionAnimation.scaleDismissal)
 }
