@@ -9,8 +9,8 @@
 [![License](https://img.shields.io/cocoapods/l/AFNetworking.svg)](https://github.com/quickbirdstudios/XCoordinator)
 
 #
-“How does an app transition from a ViewController to another?”.
-This question is common and puzzling regarding iOS development. There are many answers, as every architecture has different implementation variations. Some do it from the view controller, while some do it using a router/coordinator, which is an object that connects view models.
+“How does an app transition from one view controller to another?”.
+This question is common and puzzling regarding iOS development. There are many answers, as every architecture has different implementation variations. Some do it from within the implementation of a view controller, while some use a router/coordinator, an object connecting view models.
 
 To better answer the question, we are building **XCoordinator**, a navigation framework based on the **Coordinator** pattern.
 It's especially useful for implementing MVVM-C, Model-View-ViewModel-Coordinator:
@@ -21,7 +21,7 @@ It's especially useful for implementing MVVM-C, Model-View-ViewModel-Coordinator
 
 ## 🏃‍♂️Getting started
 
-Create an enum with all of the navigation paths for a particular flow, i.e. a group of closely connected scenes. (It is up to you when to create a `Route/Coordinator`. As **our rule of thumb**, create a new `Route/Coordinator` whenever a new root view controller, e.g. a new `navigation controller`, is needed.)
+Create an enum with all of the navigation paths for a particular flow, i.e. a group of closely connected scenes. (It is up to you when to create a `Route/Coordinator`. As **our rule of thumb**, create a new `Route/Coordinator` whenever a new root view controller, e.g. a new `navigation controller` or a `tab bar controller`, is needed.)
 
 Whereas the `Route` describes, which routes can be triggered in a flow, the `Coordinator` is responsible for the preparation of transitions based on routes being triggered. We could, therefore, prepare multiple coordinators for the same route, which differ in which transitions are executed for each route.
 
@@ -52,7 +52,7 @@ class HomeCoordinator: NavigationCoordinator<HomeRoute> {
 }
 ```
 
-To use coordinators right from the launch of the app, make sure to create the app's window programmatically in `AppDelegate.swift` (You will have to remove `Main.storyboard`, including the field `Main Storyboard file base name` in `Info.plist`). Set the coordinator as the root of the window's view hierarchy in the `AppDelegate.didFinishLaunching`-method.
+To use coordinators right from the launch of the app, make sure to create the app's window programmatically in `AppDelegate.swift` (Don't forget to remove `Main Storyboard file base name` from `Info.plist`). Then set the coordinator as the root of the window's view hierarchy in `AppDelegate.didFinishLaunching`.
 
 ```swift
 @UIApplicationMain
@@ -88,11 +88,11 @@ class HomeViewModel {
 
 ## 🤸‍♂️ Extras
 
-For more advanced use, XCoordinator offers many more customization options. In the following, we will introduce custom animated transitions and deep linking. Furthermore, extensions for use in reactive programming with RxSwift is introduced.
+For more advanced use, XCoordinator offers many more customization options. We introduce custom animated transitions and deep linking. Furthermore, extensions for use in reactive programming with RxSwift are described.
 
 ### Custom Transitions
 
-Custom animated transitions define presentation and dismissal animations. In the `switch case` in `prepareTransition(for:)` create an `Animation` and specify your custom presentation transition and/or dismissal animation. Custom animated transitions are available on the most common transitions, such as `present`, `dismiss`, `push` and `pop`.
+Custom animated transitions define presentation and dismissal animations. You can specify `Animation`-objects in `prepareTransition(for:)` in your coordinator for several common transitions, such as `present`, `dismiss`, `push` and `pop`. Specifying no animation results in not overriding previously set animations - Use `Animation.default` to use the default animations of UIKit.
 
 ```swift
 
@@ -117,7 +117,7 @@ class UsersCoordinator: NavigationCoordinator<UserRoute> {
 
 ### Deep Linking
 
-Deep Linking is used to chain different routes together. In contract to the `.multiple(/* ... */)`-transition, deep-linking-transitions can identify routers based on previous transitions (e.g. when pushing or presenting a router) by building up a stack. Keep in mind, that you cannot access higher-level routers anymore once you trigger a route on a lower level on the stack.
+Deep Linking can be used to chain different routes together. In contrast to the `.multiple`-transition, deep linking can identify routers based on previous transitions (e.g. when pushing or presenting a router), which enables chaining of routes of different types. Keep in mind, that you cannot access higher-level routers anymore once you trigger a route on a lower level on the stack.
 
 ```swift
 class AppCoordinator: NavigationCoordinator<AppRoute> {
@@ -134,11 +134,11 @@ class AppCoordinator: NavigationCoordinator<AppRoute> {
 }
 ```
 
-⚠️ DeepLinking does not check, whether it can be executed at compile-time. Rather it uses assertionFailures to inform about incorrect chaining, when it cannot find an appriopriate router for a given route. Keep this in mind when changing the structure of your app.
+⚠️ XCoordinator does not check at compile-time, whether a deep link can be executed. Rather it uses assertionFailures to inform about incorrect chaining at runtime, when it cannot find an appriopriate router for a given route. Keep this in mind when changing the structure of your app.
 
 ### RxSwift extensions
 
-Reactive programming can be very useful to keep the state of View and Model consistent in a MVVM architecture. Instead of relying on the completion handler of the `trigger` method available in any `Router`, you can also use our RxSwift-extension. In the following example, we show how the trigger-extension can be used inside CocoaActions as developed in the Action-framework. As can be seen in the Example-application, on tap of the Login-button the loginAction is triggered, which in itself triggers its router to perform the `AppRoute.home` route.
+Reactive programming can be very useful to keep the state of view and model consistent in a MVVM architecture. Instead of relying on the completion handler of the `trigger` method available in any `Router`, you can also use our RxSwift-extension. In the example application, we use Actions (from the [Action](https://github.com/RxSwiftCommunity/Action) framework) to trigger routes on certain UI events - e.g. to trigger `LoginRoute.home` in `LoginViewModel`, when the login button is tapped.
 
 ```swift
 class LoginViewModelImpl: LoginViewModel, LoginViewModelInput, LoginViewModelOutput {
