@@ -26,10 +26,14 @@ extension Presentable {
     }
 }
 
-extension UIViewController: Presentable {
-    open func presented(from presentable: Presentable?) {}
+extension Presentable where Self: UIViewController {
+    public func presented(from presentable: Presentable?) {}
 }
 
-extension UIWindow: Presentable {
-    open func presented(from presentable: Presentable?) {}
+extension UIViewController: Presentable {}
+
+extension Presentable where Self: UIWindow {
+    public func presented(from presentable: Presentable?) {}
 }
+
+extension UIWindow: Presentable {}
