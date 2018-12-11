@@ -27,9 +27,9 @@ extension Presentable {
 }
 
 extension UIViewController: Presentable {
-    public func presented(from presentable: Presentable?) {}
+    open func presented(from presentable: Presentable?) {}
 }
 
 extension UIWindow: Presentable {
-    public func presented(from presentable: Presentable?) {}
+    open func presented(from presentable: Presentable?) {}
 }
