@@ -17,6 +17,12 @@ enum AppRoute: Route {
 
 class AppCoordinator: NavigationCoordinator<AppRoute> {
 
+    // MARK: - Stored properties
+
+    // HomeCoordinators must be held, since they are not held by viewModels/viewControllers
+    // They do not contain any routing logic in this example application
+    private var home: Presentable?
+
     // MARK: - Init
 
     init() {
@@ -33,7 +39,12 @@ class AppCoordinator: NavigationCoordinator<AppRoute> {
             vc.bind(to: viewModel)
             return .push(vc)
         case .home:
-            return .present(HomeTabCoordinator(), animation: .staticFade)
+            let presentables: [Presentable] = [HomeTabCoordinator(), HomeSplitCoordinator(), HomePageCoordinator()]
+            guard let presentable = presentables.randomElement() else {
+                return .none()
+            }
+            self.home = presentable
+            return .present(presentable, animation: .staticFade)
         case .newsDetail(let news):
             return deepLink(.home, HomeRoute.news, NewsRoute.newsDetail(news))
         }
@@ -42,7 +53,7 @@ class AppCoordinator: NavigationCoordinator<AppRoute> {
     // MARK: - Methods
 
     func notificationReceived() {
-        guard let news = MockNewsService().mostRecentNews().articles.first else {
+        guard let news = MockNewsService().mostRecentNews().articles.randomElement() else {
             return
         }
         self.trigger(.newsDetail(news))
