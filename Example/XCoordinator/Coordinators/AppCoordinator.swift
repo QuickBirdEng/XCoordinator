@@ -48,15 +48,3 @@ class AppCoordinator: NavigationCoordinator<AppRoute> {
         self.trigger(.newsDetail(news))
     }
 }
-
-extension Transition {
-    static func dismissOnPresented(animation: Animation? = nil) -> Transition {
-        return Transition(presentables: []) { options, performer, completion in
-            let presentedViewController = performer.rootViewController.presentedViewController ?? performer.rootViewController
-            if let animation = animation {
-                presentedViewController.transitioningDelegate = animation
-            }
-            presentedViewController.dismiss(animated: options.animated, completion: completion)
-        }
-    }
-}
