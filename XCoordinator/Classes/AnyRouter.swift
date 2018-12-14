@@ -13,7 +13,7 @@ public final class AnyRouter<RouteType: Route>: Router {
     private let _contextTrigger: (RouteType, TransitionOptions, ContextPresentationHandler?) -> Void
     private let _trigger: (RouteType, TransitionOptions, PresentationHandler?) -> Void
     private let _presented: (Presentable?) -> Void
-    private let _viewController: () -> UIViewController
+    private let _viewController: () -> UIViewController?
     private let _setRoot: (UIWindow) -> Void
 
     // MARK: - Init
