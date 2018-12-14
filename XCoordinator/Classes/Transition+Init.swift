@@ -7,9 +7,23 @@
 //
 
 extension Transition {
+    public static func presentOnRoot(_ presentable: Presentable, animation: Animation? = nil) -> Transition {
+        return Transition(presentables: [presentable]) { options, performer, completion in
+            performer.present(
+                onRoot: true,
+                presentable.viewController,
+                with: options,
+                animation: animation) {
+                    presentable.presented(from: performer)
+                    completion?()
+            }
+        }
+    }
+
     public static func present(_ presentable: Presentable, animation: Animation? = nil) -> Transition {
         return Transition(presentables: [presentable]) { options, performer, completion in
             performer.present(
+                onRoot: false,
                 presentable.viewController,
                 with: options,
                 animation: animation) {
