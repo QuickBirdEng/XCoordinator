@@ -10,75 +10,34 @@ open class PageCoordinator<RouteType: Route>: BaseCoordinator<RouteType, PageTra
 
     // MARK: - Stored properties
 
-    private let transitionStyle: UIPageViewController.TransitionStyle
-    private let orientation: UIPageViewController.NavigationOrientation
-    private let options: [UIPageViewController.OptionsKey: Any]?
-    private let dataSource: PageCoordinatorDataSource
+    public let dataSource: PageCoordinatorDataSource
+    public let configuration: UIPageViewController.Configuration
 
     // MARK: - Init
 
     public init(pages: [Presentable],
+                loop: Bool = false,
+                set: Presentable? = nil,
                 direction: UIPageViewController.NavigationDirection = .forward,
-                transitionStyle: UIPageViewController.TransitionStyle = .pageCurl,
-                orientation: UIPageViewController.NavigationOrientation = .horizontal,
-                options: [UIPageViewController.OptionsKey: Any]? = nil) {
+                configuration: UIPageViewController.Configuration = .default) {
+        self.dataSource = PageCoordinatorDataSource(pages: pages.map { $0.viewController }, loop: loop)
+        self.configuration = configuration
 
-        self.transitionStyle = transitionStyle
-        self.orientation = orientation
-        self.options = options
-        self.dataSource = PageCoordinatorDataSource(pages: pages)
-
-        if let firstPage = pages.first {
-            super.init(initialTransition: .set(firstPage, direction: direction))
-        } else {
+        guard let firstPage = set ?? pages.first else {
+            assertionFailure("Please provide a positive number of pages for use in \(String(describing: PageCoordinator<RouteType>.self))")
             super.init(initialRoute: nil)
+            return
         }
+
+        super.init(initialTransition: .set(firstPage, direction: direction))
     }
 
+    // MARK: - Overrides
+
     open override func generateRootViewController() -> UIPageViewController {
-        let controller = UIPageViewController(transitionStyle: transitionStyle, navigationOrientation: orientation, options: options)
+        let controller = UIPageViewController(configuration: configuration)
         controller.dataSource = dataSource
         controller.delegate = dataSource
         return controller
-    }
-}
-
-class PageCoordinatorDataSource: NSObject, UIPageViewControllerDataSource, UIPageViewControllerDelegate {
-    var pages: [Presentable]
-
-    init(pages: [Presentable]) {
-        self.pages = pages
-    }
-
-    func presentationCount(for pageViewController: UIPageViewController) -> Int {
-        let isNotDisplaying = pageViewController.viewControllers?.isEmpty ?? true
-        return isNotDisplaying ? 0 : pages.count
-    }
-
-    func presentationIndex(for pageViewController: UIPageViewController) -> Int {
-        let viewController = pageViewController.viewControllers?.first
-        let index = pages.index(where: { $0.viewController == viewController })
-        guard let presIndex = index else { return 0 }
-        return presIndex
-    }
-
-    func pageViewController(_ pageViewController: UIPageViewController, viewControllerBefore viewController: UIViewController) -> UIViewController? {
-        guard let index = pages.index(where: { $0.viewController == viewController }) else {
-            assertionFailure()
-            return nil
-        }
-        let prevIndex = index - 1
-        guard pages.indices.contains(prevIndex) else { return nil }
-        return pages[prevIndex].viewController
-    }
-
-    func pageViewController(_ pageViewController: UIPageViewController, viewControllerAfter viewController: UIViewController) -> UIViewController? {
-        guard let index = pages.index(where: { $0.viewController == viewController }) else {
-            assertionFailure()
-            return nil
-        }
-        let nextIndex = index + 1
-        guard pages.indices.contains(nextIndex) else { return nil }
-        return pages[nextIndex].viewController
     }
 }
