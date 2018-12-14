@@ -15,12 +15,13 @@ extension TransitionPerformer {
         presentedViewController.present(viewController, animated: options.animated, completion: completion)
     }
 
-    func dismiss(with options: TransitionOptions, animation: Animation?, completion: PresentationHandler?) {
+    func dismiss(toRoot: Bool, with options: TransitionOptions, animation: Animation?, completion: PresentationHandler?) {
+        let presentedViewController = rootViewController.presentedViewController ?? rootViewController
         if let animation = animation {
-            let presentedViewController = rootViewController.presentedViewController ?? rootViewController
             presentedViewController.transitioningDelegate = animation
         }
-        rootViewController.dismiss(animated: options.animated, completion: completion)
+        let dismissalViewController = toRoot ? rootViewController : presentedViewController
+        dismissalViewController.dismiss(animated: options.animated, completion: completion)
     }
 
     func embed(_ viewController: UIViewController, in container: Container, with options: TransitionOptions, completion: PresentationHandler?) {

@@ -31,9 +31,21 @@ extension Transition {
         }
     }
 
-    public static func dismiss(animation: Animation? = nil) -> Transition {
-        return .init(presentables: []) { options, performer, completion in
+    public static func dismissToRoot(animation: Animation? = nil) -> Transition {
+        return Transition(presentables: []) { options, performer, completion in
             performer.dismiss(
+                toRoot: true,
+                with: options,
+                animation: animation,
+                completion: completion
+            )
+        }
+    }
+
+    public static func dismiss(animation: Animation? = nil) -> Transition {
+        return Transition(presentables: []) { options, performer, completion in
+            performer.dismiss(
+                toRoot: false,
                 with: options,
                 animation: animation,
                 completion: completion
