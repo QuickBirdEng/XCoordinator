@@ -7,11 +7,9 @@
 //
 
 public struct PresentationHandlerContext {
-    internal var presentables: [Presentable]
+    internal let presentables: [Presentable]
 
-    internal static var empty: PresentationHandlerContext {
-        return PresentationHandlerContext(presentables: [])
-    }
+    internal static let empty = PresentationHandlerContext(presentables: [])
 }
 
 // MARK: - Coordinator + DeepLinking
