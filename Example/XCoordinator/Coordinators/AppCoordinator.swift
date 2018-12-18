@@ -19,8 +19,8 @@ class AppCoordinator: NavigationCoordinator<AppRoute> {
 
     // MARK: - Stored properties
 
-    // HomeCoordinators must be held, since they are not held by viewModels/viewControllers
-    // They do not contain any routing logic in this example application
+    // We need to keep a reference to the HomeCoordinator
+    // as it is not held by any viewModel or viewController
     private var home: Presentable?
 
     // MARK: - Init
