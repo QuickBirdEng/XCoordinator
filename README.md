@@ -150,7 +150,7 @@ class AppCoordinator: NavigationCoordinator<AppRoute> {
         switch route {
         /* ... */
         case .deep:
-            return deepLink(.login, AppRoute.home, HomeRoute.news, HomeRoute.dismiss)
+            return deepLink(AppRoute.login, AppRoute.home, HomeRoute.news, HomeRoute.dismiss)
         }
     }
 }
@@ -204,10 +204,11 @@ let doneWithBothTransitions =
 ```
 
 ## 🎭 Example
+
 Check out this [repository](https://github.com/quickbirdstudios/XCoordinator/tree/master/XCoordinator-Example/XCoordinator-Example) as an example project using XCoordinator.
 
-
 ## 👨‍✈️ Why coordinators
+
 * **Separation of responsibilities** with the coordinator being the only component knowing anything related to the flow of your application.
 * **Reusable Views and ViewModels** because they do not contain any navigation logic.
 * **Less coupling between components**
@@ -218,8 +219,8 @@ Check out this [repository](https://github.com/quickbirdstudios/XCoordinator/tre
 
 
 ## ⁉️ Why XCoordinator
-* Actual **navigation code is already written** and abstracted away.
 
+* Actual **navigation code is already written** and abstracted away.
 * Clear **separation of concerns**:
   - Coordinator: Coordinates routing of a set of routes.
   - Route: Describes navigation path.
@@ -236,22 +237,27 @@ Check out this [repository](https://github.com/quickbirdstudios/XCoordinator/tre
 ## 🔩 Components
 
 ### 🎢 Route
+
 Describes possible navigation paths within a flow, a collection of closely related scenes.
 
 ### 👨‍✈️ Coordinator / Router
+
 An object loading views and creating viewModels based on triggered routes. A Coordinator creates and performs transitions to these scenes based on the data transferred via the route. In contrast to the coordinator, a router can be seen as an abstraction from that concept limited to triggering routes. Often, a Router is used to abstract away from a specific coordinator in ViewModels.
 
 ### 🌗 Transition
-Transitions describe the navigation from one view to another view. Transitions are available based on the type of the root view controller in use. Example: Whereas `ViewTransition` only supports basic transitions that every view controller supports, `NavigationTransition` adds navigation controller specific transitions.
 
-Describes presentation/dismissal of a view including the type of the transition and the animation used. Most often used are the following transition types:
-  - present: present view controller.
-  - embed: embed view controller to a container view.
-  - dismiss: dismiss the view controller that was presented modally by the view controller.
-  - none: does nothing to the view controller (allows you to handle case later without touching the ViewController)
-  - push: push view controller to navigation stack. (only in `NavigationTransition`)
-  - pop: pop the top view controller from the navigation stack and updates the display. (only in `NavigationTransition`)
-  - popToRoot: pop all the view controllers on the navigation stack except the root view controller and updates the display. (only in `NavigationTransition`)
+Transitions describe the navigation from one view to another. Transitions are available based on the type of the root view controller in use. Example: Whereas `ViewTransition` only supports basic transitions that every root view controller supports, `NavigationTransition` adds navigation controller specific transitions.
+
+The available transition types include:
+  - **present** presents a view controller on top of the view hierarchy - use **presentOnRoot** in case you want to present from the root view controller
+  - **embed** embeds a view controller into a container view
+  - **dismiss** dismisses the top most presented view controller - use **dismissToRoot** to call dismiss on the root view controller
+  - **none** does nothing, may be used to ignore routes or for testing purposes
+  - **push** pushes a view controller to the navigation stack (only in `NavigationTransition`)
+  - **pop** pops the top view controller from the navigation stack (only in `NavigationTransition`)
+  - **popToRoot** pops all the view controllers on the navigation stack except the root view controller (only in `NavigationTransition`)
+  
+  XCoordinator additionally supports common transitions for `UITabBarController`, `UISplitViewController` and `UIPageViewController` root view controllers.
 
 ## 🛠 Installation
 
@@ -295,7 +301,7 @@ This framework is created with ❤️ by [QuickBird Studios](www.quickbirdstudio
 
 Open an issue if you need help, if you found a bug, or if you want to discuss a feature request. If you feel like having a chat about XCoordinator with the developers and other users, join our [Slack Workspace](https://join.slack.com/t/xcoordinator/shared_invite/enQtNDg4NDAxNTk1ODQ1LTRhMjY0OTAwNWMyYmQ5ZWI5Mzk3ODU1NGJmMWZlZDY3Y2Q0NTZjOWNkMjgyNmQwYjY4MzZmYTRhN2EzMzczNTM).
 
-Open a PR if you want to make some changes to XCoordinator.
+Open a PR if you want to make changes to XCoordinator.
 
 ## 📃 License
 
