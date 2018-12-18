@@ -21,36 +21,64 @@ It's especially useful for implementing MVVM-C, Model-View-ViewModel-Coordinator
 
 ## 🏃‍♂️Getting started
 
-Create an enum with all of the navigation paths for a particular flow, i.e. a group of closely connected scenes. (It is up to you when to create a `Route/Coordinator`. As **our rule of thumb**, create a new `Route/Coordinator` whenever a new root view controller, e.g. a new `navigation controller` or a `tab bar controller`, is needed.)
+Create an enum with all of the navigation paths for a particular flow, i.e. a group of closely connected scenes. (It is up to you when to create a `Route/Coordinator`. As **our rule of thumb**, create a new `Route/Coordinator` whenever a new root view controller, e.g. a new `navigation controller` or a `tab bar controller`, is needed.).
 
 Whereas the `Route` describes, which routes can be triggered in a flow, the `Coordinator` is responsible for the preparation of transitions based on routes being triggered. We could, therefore, prepare multiple coordinators for the same route, which differ in which transitions are executed for each route.
 
-In the following example, we create the `HomeRoute` enum to define triggers of the main flow of our application. `HomeRoute` offers triggers to open the home screen, display users and to log out. The `HomeCoordinator` is implemented to prepare transitions for the triggered routes.
+In the following example, we create the `UserListRoute` enum to define triggers of a flow of our application. `UserListRoute` offers triggers to open the home screen, display a list of users, to open a specific user and to log out. The `UserListCoordinator` is implemented to prepare transitions for the triggered routes. When a `UserListCoordinator` is shown, it triggers the `.home` route to display a `HomeViewController`.
 
 ```swift
-enum HomeRoute: Route {
+enum UserListRoute: Route {
     case home
     case users
+    case user(String)
+    case registerUsersPeek(from: Container)
     case logout
 }
 
-class HomeCoordinator: NavigationCoordinator<HomeRoute> {
-    override func prepareTransition(for route: HomeRoute) -> NavigationTransition {
+class UserListCoordinator: NavigationCoordinator<UserListRoute> {
+
+    // MARK: - Init
+
+    init() {
+        super.init(initialRoute: .home)
+    }
+
+    // MARK: - Overrides
+
+    override func prepareTransition(for route: UserListRoute) -> NavigationTransition {
         switch route {
         case .home:
-            let viewModel = HomeViewModel(router: anyRouter)
-            let viewController = HomeViewController(viewModel: viewModel)
-            return .push(viewController)
+            var vc = HomeViewController.instantiateFromNib()
+            let vm = HomeViewModelImpl(router: anyRouter)
+            vc.bind(to: vm)
+            return .push(vc)
         case .users:
-            let viewModel = UsersViewModel(router: anyRouter)
-            let viewController = UsersViewController(viewModel: viewModel)
-            return .push(viewController)
+            var vc = UsersViewController.instantiateFromNib()
+            let vm = UsersViewModelImpl(router: anyRouter)
+            vc.bind(to: vm)
+            return .push(vc, animation: .interactiveFade)
+        case .user(let username):
+            let coordinator = UserCoordinator(user: username)
+            return .present(coordinator, animation: .default)
+        case .registerUsersPeek(let source):
+            return registerPeek(for: source, route: .users)
         case .logout:
             return .dismiss()
         }
     }
 }
 ```
+
+### Organizing an app's structure with XCoordinator
+
+In general, an app's structure is defined by nesting coordinators and view controllers. You can transition (i.e. `push`, `present`, `pop`, `dismiss`) to a different coordinator whenever your app changes to a different flow. Within a flow, we transition between viewControllers.
+
+Example: In `UserListCoordinator.prepareTransition(for:)` we change from the `UserListRoute` to the `UserRoute` whenever the `UserListRoute.user`-route is triggered. By dismissing a viewController in `UserListRoute.logout`, we additionally switch back to the previous flow - in this case the `HomeRoute`.
+
+To achieve this behavior, every Coordinator has its own `rootViewController`. This would be a `UINavigationController` in the case of a `NavigationCoordinator`, a `UITabBarController` in the case of a `TabBarCoordinator`, etc. When transitioning to a Coordinator/Router, this `rootViewController` is used as the destination view controller.
+
+### Using XCoordinator right from the start
 
 To use coordinators right from the launch of the app, make sure to create the app's window programmatically in `AppDelegate.swift` (Don't forget to remove `Main Storyboard file base name` from `Info.plist`). Then set the coordinator as the root of the window's view hierarchy in `AppDelegate.didFinishLaunching`.
 
