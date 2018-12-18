@@ -164,6 +164,14 @@ class AppCoordinator: NavigationCoordinator<AppRoute> {
 
 ⚠️ XCoordinator does not check at compile-time, whether a deep link can be executed. Rather it uses assertionFailures to inform about incorrect chaining at runtime, when it cannot find an appriopriate router for a given route. Keep this in mind when changing the structure of your app.
 
+### RedirectionRouter & RedirectionCoordinator
+
+Let's assume, there is a route type called `HugeRoute` with more than 10 routes. To decrease coupling, `HugeRoute` needs to be split up into mutliple route types. As you will discover, many routes in `HugeRoute` use transitions dependent on a specific rootViewController, such as `push`, `show`, `pop`, etc. XCoordinator has two solutions for you to solve such a case, if splitting up routes by introducing a new router/coordinator is not an option.
+
+A `RedirectionRouter` can be used to map a new route type onto generalized `SuperRoute` routes. A `RedirectionRouter` is independent of the `TransitionType` of its superRouter.  Either use `RedirectionRouter.init(viewController: UIViewController, superRouter: AnyRouter<SuperRoute>, map: ((RouteType) -> SuperRoute)?)`  or subclass it by overriding `mapToSuperRoute(_ route: RouteType) -> SuperRoute`.
+
+A `RedirectionCoordinator` is not dependent on a specific `SuperRoute`, instead it uses its `superTransitionPerformer` to perform transitions. In contrast to transitioning to a new coordinator, a `RedirectionCoordinator` uses its `superTransitionPerformer`'s root view controller to perform transitions. Due to constraints of UIKit, this is especially helpful when nesting routes dependent on a `UINavigationController`, since pushing navigation controllers on top of each other is not prohibited. Similar to the `RedirectionRouter`, you can use `RedirectionCoordinator` by providing a prepareTransition-closure to map from a route to a transition or by subclassing.
+
 ### RxSwift extensions
 
 Reactive programming can be very useful to keep the state of view and model consistent in a MVVM architecture. Instead of relying on the completion handler of the `trigger` method available in any `Router`, you can also use our RxSwift-extension. In the example application, we use Actions (from the [Action](https://github.com/RxSwiftCommunity/Action) framework) to trigger routes on certain UI events - e.g. to trigger `LoginRoute.home` in `LoginViewModel`, when the login button is tapped.
