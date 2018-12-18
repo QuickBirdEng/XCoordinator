@@ -118,7 +118,7 @@ class HomeViewModel {
 
 For more advanced use, XCoordinator offers many more customization options. We introduce custom animated transitions and deep linking. Furthermore, extensions for use in reactive programming with RxSwift are described.
 
-### Custom Transitions
+### 🌗 Custom Transitions
 
 Custom animated transitions define presentation and dismissal animations. You can specify `Animation`-objects in `prepareTransition(for:)` in your coordinator for several common transitions, such as `present`, `dismiss`, `push` and `pop`. Specifying no animation results in not overriding previously set animations - Use `Animation.default` to use the default animations of UIKit.
 
@@ -143,7 +143,7 @@ class UsersCoordinator: NavigationCoordinator<UserRoute> {
 }
 ```
 
-### Deep Linking
+### ⏩ Deep Linking
 
 Deep Linking can be used to chain different routes together. In contrast to the `.multiple`-transition, deep linking can identify routers based on previous transitions (e.g. when pushing or presenting a router), which enables chaining of routes of different types. Keep in mind, that you cannot access higher-level routers anymore once you trigger a route on a lower level on the stack.
 
@@ -164,7 +164,7 @@ class AppCoordinator: NavigationCoordinator<AppRoute> {
 
 ⚠️ XCoordinator does not check at compile-time, whether a deep link can be executed. Rather it uses assertionFailures to inform about incorrect chaining at runtime, when it cannot find an appriopriate router for a given route. Keep this in mind when changing the structure of your app.
 
-### RedirectionRouter & RedirectionCoordinator
+### ↩️ RedirectionRouter & RedirectionCoordinator
 
 Let's assume, there is a route type called `HugeRoute` with more than 10 routes. To decrease coupling, `HugeRoute` needs to be split up into mutliple route types. As you will discover, many routes in `HugeRoute` use transitions dependent on a specific rootViewController, such as `push`, `show`, `pop`, etc. XCoordinator has two solutions for you to solve such a case, if splitting up routes by introducing a new router/coordinator is not an option.
 
@@ -172,7 +172,16 @@ A `RedirectionRouter` can be used to map a new route type onto generalized `Supe
 
 A `RedirectionCoordinator` is not dependent on a specific `SuperRoute`, instead it uses its `superTransitionPerformer` to perform transitions. In contrast to transitioning to a new coordinator, a `RedirectionCoordinator` uses its `superTransitionPerformer`'s root view controller to perform transitions. Due to constraints of UIKit, this is especially helpful when nesting routes dependent on a `UINavigationController`, since pushing navigation controllers on top of each other is not prohibited. Similar to the `RedirectionRouter`, you can use `RedirectionCoordinator` by providing a prepareTransition-closure to map from a route to a transition or by subclassing.
 
-### RxSwift extensions
+The following table describes how using a `RedirectionRouter`, `RedirectionCoordinator` and creating a new coordinator independent from a superCoordinator stack up:
+
+|| **RedirectionRouter**  | **RedirectionCoordinator** | **New Coordinator** | 
+|---|---|---|---|
+| **Dependencies on superCoordinator** | on `SuperRoute` | on `TransitionType`  | none |
+| **Type constraint of superCoordinator** | `Router` | `TransitionPerformer` | none |
+| **Accessibility of superCoordinator** | map `RouteType` to `SuperRoute` | map `RouteType` to `TransitionType` | none | 
+| **Transition definition** | in superCoordinator |  constrained by `TransitionType` of superCoordinator | independent from superCoordinator |
+
+### 🚀 RxSwift extensions
 
 Reactive programming can be very useful to keep the state of view and model consistent in a MVVM architecture. Instead of relying on the completion handler of the `trigger` method available in any `Router`, you can also use our RxSwift-extension. In the example application, we use Actions (from the [Action](https://github.com/RxSwiftCommunity/Action) framework) to trigger routes on certain UI events - e.g. to trigger `LoginRoute.home` in `LoginViewModel`, when the login button is tapped.
 
@@ -291,7 +300,7 @@ This framework is created with ❤️ by [QuickBird Studios](www.quickbirdstudio
 
 ## ❤️ Contributing
 
-Open an issue if you need help, if you found a bug, or if you want to discuss a feature request.
+Open an issue if you need help, if you found a bug, or if you want to discuss a feature request. If you feel like having a chat about XCoordinator with the developers and other users, join our [Slack Workspace](https://join.slack.com/t/xcoordinator/shared_invite/enQtNDg4NDAxNTk1ODQ1LTRhMjY0OTAwNWMyYmQ5ZWI5Mzk3ODU1NGJmMWZlZDY3Y2Q0NTZjOWNkMjgyNmQwYjY4MzZmYTRhN2EzMzczNTM).
 
 Open a PR if you want to make some changes to XCoordinator.
 
