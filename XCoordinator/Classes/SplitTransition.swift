@@ -10,7 +10,7 @@ public typealias SplitTransition = Transition<UISplitViewController>
 
 extension Transition where RootViewController: UISplitViewController {
     public static func show(_ presentable: Presentable) -> SplitTransition {
-        return SplitTransition(presentables: [presentable]) { options, performer, completion in
+        return SplitTransition(presentables: [presentable], animation: nil) { options, performer, completion in
             performer.show(
                 presentable.viewController,
                 with: options,
@@ -23,7 +23,7 @@ extension Transition where RootViewController: UISplitViewController {
     }
 
     public static func showDetail(_ presentable: Presentable) -> SplitTransition {
-        return SplitTransition(presentables: [presentable]) { options, performer, completion in
+        return SplitTransition(presentables: [presentable], animation: nil) { options, performer, completion in
             performer.showDetail(
                 presentable.viewController,
                 with: options,

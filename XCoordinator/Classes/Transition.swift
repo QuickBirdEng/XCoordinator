@@ -15,6 +15,7 @@ public struct Transition<RootViewController: UIViewController>: TransitionProtoc
     // MARK: - Stored properties
 
     private var _presentables: [Presentable]
+    private var _animation: TransitionAnimation?
     private var _perform: Perform
 
     // MARK: - Computed properties
@@ -23,10 +24,15 @@ public struct Transition<RootViewController: UIViewController>: TransitionProtoc
         return _presentables
     }
 
+    public var animation: TransitionAnimation? {
+        return _animation
+    }
+
     // MARK: - Init
 
-    public init(presentables: [Presentable], perform: @escaping Perform) {
+    public init(presentables: [Presentable], animation: TransitionAnimation?, perform: @escaping Perform) {
         self._presentables = presentables
+        self._animation = animation
         self._perform = perform
     }
 

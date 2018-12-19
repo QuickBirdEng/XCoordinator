@@ -10,6 +10,8 @@ public protocol TransitionProtocol {
     associatedtype RootViewController: UIViewController
 
     var presentables: [Presentable] { get }
+    var animation: TransitionAnimation? { get }
+
     func perform<C: Coordinator>(options: TransitionOptions, coordinator: C, completion: PresentationHandler?) where C.TransitionType == Self
 
     // MARK: - Always accessible transitions
