@@ -68,41 +68,40 @@ open class BaseCoordinator<RouteType: Route, TransitionType: TransitionProtocol>
     }
 }
 
-// MARK: - BaseCoordinator: UIGestureRecognizerTargets
+// MARK: - BaseCoordinator+UIGestureRecognizer
 
 extension BaseCoordinator {
     open func registerGestureRecognizer(
         _ recognizer: UIGestureRecognizer,
         route: RouteType,
         progression: @escaping (UIGestureRecognizer) -> CGFloat,
-        shouldFinish: @escaping (UIGestureRecognizer) -> Bool
-        ) {
-        var _transition: TransitionType?
+        shouldFinish: @escaping (UIGestureRecognizer) -> Bool,
+        completion: PresentationHandler? = nil) {
 
+        var animation: TransitionAnimation?
         let target = GestureRecognizerTarget(recognizer: recognizer) { [weak self] recognizer in
             guard let `self` = self else { return }
-
-            let transition = _transition ?? self.prepareTransition(for: route)
-            _transition = transition
 
             switch recognizer.state {
             case .possible, .failed:
                 break
             case .began:
-                transition.animation?.start()
-                self.performTransition(transition, with: TransitionOptions(animated: true))
+                let transition = self.prepareTransition(for: route)
+                animation = transition.animation
+                animation?.start()
+                self.performTransition(transition, with: TransitionOptions(animated: true), completion: completion)
             case .changed:
                 let transitionProgress = progression(recognizer)
-                transition.animation?.interactionController?.update(transitionProgress)
+                animation?.interactionController?.update(transitionProgress)
             case .cancelled:
-                defer { transition.animation?.cleanup() }
-                transition.animation?.interactionController?.cancel()
+                defer { animation?.cleanup() }
+                animation?.interactionController?.cancel()
             case .ended:
-                defer { transition.animation?.cleanup() }
+                defer { animation?.cleanup() }
                 if shouldFinish(recognizer) {
-                    transition.animation?.interactionController?.finish()
+                    animation?.interactionController?.finish()
                 } else {
-                    transition.animation?.interactionController?.cancel()
+                    animation?.interactionController?.cancel()
                 }
             }
         }
