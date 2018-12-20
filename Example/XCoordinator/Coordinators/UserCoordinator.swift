@@ -13,7 +13,7 @@ enum UserRoute: Route {
     case user(String)
     case alert(title: String, message: String)
     case users
-    case emptyForAnimation
+    case randomColor
 }
 
 class UserCoordinator: NavigationCoordinator<UserRoute> {
@@ -29,12 +29,9 @@ class UserCoordinator: NavigationCoordinator<UserRoute> {
 
     override func prepareTransition(for route: UserRoute) -> NavigationTransition {
         switch route {
-        case .emptyForAnimation:
+        case .randomColor:
             let viewController = UIViewController()
-
-            viewController.loadViewIfNeeded()
-            viewController.view.backgroundColor = .red
-
+            viewController.view.backgroundColor = .random()
             return .push(viewController, animation: .interactiveFade)
         case let .user(username):
             var vc = UserViewController.instantiateFromNib()
@@ -55,22 +52,35 @@ class UserCoordinator: NavigationCoordinator<UserRoute> {
     private func addPushGestureRecognizer() {
         let gestureRecognizer = UIScreenEdgePanGestureRecognizer()
         gestureRecognizer.edges = .right
+
         let topView = (rootViewController.topViewController ?? rootViewController)?.view
         topView?.addGestureRecognizer(gestureRecognizer)
+
         registerInteractiveTransition(
-            for: .emptyForAnimation,
+            for: .randomColor,
             triggeredBy: gestureRecognizer,
-            progression: { [weak topView] recognizer in
+            progress: { [weak topView] recognizer in
                 let xTranslation = -recognizer.translation(in: topView).x
                 return max(min(xTranslation / UIScreen.main.bounds.width, 1), 0)
             },
             shouldFinish: { [weak topView] recognizer in
                 let xTranslation = -recognizer.translation(in: topView).x
                 let xVelocity = -recognizer.velocity(in: topView).x
-                return xTranslation / UIScreen.main.bounds.width >= 0.5
+                return xTranslation >= UIScreen.main.bounds.width / 2
                     || xVelocity >= UIScreen.main.bounds.width / 2
             },
             completion: nil
+        )
+    }
+}
+
+extension UIColor {
+    fileprivate static func random(alpha: CGFloat? = 1) -> UIColor {
+        return UIColor(
+            red: CGFloat.random(in: 0...1),
+            green: CGFloat.random(in: 0...1),
+            blue: CGFloat.random(in: 0...1),
+            alpha: alpha ?? CGFloat.random(in: 0...1)
         )
     }
 }

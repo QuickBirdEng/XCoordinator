@@ -74,7 +74,7 @@ extension BaseCoordinator {
     open func registerInteractiveTransition<GestureRecognizer: UIGestureRecognizer>(
         for route: RouteType,
         triggeredBy recognizer: GestureRecognizer,
-        progression: @escaping (GestureRecognizer) -> CGFloat,
+        progress: @escaping (GestureRecognizer) -> CGFloat,
         shouldFinish: @escaping (GestureRecognizer) -> Bool,
         completion: PresentationHandler? = nil) {
 
@@ -95,8 +95,7 @@ extension BaseCoordinator {
                     completion: completion
                 )
             case .changed:
-                let transitionProgress = progression(recognizer)
-                animation?.interactionController?.update(transitionProgress)
+                animation?.interactionController?.update(progress(recognizer))
             case .cancelled:
                 defer { animation?.cleanup() }
                 animation?.interactionController?.cancel()
