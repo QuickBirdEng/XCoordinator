@@ -28,10 +28,18 @@ open class RedirectionCoordinator<RouteType: Route, TransitionType: TransitionPr
 
     // MARK: - Init
 
-    public init<C: Coordinator>(viewController: UIViewController, superCoordinator: C, prepareTransition: ((RouteType) -> TransitionType)? = nil) where C.TransitionType == TransitionType {
+    public init(viewController: UIViewController, superTransitionPerformer: AnyTransitionPerformer<TransitionType>, prepareTransition: ((RouteType) -> TransitionType)?) {
         viewControllerBox.set(viewController)
-        superTransitionPerformer = AnyTransitionPerformer(superCoordinator)
+        self.superTransitionPerformer = superTransitionPerformer
         _prepareTransition = prepareTransition
+    }
+
+    public convenience init<C: Coordinator>(viewController: UIViewController, superCoordinator: C, prepareTransition: ((RouteType) -> TransitionType)?) where C.TransitionType == TransitionType {
+        self.init(
+            viewController: viewController,
+            superTransitionPerformer: AnyTransitionPerformer(superCoordinator),
+            prepareTransition: prepareTransition
+        )
     }
 
     // MARK: - Methods

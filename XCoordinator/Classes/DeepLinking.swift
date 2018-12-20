@@ -7,16 +7,18 @@
 //
 
 public struct PresentationHandlerContext {
-    internal var presentables: [Presentable]
+    internal let presentables: [Presentable]
 
-    internal static var empty: PresentationHandlerContext {
-        return PresentationHandlerContext(presentables: [])
-    }
+    internal static let empty = PresentationHandlerContext(presentables: [])
 }
 
 // MARK: - Coordinator + DeepLinking
 
 extension Coordinator where Self: AnyObject {
+    public func deepLink<RootViewController, S: Sequence>(_ route: RouteType, _ remainingRoutes: S) -> Transition<RootViewController> where S.Element == Route, TransitionType == Transition<RootViewController> {
+        return .deepLink(with: self, route, array: Array(remainingRoutes))
+    }
+
     public func deepLink<RootViewController>(_ route: RouteType, _ remainingRoutes: Route...) -> Transition<RootViewController> where TransitionType == Transition<RootViewController> {
         return .deepLink(with: self, route, array: remainingRoutes)
     }
@@ -25,11 +27,7 @@ extension Coordinator where Self: AnyObject {
 // MARK: - Transition + DeepLink
 
 extension Transition {
-    public static func deepLink<C: Coordinator & AnyObject>(with coordinator: C, _ route: C.RouteType, _ remainingRoutes: Route...) -> Transition {
-        return .deepLink(with: coordinator, route, array: remainingRoutes)
-    }
-
-    fileprivate static func deepLink<C: Coordinator & AnyObject>(with coordinator: C, _ route: C.RouteType,  array remainingRoutes: [Route]) -> Transition {
+    fileprivate static func deepLink<C: Coordinator & AnyObject>(with coordinator: C, _ route: C.RouteType, array remainingRoutes: [Route]) -> Transition {
         return Transition(presentables: []) { [weak coordinator] options, performer, completion in
             guard let coordinator = coordinator else {
                 assertionFailure("Please use the coordinator responsible for executing a deepLink-Transition when initializing.")

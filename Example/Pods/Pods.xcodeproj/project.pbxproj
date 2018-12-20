@@ -224,6 +224,8 @@
 		99E5513325C685E8C50A609AC5FD169C /* NSObject+Rx+KVORepresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB0D4A15261F4D524861C264C04DD964 /* NSObject+Rx+KVORepresentable.swift */; };
 		9A3C1F797E0618E09C8EC3CAF51851A8 /* Using.swift in Sources */ = {isa = PBXBuildFile; fileRef = E30C5226E5D37A71287F11C859EAFE3E /* Using.swift */; };
 		9B266862B0B77ECC079B5B8365DEBE29 /* PublishRelay+Signal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 644D5914542AECF518BA0408E550248A /* PublishRelay+Signal.swift */; };
+		9B2A479C21C452490097155E /* UIPageViewController+Configuration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B2A479B21C452490097155E /* UIPageViewController+Configuration.swift */; };
+		9B2A479E21C458660097155E /* PageCoordinatorDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B2A479D21C458660097155E /* PageCoordinatorDataSource.swift */; };
 		9B3C49C0E9D84CD4117408135491E095 /* UITextField+Rx.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78806199DEBE3D53C16A41AC53CE2CF1 /* UITextField+Rx.swift */; };
 		9B3F057DF17503290A41DCEEB00EDEA1 /* Container.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33E2737208CA49F7F536058C3CCDC4C7 /* Container.swift */; };
 		9B4D50598B013F7CCD60829FCB8AF200 /* NavigationCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDB990D30757E2E7A8F5266831BBBE5F /* NavigationCoordinator.swift */; };
@@ -704,6 +706,8 @@
 		94BFE3453532645178AC8C9BBA967BAD /* SwitchIfEmpty.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SwitchIfEmpty.swift; path = RxSwift/Observables/SwitchIfEmpty.swift; sourceTree = "<group>"; };
 		95AD896AD0980912837EF13BF04DB209 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		966520DD39779BD6DFB7BB679CF85DB5 /* ViewTransition.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ViewTransition.swift; path = XCoordinator/Classes/ViewTransition.swift; sourceTree = "<group>"; };
+		9B2A479B21C452490097155E /* UIPageViewController+Configuration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "UIPageViewController+Configuration.swift"; path = "XCoordinator/Classes/UIPageViewController+Configuration.swift"; sourceTree = "<group>"; };
+		9B2A479D21C458660097155E /* PageCoordinatorDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = PageCoordinatorDataSource.swift; path = XCoordinator/Classes/PageCoordinatorDataSource.swift; sourceTree = "<group>"; };
 		9BD7B27221BB4295002B5FCD /* RedirectionCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = RedirectionCoordinator.swift; path = XCoordinator/Classes/RedirectionCoordinator.swift; sourceTree = "<group>"; };
 		9C930BC1E5B36E06737CDF60A6A97A3F /* String+Rx.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "String+Rx.swift"; path = "RxSwift/Extensions/String+Rx.swift"; sourceTree = "<group>"; };
 		9CA54932B21A4C168FA65DDF5BA2D1AE /* _RXKVOObserver.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = _RXKVOObserver.m; path = RxCocoa/Runtime/_RXKVOObserver.m; sourceTree = "<group>"; };
@@ -1281,6 +1285,8 @@
 				EDB990D30757E2E7A8F5266831BBBE5F /* NavigationCoordinator.swift */,
 				27C375FAF729A1E7B20587DC668C579E /* NavigationTransition.swift */,
 				6628BEFDB7C9B5281C5ABDEDDC42B504 /* PageCoordinator.swift */,
+				9B2A479D21C458660097155E /* PageCoordinatorDataSource.swift */,
+				9B2A479B21C452490097155E /* UIPageViewController+Configuration.swift */,
 				25A4CF5D16A7A62FAF777D7289FB5FF2 /* PageTransition.swift */,
 				B7663D5E6380C2429F08E6B17B9D7A60 /* Presentable.swift */,
 				91EB235AFB9F4BF8B546560603D29643 /* RedirectionRouter.swift */,
@@ -1729,7 +1735,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0930;
-				LastUpgradeCheck = 0930;
+				LastUpgradeCheck = 1010;
 			};
 			buildConfigurationList = 2D8E8EC45A3A1A1D94AE762CB5028504 /* Build configuration list for PBXProject "Pods" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -2003,6 +2009,7 @@
 				6835502EE09668FF5C7DA3915E359E87 /* ReferenceBox.swift in Sources */,
 				6988D6D6592D5643F99EDC9663347F28 /* Route.swift in Sources */,
 				C7EFCC09AA2DEA575F5D4E3C077005D4 /* Router.swift in Sources */,
+				9B2A479C21C452490097155E /* UIPageViewController+Configuration.swift in Sources */,
 				5F894E9869670A2FE5AF36F9A8556395 /* SplitCoordinator.swift in Sources */,
 				68DE86B05641F2B5CDD09F3166E11D4C /* SplitTransition.swift in Sources */,
 				92236A55B84027977673F11D8143D3D7 /* StaticTransitionAnimation.swift in Sources */,
@@ -2017,6 +2024,7 @@
 				D4FB6D3359580BCA5C656DB4024B2F17 /* TransitionPerformer+Page.swift in Sources */,
 				F4BF8FE7E2F9190D97F3A2BAECCE4ED2 /* TransitionPerformer+Split.swift in Sources */,
 				A7EC5DF89CFBB48024AF3CCCE858A3C5 /* TransitionPerformer+TabBar.swift in Sources */,
+				9B2A479E21C458660097155E /* PageCoordinatorDataSource.swift in Sources */,
 				E228936A455427F7AB3973824350403A /* TransitionPerformer+Transition.swift in Sources */,
 				664D408C612240F13CE1F49A3B789C57 /* TransitionPerformer.swift in Sources */,
 				B2148F55B6F15F069DF780FB61B766CC /* TransitionProtocol.swift in Sources */,
@@ -2558,6 +2566,7 @@
 				MTL_FAST_MATH = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				STRIP_INSTALLED_PRODUCT = NO;
+				SWIFT_COMPILATION_MODE = wholemodule;
 				SYMROOT = "${SRCROOT}/../build";
 			};
 			name = Release;

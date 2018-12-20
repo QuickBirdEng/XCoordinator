@@ -38,7 +38,7 @@ class NewsCoordinator: NavigationCoordinator<NewsRoute> {
             vc.bind(to: vm)
             return .push(vc, animation: .interactiveScale)
         case .close:
-            return .dismiss()
+            return .dismissToRoot()
         }
     }
 }

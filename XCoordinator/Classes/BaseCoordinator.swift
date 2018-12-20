@@ -14,41 +14,30 @@ open class BaseCoordinator<RouteType: Route, TransitionType: TransitionProtocol>
 
     // MARK: - Stored properties
 
-    private let rootVCReferenceBox = ReferenceBox<RootViewController>()
-    private var windowAppearanceObserver: Any?
+    private let rootViewControllerBox = ReferenceBox<RootViewController>()
 
     // MARK: - Computed properties
 
-    public private(set) var rootViewController: RootViewController {
-        get {
-            return rootVCReferenceBox.get()!
-        }
-        set {
-            rootVCReferenceBox.set(newValue)
-        }
+    public var rootViewController: RootViewController {
+        return rootViewControllerBox.get()!
     }
 
     // MARK: - Init
 
     public init(initialRoute: RouteType?) {
-        self.rootVCReferenceBox.set(generateRootViewController())
-        if let initialRoute = initialRoute {
-            let initialTransition = prepareTransition(for: initialRoute)
-            performTransitionAfterWindowAppeared(initialTransition)
-        }
+        rootViewControllerBox.set(generateRootViewController())
+        initialRoute.map(prepareTransition).map(performTransitionAfterWindowAppeared)
     }
 
     public init(initialTransition: TransitionType?) {
-        self.rootVCReferenceBox.set(generateRootViewController())
-        if let initialTransition = initialTransition {
-            performTransitionAfterWindowAppeared(initialTransition)
-        }
+        rootViewControllerBox.set(generateRootViewController())
+        initialTransition.map(performTransitionAfterWindowAppeared)
     }
 
     // MARK: - Open methods
 
     open func presented(from presentable: Presentable?) {
-        rootVCReferenceBox.releaseStrongReference()
+        rootViewControllerBox.releaseStrongReference()
     }
 
     open func generateRootViewController() -> RootViewController {
@@ -66,18 +55,14 @@ open class BaseCoordinator<RouteType: Route, TransitionType: TransitionProtocol>
             return performTransition(transition, with: TransitionOptions(animated: false))
         }
 
+        var windowAppearanceObserver: Any?
+
         rootViewController.beginAppearanceTransition(true, animated: false)
         windowAppearanceObserver = NotificationCenter.default.addObserver(forName: UIWindow.didBecomeKeyNotification, object: nil, queue: .main) { [weak self] _ in
-            self?.removeWindowObserver()
+            windowAppearanceObserver.map(NotificationCenter.default.removeObserver)
+            windowAppearanceObserver = nil
             self?.performTransition(transition, with: TransitionOptions(animated: false))
             self?.rootViewController.endAppearanceTransition()
-        }
-    }
-
-    private func removeWindowObserver() {
-        if let observer = windowAppearanceObserver {
-            NotificationCenter.default.removeObserver(observer)
-            windowAppearanceObserver = nil
         }
     }
 }

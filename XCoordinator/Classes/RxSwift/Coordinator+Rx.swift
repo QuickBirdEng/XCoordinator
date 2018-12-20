@@ -14,14 +14,17 @@ public extension Router {
     }
 }
 
-extension Reactive where Base: Router {
+extension Reactive where Base: Router & AnyObject {
     public func trigger(_ route: Base.RouteType, with options: TransitionOptions) -> Observable<Void> {
-        return Observable.create { observer -> Disposable in
-            self.base.trigger(route, with: options) {
+        return Observable.create { [weak base] observer -> Disposable in
+            guard let base = base else {
+                observer.onCompleted()
+                return Disposables.create()
+            }
+            base.trigger(route, with: options) {
                 observer.onNext(())
                 observer.onCompleted()
             }
-
             return Disposables.create()
         }
     }

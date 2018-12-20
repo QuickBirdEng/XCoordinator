@@ -18,8 +18,8 @@ class HomeTabCoordinator: TabBarCoordinator<HomeRoute> {
 
     // MARK: - Stored properties
 
-    let newsRouter: AnyRouter<NewsRoute>
-    let userListRouter: AnyRouter<UserListRoute>
+    private let newsRouter: AnyRouter<NewsRoute>
+    private let userListRouter: AnyRouter<UserListRoute>
 
     // MARK: - Init
 
