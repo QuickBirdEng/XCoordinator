@@ -71,15 +71,15 @@ open class BaseCoordinator<RouteType: Route, TransitionType: TransitionProtocol>
 // MARK: - BaseCoordinator+UIGestureRecognizer
 
 extension BaseCoordinator {
-    open func registerGestureRecognizer(
-        _ recognizer: UIGestureRecognizer,
-        route: RouteType,
-        progression: @escaping (UIGestureRecognizer) -> CGFloat,
-        shouldFinish: @escaping (UIGestureRecognizer) -> Bool,
+    open func registerInteractiveTransition<GestureRecognizer: UIGestureRecognizer>(
+        for route: RouteType,
+        triggeredBy recognizer: GestureRecognizer,
+        progression: @escaping (GestureRecognizer) -> CGFloat,
+        shouldFinish: @escaping (GestureRecognizer) -> Bool,
         completion: PresentationHandler? = nil) {
 
         var animation: TransitionAnimation?
-        let target = GestureRecognizerTarget(recognizer: recognizer) { [weak self] recognizer in
+        let target = Target(recognizer: recognizer) { [weak self] recognizer in
             guard let `self` = self else { return }
 
             switch recognizer.state {
@@ -89,7 +89,11 @@ extension BaseCoordinator {
                 let transition = self.prepareTransition(for: route)
                 animation = transition.animation
                 animation?.start()
-                self.performTransition(transition, with: TransitionOptions(animated: true), completion: completion)
+                self.performTransition(
+                    transition,
+                    with: TransitionOptions(animated: true),
+                    completion: completion
+                )
             case .changed:
                 let transitionProgress = progression(recognizer)
                 animation?.interactionController?.update(transitionProgress)
@@ -108,7 +112,11 @@ extension BaseCoordinator {
         gestureRecognizerTargets.append(target)
     }
 
-    open func unregisterGestureRecognizer(_ recognizer: UIGestureRecognizer) {
-        gestureRecognizerTargets.removeAll { $0.gestureRecognizer === recognizer }
+    open func unregisterInteractiveTransitions(triggeredBy recognizer: UIGestureRecognizer) {
+        gestureRecognizerTargets.removeAll { target in
+            guard target.gestureRecognizer === recognizer else { return false }
+            recognizer.removeTarget(target, action: nil)
+            return true
+        }
     }
 }

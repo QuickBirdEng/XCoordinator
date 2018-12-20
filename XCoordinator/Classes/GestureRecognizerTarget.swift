@@ -7,16 +7,20 @@
 
 import Foundation
 
-internal class GestureRecognizerTarget {
+internal protocol GestureRecognizerTarget {
+    var gestureRecognizer: UIGestureRecognizer? { get }
+}
+
+internal class Target<GestureRecognizer: UIGestureRecognizer>: GestureRecognizerTarget {
 
     // MARK: - Stored properties
 
-    private var handler: (UIGestureRecognizer) -> Void
-    internal weak var gestureRecognizer: UIGestureRecognizer?
+    private let handler: (GestureRecognizer) -> Void
+    internal private(set) weak var gestureRecognizer: UIGestureRecognizer?
 
     // MARK: - Init
 
-    init(recognizer gestureRecognizer: UIGestureRecognizer, handler: @escaping (UIGestureRecognizer) -> Void) {
+    init(recognizer gestureRecognizer: GestureRecognizer, handler: @escaping (GestureRecognizer) -> Void) {
         self.handler = handler
         self.gestureRecognizer = gestureRecognizer
         gestureRecognizer.addTarget(self, action: #selector(handle))
@@ -25,7 +29,8 @@ internal class GestureRecognizerTarget {
     // MARK: - Target actions
 
     @objc
-    open func handle(_ gestureRecognizer: UIGestureRecognizer) {
-        handler(gestureRecognizer)
+    private func handle(_ gestureRecognizer: UIGestureRecognizer) {
+        guard let recognizer = gestureRecognizer as? GestureRecognizer else { return }
+        handler(recognizer)
     }
 }
