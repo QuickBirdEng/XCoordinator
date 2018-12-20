@@ -11,6 +11,7 @@ Pod::Spec.new do |spec|
   spec.ios.deployment_target = '9.0'
   spec.tvos.deployment_target = '9.0'
   spec.source_files = 'RxCoordinator/Sources/*.swift'
+  spec.deprecated_in_favor_of = 'XCoordinator'
   spec.framework  = 'Foundation'
   spec.framework  = 'UIKit'
   spec.dependency 'RxSwift', '~> 4.0'
