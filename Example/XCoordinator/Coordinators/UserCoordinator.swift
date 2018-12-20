@@ -13,6 +13,7 @@ enum UserRoute: Route {
     case user(String)
     case alert(title: String, message: String)
     case users
+    case emptyForAnimation
 }
 
 class UserCoordinator: NavigationCoordinator<UserRoute> {
@@ -21,12 +22,20 @@ class UserCoordinator: NavigationCoordinator<UserRoute> {
 
     init(user: String) {
         super.init(initialRoute: .user(user))
+        addPushGestureRecognizer()
     }
 
     // MARK: - Overrides
 
     override func prepareTransition(for route: UserRoute) -> NavigationTransition {
         switch route {
+        case .emptyForAnimation:
+            let viewController = UIViewController()
+
+            viewController.loadViewIfNeeded()
+            viewController.view.backgroundColor = .red
+
+            return .push(viewController, animation: .interactiveFade)
         case let .user(username):
             var vc = UserViewController.instantiateFromNib()
             let viewModel = UserViewModelImpl(router: anyRouter, username: username)
@@ -40,6 +49,28 @@ class UserCoordinator: NavigationCoordinator<UserRoute> {
             return .dismiss()
         }
     }
+
+    // MARK: - Methods
+
+    private func addPushGestureRecognizer() {
+        let gestureRecognizer = UIScreenEdgePanGestureRecognizer()
+        gestureRecognizer.edges = .right
+        let topView = (rootViewController.topViewController ?? rootViewController)?.view
+        topView?.addGestureRecognizer(gestureRecognizer)
+        registerInteractiveTransition(
+            for: .emptyForAnimation,
+            triggeredBy: gestureRecognizer,
+            progression: { [weak topView] recognizer in
+                let xTranslation = -recognizer.translation(in: topView).x
+                return max(min(xTranslation / UIScreen.main.bounds.width, 1), 0)
+            },
+            shouldFinish: { [weak topView] recognizer in
+                let xTranslation = -recognizer.translation(in: topView).x
+                let xVelocity = -recognizer.velocity(in: topView).x
+                return xTranslation / UIScreen.main.bounds.width >= 0.5
+                    || xVelocity >= UIScreen.main.bounds.width / 2
+            },
+            completion: nil
+        )
+    }
 }
-
-
