@@ -9,7 +9,6 @@ Pod::Spec.new do |spec|
     spec.module_name = 'XCoordinator'
     spec.swift_version = '4.2'
     spec.ios.deployment_target = '8.0'
-    spec.tvos.deployment_target = '8.0'
     spec.source_files = 'XCoordinator/Classes/*.swift'
     spec.default_subspec = 'Core'
 
