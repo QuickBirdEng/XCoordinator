@@ -91,9 +91,9 @@ Example: In `UserListCoordinator.prepareTransition(for:)` we change from the `Us
 
 To achieve this behavior, every Coordinator has its own `rootViewController`. This would be a `UINavigationController` in the case of a `NavigationCoordinator`, a `UITabBarController` in the case of a `TabBarCoordinator`, etc. When transitioning to a Coordinator/Router, this `rootViewController` is used as the destination view controller.
 
-### 🏁 Using XCoordinator right from the start
+### 🏁 Using XCoordinator from App Launch
 
-To use coordinators right from the launch of the app, make sure to create the app's window programmatically in `AppDelegate.swift` (Don't forget to remove `Main Storyboard file base name` from `Info.plist`). Then set the coordinator as the root of the window's view hierarchy in `AppDelegate.didFinishLaunching`.
+To use coordinators from the launch of the app, make sure to create the app's `window` programmatically in `AppDelegate.swift` (Don't forget to remove `Main Storyboard file base name` from `Info.plist`). Then, set the coordinator as the root of the `window`'s view hierarchy in the `AppDelegate.didFinishLaunching`.
 
 ```swift
 @UIApplicationMain
@@ -160,7 +160,7 @@ class AppCoordinator: NavigationCoordinator<AppRoute> {
 
 ### 🚏 Redirection
 
-Let's assume, there is a route type called `HugeRoute` with more than 10 routes. To decrease coupling, `HugeRoute` needs to be split up into mutliple route types. As you will discover, many routes in `HugeRoute` use transitions dependent on a specific rootViewController, such as `push`, `show`, `pop`, etc. XCoordinator has two solutions for you to solve such a case, if splitting up routes by introducing a new router/coordinator is not an option.
+Let's assume, there is a route type called `HugeRoute` with more than 10 routes. To decrease coupling, `HugeRoute` needs to be split up into mutliple route types. As you will discover, many routes in `HugeRoute` use transitions dependent on a specific rootViewController, such as `push`, `show`, `pop`, etc. If splitting up routes by introducing a new router/coordinator is not an option, XCoordinator has two solutions for you to solve such a case which are `RedirectionRouter` and `RedirectionCoordinator`.
 
 A `RedirectionRouter` can be used to map a new route type onto generalized `SuperRoute` routes. A `RedirectionRouter` is independent of the `TransitionType` of its superRouter.  You can use `RedirectionRouter.init(viewController:superRouter:map:)`  or subclassing by overriding `mapToSuperRoute(_:)` to create a `RedirectionRouter`.
 
