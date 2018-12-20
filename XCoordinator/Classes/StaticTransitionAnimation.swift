@@ -15,12 +15,8 @@ open class StaticTransitionAnimation: NSObject, TransitionAnimation {
 
     // MARK: - Computed properties
 
-    public var interactionController: UIViewControllerInteractiveTransitioning? {
-        return self as? UIViewControllerInteractiveTransitioning
-    }
-
-    public var percentDrivenTransition: UIPercentDrivenInteractiveTransition? {
-        return nil
+    public var interactionController: PercentDrivenInteractionController? {
+        return self as? PercentDrivenInteractionController
     }
 
     // MARK: - Init
@@ -39,5 +35,10 @@ open class StaticTransitionAnimation: NSObject, TransitionAnimation {
     public func animateTransition(using transitionContext: UIViewControllerContextTransitioning) {
         performAnimation(transitionContext)
     }
+
+    // MARK: - TransitionAnimation
+
+    public func start() {}
+    public func cleanup() {}
 }
 

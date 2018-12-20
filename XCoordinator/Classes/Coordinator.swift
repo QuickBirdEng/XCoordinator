@@ -30,12 +30,20 @@ extension Coordinator {
 // MARK: - Extension: Default implementations
 
 extension Coordinator {
+    public var anyCoordinator: AnyCoordinator<RouteType, TransitionType> {
+        return AnyCoordinator(self)
+    }
+
     public func presented(from presentable: Presentable?) {}
 
     public func contextTrigger(_ route: RouteType, with options: TransitionOptions, completion: ContextPresentationHandler?) {
         let transition = prepareTransition(for: route)
-        let context = PresentationHandlerContext(presentable: transition.presentable)
+        let context = PresentationHandlerContext(presentables: transition.presentables)
         performTransition(transition, with: options) { completion?(context) }
+    }
+
+    public func chain(routes: [RouteType]) -> TransitionType {
+        return .multiple(routes.map(prepareTransition))
     }
 
     func performTransition(_ transition: TransitionType, with options: TransitionOptions, completion: PresentationHandler? = nil) {

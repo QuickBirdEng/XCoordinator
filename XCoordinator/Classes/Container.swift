@@ -26,7 +26,6 @@ extension UIView: Container {
 }
 
 extension UIView {
-
     private func viewController(for responder: UIResponder) -> UIViewController? {
         if let viewController = responder as? UIViewController {
             return viewController

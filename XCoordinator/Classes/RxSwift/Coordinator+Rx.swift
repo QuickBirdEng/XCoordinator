@@ -1,8 +1,9 @@
 //
 //  Coordinator+Rx.swift
-//  Action
+//  XCoordinator
 //
 //  Created by Stefan Kofler on 25.07.18.
+//  Copyright © 2018 QuickBird Studios. All rights reserved.
 //
 
 import RxSwift
@@ -13,19 +14,22 @@ public extension Router {
     }
 }
 
-extension Reactive where Base: Router {
+extension Reactive where Base: Router & AnyObject {
     public func trigger(_ route: Base.RouteType, with options: TransitionOptions) -> Observable<Void> {
-        return Observable.create { observer -> Disposable in
-            self.base.trigger(route, with: options) {
+        return Observable.create { [weak base] observer -> Disposable in
+            guard let base = base else {
+                observer.onCompleted()
+                return Disposables.create()
+            }
+            base.trigger(route, with: options) {
                 observer.onNext(())
                 observer.onCompleted()
             }
-
             return Disposables.create()
         }
     }
 
-    // MARK: Convenience methods
+    // MARK: - Convenience methods
 
     public func trigger(_ route: Base.RouteType) -> Observable<Void> {
         return trigger(route, with: .default)

@@ -63,7 +63,6 @@ class TransitionTests: XCTestCase {
         let viewControllers = [UIViewController(), UIViewController()]
         testCompletionCalled(on: coordinator, transition: .set(viewControllers))
         testCompletionCalled(on: coordinator, transition: .pop(to: viewControllers[0]))
-
     }
 
     // MARK: - Helpers

@@ -1,6 +1,6 @@
 //
 //  HomePageCoordinator.swift
-//  XCoordinator-Example
+//  XCoordinator_Example
 //
 //  Created by Paul Kraft on 30.07.18.
 //  Copyright © 2018 QuickBird Studios. All rights reserved.
@@ -12,8 +12,8 @@ class HomePageCoordinator: PageCoordinator<HomeRoute> {
 
     // MARK: - Stored properties
 
-    let newsRouter: AnyRouter<NewsRoute>
-    let userListRouter: AnyRouter<UserListRoute>
+    private let newsRouter: AnyRouter<NewsRoute>
+    private let userListRouter: AnyRouter<UserListRoute>
 
     // MARK: - Init
 
@@ -22,7 +22,11 @@ class HomePageCoordinator: PageCoordinator<HomeRoute> {
         self.newsRouter = newsRouter
         self.userListRouter = userListRouter
         
-        super.init(pages: [newsRouter, userListRouter], direction: .forward, transitionStyle: .pageCurl, orientation: .horizontal, options: nil)
+        super.init(
+            pages: [newsRouter, userListRouter], loop: true,
+            set: userListRouter, direction: .forward,
+            configuration: .init(transitionStyle: .scroll)
+        )
     }
 
     // MARK: - Overrides

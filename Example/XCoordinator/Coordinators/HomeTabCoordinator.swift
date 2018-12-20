@@ -1,6 +1,6 @@
 //
 //  HomeTabCoordinator.swift
-//  XCoordinator-Example
+//  XCoordinator_Example
 //
 //  Created by Joan Disho on 04.05.18.
 //  Copyright © 2018 QuickBird Studios. All rights reserved.
@@ -18,8 +18,8 @@ class HomeTabCoordinator: TabBarCoordinator<HomeRoute> {
 
     // MARK: - Stored properties
 
-    let newsRouter: AnyRouter<NewsRoute>
-    let userListRouter: AnyRouter<UserListRoute>
+    private let newsRouter: AnyRouter<NewsRoute>
+    private let userListRouter: AnyRouter<UserListRoute>
 
     // MARK: - Init
 

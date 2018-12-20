@@ -1,6 +1,6 @@
 //
 //  AppCoordinator.swift
-//  XCoordinator-Example
+//  XCoordinator_Example
 //
 //  Created by Joan Disho on 03.05.18.
 //  Copyright © 2018 QuickBird Studios. All rights reserved.
@@ -16,6 +16,12 @@ enum AppRoute: Route {
 }
 
 class AppCoordinator: NavigationCoordinator<AppRoute> {
+
+    // MARK: - Stored properties
+
+    // We need to keep a reference to the HomeCoordinator
+    // as it is not held by any viewModel or viewController
+    private var home: Presentable?
 
     // MARK: - Init
 
@@ -33,7 +39,12 @@ class AppCoordinator: NavigationCoordinator<AppRoute> {
             vc.bind(to: viewModel)
             return .push(vc)
         case .home:
-            return .present(HomeTabCoordinator(), animation: .staticFade)
+            let presentables: [Presentable] = [HomeTabCoordinator(), HomeSplitCoordinator(), HomePageCoordinator()]
+            guard let presentable = presentables.randomElement() else {
+                return .none()
+            }
+            self.home = presentable
+            return .present(presentable, animation: .staticFade)
         case .newsDetail(let news):
             return deepLink(.home, HomeRoute.news, NewsRoute.newsDetail(news))
         }
@@ -42,7 +53,7 @@ class AppCoordinator: NavigationCoordinator<AppRoute> {
     // MARK: - Methods
 
     func notificationReceived() {
-        guard let news = MockNewsService().mostRecentNews().articles.first else {
+        guard let news = MockNewsService().mostRecentNews().articles.randomElement() else {
             return
         }
         self.trigger(.newsDetail(news))

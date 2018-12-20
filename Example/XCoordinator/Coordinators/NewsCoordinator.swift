@@ -1,6 +1,6 @@
 //
 //  NewsCoordinator.swift
-//  XCoordinator-Example
+//  XCoordinator_Example
 //
 //  Created by Paul Kraft on 28.07.18.
 //  Copyright © 2018 QuickBird Studios. All rights reserved.
@@ -36,9 +36,9 @@ class NewsCoordinator: NavigationCoordinator<NewsRoute> {
             var vc = NewsDetailViewController.instantiateFromNib()
             let vm = NewsDetailViewModelImpl(news: news)
             vc.bind(to: vm)
-            return .push(vc, animation: .interactiveFlip)
+            return .push(vc, animation: .interactiveScale)
         case .close:
-            return .dismiss()
+            return .dismissToRoot()
         }
     }
 }

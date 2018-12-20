@@ -25,16 +25,10 @@ class TestAnimation: Animation {
     }
 
     private static func interactiveTransitionAnimation(for expectation: XCTestExpectation?) -> TransitionAnimation {
-        return InteractiveTransitionAnimation(
-            duration: 0.1,
-            completionSpeed: 1,
-            completionCurve: .easeInOut,
-            wantsInteractiveStart: true,
-            transition: {
-                expectation?.fulfill()
-                $0.completeTransition(true)
-            }
-        )
+        return InteractiveTransitionAnimation(duration: 0.1) {
+            expectation?.fulfill()
+            $0.completeTransition(true)
+        }
     }
 
     private static func staticTransitionAnimation(for expectation: XCTestExpectation?) -> TransitionAnimation {

@@ -6,59 +6,92 @@
 //  Copyright © 2018 QuickBird Studios. All rights reserved.
 //
 
-public class InteractiveTransitionAnimation: NSObject, TransitionAnimation, UIViewControllerInteractiveTransitioning {
+open class InteractiveTransitionAnimation: NSObject, TransitionAnimation {
+
+    // MARK: - Static properties
+
+    private static let generateDefaultInteractionController: () -> PercentDrivenInteractionController? = {
+        return UIPercentDrivenInteractiveTransition()
+    }
 
     // MARK: - Stored properties
 
-    public let duration: TimeInterval
-    public let completionSpeed: CGFloat
-    public let completionCurve: UIView.AnimationCurve
-    public let wantsInteractiveStart: Bool
+    private let _duration: TimeInterval
+    private let _animation: (UIViewControllerContextTransitioning) -> Void
+    private var _generateInteractionController: () -> PercentDrivenInteractionController?
 
-    private let startInteractiveTransition: (_ transitionContext: UIViewControllerContextTransitioning) -> Void
+    private var _interactionController: PercentDrivenInteractionController?
 
     // MARK: - Computed properties
 
-    public var percentDrivenTransition: UIPercentDrivenInteractiveTransition? {
-        return nil
+    open var interactionController: PercentDrivenInteractionController? {
+        return _interactionController
     }
 
     // MARK: - Init
 
-    public init(duration: TimeInterval,
-                completionSpeed: CGFloat,
-                completionCurve: UIView.AnimationCurve,
-                wantsInteractiveStart: Bool,
-                transition: @escaping (UIViewControllerContextTransitioning) -> Void) {
-        self.duration = duration
-        self.completionSpeed = completionSpeed
-        self.completionCurve = completionCurve
-        self.wantsInteractiveStart = wantsInteractiveStart
-        self.startInteractiveTransition = transition
+    public init(duration: TimeInterval, transition: @escaping (UIViewControllerContextTransitioning) -> Void, generateInteractionController: @escaping () -> PercentDrivenInteractionController?) {
+        self._duration = duration
+        self._animation = transition
+        self._generateInteractionController = generateInteractionController
     }
 
-    public convenience init(completionSpeed: CGFloat = 1, completionCurve: UIView.AnimationCurve = .easeInOut, wantsInteractiveStart: Bool = true, transitionAnimation: StaticTransitionAnimation) {
+    public convenience init(duration: TimeInterval, transition: @escaping (UIViewControllerContextTransitioning) -> Void) {
+        self.init(
+            duration: duration,
+            transition: transition,
+            generateInteractionController: InteractiveTransitionAnimation.generateDefaultInteractionController
+        )
+    }
+
+    public convenience init(transitionAnimation: StaticTransitionAnimation, generateDefaultInteractionController: @escaping () -> PercentDrivenInteractionController?) {
         self.init(
             duration: transitionAnimation.duration,
-            completionSpeed: completionSpeed,
-            completionCurve: completionCurve,
-            wantsInteractiveStart: wantsInteractiveStart,
+            transition: transitionAnimation.performAnimation,
+            generateInteractionController: generateDefaultInteractionController
+        )
+    }
+
+    public convenience init(transitionAnimation: StaticTransitionAnimation) {
+        self.init(
+            duration: transitionAnimation.duration,
             transition: transitionAnimation.performAnimation
         )
     }
 
     // MARK: - Methods
 
-    public func transitionDuration(using transitionContext: UIViewControllerContextTransitioning?) -> TimeInterval {
-        return duration
+    open func transitionDuration(using transitionContext: UIViewControllerContextTransitioning?) -> TimeInterval {
+        return _duration
     }
 
-    public func animateTransition(using transitionContext: UIViewControllerContextTransitioning) {
-        startInteractiveTransition(transitionContext)
+    open func animateTransition(using transitionContext: UIViewControllerContextTransitioning) {
+        return _animation(transitionContext)
     }
 
-    public func startInteractiveTransition(_ transitionContext: UIViewControllerContextTransitioning) {
-        startInteractiveTransition(transitionContext)
+    // MARK: - TransitionAnimation
+
+    open func generateInteractionController() -> PercentDrivenInteractionController? {
+        return _generateInteractionController()
     }
 
+    open func start() {
+        _interactionController = generateInteractionController()
+    }
+
+    open func update(_ percentComplete: CGFloat) {
+        _interactionController?.update(percentComplete)
+    }
+
+    open func cancel() {
+        _interactionController?.cancel()
+    }
+
+    open func finish() {
+        _interactionController?.finish()
+    }
+
+    open func cleanup() {
+        _interactionController = nil
+    }
 }

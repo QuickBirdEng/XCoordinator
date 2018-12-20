@@ -11,6 +11,8 @@
 		607FACDD1AFB9204008FA782 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 607FACDC1AFB9204008FA782 /* Images.xcassets */; };
 		607FACE01AFB9204008FA782 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 607FACDE1AFB9204008FA782 /* LaunchScreen.xib */; };
 		8FD8948D182C4083F453F873 /* Pods_XCoordinator_Example.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B299AC83F329D65CD398756E /* Pods_XCoordinator_Example.framework */; };
+		9B33481321C47F9700E954A3 /* Presentable+Rx.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B33481221C47F9700E954A3 /* Presentable+Rx.swift */; };
+		9B33481821C4804600E954A3 /* Coordinator+Rx.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B33481721C4804600E954A3 /* Coordinator+Rx.swift */; };
 		9BC60AFE214EA6AA00ECFF9A /* AnimationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BC60AFC214EA6A500ECFF9A /* AnimationTests.swift */; };
 		9BC60B00214EA71300ECFF9A /* TestAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BC60AFF214EA71300ECFF9A /* TestAnimation.swift */; };
 		9BC60B1A214EF8D900ECFF9A /* UITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BC60B19214EF8D900ECFF9A /* UITests.swift */; };
@@ -85,6 +87,8 @@
 		607FACE51AFB9204008FA782 /* XCoordinator_Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = XCoordinator_Tests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		607FACEA1AFB9204008FA782 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8311BE8E1B21258643BC45D1 /* Pods-XCoordinator_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-XCoordinator_Tests.release.xcconfig"; path = "Pods/Target Support Files/Pods-XCoordinator_Tests/Pods-XCoordinator_Tests.release.xcconfig"; sourceTree = "<group>"; };
+		9B33481221C47F9700E954A3 /* Presentable+Rx.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Presentable+Rx.swift"; sourceTree = "<group>"; };
+		9B33481721C4804600E954A3 /* Coordinator+Rx.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Coordinator+Rx.swift"; sourceTree = "<group>"; };
 		9BC60AFC214EA6A500ECFF9A /* AnimationTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimationTests.swift; sourceTree = "<group>"; };
 		9BC60AFF214EA71300ECFF9A /* TestAnimation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestAnimation.swift; sourceTree = "<group>"; };
 		9BC60B17214EF8D900ECFF9A /* XCoordinator_UITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = XCoordinator_UITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -204,6 +208,7 @@
 				9BC67A0F21A451730076D6EF /* Services */,
 				9BC67A0E21A451570076D6EF /* Views */,
 				9BE0231F214DF68E0093001A /* Utils */,
+				9B33481621C4802700E954A3 /* Extensions */,
 				607FACD31AFB9204008FA782 /* Supporting Files */,
 			);
 			name = "Example for XCoordinator";
@@ -247,6 +252,15 @@
 				3497E48927D8B447295C53BE /* LICENSE */,
 			);
 			name = "Podspec Metadata";
+			sourceTree = "<group>";
+		};
+		9B33481621C4802700E954A3 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				9B33481221C47F9700E954A3 /* Presentable+Rx.swift */,
+				9B33481721C4804600E954A3 /* Coordinator+Rx.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 		9BC60B18214EF8D900ECFF9A /* UITests */ = {
@@ -626,6 +640,7 @@
 				9BE02314214DF6740093001A /* LoginViewModel.swift in Sources */,
 				9BE0231B214DF6740093001A /* UsersViewModel.swift in Sources */,
 				9BC67A1121A451E70076D6EF /* LoginViewModelImpl.swift in Sources */,
+				9B33481821C4804600E954A3 /* Coordinator+Rx.swift in Sources */,
 				9BE02312214DF6740093001A /* NewsViewModel.swift in Sources */,
 				9BE02324214DF68E0093001A /* BindableType.swift in Sources */,
 				9BE02323214DF68E0093001A /* CustomPresentations.swift in Sources */,
@@ -633,6 +648,7 @@
 				9BE0230C214DF6740093001A /* NewsDetailViewModelImpl.swift in Sources */,
 				9BE02317214DF6740093001A /* UserViewModel.swift in Sources */,
 				9BE0230B214DF6740093001A /* NewsDetailViewController.swift in Sources */,
+				9B33481321C47F9700E954A3 /* Presentable+Rx.swift in Sources */,
 				9BE022E6214DF6560093001A /* HomeSplitCoordinator.swift in Sources */,
 				9BE022E3214DF6560093001A /* HomeTabCoordinator.swift in Sources */,
 				9BE022E8214DF6560093001A /* UserListCoordinator.swift in Sources */,
@@ -805,6 +821,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "com.quickbirdstudios.XCoordinator-Example";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
 		};
@@ -821,6 +838,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "com.quickbirdstudios.XCoordinator-Example";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
 		};

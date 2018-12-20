@@ -1,9 +1,9 @@
 //  
 //  NewsDetailViewModelImpl.swift
-//  XCoordinator-Example
+//  XCoordinator_Example
 //
 //  Created by Paul Kraft on 28.07.18.
-//  Copyright © 2018 Joan Disho. All rights reserved.
+//  Copyright © 2018 QuickBird Studios. All rights reserved.
 //
 
 import Foundation

@@ -1,6 +1,6 @@
 //
 //  HomeSplitCoordinator.swift
-//  XCoordinator-Example
+//  XCoordinator_Example
 //
 //  Created by Paul Kraft on 30.07.18.
 //  Copyright © 2018 QuickBird Studios. All rights reserved.
@@ -12,8 +12,8 @@ class HomeSplitCoordinator: SplitCoordinator<HomeRoute> {
 
     // MARK: - Stored properties
 
-    let newsRouter: AnyRouter<NewsRoute>
-    let userListRouter: AnyRouter<UserListRoute>
+    private let newsRouter: AnyRouter<NewsRoute>
+    private let userListRouter: AnyRouter<UserListRoute>
 
     // MARK: - Init
 
@@ -23,5 +23,16 @@ class HomeSplitCoordinator: SplitCoordinator<HomeRoute> {
         self.userListRouter = userListRouter
 
         super.init(master: userListRouter, detail: newsRouter)
+    }
+
+    // MARK: - Overrides
+
+    override func prepareTransition(for route: HomeRoute) -> SplitTransition {
+        switch route {
+        case .news:
+            return .showDetail(newsRouter)
+        case .userList:
+            return .show(userListRouter)
+        }
     }
 }
