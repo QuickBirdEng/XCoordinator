@@ -78,6 +78,22 @@ extension BaseCoordinator {
         shouldFinish: @escaping (GestureRecognizer) -> Bool,
         completion: PresentationHandler? = nil) {
 
+        return registerInteractiveTransition(
+            { [weak self] in self?.prepareTransition(for: route) ?? .none() },
+            triggeredBy: recognizer,
+            progress: progress,
+            shouldFinish: shouldFinish,
+            completion: completion
+        )
+    }
+
+    private func registerInteractiveTransition<GestureRecognizer: UIGestureRecognizer>(
+        _ transitionGenerator: @escaping () -> TransitionType,
+        triggeredBy recognizer: GestureRecognizer,
+        progress: @escaping (GestureRecognizer) -> CGFloat,
+        shouldFinish: @escaping (GestureRecognizer) -> Bool,
+        completion: PresentationHandler? = nil) {
+
         var animation: TransitionAnimation?
         let target = Target(recognizer: recognizer) { [weak self] recognizer in
             guard let `self` = self else { return }
@@ -86,7 +102,7 @@ extension BaseCoordinator {
             case .possible, .failed:
                 break
             case .began:
-                let transition = self.prepareTransition(for: route)
+                let transition = transitionGenerator()
                 animation = transition.animation
                 animation?.start()
                 self.performTransition(
