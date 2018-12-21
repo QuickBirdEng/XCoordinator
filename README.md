@@ -176,6 +176,40 @@ The following table describes how using a `RedirectionRouter`, `RedirectionCoord
 | **Accessibility of superCoordinator** | map `RouteType` to `SuperRoute` | map `RouteType` to `TransitionType` | none | 
 | **Transition definition** | in superCoordinator |  constrained by `TransitionType` of superCoordinator | independent from superCoordinator |
 
+The following code example illustrates how a `RedirectionCoordinator` is initialized and used. The use of a `RedirectionRouter` is similar, but one would need different type-constraints in `SubCoordinator.init` and override `mapToSuperRoute` instead of `prepareTransition`.
+
+```swift
+class SuperCoordinator: NavigationCoordinator<SuperRoute> {
+    /* ... */
+    
+    override func prepareTransition(for route: SuperRoute) -> NavigationTransition {
+        switch route {
+        /* ... */
+        case .subCoordinator:
+            let subCoordinator = SubCoordinator(superCoordinator: self)
+            return .push(subCoordinator)
+        }
+    }
+}
+
+class SubCoordinator: RedirectionCoordinator<SubRoute, NavigationTransition> {
+    init<T: TransitionPerformer>(superCoordinator: T) where T.TransitionType == NavigationTransition {
+        let viewController = SubCoordinatorViewController()
+        super.init(viewController: viewController, superTransitionPerformer: superCoordinator, prepareTransition: nil)
+        let viewModel = SubCoordinatorViewModel(router: anyRouter)
+        // this viewModel has to be initialized after the `super.init`-call
+        // since it needs `self` to create the `anyRouter`.
+        viewController.bind(to: viewModel)
+    }
+    
+    /* ... */
+    
+    override func prepareTransition(for route: SubRoute) -> NavigationTransition {
+        // you can prepare routes here just like in any other NavigationCoordinator
+    }
+}
+```
+
 ### 🚀 RxSwift extensions
 
 Reactive programming can be very useful to keep the state of view and model consistent in a MVVM architecture. Instead of relying on the completion handler of the `trigger` method available in any `Router`, you can also use our RxSwift-extension. In the example application, we use Actions (from the [Action](https://github.com/RxSwiftCommunity/Action) framework) to trigger routes on certain UI events - e.g. to trigger `LoginRoute.home` in `LoginViewModel`, when the login button is tapped.
