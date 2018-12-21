@@ -22,7 +22,6 @@ class UserCoordinator: NavigationCoordinator<UserRoute> {
 
     init(user: String) {
         super.init(initialRoute: .user(user))
-        addPushGestureRecognizer()
     }
 
     // MARK: - Overrides
@@ -47,25 +46,31 @@ class UserCoordinator: NavigationCoordinator<UserRoute> {
         }
     }
 
+    // MARK: - Overrides
+
+    override func presented(from presentable: Presentable?) {
+        super.presented(from: presentable)
+        addPushGestureRecognizer(to: rootViewController)
+    }
+
     // MARK: - Methods
 
-    private func addPushGestureRecognizer() {
+    private func addPushGestureRecognizer(to container: Container) {
+        let view = container.view
         let gestureRecognizer = UIScreenEdgePanGestureRecognizer()
         gestureRecognizer.edges = .right
-
-        let topView = (rootViewController.topViewController ?? rootViewController)?.view
-        topView?.addGestureRecognizer(gestureRecognizer)
+        view?.addGestureRecognizer(gestureRecognizer)
 
         registerInteractiveTransition(
             for: .randomColor,
             triggeredBy: gestureRecognizer,
-            progress: { [weak topView] recognizer in
-                let xTranslation = -recognizer.translation(in: topView).x
+            progress: { [weak view] recognizer in
+                let xTranslation = -recognizer.translation(in: view).x
                 return max(min(xTranslation / UIScreen.main.bounds.width, 1), 0)
             },
-            shouldFinish: { [weak topView] recognizer in
-                let xTranslation = -recognizer.translation(in: topView).x
-                let xVelocity = -recognizer.velocity(in: topView).x
+            shouldFinish: { [weak view] recognizer in
+                let xTranslation = -recognizer.translation(in: view).x
+                let xVelocity = -recognizer.velocity(in: view).x
                 return xTranslation >= UIScreen.main.bounds.width / 2
                     || xVelocity >= UIScreen.main.bounds.width / 2
             },
