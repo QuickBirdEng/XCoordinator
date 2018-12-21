@@ -46,7 +46,7 @@ extension Coordinator {
         return .multiple(routes.map(prepareTransition))
     }
 
-    func performTransition(_ transition: TransitionType, with options: TransitionOptions, completion: PresentationHandler? = nil) {
+    public func performTransition(_ transition: TransitionType, with options: TransitionOptions, completion: PresentationHandler? = nil) {
         transition.perform(options: options, coordinator: self, completion: completion)
     }
 }
