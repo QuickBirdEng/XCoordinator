@@ -27,16 +27,16 @@ class NewsCoordinator: NavigationCoordinator<NewsRoute> {
     override func prepareTransition(for route: NewsRoute) -> NavigationTransition {
         switch route {
         case .news:
-            var vc = NewsViewController.instantiateFromNib()
+            let viewController = NewsViewController.instantiateFromNib()
             let service = MockNewsService()
             let viewModel = NewsViewModelImpl(newsService: service, coordinator: anyRouter)
-            vc.bind(to: viewModel)
-            return .push(vc)
+            viewController.bind(to: viewModel)
+            return .push(viewController)
         case .newsDetail(let news):
-            var vc = NewsDetailViewController.instantiateFromNib()
-            let vm = NewsDetailViewModelImpl(news: news)
-            vc.bind(to: vm)
-            return .push(vc, animation: .interactiveScale)
+            let viewController = NewsDetailViewController.instantiateFromNib()
+            let viewModel = NewsDetailViewModelImpl(news: news)
+            viewController.bind(to: viewModel)
+            return .push(viewController, animation: .interactiveScale)
         case .close:
             return .dismissToRoot()
         }

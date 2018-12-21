@@ -28,10 +28,10 @@ class UserCoordinator: NavigationCoordinator<UserRoute> {
     override func prepareTransition(for route: UserRoute) -> NavigationTransition {
         switch route {
         case let .user(username):
-            var vc = UserViewController.instantiateFromNib()
+            let viewController = UserViewController.instantiateFromNib()
             let viewModel = UserViewModelImpl(router: anyRouter, username: username)
-            vc.bind(to: viewModel)
-            return .push(vc)
+            viewController.bind(to: viewModel)
+            return .push(viewController)
         case let .alert(title, message):
             let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
             alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))

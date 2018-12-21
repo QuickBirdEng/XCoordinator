@@ -44,15 +44,15 @@ class UserListCoordinator: NavigationCoordinator<UserListRoute> {
     override func prepareTransition(for route: UserListRoute) -> NavigationTransition {
         switch route {
         case .home:
-            var vc = HomeViewController.instantiateFromNib()
-            let vm = HomeViewModelImpl(router: anyRouter)
-            vc.bind(to: vm)
-            return .push(vc)
+            let viewController = HomeViewController.instantiateFromNib()
+            let viewModel = HomeViewModelImpl(router: anyRouter)
+            viewController.bind(to: viewModel)
+            return .push(viewController)
         case .users:
-            var vc = UsersViewController.instantiateFromNib()
-            let vm = UsersViewModelImpl(router: anyRouter)
-            vc.bind(to: vm)
-            return .push(vc, animation: .interactiveFade)
+            let viewController = UsersViewController.instantiateFromNib()
+            let viewModel = UsersViewModelImpl(router: anyRouter)
+            viewController.bind(to: viewModel)
+            return .push(viewController, animation: .interactiveFade)
         case .user(let username):
             let coordinator = UserCoordinator(user: username)
             return .present(coordinator, animation: .default)
@@ -128,8 +128,9 @@ class UsersCoordinator: NavigationCoordinator<UserRoute> {
                 presentationAnimation: YourAwesomePresentationTransitionAnimation(),
                 dismissalAnimation: YourAwesomeDismissalTransitionAnimation()
             )
+            let viewController = UserViewController.instantiateFromNib()
             let viewModel = UserViewModelImpl(coordinator: coordinator, name: name)
-            let viewController = UserViewController(viewModel: viewModel)
+            viewController.bind(to: viewModel)
             return .push(viewController, animation: animation)
         /* ... */
         }
@@ -198,7 +199,7 @@ In addition to the above-mentioned approach, the reactive `trigger`-extension ca
 ```swift
 let doneWithBothTransitions = 
     router.rx.trigger(.home)
-        .flatMap { [unowned self] in self.router.rx.trigger(.news) }
+        .flatMap { [unowned router] in router.rx.trigger(.news) }
         .map { true }
         .startWith(false)
 ```
@@ -291,8 +292,7 @@ If this is your first time using Carthage in the project, you'll need to go thro
 
 If you prefer not to use any of the dependency managers, you can integrate XCoordinator into your project manually, by downloading the source code and placing the files on your project directory.  
 
-If you want more information on XCoordinator check out this blog post: 
-https://quickbirdstudios.com/blog/ios-navigation-library-based-on-the-coordinator-pattern/
+If you want more information on XCoordinator check out [this blog post](https://quickbirdstudios.com/blog/ios-navigation-library-based-on-the-coordinator-pattern/).
 
 ## 👤 Author
 This framework is created with ❤️ by [QuickBird Studios](www.quickbirdstudios.com).
