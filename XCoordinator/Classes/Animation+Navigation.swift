@@ -98,7 +98,7 @@ extension NavigationAnimationDelegate: UIGestureRecognizerDelegate {
             } else {
                 gestureRecognizer.addTarget(delegate, action: delegateAction)
             }
-            return true
+            return (navigationController?.viewControllers.count ?? 0) > 1
         default:
             return false
         }
