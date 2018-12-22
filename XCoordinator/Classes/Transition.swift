@@ -47,3 +47,14 @@ public struct Transition<RootViewController: UIViewController>: TransitionProtoc
         _perform(options, performer, completion)
     }
 }
+
+extension Transition {
+    @available(*, deprecated, renamed: "init(presentables:animation:)")
+    public init(presentables: [Presentable], perform: @escaping Perform) {
+        self.init(
+            presentables: presentables,
+            animation: nil,
+            perform: perform
+        )
+    }
+}
