@@ -60,3 +60,16 @@ open class RedirectionCoordinator<RouteType: Route, TransitionType: TransitionPr
         superTransitionPerformer.performTransition(transition, with: options, completion: completion)
     }
 }
+
+// MARK: - Deprecated
+
+extension RedirectionCoordinator {
+    @available(*, deprecated, renamed: "init(viewController:superTransitionPerfomer:prepareTransition:)")
+    public convenience init<C: Coordinator>(viewController: UIViewController, superCoordinator: C, prepareTransition: ((RouteType) -> TransitionType)?) where C.TransitionType == TransitionType {
+        self.init(
+            viewController: viewController,
+            superTransitionPerformer: AnyTransitionPerformer(superCoordinator),
+            prepareTransition: prepareTransition
+        )
+    }
+}
