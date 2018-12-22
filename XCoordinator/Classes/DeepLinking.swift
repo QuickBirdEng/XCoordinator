@@ -28,7 +28,7 @@ extension Coordinator where Self: AnyObject {
 
 extension Transition {
     fileprivate static func deepLink<C: Coordinator & AnyObject>(with coordinator: C, _ route: C.RouteType, array remainingRoutes: [Route]) -> Transition {
-        return Transition(presentables: []) { [weak coordinator] options, performer, completion in
+        return Transition(presentables: [], animation: nil) { [weak coordinator] options, performer, completion in
             guard let coordinator = coordinator else {
                 assertionFailure("Please use the coordinator responsible for executing a deepLink-Transition when initializing.")
                 completion?()

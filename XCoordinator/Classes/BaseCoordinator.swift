@@ -15,6 +15,7 @@ open class BaseCoordinator<RouteType: Route, TransitionType: TransitionProtocol>
     // MARK: - Stored properties
 
     private let rootViewControllerBox = ReferenceBox<RootViewController>()
+    private var gestureRecognizerTargets = [GestureRecognizerTarget]()
 
     // MARK: - Computed properties
 
@@ -63,6 +64,74 @@ open class BaseCoordinator<RouteType: Route, TransitionType: TransitionProtocol>
             windowAppearanceObserver = nil
             self?.performTransition(transition, with: TransitionOptions(animated: false))
             self?.rootViewController.endAppearanceTransition()
+        }
+    }
+}
+
+// MARK: - BaseCoordinator+UIGestureRecognizer
+
+extension BaseCoordinator {
+    open func registerInteractiveTransition<GestureRecognizer: UIGestureRecognizer>(
+        for route: RouteType,
+        triggeredBy recognizer: GestureRecognizer,
+        progress: @escaping (GestureRecognizer) -> CGFloat,
+        shouldFinish: @escaping (GestureRecognizer) -> Bool,
+        completion: PresentationHandler? = nil) {
+
+        return registerInteractiveTransition(
+            { [weak self] in self?.prepareTransition(for: route) ?? .none() },
+            triggeredBy: recognizer,
+            progress: progress,
+            shouldFinish: shouldFinish,
+            completion: completion
+        )
+    }
+
+    private func registerInteractiveTransition<GestureRecognizer: UIGestureRecognizer>(
+        _ transitionGenerator: @escaping () -> TransitionType,
+        triggeredBy recognizer: GestureRecognizer,
+        progress: @escaping (GestureRecognizer) -> CGFloat,
+        shouldFinish: @escaping (GestureRecognizer) -> Bool,
+        completion: PresentationHandler? = nil) {
+
+        var animation: TransitionAnimation?
+        let target = Target(recognizer: recognizer) { [weak self] recognizer in
+            guard let `self` = self else { return }
+
+            switch recognizer.state {
+            case .possible, .failed:
+                break
+            case .began:
+                let transition = transitionGenerator()
+                animation = transition.animation
+                animation?.start()
+                self.performTransition(
+                    transition,
+                    with: TransitionOptions(animated: true),
+                    completion: completion
+                )
+            case .changed:
+                animation?.interactionController?.update(progress(recognizer))
+            case .cancelled:
+                defer { animation?.cleanup() }
+                animation?.interactionController?.cancel()
+            case .ended:
+                defer { animation?.cleanup() }
+                if shouldFinish(recognizer) {
+                    animation?.interactionController?.finish()
+                } else {
+                    animation?.interactionController?.cancel()
+                }
+            }
+        }
+        gestureRecognizerTargets.append(target)
+    }
+
+    open func unregisterInteractiveTransitions(triggeredBy recognizer: UIGestureRecognizer) {
+        gestureRecognizerTargets.removeAll { target in
+            guard target.gestureRecognizer === recognizer else { return false }
+            recognizer.removeTarget(target, action: nil)
+            return true
         }
     }
 }
