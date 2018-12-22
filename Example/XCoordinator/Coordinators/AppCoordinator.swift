@@ -34,19 +34,22 @@ class AppCoordinator: NavigationCoordinator<AppRoute> {
     override func prepareTransition(for route: AppRoute) -> NavigationTransition {
         switch route {
         case .login:
-            var vc = LoginViewController.instantiateFromNib()
+            let viewController = LoginViewController.instantiateFromNib()
             let viewModel = LoginViewModelImpl(router: anyRouter)
-            vc.bind(to: viewModel)
-            return .push(vc)
+            viewController.bind(to: viewModel)
+            return .push(viewController)
         case .home:
-            let presentables: [Presentable] = [HomeTabCoordinator(), HomeSplitCoordinator(), HomePageCoordinator()]
-            guard let presentable = presentables.randomElement() else {
-                return .none()
+            guard let presentable: Presentable = [
+                    HomeTabCoordinator(),
+                    HomeSplitCoordinator(),
+                    HomePageCoordinator()
+                ].randomElement() else {
+                    return .none()
             }
             self.home = presentable
             return .present(presentable, animation: .staticFade)
         case .newsDetail(let news):
-            return deepLink(.home, HomeRoute.news, NewsRoute.newsDetail(news))
+            return deepLink(AppRoute.home, HomeRoute.news, NewsRoute.newsDetail(news))
         }
     }
 

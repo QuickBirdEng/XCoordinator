@@ -29,15 +29,15 @@ class UserListCoordinator: NavigationCoordinator<UserListRoute> {
     override func prepareTransition(for route: UserListRoute) -> NavigationTransition {
         switch route {
         case .home:
-            var vc = HomeViewController.instantiateFromNib()
-            let vm = HomeViewModelImpl(router: anyRouter)
-            vc.bind(to: vm)
-            return .push(vc)
+            let viewController = HomeViewController.instantiateFromNib()
+            let viewModel = HomeViewModelImpl(router: anyRouter)
+            viewController.bind(to: viewModel)
+            return .push(viewController)
         case .users:
-            var vc = UsersViewController.instantiateFromNib()
-            let vm = UsersViewModelImpl(router: anyRouter)
-            vc.bind(to: vm)
-            return .push(vc, animation: .interactiveFade)
+            let viewController = UsersViewController.instantiateFromNib()
+            let viewModel = UsersViewModelImpl(router: anyRouter)
+            viewController.bind(to: viewModel)
+            return .push(viewController, animation: .interactiveFade)
         case .user(let username):
             let coordinator = UserCoordinator(user: username)
             return .present(coordinator, animation: .default)

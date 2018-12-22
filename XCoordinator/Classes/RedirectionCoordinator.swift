@@ -34,10 +34,10 @@ open class RedirectionCoordinator<RouteType: Route, TransitionType: TransitionPr
         _prepareTransition = prepareTransition
     }
 
-    public convenience init<C: Coordinator>(viewController: UIViewController, superCoordinator: C, prepareTransition: ((RouteType) -> TransitionType)?) where C.TransitionType == TransitionType {
+    public convenience init<T: TransitionPerformer>(viewController: UIViewController, superTransitionPerformer: T, prepareTransition: ((RouteType) -> TransitionType)?) where T.TransitionType == TransitionType {
         self.init(
             viewController: viewController,
-            superTransitionPerformer: AnyTransitionPerformer(superCoordinator),
+            superTransitionPerformer: AnyTransitionPerformer(superTransitionPerformer),
             prepareTransition: prepareTransition
         )
     }
@@ -56,7 +56,20 @@ open class RedirectionCoordinator<RouteType: Route, TransitionType: TransitionPr
         return prepareTransition(route)
     }
 
-    func performTransition(_ transition: TransitionType, with options: TransitionOptions, completion: PresentationHandler?) {
+    public func performTransition(_ transition: TransitionType, with options: TransitionOptions, completion: PresentationHandler?) {
         superTransitionPerformer.performTransition(transition, with: options, completion: completion)
+    }
+}
+
+// MARK: - Deprecated
+
+extension RedirectionCoordinator {
+    @available(*, deprecated, renamed: "init(viewController:superTransitionPerfomer:prepareTransition:)")
+    public convenience init<C: Coordinator>(viewController: UIViewController, superCoordinator: C, prepareTransition: ((RouteType) -> TransitionType)?) where C.TransitionType == TransitionType {
+        self.init(
+            viewController: viewController,
+            superTransitionPerformer: AnyTransitionPerformer(superCoordinator),
+            prepareTransition: prepareTransition
+        )
     }
 }

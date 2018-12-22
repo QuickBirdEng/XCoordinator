@@ -10,4 +10,5 @@ public protocol TransitionPerformer: Presentable {
     associatedtype TransitionType: TransitionProtocol
 
     var rootViewController: TransitionType.RootViewController { get }
+    func performTransition(_ transition: TransitionType, with options: TransitionOptions, completion: PresentationHandler?)
 }

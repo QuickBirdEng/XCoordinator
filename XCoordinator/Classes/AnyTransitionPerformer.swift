@@ -37,7 +37,7 @@ public class AnyTransitionPerformer<TransitionType: TransitionProtocol>: Transit
 
     // MARK: - Init
 
-    init<C: Coordinator>(_ coordinator: C) where TransitionType == C.TransitionType {
+    init<T: TransitionPerformer>(_ coordinator: T) where TransitionType == T.TransitionType {
         self._viewController = { coordinator.viewController }
         self._presented = coordinator.presented
         self._rootViewController = { coordinator.rootViewController }

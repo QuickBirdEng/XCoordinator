@@ -3,10 +3,10 @@
 </p>
 
 [![Build Status](https://travis-ci.com/quickbirdstudios/XCoordinator.svg?branch=master)](https://travis-ci.org/quickbirdstudios/XCoordinator)
-[![CocoaPods Compatible](https://img.shields.io/cocoapods/v/rx-coordinator.svg)](https://img.shields.io/cocoapods/v/rx-coordinator.svg)
+[![CocoaPods Compatible](https://img.shields.io/cocoapods/v/XCoordinator.svg)](https://img.shields.io/cocoapods/v/XCoordinator.svg)
 [![Carthage Compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage)
 [![Platform](https://img.shields.io/badge/platform-iOS-lightgrey.svg)](https://github.com/quickbirdstudios/XCoordinator)
-[![License](https://img.shields.io/cocoapods/l/AFNetworking.svg)](https://github.com/quickbirdstudios/XCoordinator)
+[![License](https://img.shields.io/cocoapods/l/XCoordinator.svg)](https://github.com/quickbirdstudios/XCoordinator)
 
 #
 “How does an app transition from one view controller to another?”.
@@ -23,9 +23,9 @@ It's especially useful for implementing MVVM-C, Model-View-ViewModel-Coordinator
 
 Create an enum with all of the navigation paths for a particular flow, i.e. a group of closely connected scenes. (It is up to you when to create a `Route/Coordinator`. As **our rule of thumb**, create a new `Route/Coordinator` whenever a new root view controller, e.g. a new `navigation controller` or a `tab bar controller`, is needed.).
 
-Whereas the `Route` describes, which routes can be triggered in a flow, the `Coordinator` is responsible for the preparation of transitions based on routes being triggered. We could, therefore, prepare multiple coordinators for the same route, which differ in which transitions are executed for each route.
+Whereas the `Route` describes which routes can be triggered in a flow, the `Coordinator` is responsible for the preparation of transitions based on routes being triggered. We could, therefore, prepare multiple coordinators for the same route, which differ in which transitions are executed for each route.
 
-In the following example, we create the `UserListRoute` enum to define triggers of a flow of our application. `UserListRoute` offers triggers to open the home screen, display a list of users, to open a specific user and to log out. The `UserListCoordinator` is implemented to prepare transitions for the triggered routes. When a `UserListCoordinator` is shown, it triggers the `.home` route to display a `HomeViewController`.
+In the following example, we create the `UserListRoute` enum to define triggers of a flow of our application. `UserListRoute` offers routes to open the home screen, display a list of users, to open a specific user and to log out. The `UserListCoordinator` is implemented to prepare transitions for the triggered routes. When a `UserListCoordinator` is shown, it triggers the `.home` route to display a `HomeViewController`.
 
 ```swift
 enum UserListRoute: Route {
@@ -44,15 +44,15 @@ class UserListCoordinator: NavigationCoordinator<UserListRoute> {
     override func prepareTransition(for route: UserListRoute) -> NavigationTransition {
         switch route {
         case .home:
-            var vc = HomeViewController.instantiateFromNib()
-            let vm = HomeViewModelImpl(router: anyRouter)
-            vc.bind(to: vm)
-            return .push(vc)
+            let viewController = HomeViewController.instantiateFromNib()
+            let viewModel = HomeViewModelImpl(router: anyRouter)
+            viewController.bind(to: viewModel)
+            return .push(viewController)
         case .users:
-            var vc = UsersViewController.instantiateFromNib()
-            let vm = UsersViewModelImpl(router: anyRouter)
-            vc.bind(to: vm)
-            return .push(vc, animation: .interactiveFade)
+            let viewController = UsersViewController.instantiateFromNib()
+            let viewModel = UsersViewModelImpl(router: anyRouter)
+            viewController.bind(to: viewModel)
+            return .push(viewController, animation: .interactiveFade)
         case .user(let username):
             let coordinator = UserCoordinator(user: username)
             return .present(coordinator, animation: .default)
@@ -87,7 +87,7 @@ class HomeViewModel {
 
 In general, an app's structure is defined by nesting coordinators and view controllers. You can transition (i.e. `push`, `present`, `pop`, `dismiss`) to a different coordinator whenever your app changes to a different flow. Within a flow, we transition between viewControllers.
 
-Example: In `UserListCoordinator.prepareTransition(for:)` we change from the `UserListRoute` to the `UserRoute` whenever the `UserListRoute.user`-route is triggered. By dismissing a viewController in `UserListRoute.logout`, we additionally switch back to the previous flow - in this case the `HomeRoute`.
+Example: In `UserListCoordinator.prepareTransition(for:)` we change from the `UserListRoute` to the `UserRoute` whenever the `UserListRoute.user` route is triggered. By dismissing a viewController in `UserListRoute.logout`, we additionally switch back to the previous flow - in this case the `HomeRoute`.
 
 To achieve this behavior, every Coordinator has its own `rootViewController`. This would be a `UINavigationController` in the case of a `NavigationCoordinator`, a `UITabBarController` in the case of a `TabBarCoordinator`, etc. When transitioning to a Coordinator/Router, this `rootViewController` is used as the destination view controller.
 
@@ -110,11 +110,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 ## 🤸‍♂️ Extras
 
-For more advanced use, XCoordinator offers many more customization options. We introduce custom animated transitions and deep linking. Furthermore, extensions for use in reactive programming with RxSwift are described.
+For more advanced use, XCoordinator offers many more customization options. We introduce custom animated transitions and deep linking. Furthermore, extensions for use in reactive programming with RxSwift and options to split up huge routes are described.
 
 ### 🌗 Custom Transitions
 
-Custom animated transitions define presentation and dismissal animations. You can specify `Animation`-objects in `prepareTransition(for:)` in your coordinator for several common transitions, such as `present`, `dismiss`, `push` and `pop`. Specifying no animation results in not overriding previously set animations - Use `Animation.default` to reset previously set animation to the default animations UIKit offers.
+Custom animated transitions define presentation and dismissal animations. You can specify `Animation` objects in `prepareTransition(for:)` in your coordinator for several common transitions, such as `present`, `dismiss`, `push` and `pop`. Specifying no animation (`nil`) results in not overriding previously set animations. Use `Animation.default` to reset previously set animation to the default animations UIKit offers.
 
 ```swift
 class UsersCoordinator: NavigationCoordinator<UserRoute> {
@@ -128,8 +128,9 @@ class UsersCoordinator: NavigationCoordinator<UserRoute> {
                 presentationAnimation: YourAwesomePresentationTransitionAnimation(),
                 dismissalAnimation: YourAwesomeDismissalTransitionAnimation()
             )
+            let viewController = UserViewController.instantiateFromNib()
             let viewModel = UserViewModelImpl(coordinator: coordinator, name: name)
-            let viewController = UserViewController(viewModel: viewModel)
+            viewController.bind(to: viewModel)
             return .push(viewController, animation: animation)
         /* ... */
         }
@@ -139,7 +140,7 @@ class UsersCoordinator: NavigationCoordinator<UserRoute> {
 
 ### 🛤 Deep Linking
 
-Deep Linking can be used to chain different routes together. In contrast to the `.multiple`-transition, deep linking can identify routers based on previous transitions (e.g. when pushing or presenting a router), which enables chaining of routes of different types. Keep in mind, that you cannot access higher-level routers anymore once you trigger a route on a lower level of the router hierarchy.
+Deep Linking can be used to chain different routes together. In contrast to the `.multiple` transition, deep linking can identify routers based on previous transitions (e.g. when pushing or presenting a router), which enables chaining of routes of different types. Keep in mind, that you cannot access higher-level routers anymore once you trigger a route on a lower level of the router hierarchy.
 
 ```swift
 class AppCoordinator: NavigationCoordinator<AppRoute> {
@@ -160,11 +161,11 @@ class AppCoordinator: NavigationCoordinator<AppRoute> {
 
 ### 🚏 Redirection
 
-Let's assume, there is a route type called `HugeRoute` with more than 10 routes. To decrease coupling, `HugeRoute` needs to be split up into mutliple route types. As you will discover, many routes in `HugeRoute` use transitions dependent on a specific rootViewController, such as `push`, `show`, `pop`, etc. If splitting up routes by introducing a new router/coordinator is not an option, XCoordinator has two solutions for you to solve such a case which are `RedirectionRouter` and `RedirectionCoordinator`.
+Let's assume, there is a route type called `HugeRoute` with more than 10 routes. To decrease coupling, `HugeRoute` needs to be split up into mutliple route types. As you will discover, many routes in `HugeRoute` use transitions dependent on a specific rootViewController, such as `push`, `show`, `pop`, etc. If splitting up routes by introducing a new router/coordinator is not an option, XCoordinator has two solutions for you to solve such a case: `RedirectionRouter` and `RedirectionCoordinator`.
 
-A `RedirectionRouter` can be used to map a new route type onto generalized `SuperRoute` routes. A `RedirectionRouter` is independent of the `TransitionType` of its superRouter.  You can use `RedirectionRouter.init(viewController:superRouter:map:)`  or subclassing by overriding `mapToSuperRoute(_:)` to create a `RedirectionRouter`.
+A `RedirectionRouter` can be used to map a new route type onto a generalized `SuperRoute`. A `RedirectionRouter` is independent of the `TransitionType` of its superRouter. You can use `RedirectionRouter.init(viewController:superRouter:map:)` or subclassing by overriding `mapToSuperRoute(_:)` to create a `RedirectionRouter`.
 
-A `RedirectionCoordinator` is not dependent on a specific `SuperRoute`, instead it uses its `superTransitionPerformer` to perform transitions. In contrast to transitioning to a new coordinator, a `RedirectionCoordinator` uses its `superTransitionPerformer`'s root view controller to perform transitions. Due to constraints of UIKit, this is especially helpful when nesting routes dependent on a `UINavigationController`, since pushing navigation controllers on top of each other is not prohibited. Similar to the `RedirectionRouter`, you can use `RedirectionCoordinator` by providing a prepareTransition-closure to map from a route to a transition or by subclassing including the overriding of `prepareTransition(for:)`.
+A `RedirectionCoordinator` is not dependent on a specific `SuperRoute`, instead it uses its `superTransitionPerformer` to perform transitions. Due to constraints of UIKit, this is especially helpful when nesting routes dependent on a `UINavigationController`, since pushing navigation controllers on top of each other is not possible. Similar to the `RedirectionRouter`, you can use a `RedirectionCoordinator` by providing a prepareTransition-closure to map from a route to a transition or by subclassing including the overriding of `prepareTransition(for:)`.
 
 The following table describes how using a `RedirectionRouter`, `RedirectionCoordinator` and creating a new coordinator independent from a superCoordinator stack up:
 
@@ -174,6 +175,40 @@ The following table describes how using a `RedirectionRouter`, `RedirectionCoord
 | **Type constraint of superCoordinator** | `Router` | `TransitionPerformer` | none |
 | **Accessibility of superCoordinator** | map `RouteType` to `SuperRoute` | map `RouteType` to `TransitionType` | none | 
 | **Transition definition** | in superCoordinator |  constrained by `TransitionType` of superCoordinator | independent from superCoordinator |
+
+The following code example illustrates how a `RedirectionCoordinator` is initialized and used. The use of a `RedirectionRouter` is similar, but one would need different type-constraints in `SubCoordinator.init` and override `mapToSuperRoute` instead of `prepareTransition`.
+
+```swift
+class SuperCoordinator: NavigationCoordinator<SuperRoute> {
+    /* ... */
+    
+    override func prepareTransition(for route: SuperRoute) -> NavigationTransition {
+        switch route {
+        /* ... */
+        case .subCoordinator:
+            let subCoordinator = SubCoordinator(superCoordinator: self)
+            return .push(subCoordinator)
+        }
+    }
+}
+
+class SubCoordinator: RedirectionCoordinator<SubRoute, NavigationTransition> {
+    init<T: TransitionPerformer>(superCoordinator: T) where T.TransitionType == NavigationTransition {
+        let viewController = SubCoordinatorViewController()
+        super.init(viewController: viewController, superTransitionPerformer: superCoordinator, prepareTransition: nil)
+        let viewModel = SubCoordinatorViewModel(router: anyRouter)
+        // this viewModel has to be initialized after `super.init`
+        // since it needs `self` to create the `anyRouter`.
+        viewController.bind(to: viewModel)
+    }
+    
+    /* ... */
+    
+    override func prepareTransition(for route: SubRoute) -> NavigationTransition {
+        // you can prepare routes here just like in any other NavigationCoordinator
+    }
+}
+```
 
 ### 🚀 RxSwift extensions
 
@@ -193,12 +228,12 @@ class LoginViewModelImpl: LoginViewModel, LoginViewModelInput, LoginViewModelOut
 
 ```
 
-In addition to the above-mentioned approach, the reactive `trigger`-extension can also be used to sequence different transitions by using the `flatMap`-operator, as can be seen in the following:
+In addition to the above-mentioned approach, the reactive `trigger` extension can also be used to sequence different transitions by using the `flatMap` operator, as can be seen in the following:
 
 ```swift
 let doneWithBothTransitions = 
     router.rx.trigger(.home)
-        .flatMap { [unowned self] in self.router.rx.trigger(.news) }
+        .flatMap { [unowned router] in router.rx.trigger(.news) }
         .map { true }
         .startWith(false)
 ```
@@ -291,11 +326,10 @@ If this is your first time using Carthage in the project, you'll need to go thro
 
 If you prefer not to use any of the dependency managers, you can integrate XCoordinator into your project manually, by downloading the source code and placing the files on your project directory.  
 
-If you want more information on XCoordinator check out this blog post: 
-https://quickbirdstudios.com/blog/ios-navigation-library-based-on-the-coordinator-pattern/
-
 ## 👤 Author
 This framework is created with ❤️ by [QuickBird Studios](www.quickbirdstudios.com).
+
+To get more information on XCoordinator check out [our blog post](https://quickbirdstudios.com/blog/ios-navigation-library-based-on-the-coordinator-pattern/).
 
 ## ❤️ Contributing
 
