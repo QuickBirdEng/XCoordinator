@@ -106,6 +106,11 @@ extension NavigationAnimationDelegate: UIGestureRecognizerDelegate {
 
     // MARK: - Target actions
 
+    ///
+    /// Handle changes of the interactivePopGestureRecognizer of the current navigationController.
+    ///
+    /// - Parameter gestureRecognizer: The `interactivePopGestureRecognizer` of the current navigationController
+    ///
     @objc
     open func handleInteractivePopGestureRecognizer(_ gestureRecognizer: UIGestureRecognizer) {
         guard let viewController = self.navigationController?.topViewController,
@@ -143,6 +148,10 @@ extension NavigationAnimationDelegate: UIGestureRecognizerDelegate {
 
     // MARK: - Helpers
 
+    ///
+    /// Sets up the `interactivePopGestureRecognizer` of the specified navigationController.
+    ///
+    /// - Parameter navigationController: the `UINavigationController` to
     open func setupPopGestureRecognizer(for navigationController: UINavigationController) {
         self.navigationController = navigationController
         guard let popRecognizer = navigationController.interactivePopGestureRecognizer,
