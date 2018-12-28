@@ -10,8 +10,6 @@ open class Animation: NSObject {
 
     // MARK: - Static properties
 
-    /// `Animation.default` can be used to reset animations of a `Presentables`.
-    /// If not otherwise specified, the usual UIKit-animations will be used.
     public static let `default` = Animation(presentation: nil, dismissal: nil)
 
     // MARK: - Stored properties
@@ -21,13 +19,6 @@ open class Animation: NSObject {
 
     // MARK: - Init
 
-    ///
-    /// Creates an `Animation` object to reflect possible animations of a `Presentable`.
-    ///
-    /// - Parameter presentation: specifies a `TransitionAnimation` used when displaying a new `Presentable`.
-    ///
-    /// - Parameter dismissal: specifies a `TransitionAnimation` used when dismissing a `Presentable`.
-    ///
     public init(presentation: TransitionAnimation?, dismissal: TransitionAnimation?) {
         self.presentationAnimation = presentation
         self.dismissalAnimation = dismissal
