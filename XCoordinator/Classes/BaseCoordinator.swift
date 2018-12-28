@@ -81,11 +81,11 @@ extension BaseCoordinator {
         completion: PresentationHandler? = nil) {
 
         let animationGenerator = { [weak self] () -> TransitionAnimation? in
-            let transition = self?.prepareTransition(for: route) ?? .none()
-            let animation = transition.animation
-            animation?.start()
-            self?.performTransition(transition, with: TransitionOptions(animated: true), completion: completion)
-            return animation
+            guard let self = self else { return nil }
+            let transition = self.prepareTransition(for: route)
+            transition.animation?.start()
+            self.performTransition(transition, with: TransitionOptions(animated: true), completion: completion)
+            return transition.animation
         }
 
         let target = Target(recognizer: recognizer) { recognizer in
