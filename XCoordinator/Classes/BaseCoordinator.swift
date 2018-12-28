@@ -10,6 +10,13 @@ extension BaseCoordinator {
     public typealias RootViewController = TransitionType.RootViewController
 }
 
+///
+/// BaseCoordinator can (and is encouraged to) be used as a superclass for any custom implementation of a coordinator.
+///
+/// We encourage the use of already provided subclasses of BaseCoordinator such as
+/// `NavigationCoordinator`, `TabBarCoordinator`, `ViewCoordinator`, `SplitCoordinator`
+/// and `PageCoordinator`.
+///
 open class BaseCoordinator<RouteType: Route, TransitionType: TransitionProtocol>: Coordinator {
 
     // MARK: - Stored properties
@@ -26,11 +33,25 @@ open class BaseCoordinator<RouteType: Route, TransitionType: TransitionProtocol>
 
     // MARK: - Init
 
+    ///
+    /// Use this initializer to trigger a route before the coordinator is made visible.
+    ///
+    /// - Parameter initialRoute:
+    ///     The route to be triggered before making the coordinator visible.
+    ///     If you specify `nil`, no route is triggered.
+    ///
     public init(initialRoute: RouteType?) {
         rootViewControllerBox.set(generateRootViewController())
         initialRoute.map(prepareTransition).map(performTransitionAfterWindowAppeared)
     }
 
+    ///
+    /// Use this initializer to perform a transition before the coordinator is made visible.
+    ///
+    /// - Parameter initialTransition:
+    ///     The transition to be performed before making the coordinator visible.
+    ///     If you specify `nil`, no transition is performed.
+    ///
     public init(initialTransition: TransitionType?) {
         rootViewControllerBox.set(generateRootViewController())
         initialTransition.map(performTransitionAfterWindowAppeared)
@@ -42,10 +63,24 @@ open class BaseCoordinator<RouteType: Route, TransitionType: TransitionProtocol>
         rootViewControllerBox.releaseStrongReference()
     }
 
+    ///
+    /// This method generates the `rootViewController` on initialization.
+    ///
+    /// This method is only called once during initalization. Make sure to use the result from
+    /// `super.generateRootViewController()` when overriding to make sure transition animations
+    /// work as expected.
+    ///
     open func generateRootViewController() -> RootViewController {
         return RootViewController()
     }
 
+    ///
+    /// This method prepares transitions for routes.
+    /// Override this method to define transitions for triggered routes.
+    ///
+    /// - Parameter route:
+    ///     The triggered route for which a transition is to be prepared.
+    ///
     open func prepareTransition(for route: RouteType) -> TransitionType {
         fatalError("Please override the \(#function) method.")
     }
