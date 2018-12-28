@@ -15,7 +15,10 @@ open class NavigationAnimationDelegate: NSObject {
 
     // MARK: - Stored properties
 
+    /// Describes the velocity threshold needed for the interactive pop transition to succeed.
     open var velocityThreshold: CGFloat { return UIScreen.main.bounds.width / 2 }
+
+    /// Describes the transition progress threshold for the interactive pop transition to succeed.
     open var transitionProgressThreshold: CGFloat { return 0.5 }
 
     private var animations = [Animation?]()
@@ -119,6 +122,14 @@ extension NavigationAnimationDelegate: UIGestureRecognizerDelegate {
 
     // MARK: - Target actions
 
+    ///
+    /// This method handles changes of the interactivePopGestureRecognizer of the `UINavigationController`.
+    ///
+    /// In general this method updates the interaction controller of the top-most dismissalAnimation
+    /// about the state of the interactivePopGestureRecognizer.
+    ///
+    /// - Parameter gestureRecognizer: The interactivePopGestureRecognizer of the `UINavigationController`.
+    ///
     @objc
     open func handleInteractivePopGestureRecognizer(_ gestureRecognizer: UIGestureRecognizer) {
         guard let viewController = self.navigationController?.topViewController,
@@ -156,6 +167,13 @@ extension NavigationAnimationDelegate: UIGestureRecognizerDelegate {
 
     // MARK: - Helpers
 
+    ///
+    /// This method sets up the `interactivePopGestureRecognizer` of the navigation controller to work as expected.
+    ///
+    /// This method overrides the delegate of the `interactivePopGestureRecognizer` to `self`, but keeps a reference to the original delegate to enable the default pop animations.
+    ///
+    /// - Parameter navigationController: The navigation controller to be set up.
+    ///
     open func setupPopGestureRecognizer(for navigationController: UINavigationController) {
         self.navigationController = navigationController
         guard let popRecognizer = navigationController.interactivePopGestureRecognizer,
