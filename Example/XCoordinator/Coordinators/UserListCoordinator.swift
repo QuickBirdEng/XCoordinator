@@ -37,7 +37,7 @@ class UserListCoordinator: NavigationCoordinator<UserListRoute> {
             let viewController = UsersViewController.instantiateFromNib()
             let viewModel = UsersViewModelImpl(router: anyRouter)
             viewController.bind(to: viewModel)
-            return .push(viewController, animation: .interactiveFade)
+            return .push(viewController, animation: .fade)
         case .user(let username):
             let coordinator = UserCoordinator(user: username)
             return .present(coordinator, animation: .default)

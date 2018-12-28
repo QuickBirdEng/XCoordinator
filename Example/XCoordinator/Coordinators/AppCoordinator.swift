@@ -47,7 +47,7 @@ class AppCoordinator: NavigationCoordinator<AppRoute> {
                     return .none()
             }
             self.home = presentable
-            return .present(presentable, animation: .staticFade)
+            return .present(presentable, animation: .fade)
         case .newsDetail(let news):
             return deepLink(AppRoute.home, HomeRoute.news, NewsRoute.newsDetail(news))
         }

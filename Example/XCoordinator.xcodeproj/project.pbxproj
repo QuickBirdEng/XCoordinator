@@ -11,6 +11,11 @@
 		607FACDD1AFB9204008FA782 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 607FACDC1AFB9204008FA782 /* Images.xcassets */; };
 		607FACE01AFB9204008FA782 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 607FACDE1AFB9204008FA782 /* LaunchScreen.xib */; };
 		8FD8948D182C4083F453F873 /* Pods_XCoordinator_Example.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B299AC83F329D65CD398756E /* Pods_XCoordinator_Example.framework */; };
+		9B07F06321D6D26700A0C149 /* CGAffineTransform+InPlace.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B07F06221D6D26700A0C149 /* CGAffineTransform+InPlace.swift */; };
+		9B07F06521D6D2BF00A0C149 /* Animation+Scale.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B07F06421D6D2BF00A0C149 /* Animation+Scale.swift */; };
+		9B07F06721D6D35500A0C149 /* Animation+Fade.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B07F06621D6D35500A0C149 /* Animation+Fade.swift */; };
+		9B07F06921D6D3DB00A0C149 /* TransitionAnimation+Defaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B07F06821D6D3DB00A0C149 /* TransitionAnimation+Defaults.swift */; };
+		9B07F06B21D6D44200A0C149 /* Animation+Swirl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B07F06A21D6D44200A0C149 /* Animation+Swirl.swift */; };
 		9B33481321C47F9700E954A3 /* Presentable+Rx.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B33481221C47F9700E954A3 /* Presentable+Rx.swift */; };
 		9B33481821C4804600E954A3 /* Coordinator+Rx.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B33481721C4804600E954A3 /* Coordinator+Rx.swift */; };
 		9BC60AFE214EA6AA00ECFF9A /* AnimationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BC60AFC214EA6A500ECFF9A /* AnimationTests.swift */; };
@@ -50,7 +55,6 @@
 		9BE0231A214DF6740093001A /* UsersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BE02303214DF6730093001A /* UsersViewController.swift */; };
 		9BE0231B214DF6740093001A /* UsersViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BE02304214DF6730093001A /* UsersViewModel.swift */; };
 		9BE0231D214DF6740093001A /* UsersViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9BE02307214DF6730093001A /* UsersViewController.xib */; };
-		9BE02323214DF68E0093001A /* CustomPresentations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BE02320214DF68E0093001A /* CustomPresentations.swift */; };
 		9BE02324214DF68E0093001A /* BindableType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BE02321214DF68E0093001A /* BindableType.swift */; };
 		9BE02325214DF68E0093001A /* NibIdentifiable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BE02322214DF68E0093001A /* NibIdentifiable.swift */; };
 		9BE0232C214DF7E50093001A /* TransitionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BE0232A214DF7BE0093001A /* TransitionTests.swift */; };
@@ -87,6 +91,11 @@
 		607FACE51AFB9204008FA782 /* XCoordinator_Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = XCoordinator_Tests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		607FACEA1AFB9204008FA782 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8311BE8E1B21258643BC45D1 /* Pods-XCoordinator_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-XCoordinator_Tests.release.xcconfig"; path = "Pods/Target Support Files/Pods-XCoordinator_Tests/Pods-XCoordinator_Tests.release.xcconfig"; sourceTree = "<group>"; };
+		9B07F06221D6D26700A0C149 /* CGAffineTransform+InPlace.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CGAffineTransform+InPlace.swift"; sourceTree = "<group>"; };
+		9B07F06421D6D2BF00A0C149 /* Animation+Scale.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Animation+Scale.swift"; sourceTree = "<group>"; };
+		9B07F06621D6D35500A0C149 /* Animation+Fade.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Animation+Fade.swift"; sourceTree = "<group>"; };
+		9B07F06821D6D3DB00A0C149 /* TransitionAnimation+Defaults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TransitionAnimation+Defaults.swift"; sourceTree = "<group>"; };
+		9B07F06A21D6D44200A0C149 /* Animation+Swirl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Animation+Swirl.swift"; sourceTree = "<group>"; };
 		9B33481221C47F9700E954A3 /* Presentable+Rx.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Presentable+Rx.swift"; sourceTree = "<group>"; };
 		9B33481721C4804600E954A3 /* Coordinator+Rx.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Coordinator+Rx.swift"; sourceTree = "<group>"; };
 		9BC60AFC214EA6A500ECFF9A /* AnimationTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimationTests.swift; sourceTree = "<group>"; };
@@ -128,7 +137,6 @@
 		9BE02303214DF6730093001A /* UsersViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UsersViewController.swift; sourceTree = "<group>"; };
 		9BE02304214DF6730093001A /* UsersViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UsersViewModel.swift; sourceTree = "<group>"; };
 		9BE02307214DF6730093001A /* UsersViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = UsersViewController.xib; sourceTree = "<group>"; };
-		9BE02320214DF68E0093001A /* CustomPresentations.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomPresentations.swift; sourceTree = "<group>"; };
 		9BE02321214DF68E0093001A /* BindableType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BindableType.swift; sourceTree = "<group>"; };
 		9BE02322214DF68E0093001A /* NibIdentifiable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NibIdentifiable.swift; sourceTree = "<group>"; };
 		9BE02328214DF7970093001A /* TestRoute.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestRoute.swift; sourceTree = "<group>"; };
@@ -257,8 +265,13 @@
 		9B33481621C4802700E954A3 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				9B07F06821D6D3DB00A0C149 /* TransitionAnimation+Defaults.swift */,
+				9B07F06421D6D2BF00A0C149 /* Animation+Scale.swift */,
+				9B07F06621D6D35500A0C149 /* Animation+Fade.swift */,
+				9B07F06A21D6D44200A0C149 /* Animation+Swirl.swift */,
 				9B33481221C47F9700E954A3 /* Presentable+Rx.swift */,
 				9B33481721C4804600E954A3 /* Coordinator+Rx.swift */,
+				9B07F06221D6D26700A0C149 /* CGAffineTransform+InPlace.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -370,7 +383,6 @@
 		9BE0231F214DF68E0093001A /* Utils */ = {
 			isa = PBXGroup;
 			children = (
-				9BE02320214DF68E0093001A /* CustomPresentations.swift */,
 				9BE02321214DF68E0093001A /* BindableType.swift */,
 				9BE02322214DF68E0093001A /* NibIdentifiable.swift */,
 			);
@@ -624,11 +636,14 @@
 			files = (
 				9BC67A0D21A451540076D6EF /* DetailTableViewCell.swift in Sources */,
 				9BE022E5214DF6560093001A /* AppCoordinator.swift in Sources */,
+				9B07F06721D6D35500A0C149 /* Animation+Fade.swift in Sources */,
 				9BE02313214DF6740093001A /* NewsService.swift in Sources */,
 				9BE02308214DF6740093001A /* HomeViewModel.swift in Sources */,
 				9BE0231A214DF6740093001A /* UsersViewController.swift in Sources */,
+				9B07F06B21D6D44200A0C149 /* Animation+Swirl.swift in Sources */,
 				607FACD61AFB9204008FA782 /* AppDelegate.swift in Sources */,
 				9BC67A1321A4526B0076D6EF /* HomeViewModelImpl.swift in Sources */,
+				9B07F06921D6D3DB00A0C149 /* TransitionAnimation+Defaults.swift in Sources */,
 				9BE02316214DF6740093001A /* LoginViewController.swift in Sources */,
 				9BE02311214DF6740093001A /* NewsViewController.swift in Sources */,
 				9BE02310214DF6740093001A /* NewsViewModelImpl.swift in Sources */,
@@ -638,12 +653,13 @@
 				9BE022E7214DF6560093001A /* HomePageCoordinator.swift in Sources */,
 				9BE022E9214DF6560093001A /* UserCoordinator.swift in Sources */,
 				9BE02314214DF6740093001A /* LoginViewModel.swift in Sources */,
+				9B07F06321D6D26700A0C149 /* CGAffineTransform+InPlace.swift in Sources */,
 				9BE0231B214DF6740093001A /* UsersViewModel.swift in Sources */,
 				9BC67A1121A451E70076D6EF /* LoginViewModelImpl.swift in Sources */,
 				9B33481821C4804600E954A3 /* Coordinator+Rx.swift in Sources */,
+				9B07F06521D6D2BF00A0C149 /* Animation+Scale.swift in Sources */,
 				9BE02312214DF6740093001A /* NewsViewModel.swift in Sources */,
 				9BE02324214DF68E0093001A /* BindableType.swift in Sources */,
-				9BE02323214DF68E0093001A /* CustomPresentations.swift in Sources */,
 				9BE0230A214DF6740093001A /* HomeViewController.swift in Sources */,
 				9BE0230C214DF6740093001A /* NewsDetailViewModelImpl.swift in Sources */,
 				9BE02317214DF6740093001A /* UserViewModel.swift in Sources */,

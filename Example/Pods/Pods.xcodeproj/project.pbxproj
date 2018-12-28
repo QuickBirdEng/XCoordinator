@@ -223,6 +223,7 @@
 		9988354555E2EC5D65611E038C069771 /* NSObject+Rx+RawRepresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E214DB21F70E363B23060A2C7246696 /* NSObject+Rx+RawRepresentable.swift */; };
 		99E5513325C685E8C50A609AC5FD169C /* NSObject+Rx+KVORepresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB0D4A15261F4D524861C264C04DD964 /* NSObject+Rx+KVORepresentable.swift */; };
 		9A3C1F797E0618E09C8EC3CAF51851A8 /* Using.swift in Sources */ = {isa = PBXBuildFile; fileRef = E30C5226E5D37A71287F11C859EAFE3E /* Using.swift */; };
+		9B07F06121D6CB5E00A0C149 /* InterruptibleTransitionAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B07F06021D6CB5800A0C149 /* InterruptibleTransitionAnimation.swift */; };
 		9B266862B0B77ECC079B5B8365DEBE29 /* PublishRelay+Signal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 644D5914542AECF518BA0408E550248A /* PublishRelay+Signal.swift */; };
 		9B2A479C21C452490097155E /* UIPageViewController+Configuration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B2A479B21C452490097155E /* UIPageViewController+Configuration.swift */; };
 		9B2A479E21C458660097155E /* PageCoordinatorDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B2A479D21C458660097155E /* PageCoordinatorDataSource.swift */; };
@@ -232,7 +233,6 @@
 		9B778AAD0E88F3BDDD602B2B2FEC1B1D /* Queue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63F02770C75E2267F84754C8BFD54C12 /* Queue.swift */; };
 		9B82682221C9D7FA005841A8 /* GestureRecognizerTarget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B82682121C9D7FA005841A8 /* GestureRecognizerTarget.swift */; };
 		9BA39706EC9DD21CE53AC3761F75FB31 /* NopDisposable.swift in Sources */ = {isa = PBXBuildFile; fileRef = A21BC7DE0DE3A526433A989439B529BB /* NopDisposable.swift */; };
-		9BA6498C21D06EA0003DBC5D /* InterruptibleTransitionAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BA6498B21D06EA0003DBC5D /* InterruptibleTransitionAnimation.swift */; };
 		9BD7B27321BB4296002B5FCD /* RedirectionCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BD7B27221BB4295002B5FCD /* RedirectionCoordinator.swift */; };
 		9D60DF82508B477A3C1481AC69B0E23A /* UIViewController+Rx.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25F24821A7152CF96B2BD1496FB03F22 /* UIViewController+Rx.swift */; };
 		9F05E06D3BAE5922FE6812442740B11D /* ControlEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 553E459EE0295244B154556202163D93 /* ControlEvent.swift */; };
@@ -708,10 +708,10 @@
 		94BFE3453532645178AC8C9BBA967BAD /* SwitchIfEmpty.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SwitchIfEmpty.swift; path = RxSwift/Observables/SwitchIfEmpty.swift; sourceTree = "<group>"; };
 		95AD896AD0980912837EF13BF04DB209 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		966520DD39779BD6DFB7BB679CF85DB5 /* ViewTransition.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ViewTransition.swift; path = XCoordinator/Classes/ViewTransition.swift; sourceTree = "<group>"; };
+		9B07F06021D6CB5800A0C149 /* InterruptibleTransitionAnimation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = InterruptibleTransitionAnimation.swift; path = XCoordinator/Classes/InterruptibleTransitionAnimation.swift; sourceTree = "<group>"; };
 		9B2A479B21C452490097155E /* UIPageViewController+Configuration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "UIPageViewController+Configuration.swift"; path = "XCoordinator/Classes/UIPageViewController+Configuration.swift"; sourceTree = "<group>"; };
 		9B2A479D21C458660097155E /* PageCoordinatorDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = PageCoordinatorDataSource.swift; path = XCoordinator/Classes/PageCoordinatorDataSource.swift; sourceTree = "<group>"; };
 		9B82682121C9D7FA005841A8 /* GestureRecognizerTarget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = GestureRecognizerTarget.swift; path = XCoordinator/Classes/GestureRecognizerTarget.swift; sourceTree = "<group>"; };
-		9BA6498B21D06EA0003DBC5D /* InterruptibleTransitionAnimation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = InterruptibleTransitionAnimation.swift; path = XCoordinator/Classes/InterruptibleTransitionAnimation.swift; sourceTree = "<group>"; };
 		9BD7B27221BB4295002B5FCD /* RedirectionCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = RedirectionCoordinator.swift; path = XCoordinator/Classes/RedirectionCoordinator.swift; sourceTree = "<group>"; };
 		9C930BC1E5B36E06737CDF60A6A97A3F /* String+Rx.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "String+Rx.swift"; path = "RxSwift/Extensions/String+Rx.swift"; sourceTree = "<group>"; };
 		9CA54932B21A4C168FA65DDF5BA2D1AE /* _RXKVOObserver.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = _RXKVOObserver.m; path = RxCocoa/Runtime/_RXKVOObserver.m; sourceTree = "<group>"; };
@@ -1287,7 +1287,7 @@
 				70214AAD571F1447B709E49F1EC26A77 /* CoordinatorPreviewingDelegateObject.swift */,
 				68F1813DE029D78D265A689ADE780A97 /* DeepLinking.swift */,
 				CEA5A97DCBE484ACEF51ED90E15D2CF8 /* InteractiveTransitionAnimation.swift */,
-				9BA6498B21D06EA0003DBC5D /* InterruptibleTransitionAnimation.swift */,
+				9B07F06021D6CB5800A0C149 /* InterruptibleTransitionAnimation.swift */,
 				EDB990D30757E2E7A8F5266831BBBE5F /* NavigationCoordinator.swift */,
 				27C375FAF729A1E7B20587DC668C579E /* NavigationTransition.swift */,
 				6628BEFDB7C9B5281C5ABDEDDC42B504 /* PageCoordinator.swift */,
@@ -1997,7 +1997,7 @@
 				FB73AECF2BF7725B677556F6A5C02B88 /* Animation.swift in Sources */,
 				A65DB66045F8F35FABAE039AC78C099D /* AnyCoordinator.swift in Sources */,
 				789958A011A6CC18FDF10190E7939908 /* AnyRouter.swift in Sources */,
-				9BA6498C21D06EA0003DBC5D /* InterruptibleTransitionAnimation.swift in Sources */,
+				9B07F06121D6CB5E00A0C149 /* InterruptibleTransitionAnimation.swift in Sources */,
 				A60430CF102FD71C497AA00F125B1C52 /* AnyTransitionPerformer.swift in Sources */,
 				18D17B825F913E88B8667EEB44D305D3 /* BaseCoordinator.swift in Sources */,
 				415BD0553457DE6810EDC18BA82B2E15 /* BasicCoordinator.swift in Sources */,

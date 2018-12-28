@@ -31,7 +31,7 @@ class UserCoordinator: NavigationCoordinator<UserRoute> {
         case .randomColor:
             let viewController = UIViewController()
             viewController.view.backgroundColor = .random()
-            return .push(viewController, animation: .interactiveFade)
+            return .push(viewController, animation: .fade)
         case let .user(username):
             let viewController = UserViewController.instantiateFromNib()
             let viewModel = UserViewModelImpl(router: anyRouter, username: username)

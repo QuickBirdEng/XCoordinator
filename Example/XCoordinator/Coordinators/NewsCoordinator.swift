@@ -38,9 +38,9 @@ class NewsCoordinator: NavigationCoordinator<NewsRoute> {
             viewController.bind(to: viewModel)
             let animation: Animation
             if #available(iOS 10.0, *) {
-                animation = .interruptibleSwirl
+                animation = .swirl
             } else {
-                animation = .interactiveScale
+                animation = .scale
             }
             return .push(viewController, animation: animation)
         case .close:
