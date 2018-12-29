@@ -11,7 +11,7 @@ NSObject, UIViewControllerPreviewingDelegate {
 
     // MARK: - Stored properties
 
-    internal var context: UIViewControllerPreviewing? = nil
+    internal var context: UIViewControllerPreviewing?
 
     private weak var viewController: UIViewController?
 

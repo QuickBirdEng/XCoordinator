@@ -15,7 +15,8 @@
 ///
 /// To not override the previously set `Animation`, use `nil` when initializing a transition.
 ///
-/// Make sure to hold a strong reference to the `Animation` object, as XCoordinator does not ensure to hold the `Animation` strongly by itself.
+/// Make sure to hold a strong reference to the `Animation` object,
+/// as XCoordinator does not ensure to hold the `Animation` strongly by itself.
 ///
 open class Animation: NSObject {
 

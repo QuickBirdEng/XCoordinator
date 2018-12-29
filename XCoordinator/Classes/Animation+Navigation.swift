@@ -170,7 +170,8 @@ extension NavigationAnimationDelegate: UIGestureRecognizerDelegate {
     ///
     /// This method sets up the `interactivePopGestureRecognizer` of the navigation controller to work as expected.
     ///
-    /// This method overrides the delegate of the `interactivePopGestureRecognizer` to `self`, but keeps a reference to the original delegate to enable the default pop animations.
+    /// This method overrides the delegate of the `interactivePopGestureRecognizer` to `self`,
+    /// but keeps a reference to the original delegate to enable the default pop animations.
     ///
     /// - Parameter navigationController: The navigation controller to be set up.
     ///
