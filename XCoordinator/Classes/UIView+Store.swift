@@ -6,16 +6,16 @@
 //  Copyright © 2018 QuickBird Studios. All rights reserved.
 //
 
-private var AssociatedObjectHandle: UInt8 = 0
+private var associatedObjectHandle: UInt8 = 0
 
 extension UIView {
 
     var strongReferences: [Any] {
         get {
-            return objc_getAssociatedObject(self, &AssociatedObjectHandle) as? [Any] ?? []
+            return objc_getAssociatedObject(self, &associatedObjectHandle) as? [Any] ?? []
         }
         set {
-            objc_setAssociatedObject(self, &AssociatedObjectHandle, newValue, .OBJC_ASSOCIATION_RETAIN_NONATOMIC)
+            objc_setAssociatedObject(self, &associatedObjectHandle, newValue, .OBJC_ASSOCIATION_RETAIN_NONATOMIC)
         }
     }
 }

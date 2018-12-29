@@ -7,7 +7,6 @@
 //
 
 extension TransitionPerformer where TransitionType.RootViewController: UIPageViewController {
-    // TODO: Add animations
     func set(_ viewControllers: [UIViewController],
              direction: UIPageViewController.NavigationDirection,
              with options: TransitionOptions,

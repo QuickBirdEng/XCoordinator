@@ -10,6 +10,8 @@
 import RxSwift
 
 extension Router {
+
+    // swiftlint:disable:next identifier_name
     public var rx: Reactive<Self> {
         return Reactive(self)
     }
