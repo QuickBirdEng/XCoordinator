@@ -1,13 +1,5 @@
 disabled_rules:
-- trailing_whitespace
 - implicitly_unwrapped_optional
-- operator_usage_whitespace
-- identifier_name
-- todo
-- strict_fileprivate
-- file_length
-- function_body_length
-- type_body_length
 
 opt_in_rules:
 - array_init
@@ -41,7 +33,6 @@ opt_in_rules:
 - single_test_class
 - sorted_first_last
 - sorted_imports
-- strict_fileprivate
 - switch_case_on_newline
 - unneeded_parentheses_in_closure_argument
 - vertical_parameter_alignment_on_call

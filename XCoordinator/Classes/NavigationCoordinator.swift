@@ -35,7 +35,7 @@ open class NavigationCoordinator<RouteType: Route>: BaseCoordinator<RouteType, N
     }
 
     // MARK: - Overrides
-    
+
     open override func generateRootViewController() -> UINavigationController {
         let navigationController = super.generateRootViewController()
         navigationController.delegate = animationDelegate
