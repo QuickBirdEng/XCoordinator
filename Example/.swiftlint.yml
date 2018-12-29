@@ -1,0 +1,108 @@
+disabled_rules:
+- trailing_whitespace
+- implicitly_unwrapped_optional
+- operator_usage_whitespace
+- identifier_name
+- todo
+- strict_fileprivate
+- file_length
+- function_body_length
+- type_body_length
+
+opt_in_rules:
+- array_init
+- attributes
+- closure_end_indentation
+- closure_spacing
+- contains_over_first_not_nil
+- empty_count
+- explicit_init
+- fatal_error_message
+- first_where
+- force_unwrapping
+- implicit_return
+- implicitly_unwrapped_optional
+- joined_default_parameter
+- let_var_whitespace
+- literal_expression_end_indentation
+- nimble_operator
+- no_extension_access_modifier
+- number_separator
+- operator_usage_whitespace
+- overridden_super_call
+- override_in_extension
+- pattern_matching_keywords
+- private_outlet
+- prohibited_super_call
+- quick_discouraged_call
+- quick_discouraged_focused_test
+- quick_discouraged_pending_test
+- redundant_nil_coalescing
+- single_test_class
+- sorted_first_last
+- sorted_imports
+- strict_fileprivate
+- switch_case_on_newline
+- unneeded_parentheses_in_closure_argument
+- vertical_parameter_alignment_on_call
+
+excluded:
+- Pods/RxSwift
+- Pods/RxCocoa
+- Pods/Action
+- Pods/RxAtomic
+
+included:
+- ../XCoordinator/Classes
+
+custom_rules:
+- extra_whitespace:
+    name: "Extra whitespaces"
+    regex: '([a-zA-Z0-9=?.\(\),><!\"][ ]{2,}[a-zA-Z0-9?.\(\),><!\"])'
+    message: "Remove extra whitespaces"
+    severity: warning
+- comments_space:
+    name: "Space After Comment"
+    regex: '(^ *//\w+)'
+    message: "There should be a space after //"
+    severity: warning
+- empty_first_line:
+    name: "Empty First Line"
+    regex: '(^[ a-zA-Z ]*(?:protocol|extension|class|struct) (?!(?:var|let))[ a-zA-Z:]*\{\n *\S+)'
+    message: "There should be an empty line after a declaration"
+    severity: warning
+- empty_line_after_guard:
+    name: "Empty Line After Guard"
+    regex: '(^ *guard[ a-zA-Z0-9=?.\(\),><!]*\{[ a-zA-Z0-9=?.\(\),><!]*\}\n *(?!(?:return|guard))\S+)'
+    message: "There should be an empty line after a guard"
+    severity: warning
+- empty_line_after_super:
+    name: "Empty Line After Super"
+    regex: '(^ *super\.[ a-zA-Z0-9=?.\(\)\{\}:,><!]*\n *(?!(?:\}|return))\S+)'
+    message: "There should be an empty line after super"
+    severity: warning
+- multiple_empty_lines:
+    name: "Multiple Empty Lines"
+    regex: '((?:\s*\n){3,})'
+    message: "There are too many empty lines"
+    severity: warning
+- unnecessary_leading_void_in:
+    name: "Unnecessary -> Void in at the end of the line"
+    regex: '(-> (Void|\(\)) in$)'
+    message: "Unnecessary '-> Void in' at the end of the line. Use only 'in'"
+    severity: warning
+- unnecessary_type:
+    name: "Unnecessary Type"
+    regex: '(?sm)[ \ta-zA-Z0-9]?(?:let|var){1} [ \ta-zA-Z0-9]+?:[ \t]+?([a-zA-Z0-9]+?)[\t ]+?=[\t ]?\1'
+    message: "Type Definition Not Needed"
+    severity: warning
+- empty_closure_params:
+    name: "Empty closure params"
+    regex: '\{ (\(\) -> Void in)$'
+    message: "`() -> Void in` should be avoided"
+    severity: warning
+- invalid_mark_format:
+    name: "Invalid MARK Format"
+    regex: '(?m-s)(\/\/[\s]*?MARK(?!(\:[\s]{1}\-[\s]{1}){1}))'
+    message: "Use format: MARK: - Your Info"
+    severity: warning

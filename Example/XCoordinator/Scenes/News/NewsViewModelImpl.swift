@@ -6,9 +6,8 @@
 //  Copyright © 2018 QuickBird Studios. All rights reserved.
 //
 
-import Foundation
-import RxSwift
 import Action
+import RxSwift
 import XCoordinator
 
 class NewsViewModelImpl: NewsViewModel, NewsViewModelInput, NewsViewModelOutput {
@@ -20,7 +19,7 @@ class NewsViewModelImpl: NewsViewModel, NewsViewModelInput, NewsViewModelOutput 
     // MARK: - Actions
 
     lazy var newsSelectedAction = Action<News, Void> { [unowned self] news in
-        return self.coordinator.rx.trigger(.newsDetail(news))
+        self.coordinator.rx.trigger(.newsDetail(news))
     }
 
     // MARK: - Outputs

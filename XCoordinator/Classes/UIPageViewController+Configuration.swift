@@ -21,8 +21,8 @@ extension UIPageViewController {
         public let options: [UIPageViewController.OptionsKey: Any]?
 
         public init(transitionStyle: TransitionStyle = .pageCurl,
-             navigationOrientation: NavigationOrientation = .horizontal,
-             options: [UIPageViewController.OptionsKey: Any]? = nil) {
+                    navigationOrientation: NavigationOrientation = .horizontal,
+                    options: [UIPageViewController.OptionsKey: Any]? = nil) {
             self.transitionStyle = transitionStyle
             self.navigationOrientation = navigationOrientation
             self.options = options

@@ -17,4 +17,3 @@ extension XCTestCase {
         wait(for: [waitExpectation], timeout: max(timeInterval * 2, 1))
     }
 }
-

@@ -10,6 +10,7 @@ public struct Transition<RootViewController: UIViewController>: TransitionProtoc
 
     // MARK: - Typealias
 
+    // swiftlint:disable:next line_length
     public typealias Perform = (TransitionOptions, AnyTransitionPerformer<Transition<RootViewController>>, PresentationHandler?) -> Void
 
     // MARK: - Stored properties
@@ -38,12 +39,17 @@ public struct Transition<RootViewController: UIViewController>: TransitionProtoc
 
     // MARK: - Methods
 
-    public func perform<C: Coordinator>(options: TransitionOptions, coordinator: C, completion: PresentationHandler?) where C.TransitionType == Transition<RootViewController> {
+    public func perform<C: Coordinator>(options: TransitionOptions,
+                                        coordinator: C,
+                                        completion: PresentationHandler?)
+        where C.TransitionType == Transition<RootViewController> {
         let anyPerformer = AnyTransitionPerformer(coordinator)
         perform(options: options, performer: anyPerformer, completion: completion)
     }
 
-    internal func perform(options: TransitionOptions, performer: AnyTransitionPerformer<Transition>, completion: PresentationHandler?) {
+    internal func perform(options: TransitionOptions,
+                          performer: AnyTransitionPerformer<Transition>,
+                          completion: PresentationHandler?) {
         _perform(options, performer, completion)
     }
 }

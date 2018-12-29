@@ -10,6 +10,7 @@ open class NavigationCoordinator<RouteType: Route>: BaseCoordinator<RouteType, N
 
     // MARK: - Stored properties
 
+    // swiftlint:disable:next weak_delegate
     private let animationDelegate = NavigationAnimationDelegate()
 
     // MARK: - Computed properties

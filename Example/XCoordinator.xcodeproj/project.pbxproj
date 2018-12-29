@@ -436,6 +436,7 @@
 				607FACCD1AFB9204008FA782 /* Frameworks */,
 				607FACCE1AFB9204008FA782 /* Resources */,
 				7D8379D75BB00757F76484C9 /* [CP] Embed Pods Frameworks */,
+				9B07F06C21D6FADA00A0C149 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -626,6 +627,23 @@
 			shellPath = /bin/sh;
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-XCoordinator_Example/Pods-XCoordinator_Example-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
+		};
+		9B07F06C21D6FADA00A0C149 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "${PODS_ROOT}/SwiftLint/swiftlint\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 

@@ -39,7 +39,8 @@ class AppCoordinator: NavigationCoordinator<AppRoute> {
             viewController.bind(to: viewModel)
             return .push(viewController)
         case .home:
-            guard let presentable: Presentable = [
+            guard let presentable: Presentable =
+                [
                     HomeTabCoordinator(),
                     HomeSplitCoordinator(),
                     HomePageCoordinator()

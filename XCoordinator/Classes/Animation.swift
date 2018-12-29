@@ -28,7 +28,9 @@ open class Animation: NSObject {
 // MARK: - Animation: UIViewControllerTransitioningDelegate
 
 extension Animation: UIViewControllerTransitioningDelegate {
-    open func animationController(forPresented presented: UIViewController, presenting: UIViewController, source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+    open func animationController(forPresented presented: UIViewController,
+                                  presenting: UIViewController,
+                                  source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
         return presentationAnimation
     }
 
@@ -36,11 +38,13 @@ extension Animation: UIViewControllerTransitioningDelegate {
         return dismissalAnimation
     }
 
-    open func interactionControllerForPresentation(using animator: UIViewControllerAnimatedTransitioning) -> UIViewControllerInteractiveTransitioning? {
+    open func interactionControllerForPresentation(using animator: UIViewControllerAnimatedTransitioning)
+        -> UIViewControllerInteractiveTransitioning? {
         return presentationAnimation?.interactionController
     }
 
-    open func interactionControllerForDismissal(using animator: UIViewControllerAnimatedTransitioning) -> UIViewControllerInteractiveTransitioning? {
+    open func interactionControllerForDismissal(using animator: UIViewControllerAnimatedTransitioning)
+        -> UIViewControllerInteractiveTransitioning? {
         return dismissalAnimation?.interactionController
     }
 }

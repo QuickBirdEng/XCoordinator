@@ -18,6 +18,8 @@ open class NavigationAnimationDelegate: NSObject {
     open var transitionProgressThreshold: CGFloat { return 0.5 }
 
     private var animations = [Animation?]()
+
+    // swiftlint:disable:next weak_delegate
     private var interactivePopGestureRecognizerDelegate: UIGestureRecognizerDelegate?
 
     // MARK: - Weak properties
@@ -42,12 +44,17 @@ open class NavigationAnimationDelegate: NSObject {
 // MARK: - NavigationAnimationDelegate: UINavigationControllerDelegate
 
 extension NavigationAnimationDelegate: UINavigationControllerDelegate {
-    open func navigationController(_ navigationController: UINavigationController, interactionControllerFor animationController: UIViewControllerAnimatedTransitioning) -> UIViewControllerInteractiveTransitioning? {
+    open func navigationController(_ navigationController: UINavigationController,
+                                   interactionControllerFor animationController: UIViewControllerAnimatedTransitioning
+        ) -> UIViewControllerInteractiveTransitioning? {
         return (animationController as? TransitionAnimation)?.interactionController
             ?? delegate?.navigationController?(navigationController, interactionControllerFor: animationController)
     }
 
-    open func navigationController(_ navigationController: UINavigationController, animationControllerFor operation: UINavigationController.Operation, from fromVC: UIViewController, to toVC: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+    open func navigationController(_ navigationController: UINavigationController,
+                                   animationControllerFor operation: UINavigationController.Operation,
+                                   from fromVC: UIViewController,
+                                   to toVC: UIViewController) -> UIViewControllerAnimatedTransitioning? {
         let transitionAnimation = { () -> UIViewControllerAnimatedTransitioning? in
             switch operation {
             case .push:
@@ -61,15 +68,18 @@ extension NavigationAnimationDelegate: UINavigationControllerDelegate {
             }
         }()
         return transitionAnimation
-            ?? delegate?.navigationController?(navigationController, animationControllerFor: operation, from: fromVC, to: toVC)
+            ?? delegate?.navigationController?(navigationController,
+                                               animationControllerFor: operation, from: fromVC, to: toVC)
     }
 
-    open func navigationController(_ navigationController: UINavigationController, didShow viewController: UIViewController, animated: Bool) {
+    open func navigationController(_ navigationController: UINavigationController,
+                                   didShow viewController: UIViewController, animated: Bool) {
         setupPopGestureRecognizer(for: navigationController)
         delegate?.navigationController?(navigationController, didShow: viewController, animated: animated)
     }
 
-    open func navigationController(_ navigationController: UINavigationController, willShow viewController: UIViewController, animated: Bool) {
+    open func navigationController(_ navigationController: UINavigationController,
+                                   willShow viewController: UIViewController, animated: Bool) {
         delegate?.navigationController?(navigationController, willShow: viewController, animated: animated)
     }
 }
@@ -87,6 +97,7 @@ extension NavigationAnimationDelegate: UIGestureRecognizerDelegate {
 
             guard let delegate = interactivePopGestureRecognizerDelegate,
                 delegate.responds(to: delegateAction) else {
+                    // swiftlint:disable:next line_length
                     assertionFailure("Please don't set your own delegate on \(String(describing: UINavigationController.self)).\(#selector(getter: UINavigationController.interactivePopGestureRecognizer)).")
                     return false
             }

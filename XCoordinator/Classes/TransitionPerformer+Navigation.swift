@@ -11,7 +11,10 @@ extension TransitionPerformer where TransitionType.RootViewController: UINavigat
         rootViewController.animationDelegate?.resetChildrenAnimations(for: rootViewController)
     }
 
-    func push(_ viewController: UIViewController, with options: TransitionOptions, animation: Animation?, completion: PresentationHandler?) {
+    func push(_ viewController: UIViewController,
+              with options: TransitionOptions,
+              animation: Animation?,
+              completion: PresentationHandler?) {
 
         if let animation = animation {
             viewController.transitioningDelegate = animation
@@ -50,7 +53,10 @@ extension TransitionPerformer where TransitionType.RootViewController: UINavigat
         CATransaction.commit()
     }
 
-    func set(_ viewControllers: [UIViewController], with options: TransitionOptions, animation: Animation?, completion: PresentationHandler?) {
+    func set(_ viewControllers: [UIViewController],
+             with options: TransitionOptions,
+             animation: Animation?,
+             completion: PresentationHandler?) {
 
         if let animation = animation {
             viewControllers.last?.transitioningDelegate = animation
@@ -72,7 +78,10 @@ extension TransitionPerformer where TransitionType.RootViewController: UINavigat
         CATransaction.commit()
     }
 
-    func pop(to viewController: UIViewController, options: TransitionOptions, animation: Animation?, completion: PresentationHandler?) {
+    func pop(to viewController: UIViewController,
+             options: TransitionOptions,
+             animation: Animation?,
+             completion: PresentationHandler?) {
 
         if let animation = animation {
             rootViewController.topViewController?.transitioningDelegate = animation

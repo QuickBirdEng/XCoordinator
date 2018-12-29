@@ -10,7 +10,8 @@ public typealias BasicNavigationCoordinator<R: Route> = BasicCoordinator<R, Navi
 public typealias BasicViewCoordinator<R: Route> = BasicCoordinator<R, ViewTransition>
 public typealias BasicTabBarCoordinator<R: Route> = BasicCoordinator<R, TabBarTransition>
 
-open class BasicCoordinator<RouteType: Route, TransitionType: TransitionProtocol>: BaseCoordinator<RouteType, TransitionType> {
+open class BasicCoordinator<RouteType: Route, TransitionType: TransitionProtocol>:
+    BaseCoordinator<RouteType, TransitionType> {
 
     // MARK: - Nested types
 

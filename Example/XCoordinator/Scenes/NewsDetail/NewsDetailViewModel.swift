@@ -6,9 +6,8 @@
 //  Copyright © 2018 QuickBird Studios. All rights reserved.
 //
 
-import Foundation
-import RxSwift
 import Action
+import RxSwift
 
 protocol NewsDetailViewModelInput {
 }

@@ -6,16 +6,16 @@
 //  Copyright © 2018 QuickBird Studios. All rights reserved.
 //
 
-import UIKit
-import RxSwift
 import RxCocoa
+import RxSwift
+import UIKit
 
 class UsersViewController: UIViewController, BindableType {
     var viewModel: UsersViewModel!
 
     // MARK: - Views
 
-    @IBOutlet var tableView: UITableView!
+    @IBOutlet private var tableView: UITableView!
 
     // MARK: - Stored properties
 
@@ -35,7 +35,7 @@ class UsersViewController: UIViewController, BindableType {
 
     func bindViewModel() {
         viewModel.output.usernames
-        .bind(to: tableView.rx.items(cellIdentifier: cellIdentifier, cellType: UITableViewCell.self)) { (_, element, cell) in
+        .bind(to: tableView.rx.items(cellIdentifier: cellIdentifier)) { _, element, cell in
             cell.textLabel?.text = element
             cell.selectionStyle = .none
         }
@@ -49,7 +49,7 @@ class UsersViewController: UIViewController, BindableType {
     // MARK: - Helpers
 
     private func configureTableViewCell() {
-        tableView.register(DetailTableViewCell.self, forCellReuseIdentifier: String(describing: DetailTableViewCell.self))
+        tableView.register(DetailTableViewCell.self, forCellReuseIdentifier: cellIdentifier)
     }
 
     private func configureNavBar() {

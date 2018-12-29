@@ -6,9 +6,9 @@
 //  Copyright © 2018 QuickBird Studios. All rights reserved.
 //
 
+import Action
 import Foundation
 import RxSwift
-import Action
 
 class NewsDetailViewModelImpl: NewsDetailViewModel, NewsDetailViewModelInput, NewsDetailViewModelOutput {
 

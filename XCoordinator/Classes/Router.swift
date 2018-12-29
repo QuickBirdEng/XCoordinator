@@ -20,7 +20,7 @@ extension Router {
         return trigger(route, with: options, completion: nil)
     }
 
-    public func trigger(_ route: RouteType, completion: PresentationHandler? = nil)  {
+    public func trigger(_ route: RouteType, completion: PresentationHandler? = nil) {
         return trigger(route, with: .default, completion: completion)
     }
 

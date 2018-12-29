@@ -32,8 +32,10 @@ open class PageCoordinatorDataSource: NSObject, UIPageViewControllerDataSource, 
         return pages.firstIndex(of: viewController) ?? 0
     }
 
-    open func pageViewController(_ pageViewController: UIPageViewController, viewControllerBefore viewController: UIViewController) -> UIViewController? {
+    open func pageViewController(_ pageViewController: UIPageViewController,
+                                 viewControllerBefore viewController: UIViewController) -> UIViewController? {
         guard let index = pages.firstIndex(of: viewController) else {
+            // swiftlint:disable:next line_length
             assertionFailure("\(String(describing: UIPageViewController.self)) is displaying viewController not available in the provided pages-array.")
             return nil
         }
@@ -42,8 +44,10 @@ open class PageCoordinatorDataSource: NSObject, UIPageViewControllerDataSource, 
         return pages[prevIndex].viewController
     }
 
-    open func pageViewController(_ pageViewController: UIPageViewController, viewControllerAfter viewController: UIViewController) -> UIViewController? {
+    open func pageViewController(_ pageViewController: UIPageViewController,
+                                 viewControllerAfter viewController: UIViewController) -> UIViewController? {
         guard let index = pages.firstIndex(of: viewController) else {
+            // swiftlint:disable:next line_length
             assertionFailure("\(String(describing: UIPageViewController.self)) is displaying viewController not available in the provided pages-array.")
             return nil
         }

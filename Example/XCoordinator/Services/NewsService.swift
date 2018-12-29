@@ -8,6 +8,8 @@
 
 import RxSwift
 
+// swiftlint:disable line_length
+
 struct News {
     var title: String
     var subtitle: String
@@ -36,15 +38,14 @@ class MockNewsService: NewsService {
 }
 
 extension UIImage {
-    static func from(color: UIColor, size: CGSize = .init(width: 1, height: 1)) -> UIImage {
+    static func from(color: UIColor, size: CGSize = .init(width: 1, height: 1)) -> UIImage! {
         let rect = CGRect(origin: .zero, size: size)
         UIGraphicsBeginImageContext(rect.size)
-        let context = UIGraphicsGetCurrentContext()
-        context!.setFillColor(color.cgColor)
-        context!.fill(rect)
-        let img = UIGraphicsGetImageFromCurrentImageContext()
-        UIGraphicsEndImageContext()
-        return img!
+        guard let context = UIGraphicsGetCurrentContext() else { return nil }
+        defer { UIGraphicsEndImageContext() }
+        context.setFillColor(color.cgColor)
+        context.fill(rect)
+        return UIGraphicsGetImageFromCurrentImageContext()
     }
 }
 

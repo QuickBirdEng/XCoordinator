@@ -6,9 +6,9 @@
 //  Copyright © 2018 QuickBird Studios. All rights reserved.
 //
 
-public typealias AnyNavigationCoordinator<RouteType: Route> = AnyCoordinator<RouteType, Transition<UINavigationController>>
-public typealias AnyTabBarCoordinator<RouteType: Route> = AnyCoordinator<RouteType, Transition<UITabBarController>>
-public typealias AnyViewCoordinator<RouteType: Route> = AnyCoordinator<RouteType, Transition<UIViewController>>
+public typealias AnyNavigationCoordinator<RouteType: Route> = AnyCoordinator<RouteType, NavigationTransition>
+public typealias AnyTabBarCoordinator<RouteType: Route> = AnyCoordinator<RouteType, TabBarTransition>
+public typealias AnyViewCoordinator<RouteType: Route> = AnyCoordinator<RouteType, ViewTransition>
 
 public class AnyCoordinator<RouteType: Route, TransitionType: TransitionProtocol>: Coordinator {
 

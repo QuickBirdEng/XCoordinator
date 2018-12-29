@@ -19,7 +19,7 @@ class UsersViewModelImpl: UsersViewModel, UsersViewModelInput, UsersViewModelOut
     // MARK: - Actions
 
     private lazy var showUserAction = Action<String, Void> { [unowned self] username in
-        return self.router.rx.trigger(.user(username))
+        self.router.rx.trigger(.user(username))
     }
 
     // MARK: - Outputs

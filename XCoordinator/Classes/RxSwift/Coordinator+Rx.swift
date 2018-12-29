@@ -9,7 +9,7 @@
 #if canImport(RxSwift)
 import RxSwift
 
-public extension Router {
+extension Router {
     public var rx: Reactive<Self> {
         return Reactive(self)
     }
