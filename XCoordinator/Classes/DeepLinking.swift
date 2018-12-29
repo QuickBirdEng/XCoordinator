@@ -15,11 +15,38 @@ public struct PresentationHandlerContext {
 // MARK: - Coordinator + DeepLinking
 
 extension Coordinator where Self: AnyObject {
+
+    ///
+    /// Deep-Linking can be used to chain routes of different types together.
+    ///
+    /// - Parameter route:
+    ///     The first route in the chain.
+    ///     It is given a special place because we can specify its exact type.
+    ///
+    /// - Parameter remainingRoutes:
+    ///     The remaining routes of the chain.
+    ///     As we cannot make this type-safe in a reasonable manner, use it with caution.
+    ///     Keep in mind that changes in your app's structure and changes of transitions
+    ///     behind the given routes can lead to runtime errors and, therefore, crashes of your app.
+    ///
     public func deepLink<RootViewController, S: Sequence>(_ route: RouteType, _ remainingRoutes: S)
         -> Transition<RootViewController> where S.Element == Route, TransitionType == Transition<RootViewController> {
         return .deepLink(with: self, route, array: Array(remainingRoutes))
     }
 
+    ///
+    /// Deep-Linking can be used to chain routes of different types together.
+    ///
+    /// - Parameter route:
+    ///     The first route in the chain.
+    ///     It is given a special place because we can specify its exact type.
+    ///
+    /// - Parameter remainingRoutes:
+    ///     The remaining routes of the chain.
+    ///     As we cannot make this type-safe in a reasonable manner, use it with caution.
+    ///     Keep in mind that changes in your app's structure and changes of transitions
+    ///     behind the given routes can lead to runtime errors and, therefore, crashes of your app.
+    ///
     public func deepLink<RootViewController>(_ route: RouteType, _ remainingRoutes: Route...)
         -> Transition<RootViewController> where TransitionType == Transition<RootViewController> {
         return .deepLink(with: self, route, array: remainingRoutes)
