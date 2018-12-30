@@ -1,0 +1,874 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Classes  Reference</title>
+    <link rel="stylesheet" type="text/css" href="css/jazzy.css" />
+    <link rel="stylesheet" type="text/css" href="css/highlight.css" />
+    <meta charset='utf-8'>
+    <script src="js/jquery.min.js" defer></script>
+    <script src="js/jazzy.js" defer></script>
+    
+  </head>
+  <body>
+    <a name="//apple_ref/swift/Section/Classes" class="dashAnchor"></a>
+    <a title="Classes  Reference"></a>
+    <header>
+      <div class="content-wrapper">
+        <p><a href="index.html">XCoordinator Docs</a> (30% documented)</p>
+      </div>
+    </header>
+    <div class="content-wrapper">
+      <p id="breadcrumbs">
+        <a href="index.html">XCoordinator Reference</a>
+        <img id="carat" src="img/carat.png" />
+        Classes  Reference
+      </p>
+    </div>
+    <div class="content-wrapper">
+      <nav class="sidebar">
+        <ul class="nav-groups">
+          <li class="nav-group-name">
+            <a href="Classes.html">Classes</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="Classes/Animation.html">Animation</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Classes/AnyCoordinator.html">AnyCoordinator</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Classes/AnyRouter.html">AnyRouter</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Classes/AnyTransitionPerformer.html">AnyTransitionPerformer</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Classes/BaseCoordinator.html">BaseCoordinator</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Classes/BasicCoordinator.html">BasicCoordinator</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Classes/BasicCoordinator/InitialLoadingType.html">– InitialLoadingType</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Classes/InteractiveTransitionAnimation.html">InteractiveTransitionAnimation</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Classes/NavigationAnimationDelegate.html">NavigationAnimationDelegate</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Classes/NavigationCoordinator.html">NavigationCoordinator</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Classes/PageCoordinator.html">PageCoordinator</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Classes/PageCoordinatorDataSource.html">PageCoordinatorDataSource</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Classes/RedirectionCoordinator.html">RedirectionCoordinator</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Classes/RedirectionRouter.html">RedirectionRouter</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Classes/ReferenceBox.html">ReferenceBox</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Classes/SplitCoordinator.html">SplitCoordinator</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Classes/StaticTransitionAnimation.html">StaticTransitionAnimation</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Classes/TabBarAnimationDelegate.html">TabBarAnimationDelegate</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Classes/TabBarCoordinator.html">TabBarCoordinator</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Classes/ViewCoordinator.html">ViewCoordinator</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="Extensions.html">Extensions</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="Extensions/Reactive.html">Reactive</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Extensions/UIPageViewController.html">UIPageViewController</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Extensions/UIPageViewController/Configuration.html">– Configuration</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Extensions/UIView.html">UIView</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Extensions/UIViewController.html">UIViewController</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="Protocols.html">Protocols</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="Protocols/Container.html">Container</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Protocols/Coordinator.html">Coordinator</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Protocols/PercentDrivenInteractionController.html">PercentDrivenInteractionController</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Protocols/Presentable.html">Presentable</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Protocols.html#/s:12XCoordinator5RouteP">Route</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Protocols/Router.html">Router</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Protocols/TransitionAnimation.html">TransitionAnimation</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Protocols/TransitionPerformer.html">TransitionPerformer</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Protocols/TransitionProtocol.html">TransitionProtocol</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="Structs.html">Structures</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="Structs.html#/s:12XCoordinator26PresentationHandlerContextV">PresentationHandlerContext</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Structs/Transition.html">Transition</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Structs/TransitionOptions.html">TransitionOptions</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="Typealiases.html">Type Aliases</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="Typealiases.html#/s:12XCoordinator24AnyNavigationCoordinatora">AnyNavigationCoordinator</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Typealiases.html#/s:12XCoordinator20AnyTabBarCoordinatora">AnyTabBarCoordinator</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Typealiases.html#/s:12XCoordinator18AnyViewCoordinatora">AnyViewCoordinator</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Typealiases.html#/s:12XCoordinator26BasicNavigationCoordinatora">BasicNavigationCoordinator</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Typealiases.html#/s:12XCoordinator22BasicTabBarCoordinatora">BasicTabBarCoordinator</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Typealiases.html#/s:12XCoordinator20BasicViewCoordinatora">BasicViewCoordinator</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Typealiases.html#/s:12XCoordinator26ContextPresentationHandlera">ContextPresentationHandler</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Typealiases.html#/s:12XCoordinator20NavigationTransitiona">NavigationTransition</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Typealiases.html#/s:12XCoordinator14PageTransitiona">PageTransition</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Typealiases.html#/s:12XCoordinator19PresentationHandlera">PresentationHandler</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Typealiases.html#/s:12XCoordinator15SplitTransitiona">SplitTransition</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Typealiases.html#/s:12XCoordinator16TabBarTransitiona">TabBarTransition</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Typealiases.html#/s:12XCoordinator14ViewTransitiona">ViewTransition</a>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </nav>
+      <article class="main-content">
+        <section>
+          <section class="section">
+            <h1>Classes</h1>
+            <p>The following classes are available globally.</p>
+
+          </section>
+          <section class="section task-group-section">
+            <div class="task-group">
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:@M@XCoordinator@objc(cs)NavigationAnimationDelegate"></a>
+                    <a name="//apple_ref/swift/Class/NavigationAnimationDelegate" class="dashAnchor"></a>
+                    <a class="token" href="#/c:@M@XCoordinator@objc(cs)NavigationAnimationDelegate">NavigationAnimationDelegate</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                        <a href="Classes/NavigationAnimationDelegate.html" class="slightly-smaller">See more</a>
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">open</span> <span class="kd">class</span> <span class="kt">NavigationAnimationDelegate</span> <span class="p">:</span> <span class="kt">NSObject</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:@M@XCoordinator@objc(cs)TabBarAnimationDelegate"></a>
+                    <a name="//apple_ref/swift/Class/TabBarAnimationDelegate" class="dashAnchor"></a>
+                    <a class="token" href="#/c:@M@XCoordinator@objc(cs)TabBarAnimationDelegate">TabBarAnimationDelegate</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                        <a href="Classes/TabBarAnimationDelegate.html" class="slightly-smaller">See more</a>
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">open</span> <span class="kd">class</span> <span class="kt">TabBarAnimationDelegate</span> <span class="p">:</span> <span class="kt">NSObject</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:@M@XCoordinator@objc(cs)Animation"></a>
+                    <a name="//apple_ref/swift/Class/Animation" class="dashAnchor"></a>
+                    <a class="token" href="#/c:@M@XCoordinator@objc(cs)Animation">Animation</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Use <code>Animation</code> to set presentation and dismissal animations for presentables.</p>
+
+<p>Depending on the transition in use, we set different properties of a <code>UIViewController</code> to make sure the transition animation is used.</p>
+<div class="aside aside-note">
+    <p class="aside-title">Note</p>
+    
+</div>
+
+<p>To not override the previously set <code>Animation</code>, use <code>nil</code> when initializing a transition.</p>
+
+<p>Make sure to hold a strong reference to the <code>Animation</code> object, as XCoordinator does not ensure to hold the <code>Animation</code> strongly by itself.</p>
+
+                        <a href="Classes/Animation.html" class="slightly-smaller">See more</a>
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">open</span> <span class="kd">class</span> <span class="kt">Animation</span> <span class="p">:</span> <span class="kt">NSObject</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:12XCoordinator14AnyCoordinatorC"></a>
+                    <a name="//apple_ref/swift/Class/AnyCoordinator" class="dashAnchor"></a>
+                    <a class="token" href="#/s:12XCoordinator14AnyCoordinatorC">AnyCoordinator</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                        <a href="Classes/AnyCoordinator.html" class="slightly-smaller">See more</a>
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">class</span> <span class="kt">AnyCoordinator</span><span class="o">&lt;</span><span class="kt">RouteType</span><span class="p">,</span> <span class="kt">TransitionType</span><span class="o">&gt;</span> <span class="p">:</span> <span class="kt"><a href="Protocols/Coordinator.html">Coordinator</a></span> <span class="k">where</span> <span class="kt">RouteType</span> <span class="p">:</span> <span class="kt"><a href="Protocols.html#/s:12XCoordinator5RouteP">Route</a></span><span class="p">,</span> <span class="kt">TransitionType</span> <span class="p">:</span> <span class="kt"><a href="Protocols/TransitionProtocol.html">TransitionProtocol</a></span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:12XCoordinator9AnyRouterC"></a>
+                    <a name="//apple_ref/swift/Class/AnyRouter" class="dashAnchor"></a>
+                    <a class="token" href="#/s:12XCoordinator9AnyRouterC">AnyRouter</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                        <a href="Classes/AnyRouter.html" class="slightly-smaller">See more</a>
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">final</span> <span class="kd">class</span> <span class="kt">AnyRouter</span><span class="o">&lt;</span><span class="kt">RouteType</span><span class="o">&gt;</span> <span class="p">:</span> <span class="kt"><a href="Protocols/Router.html">Router</a></span> <span class="k">where</span> <span class="kt">RouteType</span> <span class="p">:</span> <span class="kt"><a href="Protocols.html#/s:12XCoordinator5RouteP">Route</a></span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:12XCoordinator22AnyTransitionPerformerC"></a>
+                    <a name="//apple_ref/swift/Class/AnyTransitionPerformer" class="dashAnchor"></a>
+                    <a class="token" href="#/s:12XCoordinator22AnyTransitionPerformerC">AnyTransitionPerformer</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                        <a href="Classes/AnyTransitionPerformer.html" class="slightly-smaller">See more</a>
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">class</span> <span class="kt">AnyTransitionPerformer</span><span class="o">&lt;</span><span class="kt">TransitionType</span><span class="o">&gt;</span> <span class="p">:</span> <span class="kt"><a href="Protocols/TransitionPerformer.html">TransitionPerformer</a></span> <span class="k">where</span> <span class="kt">TransitionType</span> <span class="p">:</span> <span class="kt"><a href="Protocols/TransitionProtocol.html">TransitionProtocol</a></span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:12XCoordinator15BaseCoordinatorC"></a>
+                    <a name="//apple_ref/swift/Class/BaseCoordinator" class="dashAnchor"></a>
+                    <a class="token" href="#/s:12XCoordinator15BaseCoordinatorC">BaseCoordinator</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>BaseCoordinator can (and is encouraged to) be used as a superclass for any custom implementation of a coordinator.</p>
+
+<p>We encourage the use of already provided subclasses of BaseCoordinator such as
+<code><a href="Classes/NavigationCoordinator.html">NavigationCoordinator</a></code>, <code><a href="Classes/TabBarCoordinator.html">TabBarCoordinator</a></code>, <code><a href="Classes/ViewCoordinator.html">ViewCoordinator</a></code>, <code><a href="Classes/SplitCoordinator.html">SplitCoordinator</a></code>
+and <code><a href="Classes/PageCoordinator.html">PageCoordinator</a></code>.</p>
+
+                        <a href="Classes/BaseCoordinator.html" class="slightly-smaller">See more</a>
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">open</span> <span class="kd">class</span> <span class="kt">BaseCoordinator</span><span class="o">&lt;</span><span class="kt">RouteType</span><span class="p">,</span> <span class="kt">TransitionType</span><span class="o">&gt;</span> <span class="p">:</span> <span class="kt"><a href="Protocols/Coordinator.html">Coordinator</a></span> <span class="k">where</span> <span class="kt">RouteType</span> <span class="p">:</span> <span class="kt"><a href="Protocols.html#/s:12XCoordinator5RouteP">Route</a></span><span class="p">,</span> <span class="kt">TransitionType</span> <span class="p">:</span> <span class="kt"><a href="Protocols/TransitionProtocol.html">TransitionProtocol</a></span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:12XCoordinator16BasicCoordinatorC"></a>
+                    <a name="//apple_ref/swift/Class/BasicCoordinator" class="dashAnchor"></a>
+                    <a class="token" href="#/s:12XCoordinator16BasicCoordinatorC">BasicCoordinator</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>BasicCoordinator is a coordinator class that can be used without subclassing.</p>
+
+<p>Although we encourage subclassing of coordinators for more complex cases, a <code><a href="Classes/BaseCoordinator.html">BaseCoordinator</a></code> can easily
+be created by only providing a <code>prepareTransition</code> closure, an <code>initialRoute</code> and an <code>initialLoadingType</code>.</p>
+
+                        <a href="Classes/BasicCoordinator.html" class="slightly-smaller">See more</a>
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">open</span> <span class="kd">class</span> <span class="kt">BasicCoordinator</span><span class="o">&lt;</span><span class="kt">RouteType</span><span class="p">,</span> <span class="kt">TransitionType</span><span class="o">&gt;</span> <span class="p">:</span> <span class="kt"><a href="Classes/BaseCoordinator.html">BaseCoordinator</a></span><span class="o">&lt;</span><span class="kt">RouteType</span><span class="p">,</span> <span class="kt">TransitionType</span><span class="o">&gt;</span> <span class="k">where</span> <span class="kt">RouteType</span> <span class="p">:</span> <span class="kt"><a href="Protocols.html#/s:12XCoordinator5RouteP">Route</a></span><span class="p">,</span> <span class="kt">TransitionType</span> <span class="p">:</span> <span class="kt"><a href="Protocols/TransitionProtocol.html">TransitionProtocol</a></span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:@M@XCoordinator@objc(cs)InteractiveTransitionAnimation"></a>
+                    <a name="//apple_ref/swift/Class/InteractiveTransitionAnimation" class="dashAnchor"></a>
+                    <a class="token" href="#/c:@M@XCoordinator@objc(cs)InteractiveTransitionAnimation">InteractiveTransitionAnimation</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p><code>InteractiveTransitionAnimation</code> provides a simple interface to create interactive transition animations.</p>
+
+<p>You can simply create an <code>InteractiveTransitionAnimation</code> by providing the duration, the animation code
+and (optionally) a closure to create an interaction controller.</p>
+<div class="aside aside-note">
+    <p class="aside-title">Note</p>
+    To get further information read the UIKit documentation of <code>UIViewControllerAnimatedTransitioning</code>,
+<code>UIViewControllerInteractiveTransitioning</code>, <code>UIViewControllerContextTransitioning</code> and
+<code>UIPercentDrivenInteractiveTransition</code>.
+
+</div>
+
+                        <a href="Classes/InteractiveTransitionAnimation.html" class="slightly-smaller">See more</a>
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">open</span> <span class="kd">class</span> <span class="kt">InteractiveTransitionAnimation</span> <span class="p">:</span> <span class="kt">NSObject</span><span class="p">,</span> <span class="kt"><a href="Protocols/TransitionAnimation.html">TransitionAnimation</a></span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:12XCoordinator21NavigationCoordinatorC"></a>
+                    <a name="//apple_ref/swift/Class/NavigationCoordinator" class="dashAnchor"></a>
+                    <a class="token" href="#/s:12XCoordinator21NavigationCoordinatorC">NavigationCoordinator</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                        <a href="Classes/NavigationCoordinator.html" class="slightly-smaller">See more</a>
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">open</span> <span class="kd">class</span> <span class="kt">NavigationCoordinator</span><span class="o">&lt;</span><span class="kt">RouteType</span><span class="o">&gt;</span> <span class="p">:</span> <span class="kt"><a href="Classes/BaseCoordinator.html">BaseCoordinator</a></span><span class="o">&lt;</span><span class="kt">RouteType</span><span class="p">,</span> <span class="kt"><a href="Typealiases.html#/s:12XCoordinator20NavigationTransitiona">NavigationTransition</a></span><span class="o">&gt;</span> <span class="k">where</span> <span class="kt">RouteType</span> <span class="p">:</span> <span class="kt"><a href="Protocols.html#/s:12XCoordinator5RouteP">Route</a></span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:12XCoordinator15PageCoordinatorC"></a>
+                    <a name="//apple_ref/swift/Class/PageCoordinator" class="dashAnchor"></a>
+                    <a class="token" href="#/s:12XCoordinator15PageCoordinatorC">PageCoordinator</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                        <a href="Classes/PageCoordinator.html" class="slightly-smaller">See more</a>
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">open</span> <span class="kd">class</span> <span class="kt">PageCoordinator</span><span class="o">&lt;</span><span class="kt">RouteType</span><span class="o">&gt;</span> <span class="p">:</span> <span class="kt"><a href="Classes/BaseCoordinator.html">BaseCoordinator</a></span><span class="o">&lt;</span><span class="kt">RouteType</span><span class="p">,</span> <span class="kt"><a href="Typealiases.html#/s:12XCoordinator14PageTransitiona">PageTransition</a></span><span class="o">&gt;</span> <span class="k">where</span> <span class="kt">RouteType</span> <span class="p">:</span> <span class="kt"><a href="Protocols.html#/s:12XCoordinator5RouteP">Route</a></span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:@M@XCoordinator@objc(cs)PageCoordinatorDataSource"></a>
+                    <a name="//apple_ref/swift/Class/PageCoordinatorDataSource" class="dashAnchor"></a>
+                    <a class="token" href="#/c:@M@XCoordinator@objc(cs)PageCoordinatorDataSource">PageCoordinatorDataSource</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                        <a href="Classes/PageCoordinatorDataSource.html" class="slightly-smaller">See more</a>
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">open</span> <span class="kd">class</span> <span class="kt">PageCoordinatorDataSource</span> <span class="p">:</span> <span class="kt">NSObject</span><span class="p">,</span> <span class="kt">UIPageViewControllerDataSource</span><span class="p">,</span> <span class="kt">UIPageViewControllerDelegate</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:12XCoordinator22RedirectionCoordinatorC"></a>
+                    <a name="//apple_ref/swift/Class/RedirectionCoordinator" class="dashAnchor"></a>
+                    <a class="token" href="#/s:12XCoordinator22RedirectionCoordinatorC">RedirectionCoordinator</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                        <a href="Classes/RedirectionCoordinator.html" class="slightly-smaller">See more</a>
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">open</span> <span class="kd">class</span> <span class="kt">RedirectionCoordinator</span><span class="o">&lt;</span><span class="kt">RouteType</span><span class="p">,</span> <span class="kt">TransitionType</span><span class="o">&gt;</span> <span class="p">:</span> <span class="kt"><a href="Protocols/Coordinator.html">Coordinator</a></span> <span class="k">where</span> <span class="kt">RouteType</span> <span class="p">:</span> <span class="kt"><a href="Protocols.html#/s:12XCoordinator5RouteP">Route</a></span><span class="p">,</span> <span class="kt">TransitionType</span> <span class="p">:</span> <span class="kt"><a href="Protocols/TransitionProtocol.html">TransitionProtocol</a></span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:12XCoordinator17RedirectionRouterC"></a>
+                    <a name="//apple_ref/swift/Class/RedirectionRouter" class="dashAnchor"></a>
+                    <a class="token" href="#/s:12XCoordinator17RedirectionRouterC">RedirectionRouter</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                        <a href="Classes/RedirectionRouter.html" class="slightly-smaller">See more</a>
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">open</span> <span class="kd">class</span> <span class="kt">RedirectionRouter</span><span class="o">&lt;</span><span class="kt">SuperRoute</span><span class="p">,</span> <span class="kt">RouteType</span><span class="o">&gt;</span> <span class="p">:</span> <span class="kt"><a href="Protocols/Router.html">Router</a></span> <span class="k">where</span> <span class="kt">SuperRoute</span> <span class="p">:</span> <span class="kt"><a href="Protocols.html#/s:12XCoordinator5RouteP">Route</a></span><span class="p">,</span> <span class="kt">RouteType</span> <span class="p">:</span> <span class="kt"><a href="Protocols.html#/s:12XCoordinator5RouteP">Route</a></span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:12XCoordinator12ReferenceBoxC"></a>
+                    <a name="//apple_ref/swift/Class/ReferenceBox" class="dashAnchor"></a>
+                    <a class="token" href="#/s:12XCoordinator12ReferenceBoxC">ReferenceBox</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>A ReferenceBox can be used for any object that you need different retain strategies for.</p>
+
+<p>For example, a ReferenceBox can be used to hold strongly to an object in the beginning,
+but later release this strong reference, but still hold the object weakly.</p>
+
+                        <a href="Classes/ReferenceBox.html" class="slightly-smaller">See more</a>
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">class</span> <span class="kt">ReferenceBox</span><span class="o">&lt;</span><span class="kt">T</span><span class="o">&gt;</span> <span class="k">where</span> <span class="kt">T</span> <span class="p">:</span> <span class="kt">AnyObject</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:12XCoordinator16SplitCoordinatorC"></a>
+                    <a name="//apple_ref/swift/Class/SplitCoordinator" class="dashAnchor"></a>
+                    <a class="token" href="#/s:12XCoordinator16SplitCoordinatorC">SplitCoordinator</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>SplitCoordinator can be used as a basis for a coordinator with a rootViewController of type
+<code>UISplitViewController</code>.</p>
+
+<p>You can use all <code>SplitTransitions</code> and get an initializer to set a master and
+(optional) detail presentable.</p>
+
+                        <a href="Classes/SplitCoordinator.html" class="slightly-smaller">See more</a>
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">open</span> <span class="kd">class</span> <span class="kt">SplitCoordinator</span><span class="o">&lt;</span><span class="kt">RouteType</span><span class="o">&gt;</span> <span class="p">:</span> <span class="kt"><a href="Classes/BaseCoordinator.html">BaseCoordinator</a></span><span class="o">&lt;</span><span class="kt">RouteType</span><span class="p">,</span> <span class="kt"><a href="Typealiases.html#/s:12XCoordinator15SplitTransitiona">SplitTransition</a></span><span class="o">&gt;</span> <span class="k">where</span> <span class="kt">RouteType</span> <span class="p">:</span> <span class="kt"><a href="Protocols.html#/s:12XCoordinator5RouteP">Route</a></span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:@M@XCoordinator@objc(cs)StaticTransitionAnimation"></a>
+                    <a name="//apple_ref/swift/Class/StaticTransitionAnimation" class="dashAnchor"></a>
+                    <a class="token" href="#/c:@M@XCoordinator@objc(cs)StaticTransitionAnimation">StaticTransitionAnimation</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p><code>StaticTransitionAnimation</code> is a class to realize static transition animations.</p>
+
+<p>We advise against its use in favor of <code><a href="Classes/InteractiveTransitionAnimation.html">InteractiveTransitionAnimation</a></code>, if possible, as it is as simple
+to use. However, this class is helpful to make sure your transition animation is not mistaken to be
+interactive, if your animation code does not fulfill the requirements of an interactive transition
+animation.</p>
+
+                        <a href="Classes/StaticTransitionAnimation.html" class="slightly-smaller">See more</a>
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">open</span> <span class="kd">class</span> <span class="kt">StaticTransitionAnimation</span> <span class="p">:</span> <span class="kt">NSObject</span><span class="p">,</span> <span class="kt"><a href="Protocols/TransitionAnimation.html">TransitionAnimation</a></span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:12XCoordinator17TabBarCoordinatorC"></a>
+                    <a name="//apple_ref/swift/Class/TabBarCoordinator" class="dashAnchor"></a>
+                    <a class="token" href="#/s:12XCoordinator17TabBarCoordinatorC">TabBarCoordinator</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Use a TabBarCoordinator to coordinate a flow where a <code>UITabbarController</code> serves as a rootViewController.
+With a TabBarCoordinator, you get access to all tabbarController-related transitions.</p>
+
+                        <a href="Classes/TabBarCoordinator.html" class="slightly-smaller">See more</a>
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">open</span> <span class="kd">class</span> <span class="kt">TabBarCoordinator</span><span class="o">&lt;</span><span class="kt">RouteType</span><span class="o">&gt;</span> <span class="p">:</span> <span class="kt"><a href="Classes/BaseCoordinator.html">BaseCoordinator</a></span><span class="o">&lt;</span><span class="kt">RouteType</span><span class="p">,</span> <span class="kt"><a href="Typealiases.html#/s:12XCoordinator16TabBarTransitiona">TabBarTransition</a></span><span class="o">&gt;</span> <span class="k">where</span> <span class="kt">RouteType</span> <span class="p">:</span> <span class="kt"><a href="Protocols.html#/s:12XCoordinator5RouteP">Route</a></span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:12XCoordinator15ViewCoordinatorC"></a>
+                    <a name="//apple_ref/swift/Class/ViewCoordinator" class="dashAnchor"></a>
+                    <a class="token" href="#/s:12XCoordinator15ViewCoordinatorC">ViewCoordinator</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>ViewCoordinator is a base class for your own custom coordinator with a <code>UIViewController</code>
+rootViewController.</p>
+
+                        <a href="Classes/ViewCoordinator.html" class="slightly-smaller">See more</a>
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">open</span> <span class="kd">class</span> <span class="kt">ViewCoordinator</span><span class="o">&lt;</span><span class="kt">RouteType</span><span class="o">&gt;</span> <span class="p">:</span> <span class="kt"><a href="Classes/BaseCoordinator.html">BaseCoordinator</a></span><span class="o">&lt;</span><span class="kt">RouteType</span><span class="p">,</span> <span class="kt"><a href="Typealiases.html#/s:12XCoordinator14ViewTransitiona">ViewTransition</a></span><span class="o">&gt;</span> <span class="k">where</span> <span class="kt">RouteType</span> <span class="p">:</span> <span class="kt"><a href="Protocols.html#/s:12XCoordinator5RouteP">Route</a></span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </section>
+        </section>
+        <section id="footer">
+          <p>&copy; 2018 <a class="link" href="https://github.com/quickbirdstudios/XCoordinator" target="_blank" rel="external">Stefan Kofler and Paul Kraft</a>. All rights reserved. (Last updated: 2018-12-30)</p>
+          <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.9.4</a>, a <a class="link" href="https://realm.io" target="_blank" rel="external">Realm</a> project.</p>
+        </section>
+      </article>
+    </div>
+  </body>
+</div>
+</html>
