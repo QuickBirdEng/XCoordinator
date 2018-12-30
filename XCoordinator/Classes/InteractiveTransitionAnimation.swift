@@ -104,7 +104,7 @@ open class InteractiveTransitionAnimation: NSObject, TransitionAnimation {
                             generateInteractionController: @escaping () -> PercentDrivenInteractionController?) {
         self.init(
             duration: transitionAnimation.duration,
-            transition: transitionAnimation.performAnimation,
+            transition: transitionAnimation.animateTransition,
             generateInteractionController: generateInteractionController
         )
     }
