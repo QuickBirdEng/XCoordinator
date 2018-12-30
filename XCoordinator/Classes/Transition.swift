@@ -20,16 +20,41 @@ public struct Transition<RootViewController: UIViewController>: TransitionProtoc
 
     // MARK: - Computed properties
 
+    ///
+    /// The presentables this transition is putting into the view hierarchy. This is especially useful for
+    /// deep-linking.
+    ///
     public var presentables: [Presentable] {
         return _presentables
     }
 
+    ///
+    /// The transition animation this transition is using, i.e. the presentation or dismissal animation
+    /// of the specified `Animation` object. If the transition does not use any transition animations, `nil`
+    /// is returned.
+    ///
     public var animation: TransitionAnimation? {
         return _animation
     }
 
     // MARK: - Init
 
+    ///
+    /// Create your custom transitions with this initializer.
+    ///
+    /// We advise to extend Transition with static functions to create transitions with this initializer
+    /// instead of calling this initializer in your `prepareTransition(for:)` method.
+    ///
+    /// - Parameter presentables:
+    ///     The presentables this transition is putting into the view hierarchy, if specifiable.
+    ///     These presentables are used in the deep-linking feature.
+    ///
+    /// - Parameter animation:
+    ///     The transition animation this transition is using during the transition, i.e. the present animation
+    ///     of a presenting transition or the dismissal animation of a dismissing transition.
+    ///     Make sure to specify an animation here to use your transition with the
+    ///     `registerInteractiveTransition` method in your coordinator.
+    ///
     public init(presentables: [Presentable], animation: TransitionAnimation?, perform: @escaping Perform) {
         self._presentables = presentables
         self._animation = animation
@@ -38,10 +63,17 @@ public struct Transition<RootViewController: UIViewController>: TransitionProtoc
 
     // MARK: - Methods
 
-    public func perform<C: Coordinator>(options: TransitionOptions,
-                                        coordinator: C,
-                                        completion: PresentationHandler?)
-        where C.TransitionType == Transition<RootViewController> {
+    ///
+    /// The method to perform a certain transition using a coordinator.
+    ///
+    /// Do not call this method directly. Instead use your coordinator's `performTransition` method or trigger
+    /// a specified route (latter option is encouraged).
+    ///
+    public func perform<T: TransitionPerformer>(options: TransitionOptions,
+                                                coordinator: T,
+                                                completion: PresentationHandler?
+        ) where T.TransitionType == Transition<RootViewController> {
+
         let anyPerformer = AnyTransitionPerformer(coordinator)
         perform(options: options, performer: anyPerformer, completion: completion)
     }
