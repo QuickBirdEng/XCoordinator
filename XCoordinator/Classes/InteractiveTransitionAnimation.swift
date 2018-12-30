@@ -119,7 +119,7 @@ open class InteractiveTransitionAnimation: NSObject, TransitionAnimation {
     public convenience init(transitionAnimation: StaticTransitionAnimation) {
         self.init(
             duration: transitionAnimation.duration,
-            transition: transitionAnimation.performAnimation
+            transition: transitionAnimation.animateTransition
         )
     }
 
