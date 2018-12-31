@@ -16,7 +16,7 @@ public final class AnyRouter<RouteType: Route>: Router {
     private let _viewController: () -> UIViewController?
     private let _setRoot: (UIWindow) -> Void
 
-    // MARK: - Init
+    // MARK: - Initialization
 
     public init<T: Router & Presentable>(_ trigger: T) where T.RouteType == RouteType {
         _trigger = trigger.trigger

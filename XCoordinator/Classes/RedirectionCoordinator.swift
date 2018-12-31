@@ -26,7 +26,7 @@ open class RedirectionCoordinator<RouteType: Route, TransitionType: TransitionPr
         return viewControllerBox.get()
     }
 
-    // MARK: - Init
+    // MARK: - Initialization
 
     public init(viewController: UIViewController,
                 superTransitionPerformer: AnyTransitionPerformer<TransitionType>,

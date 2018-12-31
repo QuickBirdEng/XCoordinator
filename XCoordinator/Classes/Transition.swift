@@ -37,7 +37,7 @@ public struct Transition<RootViewController: UIViewController>: TransitionProtoc
         return _animation
     }
 
-    // MARK: - Init
+    // MARK: - Initialization
 
     ///
     /// Create your custom transitions with this initializer.

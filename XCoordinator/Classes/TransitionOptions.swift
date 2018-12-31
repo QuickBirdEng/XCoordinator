@@ -12,7 +12,7 @@ public struct TransitionOptions {
 
     public let animated: Bool
 
-    // MARK: - Init
+    // MARK: - Initialization
 
     public init(animated: Bool) {
         self.animated = animated

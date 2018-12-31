@@ -39,7 +39,7 @@ open class InteractiveTransitionAnimation: NSObject, TransitionAnimation {
         return _interactionController
     }
 
-    // MARK: - Init
+    // MARK: - Initialization
 
     ///
     /// Creates an InteractiveTransitionAnimation with a duration, an animation closure and a closure to

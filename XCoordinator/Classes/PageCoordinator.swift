@@ -13,7 +13,7 @@ open class PageCoordinator<RouteType: Route>: BaseCoordinator<RouteType, PageTra
     public let dataSource: PageCoordinatorDataSource
     public let configuration: UIPageViewController.Configuration
 
-    // MARK: - Init
+    // MARK: - Initialization
 
     public init(pages: [Presentable],
                 loop: Bool = false,

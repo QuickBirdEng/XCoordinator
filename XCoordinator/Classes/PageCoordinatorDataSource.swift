@@ -13,7 +13,7 @@ open class PageCoordinatorDataSource: NSObject, UIPageViewControllerDataSource, 
     open private(set) var pages: [UIViewController]
     open private(set) var loop: Bool
 
-    // MARK: - Init
+    // MARK: - Initialization
 
     public init(pages: [UIViewController], loop: Bool) {
         self.pages = pages

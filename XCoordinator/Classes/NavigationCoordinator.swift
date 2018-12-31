@@ -28,7 +28,7 @@ open class NavigationCoordinator<RouteType: Route>: BaseCoordinator<RouteType, N
         }
     }
 
-    // MARK: - Init
+    // MARK: - Initialization
 
     ///
     /// Creates a NavigationCoordinator and optionally triggers an initial route.

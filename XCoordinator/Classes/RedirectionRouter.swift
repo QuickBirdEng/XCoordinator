@@ -21,7 +21,7 @@ open class RedirectionRouter<SuperRoute: Route, RouteType: Route>: Router {
         return viewControllerBox.get()
     }
 
-    // MARK: - Init
+    // MARK: - Initialization
 
     public init(viewController: UIViewController,
                 superRouter: AnyRouter<SuperRoute>,

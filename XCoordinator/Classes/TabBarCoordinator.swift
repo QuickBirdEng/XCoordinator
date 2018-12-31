@@ -36,7 +36,7 @@ open class TabBarCoordinator<RouteType: Route>: BaseCoordinator<RouteType, TabBa
         }
     }
 
-    // MARK: - Init
+    // MARK: - Initialization
 
     public override init(initialRoute: RouteType?) {
         super.init(initialRoute: initialRoute)

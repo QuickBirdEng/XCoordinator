@@ -19,7 +19,7 @@ public class ReferenceBox<T: AnyObject> {
     private weak var weakReference: T?
     private var strongReference: T?
 
-    // MARK: - Init
+    // MARK: - Initialization
 
     ///
     /// Creates a ReferenceBox with an optional start value.

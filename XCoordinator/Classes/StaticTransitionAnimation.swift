@@ -27,7 +27,7 @@ open class StaticTransitionAnimation: NSObject, TransitionAnimation {
         return self as? PercentDrivenInteractionController
     }
 
-    // MARK: - Init
+    // MARK: - Initialization
 
     ///
     /// Creates a StaticTransitionAnimation to be used as presentation or dismissal transition animation in
