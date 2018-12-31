@@ -19,7 +19,7 @@ public class AnyCoordinator<RouteType: Route, TransitionType: TransitionProtocol
     private let _presented: (Presentable?) -> Void
     private let _setRoot: (UIWindow) -> Void
 
-    // MARK: - Initializer
+    // MARK: - Initializationializer
 
     public init<C: Coordinator>(_ coordinator: C) where C.RouteType == RouteType, C.TransitionType == TransitionType {
         self._prepareTransition = coordinator.prepareTransition

@@ -31,7 +31,7 @@ open class BaseCoordinator<RouteType: Route, TransitionType: TransitionProtocol>
         return rootViewControllerBox.get()!
     }
 
-    // MARK: - Init
+    // MARK: - Initialization
 
     ///
     /// Use this initializer to trigger a route before the coordinator is made visible.

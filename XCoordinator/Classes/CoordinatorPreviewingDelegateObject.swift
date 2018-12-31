@@ -19,7 +19,7 @@ NSObject, UIViewControllerPreviewingDelegate {
     private let performer: AnyTransitionPerformer<TransitionType>
     private let completion: PresentationHandler?
 
-    // MARK: - Init
+    // MARK: - Initialization
 
     internal init(transition: @escaping () -> TransitionType,
                   performer: AnyTransitionPerformer<TransitionType>,

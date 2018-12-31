@@ -18,7 +18,7 @@ internal class Target<GestureRecognizer: UIGestureRecognizer>: GestureRecognizer
     private let handler: (GestureRecognizer) -> Void
     internal private(set) weak var gestureRecognizer: UIGestureRecognizer?
 
-    // MARK: - Init
+    // MARK: - Initialization
 
     init(recognizer gestureRecognizer: GestureRecognizer, handler: @escaping (GestureRecognizer) -> Void) {
         self.handler = handler

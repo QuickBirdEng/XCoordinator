@@ -37,7 +37,7 @@ public class AnyTransitionPerformer<TransitionType: TransitionProtocol>: Transit
         _perform(transition, options, completion)
     }
 
-    // MARK: - Init
+    // MARK: - Initialization
 
     init<T: TransitionPerformer>(_ coordinator: T) where TransitionType == T.TransitionType {
         self._viewController = { coordinator.viewController }

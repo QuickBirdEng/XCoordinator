@@ -41,7 +41,7 @@ open class BasicCoordinator<RouteType: Route, TransitionType: TransitionProtocol
     private let initialLoadingType: InitialLoadingType
     private let prepareTransition: ((RouteType) -> TransitionType)?
 
-    // MARK: - Init
+    // MARK: - Initialization
 
     ///
     /// Creates a BasicCoordinator.
