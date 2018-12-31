@@ -38,7 +38,7 @@ open class Animation: NSObject {
     /// The transition animation shown when transitioning away from a presentable.
     open var dismissalAnimation: TransitionAnimation?
 
-    // MARK: - Init
+    // MARK: - Initialization
 
     ///
     /// - Parameter presentation: The transition animation shown when transitioning to a presentable.
