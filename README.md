@@ -240,7 +240,7 @@ let doneWithBothTransitions =
 
 ## 🎭 Example
 
-Check out this [repository](https://github.com/quickbirdstudios/XCoordinator/tree/master/XCoordinator-Example/XCoordinator-Example) as an example project using XCoordinator.
+Check out this [repository](https://github.com/quickbirdstudios/XCoordinator/tree/master/Example) as an example project using XCoordinator.
 
 ## 👨‍✈️ Why coordinators
 
