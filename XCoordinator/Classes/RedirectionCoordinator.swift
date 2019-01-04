@@ -6,8 +6,6 @@
 //  Copyright © 2018 QuickBird Studios. All rights reserved.
 //
 
-import Foundation
-
 open class RedirectionCoordinator<RouteType: Route, TransitionType: TransitionProtocol>: Coordinator {
 
     // MARK: - Stored properties

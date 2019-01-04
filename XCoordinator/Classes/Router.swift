@@ -14,7 +14,7 @@ public protocol Router: Presentable {
 
 extension Router {
 
-    // MARK: Convenience methods
+    // MARK: - Convenience methods
 
     public func trigger(_ route: RouteType, with options: TransitionOptions) {
         return trigger(route, with: options, completion: nil)

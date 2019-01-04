@@ -14,7 +14,7 @@
     <a title="Animation Class Reference"></a>
     <header>
       <div class="content-wrapper">
-        <p><a href="../index.html">XCoordinator Docs</a> (30% documented)</p>
+        <p><a href="../index.html">XCoordinator Docs</a> (41% documented)</p>
       </div>
     </header>
     <div class="content-wrapper">
@@ -219,12 +219,12 @@
 <p>Depending on the transition in use, we set different properties of a <code>UIViewController</code> to make sure the transition animation is used.</p>
 <div class="aside aside-note">
     <p class="aside-title">Note</p>
-    
+    <p>To not override the previously set <code>Animation</code>, use <code>nil</code> when initializing a transition.</p>
+
+<p>Make sure to hold a strong reference to the <code>Animation</code> object, as XCoordinator does not ensure
+to hold the <code>Animation</code> strongly by itself.</p>
+
 </div>
-
-<p>To not override the previously set <code>Animation</code>, use <code>nil</code> when initializing a transition.</p>
-
-<p>Make sure to hold a strong reference to the <code>Animation</code> object, as XCoordinator does not ensure to hold the <code>Animation</code> strongly by itself.</p>
 
           </section>
           <section class="section task-group-section">
@@ -336,10 +336,10 @@ and reset to the default animations provided by iOS</p>
             </div>
             <div class="task-group">
               <div class="task-name-container">
-                <a name="/Init"></a>
-                <a name="//apple_ref/swift/Section/Init" class="dashAnchor"></a>
-                <a href="#/Init">
-                  <h3 class="section-name">Init</h3>
+                <a name="/Initialization"></a>
+                <a name="//apple_ref/swift/Section/Initialization" class="dashAnchor"></a>
+                <a href="#/Initialization">
+                  <h3 class="section-name">Initialization</h3>
                 </a>
               </div>
               <ul>
@@ -404,10 +404,10 @@ and reset to the default animations provided by iOS</p>
             </div>
             <div class="task-group">
               <div class="task-name-container">
-                <a name="/Animation:%20UIViewControllerTransitioningDelegate"></a>
-                <a name="//apple_ref/swift/Section/Animation: UIViewControllerTransitioningDelegate" class="dashAnchor"></a>
-                <a href="#/Animation:%20UIViewControllerTransitioningDelegate">
-                  <h3 class="section-name">Animation: UIViewControllerTransitioningDelegate</h3>
+                <a name="/UIViewControllerTransitioningDelegate"></a>
+                <a name="//apple_ref/swift/Section/UIViewControllerTransitioningDelegate" class="dashAnchor"></a>
+                <a href="#/UIViewControllerTransitioningDelegate">
+                  <h3 class="section-name">UIViewControllerTransitioningDelegate</h3>
                 </a>
               </div>
               <ul>
@@ -424,7 +424,7 @@ and reset to the default animations provided by iOS</p>
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p>See UIKit documentation for further reference.</p>
 
                       </div>
                       <div class="declaration">
@@ -434,6 +434,53 @@ and reset to the default animations provided by iOS</p>
                           <pre class="highlight swift"><code><span class="kd">open</span> <span class="kd">func</span> <span class="nf">animationController</span><span class="p">(</span><span class="n">forPresented</span> <span class="nv">presented</span><span class="p">:</span> <span class="kt">UIViewController</span><span class="p">,</span> <span class="nv">presenting</span><span class="p">:</span> <span class="kt">UIViewController</span><span class="p">,</span> <span class="nv">source</span><span class="p">:</span> <span class="kt">UIViewController</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">UIViewControllerAnimatedTransitioning</span><span class="p">?</span></code></pre>
 
                         </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>presented</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The view controller to be presented.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>presenting</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The view controller to present.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>source</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The view controller <code>present(_:animated:completion:)</code> was called on.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p>The specified presentation animation.</p>
                       </div>
                     </section>
                   </div>
@@ -451,7 +498,7 @@ and reset to the default animations provided by iOS</p>
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p>See UIKit documentation for further reference.</p>
 
                       </div>
                       <div class="declaration">
@@ -461,6 +508,29 @@ and reset to the default animations provided by iOS</p>
                           <pre class="highlight swift"><code><span class="kd">open</span> <span class="kd">func</span> <span class="nf">animationController</span><span class="p">(</span><span class="n">forDismissed</span> <span class="nv">dismissed</span><span class="p">:</span> <span class="kt">UIViewController</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">UIViewControllerAnimatedTransitioning</span><span class="p">?</span></code></pre>
 
                         </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>dismissed</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The view controller to be dismissed.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p>The specified dismissal animation.</p>
                       </div>
                     </section>
                   </div>
@@ -478,7 +548,7 @@ and reset to the default animations provided by iOS</p>
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p>See UIKit documentation for further reference.</p>
 
                       </div>
                       <div class="declaration">
@@ -488,6 +558,29 @@ and reset to the default animations provided by iOS</p>
                           <pre class="highlight swift"><code><span class="kd">open</span> <span class="kd">func</span> <span class="nf">interactionControllerForPresentation</span><span class="p">(</span><span class="n">using</span> <span class="nv">animator</span><span class="p">:</span> <span class="kt">UIViewControllerAnimatedTransitioning</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">UIViewControllerInteractiveTransitioning</span><span class="p">?</span></code></pre>
 
                         </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>animator</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The presentation animation.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p>The presentation animation&rsquo;s interaction controller.</p>
                       </div>
                     </section>
                   </div>
@@ -505,7 +598,7 @@ and reset to the default animations provided by iOS</p>
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p>See UIKit documentation for further reference.</p>
 
                       </div>
                       <div class="declaration">
@@ -516,6 +609,29 @@ and reset to the default animations provided by iOS</p>
 
                         </div>
                       </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>animator</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The dismissal animation.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p>The dismissal animation&rsquo;s interaction controller.</p>
+                      </div>
                     </section>
                   </div>
                 </li>
@@ -524,7 +640,7 @@ and reset to the default animations provided by iOS</p>
           </section>
         </section>
         <section id="footer">
-          <p>&copy; 2018 <a class="link" href="https://github.com/quickbirdstudios/XCoordinator" target="_blank" rel="external">Stefan Kofler and Paul Kraft</a>. All rights reserved. (Last updated: 2018-12-30)</p>
+          <p>&copy; 2019 <a class="link" href="https://github.com/quickbirdstudios/XCoordinator" target="_blank" rel="external">Stefan Kofler and Paul Kraft</a>. All rights reserved. (Last updated: 2019-01-01)</p>
           <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.9.4</a>, a <a class="link" href="https://realm.io" target="_blank" rel="external">Realm</a> project.</p>
         </section>
       </article>

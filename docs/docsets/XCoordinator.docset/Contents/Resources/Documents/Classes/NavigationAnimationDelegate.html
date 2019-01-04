@@ -14,7 +14,7 @@
     <a title="NavigationAnimationDelegate Class Reference"></a>
     <header>
       <div class="content-wrapper">
-        <p><a href="../index.html">XCoordinator Docs</a> (30% documented)</p>
+        <p><a href="../index.html">XCoordinator Docs</a> (41% documented)</p>
       </div>
     </header>
     <div class="content-wrapper">
@@ -214,7 +214,17 @@
 
                 </div>
               </div>
-            <p>Undocumented</p>
+            <p>NavigationAnimationDelegate is used as the delegate of a NavigationCoordinator&rsquo;s rootViewController
+to allow for push-transitions to specify animations.</p>
+
+<p>This delegate is intended for use on one navigation controller only.
+Do not use one object as delegate of multiple navigation controllers.</p>
+<div class="aside aside-note">
+    <p class="aside-title">Note</p>
+    Do not override the delegate of a NavigationCoordinator&rsquo;s rootViewController-delegate.
+Instead use the delegate property of the NavigationCoordinator itself.
+
+</div>
 
           </section>
           <section class="section task-group-section">
@@ -285,10 +295,10 @@
             </div>
             <div class="task-group">
               <div class="task-name-container">
-                <a name="/NavigationAnimationDelegate:%20UINavigationControllerDelegate"></a>
-                <a name="//apple_ref/swift/Section/NavigationAnimationDelegate: UINavigationControllerDelegate" class="dashAnchor"></a>
-                <a href="#/NavigationAnimationDelegate:%20UINavigationControllerDelegate">
-                  <h3 class="section-name">NavigationAnimationDelegate: UINavigationControllerDelegate</h3>
+                <a name="/UINavigationControllerDelegate"></a>
+                <a name="//apple_ref/swift/Section/UINavigationControllerDelegate" class="dashAnchor"></a>
+                <a href="#/UINavigationControllerDelegate">
+                  <h3 class="section-name">UINavigationControllerDelegate</h3>
                 </a>
               </div>
               <ul>
@@ -305,7 +315,7 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p>See UIKit documentation for further reference.</p>
 
                       </div>
                       <div class="declaration">
@@ -315,6 +325,42 @@
                           <pre class="highlight swift"><code><span class="kd">open</span> <span class="kd">func</span> <span class="nf">navigationController</span><span class="p">(</span><span class="n">_</span> <span class="nv">navigationController</span><span class="p">:</span> <span class="kt">UINavigationController</span><span class="p">,</span> <span class="n">interactionControllerFor</span> <span class="nv">animationController</span><span class="p">:</span> <span class="kt">UIViewControllerAnimatedTransitioning</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">UIViewControllerInteractiveTransitioning</span><span class="p">?</span></code></pre>
 
                         </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>navigationController</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The navigation controller to which this object is the delegate of.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>animationController</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The animationController to return the interactionController for.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p>The interactionController of an animationController of type <code><a href="../Protocols/TransitionAnimation.html">TransitionAnimation</a></code>.
+Otherwise the result of the NavigationCoordinator&rsquo;s delegate.</p>
                       </div>
                     </section>
                   </div>
@@ -332,7 +378,7 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p>See UIKit documentation for further reference.</p>
 
                       </div>
                       <div class="declaration">
@@ -342,6 +388,66 @@
                           <pre class="highlight swift"><code><span class="kd">open</span> <span class="kd">func</span> <span class="nf">navigationController</span><span class="p">(</span><span class="n">_</span> <span class="nv">navigationController</span><span class="p">:</span> <span class="kt">UINavigationController</span><span class="p">,</span> <span class="n">animationControllerFor</span> <span class="nv">operation</span><span class="p">:</span> <span class="kt">UINavigationController</span><span class="o">.</span><span class="kt">Operation</span><span class="p">,</span> <span class="n">from</span> <span class="nv">fromVC</span><span class="p">:</span> <span class="kt">UIViewController</span><span class="p">,</span> <span class="n">to</span> <span class="nv">toVC</span><span class="p">:</span> <span class="kt">UIViewController</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">UIViewControllerAnimatedTransitioning</span><span class="p">?</span></code></pre>
 
                         </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>navigationController</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The navigation controller to which this object is the delegate of.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>operation</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The operation being executed. Possible values are push, pop or none.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>fromVC</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The source view controller of the transition.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>toVC</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The destination view controller of the transition.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p>The presentation animation of the last specified <code><a href="../Classes/Animation.html">Animation</a></code> object.
+If not present, it uses the NavigationCoordinator&rsquo;s delegate as fallback.</p>
                       </div>
                     </section>
                   </div>
@@ -359,7 +465,7 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p>See UIKit documentation for further reference.</p>
 
                       </div>
                       <div class="declaration">
@@ -369,6 +475,49 @@
                           <pre class="highlight swift"><code><span class="kd">open</span> <span class="kd">func</span> <span class="nf">navigationController</span><span class="p">(</span><span class="n">_</span> <span class="nv">navigationController</span><span class="p">:</span> <span class="kt">UINavigationController</span><span class="p">,</span> <span class="n">didShow</span> <span class="nv">viewController</span><span class="p">:</span> <span class="kt">UIViewController</span><span class="p">,</span> <span class="nv">animated</span><span class="p">:</span> <span class="kt">Bool</span><span class="p">)</span></code></pre>
 
                         </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>navigationController</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The navigation controller to which this object is the delegate of.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>operation</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The operation being executed. Possible values are push, pop or none.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>viewController</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The shown view controller.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
                       </div>
                     </section>
                   </div>
@@ -386,7 +535,7 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p>See UIKit documentation for further reference.</p>
 
                       </div>
                       <div class="declaration">
@@ -396,6 +545,49 @@
                           <pre class="highlight swift"><code><span class="kd">open</span> <span class="kd">func</span> <span class="nf">navigationController</span><span class="p">(</span><span class="n">_</span> <span class="nv">navigationController</span><span class="p">:</span> <span class="kt">UINavigationController</span><span class="p">,</span> <span class="n">willShow</span> <span class="nv">viewController</span><span class="p">:</span> <span class="kt">UIViewController</span><span class="p">,</span> <span class="nv">animated</span><span class="p">:</span> <span class="kt">Bool</span><span class="p">)</span></code></pre>
 
                         </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>navigationController</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The navigation controller to which this object is the delegate of.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>operation</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The operation being executed. Possible values are push, pop or none.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>viewController</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The view controller to be shown.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
                       </div>
                     </section>
                   </div>
@@ -424,7 +616,17 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p>See UIKit documentation for further reference.</p>
+
+<p>This method returns true, if</p>
+
+<ul>
+<li>there are more than 1 view controllers in the navigation controller</li>
+<li>it is the interactivePopGestureRecognizer to call this method</li>
+</ul>
+
+<p>It further alters the target of the gestureRecognizer to either its former delegate (UIKit default)
+or this class depending on whether a pop animation has been specified.</p>
 
                       </div>
                       <div class="declaration">
@@ -434,6 +636,27 @@
                           <pre class="highlight swift"><code><span class="kd">open</span> <span class="kd">func</span> <span class="nf">gestureRecognizerShouldBegin</span><span class="p">(</span><span class="n">_</span> <span class="nv">gestureRecognizer</span><span class="p">:</span> <span class="kt">UIGestureRecognizer</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Bool</span></code></pre>
 
                         </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>gestureRecognizer</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The gesture recognizer this class is the delegate of.
+This class is used as the delegate for the interactivePopGestureRecognizer of
+the navigationController.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
                       </div>
                     </section>
                   </div>
@@ -462,7 +685,7 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>This method handles changes of the interactivePopGestureRecognizer of the <code>UINavigationController</code>.</p>
+                        <p>This method handles changes of the interactivePopGestureRecognizer of the navigation controller.</p>
 
 <p>In general this method updates the interaction controller of the top-most dismissalAnimation
 about the state of the interactivePopGestureRecognizer.</p>
@@ -563,7 +786,7 @@ about the state of the interactivePopGestureRecognizer.</p>
           </section>
         </section>
         <section id="footer">
-          <p>&copy; 2018 <a class="link" href="https://github.com/quickbirdstudios/XCoordinator" target="_blank" rel="external">Stefan Kofler and Paul Kraft</a>. All rights reserved. (Last updated: 2018-12-30)</p>
+          <p>&copy; 2019 <a class="link" href="https://github.com/quickbirdstudios/XCoordinator" target="_blank" rel="external">Stefan Kofler and Paul Kraft</a>. All rights reserved. (Last updated: 2019-01-01)</p>
           <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.9.4</a>, a <a class="link" href="https://realm.io" target="_blank" rel="external">Realm</a> project.</p>
         </section>
       </article>

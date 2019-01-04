@@ -13,13 +13,13 @@ public protocol Coordinator: Router, TransitionPerformer {
     func prepareTransition(for route: RouteType) -> TransitionType
 }
 
-// MARK: - Extension Coordinator: Typealiases
+// MARK: - Typealiases
 
 extension Coordinator {
     public typealias RootViewController = TransitionType.RootViewController
 }
 
-// MARK: - Extension Coordinator: Presentable
+// MARK: - Presentable
 
 extension Coordinator {
     public var viewController: UIViewController! {
@@ -27,7 +27,7 @@ extension Coordinator {
     }
 }
 
-// MARK: - Extension: Default implementations
+// MARK: - Default implementations
 
 extension Coordinator {
     public var anyCoordinator: AnyCoordinator<RouteType, TransitionType> {

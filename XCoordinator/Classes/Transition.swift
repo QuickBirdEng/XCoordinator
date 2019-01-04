@@ -86,7 +86,7 @@ public struct Transition<RootViewController: UIViewController>: TransitionProtoc
 }
 
 extension Transition {
-    @available(*, deprecated, renamed: "init(presentables:animation:)")
+    @available(*, deprecated, renamed: "init(presentables:animation:perform:)")
     public init(presentables: [Presentable], perform: @escaping Perform) {
         self.init(
             presentables: presentables,

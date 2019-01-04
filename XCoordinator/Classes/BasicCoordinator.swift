@@ -24,14 +24,12 @@ open class BasicCoordinator<RouteType: Route, TransitionType: TransitionProtocol
     /// `InitialLoadingType` differentiates between different points in time when the initital route is to
     /// be triggered by the coordinator.
     ///
-    /// - immediately:
-    ///     The initial route is triggered before the coordinator is made visible (i.e. on initialization).
-    ///
-    /// - presented:
-    ///     The initial route is triggered after the coordinator is made visible.
-    ///
     public enum InitialLoadingType {
+
+        /// The initial route is triggered before the coordinator is made visible (i.e. on initialization).
         case immediately
+
+        /// The initial route is triggered after the coordinator is made visible.
         case presented
     }
 

@@ -8,10 +8,10 @@ PODS:
   - RxSwift (4.4.0):
     - RxAtomic (~> 4.4)
   - SwiftLint (0.29.2)
-  - XCoordinator (1.2.0):
-    - XCoordinator/Core (= 1.2.0)
-  - XCoordinator/Core (1.2.0)
-  - XCoordinator/RxSwift (1.2.0):
+  - XCoordinator (1.2.3):
+    - XCoordinator/Core (= 1.2.3)
+  - XCoordinator/Core (1.2.3)
+  - XCoordinator/RxSwift (1.2.3):
     - RxSwift (~> 4.0)
     - XCoordinator/Core
 
@@ -39,7 +39,7 @@ SPEC CHECKSUMS:
   RxCocoa: df63ebf7b9a70d6b4eeea407ed5dd4efc8979749
   RxSwift: 5976ecd04fc2fefd648827c23de5e11157faa973
   SwiftLint: 47df60bdea6e7e902b193b6596db8683aafd86a3
-  XCoordinator: bb1008329896a7188cf8f2652bfb8f462f215f2a
+  XCoordinator: 9044c9c5dc137899292f3b393cd95c0433a93ccf
 
 PODFILE CHECKSUM: 14c5bdcd898ea0f09e76fcd87a67d54de2725512
 

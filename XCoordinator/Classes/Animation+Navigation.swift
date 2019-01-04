@@ -6,6 +6,17 @@
 //  Copyright © 2018 QuickBird Studios. All rights reserved.
 //
 
+///
+/// NavigationAnimationDelegate is used as the delegate of a NavigationCoordinator's rootViewController
+/// to allow for push-transitions to specify animations.
+///
+/// This delegate is intended for use on one navigation controller only.
+/// Do not use one object as delegate of multiple navigation controllers.
+///
+/// - Note:
+///     Do not override the delegate of a NavigationCoordinator's rootViewController-delegate.
+///     Instead use the delegate property of the NavigationCoordinator itself.
+///
 open class NavigationAnimationDelegate: NSObject {
 
     // MARK: - Static properties
@@ -45,9 +56,23 @@ open class NavigationAnimationDelegate: NSObject {
     }
 }
 
-// MARK: - NavigationAnimationDelegate: UINavigationControllerDelegate
+// MARK: - UINavigationControllerDelegate
 
 extension NavigationAnimationDelegate: UINavigationControllerDelegate {
+
+    ///
+    /// See UIKit documentation for further reference.
+    ///
+    /// - Parameter navigationController:
+    ///     The navigation controller to which this object is the delegate of.
+    ///
+    /// - Parameter animationController:
+    ///     The animationController to return the interactionController for.
+    ///
+    /// - Returns:
+    ///     The interactionController of an animationController of type `TransitionAnimation`.
+    ///     Otherwise the result of the NavigationCoordinator's delegate.
+    ///
     open func navigationController(_ navigationController: UINavigationController,
                                    interactionControllerFor animationController: UIViewControllerAnimatedTransitioning
         ) -> UIViewControllerInteractiveTransitioning? {
@@ -55,6 +80,25 @@ extension NavigationAnimationDelegate: UINavigationControllerDelegate {
             ?? delegate?.navigationController?(navigationController, interactionControllerFor: animationController)
     }
 
+    ///
+    /// See UIKit documentation for further reference.
+    ///
+    /// - Parameter navigationController:
+    ///     The navigation controller to which this object is the delegate of.
+    ///
+    /// - Parameter operation:
+    ///     The operation being executed. Possible values are push, pop or none.
+    ///
+    /// - Parameter fromVC:
+    ///     The source view controller of the transition.
+    ///
+    /// - Parameter toVC:
+    ///     The destination view controller of the transition.
+    ///
+    /// - Returns:
+    ///     The presentation animation of the last specified `Animation` object.
+    ///     If not present, it uses the NavigationCoordinator's delegate as fallback.
+    ///
     open func navigationController(_ navigationController: UINavigationController,
                                    animationControllerFor operation: UINavigationController.Operation,
                                    from fromVC: UIViewController,
@@ -76,12 +120,36 @@ extension NavigationAnimationDelegate: UINavigationControllerDelegate {
                                                animationControllerFor: operation, from: fromVC, to: toVC)
     }
 
+    ///
+    /// See UIKit documentation for further reference.
+    ///
+    /// - Parameter navigationController:
+    ///     The navigation controller to which this object is the delegate of.
+    ///
+    /// - Parameter operation:
+    ///     The operation being executed. Possible values are push, pop or none.
+    ///
+    /// - Parameter viewController:
+    ///     The shown view controller.
+    ///
     open func navigationController(_ navigationController: UINavigationController,
                                    didShow viewController: UIViewController, animated: Bool) {
         setupPopGestureRecognizer(for: navigationController)
         delegate?.navigationController?(navigationController, didShow: viewController, animated: animated)
     }
 
+    ///
+    /// See UIKit documentation for further reference.
+    ///
+    /// - Parameter navigationController:
+    ///     The navigation controller to which this object is the delegate of.
+    ///
+    /// - Parameter operation:
+    ///     The operation being executed. Possible values are push, pop or none.
+    ///
+    /// - Parameter viewController:
+    ///     The view controller to be shown.
+    ///
     open func navigationController(_ navigationController: UINavigationController,
                                    willShow viewController: UIViewController,
                                    animated: Bool) {
@@ -89,12 +157,27 @@ extension NavigationAnimationDelegate: UINavigationControllerDelegate {
     }
 }
 
-// MARK: - NavigationAnimationDelegate: UIGestureRecognizerDelegate
+// MARK: - UIGestureRecognizerDelegate
 
 extension NavigationAnimationDelegate: UIGestureRecognizerDelegate {
 
     // MARK: - Delegate methods
 
+    ///
+    /// See UIKit documentation for further reference.
+    ///
+    /// This method returns true, if
+    /// - there are more than 1 view controllers in the navigation controller
+    /// - it is the interactivePopGestureRecognizer to call this method
+    ///
+    /// It further alters the target of the gestureRecognizer to either its former delegate (UIKit default)
+    /// or this class depending on whether a pop animation has been specified.
+    ///
+    /// - Parameter gestureRecognizer:
+    ///     The gesture recognizer this class is the delegate of.
+    ///     This class is used as the delegate for the interactivePopGestureRecognizer of
+    ///     the navigationController.
+    ///
     open func gestureRecognizerShouldBegin(_ gestureRecognizer: UIGestureRecognizer) -> Bool {
         switch gestureRecognizer {
         case navigationController?.interactivePopGestureRecognizer:
@@ -123,7 +206,7 @@ extension NavigationAnimationDelegate: UIGestureRecognizerDelegate {
     // MARK: - Target actions
 
     ///
-    /// This method handles changes of the interactivePopGestureRecognizer of the `UINavigationController`.
+    /// This method handles changes of the interactivePopGestureRecognizer of the navigation controller.
     ///
     /// In general this method updates the interaction controller of the top-most dismissalAnimation
     /// about the state of the interactivePopGestureRecognizer.

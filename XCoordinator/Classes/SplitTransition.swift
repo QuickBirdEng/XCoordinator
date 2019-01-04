@@ -1,6 +1,6 @@
 //
 //  SplitTransition.swift
-//  Action
+//  XCoordinator
 //
 //  Created by Paul Kraft on 10.01.19.
 //

@@ -1,631 +1,85 @@
 {
   "warnings": [
     {
-      "file": "/Users/pauljohanneskraft/Documents/QuickBirdStudios/XCoordinator/XCoordinator/Classes/Animation+Navigation.swift",
-      "line": null,
-      "symbol": "NavigationAnimationDelegate",
-      "symbol_kind": "source.lang.swift.decl.extension",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/pauljohanneskraft/Documents/QuickBirdStudios/XCoordinator/XCoordinator/Classes/Animation+Navigation.swift",
-      "line": null,
-      "symbol": "NavigationAnimationDelegate",
-      "symbol_kind": "source.lang.swift.decl.extension",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/pauljohanneskraft/Documents/QuickBirdStudios/XCoordinator/XCoordinator/Classes/Animation+Navigation.swift",
-      "line": null,
-      "symbol": "NavigationAnimationDelegate",
-      "symbol_kind": "source.lang.swift.decl.extension",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/pauljohanneskraft/Documents/QuickBirdStudios/XCoordinator/XCoordinator/Classes/Animation+Navigation.swift",
-      "line": null,
-      "symbol": "NavigationAnimationDelegate",
-      "symbol_kind": "source.lang.swift.decl.extension",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/pauljohanneskraft/Documents/QuickBirdStudios/XCoordinator/XCoordinator/Classes/Animation+Navigation.swift",
-      "line": null,
-      "symbol": "NavigationAnimationDelegate",
-      "symbol_kind": "source.lang.swift.decl.extension",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/pauljohanneskraft/Documents/QuickBirdStudios/XCoordinator/XCoordinator/Classes/Animation+Navigation.swift",
-      "line": null,
-      "symbol": "NavigationAnimationDelegate",
-      "symbol_kind": "source.lang.swift.decl.extension",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/pauljohanneskraft/Documents/QuickBirdStudios/XCoordinator/XCoordinator/Classes/Animation+Navigation.swift",
-      "line": 9,
-      "symbol": "NavigationAnimationDelegate",
-      "symbol_kind": "source.lang.swift.decl.class",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/pauljohanneskraft/Documents/QuickBirdStudios/XCoordinator/XCoordinator/Classes/Animation+Navigation.swift",
-      "line": 9,
-      "symbol": "NavigationAnimationDelegate",
-      "symbol_kind": "source.lang.swift.decl.class",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/pauljohanneskraft/Documents/QuickBirdStudios/XCoordinator/XCoordinator/Classes/Animation+Navigation.swift",
-      "line": 9,
-      "symbol": "NavigationAnimationDelegate",
-      "symbol_kind": "source.lang.swift.decl.class",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/pauljohanneskraft/Documents/QuickBirdStudios/XCoordinator/XCoordinator/Classes/Animation+Navigation.swift",
-      "line": 48,
-      "symbol": "NavigationAnimationDelegate.navigationController(_:interactionControllerFor:)",
-      "symbol_kind": "source.lang.swift.decl.function.method.instance",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/pauljohanneskraft/Documents/QuickBirdStudios/XCoordinator/XCoordinator/Classes/Animation+Navigation.swift",
-      "line": 48,
-      "symbol": "NavigationAnimationDelegate.navigationController(_:interactionControllerFor:)",
-      "symbol_kind": "source.lang.swift.decl.function.method.instance",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/pauljohanneskraft/Documents/QuickBirdStudios/XCoordinator/XCoordinator/Classes/Animation+Navigation.swift",
-      "line": 48,
-      "symbol": "NavigationAnimationDelegate.navigationController(_:interactionControllerFor:)",
-      "symbol_kind": "source.lang.swift.decl.function.method.instance",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/pauljohanneskraft/Documents/QuickBirdStudios/XCoordinator/XCoordinator/Classes/Animation+Navigation.swift",
+      "file": "/Users/pauljohanneskraft/Documents/QuickBirdStudios/XCoordinator/XCoordinator/Classes/AnyCoordinator.swift",
       "line": 53,
-      "symbol": "NavigationAnimationDelegate.navigationController(_:animationControllerFor:from:to:)",
-      "symbol_kind": "source.lang.swift.decl.function.method.instance",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/pauljohanneskraft/Documents/QuickBirdStudios/XCoordinator/XCoordinator/Classes/Animation+Navigation.swift",
-      "line": 53,
-      "symbol": "NavigationAnimationDelegate.navigationController(_:animationControllerFor:from:to:)",
-      "symbol_kind": "source.lang.swift.decl.function.method.instance",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/pauljohanneskraft/Documents/QuickBirdStudios/XCoordinator/XCoordinator/Classes/Animation+Navigation.swift",
-      "line": 53,
-      "symbol": "NavigationAnimationDelegate.navigationController(_:animationControllerFor:from:to:)",
-      "symbol_kind": "source.lang.swift.decl.function.method.instance",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/pauljohanneskraft/Documents/QuickBirdStudios/XCoordinator/XCoordinator/Classes/Animation+Navigation.swift",
-      "line": 70,
-      "symbol": "NavigationAnimationDelegate.navigationController(_:didShow:animated:)",
-      "symbol_kind": "source.lang.swift.decl.function.method.instance",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/pauljohanneskraft/Documents/QuickBirdStudios/XCoordinator/XCoordinator/Classes/Animation+Navigation.swift",
-      "line": 70,
-      "symbol": "NavigationAnimationDelegate.navigationController(_:didShow:animated:)",
-      "symbol_kind": "source.lang.swift.decl.function.method.instance",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/pauljohanneskraft/Documents/QuickBirdStudios/XCoordinator/XCoordinator/Classes/Animation+Navigation.swift",
-      "line": 70,
-      "symbol": "NavigationAnimationDelegate.navigationController(_:didShow:animated:)",
-      "symbol_kind": "source.lang.swift.decl.function.method.instance",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/pauljohanneskraft/Documents/QuickBirdStudios/XCoordinator/XCoordinator/Classes/Animation+Navigation.swift",
-      "line": 75,
-      "symbol": "NavigationAnimationDelegate.navigationController(_:willShow:animated:)",
-      "symbol_kind": "source.lang.swift.decl.function.method.instance",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/pauljohanneskraft/Documents/QuickBirdStudios/XCoordinator/XCoordinator/Classes/Animation+Navigation.swift",
-      "line": 75,
-      "symbol": "NavigationAnimationDelegate.navigationController(_:willShow:animated:)",
-      "symbol_kind": "source.lang.swift.decl.function.method.instance",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/pauljohanneskraft/Documents/QuickBirdStudios/XCoordinator/XCoordinator/Classes/Animation+Navigation.swift",
-      "line": 75,
-      "symbol": "NavigationAnimationDelegate.navigationController(_:willShow:animated:)",
-      "symbol_kind": "source.lang.swift.decl.function.method.instance",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/pauljohanneskraft/Documents/QuickBirdStudios/XCoordinator/XCoordinator/Classes/Animation+Navigation.swift",
-      "line": 86,
-      "symbol": "NavigationAnimationDelegate.gestureRecognizerShouldBegin(_:)",
-      "symbol_kind": "source.lang.swift.decl.function.method.instance",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/pauljohanneskraft/Documents/QuickBirdStudios/XCoordinator/XCoordinator/Classes/Animation+Navigation.swift",
-      "line": 86,
-      "symbol": "NavigationAnimationDelegate.gestureRecognizerShouldBegin(_:)",
-      "symbol_kind": "source.lang.swift.decl.function.method.instance",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/pauljohanneskraft/Documents/QuickBirdStudios/XCoordinator/XCoordinator/Classes/Animation+Navigation.swift",
-      "line": 86,
-      "symbol": "NavigationAnimationDelegate.gestureRecognizerShouldBegin(_:)",
-      "symbol_kind": "source.lang.swift.decl.function.method.instance",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/pauljohanneskraft/Documents/QuickBirdStudios/XCoordinator/XCoordinator/Classes/Animation+TabBar.swift",
-      "line": null,
-      "symbol": "TabBarAnimationDelegate",
-      "symbol_kind": "source.lang.swift.decl.extension",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/pauljohanneskraft/Documents/QuickBirdStudios/XCoordinator/XCoordinator/Classes/Animation+TabBar.swift",
-      "line": null,
-      "symbol": "TabBarAnimationDelegate",
-      "symbol_kind": "source.lang.swift.decl.extension",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/pauljohanneskraft/Documents/QuickBirdStudios/XCoordinator/XCoordinator/Classes/Animation+TabBar.swift",
-      "line": null,
-      "symbol": "TabBarAnimationDelegate",
-      "symbol_kind": "source.lang.swift.decl.extension",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/pauljohanneskraft/Documents/QuickBirdStudios/XCoordinator/XCoordinator/Classes/Animation+TabBar.swift",
-      "line": 9,
-      "symbol": "TabBarAnimationDelegate",
-      "symbol_kind": "source.lang.swift.decl.class",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/pauljohanneskraft/Documents/QuickBirdStudios/XCoordinator/XCoordinator/Classes/Animation+TabBar.swift",
-      "line": 9,
-      "symbol": "TabBarAnimationDelegate",
-      "symbol_kind": "source.lang.swift.decl.class",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/pauljohanneskraft/Documents/QuickBirdStudios/XCoordinator/XCoordinator/Classes/Animation+TabBar.swift",
-      "line": 9,
-      "symbol": "TabBarAnimationDelegate",
-      "symbol_kind": "source.lang.swift.decl.class",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/pauljohanneskraft/Documents/QuickBirdStudios/XCoordinator/XCoordinator/Classes/Animation+TabBar.swift",
-      "line": 20,
-      "symbol": "TabBarAnimationDelegate.tabBarController(_:interactionControllerFor:)",
-      "symbol_kind": "source.lang.swift.decl.function.method.instance",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/pauljohanneskraft/Documents/QuickBirdStudios/XCoordinator/XCoordinator/Classes/Animation+TabBar.swift",
-      "line": 20,
-      "symbol": "TabBarAnimationDelegate.tabBarController(_:interactionControllerFor:)",
-      "symbol_kind": "source.lang.swift.decl.function.method.instance",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/pauljohanneskraft/Documents/QuickBirdStudios/XCoordinator/XCoordinator/Classes/Animation+TabBar.swift",
-      "line": 20,
-      "symbol": "TabBarAnimationDelegate.tabBarController(_:interactionControllerFor:)",
-      "symbol_kind": "source.lang.swift.decl.function.method.instance",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/pauljohanneskraft/Documents/QuickBirdStudios/XCoordinator/XCoordinator/Classes/Animation+TabBar.swift",
-      "line": 25,
-      "symbol": "TabBarAnimationDelegate.tabBarController(_:animationControllerForTransitionFrom:to:)",
-      "symbol_kind": "source.lang.swift.decl.function.method.instance",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/pauljohanneskraft/Documents/QuickBirdStudios/XCoordinator/XCoordinator/Classes/Animation+TabBar.swift",
-      "line": 25,
-      "symbol": "TabBarAnimationDelegate.tabBarController(_:animationControllerForTransitionFrom:to:)",
-      "symbol_kind": "source.lang.swift.decl.function.method.instance",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/pauljohanneskraft/Documents/QuickBirdStudios/XCoordinator/XCoordinator/Classes/Animation+TabBar.swift",
-      "line": 25,
-      "symbol": "TabBarAnimationDelegate.tabBarController(_:animationControllerForTransitionFrom:to:)",
-      "symbol_kind": "source.lang.swift.decl.function.method.instance",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/pauljohanneskraft/Documents/QuickBirdStudios/XCoordinator/XCoordinator/Classes/Animation+TabBar.swift",
-      "line": 30,
-      "symbol": "TabBarAnimationDelegate.tabBarController(_:didSelect:)",
-      "symbol_kind": "source.lang.swift.decl.function.method.instance",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/pauljohanneskraft/Documents/QuickBirdStudios/XCoordinator/XCoordinator/Classes/Animation+TabBar.swift",
-      "line": 30,
-      "symbol": "TabBarAnimationDelegate.tabBarController(_:didSelect:)",
-      "symbol_kind": "source.lang.swift.decl.function.method.instance",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/pauljohanneskraft/Documents/QuickBirdStudios/XCoordinator/XCoordinator/Classes/Animation+TabBar.swift",
-      "line": 30,
-      "symbol": "TabBarAnimationDelegate.tabBarController(_:didSelect:)",
-      "symbol_kind": "source.lang.swift.decl.function.method.instance",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/pauljohanneskraft/Documents/QuickBirdStudios/XCoordinator/XCoordinator/Classes/Animation+TabBar.swift",
-      "line": 34,
-      "symbol": "TabBarAnimationDelegate.tabBarController(_:shouldSelect:)",
-      "symbol_kind": "source.lang.swift.decl.function.method.instance",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/pauljohanneskraft/Documents/QuickBirdStudios/XCoordinator/XCoordinator/Classes/Animation+TabBar.swift",
-      "line": 34,
-      "symbol": "TabBarAnimationDelegate.tabBarController(_:shouldSelect:)",
-      "symbol_kind": "source.lang.swift.decl.function.method.instance",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/pauljohanneskraft/Documents/QuickBirdStudios/XCoordinator/XCoordinator/Classes/Animation+TabBar.swift",
-      "line": 34,
-      "symbol": "TabBarAnimationDelegate.tabBarController(_:shouldSelect:)",
-      "symbol_kind": "source.lang.swift.decl.function.method.instance",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/pauljohanneskraft/Documents/QuickBirdStudios/XCoordinator/XCoordinator/Classes/Animation+TabBar.swift",
-      "line": 38,
-      "symbol": "TabBarAnimationDelegate.tabBarController(_:willBeginCustomizing:)",
-      "symbol_kind": "source.lang.swift.decl.function.method.instance",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/pauljohanneskraft/Documents/QuickBirdStudios/XCoordinator/XCoordinator/Classes/Animation+TabBar.swift",
-      "line": 38,
-      "symbol": "TabBarAnimationDelegate.tabBarController(_:willBeginCustomizing:)",
-      "symbol_kind": "source.lang.swift.decl.function.method.instance",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/pauljohanneskraft/Documents/QuickBirdStudios/XCoordinator/XCoordinator/Classes/Animation+TabBar.swift",
-      "line": 38,
-      "symbol": "TabBarAnimationDelegate.tabBarController(_:willBeginCustomizing:)",
-      "symbol_kind": "source.lang.swift.decl.function.method.instance",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/pauljohanneskraft/Documents/QuickBirdStudios/XCoordinator/XCoordinator/Classes/Animation+TabBar.swift",
-      "line": 42,
-      "symbol": "TabBarAnimationDelegate.tabBarController(_:didEndCustomizing:changed:)",
-      "symbol_kind": "source.lang.swift.decl.function.method.instance",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/pauljohanneskraft/Documents/QuickBirdStudios/XCoordinator/XCoordinator/Classes/Animation+TabBar.swift",
-      "line": 42,
-      "symbol": "TabBarAnimationDelegate.tabBarController(_:didEndCustomizing:changed:)",
-      "symbol_kind": "source.lang.swift.decl.function.method.instance",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/pauljohanneskraft/Documents/QuickBirdStudios/XCoordinator/XCoordinator/Classes/Animation+TabBar.swift",
-      "line": 42,
-      "symbol": "TabBarAnimationDelegate.tabBarController(_:didEndCustomizing:changed:)",
-      "symbol_kind": "source.lang.swift.decl.function.method.instance",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/pauljohanneskraft/Documents/QuickBirdStudios/XCoordinator/XCoordinator/Classes/Animation+TabBar.swift",
-      "line": 46,
-      "symbol": "TabBarAnimationDelegate.tabBarController(_:willEndCustomizing:changed:)",
-      "symbol_kind": "source.lang.swift.decl.function.method.instance",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/pauljohanneskraft/Documents/QuickBirdStudios/XCoordinator/XCoordinator/Classes/Animation+TabBar.swift",
-      "line": 46,
-      "symbol": "TabBarAnimationDelegate.tabBarController(_:willEndCustomizing:changed:)",
-      "symbol_kind": "source.lang.swift.decl.function.method.instance",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/pauljohanneskraft/Documents/QuickBirdStudios/XCoordinator/XCoordinator/Classes/Animation+TabBar.swift",
-      "line": 46,
-      "symbol": "TabBarAnimationDelegate.tabBarController(_:willEndCustomizing:changed:)",
-      "symbol_kind": "source.lang.swift.decl.function.method.instance",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/pauljohanneskraft/Documents/QuickBirdStudios/XCoordinator/XCoordinator/Classes/Animation.swift",
-      "line": 56,
-      "symbol": "Animation.animationController(forPresented:presenting:source:)",
-      "symbol_kind": "source.lang.swift.decl.function.method.instance",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/pauljohanneskraft/Documents/QuickBirdStudios/XCoordinator/XCoordinator/Classes/Animation.swift",
-      "line": 56,
-      "symbol": "Animation.animationController(forPresented:presenting:source:)",
-      "symbol_kind": "source.lang.swift.decl.function.method.instance",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/pauljohanneskraft/Documents/QuickBirdStudios/XCoordinator/XCoordinator/Classes/Animation.swift",
-      "line": 56,
-      "symbol": "Animation.animationController(forPresented:presenting:source:)",
-      "symbol_kind": "source.lang.swift.decl.function.method.instance",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/pauljohanneskraft/Documents/QuickBirdStudios/XCoordinator/XCoordinator/Classes/Animation.swift",
-      "line": 60,
-      "symbol": "Animation.animationController(forDismissed:)",
-      "symbol_kind": "source.lang.swift.decl.function.method.instance",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/pauljohanneskraft/Documents/QuickBirdStudios/XCoordinator/XCoordinator/Classes/Animation.swift",
-      "line": 60,
-      "symbol": "Animation.animationController(forDismissed:)",
-      "symbol_kind": "source.lang.swift.decl.function.method.instance",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/pauljohanneskraft/Documents/QuickBirdStudios/XCoordinator/XCoordinator/Classes/Animation.swift",
-      "line": 60,
-      "symbol": "Animation.animationController(forDismissed:)",
-      "symbol_kind": "source.lang.swift.decl.function.method.instance",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/pauljohanneskraft/Documents/QuickBirdStudios/XCoordinator/XCoordinator/Classes/Animation.swift",
-      "line": 64,
-      "symbol": "Animation.interactionControllerForPresentation(using:)",
-      "symbol_kind": "source.lang.swift.decl.function.method.instance",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/pauljohanneskraft/Documents/QuickBirdStudios/XCoordinator/XCoordinator/Classes/Animation.swift",
-      "line": 64,
-      "symbol": "Animation.interactionControllerForPresentation(using:)",
-      "symbol_kind": "source.lang.swift.decl.function.method.instance",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/pauljohanneskraft/Documents/QuickBirdStudios/XCoordinator/XCoordinator/Classes/Animation.swift",
-      "line": 64,
-      "symbol": "Animation.interactionControllerForPresentation(using:)",
-      "symbol_kind": "source.lang.swift.decl.function.method.instance",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/pauljohanneskraft/Documents/QuickBirdStudios/XCoordinator/XCoordinator/Classes/Animation.swift",
-      "line": 68,
-      "symbol": "Animation.interactionControllerForDismissal(using:)",
-      "symbol_kind": "source.lang.swift.decl.function.method.instance",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/pauljohanneskraft/Documents/QuickBirdStudios/XCoordinator/XCoordinator/Classes/Animation.swift",
-      "line": 68,
-      "symbol": "Animation.interactionControllerForDismissal(using:)",
-      "symbol_kind": "source.lang.swift.decl.function.method.instance",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/pauljohanneskraft/Documents/QuickBirdStudios/XCoordinator/XCoordinator/Classes/Animation.swift",
-      "line": 68,
-      "symbol": "Animation.interactionControllerForDismissal(using:)",
-      "symbol_kind": "source.lang.swift.decl.function.method.instance",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/pauljohanneskraft/Documents/QuickBirdStudios/XCoordinator/XCoordinator/Classes/AnyCoordinator.swift",
-      "line": 9,
-      "symbol": "AnyNavigationCoordinator",
-      "symbol_kind": "source.lang.swift.decl.typealias",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/pauljohanneskraft/Documents/QuickBirdStudios/XCoordinator/XCoordinator/Classes/AnyCoordinator.swift",
-      "line": 9,
-      "symbol": "AnyNavigationCoordinator",
-      "symbol_kind": "source.lang.swift.decl.typealias",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/pauljohanneskraft/Documents/QuickBirdStudios/XCoordinator/XCoordinator/Classes/AnyCoordinator.swift",
-      "line": 9,
-      "symbol": "AnyNavigationCoordinator",
-      "symbol_kind": "source.lang.swift.decl.typealias",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/pauljohanneskraft/Documents/QuickBirdStudios/XCoordinator/XCoordinator/Classes/AnyCoordinator.swift",
-      "line": 10,
-      "symbol": "AnyTabBarCoordinator",
-      "symbol_kind": "source.lang.swift.decl.typealias",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/pauljohanneskraft/Documents/QuickBirdStudios/XCoordinator/XCoordinator/Classes/AnyCoordinator.swift",
-      "line": 10,
-      "symbol": "AnyTabBarCoordinator",
-      "symbol_kind": "source.lang.swift.decl.typealias",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/pauljohanneskraft/Documents/QuickBirdStudios/XCoordinator/XCoordinator/Classes/AnyCoordinator.swift",
-      "line": 10,
-      "symbol": "AnyTabBarCoordinator",
-      "symbol_kind": "source.lang.swift.decl.typealias",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/pauljohanneskraft/Documents/QuickBirdStudios/XCoordinator/XCoordinator/Classes/AnyCoordinator.swift",
-      "line": 11,
-      "symbol": "AnyViewCoordinator",
-      "symbol_kind": "source.lang.swift.decl.typealias",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/pauljohanneskraft/Documents/QuickBirdStudios/XCoordinator/XCoordinator/Classes/AnyCoordinator.swift",
-      "line": 11,
-      "symbol": "AnyViewCoordinator",
-      "symbol_kind": "source.lang.swift.decl.typealias",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/pauljohanneskraft/Documents/QuickBirdStudios/XCoordinator/XCoordinator/Classes/AnyCoordinator.swift",
-      "line": 11,
-      "symbol": "AnyViewCoordinator",
-      "symbol_kind": "source.lang.swift.decl.typealias",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/pauljohanneskraft/Documents/QuickBirdStudios/XCoordinator/XCoordinator/Classes/AnyCoordinator.swift",
-      "line": 13,
-      "symbol": "AnyCoordinator",
-      "symbol_kind": "source.lang.swift.decl.class",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/pauljohanneskraft/Documents/QuickBirdStudios/XCoordinator/XCoordinator/Classes/AnyCoordinator.swift",
-      "line": 13,
-      "symbol": "AnyCoordinator",
-      "symbol_kind": "source.lang.swift.decl.class",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/pauljohanneskraft/Documents/QuickBirdStudios/XCoordinator/XCoordinator/Classes/AnyCoordinator.swift",
-      "line": 13,
-      "symbol": "AnyCoordinator",
-      "symbol_kind": "source.lang.swift.decl.class",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/pauljohanneskraft/Documents/QuickBirdStudios/XCoordinator/XCoordinator/Classes/AnyCoordinator.swift",
-      "line": 24,
-      "symbol": "AnyCoordinator.init(_:)",
-      "symbol_kind": "source.lang.swift.decl.function.method.instance",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/pauljohanneskraft/Documents/QuickBirdStudios/XCoordinator/XCoordinator/Classes/AnyCoordinator.swift",
-      "line": 24,
-      "symbol": "AnyCoordinator.init(_:)",
-      "symbol_kind": "source.lang.swift.decl.function.method.instance",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/pauljohanneskraft/Documents/QuickBirdStudios/XCoordinator/XCoordinator/Classes/AnyCoordinator.swift",
-      "line": 24,
-      "symbol": "AnyCoordinator.init(_:)",
-      "symbol_kind": "source.lang.swift.decl.function.method.instance",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/pauljohanneskraft/Documents/QuickBirdStudios/XCoordinator/XCoordinator/Classes/AnyCoordinator.swift",
-      "line": 33,
       "symbol": "AnyCoordinator.rootViewController",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/pauljohanneskraft/Documents/QuickBirdStudios/XCoordinator/XCoordinator/Classes/AnyCoordinator.swift",
-      "line": 33,
+      "line": 53,
       "symbol": "AnyCoordinator.rootViewController",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/pauljohanneskraft/Documents/QuickBirdStudios/XCoordinator/XCoordinator/Classes/AnyCoordinator.swift",
-      "line": 33,
+      "line": 53,
       "symbol": "AnyCoordinator.rootViewController",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/pauljohanneskraft/Documents/QuickBirdStudios/XCoordinator/XCoordinator/Classes/AnyCoordinator.swift",
-      "line": 39,
+      "line": 59,
       "symbol": "AnyCoordinator.prepareTransition(for:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/pauljohanneskraft/Documents/QuickBirdStudios/XCoordinator/XCoordinator/Classes/AnyCoordinator.swift",
-      "line": 39,
+      "line": 59,
       "symbol": "AnyCoordinator.prepareTransition(for:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/pauljohanneskraft/Documents/QuickBirdStudios/XCoordinator/XCoordinator/Classes/AnyCoordinator.swift",
-      "line": 39,
+      "line": 59,
       "symbol": "AnyCoordinator.prepareTransition(for:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/pauljohanneskraft/Documents/QuickBirdStudios/XCoordinator/XCoordinator/Classes/AnyCoordinator.swift",
-      "line": 43,
+      "line": 63,
       "symbol": "AnyCoordinator.presented(from:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/pauljohanneskraft/Documents/QuickBirdStudios/XCoordinator/XCoordinator/Classes/AnyCoordinator.swift",
-      "line": 43,
+      "line": 63,
       "symbol": "AnyCoordinator.presented(from:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/pauljohanneskraft/Documents/QuickBirdStudios/XCoordinator/XCoordinator/Classes/AnyCoordinator.swift",
-      "line": 43,
+      "line": 63,
       "symbol": "AnyCoordinator.presented(from:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/pauljohanneskraft/Documents/QuickBirdStudios/XCoordinator/XCoordinator/Classes/AnyCoordinator.swift",
-      "line": 47,
+      "line": 67,
       "symbol": "AnyCoordinator.setRoot(for:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/pauljohanneskraft/Documents/QuickBirdStudios/XCoordinator/XCoordinator/Classes/AnyCoordinator.swift",
-      "line": 47,
+      "line": 67,
       "symbol": "AnyCoordinator.setRoot(for:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/pauljohanneskraft/Documents/QuickBirdStudios/XCoordinator/XCoordinator/Classes/AnyCoordinator.swift",
-      "line": 47,
+      "line": 67,
       "symbol": "AnyCoordinator.setRoot(for:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
@@ -1031,63 +485,21 @@
     },
     {
       "file": "/Users/pauljohanneskraft/Documents/QuickBirdStudios/XCoordinator/XCoordinator/Classes/BasicCoordinator.swift",
-      "line": 34,
-      "symbol": "BasicCoordinator.InitialLoadingType.immediately",
-      "symbol_kind": "source.lang.swift.decl.enumelement",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/pauljohanneskraft/Documents/QuickBirdStudios/XCoordinator/XCoordinator/Classes/BasicCoordinator.swift",
-      "line": 34,
-      "symbol": "BasicCoordinator.InitialLoadingType.immediately",
-      "symbol_kind": "source.lang.swift.decl.enumelement",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/pauljohanneskraft/Documents/QuickBirdStudios/XCoordinator/XCoordinator/Classes/BasicCoordinator.swift",
-      "line": 34,
-      "symbol": "BasicCoordinator.InitialLoadingType.immediately",
-      "symbol_kind": "source.lang.swift.decl.enumelement",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/pauljohanneskraft/Documents/QuickBirdStudios/XCoordinator/XCoordinator/Classes/BasicCoordinator.swift",
-      "line": 35,
-      "symbol": "BasicCoordinator.InitialLoadingType.presented",
-      "symbol_kind": "source.lang.swift.decl.enumelement",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/pauljohanneskraft/Documents/QuickBirdStudios/XCoordinator/XCoordinator/Classes/BasicCoordinator.swift",
-      "line": 35,
-      "symbol": "BasicCoordinator.InitialLoadingType.presented",
-      "symbol_kind": "source.lang.swift.decl.enumelement",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/pauljohanneskraft/Documents/QuickBirdStudios/XCoordinator/XCoordinator/Classes/BasicCoordinator.swift",
-      "line": 35,
-      "symbol": "BasicCoordinator.InitialLoadingType.presented",
-      "symbol_kind": "source.lang.swift.decl.enumelement",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/pauljohanneskraft/Documents/QuickBirdStudios/XCoordinator/XCoordinator/Classes/BasicCoordinator.swift",
-      "line": 77,
+      "line": 75,
       "symbol": "BasicCoordinator.presented(from:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/pauljohanneskraft/Documents/QuickBirdStudios/XCoordinator/XCoordinator/Classes/BasicCoordinator.swift",
-      "line": 77,
+      "line": 75,
       "symbol": "BasicCoordinator.presented(from:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/pauljohanneskraft/Documents/QuickBirdStudios/XCoordinator/XCoordinator/Classes/BasicCoordinator.swift",
-      "line": 77,
+      "line": 75,
       "symbol": "BasicCoordinator.presented(from:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
@@ -2228,189 +1640,189 @@
     },
     {
       "file": "/Users/pauljohanneskraft/Documents/QuickBirdStudios/XCoordinator/XCoordinator/Classes/RedirectionCoordinator.swift",
-      "line": 11,
+      "line": 9,
       "symbol": "RedirectionCoordinator",
       "symbol_kind": "source.lang.swift.decl.class",
       "warning": "undocumented"
     },
     {
       "file": "/Users/pauljohanneskraft/Documents/QuickBirdStudios/XCoordinator/XCoordinator/Classes/RedirectionCoordinator.swift",
-      "line": 11,
+      "line": 9,
       "symbol": "RedirectionCoordinator",
       "symbol_kind": "source.lang.swift.decl.class",
       "warning": "undocumented"
     },
     {
       "file": "/Users/pauljohanneskraft/Documents/QuickBirdStudios/XCoordinator/XCoordinator/Classes/RedirectionCoordinator.swift",
-      "line": 11,
+      "line": 9,
       "symbol": "RedirectionCoordinator",
       "symbol_kind": "source.lang.swift.decl.class",
       "warning": "undocumented"
     },
     {
       "file": "/Users/pauljohanneskraft/Documents/QuickBirdStudios/XCoordinator/XCoordinator/Classes/RedirectionCoordinator.swift",
-      "line": 21,
+      "line": 19,
       "symbol": "RedirectionCoordinator.rootViewController",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/pauljohanneskraft/Documents/QuickBirdStudios/XCoordinator/XCoordinator/Classes/RedirectionCoordinator.swift",
-      "line": 21,
+      "line": 19,
       "symbol": "RedirectionCoordinator.rootViewController",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/pauljohanneskraft/Documents/QuickBirdStudios/XCoordinator/XCoordinator/Classes/RedirectionCoordinator.swift",
-      "line": 21,
+      "line": 19,
       "symbol": "RedirectionCoordinator.rootViewController",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/pauljohanneskraft/Documents/QuickBirdStudios/XCoordinator/XCoordinator/Classes/RedirectionCoordinator.swift",
-      "line": 25,
+      "line": 23,
       "symbol": "RedirectionCoordinator.viewController",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/pauljohanneskraft/Documents/QuickBirdStudios/XCoordinator/XCoordinator/Classes/RedirectionCoordinator.swift",
-      "line": 25,
+      "line": 23,
       "symbol": "RedirectionCoordinator.viewController",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/pauljohanneskraft/Documents/QuickBirdStudios/XCoordinator/XCoordinator/Classes/RedirectionCoordinator.swift",
-      "line": 25,
+      "line": 23,
       "symbol": "RedirectionCoordinator.viewController",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/pauljohanneskraft/Documents/QuickBirdStudios/XCoordinator/XCoordinator/Classes/RedirectionCoordinator.swift",
-      "line": 31,
+      "line": 29,
       "symbol": "RedirectionCoordinator.init(viewController:superTransitionPerformer:prepareTransition:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/pauljohanneskraft/Documents/QuickBirdStudios/XCoordinator/XCoordinator/Classes/RedirectionCoordinator.swift",
-      "line": 31,
+      "line": 29,
       "symbol": "RedirectionCoordinator.init(viewController:superTransitionPerformer:prepareTransition:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/pauljohanneskraft/Documents/QuickBirdStudios/XCoordinator/XCoordinator/Classes/RedirectionCoordinator.swift",
-      "line": 31,
+      "line": 29,
       "symbol": "RedirectionCoordinator.init(viewController:superTransitionPerformer:prepareTransition:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/pauljohanneskraft/Documents/QuickBirdStudios/XCoordinator/XCoordinator/Classes/RedirectionCoordinator.swift",
-      "line": 37,
+      "line": 35,
       "symbol": "RedirectionCoordinator.init(viewController:superTransitionPerformer:prepareTransition:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/pauljohanneskraft/Documents/QuickBirdStudios/XCoordinator/XCoordinator/Classes/RedirectionCoordinator.swift",
-      "line": 37,
+      "line": 35,
       "symbol": "RedirectionCoordinator.init(viewController:superTransitionPerformer:prepareTransition:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/pauljohanneskraft/Documents/QuickBirdStudios/XCoordinator/XCoordinator/Classes/RedirectionCoordinator.swift",
-      "line": 37,
+      "line": 35,
       "symbol": "RedirectionCoordinator.init(viewController:superTransitionPerformer:prepareTransition:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/pauljohanneskraft/Documents/QuickBirdStudios/XCoordinator/XCoordinator/Classes/RedirectionCoordinator.swift",
-      "line": 47,
+      "line": 45,
       "symbol": "RedirectionCoordinator.presented(from:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/pauljohanneskraft/Documents/QuickBirdStudios/XCoordinator/XCoordinator/Classes/RedirectionCoordinator.swift",
-      "line": 47,
+      "line": 45,
       "symbol": "RedirectionCoordinator.presented(from:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/pauljohanneskraft/Documents/QuickBirdStudios/XCoordinator/XCoordinator/Classes/RedirectionCoordinator.swift",
-      "line": 47,
+      "line": 45,
       "symbol": "RedirectionCoordinator.presented(from:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/pauljohanneskraft/Documents/QuickBirdStudios/XCoordinator/XCoordinator/Classes/RedirectionCoordinator.swift",
-      "line": 52,
+      "line": 50,
       "symbol": "RedirectionCoordinator.prepareTransition(for:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/pauljohanneskraft/Documents/QuickBirdStudios/XCoordinator/XCoordinator/Classes/RedirectionCoordinator.swift",
-      "line": 52,
+      "line": 50,
       "symbol": "RedirectionCoordinator.prepareTransition(for:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/pauljohanneskraft/Documents/QuickBirdStudios/XCoordinator/XCoordinator/Classes/RedirectionCoordinator.swift",
-      "line": 52,
+      "line": 50,
       "symbol": "RedirectionCoordinator.prepareTransition(for:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/pauljohanneskraft/Documents/QuickBirdStudios/XCoordinator/XCoordinator/Classes/RedirectionCoordinator.swift",
-      "line": 59,
+      "line": 57,
       "symbol": "RedirectionCoordinator.performTransition(_:with:completion:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/pauljohanneskraft/Documents/QuickBirdStudios/XCoordinator/XCoordinator/Classes/RedirectionCoordinator.swift",
-      "line": 59,
+      "line": 57,
       "symbol": "RedirectionCoordinator.performTransition(_:with:completion:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/pauljohanneskraft/Documents/QuickBirdStudios/XCoordinator/XCoordinator/Classes/RedirectionCoordinator.swift",
-      "line": 59,
+      "line": 57,
       "symbol": "RedirectionCoordinator.performTransition(_:with:completion:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/pauljohanneskraft/Documents/QuickBirdStudios/XCoordinator/XCoordinator/Classes/RedirectionCoordinator.swift",
-      "line": 68,
+      "line": 66,
       "symbol": "RedirectionCoordinator.init(viewController:superCoordinator:prepareTransition:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/pauljohanneskraft/Documents/QuickBirdStudios/XCoordinator/XCoordinator/Classes/RedirectionCoordinator.swift",
-      "line": 68,
+      "line": 66,
       "symbol": "RedirectionCoordinator.init(viewController:superCoordinator:prepareTransition:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/pauljohanneskraft/Documents/QuickBirdStudios/XCoordinator/XCoordinator/Classes/RedirectionCoordinator.swift",
-      "line": 68,
+      "line": 66,
       "symbol": "RedirectionCoordinator.init(viewController:superCoordinator:prepareTransition:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
@@ -2623,27 +2035,6 @@
       "line": 63,
       "symbol": "RedirectionRouter.router(for:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/pauljohanneskraft/Documents/QuickBirdStudios/XCoordinator/XCoordinator/Classes/Route.swift",
-      "line": 9,
-      "symbol": "Route",
-      "symbol_kind": "source.lang.swift.decl.protocol",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/pauljohanneskraft/Documents/QuickBirdStudios/XCoordinator/XCoordinator/Classes/Route.swift",
-      "line": 9,
-      "symbol": "Route",
-      "symbol_kind": "source.lang.swift.decl.protocol",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/pauljohanneskraft/Documents/QuickBirdStudios/XCoordinator/XCoordinator/Classes/Route.swift",
-      "line": 9,
-      "symbol": "Route",
-      "symbol_kind": "source.lang.swift.decl.protocol",
       "warning": "undocumented"
     },
     {

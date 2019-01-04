@@ -6,6 +6,9 @@
 //  Copyright © 2018 QuickBird Studios. All rights reserved.
 //
 
+///
+/// Use AnyRouter to abstract away from
+///
 public final class AnyRouter<RouteType: Route>: Router {
 
     // MARK: - Stored properties
@@ -18,12 +21,18 @@ public final class AnyRouter<RouteType: Route>: Router {
 
     // MARK: - Initialization
 
-    public init<T: Router & Presentable>(_ trigger: T) where T.RouteType == RouteType {
-        _trigger = trigger.trigger
-        _presented = trigger.presented
-        _viewController = { trigger.viewController }
-        _setRoot = trigger.setRoot
-        _contextTrigger = trigger.contextTrigger
+    ///
+    /// Creates an AnyRouter object from a given router.
+    ///
+    /// - Parameter router:
+    ///     The router to create the AnyRouter of.
+    ///
+    public init<T: Router>(_ router: T) where T.RouteType == RouteType {
+        _trigger = router.trigger
+        _presented = router.presented
+        _viewController = { router.viewController }
+        _setRoot = router.setRoot
+        _contextTrigger = router.contextTrigger
     }
 
     // MARK: - Public methods

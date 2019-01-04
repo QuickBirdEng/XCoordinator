@@ -14,7 +14,7 @@
     <a title="TabBarAnimationDelegate Class Reference"></a>
     <header>
       <div class="content-wrapper">
-        <p><a href="../index.html">XCoordinator Docs</a> (30% documented)</p>
+        <p><a href="../index.html">XCoordinator Docs</a> (41% documented)</p>
       </div>
     </header>
     <div class="content-wrapper">
@@ -214,16 +214,26 @@
 
                 </div>
               </div>
-            <p>Undocumented</p>
+            <p>TabBarAnimationDelegate is used as the delegate of a TabBarCoordinator&rsquo;s rootViewController
+to allow for transitions to specify transition animations.</p>
+
+<p>This delegate is intended for use on one tab bar controller only.
+Do not use one object as delegate of multiple tab bar controllers.</p>
+<div class="aside aside-note">
+    <p class="aside-title">Note</p>
+    Do not override the delegate of a TabBarCoordinator&rsquo;s rootViewController-delegate.
+Instead use the delegate property of the TabBarCoordinator itself.
+
+</div>
 
           </section>
           <section class="section task-group-section">
             <div class="task-group">
               <div class="task-name-container">
-                <a name="/TabBarAnimationDelegate:%20UITabBarControllerDelegate"></a>
-                <a name="//apple_ref/swift/Section/TabBarAnimationDelegate: UITabBarControllerDelegate" class="dashAnchor"></a>
-                <a href="#/TabBarAnimationDelegate:%20UITabBarControllerDelegate">
-                  <h3 class="section-name">TabBarAnimationDelegate: UITabBarControllerDelegate</h3>
+                <a name="/UITabBarControllerDelegate"></a>
+                <a name="//apple_ref/swift/Section/UITabBarControllerDelegate" class="dashAnchor"></a>
+                <a href="#/UITabBarControllerDelegate">
+                  <h3 class="section-name">UITabBarControllerDelegate</h3>
                 </a>
               </div>
               <ul>
@@ -240,7 +250,7 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p>See UIKit documentation for further reference.</p>
 
                       </div>
                       <div class="declaration">
@@ -250,6 +260,42 @@
                           <pre class="highlight swift"><code><span class="kd">open</span> <span class="kd">func</span> <span class="nf">tabBarController</span><span class="p">(</span><span class="n">_</span> <span class="nv">tabBarController</span><span class="p">:</span> <span class="kt">UITabBarController</span><span class="p">,</span> <span class="n">interactionControllerFor</span> <span class="nv">animationController</span><span class="p">:</span> <span class="kt">UIViewControllerAnimatedTransitioning</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">UIViewControllerInteractiveTransitioning</span><span class="p">?</span></code></pre>
 
                         </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>tabBarController</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The tabBarController to which this object is the delegate of.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>animationController</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The animationController to return the interactionController for.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p>The interactionController of an animationController of type <code><a href="../Protocols/TransitionAnimation.html">TransitionAnimation</a></code>.
+Otherwise the result of the TabBarCoordinator&rsquo;s delegate.</p>
                       </div>
                     </section>
                   </div>
@@ -267,7 +313,7 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p>See UIKit documentation for further reference.</p>
 
                       </div>
                       <div class="declaration">
@@ -277,6 +323,54 @@
                           <pre class="highlight swift"><code><span class="kd">open</span> <span class="kd">func</span> <span class="nf">tabBarController</span><span class="p">(</span><span class="n">_</span> <span class="nv">tabBarController</span><span class="p">:</span> <span class="kt">UITabBarController</span><span class="p">,</span> <span class="n">animationControllerForTransitionFrom</span> <span class="nv">fromVC</span><span class="p">:</span> <span class="kt">UIViewController</span><span class="p">,</span> <span class="n">to</span> <span class="nv">toVC</span><span class="p">:</span> <span class="kt">UIViewController</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">UIViewControllerAnimatedTransitioning</span><span class="p">?</span></code></pre>
 
                         </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>tabBarController</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The tabBarController to which this object is the delegate of.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>fromVC</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The source view controller of the transition.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>toVC</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The destination view controller of the transition.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p>The presentation animation of the last specified <code><a href="../Classes/Animation.html">Animation</a></code> object.
+If not present, it uses the TabBarCoordinator&rsquo;s delegate as fallback.</p>
                       </div>
                     </section>
                   </div>
@@ -294,7 +388,8 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p>See UIKit documentation for further reference.
+This method delegates to the delegate specified in the TabBarCoordinator.</p>
 
                       </div>
                       <div class="declaration">
@@ -304,6 +399,37 @@
                           <pre class="highlight swift"><code><span class="kd">open</span> <span class="kd">func</span> <span class="nf">tabBarController</span><span class="p">(</span><span class="n">_</span> <span class="nv">tabBarController</span><span class="p">:</span> <span class="kt">UITabBarController</span><span class="p">,</span> <span class="n">didSelect</span> <span class="nv">viewController</span><span class="p">:</span> <span class="kt">UIViewController</span><span class="p">)</span></code></pre>
 
                         </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>tabBarController</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The tabBarController to which this object is the delegate of.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>viewController</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The viewController that was selected.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
                       </div>
                     </section>
                   </div>
@@ -321,7 +447,8 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p>See UIKit documentation for further reference.
+This method delegates to the delegate specified in the TabBarCoordinator.</p>
 
                       </div>
                       <div class="declaration">
@@ -331,6 +458,41 @@
                           <pre class="highlight swift"><code><span class="kd">open</span> <span class="kd">func</span> <span class="nf">tabBarController</span><span class="p">(</span><span class="n">_</span> <span class="nv">tabBarController</span><span class="p">:</span> <span class="kt">UITabBarController</span><span class="p">,</span> <span class="n">shouldSelect</span> <span class="nv">viewController</span><span class="p">:</span> <span class="kt">UIViewController</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Bool</span></code></pre>
 
                         </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>tabBarController</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The tabBarController to which this object is the delegate of.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>viewController</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The viewController that may be selected.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p>The result of the TabBarCooordinator&rsquo;s delegate. If not specified, it returns true.</p>
                       </div>
                     </section>
                   </div>
@@ -348,7 +510,8 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p>See UIKit documentation for further reference.
+This method delegates to the delegate specified in the TabBarCoordinator.</p>
 
                       </div>
                       <div class="declaration">
@@ -358,6 +521,37 @@
                           <pre class="highlight swift"><code><span class="kd">open</span> <span class="kd">func</span> <span class="nf">tabBarController</span><span class="p">(</span><span class="n">_</span> <span class="nv">tabBarController</span><span class="p">:</span> <span class="kt">UITabBarController</span><span class="p">,</span> <span class="n">willBeginCustomizing</span> <span class="nv">viewControllers</span><span class="p">:</span> <span class="p">[</span><span class="kt">UIViewController</span><span class="p">])</span></code></pre>
 
                         </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>tabBarController</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The tabBarController to which this object is the delegate of.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>viewControllers</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The viewControllers that will begin to be customized.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
                       </div>
                     </section>
                   </div>
@@ -375,7 +569,8 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p>See UIKit documentation for further reference.
+This method delegates to the delegate specified in the TabBarCoordinator.</p>
 
                       </div>
                       <div class="declaration">
@@ -385,6 +580,37 @@
                           <pre class="highlight swift"><code><span class="kd">open</span> <span class="kd">func</span> <span class="nf">tabBarController</span><span class="p">(</span><span class="n">_</span> <span class="nv">tabBarController</span><span class="p">:</span> <span class="kt">UITabBarController</span><span class="p">,</span> <span class="n">didEndCustomizing</span> <span class="nv">viewControllers</span><span class="p">:</span> <span class="p">[</span><span class="kt">UIViewController</span><span class="p">],</span> <span class="nv">changed</span><span class="p">:</span> <span class="kt">Bool</span><span class="p">)</span></code></pre>
 
                         </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>tabBarController</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The tabBarController to which this object is the delegate of.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>viewControllers</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The viewControllers that ended to be customized.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
                       </div>
                     </section>
                   </div>
@@ -402,7 +628,8 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p>See UIKit documentation for further reference.
+This method delegates to the delegate specified in the TabBarCoordinator.</p>
 
                       </div>
                       <div class="declaration">
@@ -413,6 +640,37 @@
 
                         </div>
                       </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>tabBarController</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The tabBarController to which this object is the delegate of.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>viewControllers</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The viewControllers that will end to be customized.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
                     </section>
                   </div>
                 </li>
@@ -421,7 +679,7 @@
           </section>
         </section>
         <section id="footer">
-          <p>&copy; 2018 <a class="link" href="https://github.com/quickbirdstudios/XCoordinator" target="_blank" rel="external">Stefan Kofler and Paul Kraft</a>. All rights reserved. (Last updated: 2018-12-30)</p>
+          <p>&copy; 2019 <a class="link" href="https://github.com/quickbirdstudios/XCoordinator" target="_blank" rel="external">Stefan Kofler and Paul Kraft</a>. All rights reserved. (Last updated: 2019-01-01)</p>
           <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.9.4</a>, a <a class="link" href="https://realm.io" target="_blank" rel="external">Realm</a> project.</p>
         </section>
       </article>
