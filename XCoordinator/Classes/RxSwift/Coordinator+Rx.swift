@@ -6,6 +6,7 @@
 //  Copyright © 2018 QuickBird Studios. All rights reserved.
 //
 
+#if canImport(RxSwift)
 import RxSwift
 
 public extension Router {
@@ -35,3 +36,5 @@ extension Reactive where Base: Router & AnyObject {
         return trigger(route, with: .default)
     }
 }
+
+#endif
