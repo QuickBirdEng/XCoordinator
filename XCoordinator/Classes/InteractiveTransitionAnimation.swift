@@ -10,7 +10,7 @@ open class InteractiveTransitionAnimation: NSObject, TransitionAnimation {
 
     // MARK: - Static properties
 
-    private static let generateDefaultInteractionController: () -> PercentDrivenInteractionController? = {
+    internal static let generateDefaultInteractionController: () -> PercentDrivenInteractionController? = {
         return UIPercentDrivenInteractiveTransition()
     }
 

@@ -36,7 +36,13 @@ class NewsCoordinator: NavigationCoordinator<NewsRoute> {
             let viewController = NewsDetailViewController.instantiateFromNib()
             let viewModel = NewsDetailViewModelImpl(news: news)
             viewController.bind(to: viewModel)
-            return .push(viewController, animation: .interactiveScale)
+            let animation: Animation
+            if #available(iOS 10.0, *) {
+                animation = .swirl
+            } else {
+                animation = .scale
+            }
+            return .push(viewController, animation: animation)
         case .close:
             return .dismissToRoot()
         }
