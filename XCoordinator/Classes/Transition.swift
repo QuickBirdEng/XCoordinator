@@ -10,7 +10,6 @@ public struct Transition<RootViewController: UIViewController>: TransitionProtoc
 
     // MARK: - Typealias
 
-    // swiftlint:disable:next line_length
     public typealias Perform = (TransitionOptions, AnyTransitionPerformer<Transition<RootViewController>>, PresentationHandler?) -> Void
 
     // MARK: - Stored properties

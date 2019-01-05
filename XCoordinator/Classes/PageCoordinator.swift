@@ -24,7 +24,6 @@ open class PageCoordinator<RouteType: Route>: BaseCoordinator<RouteType, PageTra
         self.configuration = configuration
 
         guard let firstPage = set ?? pages.first else {
-            // swiftlint:disable:next line_length
             assertionFailure("Please provide a positive number of pages for use in \(String(describing: PageCoordinator<RouteType>.self))")
             super.init(initialRoute: nil)
             return

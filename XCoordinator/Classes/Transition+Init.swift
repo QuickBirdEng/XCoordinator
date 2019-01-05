@@ -39,11 +39,10 @@ extension Transition {
         return Transition(presentables: [presentable],
                           animation: animation?.presentationAnimation
         ) { options, performer, completion in
-            performer.present(
-                onRoot: true,
-                presentable.viewController,
-                with: options,
-                animation: animation
+            performer.present(onRoot: true,
+                              presentable.viewController,
+                              with: options,
+                              animation: animation
             ) {
                 presentable.presented(from: performer)
                 completion?()
@@ -55,11 +54,10 @@ extension Transition {
         return Transition(presentables: [presentable],
                           animation: animation?.presentationAnimation
         ) { options, performer, completion in
-            performer.present(
-                onRoot: false,
-                presentable.viewController,
-                with: options,
-                animation: animation
+            performer.present(onRoot: false,
+                              presentable.viewController,
+                              with: options,
+                              animation: animation
             ) {
                 presentable.presented(from: performer)
                 completion?()
@@ -140,28 +138,33 @@ extension Transition {
         }
     }
 
-    @available(iOS 9.0, *)
+    @available(iOS, introduced: 9.0, deprecated, message: "Use Coordinator.registerPeek instead.")
     public static func registerPeek(for source: Container,
-                                    transition: @escaping @autoclosure () -> Transition) -> Transition {
+                                    transition: @escaping () -> Transition) -> Transition {
         return Transition(presentables: [], animation: nil) { _, performer, completion in
             performer.registerPeek(from: source.view,
-                                   transitionGenerator: { transition() },
+                                   transitionGenerator: transition,
                                    completion: completion)
         }
     }
 
-    @available(iOS 9.0, *)
-    public static func registerPeek<C: Coordinator>(for source: Container,
-                                                    route: C.RouteType,
-                                                    coordinator: C) -> Transition where C.TransitionType == Transition {
-        return .registerPeek(for: source, transition: coordinator.prepareTransition(for: route))
+    @available(iOS, introduced: 9.0, deprecated, message: "Use Coordinator.registerPeek instead.")
+    public static func registerPeek<C: Coordinator & AnyObject>(for source: Container,
+                                                                route: C.RouteType,
+                                                                coordinator: C) -> Transition where C.TransitionType == Transition {
+        return .registerPeek(for: source, transition: { [weak coordinator] in coordinator?.prepareTransition(for: route) ?? .none() })
     }
 }
 
-extension Coordinator {
+extension Coordinator where Self: AnyObject {
     @available(iOS 9.0, *)
-    public func registerPeek<RootViewController>(for source: Container, route: RouteType)
-        -> Transition<RootViewController> where Self.TransitionType == Transition<RootViewController> {
-            return .registerPeek(for: source, route: route, coordinator: self)
+    public func registerPeek<RootViewController>(for source: Container,
+                                                 route: RouteType
+        ) -> Transition<RootViewController> where Self.TransitionType == Transition<RootViewController> {
+            return Transition(presentables: [], animation: nil) { [weak self] _, performer, completion in
+                performer.registerPeek(from: source.view,
+                                       transitionGenerator: { self?.prepareTransition(for: route) ?? .none() },
+                                       completion: completion)
+            }
     }
 }

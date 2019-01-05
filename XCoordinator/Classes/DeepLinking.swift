@@ -36,7 +36,6 @@ extension Transition {
 
         return Transition(presentables: [], animation: nil) { [weak coordinator] options, _, completion in
             guard let coordinator = coordinator else {
-                // swiftlint:disable:next line_length
                 assertionFailure("Please use the coordinator responsible for executing a deepLink-Transition when initializing.")
                 completion?()
                 return
