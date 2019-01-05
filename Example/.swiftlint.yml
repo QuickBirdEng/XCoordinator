@@ -46,6 +46,8 @@ excluded:
 included:
 - ../XCoordinator/Classes
 
+line_length: 140
+
 custom_rules:
 - extra_whitespace:
     name: "Extra whitespaces"
