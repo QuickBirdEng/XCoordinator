@@ -34,8 +34,10 @@ open class RedirectionRouter<SuperRoute: Route, RouteType: Route>: Router {
         self.viewControllerBox = ReferenceBox(viewController)
     }
 
-    public convenience init<RouterType: Router>(viewController: UIViewController, superRouter: RouterType, map: ((RouteType) -> SuperRoute)?) where RouterType.RouteType == SuperRoute {
-        self.init(viewController: viewController, superRouter: AnyRouter(superRouter), map: map)
+    public init<RouterType: Router>(viewController: UIViewController, superRouter: RouterType, map: ((RouteType) -> SuperRoute)?) where RouterType.RouteType == SuperRoute {
+        self.superRouter = AnyRouter(superRouter)
+        self._map = map
+        self.viewControllerBox = ReferenceBox(viewController)
     }
 
     // MARK: - Methods

@@ -7,6 +7,32 @@
 //
 
 extension Transition {
+    public static func show(_ presentable: Presentable) -> Transition {
+        return Transition(presentables: [presentable], animation: nil) { options, performer, completion in
+            performer.show(
+                presentable.viewController,
+                with: options,
+                completion: {
+                    presentable.presented(from: performer)
+                    completion?()
+            }
+            )
+        }
+    }
+
+    public static func showDetail(_ presentable: Presentable) -> Transition {
+        return Transition(presentables: [presentable], animation: nil) { options, performer, completion in
+            performer.showDetail(
+                presentable.viewController,
+                with: options,
+                completion: {
+                    presentable.presented(from: performer)
+                    completion?()
+                }
+            )
+        }
+    }
+
     public static func presentOnRoot(_ presentable: Presentable, animation: Animation? = nil) -> Transition {
         return Transition(presentables: [presentable], animation: animation?.presentationAnimation) { options, performer, completion in
             performer.present(

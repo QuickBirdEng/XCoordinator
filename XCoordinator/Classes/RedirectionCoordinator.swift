@@ -34,12 +34,10 @@ open class RedirectionCoordinator<RouteType: Route, TransitionType: TransitionPr
         _prepareTransition = prepareTransition
     }
 
-    public convenience init<T: TransitionPerformer>(viewController: UIViewController, superTransitionPerformer: T, prepareTransition: ((RouteType) -> TransitionType)?) where T.TransitionType == TransitionType {
-        self.init(
-            viewController: viewController,
-            superTransitionPerformer: AnyTransitionPerformer(superTransitionPerformer),
-            prepareTransition: prepareTransition
-        )
+    public init<T: TransitionPerformer>(viewController: UIViewController, superTransitionPerformer: T, prepareTransition: ((RouteType) -> TransitionType)?) where T.TransitionType == TransitionType {
+        viewControllerBox.set(viewController)
+        self.superTransitionPerformer = AnyTransitionPerformer(superTransitionPerformer)
+        _prepareTransition = prepareTransition
     }
 
     // MARK: - Methods

@@ -7,6 +7,26 @@
 //
 
 extension TransitionPerformer {
+    func show(_ viewController: UIViewController, with options: TransitionOptions, completion: PresentationHandler?) {
+
+        CATransaction.begin()
+        CATransaction.setCompletionBlock(completion)
+
+        rootViewController.show(viewController, sender: nil)
+
+        CATransaction.commit()
+    }
+
+    func showDetail(_ viewController: UIViewController, with options: TransitionOptions, completion: PresentationHandler?) {
+
+        CATransaction.begin()
+        CATransaction.setCompletionBlock(completion)
+
+        rootViewController.showDetailViewController(viewController, sender: nil)
+
+        CATransaction.commit()
+    }
+
     func present(onRoot: Bool, _ viewController: UIViewController, with options: TransitionOptions, animation: Animation?, completion: PresentationHandler?) {
         if let animation = animation {
             viewController.transitioningDelegate = animation
