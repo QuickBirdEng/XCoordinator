@@ -6,6 +6,8 @@
 //  Copyright © 2018 QuickBird Studios. All rights reserved.
 //
 
+public typealias SplitTransition = Transition<UISplitViewController>
+
 open class SplitCoordinator<RouteType: Route>: BaseCoordinator<RouteType, SplitTransition> {
 
     // MARK: - Init

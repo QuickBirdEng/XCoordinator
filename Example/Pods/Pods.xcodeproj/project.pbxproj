@@ -29,7 +29,6 @@
 		0BF00D5785FAF7CD7159C5D156084681 /* Range.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DB7D472BE62E6B6D8C2728E53D92618 /* Range.swift */; };
 		0D72F1A63C256B9C755A30F7FE763EAE /* SharedSequence+Operators+arity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 544713CBA219CFF580923600510E3FEF /* SharedSequence+Operators+arity.swift */; };
 		0DFDD8C3449B89B452F7B9D32A12D549 /* Merge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C7B55B22F82AA6D5AC5F66A41C91659 /* Merge.swift */; };
-		1010D392DE54C44619778C97E66B9448 /* ViewTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 966520DD39779BD6DFB7BB679CF85DB5 /* ViewTransition.swift */; };
 		1153F51A828F50DF0AC5F9F60962B663 /* ObservableConvertibleType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35FFE7ED7C1771688EE29383E49F1CDE /* ObservableConvertibleType.swift */; };
 		11B0C14C67BCDD03D551A9EE2DF79072 /* RxAtomic.c in Sources */ = {isa = PBXBuildFile; fileRef = BA907F4F7582E4156F95DCA3F187521D /* RxAtomic.c */; };
 		127D03FF27DCB8C02ED85D547D2D6BE4 /* RxSwift-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = F79CD718C385987B7215E6961AFD95F2 /* RxSwift-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -150,7 +149,6 @@
 		664D408C612240F13CE1F49A3B789C57 /* TransitionPerformer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43C8D1C838B143A6CA67A23789160690 /* TransitionPerformer.swift */; };
 		6835502EE09668FF5C7DA3915E359E87 /* ReferenceBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28B1505EAB489DF65A62661A402E78DF /* ReferenceBox.swift */; };
 		68398BE5ABC8350129DD2808E9D6638F /* TailRecursiveSink.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B5614559391D92D236E0F49900AF3B7 /* TailRecursiveSink.swift */; };
-		68DE86B05641F2B5CDD09F3166E11D4C /* SplitTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8388D470EF9374938368D50A1172AA4 /* SplitTransition.swift */; };
 		6988D6D6592D5643F99EDC9663347F28 /* Route.swift in Sources */ = {isa = PBXBuildFile; fileRef = 470BA4B1786135AA3FACE932566C3BD4 /* Route.swift */; };
 		6B35B4BBC8B7A436C4F9403FFAED516A /* ObservableConvertibleType+SharedSequence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84E964E229E9A969419913159CC7AD46 /* ObservableConvertibleType+SharedSequence.swift */; };
 		6B888F48067BCE119F7BC7976E074332 /* NSSlider+Rx.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44FB9AEC6894829B7C01375AE0951962 /* NSSlider+Rx.swift */; };
@@ -351,7 +349,6 @@
 		EED25DD8C57DCA5B54B9FC49E7DD97A1 /* AsyncSubject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 488E8E80A109AE9AF75326874FD83AC5 /* AsyncSubject.swift */; };
 		F07E6EF5B088CBD671118B1265534162 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DBE3987788AF3904AA926A1D78A1F70A /* UIKit.framework */; };
 		F3C5273AC5678167EB133D8327BA1532 /* ControlEvent+Driver.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9205628F50D3FD75ED99C142A30EFDE /* ControlEvent+Driver.swift */; };
-		F4BF8FE7E2F9190D97F3A2BAECCE4ED2 /* TransitionPerformer+Split.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42561879BFE32223EBEB7120C6848075 /* TransitionPerformer+Split.swift */; };
 		F55340776C116FFE09E2526C568F32F8 /* RxPickerViewAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36629EEAD72062F3D3BCD0C490FF4F99 /* RxPickerViewAdapter.swift */; };
 		F58F8A4A11399CAB1908CFAB58A7A41B /* ItemEvents.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5D45E2522BF80FF697468BA2E727972 /* ItemEvents.swift */; };
 		F76C1B9A21D7DC8B35205E2C8F7B3EAB /* SkipWhile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07A4C60A10F1FFFA520A59E3021BF788 /* SkipWhile.swift */; };
@@ -586,7 +583,6 @@
 		40473F2BA20FBDE34C32B371D1189307 /* Driver+Subscription.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "Driver+Subscription.swift"; path = "RxCocoa/Traits/Driver/Driver+Subscription.swift"; sourceTree = "<group>"; };
 		4159D5AE9DA5EBFEFC104205E42C9C88 /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
 		41C8B60299F7E08F0FCA8D3B0004ED65 /* DisposeBag.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = DisposeBag.swift; path = RxSwift/Disposables/DisposeBag.swift; sourceTree = "<group>"; };
-		42561879BFE32223EBEB7120C6848075 /* TransitionPerformer+Split.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "TransitionPerformer+Split.swift"; path = "XCoordinator/Classes/TransitionPerformer+Split.swift"; sourceTree = "<group>"; };
 		43C63FC7CEB9ACB308826D8B0E8C57C3 /* KVORepresentable+CoreGraphics.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "KVORepresentable+CoreGraphics.swift"; path = "RxCocoa/Foundation/KVORepresentable+CoreGraphics.swift"; sourceTree = "<group>"; };
 		43C8D1C838B143A6CA67A23789160690 /* TransitionPerformer.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = TransitionPerformer.swift; path = XCoordinator/Classes/TransitionPerformer.swift; sourceTree = "<group>"; };
 		43F62700D28190B4CFAFA4F19BE1E5F7 /* UIRefreshControl+Rx.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "UIRefreshControl+Rx.swift"; path = "RxCocoa/iOS/UIRefreshControl+Rx.swift"; sourceTree = "<group>"; };
@@ -707,7 +703,6 @@
 		944F86B6A133ED128D4AA07DF2A2888B /* RxSwift.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = RxSwift.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		94BFE3453532645178AC8C9BBA967BAD /* SwitchIfEmpty.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SwitchIfEmpty.swift; path = RxSwift/Observables/SwitchIfEmpty.swift; sourceTree = "<group>"; };
 		95AD896AD0980912837EF13BF04DB209 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		966520DD39779BD6DFB7BB679CF85DB5 /* ViewTransition.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ViewTransition.swift; path = XCoordinator/Classes/ViewTransition.swift; sourceTree = "<group>"; };
 		9B07F06021D6CB5800A0C149 /* InterruptibleTransitionAnimation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = InterruptibleTransitionAnimation.swift; path = XCoordinator/Classes/InterruptibleTransitionAnimation.swift; sourceTree = "<group>"; };
 		9B2A479B21C452490097155E /* UIPageViewController+Configuration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "UIPageViewController+Configuration.swift"; path = "XCoordinator/Classes/UIPageViewController+Configuration.swift"; sourceTree = "<group>"; };
 		9B2A479D21C458660097155E /* PageCoordinatorDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = PageCoordinatorDataSource.swift; path = XCoordinator/Classes/PageCoordinatorDataSource.swift; sourceTree = "<group>"; };
@@ -773,7 +768,6 @@
 		C6507DF58EE1B47D4C13CD79B2CB91E6 /* Pods-XCoordinator_Tests.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-XCoordinator_Tests.modulemap"; sourceTree = "<group>"; };
 		C74D61EE8926A379B06683C57E6C1499 /* CompositeDisposable.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = CompositeDisposable.swift; path = RxSwift/Disposables/CompositeDisposable.swift; sourceTree = "<group>"; };
 		C7742F50AC4A1E169DD47529E560FCC0 /* _RXObjCRuntime.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = _RXObjCRuntime.m; path = RxCocoa/Runtime/_RXObjCRuntime.m; sourceTree = "<group>"; };
-		C8388D470EF9374938368D50A1172AA4 /* SplitTransition.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SplitTransition.swift; path = XCoordinator/Classes/SplitTransition.swift; sourceTree = "<group>"; };
 		C869DA5842D51D74DDE3879CBABD56DF /* Action+Internal.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "Action+Internal.swift"; path = "Sources/Action/Action+Internal.swift"; sourceTree = "<group>"; };
 		C8C3E395BAAB44DC09BD89AC87249CF1 /* Observable+Bind.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "Observable+Bind.swift"; path = "RxCocoa/Common/Observable+Bind.swift"; sourceTree = "<group>"; };
 		C947B4511A60098366FDAE21C1F5C9AF /* Event.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Event.swift; path = RxSwift/Event.swift; sourceTree = "<group>"; };
@@ -1301,7 +1295,6 @@
 				470BA4B1786135AA3FACE932566C3BD4 /* Route.swift */,
 				BC988A424B8E2C9F70CA7D7530AE6B58 /* Router.swift */,
 				45ED9EDB27836CA81F41A1EE6A3365FB /* SplitCoordinator.swift */,
-				C8388D470EF9374938368D50A1172AA4 /* SplitTransition.swift */,
 				CE2B7832FE309A3E49AD4A3232043111 /* StaticTransitionAnimation.swift */,
 				0403BA173A589BECAC20E8B14867F7FA /* TabBarCoordinator.swift */,
 				75D33483B8BB103E3C9603FECC49EBC5 /* TabBarTransition.swift */,
@@ -1312,13 +1305,11 @@
 				43C8D1C838B143A6CA67A23789160690 /* TransitionPerformer.swift */,
 				5532AF19993A76B2810E6D646AC57019 /* TransitionPerformer+Navigation.swift */,
 				E92597FDA69AFC4C41386E278A5FA0CE /* TransitionPerformer+Page.swift */,
-				42561879BFE32223EBEB7120C6848075 /* TransitionPerformer+Split.swift */,
 				752A3615FC10850CAB6DD743D27228ED /* TransitionPerformer+TabBar.swift */,
 				06612DD69694204C772781490CD2761E /* TransitionPerformer+Transition.swift */,
 				112989D9D8F06E9413B105362B414C77 /* TransitionProtocol.swift */,
 				E1B41D09E9D86664B9157B445CA3F227 /* UIView+Store.swift */,
 				D67E483119FC6FC9177FD3A5D81B22FB /* ViewCoordinator.swift */,
-				966520DD39779BD6DFB7BB679CF85DB5 /* ViewTransition.swift */,
 				83D33E4486AE44DF85BE8745015D0076 /* Core */,
 				49B823E5F9670744A87AE47403F8C303 /* Pod */,
 				AE5076B002C9D07BC792BE8479439E23 /* RxSwift */,
@@ -2018,7 +2009,6 @@
 				C7EFCC09AA2DEA575F5D4E3C077005D4 /* Router.swift in Sources */,
 				9B2A479C21C452490097155E /* UIPageViewController+Configuration.swift in Sources */,
 				5F894E9869670A2FE5AF36F9A8556395 /* SplitCoordinator.swift in Sources */,
-				68DE86B05641F2B5CDD09F3166E11D4C /* SplitTransition.swift in Sources */,
 				92236A55B84027977673F11D8143D3D7 /* StaticTransitionAnimation.swift in Sources */,
 				265B4676A5D53E41314FFE1F2F599EA5 /* TabBarCoordinator.swift in Sources */,
 				1C6BB3F233B9F35A503DBB2E415A6038 /* TabBarTransition.swift in Sources */,
@@ -2029,7 +2019,6 @@
 				C55C9243CCAA1697AEAD2F4542E221F9 /* TransitionOptions.swift in Sources */,
 				14EF1F65AD57AFA462D45A311C42CD6B /* TransitionPerformer+Navigation.swift in Sources */,
 				D4FB6D3359580BCA5C656DB4024B2F17 /* TransitionPerformer+Page.swift in Sources */,
-				F4BF8FE7E2F9190D97F3A2BAECCE4ED2 /* TransitionPerformer+Split.swift in Sources */,
 				A7EC5DF89CFBB48024AF3CCCE858A3C5 /* TransitionPerformer+TabBar.swift in Sources */,
 				9B2A479E21C458660097155E /* PageCoordinatorDataSource.swift in Sources */,
 				E228936A455427F7AB3973824350403A /* TransitionPerformer+Transition.swift in Sources */,
@@ -2037,7 +2026,6 @@
 				B2148F55B6F15F069DF780FB61B766CC /* TransitionProtocol.swift in Sources */,
 				7341E0B1C1A9794BBDA97FC5BB742AFE /* UIView+Store.swift in Sources */,
 				7468496FB975F6A67F9B67C059DEF613 /* ViewCoordinator.swift in Sources */,
-				1010D392DE54C44619778C97E66B9448 /* ViewTransition.swift in Sources */,
 				9B82682221C9D7FA005841A8 /* GestureRecognizerTarget.swift in Sources */,
 				FA599E8C5A5D9CB5C137B20B36342BA8 /* XCoordinator-dummy.m in Sources */,
 			);

@@ -6,6 +6,8 @@
 //  Copyright © 2018 QuickBird Studios. All rights reserved.
 //
 
+public typealias ViewTransition = Transition<UIViewController>
+
 open class ViewCoordinator<RouteType: Route>: BaseCoordinator<RouteType, ViewTransition> {
 
     // MARK: - Init
