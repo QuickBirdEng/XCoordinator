@@ -13,15 +13,13 @@ extension Transition where RootViewController: UIPageViewController {
                            direction: UIPageViewController.NavigationDirection) -> PageTransition {
         let presentables = [first, second].compactMap { $0 }
         return PageTransition(presentables: presentables, animation: nil) { options, performer, completion in
-            performer.set(
-                presentables.map { $0.viewController },
-                direction: direction,
-                with: options,
-                completion: {
-                    presentables.forEach { $0.presented(from: performer) }
-                    completion?()
-                }
-            )
+            performer.set(presentables.map { $0.viewController },
+                          direction: direction,
+                          with: options
+            ) {
+                presentables.forEach { $0.presented(from: performer) }
+                completion?()
+            }
         }
     }
 }

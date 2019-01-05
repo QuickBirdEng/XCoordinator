@@ -74,12 +74,9 @@ extension RedirectionCoordinator {
     @available(*, deprecated, renamed: "init(viewController:superTransitionPerfomer:prepareTransition:)")
     public convenience init<C: Coordinator>(viewController: UIViewController,
                                             superCoordinator: C,
-                                            prepareTransition: ((RouteType) -> TransitionType)?)
-        where C.TransitionType == TransitionType {
-        self.init(
-            viewController: viewController,
-            superTransitionPerformer: AnyTransitionPerformer(superCoordinator),
-            prepareTransition: prepareTransition
-        )
+                                            prepareTransition: ((RouteType) -> TransitionType)?) where C.TransitionType == TransitionType {
+        self.init(viewController: viewController,
+                  superTransitionPerformer: AnyTransitionPerformer(superCoordinator),
+                  prepareTransition: prepareTransition)
     }
 }

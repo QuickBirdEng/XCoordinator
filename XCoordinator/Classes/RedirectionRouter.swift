@@ -18,12 +18,7 @@ open class RedirectionRouter<SuperRoute: Route, RouteType: Route>: Router {
     // MARK: - Computed properties
 
     public var viewController: UIViewController! {
-        get {
-            return viewControllerBox.get()
-        }
-        set {
-            viewControllerBox.set(newValue)
-        }
+        return viewControllerBox.get()
     }
 
     // MARK: - Init

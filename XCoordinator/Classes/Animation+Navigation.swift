@@ -80,7 +80,8 @@ extension NavigationAnimationDelegate: UINavigationControllerDelegate {
     }
 
     open func navigationController(_ navigationController: UINavigationController,
-                                   willShow viewController: UIViewController, animated: Bool) {
+                                   willShow viewController: UIViewController,
+                                   animated: Bool) {
         delegate?.navigationController?(navigationController, willShow: viewController, animated: animated)
     }
 }

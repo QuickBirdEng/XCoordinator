@@ -29,10 +29,9 @@ extension Coordinator where Self: AnyObject {
 // MARK: - Transition + DeepLink
 
 extension Transition {
-    fileprivate static func deepLink<C: Coordinator & AnyObject>(
-        with coordinator: C,
-        _ route: C.RouteType,
-        array remainingRoutes: [Route]) -> Transition {
+    fileprivate static func deepLink<C: Coordinator & AnyObject>(with coordinator: C,
+                                                                 _ route: C.RouteType,
+                                                                 array remainingRoutes: [Route]) -> Transition {
 
         return Transition(presentables: [], animation: nil) { [weak coordinator] options, _, completion in
             guard let coordinator = coordinator else {
@@ -60,8 +59,10 @@ extension Route {
         return nil
     }
 
-    fileprivate func trigger(on presentables: [Presentable], remainingRoutes: ArraySlice<Route>,
-                             with options: TransitionOptions, completion: PresentationHandler?) {
+    fileprivate func trigger(on presentables: [Presentable],
+                             remainingRoutes: ArraySlice<Route>,
+                             with options: TransitionOptions,
+                             completion: PresentationHandler?) {
         var stack = presentables
 
         guard let router = router(fromStack: &stack) else {
