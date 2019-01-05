@@ -31,6 +31,7 @@ open class RedirectionCoordinator<RouteType: Route, TransitionType: TransitionPr
     public init(viewController: UIViewController,
                 superTransitionPerformer: AnyTransitionPerformer<TransitionType>,
                 prepareTransition: ((RouteType) -> TransitionType)?) {
+
         viewControllerBox.set(viewController)
         self.superTransitionPerformer = superTransitionPerformer
         _prepareTransition = prepareTransition
@@ -40,6 +41,7 @@ open class RedirectionCoordinator<RouteType: Route, TransitionType: TransitionPr
                                         superTransitionPerformer: T,
                                         prepareTransition: ((RouteType) -> TransitionType)?
         ) where T.TransitionType == TransitionType {
+
         viewControllerBox.set(viewController)
         self.superTransitionPerformer = AnyTransitionPerformer(superTransitionPerformer)
         _prepareTransition = prepareTransition
