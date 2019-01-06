@@ -14,7 +14,7 @@
     <a title="InteractiveTransitionAnimation Class Reference"></a>
     <header>
       <div class="content-wrapper">
-        <p><a href="../index.html">XCoordinator Docs</a> (41% documented)</p>
+        <p><a href="../index.html">XCoordinator Docs</a> (63% documented)</p>
       </div>
     </header>
     <div class="content-wrapper">
@@ -53,6 +53,9 @@
               </li>
               <li class="nav-group-task">
                 <a href="../Classes/InteractiveTransitionAnimation.html">InteractiveTransitionAnimation</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/InterruptibleTransitionAnimation.html">InterruptibleTransitionAnimation</a>
               </li>
               <li class="nav-group-task">
                 <a href="../Classes/NavigationAnimationDelegate.html">NavigationAnimationDelegate</a>
@@ -240,9 +243,9 @@ and (optionally) a closure to create an interaction controller.</p>
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:12XCoordinator30InteractiveTransitionAnimationC21interactionControllerAA024PercentDrivenInteractionF0_pSgvp"></a>
+                    <a name="/s:12XCoordinator19TransitionAnimationP21interactionControllerAA024PercentDrivenInteractionE0_pSgvp"></a>
                     <a name="//apple_ref/swift/Property/interactionController" class="dashAnchor"></a>
-                    <a class="token" href="#/s:12XCoordinator30InteractiveTransitionAnimationC21interactionControllerAA024PercentDrivenInteractionF0_pSgvp">interactionController</a>
+                    <a class="token" href="#/s:12XCoordinator19TransitionAnimationP21interactionControllerAA024PercentDrivenInteractionE0_pSgvp">interactionController</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -250,8 +253,7 @@ and (optionally) a closure to create an interaction controller.</p>
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
-
+                        
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
@@ -296,7 +298,9 @@ generate an interaction controller.</p>
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="nf">init</span><span class="p">(</span><span class="nv">duration</span><span class="p">:</span> <span class="kt">TimeInterval</span><span class="p">,</span> <span class="nv">transition</span><span class="p">:</span> <span class="kd">@escaping</span> <span class="p">(</span><span class="n">_</span> <span class="nv">context</span><span class="p">:</span> <span class="kt">UIViewControllerContextTransitioning</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Void</span><span class="p">,</span> <span class="nv">generateInteractionController</span><span class="p">:</span> <span class="kd">@escaping</span> <span class="p">()</span> <span class="o">-&gt;</span> <span class="kt"><a href="../Protocols/PercentDrivenInteractionController.html">PercentDrivenInteractionController</a></span><span class="p">?)</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="nf">init</span><span class="p">(</span><span class="nv">duration</span><span class="p">:</span> <span class="kt">TimeInterval</span><span class="p">,</span>
+            <span class="nv">transition</span><span class="p">:</span> <span class="kd">@escaping</span> <span class="p">(</span><span class="kt">UIViewControllerContextTransitioning</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Void</span><span class="p">,</span>
+            <span class="nv">generateInteractionController</span><span class="p">:</span> <span class="kd">@escaping</span> <span class="p">()</span> <span class="o">-&gt;</span> <span class="kt"><a href="../Protocols/PercentDrivenInteractionController.html">PercentDrivenInteractionController</a></span><span class="p">?)</span></code></pre>
 
                         </div>
                       </div>
@@ -381,7 +385,8 @@ By ommitting the <code>generateInteractionController</code> closure, the transit
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="n">convenience</span> <span class="nf">init</span><span class="p">(</span><span class="nv">duration</span><span class="p">:</span> <span class="kt">TimeInterval</span><span class="p">,</span> <span class="nv">transition</span><span class="p">:</span> <span class="kd">@escaping</span> <span class="p">(</span><span class="n">_</span> <span class="nv">context</span><span class="p">:</span> <span class="kt">UIViewControllerContextTransitioning</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Void</span><span class="p">)</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="n">convenience</span> <span class="nf">init</span><span class="p">(</span><span class="nv">duration</span><span class="p">:</span> <span class="kt">TimeInterval</span><span class="p">,</span>
+                        <span class="nv">transition</span><span class="p">:</span> <span class="kd">@escaping</span> <span class="p">(</span><span class="kt">UIViewControllerContextTransitioning</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Void</span><span class="p">)</span></code></pre>
 
                         </div>
                       </div>
@@ -434,9 +439,9 @@ By ommitting the <code>generateInteractionController</code> closure, the transit
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:12XCoordinator30InteractiveTransitionAnimationC010transitionD036generateDefaultInteractionControllerAcA06StaticcD0C_AA013PercentDrivenhI0_pSgyctcfc"></a>
-                    <a name="//apple_ref/swift/Method/init(transitionAnimation:generateDefaultInteractionController:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:12XCoordinator30InteractiveTransitionAnimationC010transitionD036generateDefaultInteractionControllerAcA06StaticcD0C_AA013PercentDrivenhI0_pSgyctcfc">init(transitionAnimation:generateDefaultInteractionController:)</a>
+                    <a name="/s:12XCoordinator30InteractiveTransitionAnimationC010transitionD029generateInteractionControllerAcA06StaticcD0C_AA013PercentDrivengH0_pSgyctcfc"></a>
+                    <a name="//apple_ref/swift/Method/init(transitionAnimation:generateInteractionController:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:12XCoordinator30InteractiveTransitionAnimationC010transitionD029generateInteractionControllerAcA06StaticcD0C_AA013PercentDrivengH0_pSgyctcfc">init(transitionAnimation:generateInteractionController:)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -452,7 +457,8 @@ Provides a simple interface to make StaticTransitionAnimations interactive.</p>
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="n">convenience</span> <span class="nf">init</span><span class="p">(</span><span class="nv">transitionAnimation</span><span class="p">:</span> <span class="kt"><a href="../Classes/StaticTransitionAnimation.html">StaticTransitionAnimation</a></span><span class="p">,</span> <span class="nv">generateDefaultInteractionController</span><span class="p">:</span> <span class="kd">@escaping</span> <span class="p">()</span> <span class="o">-&gt;</span> <span class="kt"><a href="../Protocols/PercentDrivenInteractionController.html">PercentDrivenInteractionController</a></span><span class="p">?)</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="n">convenience</span> <span class="nf">init</span><span class="p">(</span><span class="nv">transitionAnimation</span><span class="p">:</span> <span class="kt"><a href="../Classes/StaticTransitionAnimation.html">StaticTransitionAnimation</a></span><span class="p">,</span>
+                        <span class="nv">generateInteractionController</span><span class="p">:</span> <span class="kd">@escaping</span> <span class="p">()</span> <span class="o">-&gt;</span> <span class="kt"><a href="../Protocols/PercentDrivenInteractionController.html">PercentDrivenInteractionController</a></span><span class="p">?)</span></code></pre>
 
                         </div>
                       </div>
@@ -783,7 +789,7 @@ in your subclass.</p>
           </section>
         </section>
         <section id="footer">
-          <p>&copy; 2019 <a class="link" href="https://github.com/quickbirdstudios/XCoordinator" target="_blank" rel="external">Stefan Kofler and Paul Kraft</a>. All rights reserved. (Last updated: 2019-01-01)</p>
+          <p>&copy; 2019 <a class="link" href="https://github.com/quickbirdstudios/XCoordinator" target="_blank" rel="external">Stefan Kofler and Paul Kraft</a>. All rights reserved. (Last updated: 2019-01-06)</p>
           <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.9.4</a>, a <a class="link" href="https://realm.io" target="_blank" rel="external">Realm</a> project.</p>
         </section>
       </article>

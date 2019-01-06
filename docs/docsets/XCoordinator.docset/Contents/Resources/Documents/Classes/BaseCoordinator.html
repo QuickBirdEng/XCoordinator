@@ -14,7 +14,7 @@
     <a title="BaseCoordinator Class Reference"></a>
     <header>
       <div class="content-wrapper">
-        <p><a href="../index.html">XCoordinator Docs</a> (41% documented)</p>
+        <p><a href="../index.html">XCoordinator Docs</a> (63% documented)</p>
       </div>
     </header>
     <div class="content-wrapper">
@@ -53,6 +53,9 @@
               </li>
               <li class="nav-group-task">
                 <a href="../Classes/InteractiveTransitionAnimation.html">InteractiveTransitionAnimation</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/InterruptibleTransitionAnimation.html">InterruptibleTransitionAnimation</a>
               </li>
               <li class="nav-group-task">
                 <a href="../Classes/NavigationAnimationDelegate.html">NavigationAnimationDelegate</a>
@@ -234,9 +237,9 @@ and <code><a href="../Classes/PageCoordinator.html">PageCoordinator</a></code>.<
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:12XCoordinator15BaseCoordinatorC18rootViewController04RooteF0Qy_vp"></a>
+                    <a name="/s:12XCoordinator19TransitionPerformerP18rootViewController0B4Type_04RooteF0QZvp"></a>
                     <a name="//apple_ref/swift/Property/rootViewController" class="dashAnchor"></a>
-                    <a class="token" href="#/s:12XCoordinator15BaseCoordinatorC18rootViewController04RooteF0Qy_vp">rootViewController</a>
+                    <a class="token" href="#/s:12XCoordinator19TransitionPerformerP18rootViewController0B4Type_04RooteF0QZvp">rootViewController</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -244,8 +247,7 @@ and <code><a href="../Classes/PageCoordinator.html">PageCoordinator</a></code>.<
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
-
+                        
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
@@ -377,9 +379,9 @@ If you specify <code>nil</code>, no transition is performed.</p>
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:12XCoordinator15BaseCoordinatorC9presented4fromyAA11Presentable_pSg_tF"></a>
+                    <a name="/s:12XCoordinator11PresentableP9presented4fromyAaB_pSg_tF"></a>
                     <a name="//apple_ref/swift/Method/presented(from:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:12XCoordinator15BaseCoordinatorC9presented4fromyAA11Presentable_pSg_tF">presented(from:)</a>
+                    <a class="token" href="#/s:12XCoordinator11PresentableP9presented4fromyAaB_pSg_tF">presented(from:)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -387,8 +389,7 @@ If you specify <code>nil</code>, no transition is performed.</p>
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
-
+                        
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
@@ -414,7 +415,7 @@ If you specify <code>nil</code>, no transition is performed.</p>
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>This method generates the <code><a href="../Classes/BaseCoordinator.html#/s:12XCoordinator15BaseCoordinatorC18rootViewController04RooteF0Qy_vp">rootViewController</a></code> on initialization.</p>
+                        <p>This method generates the <code><a href="../Classes/BaseCoordinator.html#/s:12XCoordinator19TransitionPerformerP18rootViewController0B4Type_04RooteF0QZvp">rootViewController</a></code> on initialization.</p>
 
 <p>This method is only called once during initalization. Make sure to use the result from
 <code>super.generateRootViewController()</code> when overriding to make sure transition animations
@@ -514,13 +515,44 @@ Override this method to define transitions for triggered routes.</p>
             </div>
             <div class="task-group">
               <div class="task-name-container">
-                <a name="/Interactive%20Transitions"></a>
-                <a name="//apple_ref/swift/Section/Interactive Transitions" class="dashAnchor"></a>
-                <a href="#/Interactive%20Transitions">
-                  <h3 class="section-name">Interactive Transitions</h3>
+                <a name="/Registering"></a>
+                <a name="//apple_ref/swift/Section/Registering" class="dashAnchor"></a>
+                <a href="#/Registering">
+                  <h3 class="section-name">Registering</h3>
                 </a>
               </div>
               <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:12XCoordinator15BaseCoordinatorC29registerInteractiveTransition3for11triggeredBy7handler10completionyx_qd__yqd___AA0F9Animation_pSgyXEtcyycSgtSo19UIGestureRecognizerCRbd__lF"></a>
+                    <a name="//apple_ref/swift/Method/registerInteractiveTransition(for:triggeredBy:handler:completion:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:12XCoordinator15BaseCoordinatorC29registerInteractiveTransition3for11triggeredBy7handler10completionyx_qd__yqd___AA0F9Animation_pSgyXEtcyycSgtSo19UIGestureRecognizerCRbd__lF">registerInteractiveTransition(for:triggeredBy:handler:completion:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">open</span> <span class="kd">func</span> <span class="n">registerInteractiveTransition</span><span class="o">&lt;</span><span class="kt">GestureRecognizer</span><span class="p">:</span> <span class="kt">UIGestureRecognizer</span><span class="o">&gt;</span><span class="p">(</span>
+    <span class="k">for</span> <span class="nv">route</span><span class="p">:</span> <span class="kt">RouteType</span><span class="p">,</span>
+    <span class="n">triggeredBy</span> <span class="nv">recognizer</span><span class="p">:</span> <span class="kt">GestureRecognizer</span><span class="p">,</span>
+    <span class="nv">handler</span><span class="p">:</span> <span class="kd">@escaping</span> <span class="p">(</span><span class="kt">GestureRecognizer</span><span class="p">,</span> <span class="p">()</span> <span class="o">-&gt;</span> <span class="kt"><a href="../Protocols/TransitionAnimation.html">TransitionAnimation</a></span><span class="p">?)</span> <span class="o">-&gt;</span> <span class="kt">Void</span><span class="p">,</span>
+    <span class="nv">completion</span><span class="p">:</span> <span class="kt"><a href="../Typealiases.html#/s:12XCoordinator19PresentationHandlera">PresentationHandler</a></span><span class="p">?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
                 <li class="item">
                   <div>
                     <code>
@@ -553,6 +585,17 @@ Override this method to define transitions for triggered routes.</p>
                     </section>
                   </div>
                 </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <div class="task-name-container">
+                <a name="/Unregistering"></a>
+                <a name="//apple_ref/swift/Section/Unregistering" class="dashAnchor"></a>
+                <a href="#/Unregistering">
+                  <h3 class="section-name">Unregistering</h3>
+                </a>
+              </div>
+              <ul>
                 <li class="item">
                   <div>
                     <code>
@@ -585,7 +628,7 @@ Override this method to define transitions for triggered routes.</p>
           </section>
         </section>
         <section id="footer">
-          <p>&copy; 2019 <a class="link" href="https://github.com/quickbirdstudios/XCoordinator" target="_blank" rel="external">Stefan Kofler and Paul Kraft</a>. All rights reserved. (Last updated: 2019-01-01)</p>
+          <p>&copy; 2019 <a class="link" href="https://github.com/quickbirdstudios/XCoordinator" target="_blank" rel="external">Stefan Kofler and Paul Kraft</a>. All rights reserved. (Last updated: 2019-01-06)</p>
           <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.9.4</a>, a <a class="link" href="https://realm.io" target="_blank" rel="external">Realm</a> project.</p>
         </section>
       </article>

@@ -14,7 +14,7 @@
     <a title="Classes  Reference"></a>
     <header>
       <div class="content-wrapper">
-        <p><a href="index.html">XCoordinator Docs</a> (41% documented)</p>
+        <p><a href="index.html">XCoordinator Docs</a> (63% documented)</p>
       </div>
     </header>
     <div class="content-wrapper">
@@ -53,6 +53,9 @@
               </li>
               <li class="nav-group-task">
                 <a href="Classes/InteractiveTransitionAnimation.html">InteractiveTransitionAnimation</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Classes/InterruptibleTransitionAnimation.html">InterruptibleTransitionAnimation</a>
               </li>
               <li class="nav-group-task">
                 <a href="Classes/NavigationAnimationDelegate.html">NavigationAnimationDelegate</a>
@@ -389,7 +392,7 @@ See <code><a href="Classes/AnyTransitionPerformer.html">AnyTransitionPerformer</
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p>Use AnyRouter to abstract away from</p>
 
                         <a href="Classes/AnyRouter.html" class="slightly-smaller">See more</a>
                       </div>
@@ -556,6 +559,38 @@ and (optionally) a closure to create an interaction controller.</p>
                 <li class="item">
                   <div>
                     <code>
+                    <a name="/c:@M@XCoordinator@objc(cs)InterruptibleTransitionAnimation"></a>
+                    <a name="//apple_ref/swift/Class/InterruptibleTransitionAnimation" class="dashAnchor"></a>
+                    <a class="token" href="#/c:@M@XCoordinator@objc(cs)InterruptibleTransitionAnimation">InterruptibleTransitionAnimation</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                        <a href="Classes/InterruptibleTransitionAnimation.html" class="slightly-smaller">See more</a>
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">open</span> <span class="kd">class</span> <span class="kt">InterruptibleTransitionAnimation</span> <span class="p">:</span> <span class="kt"><a href="Classes/InteractiveTransitionAnimation.html">InteractiveTransitionAnimation</a></span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
                     <a name="/s:12XCoordinator21NavigationCoordinatorC"></a>
                     <a name="//apple_ref/swift/Class/NavigationCoordinator" class="dashAnchor"></a>
                     <a class="token" href="#/s:12XCoordinator21NavigationCoordinatorC">NavigationCoordinator</a>
@@ -598,7 +633,12 @@ and (optionally) a closure to create an interaction controller.</p>
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p>PageCoordinator provides a base class for your custom coordinator with a <code>UIPageViewController</code> rootViewController.</p>
+<div class="aside aside-note">
+    <p class="aside-title">Note</p>
+    PageCoordinator sets the dataSource of the rootViewController to reflect the parameters in the initializer.
+
+</div>
 
                         <a href="Classes/PageCoordinator.html" class="slightly-smaller">See more</a>
                       </div>
@@ -638,7 +678,7 @@ and (optionally) a closure to create an interaction controller.</p>
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">open</span> <span class="kd">class</span> <span class="kt">PageCoordinatorDataSource</span> <span class="p">:</span> <span class="kt">NSObject</span><span class="p">,</span> <span class="kt">UIPageViewControllerDataSource</span><span class="p">,</span> <span class="kt">UIPageViewControllerDelegate</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">open</span> <span class="kd">class</span> <span class="kt">PageCoordinatorDataSource</span> <span class="p">:</span> <span class="kt">NSObject</span><span class="p">,</span> <span class="kt">UIPageViewControllerDataSource</span></code></pre>
 
                         </div>
                       </div>
@@ -888,7 +928,7 @@ rootViewController.</p>
           </section>
         </section>
         <section id="footer">
-          <p>&copy; 2019 <a class="link" href="https://github.com/quickbirdstudios/XCoordinator" target="_blank" rel="external">Stefan Kofler and Paul Kraft</a>. All rights reserved. (Last updated: 2019-01-01)</p>
+          <p>&copy; 2019 <a class="link" href="https://github.com/quickbirdstudios/XCoordinator" target="_blank" rel="external">Stefan Kofler and Paul Kraft</a>. All rights reserved. (Last updated: 2019-01-06)</p>
           <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.9.4</a>, a <a class="link" href="https://realm.io" target="_blank" rel="external">Realm</a> project.</p>
         </section>
       </article>

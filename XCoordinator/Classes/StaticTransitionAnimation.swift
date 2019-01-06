@@ -66,7 +66,7 @@ open class StaticTransitionAnimation: NSObject, TransitionAnimation {
 
 extension StaticTransitionAnimation {
     @available(*, deprecated, renamed: "animateTransition(using:)")
-    func performTransition(_ transitionContext: UIViewControllerContextTransitioning) {
+    public func performTransition(_ transitionContext: UIViewControllerContextTransitioning) {
         _performAnimation(transitionContext)
     }
 }

@@ -14,7 +14,7 @@
     <a title="PageCoordinatorDataSource Class Reference"></a>
     <header>
       <div class="content-wrapper">
-        <p><a href="../index.html">XCoordinator Docs</a> (41% documented)</p>
+        <p><a href="../index.html">XCoordinator Docs</a> (63% documented)</p>
       </div>
     </header>
     <div class="content-wrapper">
@@ -53,6 +53,9 @@
               </li>
               <li class="nav-group-task">
                 <a href="../Classes/InteractiveTransitionAnimation.html">InteractiveTransitionAnimation</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/InterruptibleTransitionAnimation.html">InterruptibleTransitionAnimation</a>
               </li>
               <li class="nav-group-task">
                 <a href="../Classes/NavigationAnimationDelegate.html">NavigationAnimationDelegate</a>
@@ -210,7 +213,7 @@
             <h1>PageCoordinatorDataSource</h1>
               <div class="declaration">
                 <div class="language">
-                  <pre class="highlight swift"><code><span class="kd">open</span> <span class="kd">class</span> <span class="kt">PageCoordinatorDataSource</span> <span class="p">:</span> <span class="kt">NSObject</span><span class="p">,</span> <span class="kt">UIPageViewControllerDataSource</span><span class="p">,</span> <span class="kt">UIPageViewControllerDelegate</span></code></pre>
+                  <pre class="highlight swift"><code><span class="kd">open</span> <span class="kd">class</span> <span class="kt">PageCoordinatorDataSource</span> <span class="p">:</span> <span class="kt">NSObject</span><span class="p">,</span> <span class="kt">UIPageViewControllerDataSource</span></code></pre>
 
                 </div>
               </div>
@@ -247,7 +250,7 @@
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">open</span> <span class="kd">private(set)</span> <span class="k">var</span> <span class="nv">pages</span><span class="p">:</span> <span class="p">[</span><span class="kt">UIViewController</span><span class="p">]</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">open</span> <span class="k">var</span> <span class="nv">pages</span><span class="p">:</span> <span class="p">[</span><span class="kt">UIViewController</span><span class="p">]</span></code></pre>
 
                         </div>
                       </div>
@@ -274,7 +277,7 @@
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">open</span> <span class="kd">private(set)</span> <span class="k">var</span> <span class="nv">loop</span><span class="p">:</span> <span class="kt">Bool</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">open</span> <span class="k">var</span> <span class="nv">loop</span><span class="p">:</span> <span class="kt">Bool</span></code></pre>
 
                         </div>
                       </div>
@@ -404,7 +407,8 @@
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">open</span> <span class="kd">func</span> <span class="nf">pageViewController</span><span class="p">(</span><span class="n">_</span> <span class="nv">pageViewController</span><span class="p">:</span> <span class="kt">UIPageViewController</span><span class="p">,</span> <span class="n">viewControllerBefore</span> <span class="nv">viewController</span><span class="p">:</span> <span class="kt">UIViewController</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">UIViewController</span><span class="p">?</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">open</span> <span class="kd">func</span> <span class="nf">pageViewController</span><span class="p">(</span><span class="n">_</span> <span class="nv">pageViewController</span><span class="p">:</span> <span class="kt">UIPageViewController</span><span class="p">,</span>
+                             <span class="n">viewControllerBefore</span> <span class="nv">viewController</span><span class="p">:</span> <span class="kt">UIViewController</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">UIViewController</span><span class="p">?</span></code></pre>
 
                         </div>
                       </div>
@@ -431,7 +435,8 @@
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">open</span> <span class="kd">func</span> <span class="nf">pageViewController</span><span class="p">(</span><span class="n">_</span> <span class="nv">pageViewController</span><span class="p">:</span> <span class="kt">UIPageViewController</span><span class="p">,</span> <span class="n">viewControllerAfter</span> <span class="nv">viewController</span><span class="p">:</span> <span class="kt">UIViewController</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">UIViewController</span><span class="p">?</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">open</span> <span class="kd">func</span> <span class="nf">pageViewController</span><span class="p">(</span><span class="n">_</span> <span class="nv">pageViewController</span><span class="p">:</span> <span class="kt">UIPageViewController</span><span class="p">,</span>
+                             <span class="n">viewControllerAfter</span> <span class="nv">viewController</span><span class="p">:</span> <span class="kt">UIViewController</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">UIViewController</span><span class="p">?</span></code></pre>
 
                         </div>
                       </div>
@@ -443,7 +448,7 @@
           </section>
         </section>
         <section id="footer">
-          <p>&copy; 2019 <a class="link" href="https://github.com/quickbirdstudios/XCoordinator" target="_blank" rel="external">Stefan Kofler and Paul Kraft</a>. All rights reserved. (Last updated: 2019-01-01)</p>
+          <p>&copy; 2019 <a class="link" href="https://github.com/quickbirdstudios/XCoordinator" target="_blank" rel="external">Stefan Kofler and Paul Kraft</a>. All rights reserved. (Last updated: 2019-01-06)</p>
           <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.9.4</a>, a <a class="link" href="https://realm.io" target="_blank" rel="external">Realm</a> project.</p>
         </section>
       </article>

@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>PageCoordinatorDataSource Class Reference</title>
+    <title>InterruptibleTransitionAnimation Class Reference</title>
     <link rel="stylesheet" type="text/css" href="../css/jazzy.css" />
     <link rel="stylesheet" type="text/css" href="../css/highlight.css" />
     <meta charset='utf-8'>
@@ -10,8 +10,8 @@
     
   </head>
   <body>
-    <a name="//apple_ref/swift/Class/PageCoordinatorDataSource" class="dashAnchor"></a>
-    <a title="PageCoordinatorDataSource Class Reference"></a>
+    <a name="//apple_ref/swift/Class/InterruptibleTransitionAnimation" class="dashAnchor"></a>
+    <a title="InterruptibleTransitionAnimation Class Reference"></a>
     <header>
       <div class="content-wrapper">
         <p><a href="../index.html">XCoordinator Docs</a> (63% documented)</p>
@@ -21,7 +21,7 @@
       <p id="breadcrumbs">
         <a href="../index.html">XCoordinator Reference</a>
         <img id="carat" src="../img/carat.png" />
-        PageCoordinatorDataSource Class Reference
+        InterruptibleTransitionAnimation Class Reference
       </p>
     </div>
     <div class="content-wrapper">
@@ -210,10 +210,10 @@
       <article class="main-content">
         <section>
           <section class="section">
-            <h1>PageCoordinatorDataSource</h1>
+            <h1>InterruptibleTransitionAnimation</h1>
               <div class="declaration">
                 <div class="language">
-                  <pre class="highlight swift"><code><span class="kd">open</span> <span class="kd">class</span> <span class="kt">PageCoordinatorDataSource</span> <span class="p">:</span> <span class="kt">NSObject</span><span class="p">,</span> <span class="kt">UIPageViewControllerDataSource</span></code></pre>
+                  <pre class="highlight swift"><code><span class="kd">open</span> <span class="kd">class</span> <span class="kt">InterruptibleTransitionAnimation</span> <span class="p">:</span> <span class="kt"><a href="../Classes/InteractiveTransitionAnimation.html">InteractiveTransitionAnimation</a></span></code></pre>
 
                 </div>
               </div>
@@ -223,19 +223,19 @@
           <section class="section task-group-section">
             <div class="task-group">
               <div class="task-name-container">
-                <a name="/Stored%20properties"></a>
-                <a name="//apple_ref/swift/Section/Stored properties" class="dashAnchor"></a>
-                <a href="#/Stored%20properties">
-                  <h3 class="section-name">Stored properties</h3>
+                <a name="/Init"></a>
+                <a name="//apple_ref/swift/Section/Init" class="dashAnchor"></a>
+                <a href="#/Init">
+                  <h3 class="section-name">Init</h3>
                 </a>
               </div>
               <ul>
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:12XCoordinator25PageCoordinatorDataSourceC5pagesSaySo16UIViewControllerCGvp"></a>
-                    <a name="//apple_ref/swift/Property/pages" class="dashAnchor"></a>
-                    <a class="token" href="#/s:12XCoordinator25PageCoordinatorDataSourceC5pagesSaySo16UIViewControllerCGvp">pages</a>
+                    <a name="/s:12XCoordinator32InterruptibleTransitionAnimationC8duration16generateAnimator0F21InteractionControllerACSd_So25UIViewImplicitlyAnimating_pSo0jI20ContextTransitioning_pcAA013PercentDrivenhI0_pSgyctcfc"></a>
+                    <a name="//apple_ref/swift/Method/init(duration:generateAnimator:generateInteractionController:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:12XCoordinator32InterruptibleTransitionAnimationC8duration16generateAnimator0F21InteractionControllerACSd_So25UIViewImplicitlyAnimating_pSo0jI20ContextTransitioning_pcAA013PercentDrivenhI0_pSgyctcfc">init(duration:generateAnimator:generateInteractionController:)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -250,7 +250,9 @@
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">open</span> <span class="k">var</span> <span class="nv">pages</span><span class="p">:</span> <span class="p">[</span><span class="kt">UIViewController</span><span class="p">]</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="nf">init</span><span class="p">(</span><span class="nv">duration</span><span class="p">:</span> <span class="kt">TimeInterval</span><span class="p">,</span>
+            <span class="nv">generateAnimator</span><span class="p">:</span> <span class="kd">@escaping</span> <span class="p">(</span><span class="kt">UIViewControllerContextTransitioning</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">UIViewImplicitlyAnimating</span><span class="p">,</span>
+            <span class="nv">generateInteractionController</span><span class="p">:</span> <span class="kd">@escaping</span> <span class="p">()</span> <span class="o">-&gt;</span> <span class="kt"><a href="../Protocols/PercentDrivenInteractionController.html">PercentDrivenInteractionController</a></span><span class="p">?)</span></code></pre>
 
                         </div>
                       </div>
@@ -260,9 +262,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:12XCoordinator25PageCoordinatorDataSourceC4loopSbvp"></a>
-                    <a name="//apple_ref/swift/Property/loop" class="dashAnchor"></a>
-                    <a class="token" href="#/s:12XCoordinator25PageCoordinatorDataSourceC4loopSbvp">loop</a>
+                    <a name="/s:12XCoordinator32InterruptibleTransitionAnimationC8duration16generateAnimatorACSd_So25UIViewImplicitlyAnimating_pSo0H30ControllerContextTransitioning_pctcfc"></a>
+                    <a name="//apple_ref/swift/Method/init(duration:generateAnimator:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:12XCoordinator32InterruptibleTransitionAnimationC8duration16generateAnimatorACSd_So25UIViewImplicitlyAnimating_pSo0H30ControllerContextTransitioning_pctcfc">init(duration:generateAnimator:)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -277,45 +279,8 @@
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">open</span> <span class="k">var</span> <span class="nv">loop</span><span class="p">:</span> <span class="kt">Bool</span></code></pre>
-
-                        </div>
-                      </div>
-                    </section>
-                  </div>
-                </li>
-              </ul>
-            </div>
-            <div class="task-group">
-              <div class="task-name-container">
-                <a name="/Initialization"></a>
-                <a name="//apple_ref/swift/Section/Initialization" class="dashAnchor"></a>
-                <a href="#/Initialization">
-                  <h3 class="section-name">Initialization</h3>
-                </a>
-              </div>
-              <ul>
-                <li class="item">
-                  <div>
-                    <code>
-                    <a name="/s:12XCoordinator25PageCoordinatorDataSourceC5pages4loopACSaySo16UIViewControllerCG_Sbtcfc"></a>
-                    <a name="//apple_ref/swift/Method/init(pages:loop:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:12XCoordinator25PageCoordinatorDataSourceC5pages4loopACSaySo16UIViewControllerCG_Sbtcfc">init(pages:loop:)</a>
-                    </code>
-                  </div>
-                  <div class="height-container">
-                    <div class="pointer-container"></div>
-                    <section class="section">
-                      <div class="pointer"></div>
-                      <div class="abstract">
-                        <p>Undocumented</p>
-
-                      </div>
-                      <div class="declaration">
-                        <h4>Declaration</h4>
-                        <div class="language">
-                          <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="nf">init</span><span class="p">(</span><span class="nv">pages</span><span class="p">:</span> <span class="p">[</span><span class="kt">UIViewController</span><span class="p">],</span> <span class="nv">loop</span><span class="p">:</span> <span class="kt">Bool</span><span class="p">)</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="n">convenience</span> <span class="nf">init</span><span class="p">(</span><span class="nv">duration</span><span class="p">:</span> <span class="kt">TimeInterval</span><span class="p">,</span>
+                        <span class="nv">generateAnimator</span><span class="p">:</span> <span class="kd">@escaping</span> <span class="p">(</span><span class="kt">UIViewControllerContextTransitioning</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">UIViewImplicitlyAnimating</span><span class="p">)</span></code></pre>
 
                         </div>
                       </div>
@@ -336,9 +301,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/c:@M@XCoordinator@objc(cs)PageCoordinatorDataSource(im)presentationCountForPageViewController:"></a>
-                    <a name="//apple_ref/swift/Method/presentationCount(for:)" class="dashAnchor"></a>
-                    <a class="token" href="#/c:@M@XCoordinator@objc(cs)PageCoordinatorDataSource(im)presentationCountForPageViewController:">presentationCount(for:)</a>
+                    <a name="/s:12XCoordinator32InterruptibleTransitionAnimationC08generateB8Animator5usingSo25UIViewImplicitlyAnimating_pSo0H30ControllerContextTransitioning_p_tF"></a>
+                    <a name="//apple_ref/swift/Method/generateInterruptibleAnimator(using:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:12XCoordinator32InterruptibleTransitionAnimationC08generateB8Animator5usingSo25UIViewImplicitlyAnimating_pSo0H30ControllerContextTransitioning_p_tF">generateInterruptibleAnimator(using:)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -353,7 +318,45 @@
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">open</span> <span class="kd">func</span> <span class="nf">presentationCount</span><span class="p">(</span><span class="k">for</span> <span class="nv">pageViewController</span><span class="p">:</span> <span class="kt">UIPageViewController</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Int</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">open</span> <span class="kd">func</span> <span class="nf">generateInterruptibleAnimator</span><span class="p">(</span><span class="n">using</span> <span class="nv">transitionContext</span><span class="p">:</span> <span class="kt">UIViewControllerContextTransitioning</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">UIViewImplicitlyAnimating</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <div class="task-name-container">
+                <a name="/TransitionAnimation"></a>
+                <a name="//apple_ref/swift/Section/TransitionAnimation" class="dashAnchor"></a>
+                <a href="#/TransitionAnimation">
+                  <h3 class="section-name">TransitionAnimation</h3>
+                </a>
+              </div>
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:@M@XCoordinator@objc(cs)InterruptibleTransitionAnimation(im)animateTransition:"></a>
+                    <a name="//apple_ref/swift/Method/animateTransition(using:)" class="dashAnchor"></a>
+                    <a class="token" href="#/c:@M@XCoordinator@objc(cs)InterruptibleTransitionAnimation(im)animateTransition:">animateTransition(using:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">open</span> <span class="k">override</span> <span class="kd">func</span> <span class="nf">animateTransition</span><span class="p">(</span><span class="n">using</span> <span class="nv">transitionContext</span><span class="p">:</span> <span class="kt">UIViewControllerContextTransitioning</span><span class="p">)</span></code></pre>
 
                         </div>
                       </div>
@@ -363,9 +366,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/c:@M@XCoordinator@objc(cs)PageCoordinatorDataSource(im)presentationIndexForPageViewController:"></a>
-                    <a name="//apple_ref/swift/Method/presentationIndex(for:)" class="dashAnchor"></a>
-                    <a class="token" href="#/c:@M@XCoordinator@objc(cs)PageCoordinatorDataSource(im)presentationIndexForPageViewController:">presentationIndex(for:)</a>
+                    <a name="/c:@M@XCoordinator@objc(cs)InterruptibleTransitionAnimation(im)interruptibleAnimatorForTransition:"></a>
+                    <a name="//apple_ref/swift/Method/interruptibleAnimator(using:)" class="dashAnchor"></a>
+                    <a class="token" href="#/c:@M@XCoordinator@objc(cs)InterruptibleTransitionAnimation(im)interruptibleAnimatorForTransition:">interruptibleAnimator(using:)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -380,63 +383,9 @@
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">open</span> <span class="kd">func</span> <span class="nf">presentationIndex</span><span class="p">(</span><span class="k">for</span> <span class="nv">pageViewController</span><span class="p">:</span> <span class="kt">UIPageViewController</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Int</span></code></pre>
-
-                        </div>
-                      </div>
-                    </section>
-                  </div>
-                </li>
-                <li class="item">
-                  <div>
-                    <code>
-                    <a name="/c:@M@XCoordinator@objc(cs)PageCoordinatorDataSource(im)pageViewController:viewControllerBeforeViewController:"></a>
-                    <a name="//apple_ref/swift/Method/pageViewController(_:viewControllerBefore:)" class="dashAnchor"></a>
-                    <a class="token" href="#/c:@M@XCoordinator@objc(cs)PageCoordinatorDataSource(im)pageViewController:viewControllerBeforeViewController:">pageViewController(_:viewControllerBefore:)</a>
-                    </code>
-                  </div>
-                  <div class="height-container">
-                    <div class="pointer-container"></div>
-                    <section class="section">
-                      <div class="pointer"></div>
-                      <div class="abstract">
-                        <p>Undocumented</p>
-
-                      </div>
-                      <div class="declaration">
-                        <h4>Declaration</h4>
-                        <div class="language">
-                          <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">open</span> <span class="kd">func</span> <span class="nf">pageViewController</span><span class="p">(</span><span class="n">_</span> <span class="nv">pageViewController</span><span class="p">:</span> <span class="kt">UIPageViewController</span><span class="p">,</span>
-                             <span class="n">viewControllerBefore</span> <span class="nv">viewController</span><span class="p">:</span> <span class="kt">UIViewController</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">UIViewController</span><span class="p">?</span></code></pre>
-
-                        </div>
-                      </div>
-                    </section>
-                  </div>
-                </li>
-                <li class="item">
-                  <div>
-                    <code>
-                    <a name="/c:@M@XCoordinator@objc(cs)PageCoordinatorDataSource(im)pageViewController:viewControllerAfterViewController:"></a>
-                    <a name="//apple_ref/swift/Method/pageViewController(_:viewControllerAfter:)" class="dashAnchor"></a>
-                    <a class="token" href="#/c:@M@XCoordinator@objc(cs)PageCoordinatorDataSource(im)pageViewController:viewControllerAfterViewController:">pageViewController(_:viewControllerAfter:)</a>
-                    </code>
-                  </div>
-                  <div class="height-container">
-                    <div class="pointer-container"></div>
-                    <section class="section">
-                      <div class="pointer"></div>
-                      <div class="abstract">
-                        <p>Undocumented</p>
-
-                      </div>
-                      <div class="declaration">
-                        <h4>Declaration</h4>
-                        <div class="language">
-                          <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">open</span> <span class="kd">func</span> <span class="nf">pageViewController</span><span class="p">(</span><span class="n">_</span> <span class="nv">pageViewController</span><span class="p">:</span> <span class="kt">UIPageViewController</span><span class="p">,</span>
-                             <span class="n">viewControllerAfter</span> <span class="nv">viewController</span><span class="p">:</span> <span class="kt">UIViewController</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">UIViewController</span><span class="p">?</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">open</span> <span class="kd">func</span> <span class="nf">interruptibleAnimator</span><span class="p">(</span>
+    <span class="n">using</span> <span class="nv">transitionContext</span><span class="p">:</span> <span class="kt">UIViewControllerContextTransitioning</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">UIViewImplicitlyAnimating</span></code></pre>
 
                         </div>
                       </div>

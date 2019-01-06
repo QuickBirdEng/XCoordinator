@@ -14,7 +14,7 @@
     <a title="RedirectionRouter Class Reference"></a>
     <header>
       <div class="content-wrapper">
-        <p><a href="../index.html">XCoordinator Docs</a> (41% documented)</p>
+        <p><a href="../index.html">XCoordinator Docs</a> (63% documented)</p>
       </div>
     </header>
     <div class="content-wrapper">
@@ -53,6 +53,9 @@
               </li>
               <li class="nav-group-task">
                 <a href="../Classes/InteractiveTransitionAnimation.html">InteractiveTransitionAnimation</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/InterruptibleTransitionAnimation.html">InterruptibleTransitionAnimation</a>
               </li>
               <li class="nav-group-task">
                 <a href="../Classes/NavigationAnimationDelegate.html">NavigationAnimationDelegate</a>
@@ -285,7 +288,7 @@
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="k">var</span> <span class="nv">viewController</span><span class="p">:</span> <span class="kt">UIViewController</span><span class="o">!</span> <span class="p">{</span> <span class="k">get</span> <span class="k">set</span> <span class="p">}</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="k">var</span> <span class="nv">viewController</span><span class="p">:</span> <span class="kt">UIViewController</span><span class="o">!</span> <span class="p">{</span> <span class="k">get</span> <span class="p">}</span></code></pre>
 
                         </div>
                       </div>
@@ -323,7 +326,9 @@
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="nf">init</span><span class="p">(</span><span class="nv">viewController</span><span class="p">:</span> <span class="kt">UIViewController</span><span class="p">,</span> <span class="nv">superRouter</span><span class="p">:</span> <span class="kt"><a href="../Classes/AnyRouter.html">AnyRouter</a></span><span class="o">&lt;</span><span class="kt">SuperRoute</span><span class="o">&gt;</span><span class="p">,</span> <span class="nv">map</span><span class="p">:</span> <span class="p">((</span><span class="kt">RouteType</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">SuperRoute</span><span class="p">)?)</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="nf">init</span><span class="p">(</span><span class="nv">viewController</span><span class="p">:</span> <span class="kt">UIViewController</span><span class="p">,</span>
+            <span class="nv">superRouter</span><span class="p">:</span> <span class="kt"><a href="../Classes/AnyRouter.html">AnyRouter</a></span><span class="o">&lt;</span><span class="kt">SuperRoute</span><span class="o">&gt;</span><span class="p">,</span>
+            <span class="nv">map</span><span class="p">:</span> <span class="p">((</span><span class="kt">RouteType</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">SuperRoute</span><span class="p">)?)</span></code></pre>
 
                         </div>
                       </div>
@@ -350,7 +355,9 @@
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="n">convenience</span> <span class="kd">init</span><span class="o">&lt;</span><span class="kt">RouterType</span><span class="o">&gt;</span><span class="p">(</span><span class="nv">viewController</span><span class="p">:</span> <span class="kt">UIViewController</span><span class="p">,</span> <span class="nv">superRouter</span><span class="p">:</span> <span class="kt">RouterType</span><span class="p">,</span> <span class="nv">map</span><span class="p">:</span> <span class="p">((</span><span class="kt">RouteType</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">SuperRoute</span><span class="p">)?)</span> <span class="k">where</span> <span class="kt">SuperRoute</span> <span class="o">==</span> <span class="kt">RouterType</span><span class="o">.</span><span class="kt">RouteType</span><span class="p">,</span> <span class="kt">RouterType</span> <span class="p">:</span> <span class="kt"><a href="../Protocols/Router.html">Router</a></span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">init</span><span class="o">&lt;</span><span class="kt">RouterType</span><span class="p">:</span> <span class="kt"><a href="../Protocols/Router.html">Router</a></span><span class="o">&gt;</span><span class="p">(</span><span class="nv">viewController</span><span class="p">:</span> <span class="kt">UIViewController</span><span class="p">,</span>
+                                <span class="nv">superRouter</span><span class="p">:</span> <span class="kt">RouterType</span><span class="p">,</span>
+                                <span class="nv">map</span><span class="p">:</span> <span class="p">((</span><span class="kt">RouteType</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">SuperRoute</span><span class="p">)?)</span> <span class="k">where</span> <span class="kt">RouterType</span><span class="o">.</span><span class="kt">RouteType</span> <span class="o">==</span> <span class="kt">SuperRoute</span></code></pre>
 
                         </div>
                       </div>
@@ -388,7 +395,9 @@
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">open</span> <span class="kd">func</span> <span class="nf">contextTrigger</span><span class="p">(</span><span class="n">_</span> <span class="nv">route</span><span class="p">:</span> <span class="kt">RouteType</span><span class="p">,</span> <span class="n">with</span> <span class="nv">options</span><span class="p">:</span> <span class="kt"><a href="../Structs/TransitionOptions.html">TransitionOptions</a></span><span class="p">,</span> <span class="nv">completion</span><span class="p">:</span> <span class="kt"><a href="../Typealiases.html#/s:12XCoordinator26ContextPresentationHandlera">ContextPresentationHandler</a></span><span class="p">?)</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">open</span> <span class="kd">func</span> <span class="nf">contextTrigger</span><span class="p">(</span><span class="n">_</span> <span class="nv">route</span><span class="p">:</span> <span class="kt">RouteType</span><span class="p">,</span>
+                         <span class="n">with</span> <span class="nv">options</span><span class="p">:</span> <span class="kt"><a href="../Structs/TransitionOptions.html">TransitionOptions</a></span><span class="p">,</span>
+                         <span class="nv">completion</span><span class="p">:</span> <span class="kt"><a href="../Typealiases.html#/s:12XCoordinator26ContextPresentationHandlera">ContextPresentationHandler</a></span><span class="p">?)</span></code></pre>
 
                         </div>
                       </div>
@@ -425,9 +434,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:12XCoordinator17RedirectionRouterC9presented4fromyAA11Presentable_pSg_tF"></a>
+                    <a name="/s:12XCoordinator11PresentableP9presented4fromyAaB_pSg_tF"></a>
                     <a name="//apple_ref/swift/Method/presented(from:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:12XCoordinator17RedirectionRouterC9presented4fromyAA11Presentable_pSg_tF">presented(from:)</a>
+                    <a class="token" href="#/s:12XCoordinator11PresentableP9presented4fromyAaB_pSg_tF">presented(from:)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -435,8 +444,7 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
-
+                        
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
@@ -456,9 +464,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:12XCoordinator17RedirectionRouterC6router3forAA03AnyC0Cyqd__GSgqd___tAA5RouteRd__lF"></a>
+                    <a name="/s:12XCoordinator11PresentableP6router3forAA9AnyRouterCyqd__GSgqd___tAA5RouteRd__lF"></a>
                     <a name="//apple_ref/swift/Method/router(for:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:12XCoordinator17RedirectionRouterC6router3forAA03AnyC0Cyqd__GSgqd___tAA5RouteRd__lF">router(for:)</a>
+                    <a class="token" href="#/s:12XCoordinator11PresentableP6router3forAA9AnyRouterCyqd__GSgqd___tAA5RouteRd__lF">router(for:)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -466,8 +474,7 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
-
+                        
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
@@ -485,7 +492,7 @@
           </section>
         </section>
         <section id="footer">
-          <p>&copy; 2019 <a class="link" href="https://github.com/quickbirdstudios/XCoordinator" target="_blank" rel="external">Stefan Kofler and Paul Kraft</a>. All rights reserved. (Last updated: 2019-01-01)</p>
+          <p>&copy; 2019 <a class="link" href="https://github.com/quickbirdstudios/XCoordinator" target="_blank" rel="external">Stefan Kofler and Paul Kraft</a>. All rights reserved. (Last updated: 2019-01-06)</p>
           <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.9.4</a>, a <a class="link" href="https://realm.io" target="_blank" rel="external">Realm</a> project.</p>
         </section>
       </article>

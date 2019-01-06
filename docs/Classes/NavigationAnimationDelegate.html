@@ -14,7 +14,7 @@
     <a title="NavigationAnimationDelegate Class Reference"></a>
     <header>
       <div class="content-wrapper">
-        <p><a href="../index.html">XCoordinator Docs</a> (41% documented)</p>
+        <p><a href="../index.html">XCoordinator Docs</a> (63% documented)</p>
       </div>
     </header>
     <div class="content-wrapper">
@@ -53,6 +53,9 @@
               </li>
               <li class="nav-group-task">
                 <a href="../Classes/InteractiveTransitionAnimation.html">InteractiveTransitionAnimation</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/InterruptibleTransitionAnimation.html">InterruptibleTransitionAnimation</a>
               </li>
               <li class="nav-group-task">
                 <a href="../Classes/NavigationAnimationDelegate.html">NavigationAnimationDelegate</a>
@@ -322,7 +325,9 @@ Instead use the delegate property of the NavigationCoordinator itself.
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">open</span> <span class="kd">func</span> <span class="nf">navigationController</span><span class="p">(</span><span class="n">_</span> <span class="nv">navigationController</span><span class="p">:</span> <span class="kt">UINavigationController</span><span class="p">,</span> <span class="n">interactionControllerFor</span> <span class="nv">animationController</span><span class="p">:</span> <span class="kt">UIViewControllerAnimatedTransitioning</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">UIViewControllerInteractiveTransitioning</span><span class="p">?</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">open</span> <span class="kd">func</span> <span class="nf">navigationController</span><span class="p">(</span><span class="n">_</span> <span class="nv">navigationController</span><span class="p">:</span> <span class="kt">UINavigationController</span><span class="p">,</span>
+                               <span class="n">interactionControllerFor</span> <span class="nv">animationController</span><span class="p">:</span> <span class="kt">UIViewControllerAnimatedTransitioning</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">UIViewControllerInteractiveTransitioning</span><span class="p">?</span></code></pre>
 
                         </div>
                       </div>
@@ -385,7 +390,10 @@ Otherwise the result of the NavigationCoordinator&rsquo;s delegate.</p>
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">open</span> <span class="kd">func</span> <span class="nf">navigationController</span><span class="p">(</span><span class="n">_</span> <span class="nv">navigationController</span><span class="p">:</span> <span class="kt">UINavigationController</span><span class="p">,</span> <span class="n">animationControllerFor</span> <span class="nv">operation</span><span class="p">:</span> <span class="kt">UINavigationController</span><span class="o">.</span><span class="kt">Operation</span><span class="p">,</span> <span class="n">from</span> <span class="nv">fromVC</span><span class="p">:</span> <span class="kt">UIViewController</span><span class="p">,</span> <span class="n">to</span> <span class="nv">toVC</span><span class="p">:</span> <span class="kt">UIViewController</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">UIViewControllerAnimatedTransitioning</span><span class="p">?</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">open</span> <span class="kd">func</span> <span class="nf">navigationController</span><span class="p">(</span><span class="n">_</span> <span class="nv">navigationController</span><span class="p">:</span> <span class="kt">UINavigationController</span><span class="p">,</span>
+                               <span class="n">animationControllerFor</span> <span class="nv">operation</span><span class="p">:</span> <span class="kt">UINavigationController</span><span class="o">.</span><span class="kt">Operation</span><span class="p">,</span>
+                               <span class="n">from</span> <span class="nv">fromVC</span><span class="p">:</span> <span class="kt">UIViewController</span><span class="p">,</span>
+                               <span class="n">to</span> <span class="nv">toVC</span><span class="p">:</span> <span class="kt">UIViewController</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">UIViewControllerAnimatedTransitioning</span><span class="p">?</span></code></pre>
 
                         </div>
                       </div>
@@ -472,7 +480,8 @@ If not present, it uses the NavigationCoordinator&rsquo;s delegate as fallback.<
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">open</span> <span class="kd">func</span> <span class="nf">navigationController</span><span class="p">(</span><span class="n">_</span> <span class="nv">navigationController</span><span class="p">:</span> <span class="kt">UINavigationController</span><span class="p">,</span> <span class="n">didShow</span> <span class="nv">viewController</span><span class="p">:</span> <span class="kt">UIViewController</span><span class="p">,</span> <span class="nv">animated</span><span class="p">:</span> <span class="kt">Bool</span><span class="p">)</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">open</span> <span class="kd">func</span> <span class="nf">navigationController</span><span class="p">(</span><span class="n">_</span> <span class="nv">navigationController</span><span class="p">:</span> <span class="kt">UINavigationController</span><span class="p">,</span>
+                               <span class="n">didShow</span> <span class="nv">viewController</span><span class="p">:</span> <span class="kt">UIViewController</span><span class="p">,</span> <span class="nv">animated</span><span class="p">:</span> <span class="kt">Bool</span><span class="p">)</span></code></pre>
 
                         </div>
                       </div>
@@ -542,7 +551,9 @@ If not present, it uses the NavigationCoordinator&rsquo;s delegate as fallback.<
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">open</span> <span class="kd">func</span> <span class="nf">navigationController</span><span class="p">(</span><span class="n">_</span> <span class="nv">navigationController</span><span class="p">:</span> <span class="kt">UINavigationController</span><span class="p">,</span> <span class="n">willShow</span> <span class="nv">viewController</span><span class="p">:</span> <span class="kt">UIViewController</span><span class="p">,</span> <span class="nv">animated</span><span class="p">:</span> <span class="kt">Bool</span><span class="p">)</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">open</span> <span class="kd">func</span> <span class="nf">navigationController</span><span class="p">(</span><span class="n">_</span> <span class="nv">navigationController</span><span class="p">:</span> <span class="kt">UINavigationController</span><span class="p">,</span>
+                               <span class="n">willShow</span> <span class="nv">viewController</span><span class="p">:</span> <span class="kt">UIViewController</span><span class="p">,</span>
+                               <span class="nv">animated</span><span class="p">:</span> <span class="kt">Bool</span><span class="p">)</span></code></pre>
 
                         </div>
                       </div>
@@ -748,7 +759,8 @@ about the state of the interactivePopGestureRecognizer.</p>
                       <div class="abstract">
                         <p>This method sets up the <code>interactivePopGestureRecognizer</code> of the navigation controller to work as expected.</p>
 
-<p>This method overrides the delegate of the <code>interactivePopGestureRecognizer</code> to <code>self</code>, but keeps a reference to the original delegate to enable the default pop animations.</p>
+<p>This method overrides the delegate of the <code>interactivePopGestureRecognizer</code> to <code>self</code>,
+but keeps a reference to the original delegate to enable the default pop animations.</p>
 
                       </div>
                       <div class="declaration">
@@ -786,7 +798,7 @@ about the state of the interactivePopGestureRecognizer.</p>
           </section>
         </section>
         <section id="footer">
-          <p>&copy; 2019 <a class="link" href="https://github.com/quickbirdstudios/XCoordinator" target="_blank" rel="external">Stefan Kofler and Paul Kraft</a>. All rights reserved. (Last updated: 2019-01-01)</p>
+          <p>&copy; 2019 <a class="link" href="https://github.com/quickbirdstudios/XCoordinator" target="_blank" rel="external">Stefan Kofler and Paul Kraft</a>. All rights reserved. (Last updated: 2019-01-06)</p>
           <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.9.4</a>, a <a class="link" href="https://realm.io" target="_blank" rel="external">Realm</a> project.</p>
         </section>
       </article>

@@ -8,7 +8,16 @@
 
 extension Transition {
 
-    // TODO: Add documentation
+    ///
+    /// Transition to call show on the rootViewController.
+    ///
+    /// - Note:
+    ///     Prefer `Transition.push` when using transitions on a `UINavigationController` rootViewController.
+    ///     In contrast to this transition, you can specify an animation.
+    ///
+    /// - Parameter presentable:
+    ///     The presentable to be shown as a primary view controller.
+    ///
     public static func show(_ presentable: Presentable) -> Transition {
         return Transition(presentables: [presentable],
                           animation: nil
@@ -23,7 +32,16 @@ extension Transition {
         }
     }
 
-    // TODO: Add documentation
+    ///
+    /// Transition to call showDetail on the rootViewController.
+    ///
+    /// - Note:
+    ///     Prefer `Transition.push` when using transitions on a `UINavigationController` rootViewController.
+    ///     In contrast to this transition, you can specify an animation.
+    ///
+    /// - Parameter presentable:
+    ///     The presentable to be shown as a detail view controller.
+    ///
     public static func showDetail(_ presentable: Presentable) -> Transition {
         return Transition(presentables: [presentable],
                           animation: nil

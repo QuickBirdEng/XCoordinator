@@ -14,7 +14,7 @@
     <a title="PageCoordinator Class Reference"></a>
     <header>
       <div class="content-wrapper">
-        <p><a href="../index.html">XCoordinator Docs</a> (41% documented)</p>
+        <p><a href="../index.html">XCoordinator Docs</a> (63% documented)</p>
       </div>
     </header>
     <div class="content-wrapper">
@@ -53,6 +53,9 @@
               </li>
               <li class="nav-group-task">
                 <a href="../Classes/InteractiveTransitionAnimation.html">InteractiveTransitionAnimation</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/InterruptibleTransitionAnimation.html">InterruptibleTransitionAnimation</a>
               </li>
               <li class="nav-group-task">
                 <a href="../Classes/NavigationAnimationDelegate.html">NavigationAnimationDelegate</a>
@@ -214,7 +217,12 @@
 
                 </div>
               </div>
-            <p>Undocumented</p>
+            <p>PageCoordinator provides a base class for your custom coordinator with a <code>UIPageViewController</code> rootViewController.</p>
+<div class="aside aside-note">
+    <p class="aside-title">Note</p>
+    PageCoordinator sets the dataSource of the rootViewController to reflect the parameters in the initializer.
+
+</div>
 
           </section>
           <section class="section task-group-section">
@@ -240,7 +248,9 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p>The dataSource of the rootViewController.</p>
+
+<p>Feel free to change the pages at runtime. To reflect the changes in the rootViewController, perform a <code>set</code> transition as well.</p>
 
                       </div>
                       <div class="declaration">
@@ -267,7 +277,7 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p>The configuration of the rootViewController. See <code><a href="../Extensions/UIPageViewController/Configuration.html">UIPageViewController.Configuration</a></code> for more information.</p>
 
                       </div>
                       <div class="declaration">
@@ -305,7 +315,10 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p>Creates a PageCoordinator with several sequential pages, potentially looping.
+It further sets the currently shown page and a direction for the animation of displaying it.
+If you need custom configuration of the rootViewController, modify the <code><a href="../Classes/PageCoordinator.html#/s:12XCoordinator15PageCoordinatorC13configurationSo20UIPageViewControllerCAAE13ConfigurationVvp">configuration</a></code> parameter,
+since you cannot change this after the initialization.</p>
 
                       </div>
                       <div class="declaration">
@@ -319,6 +332,77 @@
             <span class="nv">configuration</span><span class="p">:</span> <span class="kt">UIPageViewController</span><span class="o">.</span><span class="kt">Configuration</span> <span class="o">=</span> <span class="o">.</span><span class="k">default</span><span class="p">)</span></code></pre>
 
                         </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>pages</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The pages of the PageCoordinator.
+These can later be changed, if necessary, using the <code><a href="../Classes/PageCoordinator.html#/s:12XCoordinator15PageCoordinatorC10dataSourceAA0bc4DataE0Cvp">PageCoordinator.dataSource</a></code> property.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>loop</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>Whether or not the PageCoordinator should loop when hitting an end of the specified pages.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>set</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The presentable to be shown right from the start.
+This should be one of the elements of the specified pages.
+If not specified, no <code>set</code> transition is triggered, which results in the first page being shown.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>direction</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The direction in which the transition to set the specified first page (parameter <code>set</code>) should be animated in.
+If you specify <code>nil</code> for <code>set</code>, this parameter is ignored.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>configuration</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The configuration of the rootViewController. You cannot change this configuration later anymore (Limitation of UIKit).</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
                       </div>
                     </section>
                   </div>
@@ -365,7 +449,7 @@
           </section>
         </section>
         <section id="footer">
-          <p>&copy; 2019 <a class="link" href="https://github.com/quickbirdstudios/XCoordinator" target="_blank" rel="external">Stefan Kofler and Paul Kraft</a>. All rights reserved. (Last updated: 2019-01-01)</p>
+          <p>&copy; 2019 <a class="link" href="https://github.com/quickbirdstudios/XCoordinator" target="_blank" rel="external">Stefan Kofler and Paul Kraft</a>. All rights reserved. (Last updated: 2019-01-06)</p>
           <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.9.4</a>, a <a class="link" href="https://realm.io" target="_blank" rel="external">Realm</a> project.</p>
         </section>
       </article>

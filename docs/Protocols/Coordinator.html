@@ -14,7 +14,7 @@
     <a title="Coordinator Protocol Reference"></a>
     <header>
       <div class="content-wrapper">
-        <p><a href="../index.html">XCoordinator Docs</a> (41% documented)</p>
+        <p><a href="../index.html">XCoordinator Docs</a> (63% documented)</p>
       </div>
     </header>
     <div class="content-wrapper">
@@ -53,6 +53,9 @@
               </li>
               <li class="nav-group-task">
                 <a href="../Classes/InteractiveTransitionAnimation.html">InteractiveTransitionAnimation</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/InterruptibleTransitionAnimation.html">InterruptibleTransitionAnimation</a>
               </li>
               <li class="nav-group-task">
                 <a href="../Classes/NavigationAnimationDelegate.html">NavigationAnimationDelegate</a>
@@ -373,9 +376,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:12XCoordinator11CoordinatorPAAE9presented4fromyAA11Presentable_pSg_tF"></a>
+                    <a name="/s:12XCoordinator11PresentableP9presented4fromyAaB_pSg_tF"></a>
                     <a name="//apple_ref/swift/Method/presented(from:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:12XCoordinator11CoordinatorPAAE9presented4fromyAA11Presentable_pSg_tF">presented(from:)</a>
+                    <a class="token" href="#/s:12XCoordinator11PresentableP9presented4fromyAaB_pSg_tF">presented(from:)</a>
                     </code>
                       <span class="declaration-note">
                         Extension method
@@ -386,8 +389,7 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
-
+                        
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
@@ -423,7 +425,9 @@
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">contextTrigger</span><span class="p">(</span><span class="n">_</span> <span class="nv">route</span><span class="p">:</span> <span class="kt">RouteType</span><span class="p">,</span> <span class="n">with</span> <span class="nv">options</span><span class="p">:</span> <span class="kt"><a href="../Structs/TransitionOptions.html">TransitionOptions</a></span><span class="p">,</span> <span class="nv">completion</span><span class="p">:</span> <span class="kt"><a href="../Typealiases.html#/s:12XCoordinator26ContextPresentationHandlera">ContextPresentationHandler</a></span><span class="p">?)</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">contextTrigger</span><span class="p">(</span><span class="n">_</span> <span class="nv">route</span><span class="p">:</span> <span class="kt">RouteType</span><span class="p">,</span>
+                           <span class="n">with</span> <span class="nv">options</span><span class="p">:</span> <span class="kt"><a href="../Structs/TransitionOptions.html">TransitionOptions</a></span><span class="p">,</span>
+                           <span class="nv">completion</span><span class="p">:</span> <span class="kt"><a href="../Typealiases.html#/s:12XCoordinator26ContextPresentationHandlera">ContextPresentationHandler</a></span><span class="p">?)</span></code></pre>
 
                         </div>
                       </div>
@@ -463,9 +467,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:12XCoordinator11CoordinatorPAAE17performTransition_4with10completiony0D4TypeQz_AA0D7OptionsVyycSgtF"></a>
+                    <a name="/s:12XCoordinator19TransitionPerformerP07performB0_4with10completiony0B4TypeQz_AA0B7OptionsVyycSgtF"></a>
                     <a name="//apple_ref/swift/Method/performTransition(_:with:completion:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:12XCoordinator11CoordinatorPAAE17performTransition_4with10completiony0D4TypeQz_AA0D7OptionsVyycSgtF">performTransition(_:with:completion:)</a>
+                    <a class="token" href="#/s:12XCoordinator19TransitionPerformerP07performB0_4with10completiony0B4TypeQz_AA0B7OptionsVyycSgtF">performTransition(_:with:completion:)</a>
                     </code>
                       <span class="declaration-note">
                         Extension method
@@ -476,14 +480,15 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
-
+                        
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">performTransition</span><span class="p">(</span><span class="n">_</span> <span class="nv">transition</span><span class="p">:</span> <span class="kt">TransitionType</span><span class="p">,</span> <span class="n">with</span> <span class="nv">options</span><span class="p">:</span> <span class="kt"><a href="../Structs/TransitionOptions.html">TransitionOptions</a></span><span class="p">,</span> <span class="nv">completion</span><span class="p">:</span> <span class="kt"><a href="../Typealiases.html#/s:12XCoordinator19PresentationHandlera">PresentationHandler</a></span><span class="p">?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">)</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">performTransition</span><span class="p">(</span><span class="n">_</span> <span class="nv">transition</span><span class="p">:</span> <span class="kt">TransitionType</span><span class="p">,</span>
+                              <span class="n">with</span> <span class="nv">options</span><span class="p">:</span> <span class="kt"><a href="../Structs/TransitionOptions.html">TransitionOptions</a></span><span class="p">,</span>
+                              <span class="nv">completion</span><span class="p">:</span> <span class="kt"><a href="../Typealiases.html#/s:12XCoordinator19PresentationHandlera">PresentationHandler</a></span><span class="p">?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">)</span></code></pre>
 
                         </div>
                       </div>
@@ -524,7 +529,8 @@
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="n">deepLink</span><span class="o">&lt;</span><span class="kt"><a href="../Protocols/Coordinator.html#/s:12XCoordinator11CoordinatorPAAE18RootViewControllera">RootViewController</a></span><span class="p">,</span> <span class="kt">S</span><span class="o">&gt;</span><span class="p">(</span><span class="n">_</span> <span class="nv">route</span><span class="p">:</span> <span class="kt">RouteType</span><span class="p">,</span> <span class="n">_</span> <span class="nv">remainingRoutes</span><span class="p">:</span> <span class="kt">S</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt"><a href="../Structs/Transition.html">Transition</a></span><span class="o">&lt;</span><span class="kt"><a href="../Protocols/Coordinator.html#/s:12XCoordinator11CoordinatorPAAE18RootViewControllera">RootViewController</a></span><span class="o">&gt;</span> <span class="k">where</span> <span class="kt"><a href="../Protocols/Coordinator.html#/s:12XCoordinator11CoordinatorPAAE18RootViewControllera">RootViewController</a></span> <span class="p">:</span> <span class="kt">UIViewController</span><span class="p">,</span> <span class="kt">S</span> <span class="p">:</span> <span class="kt">Sequence</span><span class="p">,</span> <span class="k">Self</span><span class="o">.</span><span class="kt">TransitionType</span> <span class="o">==</span> <span class="kt"><a href="../Structs/Transition.html">Transition</a></span><span class="o">&lt;</span><span class="kt"><a href="../Protocols/Coordinator.html#/s:12XCoordinator11CoordinatorPAAE18RootViewControllera">RootViewController</a></span><span class="o">&gt;</span><span class="p">,</span> <span class="kt">S</span><span class="o">.</span><span class="kt">Element</span> <span class="o">==</span> <span class="kt"><a href="../Protocols.html#/s:12XCoordinator5RouteP">Route</a></span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="n">deepLink</span><span class="o">&lt;</span><span class="kt"><a href="../Protocols/Coordinator.html#/s:12XCoordinator11CoordinatorPAAE18RootViewControllera">RootViewController</a></span><span class="p">,</span> <span class="kt">S</span><span class="p">:</span> <span class="kt">Sequence</span><span class="o">&gt;</span><span class="p">(</span><span class="n">_</span> <span class="nv">route</span><span class="p">:</span> <span class="kt">RouteType</span><span class="p">,</span> <span class="n">_</span> <span class="nv">remainingRoutes</span><span class="p">:</span> <span class="kt">S</span><span class="p">)</span>
+    <span class="o">-&gt;</span> <span class="kt"><a href="../Structs/Transition.html">Transition</a></span><span class="o">&lt;</span><span class="kt"><a href="../Protocols/Coordinator.html#/s:12XCoordinator11CoordinatorPAAE18RootViewControllera">RootViewController</a></span><span class="o">&gt;</span> <span class="k">where</span> <span class="kt">S</span><span class="o">.</span><span class="kt">Element</span> <span class="o">==</span> <span class="kt"><a href="../Protocols.html#/s:12XCoordinator5RouteP">Route</a></span><span class="p">,</span> <span class="kt">TransitionType</span> <span class="o">==</span> <span class="kt"><a href="../Structs/Transition.html">Transition</a></span><span class="o">&lt;</span><span class="kt"><a href="../Protocols/Coordinator.html#/s:12XCoordinator11CoordinatorPAAE18RootViewControllera">RootViewController</a></span><span class="o">&gt;</span></code></pre>
 
                         </div>
                       </div>
@@ -589,7 +595,8 @@ behind the given routes can lead to runtime errors and, therefore, crashes of yo
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="n">deepLink</span><span class="o">&lt;</span><span class="kt"><a href="../Protocols/Coordinator.html#/s:12XCoordinator11CoordinatorPAAE18RootViewControllera">RootViewController</a></span><span class="o">&gt;</span><span class="p">(</span><span class="n">_</span> <span class="nv">route</span><span class="p">:</span> <span class="kt">RouteType</span><span class="p">,</span> <span class="n">_</span> <span class="nv">remainingRoutes</span><span class="p">:</span> <span class="kt"><a href="../Protocols.html#/s:12XCoordinator5RouteP">Route</a></span><span class="o">...</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt"><a href="../Structs/Transition.html">Transition</a></span><span class="o">&lt;</span><span class="kt"><a href="../Protocols/Coordinator.html#/s:12XCoordinator11CoordinatorPAAE18RootViewControllera">RootViewController</a></span><span class="o">&gt;</span> <span class="k">where</span> <span class="kt"><a href="../Protocols/Coordinator.html#/s:12XCoordinator11CoordinatorPAAE18RootViewControllera">RootViewController</a></span> <span class="p">:</span> <span class="kt">UIViewController</span><span class="p">,</span> <span class="k">Self</span><span class="o">.</span><span class="kt">TransitionType</span> <span class="o">==</span> <span class="kt"><a href="../Structs/Transition.html">Transition</a></span><span class="o">&lt;</span><span class="kt"><a href="../Protocols/Coordinator.html#/s:12XCoordinator11CoordinatorPAAE18RootViewControllera">RootViewController</a></span><span class="o">&gt;</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="n">deepLink</span><span class="o">&lt;</span><span class="kt"><a href="../Protocols/Coordinator.html#/s:12XCoordinator11CoordinatorPAAE18RootViewControllera">RootViewController</a></span><span class="o">&gt;</span><span class="p">(</span><span class="n">_</span> <span class="nv">route</span><span class="p">:</span> <span class="kt">RouteType</span><span class="p">,</span> <span class="n">_</span> <span class="nv">remainingRoutes</span><span class="p">:</span> <span class="kt"><a href="../Protocols.html#/s:12XCoordinator5RouteP">Route</a></span><span class="o">...</span><span class="p">)</span>
+    <span class="o">-&gt;</span> <span class="kt"><a href="../Structs/Transition.html">Transition</a></span><span class="o">&lt;</span><span class="kt"><a href="../Protocols/Coordinator.html#/s:12XCoordinator11CoordinatorPAAE18RootViewControllera">RootViewController</a></span><span class="o">&gt;</span> <span class="k">where</span> <span class="kt">TransitionType</span> <span class="o">==</span> <span class="kt"><a href="../Structs/Transition.html">Transition</a></span><span class="o">&lt;</span><span class="kt"><a href="../Protocols/Coordinator.html#/s:12XCoordinator11CoordinatorPAAE18RootViewControllera">RootViewController</a></span><span class="o">&gt;</span></code></pre>
 
                         </div>
                       </div>
@@ -638,9 +645,9 @@ behind the given routes can lead to runtime errors and, therefore, crashes of yo
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:12XCoordinator11CoordinatorPAAE12registerPeek3for5routeAA10TransitionVyqd__GAA9Container_p_9RouteTypeQztSo16UIViewControllerCRbd__AI0gJ0RtzlF"></a>
+                    <a name="/s:12XCoordinator11CoordinatorPAARlzCrlE12registerPeek3for5routeAA10TransitionVyqd__GAA9Container_p_9RouteTypeQztSo16UIViewControllerCRbd__AI0gJ0RtzlF"></a>
                     <a name="//apple_ref/swift/Method/registerPeek(for:route:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:12XCoordinator11CoordinatorPAAE12registerPeek3for5routeAA10TransitionVyqd__GAA9Container_p_9RouteTypeQztSo16UIViewControllerCRbd__AI0gJ0RtzlF">registerPeek(for:route:)</a>
+                    <a class="token" href="#/s:12XCoordinator11CoordinatorPAARlzCrlE12registerPeek3for5routeAA10TransitionVyqd__GAA9Container_p_9RouteTypeQztSo16UIViewControllerCRbd__AI0gJ0RtzlF">registerPeek(for:route:)</a>
                     </code>
                       <span class="declaration-note">
                         Extension method
@@ -659,7 +666,9 @@ behind the given routes can lead to runtime errors and, therefore, crashes of yo
                         <div class="language">
                           <p class="aside-title">Swift</p>
                           <pre class="highlight swift"><code><span class="kd">@available(iOS 9.0, *)</span>
-<span class="kd">public</span> <span class="kd">func</span> <span class="n">registerPeek</span><span class="o">&lt;</span><span class="kt"><a href="../Protocols/Coordinator.html#/s:12XCoordinator11CoordinatorPAAE18RootViewControllera">RootViewController</a></span><span class="o">&gt;</span><span class="p">(</span><span class="k">for</span> <span class="nv">source</span><span class="p">:</span> <span class="kt"><a href="../Protocols/Container.html">Container</a></span><span class="p">,</span> <span class="nv">route</span><span class="p">:</span> <span class="kt">RouteType</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt"><a href="../Structs/Transition.html">Transition</a></span><span class="o">&lt;</span><span class="kt"><a href="../Protocols/Coordinator.html#/s:12XCoordinator11CoordinatorPAAE18RootViewControllera">RootViewController</a></span><span class="o">&gt;</span> <span class="k">where</span> <span class="kt"><a href="../Protocols/Coordinator.html#/s:12XCoordinator11CoordinatorPAAE18RootViewControllera">RootViewController</a></span> <span class="p">:</span> <span class="kt">UIViewController</span><span class="p">,</span> <span class="k">Self</span><span class="o">.</span><span class="kt">TransitionType</span> <span class="o">==</span> <span class="kt"><a href="../Structs/Transition.html">Transition</a></span><span class="o">&lt;</span><span class="kt"><a href="../Protocols/Coordinator.html#/s:12XCoordinator11CoordinatorPAAE18RootViewControllera">RootViewController</a></span><span class="o">&gt;</span></code></pre>
+<span class="kd">public</span> <span class="kd">func</span> <span class="n">registerPeek</span><span class="o">&lt;</span><span class="kt"><a href="../Protocols/Coordinator.html#/s:12XCoordinator11CoordinatorPAAE18RootViewControllera">RootViewController</a></span><span class="o">&gt;</span><span class="p">(</span><span class="k">for</span> <span class="nv">source</span><span class="p">:</span> <span class="kt"><a href="../Protocols/Container.html">Container</a></span><span class="p">,</span>
+                                             <span class="nv">route</span><span class="p">:</span> <span class="kt">RouteType</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="kt"><a href="../Structs/Transition.html">Transition</a></span><span class="o">&lt;</span><span class="kt"><a href="../Protocols/Coordinator.html#/s:12XCoordinator11CoordinatorPAAE18RootViewControllera">RootViewController</a></span><span class="o">&gt;</span> <span class="k">where</span> <span class="k">Self</span><span class="o">.</span><span class="kt">TransitionType</span> <span class="o">==</span> <span class="kt"><a href="../Structs/Transition.html">Transition</a></span><span class="o">&lt;</span><span class="kt"><a href="../Protocols/Coordinator.html#/s:12XCoordinator11CoordinatorPAAE18RootViewControllera">RootViewController</a></span><span class="o">&gt;</span></code></pre>
 
                         </div>
                       </div>
@@ -702,7 +711,7 @@ behind the given routes can lead to runtime errors and, therefore, crashes of yo
           </section>
         </section>
         <section id="footer">
-          <p>&copy; 2019 <a class="link" href="https://github.com/quickbirdstudios/XCoordinator" target="_blank" rel="external">Stefan Kofler and Paul Kraft</a>. All rights reserved. (Last updated: 2019-01-01)</p>
+          <p>&copy; 2019 <a class="link" href="https://github.com/quickbirdstudios/XCoordinator" target="_blank" rel="external">Stefan Kofler and Paul Kraft</a>. All rights reserved. (Last updated: 2019-01-06)</p>
           <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.9.4</a>, a <a class="link" href="https://realm.io" target="_blank" rel="external">Realm</a> project.</p>
         </section>
       </article>
