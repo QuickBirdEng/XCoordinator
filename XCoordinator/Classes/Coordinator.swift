@@ -6,9 +6,18 @@
 //  Copyright © 2018 QuickBird Studios. All rights reserved.
 //
 
+/// The completion handler for transitions.
 public typealias PresentationHandler = () -> Void
+
+/// The completion handler for transitions, which also provides the context information about the transition.
 public typealias ContextPresentationHandler = (PresentationHandlerContext) -> Void
 
+///
+/// Coordinator is the protocol every coordinator conforms to.
+///
+/// It requires an object to be able to trigger routes and perform transitions.
+/// This connection is created using the `prepareTransition(for:)` method.
+///
 public protocol Coordinator: Router, TransitionPerformer {
 
     ///
@@ -27,12 +36,16 @@ public protocol Coordinator: Router, TransitionPerformer {
 // MARK: - Typealiases
 
 extension Coordinator {
+
+    /// Shortcut for Coordinator.TransitionType.RootViewController
     public typealias RootViewController = TransitionType.RootViewController
 }
 
 // MARK: - Presentable
 
 extension Coordinator {
+
+    /// A Coordinator uses its rootViewController as viewController, with the exception `RedirectionCoordinator`.
     public var viewController: UIViewController! {
         return rootViewController
     }
@@ -41,6 +54,8 @@ extension Coordinator {
 // MARK: - Default implementations
 
 extension Coordinator {
+
+    /// Creates an AnyCoordinator based on the current coordinator.
     public var anyCoordinator: AnyCoordinator<RouteType, TransitionType> {
         return AnyCoordinator(self)
     }
@@ -55,6 +70,15 @@ extension Coordinator {
         performTransition(transition, with: options) { completion?(context) }
     }
 
+    ///
+    /// With `chain(routes:)` you can chain different routes to form a combined transition.
+    ///
+    /// - Parameter routes:
+    ///     The routes to be chained.
+    ///
+    /// - Returns:
+    ///     A transition combining the transitions of the specified routes.
+    ///
     public func chain(routes: [RouteType]) -> TransitionType {
         return .multiple(routes.map(prepareTransition))
     }

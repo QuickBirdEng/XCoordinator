@@ -23,7 +23,7 @@ open class StaticTransitionAnimation: NSObject, TransitionAnimation {
 
     // MARK: - Computed properties
 
-    public var interactionController: PercentDrivenInteractionController? {
+    open var interactionController: PercentDrivenInteractionController? {
         return self as? PercentDrivenInteractionController
     }
 
@@ -50,21 +50,45 @@ open class StaticTransitionAnimation: NSObject, TransitionAnimation {
 
     // MARK: - Methods
 
-    public func transitionDuration(using transitionContext: UIViewControllerContextTransitioning?) -> TimeInterval {
+    ///
+    /// See UIKit documentation for further information.
+    ///
+    /// - Parameter transitionContext:
+    ///     The context of the current transition.
+    ///
+    /// - Returns:
+    ///     The duration of the animation as specified in the initializer.
+    ///
+    open func transitionDuration(using transitionContext: UIViewControllerContextTransitioning?) -> TimeInterval {
         return duration
     }
 
-    public func animateTransition(using transitionContext: UIViewControllerContextTransitioning) {
+    ///
+    /// See UIKit documentation for further information.
+    ///
+    /// This method performs the animation as specified in the initializer.
+    ///
+    /// - Parameter transitionContext:
+    ///     The context of the current transition.
+    ///
+    open func animateTransition(using transitionContext: UIViewControllerContextTransitioning) {
         _performAnimation(transitionContext)
     }
 
     // MARK: - TransitionAnimation
 
-    public func start() {}
-    public func cleanup() {}
+    open func start() {}
+    open func cleanup() {}
 }
 
 extension StaticTransitionAnimation {
+
+    ///
+    /// This method performs the animation as specified in the initializer.
+    ///
+    /// - Parameter transitionContext:
+    ///     The context of the current transition.
+    ///
     @available(*, deprecated, renamed: "animateTransition(using:)")
     public func performTransition(_ transitionContext: UIViewControllerContextTransitioning) {
         _performAnimation(transitionContext)

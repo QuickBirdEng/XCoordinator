@@ -11,13 +11,27 @@ import RxSwift
 
 extension Router {
 
-    // swiftlint:disable:next identifier_name
+    /// The reactive extensions of a `Router`.
     public var rx: Reactive<Self> {
+        // swiftlint:disable:prev identifier_name
         return Reactive(self)
     }
 }
 
 extension Reactive where Base: Router & AnyObject {
+
+    ///
+    /// This method transforms the completion block of a router's trigger method into an observable.
+    ///
+    /// - Parameter route:
+    ///     The route to be triggered.
+    ///
+    /// - Parameter options:
+    ///     Transition options, e.g. defining whether or not the transition should be animated.
+    ///
+    /// - Returns:
+    ///     An Observable<Void> to inform about the completion of the transition.
+    ///
     public func trigger(_ route: Base.RouteType, with options: TransitionOptions) -> Observable<Void> {
         return Observable.create { [weak base] observer -> Disposable in
             guard let base = base else {
@@ -34,6 +48,17 @@ extension Reactive where Base: Router & AnyObject {
 
     // MARK: - Convenience methods
 
+    ///
+    /// This method transforms the completion block of a router's trigger method into an observable.
+    ///
+    /// It uses the default transition options as specified in `Router.trigger`.
+    ///
+    /// - Parameter route:
+    ///     The route to be triggered.
+    ///
+    /// - Returns:
+    ///     An Observable<Void> to inform about the completion of the transition.
+    ///
     public func trigger(_ route: Base.RouteType) -> Observable<Void> {
         return trigger(route, with: .default)
     }

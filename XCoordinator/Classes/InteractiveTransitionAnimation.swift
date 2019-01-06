@@ -125,10 +125,25 @@ open class InteractiveTransitionAnimation: NSObject, TransitionAnimation {
 
     // MARK: - Methods
 
+    ///
+    /// See UIKit documentation for further information.
+    ///
+    /// - Parameter transitionContext:
+    ///     The context of a transition for which the duration should be returned.
+    ///
+    /// - Returns:
+    ///     The duration as specified in the initializer.
+    ///
     open func transitionDuration(using transitionContext: UIViewControllerContextTransitioning?) -> TimeInterval {
         return _duration
     }
 
+    ///
+    /// See UIKit documentation for further information.
+    ///
+    /// - Parameter transitionContext:
+    ///     The context of a transition for which the animation should be started.
+    ///
     open func animateTransition(using transitionContext: UIViewControllerContextTransitioning) {
         return _animation(transitionContext)
     }

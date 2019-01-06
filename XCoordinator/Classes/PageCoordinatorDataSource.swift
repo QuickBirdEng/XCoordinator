@@ -6,6 +6,10 @@
 //  Copyright © 2018 QuickBird Studios. All rights reserved.
 //
 
+///
+/// PageCoordinatorDataSource is a `UIPageViewControllerDataSource` implementation with
+/// a rather static list of pages. It further allows looping through the given pages.
+///
 open class PageCoordinatorDataSource: NSObject, UIPageViewControllerDataSource {
 
     // MARK: - Stored properties

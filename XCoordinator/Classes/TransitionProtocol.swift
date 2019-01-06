@@ -12,6 +12,8 @@
 /// We provide an easily-extensible transition type called `Transition` as a default transition type.
 ///
 public protocol TransitionProtocol {
+
+    /// The type of the rootViewController that can execute the transition.
     associatedtype RootViewController: UIViewController
 
     /// The presentables being shown to the user by this transition.

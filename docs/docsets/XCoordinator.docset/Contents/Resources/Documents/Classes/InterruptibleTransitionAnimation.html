@@ -14,7 +14,7 @@
     <a title="InterruptibleTransitionAnimation Class Reference"></a>
     <header>
       <div class="content-wrapper">
-        <p><a href="../index.html">XCoordinator Docs</a> (79% documented)</p>
+        <p><a href="../index.html">XCoordinator Docs</a> (93% documented)</p>
       </div>
     </header>
     <div class="content-wrapper">
@@ -213,11 +213,13 @@
             <h1>InterruptibleTransitionAnimation</h1>
               <div class="declaration">
                 <div class="language">
-                  <pre class="highlight swift"><code><span class="kd">open</span> <span class="kd">class</span> <span class="kt">InterruptibleTransitionAnimation</span> <span class="p">:</span> <span class="kt"><a href="../Classes/InteractiveTransitionAnimation.html">InteractiveTransitionAnimation</a></span></code></pre>
+                  <pre class="highlight swift"><code><span class="kd">@available(iOS 10.0, *)</span>
+<span class="kd">open</span> <span class="kd">class</span> <span class="kt">InterruptibleTransitionAnimation</span> <span class="p">:</span> <span class="kt"><a href="../Classes/InteractiveTransitionAnimation.html">InteractiveTransitionAnimation</a></span></code></pre>
 
                 </div>
               </div>
-            <p>Undocumented</p>
+            <p>Use InterruptibleTransitionAnimation to define interactive transitions based on the <code>UIViewPropertyAnimator</code> APIs
+introduced in iOS 10.</p>
 
           </section>
           <section class="section task-group-section">
@@ -243,7 +245,8 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p>Creates an interruptible transition animation based on duration, an animator generator closure
+and an interaction controller generator closure.</p>
 
                       </div>
                       <div class="declaration">
@@ -255,6 +258,49 @@
             <span class="nv">generateInteractionController</span><span class="p">:</span> <span class="kd">@escaping</span> <span class="p">()</span> <span class="o">-&gt;</span> <span class="kt"><a href="../Protocols/PercentDrivenInteractionController.html">PercentDrivenInteractionController</a></span><span class="p">?)</span></code></pre>
 
                         </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>duration</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The total duration of the animation.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>generateAnimator</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>A generator closure to create a <code>UIViewPropertyAnimator</code> dynamically.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>generateInteractionController</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>A generator closure to create an interaction controller which handles animation progress changes.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
                       </div>
                     </section>
                   </div>
@@ -272,7 +318,9 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p>Creates an interruptible transition animation based on duration and an animator generator closure.</p>
+
+<p>A <code>UIPercentDrivenInteractiveTransition</code> is used as interaction controller.</p>
 
                       </div>
                       <div class="declaration">
@@ -283,6 +331,37 @@
                         <span class="nv">generateAnimator</span><span class="p">:</span> <span class="kd">@escaping</span> <span class="p">(</span><span class="kt">UIViewControllerContextTransitioning</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">UIViewImplicitlyAnimating</span><span class="p">)</span></code></pre>
 
                         </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>duration</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The total duration of the animation.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>generateAnimator</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>A generator closure to create a <code>UIViewPropertyAnimator</code> dynamically.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
                       </div>
                     </section>
                   </div>
@@ -311,7 +390,12 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p>Generates an interruptible animator based on the transitionContext.
+It further adds a completion block to the animator to ensure it is deallocated once
+the transition is finished.</p>
+
+<p>This code is called once per transition to generate the interruptible animator
+which is reused in subsequent calls of <code>interruptibeAnimator(using:)</code>.</p>
 
                       </div>
                       <div class="declaration">
@@ -321,6 +405,25 @@
                           <pre class="highlight swift"><code><span class="kd">open</span> <span class="kd">func</span> <span class="nf">generateInterruptibleAnimator</span><span class="p">(</span><span class="n">using</span> <span class="nv">transitionContext</span><span class="p">:</span> <span class="kt">UIViewControllerContextTransitioning</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">UIViewImplicitlyAnimating</span></code></pre>
 
                         </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>transitionContext</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The context in which the transition is performed.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
                       </div>
                     </section>
                   </div>
@@ -349,7 +452,9 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p>See UIKit documentation for further information.</p>
+
+<p>This method simply calls <code>startAnimation()</code> on the interruptible animator.</p>
 
                       </div>
                       <div class="declaration">
@@ -359,6 +464,25 @@
                           <pre class="highlight swift"><code><span class="kd">open</span> <span class="k">override</span> <span class="kd">func</span> <span class="nf">animateTransition</span><span class="p">(</span><span class="n">using</span> <span class="nv">transitionContext</span><span class="p">:</span> <span class="kt">UIViewControllerContextTransitioning</span><span class="p">)</span></code></pre>
 
                         </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>transitionContext</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The context in which the transition is performed.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
                       </div>
                     </section>
                   </div>
@@ -376,18 +500,39 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p>See UIKit documentation for further information.</p>
+
+<p>This method returns an already generated interruptible animator, if present.
+Otherwise it generates a new one using <code><a href="../Classes/InterruptibleTransitionAnimation.html#/s:12XCoordinator32InterruptibleTransitionAnimationC08generateB8Animator5usingSo25UIViewImplicitlyAnimating_pSo0H30ControllerContextTransitioning_p_tF">generateInterruptibleAnimator(using:)</a></code>.</p>
 
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">open</span> <span class="kd">func</span> <span class="nf">interruptibleAnimator</span><span class="p">(</span>
-    <span class="n">using</span> <span class="nv">transitionContext</span><span class="p">:</span> <span class="kt">UIViewControllerContextTransitioning</span>
+                          <pre class="highlight swift"><code><span class="kd">open</span> <span class="kd">func</span> <span class="nf">interruptibleAnimator</span><span class="p">(</span><span class="n">using</span> <span class="nv">transitionContext</span><span class="p">:</span> <span class="kt">UIViewControllerContextTransitioning</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">UIViewImplicitlyAnimating</span></code></pre>
 
                         </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>transitionContext</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The context in which the transition is performed.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
                       </div>
                     </section>
                   </div>

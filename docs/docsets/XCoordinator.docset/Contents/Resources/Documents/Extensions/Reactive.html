@@ -14,7 +14,7 @@
     <a title="Reactive Extension Reference"></a>
     <header>
       <div class="content-wrapper">
-        <p><a href="../index.html">XCoordinator Docs</a> (79% documented)</p>
+        <p><a href="../index.html">XCoordinator Docs</a> (93% documented)</p>
       </div>
     </header>
     <div class="content-wrapper">
@@ -235,7 +235,7 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p>This method transforms the completion block of a router&rsquo;s trigger method into an observable.</p>
 
                       </div>
                       <div class="declaration">
@@ -245,6 +245,41 @@
                           <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">trigger</span><span class="p">(</span><span class="n">_</span> <span class="nv">route</span><span class="p">:</span> <span class="kt">Base</span><span class="o">.</span><span class="kt">RouteType</span><span class="p">,</span> <span class="n">with</span> <span class="nv">options</span><span class="p">:</span> <span class="kt"><a href="../Structs/TransitionOptions.html">TransitionOptions</a></span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Observable</span><span class="o">&lt;</span><span class="kt">Void</span><span class="o">&gt;</span></code></pre>
 
                         </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>route</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The route to be triggered.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>options</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>Transition options, e.g. defining whether or not the transition should be animated.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p>An Observable<Void> to inform about the completion of the transition.</p>
                       </div>
                     </section>
                   </div>
@@ -273,7 +308,9 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p>This method transforms the completion block of a router&rsquo;s trigger method into an observable.</p>
+
+<p>It uses the default transition options as specified in <code>Router.trigger</code>.</p>
 
                       </div>
                       <div class="declaration">
@@ -283,6 +320,29 @@
                           <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">trigger</span><span class="p">(</span><span class="n">_</span> <span class="nv">route</span><span class="p">:</span> <span class="kt">Base</span><span class="o">.</span><span class="kt">RouteType</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Observable</span><span class="o">&lt;</span><span class="kt">Void</span><span class="o">&gt;</span></code></pre>
 
                         </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>route</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The route to be triggered.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p>An Observable<Void> to inform about the completion of the transition.</p>
                       </div>
                     </section>
                   </div>

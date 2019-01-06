@@ -243,6 +243,15 @@ extension Transition {
         }
     }
 
+    ///
+    /// Use this transition to register 3D Touch Peek and Pop functionality.
+    ///
+    /// - Parameter source:
+    ///     The view to register peek and pop on.
+    ///
+    /// - Parameter transition:
+    ///     A generator closure to create a transition with.
+    ///
     @available(iOS, introduced: 9.0, deprecated, message: "Use Coordinator.registerPeek instead.")
     public static func registerPeek(for source: Container,
                                     transition: @escaping () -> Transition) -> Transition {
@@ -253,6 +262,18 @@ extension Transition {
         }
     }
 
+    ///
+    /// Use this transition to register 3D Touch Peek and Pop functionality.
+    ///
+    /// - Parameter source:
+    ///     The view to register peek and pop on.
+    ///
+    /// - Parameter route:
+    ///     The route to be triggered for peek and pop.
+    ///
+    /// - Parameter coordinator:
+    ///     The coordinator to perform the peek and transitions.
+    ///
     @available(iOS, introduced: 9.0, deprecated, message: "Use Coordinator.registerPeek instead.")
     public static func registerPeek<C: Coordinator & AnyObject>(for source: Container,
                                                                 route: C.RouteType,

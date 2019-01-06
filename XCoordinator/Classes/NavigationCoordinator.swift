@@ -6,6 +6,12 @@
 //  Copyright © 2018 QuickBird Studios. All rights reserved.
 //
 
+///
+/// NavigationCoordinator acts as a base class for your own custom coordinator with a `UINavigationController` rootViewController.
+///
+/// NavigationCoordinator especially ensures that transition animations are called,
+/// which would not be the case when creating a `BaseCoordinator<RouteType, NavigationTransition>`.
+///
 open class NavigationCoordinator<RouteType: Route>: BaseCoordinator<RouteType, NavigationTransition> {
 
     // MARK: - Stored properties

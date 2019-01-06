@@ -11,6 +11,8 @@
 /// rootViewController type and transition performing capabilities.
 ///
 public protocol TransitionPerformer: Presentable {
+
+    /// The type of transitions that can be executed on the rootViewController.
     associatedtype TransitionType: TransitionProtocol
 
     /// The rootViewController on which transitions are performed.

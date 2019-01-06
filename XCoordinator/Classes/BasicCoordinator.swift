@@ -6,13 +6,13 @@
 //  Copyright © 2018 QuickBird Studios. All rights reserved.
 //
 
-// A BasicCoordinator with a `UINavigationController` as its rootViewController.
+/// A BasicCoordinator with a `UINavigationController` as its rootViewController.
 public typealias BasicNavigationCoordinator<R: Route> = BasicCoordinator<R, NavigationTransition>
 
-// A BasicCoordinator with a `UIViewController` as its rootViewController.
+/// A BasicCoordinator with a `UIViewController` as its rootViewController.
 public typealias BasicViewCoordinator<R: Route> = BasicCoordinator<R, ViewTransition>
 
-// A BasicCoordinator with a `UITabBarController` as its rootViewController.
+/// A BasicCoordinator with a `UITabBarController` as its rootViewController.
 public typealias BasicTabBarCoordinator<R: Route> = BasicCoordinator<R, TabBarTransition>
 
 ///
@@ -77,6 +77,15 @@ open class BasicCoordinator<RouteType: Route, TransitionType: TransitionProtocol
 
     // MARK: - Open methods
 
+    ///
+    /// This method is called whenever the BasicCoordinator is shown to the user.
+    ///
+    /// If `initialLoadingType` has been specified as `presented` and an initialRoute is present,
+    /// the route is triggered here.
+    ///
+    /// - Parameter presentable:
+    ///     The context in which this coordinator has been shown to the user.
+    ///
     open override func presented(from presentable: Presentable?) {
         super.presented(from: presentable)
 

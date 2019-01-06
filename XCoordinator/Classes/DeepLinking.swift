@@ -6,6 +6,12 @@
 //  Copyright © 2018 QuickBird Studios. All rights reserved.
 //
 
+///
+/// A struct describing context information about transitions.
+///
+/// It is especially useful for deep linking as we can internally gather information about
+/// the presentables being pushed onto the view hierarchy.
+///
 public struct PresentationHandlerContext {
     internal let presentables: [Presentable]
 
