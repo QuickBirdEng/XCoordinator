@@ -6,20 +6,6 @@
 	objectVersion = 46;
 	objects = {
 
-/* Begin PBXAggregateTarget section */
-		9B8CDDBE21DBBDFA000437BA /* Documentation */ = {
-			isa = PBXAggregateTarget;
-			buildConfigurationList = 9B8CDDBF21DBBDFA000437BA /* Build configuration list for PBXAggregateTarget "Documentation" */;
-			buildPhases = (
-				9B8CDDC221DBBDFE000437BA /* ShellScript */,
-			);
-			dependencies = (
-			);
-			name = Documentation;
-			productName = Documentation;
-		};
-/* End PBXAggregateTarget section */
-
 /* Begin PBXBuildFile section */
 		607FACD61AFB9204008FA782 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607FACD51AFB9204008FA782 /* AppDelegate.swift */; };
 		607FACDD1AFB9204008FA782 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 607FACDC1AFB9204008FA782 /* Images.xcassets */; };
@@ -519,11 +505,6 @@
 						LastSwiftMigration = 1000;
 						TestTargetID = 607FACCF1AFB9204008FA782;
 					};
-					9B8CDDBE21DBBDFA000437BA = {
-						CreatedOnToolsVersion = 10.1;
-						DevelopmentTeam = 77E79NGPCV;
-						ProvisioningStyle = Automatic;
-					};
 					9BC60B16214EF8D900ECFF9A = {
 						CreatedOnToolsVersion = 9.4.1;
 						DevelopmentTeam = 77E79NGPCV;
@@ -549,7 +530,6 @@
 				607FACCF1AFB9204008FA782 /* XCoordinator_Example */,
 				607FACE41AFB9204008FA782 /* XCoordinator_Tests */,
 				9BC60B16214EF8D900ECFF9A /* XCoordinator_UITests */,
-				9B8CDDBE21DBBDFA000437BA /* Documentation */,
 			);
 		};
 /* End PBXProject section */
@@ -650,23 +630,6 @@
 			showEnvVarsInLog = 0;
 		};
 		9B07F06C21D6FADA00A0C149 /* ShellScript */ = {
-            isa = PBXShellScriptBuildPhase;
-            buildActionMask = 2147483647;
-            files = (
-            );
-            inputFileListPaths = (
-            );
-            inputPaths = (
-            );
-            outputFileListPaths = (
-            );
-            outputPaths = (
-            );
-            runOnlyForDeploymentPostprocessing = 0;
-            shellPath = /bin/sh;
-            shellScript = "${PODS_ROOT}/SwiftLint/swiftlint\n";
-        };
-		9B8CDDC221DBBDFE000437BA /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -680,8 +643,8 @@
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/bash;
-			shellScript = "cd .. && jazzy --podspec XCoordinator.podspec\n";
+			shellPath = /bin/sh;
+			shellScript = "${PODS_ROOT}/SwiftLint/swiftlint\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -952,24 +915,6 @@
 			};
 			name = Release;
 		};
-		9B8CDDC021DBBDFA000437BA /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 77E79NGPCV;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-			};
-			name = Debug;
-		};
-		9B8CDDC121DBBDFA000437BA /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 77E79NGPCV;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-			};
-			name = Release;
-		};
 		9BC60B1F214EF8D900ECFF9A /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -1050,15 +995,6 @@
 			buildConfigurations = (
 				607FACF31AFB9204008FA782 /* Debug */,
 				607FACF41AFB9204008FA782 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		9B8CDDBF21DBBDFA000437BA /* Build configuration list for PBXAggregateTarget "Documentation" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				9B8CDDC021DBBDFA000437BA /* Debug */,
-				9B8CDDC121DBBDFA000437BA /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
