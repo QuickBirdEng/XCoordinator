@@ -6,8 +6,13 @@
 //  Copyright © 2018 QuickBird Studios. All rights reserved.
 //
 
+// A BasicCoordinator with a `UINavigationController` as its rootViewController.
 public typealias BasicNavigationCoordinator<R: Route> = BasicCoordinator<R, NavigationTransition>
+
+// A BasicCoordinator with a `UIViewController` as its rootViewController.
 public typealias BasicViewCoordinator<R: Route> = BasicCoordinator<R, ViewTransition>
+
+// A BasicCoordinator with a `UITabBarController` as its rootViewController.
 public typealias BasicTabBarCoordinator<R: Route> = BasicCoordinator<R, TabBarTransition>
 
 ///

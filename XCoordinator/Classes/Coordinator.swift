@@ -10,6 +10,17 @@ public typealias PresentationHandler = () -> Void
 public typealias ContextPresentationHandler = (PresentationHandlerContext) -> Void
 
 public protocol Coordinator: Router, TransitionPerformer {
+
+    ///
+    /// This method prepares transitions for routes.
+    /// It especially decides, which transitions are performed for the triggered routes.
+    ///
+    /// - Parameter route:
+    ///     The triggered route for which a transition is to be prepared.
+    ///
+    /// - Returns:
+    ///     The prepared transition.
+    ///
     func prepareTransition(for route: RouteType) -> TransitionType
 }
 

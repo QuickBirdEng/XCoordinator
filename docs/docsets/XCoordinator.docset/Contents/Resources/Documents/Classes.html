@@ -14,7 +14,7 @@
     <a title="Classes  Reference"></a>
     <header>
       <div class="content-wrapper">
-        <p><a href="index.html">XCoordinator Docs</a> (63% documented)</p>
+        <p><a href="index.html">XCoordinator Docs</a> (79% documented)</p>
       </div>
     </header>
     <div class="content-wrapper">
@@ -392,7 +392,10 @@ See <code><a href="Classes/AnyTransitionPerformer.html">AnyTransitionPerformer</
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Use AnyRouter to abstract away from</p>
+                        <p>AnyRouter can be used as an abstraction from a specific Router implementation without losing type information about its RouteType.</p>
+
+<p>This type abstraction can be especially helpful when injecting routers into viewModels.
+AnyRouter abstracts away any implementation specifics and reduces coordinators to the capabilities of triggering routes.</p>
 
                         <a href="Classes/AnyRouter.html" class="slightly-smaller">See more</a>
                       </div>
@@ -424,7 +427,12 @@ See <code><a href="Classes/AnyTransitionPerformer.html">AnyTransitionPerformer</
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p>AnyTransitionPerformer can be used as an abstraction from a specific TransitionPerformer implementation
+without losing type information about its TransitionType.</p>
+
+<p>This type abstraction can be especially helpful when performing transitions.
+AnyTransitionPerformer abstracts away any implementation specifics and reduces coordinators to the capabilities of
+performing transitions.</p>
 
                         <a href="Classes/AnyTransitionPerformer.html" class="slightly-smaller">See more</a>
                       </div>

@@ -14,7 +14,7 @@
     <a title="Presentable Protocol Reference"></a>
     <header>
       <div class="content-wrapper">
-        <p><a href="../index.html">XCoordinator Docs</a> (63% documented)</p>
+        <p><a href="../index.html">XCoordinator Docs</a> (79% documented)</p>
       </div>
     </header>
     <div class="content-wrapper">
@@ -217,7 +217,10 @@
 
                 </div>
               </div>
-            <p>Undocumented</p>
+            <p>Presentable represents all objects that can be presented (i.e. shown) to the user.</p>
+
+<p>Therefore, it is useful for view controllers, coordinators and views.
+Presentable is often used for transitions to allow for view controllers and coordinators to be transitioned to.</p>
 
           </section>
           <section class="section task-group-section">
@@ -236,7 +239,10 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p>The viewController of the Presentable.</p>
+
+<p>In the case of a <code>UIViewController</code>, it returns itself.
+A coordinator returns its rootViewController.</p>
 
                       </div>
                       <div class="declaration">

@@ -14,7 +14,7 @@
     <a title="Container Protocol Reference"></a>
     <header>
       <div class="content-wrapper">
-        <p><a href="../index.html">XCoordinator Docs</a> (63% documented)</p>
+        <p><a href="../index.html">XCoordinator Docs</a> (79% documented)</p>
       </div>
     </header>
     <div class="content-wrapper">
@@ -217,7 +217,10 @@
 
                 </div>
               </div>
-            <p>Undocumented</p>
+            <p>Container abstracts away from the difference of <code>UIView</code> and <code>UIViewController</code></p>
+
+<p>With the Container protocol, <code>UIView</code> and <code>UIViewController</code> objects can be used interchangeably,
+e.g. when embedding containers into containers.</p>
 
           </section>
           <section class="section task-group-section">
@@ -236,7 +239,9 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p>The view of a Container.</p>
+
+<p>It might not exist for a <code>UIViewController</code>.</p>
 
                       </div>
                       <div class="declaration">
@@ -263,7 +268,9 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p>The viewController of a Container.</p>
+
+<p>It might not exist for a <code>UIView</code>.</p>
 
                       </div>
                       <div class="declaration">

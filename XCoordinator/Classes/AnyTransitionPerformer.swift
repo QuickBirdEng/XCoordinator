@@ -6,6 +6,14 @@
 //  Copyright © 2018 QuickBird Studios. All rights reserved.
 //
 
+///
+/// AnyTransitionPerformer can be used as an abstraction from a specific TransitionPerformer implementation
+/// without losing type information about its TransitionType.
+///
+/// This type abstraction can be especially helpful when performing transitions.
+/// AnyTransitionPerformer abstracts away any implementation specifics and reduces coordinators to the capabilities of
+/// performing transitions.
+///
 public class AnyTransitionPerformer<TransitionType: TransitionProtocol>: TransitionPerformer {
 
     // MARK: - Stored properties

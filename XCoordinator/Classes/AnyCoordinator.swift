@@ -56,6 +56,15 @@ public class AnyCoordinator<RouteType: Route, TransitionType: TransitionProtocol
 
     // MARK: - Methods
 
+    ///
+    /// Prepare transitions for specific routes and return the transitions.
+    ///
+    /// - Parameter route:
+    ///     The triggered route for which a transition is to be prepared.
+    ///
+    /// - Returns:
+    ///     The prepared transition.
+    ///
     public func prepareTransition(for route: RouteType) -> TransitionType {
         return _prepareTransition(route)
     }

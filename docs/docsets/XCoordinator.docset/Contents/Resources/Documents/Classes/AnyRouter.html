@@ -14,7 +14,7 @@
     <a title="AnyRouter Class Reference"></a>
     <header>
       <div class="content-wrapper">
-        <p><a href="../index.html">XCoordinator Docs</a> (63% documented)</p>
+        <p><a href="../index.html">XCoordinator Docs</a> (79% documented)</p>
       </div>
     </header>
     <div class="content-wrapper">
@@ -217,7 +217,10 @@
 
                 </div>
               </div>
-            <p>Use AnyRouter to abstract away from</p>
+            <p>AnyRouter can be used as an abstraction from a specific Router implementation without losing type information about its RouteType.</p>
+
+<p>This type abstraction can be especially helpful when injecting routers into viewModels.
+AnyRouter abstracts away any implementation specifics and reduces coordinators to the capabilities of triggering routes.</p>
 
           </section>
           <section class="section task-group-section">
@@ -300,7 +303,9 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p>Triggers routes and returns context in completion-handler.</p>
+
+<p>Useful for deep linking. It is encouraged to use <code>trigger</code> instead, if the context is not needed.</p>
 
                       </div>
                       <div class="declaration">
@@ -312,6 +317,50 @@
                            <span class="nv">completion</span><span class="p">:</span> <span class="kt"><a href="../Typealiases.html#/s:12XCoordinator26ContextPresentationHandlera">ContextPresentationHandler</a></span><span class="p">?)</span></code></pre>
 
                         </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>route</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The route to be triggered.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>options</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>Transition options configuring the execution of transitions, e.g. whether it should be animated.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>completion</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>Optional completion handler. If present, it is executed once the transition is completed (including animations).
+If the context is not needed, use <code>trigger</code> instead.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
                       </div>
                     </section>
                   </div>
@@ -329,7 +378,7 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p>Triggers the specified route by performing a transition.</p>
 
                       </div>
                       <div class="declaration">
@@ -340,15 +389,58 @@
 
                         </div>
                       </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>route</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The route to be triggered.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>options</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>Transition options for performing the transition, e.g. whether it should be animated.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>completion</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>Optional completion handler. If present, it is executed once the transition is completed (including animations).</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
                     </section>
                   </div>
                 </li>
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:12XCoordinator11PresentableP9presented4fromyAaB_pSg_tF"></a>
+                    <a name="/s:12XCoordinator9AnyRouterC9presented4fromyAA11Presentable_pSg_tF"></a>
                     <a name="//apple_ref/swift/Method/presented(from:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:12XCoordinator11PresentableP9presented4fromyAaB_pSg_tF">presented(from:)</a>
+                    <a class="token" href="#/s:12XCoordinator9AnyRouterC9presented4fromyAA11Presentable_pSg_tF">presented(from:)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -356,7 +448,9 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        
+                        <p>This method is called whenever a Presentable is shown to the user.
+It further provides information about the context a presentable is shown in.</p>
+
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
@@ -365,6 +459,27 @@
                           <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">presented</span><span class="p">(</span><span class="n">from</span> <span class="nv">presentable</span><span class="p">:</span> <span class="kt"><a href="../Protocols/Presentable.html">Presentable</a></span><span class="p">?)</span></code></pre>
 
                         </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>presentable</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The context in which the presentable is shown.
+This could be a window, another viewController, a coordinator, etc.
+<code>nil</code> is specified whenever a context cannot be easily determined.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
                       </div>
                     </section>
                   </div>
@@ -382,7 +497,10 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p>The viewController of the Presentable.</p>
+
+<p>In the case of a <code>UIViewController</code>, it returns itself.
+A coordinator returns its rootViewController.</p>
 
                       </div>
                       <div class="declaration">

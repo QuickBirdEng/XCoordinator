@@ -14,7 +14,7 @@
     <a title="BaseCoordinator Class Reference"></a>
     <header>
       <div class="content-wrapper">
-        <p><a href="../index.html">XCoordinator Docs</a> (63% documented)</p>
+        <p><a href="../index.html">XCoordinator Docs</a> (79% documented)</p>
       </div>
     </header>
     <div class="content-wrapper">
@@ -477,6 +477,10 @@ Override this method to define transitions for triggered routes.</p>
                           </tbody>
                         </table>
                       </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p>The prepared transition.</p>
+                      </div>
                     </section>
                   </div>
                 </li>
@@ -497,7 +501,7 @@ Override this method to define transitions for triggered routes.</p>
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p>Shortcut for <code>BaseCoordinator.TransitionType.RootViewController</code></p>
 
                       </div>
                       <div class="declaration">
@@ -535,7 +539,18 @@ Override this method to define transitions for triggered routes.</p>
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p>Register an interactive transition triggered by a gesture recognizer.</p>
+
+<p>Also consider <code><a href="../Classes/BaseCoordinator.html#/s:12XCoordinator15BaseCoordinatorC29registerInteractiveTransition3for11triggeredBy8progress12shouldFinish10completionyx_qd__12CoreGraphics7CGFloatVqd__cSbqd__cyycSgtSo19UIGestureRecognizerCRbd__lF">registerInteractiveTransition(for:triggeredBy:progress:shouldFinish:completion:)</a></code> as it might make it easier
+to implement an interactive transition. This is meant for cases where the other method does not provide enough customization
+options.</p>
+
+<p>A target is added to the gestureRecognizer so that the handler is executed every time the state of the gesture recognizer changes.</p>
+<div class="aside aside-note">
+    <p class="aside-title">Note</p>
+    <p>Use <code>unregisterInteractiveTransition(triggeredBy:)</code> to remove previously added interactive transitions.</p>
+
+</div>
 
                       </div>
                       <div class="declaration">
@@ -545,10 +560,92 @@ Override this method to define transitions for triggered routes.</p>
                           <pre class="highlight swift"><code><span class="kd">open</span> <span class="kd">func</span> <span class="n">registerInteractiveTransition</span><span class="o">&lt;</span><span class="kt">GestureRecognizer</span><span class="p">:</span> <span class="kt">UIGestureRecognizer</span><span class="o">&gt;</span><span class="p">(</span>
     <span class="k">for</span> <span class="nv">route</span><span class="p">:</span> <span class="kt">RouteType</span><span class="p">,</span>
     <span class="n">triggeredBy</span> <span class="nv">recognizer</span><span class="p">:</span> <span class="kt">GestureRecognizer</span><span class="p">,</span>
-    <span class="nv">handler</span><span class="p">:</span> <span class="kd">@escaping</span> <span class="p">(</span><span class="kt">GestureRecognizer</span><span class="p">,</span> <span class="p">()</span> <span class="o">-&gt;</span> <span class="kt"><a href="../Protocols/TransitionAnimation.html">TransitionAnimation</a></span><span class="p">?)</span> <span class="o">-&gt;</span> <span class="kt">Void</span><span class="p">,</span>
+    <span class="nv">handler</span><span class="p">:</span> <span class="kd">@escaping</span> <span class="p">(</span><span class="n">_</span> <span class="nv">handlerRecognizer</span><span class="p">:</span> <span class="kt">GestureRecognizer</span><span class="p">,</span> <span class="n">_</span> <span class="nv">transition</span><span class="p">:</span> <span class="p">()</span> <span class="o">-&gt;</span> <span class="kt"><a href="../Protocols/TransitionAnimation.html">TransitionAnimation</a></span><span class="p">?)</span> <span class="o">-&gt;</span> <span class="kt">Void</span><span class="p">,</span>
     <span class="nv">completion</span><span class="p">:</span> <span class="kt"><a href="../Typealiases.html#/s:12XCoordinator19PresentationHandlera">PresentationHandler</a></span><span class="p">?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">)</span></code></pre>
 
                         </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>route</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The route to be triggered when the gestureRecognizer begins.
+Make sure that the transition behind is interactive as otherwise the transition is simply performed.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>recognizer</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The gesture recognizer to be used to update the interactive transition.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>handler</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The handler to update the interaction controller of the animation generated by the given <code>transition</code> closure.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>handlerRecognizer</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The gestureRecognizer with which the handler has been registered.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>transition</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The closure to perform the transition. It returns the transition animation to control the interaction controller of.
+<code><a href="../Protocols/TransitionAnimation.html#/s:12XCoordinator19TransitionAnimationP5startyyF">TransitionAnimation.start()</a></code> is automatically called.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>completion</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The closure to be called whenever the transition completes.
+Hint: Might be called multiple times but only once per performing the transition.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
                       </div>
                     </section>
                   </div>
@@ -566,7 +663,16 @@ Override this method to define transitions for triggered routes.</p>
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p>Register an interactive transition triggered by a gesture recognizer.</p>
+
+<p>To get more customization options, check out <code><a href="../Classes/BaseCoordinator.html#/s:12XCoordinator15BaseCoordinatorC29registerInteractiveTransition3for11triggeredBy7handler10completionyx_qd__yqd___AA0F9Animation_pSgyXEtcyycSgtSo19UIGestureRecognizerCRbd__lF">registerInteractiveTransition(for:triggeredBy:handler:completion:)</a></code>.</p>
+
+<p>A target is added to the gestureRecognizer so that the handler is executed every time the state of the gesture recognizer changes.</p>
+<div class="aside aside-note">
+    <p class="aside-title">Note</p>
+    <p>Use <code>unregisterInteractiveTransition(triggeredBy:)</code> to remove previously added interactive transitions.</p>
+
+</div>
 
                       </div>
                       <div class="declaration">
@@ -581,6 +687,75 @@ Override this method to define transitions for triggered routes.</p>
     <span class="nv">completion</span><span class="p">:</span> <span class="kt"><a href="../Typealiases.html#/s:12XCoordinator19PresentationHandlera">PresentationHandler</a></span><span class="p">?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">)</span></code></pre>
 
                         </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>route</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The route to be triggered when the gestureRecognizer begins.
+Make sure that the transition behind is interactive as otherwise the transition is simply performed.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>recognizer</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The gesture recognizer to be used to update the interactive transition.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>progress</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>Return the progress as CGFloat between 0 (start) and 1 (finish).</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>shouldFinish</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>Decide depending on the gestureRecognizer&rsquo;s state whether to finish or cancel a given transition.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>completion</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The closure to be called whenever the transition completes.
+Hint: Might be called multiple times but only once per performing the transition.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
                       </div>
                     </section>
                   </div>
@@ -609,7 +784,10 @@ Override this method to define transitions for triggered routes.</p>
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p>Unregisters a previously registered interactive transition.</p>
+
+<p>Unregistering does not need to happen to not create reference cycles, etc.
+It is useful, though, to remove previously registered interactive transitions that are no longer needed or wanted.</p>
 
                       </div>
                       <div class="declaration">
@@ -619,6 +797,26 @@ Override this method to define transitions for triggered routes.</p>
                           <pre class="highlight swift"><code><span class="kd">open</span> <span class="kd">func</span> <span class="nf">unregisterInteractiveTransitions</span><span class="p">(</span><span class="n">triggeredBy</span> <span class="nv">recognizer</span><span class="p">:</span> <span class="kt">UIGestureRecognizer</span><span class="p">)</span></code></pre>
 
                         </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>recognizer</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The recognizer to unregister interactive transitions for.
+This method will unregister all interactive transitions with that gesture recognizer.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
                       </div>
                     </section>
                   </div>

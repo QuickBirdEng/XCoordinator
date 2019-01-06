@@ -14,7 +14,7 @@
     <a title="Protocols  Reference"></a>
     <header>
       <div class="content-wrapper">
-        <p><a href="index.html">XCoordinator Docs</a> (63% documented)</p>
+        <p><a href="index.html">XCoordinator Docs</a> (79% documented)</p>
       </div>
     </header>
     <div class="content-wrapper">
@@ -230,7 +230,10 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p>Container abstracts away from the difference of <code>UIView</code> and <code>UIViewController</code></p>
+
+<p>With the Container protocol, <code>UIView</code> and <code>UIViewController</code> objects can be used interchangeably,
+e.g. when embedding containers into containers.</p>
 
                         <a href="Protocols/Container.html" class="slightly-smaller">See more</a>
                       </div>
@@ -294,7 +297,10 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p>Presentable represents all objects that can be presented (i.e. shown) to the user.</p>
+
+<p>Therefore, it is useful for view controllers, coordinators and views.
+Presentable is often used for transitions to allow for view controllers and coordinators to be transitioned to.</p>
 
                         <a href="Protocols/Presentable.html" class="slightly-smaller">See more</a>
                       </div>
@@ -359,7 +365,11 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p>The Router protocol is used to abstract away from the transition-type specific characteristics of a Coordinator.</p>
+
+<p>A Router can trigger routes, which lead to transitions being executed. In constrast to the Coordinator protocol,
+the router does not specify a TransitionType and can therefore be used in the form of an AnyRouter to reduce a coordinator&rsquo;s
+capabilities to the triggering of routes. This may especially be useful in viewModels when using them in different contexts.</p>
 
                         <a href="Protocols/Router.html" class="slightly-smaller">See more</a>
                       </div>
@@ -496,7 +506,9 @@ rootViewController type and transition performing capabilities.</p>
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p>TransitionProtocol is used to abstract away from any concrete implementation of transitions.</p>
+
+<p>We provide an easily-extensible transition type called <code><a href="Structs/Transition.html">Transition</a></code> as a default transition type.</p>
 
                         <a href="Protocols/TransitionProtocol.html" class="slightly-smaller">See more</a>
                       </div>
