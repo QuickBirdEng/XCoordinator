@@ -6,8 +6,8 @@
 //  Copyright © 2018 QuickBird Studios. All rights reserved.
 //
 
-import XCTest
 import XCoordinator
+import XCTest
 
 class TestAnimation: Animation {
     static func `static`(presentation: XCTestExpectation, dismissal: XCTestExpectation) -> TestAnimation {

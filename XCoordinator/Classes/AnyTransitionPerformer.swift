@@ -31,7 +31,9 @@ public class AnyTransitionPerformer<TransitionType: TransitionProtocol>: Transit
         return _presented(presentable)
     }
 
-    public func performTransition(_ transition: TransitionType, with options: TransitionOptions, completion: PresentationHandler? = nil) {
+    public func performTransition(_ transition: TransitionType,
+                                  with options: TransitionOptions,
+                                  completion: PresentationHandler? = nil) {
         _perform(transition, options, completion)
     }
 

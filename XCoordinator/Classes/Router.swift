@@ -13,14 +13,14 @@ public protocol Router: Presentable {
 }
 
 extension Router {
-    
+
     // MARK: Convenience methods
 
     public func trigger(_ route: RouteType, with options: TransitionOptions) {
         return trigger(route, with: options, completion: nil)
     }
 
-    public func trigger(_ route: RouteType, completion: PresentationHandler? = nil)  {
+    public func trigger(_ route: RouteType, completion: PresentationHandler? = nil) {
         return trigger(route, with: .default, completion: completion)
     }
 

@@ -14,7 +14,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     let window: UIWindow! = UIWindow()
     let router = AppCoordinator().anyRouter
 
-    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
+    func application(_ application: UIApplication,
+                     didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         router.setRoot(for: window)
         return true
     }

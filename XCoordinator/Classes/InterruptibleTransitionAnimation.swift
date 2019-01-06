@@ -18,7 +18,9 @@ open class InterruptibleTransitionAnimation: InteractiveTransitionAnimation {
 
     // MARK: - Init
 
-    public init(duration: TimeInterval, generateAnimator: @escaping (UIViewControllerContextTransitioning) -> UIViewImplicitlyAnimating, generateInteractionController: @escaping () -> PercentDrivenInteractionController?) {
+    public init(duration: TimeInterval,
+                generateAnimator: @escaping (UIViewControllerContextTransitioning) -> UIViewImplicitlyAnimating,
+                generateInteractionController: @escaping () -> PercentDrivenInteractionController?) {
         self._generateInterruptibleAnimator = generateAnimator
         super.init(
             duration: duration,
@@ -27,7 +29,8 @@ open class InterruptibleTransitionAnimation: InteractiveTransitionAnimation {
         )
     }
 
-    public convenience init(duration: TimeInterval, generateAnimator: @escaping (UIViewControllerContextTransitioning) -> UIViewImplicitlyAnimating) {
+    public convenience init(duration: TimeInterval,
+                            generateAnimator: @escaping (UIViewControllerContextTransitioning) -> UIViewImplicitlyAnimating) {
         self.init(
             duration: duration,
             generateAnimator: generateAnimator,
@@ -57,7 +60,9 @@ open class InterruptibleTransitionAnimation: InteractiveTransitionAnimation {
         interruptibleAnimator(using: transitionContext).startAnimation()
     }
 
-    open func interruptibleAnimator(using transitionContext: UIViewControllerContextTransitioning) -> UIViewImplicitlyAnimating {
+    open func interruptibleAnimator(
+        using transitionContext: UIViewControllerContextTransitioning
+        ) -> UIViewImplicitlyAnimating {
         return _interruptibleAnimator ?? generateInterruptibleAnimator(using: transitionContext)
     }
 }

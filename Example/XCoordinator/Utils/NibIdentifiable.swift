@@ -42,7 +42,8 @@ extension NibIdentifiable where Self: UIViewController {
 extension NibIdentifiable where Self: UIView {
 
     static func instantiateFromNib() -> Self {
-        guard let view = UINib(nibName: nibIdentifier, bundle: nil).instantiate(withOwner: nil, options: nil).first as? Self else {
+        guard let view = UINib(nibName: nibIdentifier, bundle: nil)
+            .instantiate(withOwner: nil, options: nil).first as? Self else {
             fatalError("Couldn't find nib file for \(String(describing: Self.self))")
         }
         return view
@@ -68,14 +69,16 @@ extension UITableView {
     }
 
     func dequeueReusableCell<T: UITableViewCell>(type: T.Type, forIndexPath indexPath: IndexPath) -> T {
-        guard let cell = self.dequeueReusableCell(withIdentifier: String(describing: T.self), for: indexPath) as? T else {
+        guard let cell = self.dequeueReusableCell(withIdentifier: String(describing: T.self),
+                                                  for: indexPath) as? T else {
             fatalError("Couldn't find nib file for \(String(describing: T.self))")
         }
         return cell
     }
 
     func dequeueReusableHeaderFooterView<T: UITableViewHeaderFooterView>(type: T.Type) -> T {
-        guard let headerFooterView = self.dequeueReusableHeaderFooterView(withIdentifier: String(describing: T.self)) as? T else {
+        guard let headerFooterView = self
+            .dequeueReusableHeaderFooterView(withIdentifier: String(describing: T.self)) as? T else {
             fatalError("Couldn't find nib file for \(String(describing: T.self))")
         }
         return headerFooterView
@@ -90,7 +93,8 @@ extension UICollectionView {
     }
 
     func dequeueReusableCell<T: UICollectionViewCell>(type: T.Type, forIndexPath indexPath: IndexPath) -> T {
-        guard let cell = self.dequeueReusableCell(withReuseIdentifier: String(describing: T.self), for: indexPath) as? T else {
+        guard let cell = self.dequeueReusableCell(withReuseIdentifier: String(describing: T.self),
+                                                  for: indexPath) as? T else {
             fatalError("Couldn't find nib file for \(String(describing: T.self))")
         }
         return cell

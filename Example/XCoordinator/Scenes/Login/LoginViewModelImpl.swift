@@ -19,7 +19,7 @@ class LoginViewModelImpl: LoginViewModel, LoginViewModelInput, LoginViewModelOut
     // MARK: - Actions
 
     private lazy var loginAction = CocoaAction { [unowned self] in
-        return self.router.rx.trigger(.home)
+        self.router.rx.trigger(.home)
     }
 
     // MARK: - Private

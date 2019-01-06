@@ -41,4 +41,3 @@ open class StaticTransitionAnimation: NSObject, TransitionAnimation {
     public func start() {}
     public func cleanup() {}
 }
-

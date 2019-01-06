@@ -6,8 +6,8 @@
 //  Copyright © 2018 QuickBird Studios. All rights reserved.
 //
 
-import XCTest
 @testable import XCoordinator
+import XCTest
 
 class AnimationTests: XCTestCase {
 
@@ -47,8 +47,14 @@ class AnimationTests: XCTestCase {
         testStaticAnimationCalled(on: coordinator, transition: { .select(index: 1, animation: $0) })
         testInteractiveAnimationCalled(on: coordinator, transition: { .select(index: 2, animation: $0) })
 
-        testStaticAnimationCalled(on: coordinator, transition: { .set([UIViewController(), UIViewController()], animation: $0) })
-        testInteractiveAnimationCalled(on: coordinator, transition: { .set([UIViewController(), UIViewController()], animation: $0) })
+        testStaticAnimationCalled(
+            on: coordinator,
+            transition: { .set([UIViewController(), UIViewController()], animation: $0) }
+        )
+        testInteractiveAnimationCalled(
+            on: coordinator,
+            transition: { .set([UIViewController(), UIViewController()], animation: $0) }
+        )
     }
 
     func testNavigationCoordinator() {
@@ -76,7 +82,10 @@ class AnimationTests: XCTestCase {
 
         let interactiveViewControllers = [UIViewController(), UIViewController()]
         testInteractiveAnimationCalled(on: coordinator, transition: { .set(interactiveViewControllers, animation: $0) })
-        testInteractiveAnimationCalled(on: coordinator, transition: { .pop(to: interactiveViewControllers[0], animation: $0) })
+        testInteractiveAnimationCalled(
+            on: coordinator,
+            transition: { .pop(to: interactiveViewControllers[0], animation: $0) }
+        )
     }
 
     // MARK: - Helpers
@@ -84,15 +93,25 @@ class AnimationTests: XCTestCase {
     private func testStandardAnimationsCalled<C: Coordinator>(on coordinator: C) {
         testStaticAnimationCalled(on: coordinator, transition: { .present(UIViewController(), animation: $0) })
         testStaticAnimationCalled(on: coordinator, transition: { .dismiss(animation: $0) })
-        testStaticAnimationCalled(on: coordinator, transition: { .multiple(.present(UIViewController(), animation: nil), .dismiss(animation: $0)) })
-        testStaticAnimationCalled(on: coordinator, transition: { .multiple(.present(UIViewController(), animation: $0), .dismiss(animation: .default)) })
+        testStaticAnimationCalled(
+            on: coordinator,
+            transition: { .multiple(.present(UIViewController(), animation: nil), .dismiss(animation: $0)) }
+        )
+        testStaticAnimationCalled(
+            on: coordinator,
+            transition: { .multiple(.present(UIViewController(), animation: $0), .dismiss(animation: .default)) }
+        )
 
         testInteractiveAnimationCalled(on: coordinator, transition: { .present(UIViewController(), animation: $0) })
         testInteractiveAnimationCalled(on: coordinator, transition: { .dismiss(animation: $0) })
-        testInteractiveAnimationCalled(on: coordinator, transition: { .multiple(.present(UIViewController(), animation: $0), .dismiss(animation: .default)) })
+        testInteractiveAnimationCalled(
+            on: coordinator,
+            transition: { .multiple(.present(UIViewController(), animation: $0), .dismiss(animation: .default)) }
+        )
     }
 
-    private func testStaticAnimationCalled<C: Coordinator>(on coordinator: C, transition: (Animation) -> C.TransitionType) {
+    private func testStaticAnimationCalled<C: Coordinator>(on coordinator: C,
+                                                           transition: (Animation) -> C.TransitionType) {
         let animationExpectation = expectation(description: "Animation \(Date().timeIntervalSince1970)")
         let completionExpectation = expectation(description: "Completion \(Date().timeIntervalSince1970)")
         print(#function, animationExpectation)
@@ -105,11 +124,15 @@ class AnimationTests: XCTestCase {
         asyncWait(for: 0.1)
     }
 
-    private func testInteractiveAnimationCalled<C: Coordinator>(on coordinator: C, transition: (Animation) -> C.TransitionType) {
+    private func testInteractiveAnimationCalled<C: Coordinator>(on coordinator: C,
+                                                                transition: (Animation) -> C.TransitionType) {
         let animationExpectation = expectation(description: "Animation \(Date().timeIntervalSince1970)")
         let completionExpectation = expectation(description: "Completion \(Date().timeIntervalSince1970)")
         print(#function, animationExpectation)
-        let testAnimation = TestAnimation.interactive(presentation: animationExpectation, dismissal: animationExpectation)
+        let testAnimation = TestAnimation.interactive(
+            presentation: animationExpectation,
+            dismissal: animationExpectation
+        )
         let t = transition(testAnimation)
         coordinator.performTransition(t, with: TransitionOptions(animated: true)) {
             completionExpectation.fulfill()

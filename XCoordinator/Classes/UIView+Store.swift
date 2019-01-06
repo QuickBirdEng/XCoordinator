@@ -6,16 +6,16 @@
 //  Copyright © 2018 QuickBird Studios. All rights reserved.
 //
 
-private var AssociatedObjectHandle: UInt8 = 0
+private var associatedObjectHandle: UInt8 = 0
 
 extension UIView {
 
     var strongReferences: [Any] {
         get {
-            return objc_getAssociatedObject(self, &AssociatedObjectHandle) as? [Any] ?? []
+            return objc_getAssociatedObject(self, &associatedObjectHandle) as? [Any] ?? []
         }
         set {
-            objc_setAssociatedObject(self, &AssociatedObjectHandle, newValue, objc_AssociationPolicy.OBJC_ASSOCIATION_RETAIN_NONATOMIC)
+            objc_setAssociatedObject(self, &associatedObjectHandle, newValue, .OBJC_ASSOCIATION_RETAIN_NONATOMIC)
         }
     }
 }
@@ -23,10 +23,12 @@ extension UIView {
 extension UIView {
 
     @discardableResult
-    func removePreviewingContext<TransitionType: TransitionProtocol>(for _: TransitionType.Type) -> UIViewControllerPreviewing? {
+    func removePreviewingContext<TransitionType: TransitionProtocol>(for _: TransitionType.Type)
+        -> UIViewControllerPreviewing? {
         guard let existingContextIndex = strongReferences
             .index(where: { $0 is CoordinatorPreviewingDelegateObject<TransitionType> }),
-            let contextDelegate = strongReferences.remove(at: existingContextIndex) as? CoordinatorPreviewingDelegateObject<TransitionType>,
+            let contextDelegate = strongReferences
+                .remove(at: existingContextIndex) as? CoordinatorPreviewingDelegateObject<TransitionType>,
             let context = contextDelegate.context else {
                 return nil
         }

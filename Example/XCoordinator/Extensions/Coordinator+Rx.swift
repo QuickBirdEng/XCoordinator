@@ -12,7 +12,8 @@ import RxSwift
 import XCoordinator
 
 extension Reactive where Base: Router & AnyObject {
-    public func contextTrigger(_ route: Base.RouteType, with options: TransitionOptions) -> Observable<PresentationHandlerContext> {
+    public func contextTrigger(_ route: Base.RouteType,
+                               with options: TransitionOptions) -> Observable<PresentationHandlerContext> {
         return Observable.create { [weak base] observer -> Disposable in
             guard let base = base else {
                 observer.onCompleted()

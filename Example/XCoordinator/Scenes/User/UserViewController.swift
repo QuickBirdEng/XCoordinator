@@ -6,9 +6,9 @@
 //  Copyright © 2018 QuickBird Studios. All rights reserved.
 //
 
-import UIKit
-import RxSwift
 import RxCocoa
+import RxSwift
+import UIKit
 
 class UserViewController: UIViewController, BindableType {
     var viewModel: UserViewModel!

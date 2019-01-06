@@ -10,6 +10,7 @@ open class NavigationCoordinator<RouteType: Route>: BaseCoordinator<RouteType, N
 
     // MARK: - Stored properties
 
+    // swiftlint:disable:next weak_delegate
     private let animationDelegate = NavigationAnimationDelegate()
 
     // MARK: - Computed properties
@@ -34,7 +35,7 @@ open class NavigationCoordinator<RouteType: Route>: BaseCoordinator<RouteType, N
     }
 
     // MARK: - Overrides
-    
+
     open override func generateRootViewController() -> UINavigationController {
         let navigationController = super.generateRootViewController()
         navigationController.delegate = animationDelegate

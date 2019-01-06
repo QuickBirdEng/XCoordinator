@@ -11,7 +11,7 @@ open class InteractiveTransitionAnimation: NSObject, TransitionAnimation {
     // MARK: - Static properties
 
     internal static let generateDefaultInteractionController: () -> PercentDrivenInteractionController? = {
-        return UIPercentDrivenInteractiveTransition()
+        UIPercentDrivenInteractiveTransition()
     }
 
     // MARK: - Stored properties
@@ -30,13 +30,16 @@ open class InteractiveTransitionAnimation: NSObject, TransitionAnimation {
 
     // MARK: - Init
 
-    public init(duration: TimeInterval, transition: @escaping (UIViewControllerContextTransitioning) -> Void, generateInteractionController: @escaping () -> PercentDrivenInteractionController?) {
+    public init(duration: TimeInterval,
+                transition: @escaping (UIViewControllerContextTransitioning) -> Void,
+                generateInteractionController: @escaping () -> PercentDrivenInteractionController?) {
         self._duration = duration
         self._animation = transition
         self._generateInteractionController = generateInteractionController
     }
 
-    public convenience init(duration: TimeInterval, transition: @escaping (UIViewControllerContextTransitioning) -> Void) {
+    public convenience init(duration: TimeInterval,
+                            transition: @escaping (UIViewControllerContextTransitioning) -> Void) {
         self.init(
             duration: duration,
             transition: transition,
@@ -44,11 +47,12 @@ open class InteractiveTransitionAnimation: NSObject, TransitionAnimation {
         )
     }
 
-    public convenience init(transitionAnimation: StaticTransitionAnimation, generateDefaultInteractionController: @escaping () -> PercentDrivenInteractionController?) {
+    public convenience init(transitionAnimation: StaticTransitionAnimation,
+                            generateInteractionController: @escaping () -> PercentDrivenInteractionController?) {
         self.init(
             duration: transitionAnimation.duration,
             transition: transitionAnimation.performAnimation,
-            generateInteractionController: generateDefaultInteractionController
+            generateInteractionController: generateInteractionController
         )
     }
 

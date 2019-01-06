@@ -20,11 +20,11 @@ class HomeViewModelImpl: HomeViewModel, HomeViewModelInput, HomeViewModelOutput 
     // MARK: - Actions
 
     private lazy var logoutAction = CocoaAction { [unowned self] in
-        return self.router.rx.trigger(.logout)
+        self.router.rx.trigger(.logout)
     }
 
     private lazy var usersAction = CocoaAction { [unowned self] in
-        return self.router.rx.trigger(.users)
+        self.router.rx.trigger(.users)
     }
 
     // MARK: - Private

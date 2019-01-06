@@ -36,7 +36,9 @@ extension Coordinator {
 
     public func presented(from presentable: Presentable?) {}
 
-    public func contextTrigger(_ route: RouteType, with options: TransitionOptions, completion: ContextPresentationHandler?) {
+    public func contextTrigger(_ route: RouteType,
+                               with options: TransitionOptions,
+                               completion: ContextPresentationHandler?) {
         let transition = prepareTransition(for: route)
         let context = PresentationHandlerContext(presentables: transition.presentables)
         performTransition(transition, with: options) { completion?(context) }
@@ -46,7 +48,9 @@ extension Coordinator {
         return .multiple(routes.map(prepareTransition))
     }
 
-    public func performTransition(_ transition: TransitionType, with options: TransitionOptions, completion: PresentationHandler? = nil) {
+    public func performTransition(_ transition: TransitionType,
+                                  with options: TransitionOptions,
+                                  completion: PresentationHandler? = nil) {
         transition.perform(options: options, coordinator: self, completion: completion)
     }
 }

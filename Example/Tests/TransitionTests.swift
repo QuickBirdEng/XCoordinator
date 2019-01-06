@@ -6,9 +6,9 @@
 //  Copyright © 2018 QuickBird Studios. All rights reserved.
 //
 
-import XCTest
-@testable import XCoordinator
 import RxSwift
+@testable import XCoordinator
+import XCTest
 
 class TransitionTests: XCTestCase {
 
@@ -32,7 +32,10 @@ class TransitionTests: XCTestCase {
         let coordinator = SplitCoordinator<TestRoute>(master: UIViewController(), detail: UIViewController())
         coordinator.setRoot(for: window)
         testStandardTransitions(on: coordinator)
-        testCompletionCalled(on: coordinator, transition: .multiple(.show(UIViewController()), .showDetail(UIViewController())))
+        testCompletionCalled(
+            on: coordinator,
+            transition: .multiple(.show(UIViewController()), .showDetail(UIViewController()))
+        )
     }
 
     func testTabBarCoordinator() {

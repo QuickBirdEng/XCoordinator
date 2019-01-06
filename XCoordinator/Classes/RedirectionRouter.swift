@@ -18,23 +18,22 @@ open class RedirectionRouter<SuperRoute: Route, RouteType: Route>: Router {
     // MARK: - Computed properties
 
     public var viewController: UIViewController! {
-        get {
-            return viewControllerBox.get()
-        }
-        set {
-            viewControllerBox.set(newValue)
-        }
+        return viewControllerBox.get()
     }
 
     // MARK: - Init
 
-    public init(viewController: UIViewController, superRouter: AnyRouter<SuperRoute>, map: ((RouteType) -> SuperRoute)?) {
+    public init(viewController: UIViewController,
+                superRouter: AnyRouter<SuperRoute>,
+                map: ((RouteType) -> SuperRoute)?) {
         self.superRouter = superRouter
         self._map = map
         self.viewControllerBox = ReferenceBox(viewController)
     }
 
-    public init<RouterType: Router>(viewController: UIViewController, superRouter: RouterType, map: ((RouteType) -> SuperRoute)?) where RouterType.RouteType == SuperRoute {
+    public init<RouterType: Router>(viewController: UIViewController,
+                                    superRouter: RouterType,
+                                    map: ((RouteType) -> SuperRoute)?) where RouterType.RouteType == SuperRoute {
         self.superRouter = AnyRouter(superRouter)
         self._map = map
         self.viewControllerBox = ReferenceBox(viewController)
@@ -42,7 +41,9 @@ open class RedirectionRouter<SuperRoute: Route, RouteType: Route>: Router {
 
     // MARK: - Methods
 
-    open func contextTrigger(_ route: RouteType, with options: TransitionOptions, completion: ContextPresentationHandler?) {
+    open func contextTrigger(_ route: RouteType,
+                             with options: TransitionOptions,
+                             completion: ContextPresentationHandler?) {
         superRouter.contextTrigger(mapToSuperRoute(route), with: options, completion: completion)
     }
 

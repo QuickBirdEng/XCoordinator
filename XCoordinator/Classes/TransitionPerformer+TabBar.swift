@@ -7,7 +7,10 @@
 //
 
 extension TransitionPerformer where TransitionType.RootViewController: UITabBarController {
-    func set(_ viewControllers: [UIViewController], with options: TransitionOptions, animation: Animation?, completion: PresentationHandler?) {
+    func set(_ viewControllers: [UIViewController],
+             with options: TransitionOptions,
+             animation: Animation?,
+             completion: PresentationHandler?) {
 
         rootViewController.animationDelegate?.animation = animation
         assert(animation == nil || rootViewController.animationDelegate != nil)
@@ -20,7 +23,10 @@ extension TransitionPerformer where TransitionType.RootViewController: UITabBarC
         CATransaction.commit()
     }
 
-    func select(_ viewController: UIViewController, with options: TransitionOptions, animation: Animation?, completion: PresentationHandler?) {
+    func select(_ viewController: UIViewController,
+                with options: TransitionOptions,
+                animation: Animation?,
+                completion: PresentationHandler?) {
 
         rootViewController.animationDelegate?.animation = animation
         assert(animation == nil || rootViewController.animationDelegate != nil)

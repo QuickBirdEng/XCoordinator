@@ -28,7 +28,9 @@ public final class AnyRouter<RouteType: Route>: Router {
 
     // MARK: - Public methods
 
-    public func contextTrigger(_ route: RouteType, with options: TransitionOptions, completion: ContextPresentationHandler?) {
+    public func contextTrigger(_ route: RouteType,
+                               with options: TransitionOptions,
+                               completion: ContextPresentationHandler?) {
         _contextTrigger(route, options, completion)
     }
 

@@ -10,6 +10,7 @@ open class TabBarCoordinator<RouteType: Route>: BaseCoordinator<RouteType, TabBa
 
     // MARK: - Stored properties
 
+    // swiftlint:disable:next weak_delegate
     private let animationDelegate = TabBarAnimationDelegate()
 
     // MARK: - Computed properties
