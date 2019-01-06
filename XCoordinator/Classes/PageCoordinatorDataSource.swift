@@ -6,12 +6,12 @@
 //  Copyright © 2018 QuickBird Studios. All rights reserved.
 //
 
-open class PageCoordinatorDataSource: NSObject, UIPageViewControllerDataSource, UIPageViewControllerDelegate {
+open class PageCoordinatorDataSource: NSObject, UIPageViewControllerDataSource {
 
     // MARK: - Stored properties
 
-    open private(set) var pages: [UIViewController]
-    open private(set) var loop: Bool
+    open var pages: [UIViewController]
+    open var loop: Bool
 
     // MARK: - Initialization
 
