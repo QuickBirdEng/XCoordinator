@@ -14,7 +14,7 @@
     <a title="RedirectionRouter Class Reference"></a>
     <header>
       <div class="content-wrapper">
-        <p><a href="../index.html">XCoordinator Docs</a> (93% documented)</p>
+        <p><a href="../index.html">XCoordinator Docs</a> (100% documented)</p>
       </div>
     </header>
     <div class="content-wrapper">
@@ -217,7 +217,14 @@
 
                 </div>
               </div>
-            <p>Undocumented</p>
+            <p>RedirectionRouters can be used to extract routes into different route types.
+Instead of having one huge route and one or more huge coordinators, you can create separate redirecting routers.</p>
+
+<p>Create a RedirectionRouter from a superCoordinator by providing a reference to the superCoordinator.
+Triggered routes of the RedirectionRouter will be redirected to this superCoordinator according to the provided mapping.
+Please provide either a <code>map</code> closure in the initializer or override the <code>mapToSuperRoute</code> method.</p>
+
+<p>A RedirectionRouter has a viewController which is used in transitions, e.g. when you are presenting, pushing, or otherwise displaying it.</p>
 
           </section>
           <section class="section task-group-section">
@@ -243,7 +250,7 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p>An AnyRouter object of the superCoordinator.</p>
 
                       </div>
                       <div class="declaration">
@@ -271,9 +278,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:12XCoordinator11PresentableP14viewControllerSo06UIViewD0CSgvp"></a>
+                    <a name="/s:12XCoordinator17RedirectionRouterC14viewControllerSo06UIViewE0CSgvp"></a>
                     <a name="//apple_ref/swift/Property/viewController" class="dashAnchor"></a>
-                    <a class="token" href="#/s:12XCoordinator11PresentableP14viewControllerSo06UIViewD0CSgvp">viewController</a>
+                    <a class="token" href="#/s:12XCoordinator17RedirectionRouterC14viewControllerSo06UIViewE0CSgvp">viewController</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -281,7 +288,8 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        
+                        <p>The viewController used in transitions, e.g. when pushing, presenting or otherwise displaying the RedirectionRouter.</p>
+
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
@@ -318,7 +326,7 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p>Creates a RedirectionRouter with a certain viewController, a superRouter and an optional mapping.</p>
 
                       </div>
                       <div class="declaration">
@@ -330,6 +338,51 @@
             <span class="nv">map</span><span class="p">:</span> <span class="p">((</span><span class="kt">RouteType</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">SuperRoute</span><span class="p">)?)</span></code></pre>
 
                         </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>viewController</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The view controller to be used in transitions, e.g. when pushing, presenting or otherwise displaying the RedirectionRouter.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>superRouter</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>An AnyRouter object of the superCoordinator. Triggered routes will be rerouted there.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>map</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>A mapping from this RedirectionRouter&rsquo;s routes to the superRouter&rsquo;s routes.
+If you specify <code>nil</code> here, make sure to override <code>mapToSuperRoute</code>.
+If you specify a closure, but also override <code>mapToSuperRoute</code>, the closure is ignored.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
                       </div>
                     </section>
                   </div>
@@ -347,7 +400,7 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p>Creates a RedirectionRouter with a certain viewController, a superRouter and an optional mapping.</p>
 
                       </div>
                       <div class="declaration">
@@ -359,6 +412,51 @@
                                 <span class="nv">map</span><span class="p">:</span> <span class="p">((</span><span class="kt">RouteType</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">SuperRoute</span><span class="p">)?)</span> <span class="k">where</span> <span class="kt">RouterType</span><span class="o">.</span><span class="kt">RouteType</span> <span class="o">==</span> <span class="kt">SuperRoute</span></code></pre>
 
                         </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>viewController</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The view controller to be used in transitions, e.g. when pushing, presenting or otherwise displaying the RedirectionRouter.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>superRouter</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The superCoordinator. Triggered routes will be rerouted there.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>map</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>A mapping from this RedirectionRouter&rsquo;s routes to the superRouter&rsquo;s routes.
+If you specify <code>nil</code> here, make sure to override <code>mapToSuperRoute</code>.
+If you specify a closure, but also override <code>mapToSuperRoute</code>, the closure is ignored.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
                       </div>
                     </section>
                   </div>
@@ -415,7 +513,10 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p>Map RouteType to SuperRoute.</p>
+
+<p>This method is called when a route is triggered in the RedirectionRouter.
+It is used to translate RouteType routes to the superRouter&rsquo;s routes which are then triggered in the superRouter.</p>
 
                       </div>
                       <div class="declaration">
@@ -425,6 +526,29 @@
                           <pre class="highlight swift"><code><span class="kd">open</span> <span class="kd">func</span> <span class="nf">mapToSuperRoute</span><span class="p">(</span><span class="n">_</span> <span class="nv">route</span><span class="p">:</span> <span class="kt">RouteType</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">SuperRoute</span></code></pre>
 
                         </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>route</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The route to be mapped.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p>The mapped route for the superRouter.</p>
                       </div>
                     </section>
                   </div>
@@ -490,7 +614,7 @@
           </section>
         </section>
         <section id="footer">
-          <p>&copy; 2019 <a class="link" href="https://github.com/quickbirdstudios/XCoordinator" target="_blank" rel="external">Stefan Kofler and Paul Kraft</a>. All rights reserved. (Last updated: 2019-01-06)</p>
+          <p>&copy; 2019 <a class="link" href="https://github.com/quickbirdstudios/XCoordinator" target="_blank" rel="external">Stefan Kofler and Paul Kraft</a>. All rights reserved. (Last updated: 2019-01-07)</p>
           <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.9.4</a>, a <a class="link" href="https://realm.io" target="_blank" rel="external">Realm</a> project.</p>
         </section>
       </article>

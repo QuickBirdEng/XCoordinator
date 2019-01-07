@@ -14,7 +14,7 @@
     <a title="PageCoordinatorDataSource Class Reference"></a>
     <header>
       <div class="content-wrapper">
-        <p><a href="../index.html">XCoordinator Docs</a> (93% documented)</p>
+        <p><a href="../index.html">XCoordinator Docs</a> (100% documented)</p>
       </div>
     </header>
     <div class="content-wrapper">
@@ -244,7 +244,7 @@ a rather static list of pages. It further allows looping through the given pages
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p>The pages of the <code>UIPageViewController</code> in sequential order.</p>
 
                       </div>
                       <div class="declaration">
@@ -271,7 +271,9 @@ a rather static list of pages. It further allows looping through the given pages
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p>Whether or not the pages of the <code>UIPageViewController</code> should be in a loop,
+i.e. whether a swipe to the left of the last page should result in the first page being shown
+(or the last shown when swiping right on the first page)</p>
 
                       </div>
                       <div class="declaration">
@@ -309,7 +311,7 @@ a rather static list of pages. It further allows looping through the given pages
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p>Creates a PageCoordinatorDataSource with the given pages and looping capabilities.</p>
 
                       </div>
                       <div class="declaration">
@@ -319,6 +321,40 @@ a rather static list of pages. It further allows looping through the given pages
                           <pre class="highlight swift"><code><span class="kd">public</span> <span class="nf">init</span><span class="p">(</span><span class="nv">pages</span><span class="p">:</span> <span class="p">[</span><span class="kt">UIViewController</span><span class="p">],</span> <span class="nv">loop</span><span class="p">:</span> <span class="kt">Bool</span><span class="p">)</span></code></pre>
 
                         </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>pages</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The pages to be shown in the <code>UIPageViewController</code>.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>loop</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>Whether or not the pages of the <code>UIPageViewController</code> should be in a loop,
+i.e. whether a swipe to the left of the last page should result in the first page being shown
+(or the last shown when swiping right on the first page)
+If you specify <code>false</code> here, the user cannot swipe left on the last page and right on the first.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
                       </div>
                     </section>
                   </div>
@@ -347,7 +383,7 @@ a rather static list of pages. It further allows looping through the given pages
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p>See UIKit documentation for further information.</p>
 
                       </div>
                       <div class="declaration">
@@ -357,6 +393,29 @@ a rather static list of pages. It further allows looping through the given pages
                           <pre class="highlight swift"><code><span class="kd">open</span> <span class="kd">func</span> <span class="nf">presentationCount</span><span class="p">(</span><span class="k">for</span> <span class="nv">pageViewController</span><span class="p">:</span> <span class="kt">UIPageViewController</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Int</span></code></pre>
 
                         </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>pageViewController</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The pageViewController this is the dataSource of.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p>The count of <code><a href="../Classes/PageCoordinatorDataSource.html#/s:12XCoordinator25PageCoordinatorDataSourceC5pagesSaySo16UIViewControllerCGvp">pages</a></code>, if it is displayed. Otherwise 0.</p>
                       </div>
                     </section>
                   </div>
@@ -374,7 +433,7 @@ a rather static list of pages. It further allows looping through the given pages
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p>See UIKit documentation for further information.</p>
 
                       </div>
                       <div class="declaration">
@@ -384,6 +443,29 @@ a rather static list of pages. It further allows looping through the given pages
                           <pre class="highlight swift"><code><span class="kd">open</span> <span class="kd">func</span> <span class="nf">presentationIndex</span><span class="p">(</span><span class="k">for</span> <span class="nv">pageViewController</span><span class="p">:</span> <span class="kt">UIPageViewController</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Int</span></code></pre>
 
                         </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>pageViewController</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The pageViewController this is the dataSource of.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p>The index of the currently displayed view controller.</p>
                       </div>
                     </section>
                   </div>
@@ -401,7 +483,11 @@ a rather static list of pages. It further allows looping through the given pages
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p>See UIKit documentation for further information.</p>
+
+<p>This method first searches for the index of the given viewController in the <code><a href="../Classes/PageCoordinatorDataSource.html#/s:12XCoordinator25PageCoordinatorDataSourceC5pagesSaySo16UIViewControllerCGvp">pages</a></code> array.
+It then decrements the index and checks whether it can find a viewController at the given index.
+If not, it either loops or returns that no viewController is available.</p>
 
                       </div>
                       <div class="declaration">
@@ -412,6 +498,41 @@ a rather static list of pages. It further allows looping through the given pages
                              <span class="n">viewControllerBefore</span> <span class="nv">viewController</span><span class="p">:</span> <span class="kt">UIViewController</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">UIViewController</span><span class="p">?</span></code></pre>
 
                         </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>pageViewController</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The pageViewController this is the dataSource of.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>viewController</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The viewController to find a viewController before it.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p>The viewController before the given viewController.</p>
                       </div>
                     </section>
                   </div>
@@ -429,7 +550,11 @@ a rather static list of pages. It further allows looping through the given pages
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p>See UIKit documentation for further information.</p>
+
+<p>This method first searches for the index of the given viewController in the <code><a href="../Classes/PageCoordinatorDataSource.html#/s:12XCoordinator25PageCoordinatorDataSourceC5pagesSaySo16UIViewControllerCGvp">pages</a></code> array.
+It then increments the index and checks whether it can find a viewController at the given index.
+If not, it either loops or returns that no viewController is available.</p>
 
                       </div>
                       <div class="declaration">
@@ -441,6 +566,41 @@ a rather static list of pages. It further allows looping through the given pages
 
                         </div>
                       </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>pageViewController</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The pageViewController this is the dataSource of.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>viewController</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The viewController to find a viewController after it.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p>The viewController before the given viewController.</p>
+                      </div>
                     </section>
                   </div>
                 </li>
@@ -449,7 +609,7 @@ a rather static list of pages. It further allows looping through the given pages
           </section>
         </section>
         <section id="footer">
-          <p>&copy; 2019 <a class="link" href="https://github.com/quickbirdstudios/XCoordinator" target="_blank" rel="external">Stefan Kofler and Paul Kraft</a>. All rights reserved. (Last updated: 2019-01-06)</p>
+          <p>&copy; 2019 <a class="link" href="https://github.com/quickbirdstudios/XCoordinator" target="_blank" rel="external">Stefan Kofler and Paul Kraft</a>. All rights reserved. (Last updated: 2019-01-07)</p>
           <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.9.4</a>, a <a class="link" href="https://realm.io" target="_blank" rel="external">Realm</a> project.</p>
         </section>
       </article>

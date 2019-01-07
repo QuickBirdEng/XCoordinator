@@ -13,7 +13,7 @@ extension Router {
 
     /// The reactive extensions of a `Router`.
     public var rx: Reactive<Self> {
-        // swiftlint:disable:prev identifier_name
+        // swiftlint:disable:previous identifier_name
         return Reactive(self)
     }
 }

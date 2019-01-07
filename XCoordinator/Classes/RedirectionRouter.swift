@@ -6,10 +6,22 @@
 //  Copyright © 2018 QuickBird Studios. All rights reserved.
 //
 
+///
+/// RedirectionRouters can be used to extract routes into different route types.
+/// Instead of having one huge route and one or more huge coordinators, you can create separate redirecting routers.
+///
+/// Create a RedirectionRouter from a superCoordinator by providing a reference to the superCoordinator.
+/// Triggered routes of the RedirectionRouter will be redirected to this superCoordinator according to the provided mapping.
+/// Please provide either a `map` closure in the initializer or override the `mapToSuperRoute` method.
+///
+/// A RedirectionRouter has a viewController which is used in transitions,
+/// e.g. when you are presenting, pushing, or otherwise displaying it.
+///
 open class RedirectionRouter<SuperRoute: Route, RouteType: Route>: Router {
 
     // MARK: - Stored properties
 
+    /// An AnyRouter object of the superCoordinator.
     public let superRouter: AnyRouter<SuperRoute>
 
     private let _map: ((RouteType) -> SuperRoute)?
@@ -17,12 +29,27 @@ open class RedirectionRouter<SuperRoute: Route, RouteType: Route>: Router {
 
     // MARK: - Computed properties
 
+    /// The viewController used in transitions, e.g. when pushing, presenting or otherwise displaying the RedirectionRouter.
     public var viewController: UIViewController! {
         return viewControllerBox.get()
     }
 
     // MARK: - Initialization
 
+    ///
+    /// Creates a RedirectionRouter with a certain viewController, a superRouter and an optional mapping.
+    ///
+    /// - Parameter viewController:
+    ///     The view controller to be used in transitions, e.g. when pushing, presenting or otherwise displaying the RedirectionRouter.
+    ///
+    /// - Parameter superRouter:
+    ///     An AnyRouter object of the superCoordinator. Triggered routes will be rerouted there.
+    ///
+    /// - Parameter map:
+    ///     A mapping from this RedirectionRouter's routes to the superRouter's routes.
+    ///     If you specify `nil` here, make sure to override `mapToSuperRoute`.
+    ///     If you specify a closure, but also override `mapToSuperRoute`, the closure is ignored.
+    ///
     public init(viewController: UIViewController,
                 superRouter: AnyRouter<SuperRoute>,
                 map: ((RouteType) -> SuperRoute)?) {
@@ -31,6 +58,20 @@ open class RedirectionRouter<SuperRoute: Route, RouteType: Route>: Router {
         self.viewControllerBox = ReferenceBox(viewController)
     }
 
+    ///
+    /// Creates a RedirectionRouter with a certain viewController, a superRouter and an optional mapping.
+    ///
+    /// - Parameter viewController:
+    ///     The view controller to be used in transitions, e.g. when pushing, presenting or otherwise displaying the RedirectionRouter.
+    ///
+    /// - Parameter superRouter:
+    ///     The superCoordinator. Triggered routes will be rerouted there.
+    ///
+    /// - Parameter map:
+    ///     A mapping from this RedirectionRouter's routes to the superRouter's routes.
+    ///     If you specify `nil` here, make sure to override `mapToSuperRoute`.
+    ///     If you specify a closure, but also override `mapToSuperRoute`, the closure is ignored.
+    ///
     public init<RouterType: Router>(viewController: UIViewController,
                                     superRouter: RouterType,
                                     map: ((RouteType) -> SuperRoute)?) where RouterType.RouteType == SuperRoute {
@@ -47,6 +88,18 @@ open class RedirectionRouter<SuperRoute: Route, RouteType: Route>: Router {
         superRouter.contextTrigger(mapToSuperRoute(route), with: options, completion: completion)
     }
 
+    ///
+    /// Map RouteType to SuperRoute.
+    ///
+    /// This method is called when a route is triggered in the RedirectionRouter.
+    /// It is used to translate RouteType routes to the superRouter's routes which are then triggered in the superRouter.
+    ///
+    /// - Parameter route:
+    ///     The route to be mapped.
+    ///
+    /// - Returns:
+    ///     The mapped route for the superRouter.
+    ///
     open func mapToSuperRoute(_ route: RouteType) -> SuperRoute {
         guard let map = self._map else {
             fatalError("Please implement \(#function) or use the `map` closure in the initializer.")

@@ -14,11 +14,28 @@ open class PageCoordinatorDataSource: NSObject, UIPageViewControllerDataSource {
 
     // MARK: - Stored properties
 
+    /// The pages of the `UIPageViewController` in sequential order.
     open var pages: [UIViewController]
+
+    /// Whether or not the pages of the `UIPageViewController` should be in a loop,
+    /// i.e. whether a swipe to the left of the last page should result in the first page being shown
+    /// (or the last shown when swiping right on the first page)
     open var loop: Bool
 
     // MARK: - Initialization
 
+    ///
+    /// Creates a PageCoordinatorDataSource with the given pages and looping capabilities.
+    ///
+    /// - Parameter pages:
+    ///     The pages to be shown in the `UIPageViewController`.
+    ///
+    /// - Parameter loop:
+    ///     Whether or not the pages of the `UIPageViewController` should be in a loop,
+    ///     i.e. whether a swipe to the left of the last page should result in the first page being shown
+    ///     (or the last shown when swiping right on the first page)
+    ///     If you specify `false` here, the user cannot swipe left on the last page and right on the first.
+    ///
     public init(pages: [UIViewController], loop: Bool) {
         self.pages = pages
         self.loop = loop
@@ -26,16 +43,50 @@ open class PageCoordinatorDataSource: NSObject, UIPageViewControllerDataSource {
 
     // MARK: - Methods
 
+    ///
+    /// See UIKit documentation for further information.
+    ///
+    /// - Parameter pageViewController:
+    ///     The pageViewController this is the dataSource of.
+    ///
+    /// - Returns:
+    ///     The count of `pages`, if it is displayed. Otherwise 0.
+    ///
     open func presentationCount(for pageViewController: UIPageViewController) -> Int {
         let isNotDisplaying = pageViewController.viewControllers?.isEmpty ?? true
         return isNotDisplaying ? 0 : pages.count
     }
 
+    ///
+    /// See UIKit documentation for further information.
+    ///
+    /// - Parameter pageViewController:
+    ///     The pageViewController this is the dataSource of.
+    ///
+    /// - Returns:
+    ///     The index of the currently displayed view controller.
+    ///
     open func presentationIndex(for pageViewController: UIPageViewController) -> Int {
         guard let viewController = pageViewController.viewControllers?.first else { return 0 }
         return pages.firstIndex(of: viewController) ?? 0
     }
 
+    ///
+    /// See UIKit documentation for further information.
+    ///
+    /// This method first searches for the index of the given viewController in the `pages` array.
+    /// It then decrements the index and checks whether it can find a viewController at the given index.
+    /// If not, it either loops or returns that no viewController is available.
+    ///
+    /// - Parameter pageViewController:
+    ///     The pageViewController this is the dataSource of.
+    ///
+    /// - Parameter viewController:
+    ///     The viewController to find a viewController before it.
+    ///
+    /// - Returns:
+    ///     The viewController before the given viewController.
+    ///
     open func pageViewController(_ pageViewController: UIPageViewController,
                                  viewControllerBefore viewController: UIViewController) -> UIViewController? {
         guard let index = pages.firstIndex(of: viewController) else {
@@ -48,6 +99,22 @@ open class PageCoordinatorDataSource: NSObject, UIPageViewControllerDataSource {
         return pages[prevIndex].viewController
     }
 
+    ///
+    /// See UIKit documentation for further information.
+    ///
+    /// This method first searches for the index of the given viewController in the `pages` array.
+    /// It then increments the index and checks whether it can find a viewController at the given index.
+    /// If not, it either loops or returns that no viewController is available.
+    ///
+    /// - Parameter pageViewController:
+    ///     The pageViewController this is the dataSource of.
+    ///
+    /// - Parameter viewController:
+    ///     The viewController to find a viewController after it.
+    ///
+    /// - Returns:
+    ///     The viewController before the given viewController.
+    ///
     open func pageViewController(_ pageViewController: UIPageViewController,
                                  viewControllerAfter viewController: UIViewController) -> UIViewController? {
         guard let index = pages.firstIndex(of: viewController) else {
