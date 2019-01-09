@@ -15,5 +15,7 @@ open class SplitCoordinator<RouteType: Route>: BaseCoordinator<RouteType, SplitT
     public init(master: Presentable, detail: Presentable?) {
         super.init(initialRoute: nil)
         rootViewController.viewControllers = [master.viewController, detail?.viewController].compactMap { $0 }
+        master.presented(from: self)
+        detail?.presented(from: self)
     }
 }

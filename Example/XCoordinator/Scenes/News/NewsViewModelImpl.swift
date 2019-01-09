@@ -19,7 +19,7 @@ class NewsViewModelImpl: NewsViewModel, NewsViewModelInput, NewsViewModelOutput 
     // MARK: - Actions
 
     lazy var newsSelectedAction = Action<News, Void> { [unowned self] news in
-        self.coordinator.rx.trigger(.newsDetail(news))
+        self.router.rx.trigger(.newsDetail(news))
     }
 
     // MARK: - Outputs
@@ -32,14 +32,14 @@ class NewsViewModelImpl: NewsViewModel, NewsViewModelInput, NewsViewModelOutput 
     // MARK: - Private
 
     private let newsService: NewsService
-    private let coordinator: AnyRouter<NewsRoute>
+    private let router: AnyRouter<NewsRoute>
 
     // MARK: - Init
 
-    init(newsService: NewsService, coordinator: AnyRouter<NewsRoute>) {
+    init(newsService: NewsService, router: AnyRouter<NewsRoute>) {
         self.newsService = newsService
         self.newsObservable = .just(newsService.mostRecentNews())
-        self.coordinator = coordinator
+        self.router = router
     }
 
 }
