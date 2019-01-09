@@ -29,7 +29,7 @@ class NewsCoordinator: NavigationCoordinator<NewsRoute> {
         case .news:
             let viewController = NewsViewController.instantiateFromNib()
             let service = MockNewsService()
-            let viewModel = NewsViewModelImpl(newsService: service, coordinator: anyRouter)
+            let viewModel = NewsViewModelImpl(newsService: service, router: anyRouter)
             viewController.bind(to: viewModel)
             return .push(viewController)
         case .newsDetail(let news):
