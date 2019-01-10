@@ -231,6 +231,7 @@
 		9B60A6839B7C661B6C52055BE61D47AC /* TransitionPerformer+Transition.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1C18CDA51E68F0997A22C8CF18B2D74 /* TransitionPerformer+Transition.swift */; };
 		9B778AAD0E88F3BDDD602B2B2FEC1B1D /* Queue.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBFC64BE15D06BBC2789A3ECD0453A64 /* Queue.swift */; };
 		9BA39706EC9DD21CE53AC3761F75FB31 /* NopDisposable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31D2FD90FFC9F1AC8AB9D7423948EC08 /* NopDisposable.swift */; };
+		9BC5C13C21E7C1DA00ED46E5 /* SplitTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BC5C13A21E7C1C800ED46E5 /* SplitTransition.swift */; };
 		9C88CFDC6D4A6A2325A1C20BB652F222 /* TransitionPerformer+Page.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A40EEEC9DE43A75FBEEB1B9381AD081 /* TransitionPerformer+Page.swift */; };
 		9D60DF82508B477A3C1481AC69B0E23A /* UIViewController+Rx.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39361365680652F52C079369E757BBDC /* UIViewController+Rx.swift */; };
 		9EF7F2DC83FEABF3A87A2C527796308F /* TransitionAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC247FFD9FBF2850A5D49BC6EC2CD92C /* TransitionAnimation.swift */; };
@@ -703,6 +704,7 @@
 		991AB3C72219E7885CB9C1BB3E2B8BC8 /* NSTextField+Rx.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "NSTextField+Rx.swift"; path = "RxCocoa/macOS/NSTextField+Rx.swift"; sourceTree = "<group>"; };
 		9B11588755FBE191A25510E868E4F79F /* RxTarget.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = RxTarget.swift; path = RxCocoa/Common/RxTarget.swift; sourceTree = "<group>"; };
 		9B12C3D11E24DFBFCC524FC2AF37140C /* ViewCoordinator.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ViewCoordinator.swift; path = XCoordinator/Classes/ViewCoordinator.swift; sourceTree = "<group>"; };
+		9BC5C13A21E7C1C800ED46E5 /* SplitTransition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SplitTransition.swift; path = XCoordinator/Classes/SplitTransition.swift; sourceTree = "<group>"; };
 		9CE8241B1400168A1C6BD6C38FEB3B0F /* RetryWhen.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = RetryWhen.swift; path = RxSwift/Observables/RetryWhen.swift; sourceTree = "<group>"; };
 		9D01FAA55B5C2B2687AFFC5F414A6B95 /* UIScrollView+Rx.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "UIScrollView+Rx.swift"; path = "RxCocoa/iOS/UIScrollView+Rx.swift"; sourceTree = "<group>"; };
 		9DC188E7413E5A10C7344E4E6B7593CF /* Action.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = Action.xcconfig; sourceTree = "<group>"; };
@@ -1183,6 +1185,7 @@
 				DF569177A461E54125280035B5381B7E /* Route.swift */,
 				6CAE3F45C06139169D12210988FE973D /* Router.swift */,
 				361400926685912082E10B3B0940168B /* SplitCoordinator.swift */,
+				9BC5C13A21E7C1C800ED46E5 /* SplitTransition.swift */,
 				07036BF2A5CD1F76699CB15D702CEEA1 /* StaticTransitionAnimation.swift */,
 				5E41184D9EFEEC1564210343F6916835 /* TabBarCoordinator.swift */,
 				A9ADC29268AD91C6B5C3BC2237A8F5CE /* TabBarTransition.swift */,
@@ -1977,6 +1980,7 @@
 				431DF2BD2B530612D74D00FBB7E493F9 /* ReferenceBox.swift in Sources */,
 				5BF81142ABA1690EA880E2561056D8FA /* Route.swift in Sources */,
 				9792EBE57FC2DEF0536BF7AB0D96A67D /* Router.swift in Sources */,
+				9BC5C13C21E7C1DA00ED46E5 /* SplitTransition.swift in Sources */,
 				1CE1281C2E60BB96638645A215687727 /* SplitCoordinator.swift in Sources */,
 				D37D47D2D5B0E51E18091DECCB4F18E2 /* StaticTransitionAnimation.swift in Sources */,
 				5E544B8D511435BAB86C9400511E19E6 /* TabBarCoordinator.swift in Sources */,
