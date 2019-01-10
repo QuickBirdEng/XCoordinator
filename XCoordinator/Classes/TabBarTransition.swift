@@ -16,7 +16,10 @@ extension Transition where RootViewController: UITabBarController {
             performer.set(presentables.map { $0.viewController },
                           with: options,
                           animation: animation,
-                          completion: completion)
+                          completion: {
+                            presentables.forEach { $0.presented(from: performer) }
+                            completion?()
+            })
         }
     }
 
