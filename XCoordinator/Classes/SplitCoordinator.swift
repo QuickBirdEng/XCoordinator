@@ -14,8 +14,17 @@ open class SplitCoordinator<RouteType: Route>: BaseCoordinator<RouteType, SplitT
 
     public init(master: Presentable, detail: Presentable?) {
         super.init(initialRoute: nil)
-        rootViewController.viewControllers = [master.viewController, detail?.viewController].compactMap { $0 }
-        master.presented(from: self)
-        detail?.presented(from: self)
+        setViewControllers([master, detail].compactMap { $0 })
+    }
+
+    // MARK: - Helpers
+
+    private func setViewControllers(_ presentables: [Presentable]) {
+        CATransaction.begin()
+        CATransaction.setCompletionBlock { [weak self] in
+            presentables.forEach { $0.presented(from: self) }
+        }
+        rootViewController.viewControllers = presentables.map { $0.viewController }
+        CATransaction.commit()
     }
 }
