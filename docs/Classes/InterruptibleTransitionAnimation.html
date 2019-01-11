@@ -4,212 +4,236 @@
     <title>InterruptibleTransitionAnimation Class Reference</title>
     <link rel="stylesheet" type="text/css" href="../css/jazzy.css" />
     <link rel="stylesheet" type="text/css" href="../css/highlight.css" />
-    <meta charset='utf-8'>
+    <meta charset="utf-8">
     <script src="../js/jquery.min.js" defer></script>
     <script src="../js/jazzy.js" defer></script>
     
+    <script src="../js/lunr.min.js" defer></script>
+    <script src="../js/typeahead.jquery.js" defer></script>
+    <script src="../js/jazzy.search.js" defer></script>
   </head>
   <body>
+
     <a name="//apple_ref/swift/Class/InterruptibleTransitionAnimation" class="dashAnchor"></a>
+
     <a title="InterruptibleTransitionAnimation Class Reference"></a>
-    <header>
-      <div class="content-wrapper">
-        <p><a href="../index.html">XCoordinator Docs</a> (100% documented)</p>
-      </div>
-    </header>
-    <div class="content-wrapper">
-      <p id="breadcrumbs">
-        <a href="../index.html">XCoordinator Reference</a>
-        <img id="carat" src="../img/carat.png" />
-        InterruptibleTransitionAnimation Class Reference
+
+    <header class="header">
+      <p class="header-col header-col--primary">
+        <a class="header-link" href="../index.html">
+          XCoordinator Docs
+        </a>
+        
       </p>
-    </div>
+    
+      <p class="header-col--secondary">
+        <form role="search" action="../search.json">
+          <input type="text" placeholder="Search documentation" data-typeahead>
+        </form>
+      </p>
+    
+        <p class="header-col header-col--secondary">
+          <a class="header-link" href="https://github.com/quickbirdstudios/XCoordinator">
+            <img class="header-icon" src="../img/gh.png"/>
+            View on GitHub
+          </a>
+        </p>
+    
+    </header>
+
+    <p class="breadcrumbs">
+      <a class="breadcrumb" href="../index.html">XCoordinator Reference</a>
+      <img class="carat" src="../img/carat.png" />
+      InterruptibleTransitionAnimation Class Reference
+    </p>
+
     <div class="content-wrapper">
-      <nav class="sidebar">
+      <nav class="navigation">
         <ul class="nav-groups">
           <li class="nav-group-name">
-            <a href="../Classes.html">Classes</a>
+            <a class="nav-group-name-link" href="../Classes.html">Classes</a>
             <ul class="nav-group-tasks">
               <li class="nav-group-task">
-                <a href="../Classes/Animation.html">Animation</a>
+                <a class="nav-group-task-link" href="../Classes/Animation.html">Animation</a>
               </li>
               <li class="nav-group-task">
-                <a href="../Classes/AnyCoordinator.html">AnyCoordinator</a>
+                <a class="nav-group-task-link" href="../Classes/AnyCoordinator.html">AnyCoordinator</a>
               </li>
               <li class="nav-group-task">
-                <a href="../Classes/AnyRouter.html">AnyRouter</a>
+                <a class="nav-group-task-link" href="../Classes/AnyRouter.html">AnyRouter</a>
               </li>
               <li class="nav-group-task">
-                <a href="../Classes/AnyTransitionPerformer.html">AnyTransitionPerformer</a>
+                <a class="nav-group-task-link" href="../Classes/AnyTransitionPerformer.html">AnyTransitionPerformer</a>
               </li>
               <li class="nav-group-task">
-                <a href="../Classes/BaseCoordinator.html">BaseCoordinator</a>
+                <a class="nav-group-task-link" href="../Classes/BaseCoordinator.html">BaseCoordinator</a>
               </li>
               <li class="nav-group-task">
-                <a href="../Classes/BasicCoordinator.html">BasicCoordinator</a>
+                <a class="nav-group-task-link" href="../Classes/BasicCoordinator.html">BasicCoordinator</a>
               </li>
               <li class="nav-group-task">
-                <a href="../Classes/BasicCoordinator/InitialLoadingType.html">– InitialLoadingType</a>
+                <a class="nav-group-task-link" href="../Classes/BasicCoordinator/InitialLoadingType.html">– InitialLoadingType</a>
               </li>
               <li class="nav-group-task">
-                <a href="../Classes/InteractiveTransitionAnimation.html">InteractiveTransitionAnimation</a>
+                <a class="nav-group-task-link" href="../Classes/InteractiveTransitionAnimation.html">InteractiveTransitionAnimation</a>
               </li>
               <li class="nav-group-task">
-                <a href="../Classes/InterruptibleTransitionAnimation.html">InterruptibleTransitionAnimation</a>
+                <a class="nav-group-task-link" href="../Classes/InterruptibleTransitionAnimation.html">InterruptibleTransitionAnimation</a>
               </li>
               <li class="nav-group-task">
-                <a href="../Classes/NavigationAnimationDelegate.html">NavigationAnimationDelegate</a>
+                <a class="nav-group-task-link" href="../Classes/NavigationAnimationDelegate.html">NavigationAnimationDelegate</a>
               </li>
               <li class="nav-group-task">
-                <a href="../Classes/NavigationCoordinator.html">NavigationCoordinator</a>
+                <a class="nav-group-task-link" href="../Classes/NavigationCoordinator.html">NavigationCoordinator</a>
               </li>
               <li class="nav-group-task">
-                <a href="../Classes/PageCoordinator.html">PageCoordinator</a>
+                <a class="nav-group-task-link" href="../Classes/PageCoordinator.html">PageCoordinator</a>
               </li>
               <li class="nav-group-task">
-                <a href="../Classes/PageCoordinatorDataSource.html">PageCoordinatorDataSource</a>
+                <a class="nav-group-task-link" href="../Classes/PageCoordinatorDataSource.html">PageCoordinatorDataSource</a>
               </li>
               <li class="nav-group-task">
-                <a href="../Classes/RedirectionCoordinator.html">RedirectionCoordinator</a>
+                <a class="nav-group-task-link" href="../Classes/RedirectionCoordinator.html">RedirectionCoordinator</a>
               </li>
               <li class="nav-group-task">
-                <a href="../Classes/RedirectionRouter.html">RedirectionRouter</a>
+                <a class="nav-group-task-link" href="../Classes/RedirectionRouter.html">RedirectionRouter</a>
               </li>
               <li class="nav-group-task">
-                <a href="../Classes/ReferenceBox.html">ReferenceBox</a>
+                <a class="nav-group-task-link" href="../Classes/ReferenceBox.html">ReferenceBox</a>
               </li>
               <li class="nav-group-task">
-                <a href="../Classes/SplitCoordinator.html">SplitCoordinator</a>
+                <a class="nav-group-task-link" href="../Classes/SplitCoordinator.html">SplitCoordinator</a>
               </li>
               <li class="nav-group-task">
-                <a href="../Classes/StaticTransitionAnimation.html">StaticTransitionAnimation</a>
+                <a class="nav-group-task-link" href="../Classes/StaticTransitionAnimation.html">StaticTransitionAnimation</a>
               </li>
               <li class="nav-group-task">
-                <a href="../Classes/TabBarAnimationDelegate.html">TabBarAnimationDelegate</a>
+                <a class="nav-group-task-link" href="../Classes/TabBarAnimationDelegate.html">TabBarAnimationDelegate</a>
               </li>
               <li class="nav-group-task">
-                <a href="../Classes/TabBarCoordinator.html">TabBarCoordinator</a>
+                <a class="nav-group-task-link" href="../Classes/TabBarCoordinator.html">TabBarCoordinator</a>
               </li>
               <li class="nav-group-task">
-                <a href="../Classes/ViewCoordinator.html">ViewCoordinator</a>
+                <a class="nav-group-task-link" href="../Classes/ViewCoordinator.html">ViewCoordinator</a>
               </li>
             </ul>
           </li>
           <li class="nav-group-name">
-            <a href="../Extensions.html">Extensions</a>
+            <a class="nav-group-name-link" href="../Extensions.html">Extensions</a>
             <ul class="nav-group-tasks">
               <li class="nav-group-task">
-                <a href="../Extensions/Reactive.html">Reactive</a>
+                <a class="nav-group-task-link" href="../Extensions/Reactive.html">Reactive</a>
               </li>
               <li class="nav-group-task">
-                <a href="../Extensions/UIPageViewController.html">UIPageViewController</a>
+                <a class="nav-group-task-link" href="../Extensions/UIPageViewController.html">UIPageViewController</a>
               </li>
               <li class="nav-group-task">
-                <a href="../Extensions/UIPageViewController/Configuration.html">– Configuration</a>
+                <a class="nav-group-task-link" href="../Extensions/UIPageViewController/Configuration.html">– Configuration</a>
               </li>
               <li class="nav-group-task">
-                <a href="../Extensions/UIView.html">UIView</a>
+                <a class="nav-group-task-link" href="../Extensions/UIView.html">UIView</a>
               </li>
               <li class="nav-group-task">
-                <a href="../Extensions/UIViewController.html">UIViewController</a>
+                <a class="nav-group-task-link" href="../Extensions/UIViewController.html">UIViewController</a>
               </li>
             </ul>
           </li>
           <li class="nav-group-name">
-            <a href="../Protocols.html">Protocols</a>
+            <a class="nav-group-name-link" href="../Protocols.html">Protocols</a>
             <ul class="nav-group-tasks">
               <li class="nav-group-task">
-                <a href="../Protocols/Container.html">Container</a>
+                <a class="nav-group-task-link" href="../Protocols/Container.html">Container</a>
               </li>
               <li class="nav-group-task">
-                <a href="../Protocols/Coordinator.html">Coordinator</a>
+                <a class="nav-group-task-link" href="../Protocols/Coordinator.html">Coordinator</a>
               </li>
               <li class="nav-group-task">
-                <a href="../Protocols/PercentDrivenInteractionController.html">PercentDrivenInteractionController</a>
+                <a class="nav-group-task-link" href="../Protocols/PercentDrivenInteractionController.html">PercentDrivenInteractionController</a>
               </li>
               <li class="nav-group-task">
-                <a href="../Protocols/Presentable.html">Presentable</a>
+                <a class="nav-group-task-link" href="../Protocols/Presentable.html">Presentable</a>
               </li>
               <li class="nav-group-task">
-                <a href="../Protocols.html#/s:12XCoordinator5RouteP">Route</a>
+                <a class="nav-group-task-link" href="../Protocols.html#/s:12XCoordinator5RouteP">Route</a>
               </li>
               <li class="nav-group-task">
-                <a href="../Protocols/Router.html">Router</a>
+                <a class="nav-group-task-link" href="../Protocols/Router.html">Router</a>
               </li>
               <li class="nav-group-task">
-                <a href="../Protocols/TransitionAnimation.html">TransitionAnimation</a>
+                <a class="nav-group-task-link" href="../Protocols/TransitionAnimation.html">TransitionAnimation</a>
               </li>
               <li class="nav-group-task">
-                <a href="../Protocols/TransitionPerformer.html">TransitionPerformer</a>
+                <a class="nav-group-task-link" href="../Protocols/TransitionPerformer.html">TransitionPerformer</a>
               </li>
               <li class="nav-group-task">
-                <a href="../Protocols/TransitionProtocol.html">TransitionProtocol</a>
+                <a class="nav-group-task-link" href="../Protocols/TransitionProtocol.html">TransitionProtocol</a>
               </li>
             </ul>
           </li>
           <li class="nav-group-name">
-            <a href="../Structs.html">Structures</a>
+            <a class="nav-group-name-link" href="../Structs.html">Structures</a>
             <ul class="nav-group-tasks">
               <li class="nav-group-task">
-                <a href="../Structs.html#/s:12XCoordinator26PresentationHandlerContextV">PresentationHandlerContext</a>
+                <a class="nav-group-task-link" href="../Structs.html#/s:12XCoordinator26PresentationHandlerContextV">PresentationHandlerContext</a>
               </li>
               <li class="nav-group-task">
-                <a href="../Structs/Transition.html">Transition</a>
+                <a class="nav-group-task-link" href="../Structs/Transition.html">Transition</a>
               </li>
               <li class="nav-group-task">
-                <a href="../Structs/TransitionOptions.html">TransitionOptions</a>
+                <a class="nav-group-task-link" href="../Structs/TransitionOptions.html">TransitionOptions</a>
               </li>
             </ul>
           </li>
           <li class="nav-group-name">
-            <a href="../Typealiases.html">Type Aliases</a>
+            <a class="nav-group-name-link" href="../Typealiases.html">Type Aliases</a>
             <ul class="nav-group-tasks">
               <li class="nav-group-task">
-                <a href="../Typealiases.html#/s:12XCoordinator24AnyNavigationCoordinatora">AnyNavigationCoordinator</a>
+                <a class="nav-group-task-link" href="../Typealiases.html#/s:12XCoordinator24AnyNavigationCoordinatora">AnyNavigationCoordinator</a>
               </li>
               <li class="nav-group-task">
-                <a href="../Typealiases.html#/s:12XCoordinator20AnyTabBarCoordinatora">AnyTabBarCoordinator</a>
+                <a class="nav-group-task-link" href="../Typealiases.html#/s:12XCoordinator20AnyTabBarCoordinatora">AnyTabBarCoordinator</a>
               </li>
               <li class="nav-group-task">
-                <a href="../Typealiases.html#/s:12XCoordinator18AnyViewCoordinatora">AnyViewCoordinator</a>
+                <a class="nav-group-task-link" href="../Typealiases.html#/s:12XCoordinator18AnyViewCoordinatora">AnyViewCoordinator</a>
               </li>
               <li class="nav-group-task">
-                <a href="../Typealiases.html#/s:12XCoordinator26BasicNavigationCoordinatora">BasicNavigationCoordinator</a>
+                <a class="nav-group-task-link" href="../Typealiases.html#/s:12XCoordinator26BasicNavigationCoordinatora">BasicNavigationCoordinator</a>
               </li>
               <li class="nav-group-task">
-                <a href="../Typealiases.html#/s:12XCoordinator22BasicTabBarCoordinatora">BasicTabBarCoordinator</a>
+                <a class="nav-group-task-link" href="../Typealiases.html#/s:12XCoordinator22BasicTabBarCoordinatora">BasicTabBarCoordinator</a>
               </li>
               <li class="nav-group-task">
-                <a href="../Typealiases.html#/s:12XCoordinator20BasicViewCoordinatora">BasicViewCoordinator</a>
+                <a class="nav-group-task-link" href="../Typealiases.html#/s:12XCoordinator20BasicViewCoordinatora">BasicViewCoordinator</a>
               </li>
               <li class="nav-group-task">
-                <a href="../Typealiases.html#/s:12XCoordinator26ContextPresentationHandlera">ContextPresentationHandler</a>
+                <a class="nav-group-task-link" href="../Typealiases.html#/s:12XCoordinator26ContextPresentationHandlera">ContextPresentationHandler</a>
               </li>
               <li class="nav-group-task">
-                <a href="../Typealiases.html#/s:12XCoordinator20NavigationTransitiona">NavigationTransition</a>
+                <a class="nav-group-task-link" href="../Typealiases.html#/s:12XCoordinator20NavigationTransitiona">NavigationTransition</a>
               </li>
               <li class="nav-group-task">
-                <a href="../Typealiases.html#/s:12XCoordinator14PageTransitiona">PageTransition</a>
+                <a class="nav-group-task-link" href="../Typealiases.html#/s:12XCoordinator14PageTransitiona">PageTransition</a>
               </li>
               <li class="nav-group-task">
-                <a href="../Typealiases.html#/s:12XCoordinator19PresentationHandlera">PresentationHandler</a>
+                <a class="nav-group-task-link" href="../Typealiases.html#/s:12XCoordinator19PresentationHandlera">PresentationHandler</a>
               </li>
               <li class="nav-group-task">
-                <a href="../Typealiases.html#/s:12XCoordinator15SplitTransitiona">SplitTransition</a>
+                <a class="nav-group-task-link" href="../Typealiases.html#/s:12XCoordinator15SplitTransitiona">SplitTransition</a>
               </li>
               <li class="nav-group-task">
-                <a href="../Typealiases.html#/s:12XCoordinator16TabBarTransitiona">TabBarTransition</a>
+                <a class="nav-group-task-link" href="../Typealiases.html#/s:12XCoordinator16TabBarTransitiona">TabBarTransition</a>
               </li>
               <li class="nav-group-task">
-                <a href="../Typealiases.html#/s:12XCoordinator14ViewTransitiona">ViewTransition</a>
+                <a class="nav-group-task-link" href="../Typealiases.html#/s:12XCoordinator14ViewTransitiona">ViewTransition</a>
               </li>
             </ul>
           </li>
         </ul>
       </nav>
       <article class="main-content">
-        <section>
-          <section class="section">
+
+        <section class="section">
+          <div class="section-content">
             <h1>InterruptibleTransitionAnimation</h1>
               <div class="declaration">
                 <div class="language">
@@ -221,8 +245,11 @@
             <p>Use InterruptibleTransitionAnimation to define interactive transitions based on the <code>UIViewPropertyAnimator</code> APIs
 introduced in iOS 10.</p>
 
-          </section>
-          <section class="section task-group-section">
+          </div>
+        </section>
+
+        <section class="section">
+          <div class="section-content">
             <div class="task-group">
               <div class="task-name-container">
                 <a name="/Init"></a>
@@ -231,7 +258,7 @@ introduced in iOS 10.</p>
                   <h3 class="section-name">Init</h3>
                 </a>
               </div>
-              <ul>
+              <ul class="item-container">
                 <li class="item">
                   <div>
                     <code>
@@ -376,7 +403,7 @@ and an interaction controller generator closure.</p>
                   <h3 class="section-name">Methods</h3>
                 </a>
               </div>
-              <ul>
+              <ul class="item-container">
                 <li class="item">
                   <div>
                     <code>
@@ -438,7 +465,7 @@ which is reused in subsequent calls of <code>interruptibeAnimator(using:)</code>
                   <h3 class="section-name">TransitionAnimation</h3>
                 </a>
               </div>
-              <ul>
+              <ul class="item-container">
                 <li class="item">
                   <div>
                     <code>
@@ -539,14 +566,15 @@ Otherwise it generates a new one using <code><a href="../Classes/InterruptibleTr
                 </li>
               </ul>
             </div>
-          </section>
+          </div>
         </section>
-        <section id="footer">
-          <p>&copy; 2019 <a class="link" href="https://github.com/quickbirdstudios/XCoordinator" target="_blank" rel="external">Stefan Kofler and Paul Kraft</a>. All rights reserved. (Last updated: 2019-01-07)</p>
-          <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.9.4</a>, a <a class="link" href="https://realm.io" target="_blank" rel="external">Realm</a> project.</p>
-        </section>
+
       </article>
     </div>
+    <section class="footer">
+      <p>&copy; 2019 <a class="link" href="https://quickbirdstudios.com" target="_blank" rel="external">Stefan Kofler &amp; Paul Kraft</a>. All rights reserved. (Last updated: 2019-01-11)</p>
+      <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.9.4</a>, a <a class="link" href="https://realm.io" target="_blank" rel="external">Realm</a> project.</p>
+    </section>
   </body>
 </div>
 </html>

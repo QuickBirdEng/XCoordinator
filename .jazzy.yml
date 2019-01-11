@@ -1,0 +1,8 @@
+author: "Stefan Kofler & Paul Kraft"
+author_url: https://quickbirdstudios.com
+module_version: 1.3.0
+podspec: XCoordinator.podspec
+docset_icon: Example/XCoordinator/Common/Images.xcassets/AppLogo.imageset/iTunesArtwork@2x.png
+github_url: https://github.com/quickbirdstudios.com/XCoordinator
+hide_documentation_coverage: true
+theme: fullwidth
