@@ -21,7 +21,7 @@ open class PageCoordinator<RouteType: Route>: BaseCoordinator<RouteType, PageTra
     ///
     /// Feel free to change the pages at runtime. To reflect the changes in the rootViewController, perform a `set` transition as well.
     ///
-    public let dataSource: PageCoordinatorDataSource
+    public let dataSource: UIPageViewControllerDataSource
 
     ///
     /// The configuration of the rootViewController. See `UIPageViewController.Configuration` for more information.
@@ -70,6 +70,37 @@ open class PageCoordinator<RouteType: Route>: BaseCoordinator<RouteType, PageTra
         }
 
         super.init(initialTransition: .multiple(.initial(pages: pages), .set(firstPage, direction: direction)))
+    }
+
+    ///
+    /// Creates a PageCoordinator with a custom dataSource.
+    /// It further sets the currently shown page and a direction for the animation of displaying it.
+    /// If you need custom configuration of the rootViewController, modify the `configuration` parameter,
+    /// since you cannot change this after the initialization.
+    ///
+    /// - Parameter dataSource:
+    ///     The dataSource of the PageCoordinator.
+    ///
+    /// - Parameter set:
+    ///     The presentable to be shown right from the start.
+    ///     This should be one of the elements of the specified pages.
+    ///     If not specified, no `set` transition is triggered, which results in the first page being shown.
+    ///
+    /// - Parameter direction:
+    ///     The direction in which the transition to set the specified first page (parameter `set`) should be animated in.
+    ///     If you specify `nil` for `set`, this parameter is ignored.
+    ///
+    /// - Parameter configuration:
+    ///     The configuration of the rootViewController. You cannot change this configuration later anymore (Limitation of UIKit).
+    ///
+    public init(dataSource: UIPageViewControllerDataSource,
+                set: Presentable,
+                direction: UIPageViewController.NavigationDirection,
+                configuration: UIPageViewController.Configuration) {
+        self.dataSource = dataSource
+        self.configuration = configuration
+
+        super.init(initialTransition: .set(set, direction: direction))
     }
 
     // MARK: - Overrides
