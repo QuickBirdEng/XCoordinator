@@ -10,8 +10,8 @@
 /// NavigationAnimationDelegate is used as the delegate of a NavigationCoordinator's rootViewController
 /// to allow for push-transitions to specify animations.
 ///
-/// This delegate is intended for use on one navigation controller only.
-/// Do not use one object as delegate of multiple navigation controllers.
+/// NavigationAnimationDelegate conforms to the `UINavigationControllerDelegate` protocol
+/// and is intended for use as the delegate of one navigation controller only.
 ///
 /// - Note:
 ///     Do not override the delegate of a NavigationCoordinator's rootViewController-delegate.

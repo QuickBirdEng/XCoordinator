@@ -10,8 +10,8 @@
 /// TabBarAnimationDelegate is used as the delegate of a TabBarCoordinator's rootViewController
 /// to allow for transitions to specify transition animations.
 ///
-/// This delegate is intended for use on one tab bar controller only.
-/// Do not use one object as delegate of multiple tab bar controllers.
+/// TabBarAnimationDelegate conforms to the `UITabBarControllerDelegate` protocol
+/// and is intended for use as the delegate of one tabbar controller only.
 ///
 /// - Note:
 ///     Do not override the delegate of a TabBarCoordinator's rootViewController-delegate.
