@@ -167,27 +167,6 @@ open class InteractiveTransitionAnimation: NSObject, TransitionAnimation {
     }
 
     ///
-    /// Updates the interaction controller about the current progress of the animation.
-    ///
-    open func update(_ percentComplete: CGFloat) {
-        _interactionController?.update(percentComplete)
-    }
-
-    ///
-    /// Updates the interaction controller about the cancellation of the animation.
-    ///
-    open func cancel() {
-        _interactionController?.cancel()
-    }
-
-    ///
-    /// Updates the interaction controller about the finishing of the animation.
-    ///
-    open func finish() {
-        _interactionController?.finish()
-    }
-
-    ///
     /// Ends the transition animation by deleting the interaction controller.
     ///
     open func cleanup() {
