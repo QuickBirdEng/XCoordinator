@@ -8,12 +8,11 @@
 
 import XCoordinator
 
-@available(iOS 10.0, *)
 extension Animation {
-    static let swirl = Animation(
-        presentation: InterruptibleTransitionAnimation.swirlPresentation,
-        dismissal: InterruptibleTransitionAnimation.swirlDismissal
-    )
+
+    @available(iOS 10.0, *)
+    static let swirl = Animation(presentation: InterruptibleTransitionAnimation.swirlPresentation,
+                                 dismissal: InterruptibleTransitionAnimation.swirlDismissal)
 }
 
 @available(iOS 10.0, *)
