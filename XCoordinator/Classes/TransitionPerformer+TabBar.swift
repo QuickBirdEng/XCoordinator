@@ -13,7 +13,12 @@ extension TransitionPerformer where TransitionType.RootViewController: UITabBarC
              completion: PresentationHandler?) {
 
         rootViewController.animationDelegate?.animation = animation
-        assert(animation == nil || rootViewController.animationDelegate != nil)
+        assert(animation == nil || rootViewController.animationDelegate != nil, """
+        Animations do not work, if your rootViewController's delegate is not a TabBarAnimationDelegate.
+        This assertion might fail, if you did not call super.generateRootViewController to generate your rootViewController,
+        or you set another delegate on your rootViewController. To set another delegate of your rootViewController, have a look
+        at `TabBarCoordinator.delegate`.
+        """)
 
         CATransaction.begin()
         CATransaction.setCompletionBlock(completion)
@@ -29,7 +34,12 @@ extension TransitionPerformer where TransitionType.RootViewController: UITabBarC
                 completion: PresentationHandler?) {
 
         rootViewController.animationDelegate?.animation = animation
-        assert(animation == nil || rootViewController.animationDelegate != nil)
+        assert(animation == nil || rootViewController.animationDelegate != nil, """
+        Animations do not work, if your rootViewController's delegate is not a TabBarAnimationDelegate.
+        This assertion might fail, if you did not call super.generateRootViewController to generate your rootViewController,
+        or you set another delegate on your rootViewController. To set another delegate of your rootViewController, have a look
+        at `TabBarCoordinator.delegate`.
+        """)
 
         CATransaction.begin()
         CATransaction.setCompletionBlock(completion)
@@ -42,7 +52,12 @@ extension TransitionPerformer where TransitionType.RootViewController: UITabBarC
     func select(index: Int, with options: TransitionOptions, animation: Animation?, completion: PresentationHandler?) {
 
         rootViewController.animationDelegate?.animation = animation
-        assert(animation == nil || rootViewController.animationDelegate != nil)
+        assert(animation == nil || rootViewController.animationDelegate != nil, """
+        Animations do not work, if your rootViewController's delegate is not a TabBarAnimationDelegate.
+        This assertion might fail, if you did not call super.generateRootViewController to generate your rootViewController,
+        or you set another delegate on your rootViewController. To set another delegate of your rootViewController, have a look
+        at `TabBarCoordinator.delegate`.
+        """)
 
         CATransaction.begin()
         CATransaction.setCompletionBlock(completion)
