@@ -22,4 +22,15 @@ extension Transition where RootViewController: UIPageViewController {
             }
         }
     }
+
+    static func initial(pages: [Presentable]) -> Transition {
+        return Transition(presentables: pages, animation: nil) { _, performer, completion in
+            CATransaction.begin()
+            CATransaction.setCompletionBlock {
+                pages.forEach { $0.presented(from: performer) }
+                completion?()
+            }
+            CATransaction.commit()
+        }
+    }
 }
