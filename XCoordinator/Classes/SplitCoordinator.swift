@@ -25,12 +25,12 @@ open class SplitCoordinator<RouteType: Route>: BaseCoordinator<RouteType, SplitT
     /// Creates a SplitCoordinator and sets the specified presentables as the rootViewController's
     /// viewControllers.
     ///
-    /// - Parameter master:
-    ///     The presentable to be shown as master in the `UISplitViewController`.
-    ///
-    /// - Parameter detail:
-    ///     The presentable to be shown as detail in the `UISplitViewController`. This is optional due to
-    ///     the fact that it might not be useful to have a detail page right away on a small-screen device.
+    /// - Parameters:
+    ///     - master:
+    ///         The presentable to be shown as master in the `UISplitViewController`.
+    ///     - detail:
+    ///         The presentable to be shown as detail in the `UISplitViewController`. This is optional due to
+    ///         the fact that it might not be useful to have a detail page right away on a small-screen device.
     ///
     public init(master: Presentable, detail: Presentable?) {
         super.init(initialTransition: .set([master, detail].compactMap { $0 }))

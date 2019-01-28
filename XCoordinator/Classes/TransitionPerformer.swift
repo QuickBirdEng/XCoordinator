@@ -25,14 +25,10 @@ public protocol TransitionPerformer: Presentable {
     ///     We advise against the use of this method directly.
     ///     Try to use the `trigger` method of your coordinator instead wherever possible.
     ///
-    /// - Parameter transition:
-    ///     The transition to be performed.
-    ///
-    /// - Parameter options:
-    ///     The options on how to perform the transition.
-    ///
-    /// - Parameter completion:
-    ///     The completion handler called once a transition has finished.
+    /// - Parameters:
+    ///     - transition: The transition to be performed.
+    ///     - options: The options on how to perform the transition.
+    ///     - completion: The completion handler called once a transition has finished.
     ///
     func performTransition(_ transition: TransitionType,
                            with options: TransitionOptions,

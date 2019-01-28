@@ -55,12 +55,11 @@ open class TabBarCoordinator<RouteType: Route>: BaseCoordinator<RouteType, TabBa
     ///
     /// Creates a TabBarCoordinator with a specified set of tabs and selects a specific presentable.
     ///
-    /// - Parameter tabs:
-    ///     The presentables to be used as tabs.
-    ///
-    /// - Parameter select:
-    ///     The presentable to be selected before displaying. Make sure, this presentable is one of the
-    ///     specified tabs in the other parameter.
+    /// - Parameters:
+    ///     - tabs: The presentables to be used as tabs.
+    ///     - select:
+    ///         The presentable to be selected before displaying. Make sure, this presentable is one of the
+    ///         specified tabs in the other parameter.
     ///
     public init(tabs: [Presentable], select: Presentable) {
         super.init(initialTransition: .multiple(.set(tabs), .select(select)))
@@ -69,11 +68,9 @@ open class TabBarCoordinator<RouteType: Route>: BaseCoordinator<RouteType, TabBa
     ///
     /// Creates a TabBarCoordinator with a specified set of tabs and selects a presentable at a given index.
     ///
-    /// - Parameter tabs:
-    ///     The presentables to be used as tabs.
-    ///
-    /// - Parameter select:
-    ///     The index of the presentable to be selected before displaying.
+    /// - Parameters:
+    ///     - tabs: The presentables to be used as tabs.
+    ///     - select: The index of the presentable to be selected before displaying.
     ///
     public init(tabs: [Presentable], select: Int) {
         super.init(initialTransition: .multiple(.set(tabs), .select(index: select)))

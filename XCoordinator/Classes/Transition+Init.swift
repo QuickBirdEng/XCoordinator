@@ -62,13 +62,12 @@ extension Transition {
     /// The present-transition might also be helpful as it always presents on top of what is currently
     /// presented.
     ///
-    /// - Parameter presentable:
-    ///     The presentable to be presented.
-    ///
-    /// - Parameter animation:
-    ///     The animation to be set as the presentable's transitioningDelegate. Specify `nil` to not override
-    ///     the current transitioningDelegate and `Animation.default` to reset the transitioningDelegate to use
-    ///     the default UIKit animations.
+    /// - Parameters:
+    ///     - presentable: The presentable to be presented.
+    ///     - animation:
+    ///         The animation to be set as the presentable's transitioningDelegate. Specify `nil` to not override
+    ///         the current transitioningDelegate and `Animation.default` to reset the transitioningDelegate to use
+    ///         the default UIKit animations.
     ///
     public static func presentOnRoot(_ presentable: Presentable, animation: Animation? = nil) -> Transition {
         return Transition(presentables: [presentable],
@@ -89,13 +88,12 @@ extension Transition {
     /// Transition to present the given presentable. It uses the rootViewController's presentedViewController,
     /// if present, otherwise it is equivalent to `presentOnRoot`.
     ///
-    /// - Parameter presentable:
-    ///     The presentable to be presented.
-    ///
-    /// - Parameter animation:
-    ///     The animation to be set as the presentable's transitioningDelegate. Specify `nil` to not override
-    ///     the current transitioningDelegate and `Animation.default` to reset the transitioningDelegate to use
-    ///     the default UIKit animations.
+    /// - Parameters:
+    ///     - presentable: The presentable to be presented.
+    ///     - animation:
+    ///         The animation to be set as the presentable's transitioningDelegate. Specify `nil` to not override
+    ///         the current transitioningDelegate and `Animation.default` to reset the transitioningDelegate to use
+    ///         the default UIKit animations.
     ///
     public static func present(_ presentable: Presentable, animation: Animation? = nil) -> Transition {
         return Transition(presentables: [presentable],
@@ -115,11 +113,9 @@ extension Transition {
     ///
     /// Transition to embed the given presentable in a specific container (i.e. a view or viewController).
     ///
-    /// - Parameter presentable:
-    ///     The presentable to be embedded.
-    ///
-    /// - Parameter container:
-    ///     The container to embed the presentable in.
+    /// - Parameters:
+    ///     - presentable: The presentable to be embedded.
+    ///     - container: The container to embed the presentable in.
     ///
     public static func embed(_ presentable: Presentable, in container: Container) -> Transition {
         return Transition(presentables: [presentable], animation: nil) { options, performer, completion in
@@ -210,11 +206,9 @@ extension Transition {
     /// Use this transition to trigger a route on another coordinator. TransitionOptions and
     /// PresentationHandler used during the execution of this transitions are forwarded.
     ///
-    /// - Parameter route:
-    ///     The route to be triggered on the coordinator.
-    ///
-    /// - Parameter coordinator:
-    ///     The coordinator to trigger the route on.
+    /// - Parameters:
+    ///     - route: The route to be triggered on the coordinator.
+    ///     - coordinator: The coordinator to trigger the route on.
     ///
     public static func route<C: Coordinator>(_ route: C.RouteType, on coordinator: C) -> Transition {
         let transition = coordinator.prepareTransition(for: route)
@@ -231,11 +225,9 @@ extension Transition {
     ///
     /// Peeking is not supported with this transition. If needed, use the `route` transition instead.
     ///
-    /// - Parameter route:
-    ///     The route to be triggered on the coordinator.
-    ///
-    /// - Parameter router:
-    ///     The router to trigger the route on.
+    /// - Parameters:
+    ///     - route: The route to be triggered on the coordinator.
+    ///     - router: The router to trigger the route on.
     ///
     public static func trigger<R: Router>(_ route: R.RouteType, on router: R) -> Transition {
         return Transition(presentables: [], animation: nil) { options, _, completion in
@@ -246,11 +238,9 @@ extension Transition {
     ///
     /// Use this transition to register 3D Touch Peek and Pop functionality.
     ///
-    /// - Parameter source:
-    ///     The view to register peek and pop on.
-    ///
-    /// - Parameter transition:
-    ///     A generator closure to create a transition with.
+    /// - Parameters:
+    ///     - source: The view to register peek and pop on.
+    ///     - transition: A generator closure to create a transition with.
     ///
     @available(iOS, introduced: 9.0, deprecated, message: "Use Coordinator.registerPeek instead.")
     public static func registerPeek(for source: Container,
@@ -265,14 +255,10 @@ extension Transition {
     ///
     /// Use this transition to register 3D Touch Peek and Pop functionality.
     ///
-    /// - Parameter source:
-    ///     The view to register peek and pop on.
-    ///
-    /// - Parameter route:
-    ///     The route to be triggered for peek and pop.
-    ///
-    /// - Parameter coordinator:
-    ///     The coordinator to perform the peek and transitions.
+    /// - Parameters:
+    ///     - source: The view to register peek and pop on.
+    ///     - route: The route to be triggered for peek and pop.
+    ///     - coordinator: The coordinator to perform the peek and transitions.
     ///
     @available(iOS, introduced: 9.0, deprecated, message: "Use Coordinator.registerPeek instead.")
     public static func registerPeek<C: Coordinator & AnyObject>(for source: Container,
@@ -287,11 +273,9 @@ extension Coordinator where Self: AnyObject {
     ///
     /// Use this transition to register 3D Touch Peek and Pop functionality.
     ///
-    /// - Parameter source:
-    ///     The view to register peek and pop on.
-    ///
-    /// - Parameter route:
-    ///     The route to be triggered for peek and pop.
+    /// - Parameters:
+    ///     - source: The view to register peek and pop on.
+    ///     - route: The route to be triggered for peek and pop.
     ///
     @available(iOS 9.0, *)
     public func registerPeek<RootViewController>(for source: Container,

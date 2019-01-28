@@ -40,9 +40,9 @@ open class Animation: NSObject {
     // MARK: - Initialization
 
     ///
-    /// - Parameter presentation: The transition animation shown when transitioning to a presentable.
-    ///
-    /// - Parameter dismissal: The transition animation shown when transitioning away from a presentable.
+    /// - Parameters:
+    ///     - presentation: The transition animation shown when transitioning to a presentable.
+    ///     - dismissal: The transition animation shown when transitioning away from a presentable.
     ///
     public init(presentation: TransitionAnimation?, dismissal: TransitionAnimation?) {
         self.presentationAnimation = presentation
@@ -55,16 +55,13 @@ open class Animation: NSObject {
 extension Animation: UIViewControllerTransitioningDelegate {
 
     ///
-    /// See UIKit documentation for further reference.
+    /// See [UIViewControllerTransitioningDelegate](https://developer.apple.com/documentation/uikit/UIViewControllerTransitioningDelegate)
+    /// for further reference.
     ///
-    /// - Parameter presented:
-    ///     The view controller to be presented.
-    ///
-    /// - Parameter presenting:
-    ///     The view controller to present.
-    ///
-    /// - Parameter source:
-    ///     The view controller `present(_:animated:completion:)` was called on.
+    /// - Parameters:
+    ///     - presented: The view controller to be presented.
+    ///     - presenting: The view controller to present.
+    ///     - source: The view controller `present(_:animated:completion:)` was called on.
     ///
     /// - Returns:
     ///     The specified presentation animation.
@@ -76,7 +73,8 @@ extension Animation: UIViewControllerTransitioningDelegate {
     }
 
     ///
-    /// See UIKit documentation for further reference.
+    /// See [UIViewControllerTransitioningDelegate](https://developer.apple.com/documentation/uikit/UIViewControllerTransitioningDelegate)
+    /// for further reference.
     ///
     /// - Parameter dismissed:
     ///     The view controller to be dismissed.
@@ -89,7 +87,8 @@ extension Animation: UIViewControllerTransitioningDelegate {
     }
 
     ///
-    /// See UIKit documentation for further reference.
+    /// See [UIViewControllerTransitioningDelegate](https://developer.apple.com/documentation/uikit/UIViewControllerTransitioningDelegate)
+    /// for further reference.
     ///
     /// - Parameter animator:
     ///     The presentation animation.
@@ -103,7 +102,8 @@ extension Animation: UIViewControllerTransitioningDelegate {
     }
 
     ///
-    /// See UIKit documentation for further reference.
+    /// See [UIViewControllerTransitioningDelegate](https://developer.apple.com/documentation/uikit/UIViewControllerTransitioningDelegate)
+    /// for further reference.
     ///
     /// - Parameter animator:
     ///     The dismissal animation.

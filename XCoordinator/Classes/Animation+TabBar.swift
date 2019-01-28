@@ -30,13 +30,12 @@ open class TabBarAnimationDelegate: NSObject {
 extension TabBarAnimationDelegate: UITabBarControllerDelegate {
 
     ///
-    /// See UIKit documentation for further reference.
+    /// See [UITabBarControllerDelegate documentation](https://developer.apple.com/documentation/uikit/UITabBarController)
+    /// for further reference.
     ///
-    /// - Parameter tabBarController:
-    ///     The tabBarController to which this object is the delegate of.
-    ///
-    /// - Parameter animationController:
-    ///     The animationController to return the interactionController for.
+    /// - Parameters
+    ///     - tabBarController: The tabBarController to which this object is the delegate of.
+    ///     - animationController: The animationController to return the interactionController for.
     ///
     /// - Returns:
     ///     The interactionController of an animationController of type `TransitionAnimation`.
@@ -50,16 +49,13 @@ extension TabBarAnimationDelegate: UITabBarControllerDelegate {
     }
 
     ///
-    /// See UIKit documentation for further reference.
+    /// See [UITabBarControllerDelegate documentation](https://developer.apple.com/documentation/uikit/UITabBarController)
+    /// for further reference.
     ///
-    /// - Parameter tabBarController:
-    ///     The tabBarController to which this object is the delegate of.
-    ///
-    /// - Parameter fromVC:
-    ///     The source view controller of the transition.
-    ///
-    /// - Parameter toVC:
-    ///     The destination view controller of the transition.
+    /// - Parameters:
+    ///     - tabBarController: The tabBarController to which this object is the delegate of.
+    ///     - fromVC: The source view controller of the transition.
+    ///     - toVC: The destination view controller of the transition.
     ///
     /// - Returns:
     ///     The presentation animation of the last specified `Animation` object.
@@ -73,14 +69,14 @@ extension TabBarAnimationDelegate: UITabBarControllerDelegate {
     }
 
     ///
-    /// See UIKit documentation for further reference.
+    /// See [UITabBarControllerDelegate documentation](https://developer.apple.com/documentation/uikit/UITabBarController)
+    /// for further reference.
+    ///
     /// This method delegates to the delegate specified in the TabBarCoordinator.
     ///
-    /// - Parameter tabBarController:
-    ///     The tabBarController to which this object is the delegate of.
-    ///
-    /// - Parameter viewController:
-    ///     The viewController that was selected.
+    /// - Parameters:
+    ///     - tabBarController: The tabBarController to which this object is the delegate of.
+    ///     - viewController: The viewController that was selected.
     ///
     open func tabBarController(_ tabBarController: UITabBarController,
                                didSelect viewController: UIViewController) {
@@ -88,14 +84,14 @@ extension TabBarAnimationDelegate: UITabBarControllerDelegate {
     }
 
     ///
-    /// See UIKit documentation for further reference.
+    /// See [UITabBarControllerDelegate documentation](https://developer.apple.com/documentation/uikit/UITabBarController)
+    /// for further reference.
+    ///
     /// This method delegates to the delegate specified in the TabBarCoordinator.
     ///
-    /// - Parameter tabBarController:
-    ///     The tabBarController to which this object is the delegate of.
-    ///
-    /// - Parameter viewController:
-    ///     The viewController that may be selected.
+    /// - Parameters:
+    ///     - tabBarController: The tabBarController to which this object is the delegate of.
+    ///     - viewController: The viewController that may be selected.
     ///
     /// - Returns:
     ///     The result of the TabBarCooordinator's delegate. If not specified, it returns true.
@@ -106,14 +102,14 @@ extension TabBarAnimationDelegate: UITabBarControllerDelegate {
     }
 
     ///
-    /// See UIKit documentation for further reference.
+    /// See [UITabBarControllerDelegate documentation](https://developer.apple.com/documentation/uikit/UITabBarController)
+    /// for further reference.
+    ///
     /// This method delegates to the delegate specified in the TabBarCoordinator.
     ///
-    /// - Parameter tabBarController:
-    ///     The tabBarController to which this object is the delegate of.
-    ///
-    /// - Parameter viewControllers:
-    ///     The viewControllers that will begin to be customized.
+    /// - Parameters:
+    ///     - tabBarController: The tabBarController to which this object is the delegate of.
+    ///     - viewControllers: The viewControllers that will begin to be customized.
     ///
     open func tabBarController(_ tabBarController: UITabBarController,
                                willBeginCustomizing viewControllers: [UIViewController]) {
@@ -121,14 +117,14 @@ extension TabBarAnimationDelegate: UITabBarControllerDelegate {
     }
 
     ///
-    /// See UIKit documentation for further reference.
+    /// See [UITabBarControllerDelegate documentation](https://developer.apple.com/documentation/uikit/UITabBarController)
+    /// for further reference.
+    ///
     /// This method delegates to the delegate specified in the TabBarCoordinator.
     ///
-    /// - Parameter tabBarController:
-    ///     The tabBarController to which this object is the delegate of.
-    ///
-    /// - Parameter viewControllers:
-    ///     The viewControllers that ended to be customized.
+    /// - Parameters:
+    ///     - tabBarController: The tabBarController to which this object is the delegate of.
+    ///     - viewControllers: The viewControllers that ended to be customized.
     ///
     open func tabBarController(_ tabBarController: UITabBarController,
                                didEndCustomizing viewControllers: [UIViewController], changed: Bool) {
@@ -136,14 +132,14 @@ extension TabBarAnimationDelegate: UITabBarControllerDelegate {
     }
 
     ///
-    /// See UIKit documentation for further reference.
+    /// See [UITabBarControllerDelegate documentation](https://developer.apple.com/documentation/uikit/UITabBarController)
+    /// for further reference.
+    ///
     /// This method delegates to the delegate specified in the TabBarCoordinator.
     ///
-    /// - Parameter tabBarController:
-    ///     The tabBarController to which this object is the delegate of.
-    ///
-    /// - Parameter viewControllers:
-    ///     The viewControllers that will end to be customized.
+    /// - Parameters:
+    ///     - tabBarController: The tabBarController to which this object is the delegate of.
+    ///     - viewControllers: The viewControllers that will end to be customized.
     ///
     open func tabBarController(_ tabBarController: UITabBarController,
                                willEndCustomizing viewControllers: [UIViewController], changed: Bool) {

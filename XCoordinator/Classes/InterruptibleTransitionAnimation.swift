@@ -26,14 +26,11 @@ open class InterruptibleTransitionAnimation: InteractiveTransitionAnimation {
     /// Creates an interruptible transition animation based on duration, an animator generator closure
     /// and an interaction controller generator closure.
     ///
-    /// - Parameter duration:
-    ///     The total duration of the animation.
-    ///
-    /// - Parameter generateAnimator:
-    ///     A generator closure to create a `UIViewPropertyAnimator` dynamically.
-    ///
-    /// - Parameter generateInteractionController:
-    ///     A generator closure to create an interaction controller which handles animation progress changes.
+    /// - Parameters:
+    ///     - duration: The total duration of the animation.
+    ///     - generateAnimator: A generator closure to create a `UIViewPropertyAnimator` dynamically.
+    ///     - generateInteractionController:
+    ///         A generator closure to create an interaction controller which handles animation progress changes.
     ///
     public init(duration: TimeInterval,
                 generateAnimator: @escaping (UIViewControllerContextTransitioning) -> UIViewImplicitlyAnimating,
@@ -51,11 +48,9 @@ open class InterruptibleTransitionAnimation: InteractiveTransitionAnimation {
     ///
     /// A `UIPercentDrivenInteractiveTransition` is used as interaction controller.
     ///
-    /// - Parameter duration:
-    ///     The total duration of the animation.
-    ///
-    /// - Parameter generateAnimator:
-    ///     A generator closure to create a `UIViewPropertyAnimator` dynamically.
+    /// - Parameters:
+    ///     - duration: The total duration of the animation.
+    ///     - generateAnimator: A generator closure to create a `UIViewPropertyAnimator` dynamically.
     ///
     public convenience init(duration: TimeInterval,
                             generateAnimator: @escaping (UIViewControllerContextTransitioning) -> UIViewImplicitlyAnimating) {
@@ -96,7 +91,8 @@ open class InterruptibleTransitionAnimation: InteractiveTransitionAnimation {
     // MARK: - TransitionAnimation
 
     ///
-    /// See UIKit documentation for further information.
+    /// See [UIViewControllerAnimatedTransitioning](https://developer.apple.com/documentation/uikit/UIViewControllerAnimatedTransitioning)
+    /// for further information.
     ///
     /// This method simply calls `startAnimation()` on the interruptible animator.
     ///
@@ -108,7 +104,8 @@ open class InterruptibleTransitionAnimation: InteractiveTransitionAnimation {
     }
 
     ///
-    /// See UIKit documentation for further information.
+    /// See [UIViewControllerAnimatedTransitioning](https://developer.apple.com/documentation/uikit/UIViewControllerAnimatedTransitioning)
+    /// for further information.
     ///
     /// This method returns an already generated interruptible animator, if present.
     /// Otherwise it generates a new one using `generateInterruptibleAnimator(using:)`.

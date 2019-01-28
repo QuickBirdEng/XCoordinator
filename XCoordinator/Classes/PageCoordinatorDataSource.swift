@@ -7,8 +7,9 @@
 //
 
 ///
-/// PageCoordinatorDataSource is a `UIPageViewControllerDataSource` implementation with
-/// a rather static list of pages. It further allows looping through the given pages.
+/// PageCoordinatorDataSource is a
+/// [UIPageViewControllerDataSource](https://developer.apple.com/documentation/uikit/UIPageViewControllerDataSource)
+/// implementation with a rather static list of pages. It further allows looping through the given pages.
 ///
 open class PageCoordinatorDataSource: NSObject, UIPageViewControllerDataSource {
 
@@ -27,14 +28,14 @@ open class PageCoordinatorDataSource: NSObject, UIPageViewControllerDataSource {
     ///
     /// Creates a PageCoordinatorDataSource with the given pages and looping capabilities.
     ///
-    /// - Parameter pages:
-    ///     The pages to be shown in the `UIPageViewController`.
-    ///
-    /// - Parameter loop:
-    ///     Whether or not the pages of the `UIPageViewController` should be in a loop,
-    ///     i.e. whether a swipe to the left of the last page should result in the first page being shown
-    ///     (or the last shown when swiping right on the first page)
-    ///     If you specify `false` here, the user cannot swipe left on the last page and right on the first.
+    /// - Parameters:
+    ///     - pages:
+    ///         The pages to be shown in the `UIPageViewController`.
+    ///     - loop:
+    ///         Whether or not the pages of the `UIPageViewController` should be in a loop,
+    ///         i.e. whether a swipe to the left of the last page should result in the first page being shown
+    ///         (or the last shown when swiping right on the first page)
+    ///         If you specify `false` here, the user cannot swipe left on the last page and right on the first.
     ///
     public init(pages: [UIViewController], loop: Bool) {
         self.pages = pages
@@ -44,7 +45,8 @@ open class PageCoordinatorDataSource: NSObject, UIPageViewControllerDataSource {
     // MARK: - Methods
 
     ///
-    /// See UIKit documentation for further information.
+    /// See [UIPageViewControllerDataSource](https://developer.apple.com/documentation/uikit/UIPageViewControllerDataSource)
+    /// for further information.
     ///
     /// - Parameter pageViewController:
     ///     The pageViewController this is the dataSource of.
@@ -58,7 +60,8 @@ open class PageCoordinatorDataSource: NSObject, UIPageViewControllerDataSource {
     }
 
     ///
-    /// See UIKit documentation for further information.
+    /// See [UIPageViewControllerDataSource](https://developer.apple.com/documentation/uikit/UIPageViewControllerDataSource)
+    /// for further information.
     ///
     /// - Parameter pageViewController:
     ///     The pageViewController this is the dataSource of.
@@ -72,17 +75,16 @@ open class PageCoordinatorDataSource: NSObject, UIPageViewControllerDataSource {
     }
 
     ///
-    /// See UIKit documentation for further information.
+    /// See [UIPageViewControllerDataSource](https://developer.apple.com/documentation/uikit/UIPageViewControllerDataSource)
+    /// for further information.
     ///
     /// This method first searches for the index of the given viewController in the `pages` array.
     /// It then decrements the index and checks whether it can find a viewController at the given index.
     /// If not, it either loops or returns that no viewController is available.
     ///
-    /// - Parameter pageViewController:
-    ///     The pageViewController this is the dataSource of.
-    ///
-    /// - Parameter viewController:
-    ///     The viewController to find a viewController before it.
+    /// - Parameters:
+    ///     - pageViewController: The pageViewController this is the dataSource of.
+    ///     - viewController: The viewController to find a viewController before it.
     ///
     /// - Returns:
     ///     The viewController before the given viewController.
@@ -100,17 +102,16 @@ open class PageCoordinatorDataSource: NSObject, UIPageViewControllerDataSource {
     }
 
     ///
-    /// See UIKit documentation for further information.
+    /// See [UIPageViewControllerDataSource](https://developer.apple.com/documentation/uikit/UIPageViewControllerDataSource)
+    /// for further information.
     ///
     /// This method first searches for the index of the given viewController in the `pages` array.
     /// It then increments the index and checks whether it can find a viewController at the given index.
     /// If not, it either loops or returns that no viewController is available.
     ///
-    /// - Parameter pageViewController:
-    ///     The pageViewController this is the dataSource of.
-    ///
-    /// - Parameter viewController:
-    ///     The viewController to find a viewController after it.
+    /// - Parameters:
+    ///     - pageViewController: The pageViewController this is the dataSource of.
+    ///     - viewController: The viewController to find a viewController after it.
     ///
     /// - Returns:
     ///     The viewController before the given viewController.

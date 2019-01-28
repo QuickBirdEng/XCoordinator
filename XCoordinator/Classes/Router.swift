@@ -23,15 +23,13 @@ public protocol Router: Presentable {
     ///
     /// Useful for deep linking. It is encouraged to use `trigger` instead, if the context is not needed.
     ///
-    /// - Parameter route:
-    ///     The route to be triggered.
-    ///
-    /// - Parameter options:
-    ///     Transition options configuring the execution of transitions, e.g. whether it should be animated.
-    ///
-    /// - Parameter completion:
-    ///     Optional completion handler. If present, it is executed once the transition is completed (including animations).
-    ///     If the context is not needed, use `trigger` instead.
+    /// - Parameters:
+    ///     - route: The route to be triggered.
+    ///     - options:
+    ///         Transition options configuring the execution of transitions, e.g. whether it should be animated.
+    ///     - completion:
+    ///         Optional completion handler. If present, it is executed once the transition is completed (including animations).
+    ///         If the context is not needed, use `trigger` instead.
     ///
     func contextTrigger(_ route: RouteType, with options: TransitionOptions, completion: ContextPresentationHandler?)
 }
@@ -43,11 +41,10 @@ extension Router {
     ///
     /// Triggers the specified route without the need of specifying a completion handler.
     ///
-    /// - Parameter route:
-    ///     The route to be triggered.
-    ///
-    /// - Parameter options:
-    ///     Transition options for performing the transition, e.g. whether it should be animated.
+    /// - Parameters:
+    ///     - route: The route to be triggered.
+    ///     - options:
+    ///         Transition options for performing the transition, e.g. whether it should be animated.
     ///
     public func trigger(_ route: RouteType, with options: TransitionOptions) {
         trigger(route, with: options, completion: nil)
@@ -57,11 +54,10 @@ extension Router {
     /// Triggers the specified route without the need of specifying transition options.
     /// Instead default transition options are used, which allow the animation of the transition.
     ///
-    /// - Parameter route:
-    ///     The route to be triggered.
-    ///
-    /// - Parameter completion:
-    ///     Optional completion handler. If present, it is executed once the transition is completed (including animations).
+    /// - Parameters:
+    ///     - route: The route to be triggered.
+    ///     - completion:
+    ///         Optional completion handler. If present, it is executed once the transition is completed (including animations).
     ///
     public func trigger(_ route: RouteType, completion: PresentationHandler? = nil) {
         trigger(route, with: .default, completion: completion)
@@ -70,14 +66,11 @@ extension Router {
     ///
     /// Triggers the specified route by performing a transition.
     ///
-    /// - Parameter route:
-    ///     The route to be triggered.
-    ///
-    /// - Parameter options:
-    ///     Transition options for performing the transition, e.g. whether it should be animated.
-    ///
-    /// - Parameter completion:
-    ///     Optional completion handler. If present, it is executed once the transition is completed (including animations).
+    /// - Parameters:
+    ///     - route: The route to be triggered.
+    ///     - options: Transition options for performing the transition, e.g. whether it should be animated.
+    ///     - completion:
+    ///         Optional completion handler. If present, it is executed once the transition is completed (including animations).
     ///
     public func trigger(_ route: RouteType, with options: TransitionOptions, completion: PresentationHandler?) {
         contextTrigger(route, with: options) { _ in completion?() }

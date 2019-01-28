@@ -28,15 +28,14 @@ public struct Transition<RootViewController: UIViewController>: TransitionProtoc
     ///
     /// Perform is the type of closure used to perform the transition.
     ///
-    /// - Parameter options:
-    ///     The options on how to perform the transition, e.g. whether it should be animated or not.
-    ///
-    /// - Parameter performer:
-    ///     An AnyTransitionPerformer-object of the coordinator in use.
-    ///     Use this to access the rootViewController.
-    ///
-    /// - Parameter completion:
-    ///     The completion handler of the transition. It should always be called whenever the transition is completed.
+    /// - Parameters:
+    ///     - options:
+    ///         The options on how to perform the transition, e.g. whether it should be animated or not.
+    ///     - performer:
+    ///         An AnyTransitionPerformer-object of the coordinator in use.
+    ///         Use this to access the rootViewController.
+    ///     - completion:
+    ///         The completion handler of the transition. It should always be called whenever the transition is completed.
     ///
     public typealias Perform = (_ options: TransitionOptions,
                                 _ performer: AnyTransitionPerformer<Transition<RootViewController>>,
@@ -75,15 +74,15 @@ public struct Transition<RootViewController: UIViewController>: TransitionProtoc
     /// We advise to extend Transition with static functions to create transitions with this initializer
     /// instead of calling this initializer in your `prepareTransition(for:)` method.
     ///
-    /// - Parameter presentables:
-    ///     The presentables this transition is putting into the view hierarchy, if specifiable.
-    ///     These presentables are used in the deep-linking feature.
-    ///
-    /// - Parameter animation:
-    ///     The transition animation this transition is using during the transition, i.e. the present animation
-    ///     of a presenting transition or the dismissal animation of a dismissing transition.
-    ///     Make sure to specify an animation here to use your transition with the
-    ///     `registerInteractiveTransition` method in your coordinator.
+    /// - Parameters:
+    ///     - presentables:
+    ///         The presentables this transition is putting into the view hierarchy, if specifiable.
+    ///         These presentables are used in the deep-linking feature.
+    ///     - animation:
+    ///         The transition animation this transition is using during the transition, i.e. the present animation
+    ///         of a presenting transition or the dismissal animation of a dismissing transition.
+    ///         Make sure to specify an animation here to use your transition with the
+    ///         `registerInteractiveTransition` method in your coordinator.
     ///
     public init(presentables: [Presentable], animation: TransitionAnimation?, perform: @escaping Perform) {
         self._presentables = presentables

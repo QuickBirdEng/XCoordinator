@@ -33,15 +33,12 @@ open class StaticTransitionAnimation: NSObject, TransitionAnimation {
     /// Creates a StaticTransitionAnimation to be used as presentation or dismissal transition animation in
     /// an `Animation` object.
     ///
-    /// - Parameter duration:
-    ///     The total duration of the animation.
-    ///
-    /// - Parameter performAnimation:
-    ///     Your animation code.
-    ///
-    /// - Parameter context:
-    ///     From the context, you can access source and destination views and
-    ///     viewControllers and the containerView.
+    /// - Parameters:
+    ///     - duration: The total duration of the animation.
+    ///     - performAnimation: Your animation code.
+    ///     - context:
+    ///         From the context, you can access source and destination views and
+    ///         viewControllers and the containerView.
     ///
     public init(duration: TimeInterval, performAnimation: @escaping (_ context: UIViewControllerContextTransitioning) -> Void) {
         self.duration = duration
@@ -51,7 +48,8 @@ open class StaticTransitionAnimation: NSObject, TransitionAnimation {
     // MARK: - Methods
 
     ///
-    /// See UIKit documentation for further information.
+    /// See [UIViewControllerAnimatedTransitioning](https://developer.apple.com/documentation/uikit/UIViewControllerAnimatedTransitioning)
+    /// for further information.
     ///
     /// - Parameter transitionContext:
     ///     The context of the current transition.
@@ -64,7 +62,8 @@ open class StaticTransitionAnimation: NSObject, TransitionAnimation {
     }
 
     ///
-    /// See UIKit documentation for further information.
+    /// See [UIViewControllerAnimatedTransitioning](https://developer.apple.com/documentation/uikit/UIViewControllerAnimatedTransitioning)
+    /// for further information.
     ///
     /// This method performs the animation as specified in the initializer.
     ///

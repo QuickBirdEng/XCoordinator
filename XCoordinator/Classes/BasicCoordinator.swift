@@ -49,17 +49,16 @@ open class BasicCoordinator<RouteType: Route, TransitionType: TransitionProtocol
     ///
     /// Creates a BasicCoordinator.
     ///
-    /// - Parameter initialRoute:
-    ///     The route to be triggered first.
-    ///     If you specify `nil`, no route is triggered - You can still trigger routes later on.
-    ///
-    /// - Parameter initialLoadingType:
-    ///     The point in time when the initial route is triggered.
-    ///     See `InitialLoadingType` for more information.
-    ///
-    /// - Parameter prepareTransition:
-    ///     A closure to define transitions based on triggered routes.
-    ///     Do not specify `nil` here, unless you are overriding `prepareTransition` by subclassing.
+    /// - Parameters:
+    ///     - initialRoute:
+    ///         The route to be triggered first.
+    ///         If you specify `nil`, no route is triggered - You can still trigger routes later on.
+    ///     - initialLoadingType:
+    ///         The point in time when the initial route is triggered.
+    ///         See `InitialLoadingType` for more information.
+    ///     - prepareTransition:
+    ///         A closure to define transitions based on triggered routes.
+    ///         Do not specify `nil` here, unless you are overriding `prepareTransition` by subclassing.
     ///
     public init(initialRoute: RouteType? = nil,
                 initialLoadingType: InitialLoadingType = .presented,

@@ -61,17 +61,17 @@ open class NavigationAnimationDelegate: NSObject {
 extension NavigationAnimationDelegate: UINavigationControllerDelegate {
 
     ///
-    /// See UIKit documentation for further reference.
+    /// See [UINavigationControllerDelegate documentation](https://developer.apple.com/documentation/uikit/uinavigationcontrollerdelegate)
+    /// for further reference.
     ///
-    /// - Parameter navigationController:
-    ///     The navigation controller to which this object is the delegate of.
-    ///
-    /// - Parameter animationController:
-    ///     The animationController to return the interactionController for.
+    /// - Parameters:
+    ///     - navigationController: The navigation controller to which this object is the delegate of.
+    ///     - animationController: The animationController to return the interactionController for.
     ///
     /// - Returns:
     ///     The interactionController of an animationController of type `TransitionAnimation`.
     ///     Otherwise the result of the NavigationCoordinator's delegate.
+    ///
     ///
     open func navigationController(_ navigationController: UINavigationController,
                                    interactionControllerFor animationController: UIViewControllerAnimatedTransitioning
@@ -81,19 +81,14 @@ extension NavigationAnimationDelegate: UINavigationControllerDelegate {
     }
 
     ///
-    /// See UIKit documentation for further reference.
+    /// See [UINavigationControllerDelegate documentation](https://developer.apple.com/documentation/uikit/uinavigationcontrollerdelegate)
+    /// for further reference.
     ///
-    /// - Parameter navigationController:
-    ///     The navigation controller to which this object is the delegate of.
-    ///
-    /// - Parameter operation:
-    ///     The operation being executed. Possible values are push, pop or none.
-    ///
-    /// - Parameter fromVC:
-    ///     The source view controller of the transition.
-    ///
-    /// - Parameter toVC:
-    ///     The destination view controller of the transition.
+    /// - Parameters:
+    ///     - navigationController: The navigation controller to which this object is the delegate of.
+    ///     - operation: The operation being executed. Possible values are push, pop or none.
+    ///     - fromVC: The source view controller of the transition.
+    ///     - toVC: The destination view controller of the transition.
     ///
     /// - Returns:
     ///     The presentation animation of the last specified `Animation` object.
@@ -121,16 +116,13 @@ extension NavigationAnimationDelegate: UINavigationControllerDelegate {
     }
 
     ///
-    /// See UIKit documentation for further reference.
+    /// See [UINavigationControllerDelegate documentation](https://developer.apple.com/documentation/uikit/uinavigationcontrollerdelegate)
+    /// for further reference.
     ///
-    /// - Parameter navigationController:
-    ///     The navigation controller to which this object is the delegate of.
-    ///
-    /// - Parameter operation:
-    ///     The operation being executed. Possible values are push, pop or none.
-    ///
-    /// - Parameter viewController:
-    ///     The shown view controller.
+    /// - Parameters:
+    ///     - navigationController: The navigation controller to which this object is the delegate of.
+    ///     - operation: The operation being executed. Possible values are push, pop or none.
+    ///     - viewController: The shown view controller.
     ///
     open func navigationController(_ navigationController: UINavigationController,
                                    didShow viewController: UIViewController, animated: Bool) {
@@ -139,16 +131,13 @@ extension NavigationAnimationDelegate: UINavigationControllerDelegate {
     }
 
     ///
-    /// See UIKit documentation for further reference.
+    /// See [UINavigationControllerDelegate documentation](https://developer.apple.com/documentation/uikit/uinavigationcontrollerdelegate)
+    /// for further reference.
     ///
-    /// - Parameter navigationController:
-    ///     The navigation controller to which this object is the delegate of.
-    ///
-    /// - Parameter operation:
-    ///     The operation being executed. Possible values are push, pop or none.
-    ///
-    /// - Parameter viewController:
-    ///     The view controller to be shown.
+    /// - Parameters:
+    ///     - navigationController: The navigation controller to which this object is the delegate of.
+    ///     - operation: The operation being executed. Possible values are push, pop or none.
+    ///     - viewController: The view controller to be shown.
     ///
     open func navigationController(_ navigationController: UINavigationController,
                                    willShow viewController: UIViewController,
@@ -164,7 +153,8 @@ extension NavigationAnimationDelegate: UIGestureRecognizerDelegate {
     // MARK: - Delegate methods
 
     ///
-    /// See UIKit documentation for further reference.
+    /// See [UIGestureRecognizerDelegate documentation](https://developer.apple.com/documentation/uikit/UIGestureRecognizerDelegate)
+    /// for further reference.
     ///
     /// This method returns true, if
     /// - there are more than 1 view controllers in the navigation controller
@@ -206,7 +196,7 @@ extension NavigationAnimationDelegate: UIGestureRecognizerDelegate {
     // MARK: - Target actions
 
     ///
-    /// This method handles changes of the interactivePopGestureRecognizer of the navigation controller.
+    /// This method handles changes of the `interactivePopGestureRecognizer` of the navigation controller.
     ///
     /// In general this method updates the interaction controller of the top-most dismissalAnimation
     /// about the state of the interactivePopGestureRecognizer.

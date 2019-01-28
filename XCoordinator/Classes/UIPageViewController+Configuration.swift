@@ -45,14 +45,13 @@ extension UIPageViewController {
         ///
         /// Creates a UIPageViewController.Configuration struct to be used to initialize a `UIPageViewController`.
         ///
-        /// - Parameter transitionStyle:
-        ///     The transitionStyle of the `UIPageViewController`, e.g. pageCurl or scroll.
-        ///
-        /// - Parameter navigationOrientation:
-        ///     The navigationOrientation of the `UIPageViewController`, e.g. horizontal or vertical.
-        ///
-        /// - Parameter options:
-        ///     Further options to customize the `UIPageViewController`.
+        /// - Parameters:
+        ///     - transitionStyle:
+        ///         The transitionStyle of the `UIPageViewController`, e.g. pageCurl or scroll.
+        ///     - navigationOrientation:
+        ///         The navigationOrientation of the `UIPageViewController`, e.g. horizontal or vertical.
+        ///     - options:
+        ///         Further options to customize the `UIPageViewController`.
         ///
         public init(transitionStyle: TransitionStyle = .pageCurl,
                     navigationOrientation: NavigationOrientation = .horizontal,

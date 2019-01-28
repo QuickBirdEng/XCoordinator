@@ -36,24 +36,21 @@ open class PageCoordinator<RouteType: Route>: BaseCoordinator<RouteType, PageTra
     /// If you need custom configuration of the rootViewController, modify the `configuration` parameter,
     /// since you cannot change this after the initialization.
     ///
-    /// - Parameter pages:
-    ///     The pages of the PageCoordinator.
-    ///     These can later be changed, if necessary, using the `PageCoordinator.dataSource` property.
-    ///
-    /// - Parameter loop:
-    ///     Whether or not the PageCoordinator should loop when hitting an end of the specified pages.
-    ///
-    /// - Parameter set:
-    ///     The presentable to be shown right from the start.
-    ///     This should be one of the elements of the specified pages.
-    ///     If not specified, no `set` transition is triggered, which results in the first page being shown.
-    ///
-    /// - Parameter direction:
-    ///     The direction in which the transition to set the specified first page (parameter `set`) should be animated in.
-    ///     If you specify `nil` for `set`, this parameter is ignored.
-    ///
-    /// - Parameter configuration:
-    ///     The configuration of the rootViewController. You cannot change this configuration later anymore (Limitation of UIKit).
+    /// - Parameters:
+    ///     - pages:
+    ///         The pages of the PageCoordinator.
+    ///         These can later be changed, if necessary, using the `PageCoordinator.dataSource` property.
+    ///     - loop:
+    ///         Whether or not the PageCoordinator should loop when hitting an end of the specified pages.
+    ///     - set:
+    ///         The presentable to be shown right from the start.
+    ///         This should be one of the elements of the specified pages.
+    ///         If not specified, no `set` transition is triggered, which results in the first page being shown.
+    ///     - direction:
+    ///         The direction in which the transition to set the specified first page (parameter `set`) should be animated in.
+    ///         If you specify `nil` for `set`, this parameter is ignored.
+    ///     - configuration:
+    ///         The configuration of the rootViewController. You cannot change this configuration later anymore (Limitation of UIKit).
     ///
     public init(pages: [Presentable],
                 loop: Bool = false,
@@ -78,20 +75,18 @@ open class PageCoordinator<RouteType: Route>: BaseCoordinator<RouteType, PageTra
     /// If you need custom configuration of the rootViewController, modify the `configuration` parameter,
     /// since you cannot change this after the initialization.
     ///
-    /// - Parameter dataSource:
-    ///     The dataSource of the PageCoordinator.
-    ///
-    /// - Parameter set:
-    ///     The presentable to be shown right from the start.
-    ///     This should be one of the elements of the specified pages.
-    ///     If not specified, no `set` transition is triggered, which results in the first page being shown.
-    ///
-    /// - Parameter direction:
-    ///     The direction in which the transition to set the specified first page (parameter `set`) should be animated in.
-    ///     If you specify `nil` for `set`, this parameter is ignored.
-    ///
-    /// - Parameter configuration:
-    ///     The configuration of the rootViewController. You cannot change this configuration later anymore (Limitation of UIKit).
+    /// - Parameters:
+    ///     - dataSource:
+    ///         The dataSource of the PageCoordinator.
+    ///     - set:
+    ///         The presentable to be shown right from the start.
+    ///         This should be one of the elements of the specified pages.
+    ///         If not specified, no `set` transition is triggered, which results in the first page being shown.
+    ///     - direction:
+    ///         The direction in which the transition to set the specified first page (parameter `set`) should be animated in.
+    ///         If you specify `nil` for `set`, this parameter is ignored.
+    ///     - configuration:
+    ///         The configuration of the rootViewController. You cannot change this configuration later anymore (Limitation of UIKit).
     ///
     public init(dataSource: UIPageViewControllerDataSource,
                 set: Presentable,

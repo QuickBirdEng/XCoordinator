@@ -42,16 +42,15 @@ open class RedirectionCoordinator<RouteType: Route, TransitionType: TransitionPr
     ///
     /// Creates a RedirectionCoordinator with a viewController, a superTransitionPerfomer and an optional `prepareTransition` closure.
     ///
-    /// - Parameter viewController:
-    ///     The viewController used in transitions, e.g. when presenting, pushing or otherwise displaying a RedirectionCoordinator.
-    ///
-    /// - Parameter superTransitionPerformer:
-    ///     The superCoordinator's AnyTransitionPerformer object. All transitions are redirected to it.
-    ///
-    /// - Parameter prepareTransition:
-    ///     A closure preparing transitions for triggered routes.
-    ///     If you specify `nil` here, make sure to override `prepareTransiton(for:)`.
-    ///     If you override `prepareTransition(for:)`, this closure will be ignored.
+    /// - Parameters:
+    ///     - viewController:
+    ///         The viewController used in transitions, e.g. when presenting, pushing or otherwise displaying a RedirectionCoordinator.
+    ///     - superTransitionPerformer:
+    ///         The superCoordinator's AnyTransitionPerformer object. All transitions are redirected to it.
+    ///     - prepareTransition:
+    ///         A closure preparing transitions for triggered routes.
+    ///         If you specify `nil` here, make sure to override `prepareTransiton(for:)`.
+    ///         If you override `prepareTransition(for:)`, this closure will be ignored.
     ///
     public init(viewController: UIViewController,
                 superTransitionPerformer: AnyTransitionPerformer<TransitionType>,
@@ -65,16 +64,15 @@ open class RedirectionCoordinator<RouteType: Route, TransitionType: TransitionPr
     ///
     /// Creates a RedirectionCoordinator with a viewController, a superTransitionPerfomer and an optional `prepareTransition` closure.
     ///
-    /// - Parameter viewController:
-    ///     The viewController used in transitions, e.g. when presenting, pushing or otherwise displaying a RedirectionCoordinator.
-    ///
-    /// - Parameter superTransitionPerformer:
-    ///     The superCoordinator. All transitions are redirected to it.
-    ///
-    /// - Parameter prepareTransition:
-    ///     A closure preparing transitions for triggered routes.
-    ///     If you specify `nil` here, make sure to override `prepareTransiton(for:)`.
-    ///     If you override `prepareTransition(for:)`, this closure will be ignored.
+    /// - Parameters:
+    ///     - viewController:
+    ///         The viewController used in transitions, e.g. when presenting, pushing or otherwise displaying a RedirectionCoordinator.
+    ///     - superTransitionPerformer:
+    ///         The superCoordinator. All transitions are redirected to it.
+    ///     - prepareTransition:
+    ///         A closure preparing transitions for triggered routes.
+    ///         If you specify `nil` here, make sure to override `prepareTransiton(for:)`.
+    ///         If you override `prepareTransition(for:)`, this closure will be ignored.
     ///
     public init<T: TransitionPerformer>(viewController: UIViewController,
                                         superTransitionPerformer: T,
@@ -114,16 +112,15 @@ extension RedirectionCoordinator {
     ///
     /// Creates a RedirectionCoordinator with a viewController, a superCoordinaror and an optional `prepareTransition` closure.
     ///
-    /// - Parameter viewController:
-    ///     The viewController used in transitions, e.g. when presenting, pushing or otherwise displaying a RedirectionCoordinator.
-    ///
-    /// - Parameter superCoordinator:
-    ///     The superCoordinator. All transitions are redirected to it.
-    ///
-    /// - Parameter prepareTransition:
-    ///     A closure preparing transitions for triggered routes.
-    ///     If you specify `nil` here, make sure to override `prepareTransiton(for:)`.
-    ///     If you override `prepareTransition(for:)`, this closure will be ignored.
+    /// - Parameters:
+    ///     - viewController:
+    ///         The viewController used in transitions, e.g. when presenting, pushing or otherwise displaying a RedirectionCoordinator.
+    ///     - superCoordinator:
+    ///         The superCoordinator. All transitions are redirected to it.
+    ///     - prepareTransition:
+    ///         A closure preparing transitions for triggered routes.
+    ///         If you specify `nil` here, make sure to override `prepareTransiton(for:)`.
+    ///         If you override `prepareTransition(for:)`, this closure will be ignored.
     ///
     @available(*, deprecated, renamed: "init(viewController:superTransitionPerfomer:prepareTransition:)")
     public convenience init<C: Coordinator>(viewController: UIViewController,

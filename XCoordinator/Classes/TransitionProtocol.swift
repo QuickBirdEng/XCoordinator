@@ -30,14 +30,13 @@ public protocol TransitionProtocol {
     ///
     /// Perform the transition on the specified coordinator.
     ///
-    /// - Parameter options:
-    ///     The options with which a transition is performed, e.g. whether the animation is to be used.
-    ///
-    /// - Parameter coordinator:
-    ///     The coordinator to perform the transition on.
-    ///
-    /// - Parameter completion:
-    ///     The completion handler. Make sure to call this, whenever the transition is completed.
+    /// - Parameters:
+    ///     - options:
+    ///         The options with which a transition is performed, e.g. whether the animation is to be used.
+    ///     - coordinator:
+    ///         The coordinator to perform the transition on.
+    ///     - completion:
+    ///         The completion handler. Make sure to call this, whenever the transition is completed.
     ///
     func perform<C: Coordinator>(options: TransitionOptions,
                                  coordinator: C,
