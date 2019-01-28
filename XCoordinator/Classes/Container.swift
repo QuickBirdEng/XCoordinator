@@ -15,16 +15,18 @@
 public protocol Container {
 
     ///
-    /// The view of a Container.
+    /// The view of the Container.
     ///
-    /// It might not exist for a `UIViewController`.
+    /// - Note:
+    ///     It might not exist for a `UIViewController`.
     ///
     var view: UIView! { get }
 
     ///
-    /// The viewController of a Container.
+    /// The viewController of the Container.
     ///
-    /// It might not exist for a `UIView`.
+    /// - Note:
+    ///     It might not exist for a `UIView`.
     ///
     var viewController: UIViewController! { get }
 }

@@ -7,7 +7,8 @@
 //
 
 ///
-/// NavigationCoordinator acts as a base class for your own custom coordinator with a `UINavigationController` rootViewController.
+/// NavigationCoordinator acts as a base class for custom coordinators with a `UINavigationController`
+/// as rootViewController.
 ///
 /// NavigationCoordinator especially ensures that transition animations are called,
 /// which would not be the case when creating a `BaseCoordinator<RouteType, NavigationTransition>`.
@@ -23,7 +24,7 @@ open class NavigationCoordinator<RouteType: Route>: BaseCoordinator<RouteType, N
 
     ///
     /// This represents a fallback-delegate to be notified about navigation controller events.
-    /// It is further used for animation methods when no animation has been specified in the transition.
+    /// It is further used to call animation methods when no animation has been specified in the transition.
     ///
     public var delegate: UINavigationControllerDelegate? {
         get {

@@ -280,8 +280,17 @@ Instead use the delegate property of the TabBarCoordinator itself.
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>See <a href="https://developer.apple.com/documentation/uikit/UITabBarController">UITabBarControllerDelegate documentation</a>
+                        <p>See <a href="https://developer.apple.com/documentation/uikit/UITabBarControllerDelegate">UITabBarControllerDelegate</a>
 for further reference.</p>
+
+<ul>
+<li><p>Parameters</p>
+
+<ul>
+<li>tabBarController: The delegate owner.</li>
+<li>animationController: The animationController to return the interactionController for.</li>
+</ul></li>
+</ul>
 
                       </div>
                       <div class="declaration">
@@ -295,39 +304,8 @@ for further reference.</p>
                         </div>
                       </div>
                       <div>
-                        <h4>Parameters</h4>
-                        <table class="graybox">
-                          <tbody>
-                            <tr>
-                              <td>
-                                <code>
-                                <em>tabBarController</em>
-                                </code>
-                              </td>
-                              <td>
-                                <div>
-                                  <p>The tabBarController to which this object is the delegate of.</p>
-                                </div>
-                              </td>
-                            </tr>
-                            <tr>
-                              <td>
-                                <code>
-                                <em>animationController</em>
-                                </code>
-                              </td>
-                              <td>
-                                <div>
-                                  <p>The animationController to return the interactionController for.</p>
-                                </div>
-                              </td>
-                            </tr>
-                          </tbody>
-                        </table>
-                      </div>
-                      <div>
                         <h4>Return Value</h4>
-                        <p>The interactionController of an animationController of type <code><a href="../Protocols/TransitionAnimation.html">TransitionAnimation</a></code>.
+                        <p>If the animationController is a <code><a href="../Protocols/TransitionAnimation.html">TransitionAnimation</a></code>, it returns its interactionController.
 Otherwise the result of the TabBarCoordinator&rsquo;s delegate.</p>
                       </div>
                     </section>
@@ -346,7 +324,7 @@ Otherwise the result of the TabBarCoordinator&rsquo;s delegate.</p>
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>See <a href="https://developer.apple.com/documentation/uikit/UITabBarController">UITabBarControllerDelegate documentation</a>
+                        <p>See <a href="https://developer.apple.com/documentation/uikit/UITabBarControllerDelegate">UITabBarControllerDelegate</a>
 for further reference.</p>
 
                       </div>
@@ -372,7 +350,7 @@ for further reference.</p>
                               </td>
                               <td>
                                 <div>
-                                  <p>The tabBarController to which this object is the delegate of.</p>
+                                  <p>The delegate owner.</p>
                                 </div>
                               </td>
                             </tr>
@@ -405,7 +383,7 @@ for further reference.</p>
                       </div>
                       <div>
                         <h4>Return Value</h4>
-                        <p>The presentation animation of the last specified <code><a href="../Classes/Animation.html">Animation</a></code> object.
+                        <p>The presentation animation of the last specified <code><a href="../Classes/Animation.html">Animation</a></code> object of a <code>set</code> or <code>select</code> transition.
 If not present, it uses the TabBarCoordinator&rsquo;s delegate as fallback.</p>
                       </div>
                     </section>
@@ -424,10 +402,10 @@ If not present, it uses the TabBarCoordinator&rsquo;s delegate as fallback.</p>
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>See <a href="https://developer.apple.com/documentation/uikit/UITabBarController">UITabBarControllerDelegate documentation</a>
+                        <p>See <a href="https://developer.apple.com/documentation/uikit/UITabBarControllerDelegate">UITabBarControllerDelegate</a>
 for further reference.</p>
 
-<p>This method delegates to the delegate specified in the TabBarCoordinator.</p>
+<p>This method delegates to the TabBarCoordinator&rsquo;s delegate.</p>
 
                       </div>
                       <div class="declaration">
@@ -451,7 +429,7 @@ for further reference.</p>
                               </td>
                               <td>
                                 <div>
-                                  <p>The tabBarController to which this object is the delegate of.</p>
+                                  <p>The delegate owner.</p>
                                 </div>
                               </td>
                             </tr>
@@ -463,7 +441,7 @@ for further reference.</p>
                               </td>
                               <td>
                                 <div>
-                                  <p>The viewController that was selected.</p>
+                                  <p>The selected viewController.</p>
                                 </div>
                               </td>
                             </tr>
@@ -486,10 +464,10 @@ for further reference.</p>
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>See <a href="https://developer.apple.com/documentation/uikit/UITabBarController">UITabBarControllerDelegate documentation</a>
+                        <p>See <a href="https://developer.apple.com/documentation/uikit/UITabBarControllerDelegate">UITabBarControllerDelegate</a>
 for further reference.</p>
 
-<p>This method delegates to the delegate specified in the TabBarCoordinator.</p>
+<p>This method delegates to the TabBarCoordinator&rsquo;s delegate.</p>
 
                       </div>
                       <div class="declaration">
@@ -513,7 +491,7 @@ for further reference.</p>
                               </td>
                               <td>
                                 <div>
-                                  <p>The tabBarController to which this object is the delegate of.</p>
+                                  <p>The delegate owner.</p>
                                 </div>
                               </td>
                             </tr>
@@ -552,10 +530,10 @@ for further reference.</p>
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>See <a href="https://developer.apple.com/documentation/uikit/UITabBarController">UITabBarControllerDelegate documentation</a>
+                        <p>See <a href="https://developer.apple.com/documentation/uikit/UITabBarControllerDelegate">UITabBarControllerDelegate</a>
 for further reference.</p>
 
-<p>This method delegates to the delegate specified in the TabBarCoordinator.</p>
+<p>This method delegates to the TabBarCoordinator&rsquo;s delegate.</p>
 
                       </div>
                       <div class="declaration">
@@ -579,7 +557,7 @@ for further reference.</p>
                               </td>
                               <td>
                                 <div>
-                                  <p>The tabBarController to which this object is the delegate of.</p>
+                                  <p>The delegate owner.</p>
                                 </div>
                               </td>
                             </tr>
@@ -591,7 +569,7 @@ for further reference.</p>
                               </td>
                               <td>
                                 <div>
-                                  <p>The viewControllers that will begin to be customized.</p>
+                                  <p>The source viewControllers.</p>
                                 </div>
                               </td>
                             </tr>
@@ -614,10 +592,10 @@ for further reference.</p>
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>See <a href="https://developer.apple.com/documentation/uikit/UITabBarController">UITabBarControllerDelegate documentation</a>
+                        <p>See <a href="https://developer.apple.com/documentation/uikit/UITabBarControllerDelegate">UITabBarControllerDelegate</a>
 for further reference.</p>
 
-<p>This method delegates to the delegate specified in the TabBarCoordinator.</p>
+<p>This method delegates to the TabBarCoordinator&rsquo;s delegate.</p>
 
                       </div>
                       <div class="declaration">
@@ -641,7 +619,7 @@ for further reference.</p>
                               </td>
                               <td>
                                 <div>
-                                  <p>The tabBarController to which this object is the delegate of.</p>
+                                  <p>The delegate owner.</p>
                                 </div>
                               </td>
                             </tr>
@@ -653,7 +631,7 @@ for further reference.</p>
                               </td>
                               <td>
                                 <div>
-                                  <p>The viewControllers that ended to be customized.</p>
+                                  <p>The source viewControllers.</p>
                                 </div>
                               </td>
                             </tr>
@@ -676,10 +654,10 @@ for further reference.</p>
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>See <a href="https://developer.apple.com/documentation/uikit/UITabBarController">UITabBarControllerDelegate documentation</a>
+                        <p>See <a href="https://developer.apple.com/documentation/uikit/UITabBarControllerDelegate">UITabBarControllerDelegate</a>
 for further reference.</p>
 
-<p>This method delegates to the delegate specified in the TabBarCoordinator.</p>
+<p>This method delegates to the TabBarCoordinator&rsquo;s delegate.</p>
 
                       </div>
                       <div class="declaration">
@@ -703,7 +681,7 @@ for further reference.</p>
                               </td>
                               <td>
                                 <div>
-                                  <p>The tabBarController to which this object is the delegate of.</p>
+                                  <p>The delegate owner.</p>
                                 </div>
                               </td>
                             </tr>
@@ -715,7 +693,7 @@ for further reference.</p>
                               </td>
                               <td>
                                 <div>
-                                  <p>The viewControllers that will end to be customized.</p>
+                                  <p>The source viewControllers.</p>
                                 </div>
                               </td>
                             </tr>

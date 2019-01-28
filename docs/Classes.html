@@ -264,7 +264,7 @@ to allow for push-transitions to specify animations.</p>
 and is intended for use as the delegate of one navigation controller only.</p>
 <div class="aside aside-note">
     <p class="aside-title">Note</p>
-    Do not override the delegate of a NavigationCoordinator&rsquo;s rootViewController-delegate.
+    Do not override the delegate of a NavigationCoordinator&rsquo;s rootViewController.
 Instead use the delegate property of the NavigationCoordinator itself.
 
 </div>
@@ -341,15 +341,14 @@ Instead use the delegate property of the TabBarCoordinator itself.
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Use <code>Animation</code> to set presentation and dismissal animations for presentables.</p>
+                        <p><code>Animation</code> is used to set presentation and dismissal animations for presentables.</p>
 
-<p>Depending on the transition in use, we set different properties of a <code>UIViewController</code> to make sure the transition animation is used.</p>
+<p>Depending on the transition in use, different properties of a <code>UIViewController</code> are set to make sure the transition animation is used.</p>
 <div class="aside aside-note">
     <p class="aside-title">Note</p>
     <p>To not override the previously set <code>Animation</code>, use <code>nil</code> when initializing a transition.</p>
 
-<p>Make sure to hold a strong reference to the <code>Animation</code> object, as XCoordinator does not ensure
-to hold the <code>Animation</code> strongly by itself.</p>
+<p>Make sure to hold a strong reference to the <code>Animation</code> object, as it is only held a weak reference to the <code>Animation</code> object.</p>
 
 </div>
 
@@ -383,11 +382,15 @@ to hold the <code>Animation</code> strongly by itself.</p>
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>AnyCoordinator can be used as an abstraction from a specific coordinator class while still specifying
+                        <p><code>AnyCoordinator</code> is a type-erased <code><a href="Protocols/Coordinator.html">Coordinator</a></code> (<code>RouteType</code> &amp; <code>TransitionType</code>) and
+can be used as an abstraction from a specific coordinator class while still specifying
 TransitionType and RouteType.</p>
+<div class="aside aside-note">
+    <p class="aside-title">Note</p>
+    If you do not want/need to specify TransitionType, you might want to look into the <code><a href="Classes/AnyRouter.html">AnyRouter</a></code> class.
+See <code><a href="Classes/AnyTransitionPerformer.html">AnyTransitionPerformer</a></code> to further abstract from RouteType.
 
-<p>If you do not want/need to specify TransitionType, you might want to look into the <code><a href="Classes/AnyRouter.html">AnyRouter</a></code> class.
-See <code><a href="Classes/AnyTransitionPerformer.html">AnyTransitionPerformer</a></code> to further abstract away from RouteType.</p>
+</div>
 
                         <a href="Classes/AnyCoordinator.html" class="slightly-smaller">See more</a>
                       </div>
@@ -419,10 +422,11 @@ See <code><a href="Classes/AnyTransitionPerformer.html">AnyTransitionPerformer</
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>AnyRouter can be used as an abstraction from a specific Router implementation without losing type information about its RouteType.</p>
+                        <p>AnyRouter is a type-erasure of a given Router object and, therefore, can be used as an abstraction from a specific Router
+implementation without losing type information about its RouteType.</p>
 
 <p>This type abstraction can be especially helpful when injecting routers into viewModels.
-AnyRouter abstracts away any implementation specifics and reduces coordinators to the capabilities of triggering routes.</p>
+AnyRouter abstracts away any implementation specific details and essentially reduces them to properties specified in the <code><a href="Protocols/Router.html">Router</a></code> protocol.</p>
 
                         <a href="Classes/AnyRouter.html" class="slightly-smaller">See more</a>
                       </div>
@@ -458,8 +462,8 @@ AnyRouter abstracts away any implementation specifics and reduces coordinators t
 without losing type information about its TransitionType.</p>
 
 <p>This type abstraction can be especially helpful when performing transitions.
-AnyTransitionPerformer abstracts away any implementation specifics and reduces coordinators to the capabilities of
-performing transitions.</p>
+AnyTransitionPerformer abstracts away any implementation specific details and reduces coordinators to the capabilities
+of the <code><a href="Protocols/TransitionPerformer.html">TransitionPerformer</a></code> protocol.</p>
 
                         <a href="Classes/AnyTransitionPerformer.html" class="slightly-smaller">See more</a>
                       </div>
@@ -493,7 +497,7 @@ performing transitions.</p>
                       <div class="abstract">
                         <p>BaseCoordinator can (and is encouraged to) be used as a superclass for any custom implementation of a coordinator.</p>
 
-<p>We encourage the use of already provided subclasses of BaseCoordinator such as
+<p>We also encourage the use of already provided subclasses of BaseCoordinator such as
 <code><a href="Classes/NavigationCoordinator.html">NavigationCoordinator</a></code>, <code><a href="Classes/TabBarCoordinator.html">TabBarCoordinator</a></code>, <code><a href="Classes/ViewCoordinator.html">ViewCoordinator</a></code>, <code><a href="Classes/SplitCoordinator.html">SplitCoordinator</a></code>
 and <code><a href="Classes/PageCoordinator.html">PageCoordinator</a></code>.</p>
 
@@ -606,8 +610,9 @@ and (optionally) a closure to create an interaction controller.</p>
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Use InterruptibleTransitionAnimation to define interactive transitions based on the <code>UIViewPropertyAnimator</code> APIs
-introduced in iOS 10.</p>
+                        <p>Use InterruptibleTransitionAnimation to define interactive transitions based on the
+<a href="https://developer.apple.com/documentation/uikit/UIViewPropertyAnimator">UIViewPropertyAnimator</a>
+APIs introduced in iOS 10.</p>
 
                         <a href="Classes/InterruptibleTransitionAnimation.html" class="slightly-smaller">See more</a>
                       </div>
@@ -640,7 +645,8 @@ introduced in iOS 10.</p>
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>NavigationCoordinator acts as a base class for your own custom coordinator with a <code>UINavigationController</code> rootViewController.</p>
+                        <p>NavigationCoordinator acts as a base class for custom coordinators with a <code>UINavigationController</code>
+as rootViewController.</p>
 
 <p>NavigationCoordinator especially ensures that transition animations are called,
 which would not be the case when creating a <code>BaseCoordinator&lt;RouteType, NavigationTransition&gt;</code>.</p>
@@ -827,10 +833,8 @@ e.g. when you are presenting, pushing, or otherwise displaying it.</p>
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>A ReferenceBox can be used for any object that you need different retain strategies for.</p>
-
-<p>For example, a ReferenceBox can be used to hold strongly to an object in the beginning,
-but later release this strong reference, but still hold the object weakly.</p>
+                        <p>A ReferenceBox can be used to dynamically change the retain strategy of a certain reference, i.e.
+it can dynamically switch between holding an object strongly or weakly.</p>
 
                         <a href="Classes/ReferenceBox.html" class="slightly-smaller">See more</a>
                       </div>
@@ -899,11 +903,14 @@ but later release this strong reference, but still hold the object weakly.</p>
                       <div class="pointer"></div>
                       <div class="abstract">
                         <p><code>StaticTransitionAnimation</code> is a class to realize static transition animations.</p>
-
-<p>We advise against its use in favor of <code><a href="Classes/InteractiveTransitionAnimation.html">InteractiveTransitionAnimation</a></code>, if possible, as it is as simple
+<div class="aside aside-note">
+    <p class="aside-title">Note</p>
+    We advise against its use in favor of <code><a href="Classes/InteractiveTransitionAnimation.html">InteractiveTransitionAnimation</a></code>, if possible, as it is as simple
 to use. However, this class is helpful to make sure your transition animation is not mistaken to be
 interactive, if your animation code does not fulfill the requirements of an interactive transition
-animation.</p>
+animation.
+
+</div>
 
                         <a href="Classes/StaticTransitionAnimation.html" class="slightly-smaller">See more</a>
                       </div>
@@ -968,8 +975,7 @@ With a TabBarCoordinator, you get access to all tabbarController-related transit
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>ViewCoordinator is a base class for your own custom coordinator with a <code>UIViewController</code>
-rootViewController.</p>
+                        <p>ViewCoordinator is a base class for custom coordinators with a <code>UIViewController</code> rootViewController.</p>
 
                         <a href="Classes/ViewCoordinator.html" class="slightly-smaller">See more</a>
                       </div>

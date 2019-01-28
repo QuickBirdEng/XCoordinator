@@ -11,8 +11,8 @@
 /// without losing type information about its TransitionType.
 ///
 /// This type abstraction can be especially helpful when performing transitions.
-/// AnyTransitionPerformer abstracts away any implementation specifics and reduces coordinators to the capabilities of
-/// performing transitions.
+/// AnyTransitionPerformer abstracts away any implementation specific details and reduces coordinators to the capabilities
+/// of the `TransitionPerformer` protocol.
 ///
 public class AnyTransitionPerformer<TransitionType: TransitionProtocol>: TransitionPerformer {
 

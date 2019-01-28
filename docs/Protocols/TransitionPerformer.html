@@ -241,8 +241,8 @@
 
                 </div>
               </div>
-            <p>The TransitionPerformer protocol is used to abstract away from the router capabilities of a coordinator and instead focusing on its
-rootViewController type and transition performing capabilities.</p>
+            <p>The TransitionPerformer protocol is used to abstract the route-type specific characteristics of a Coordinator.
+It keeps type information about its transition performing capabilities.</p>
 
           </div>
         </section>
@@ -319,8 +319,8 @@ rootViewController type and transition performing capabilities.</p>
                       <div class="pointer"></div>
                       <div class="abstract">
                         <p>Perform a transition.</p>
-<div class="aside aside-note">
-    <p class="aside-title">Note</p>
+<div class="aside aside-warning">
+    <p class="aside-title">Warning</p>
     <p>We advise against the use of this method directly.
 Try to use the <code>trigger</code> method of your coordinator instead wherever possible.</p>
 

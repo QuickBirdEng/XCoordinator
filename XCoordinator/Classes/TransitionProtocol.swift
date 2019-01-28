@@ -7,7 +7,7 @@
 //
 
 ///
-/// TransitionProtocol is used to abstract away from any concrete implementation of transitions.
+/// TransitionProtocol is used to abstract from any concrete implementation of transitions.
 ///
 /// We provide an easily-extensible transition type called `Transition` as a default transition type.
 ///
@@ -22,8 +22,9 @@ public protocol TransitionProtocol {
     ///
     /// The transition animation directly used in the transition, if applicable.
     ///
-    /// Make sure to not return `nil`,
-    /// if you want to use `BaseCoordinator.registerInteractiveTransition` to realize an interactive transition.
+    /// - Note:
+    ///     Make sure to not return `nil`, if you want to use `BaseCoordinator.registerInteractiveTransition`
+    ///     to realize an interactive transition.
     ///
     var animation: TransitionAnimation? { get }
 
@@ -45,7 +46,7 @@ public protocol TransitionProtocol {
     // MARK: - Always accessible transitions
 
     ///
-    /// Create one transition by chaining multiple transitions together.
+    /// Creates a compound transition by chaining multiple transitions together.
     ///
     /// - Parameter transitions:
     ///     The transitions to be chained to form a combined transition.
@@ -56,7 +57,7 @@ public protocol TransitionProtocol {
 extension TransitionProtocol {
 
     ///
-    /// Create one transition by chaining multiple transitions together.
+    /// Creates a compound transition by chaining multiple transitions together.
     ///
     /// - Parameter transitions:
     ///     The transitions to be chained to form a combined transition.

@@ -7,15 +7,14 @@
 //
 
 ///
-/// Use `Animation` to set presentation and dismissal animations for presentables.
+/// `Animation` is used to set presentation and dismissal animations for presentables.
 ///
-/// Depending on the transition in use, we set different properties of a `UIViewController` to make sure the transition animation is used.
+/// Depending on the transition in use, different properties of a `UIViewController` are set to make sure the transition animation is used.
 ///
 /// - Note:
 ///     To not override the previously set `Animation`, use `nil` when initializing a transition.
 ///
-///     Make sure to hold a strong reference to the `Animation` object, as XCoordinator does not ensure
-///     to hold the `Animation` strongly by itself.
+///     Make sure to hold a strong reference to the `Animation` object, as it is only held a weak reference to the `Animation` object.
 ///
 open class Animation: NSObject {
 
@@ -25,24 +24,27 @@ open class Animation: NSObject {
     /// Use `Animation.default` to override currently set animations
     /// and reset to the default animations provided by iOS
     ///
-    /// To disable animations make sure to use non-animating `TransitionOptions` when triggering.
+    /// - Note:
+    ///     To disable animations make sure to use non-animating `TransitionOptions` when triggering.
     ///
     public static let `default` = Animation(presentation: nil, dismissal: nil)
 
     // MARK: - Stored properties
 
-    /// The transition animation shown when transitioning to a presentable.
+    /// The transition animation performed when transitioning to a presentable.
     open var presentationAnimation: TransitionAnimation?
 
-    /// The transition animation shown when transitioning away from a presentable.
+    /// The transition animation performed when transitioning away from a presentable.
     open var dismissalAnimation: TransitionAnimation?
 
     // MARK: - Initialization
 
     ///
+    /// Creates an Animation object containing a presentation and a dismissal animation.
+    ///
     /// - Parameters:
-    ///     - presentation: The transition animation shown when transitioning to a presentable.
-    ///     - dismissal: The transition animation shown when transitioning away from a presentable.
+    ///     - presentation: The transition animation performed when transitioning to a presentable.
+    ///     - dismissal: The transition animation performed when transitioning away from a presentable.
     ///
     public init(presentation: TransitionAnimation?, dismissal: TransitionAnimation?) {
         self.presentationAnimation = presentation
@@ -60,11 +62,11 @@ extension Animation: UIViewControllerTransitioningDelegate {
     ///
     /// - Parameters:
     ///     - presented: The view controller to be presented.
-    ///     - presenting: The view controller to present.
-    ///     - source: The view controller `present(_:animated:completion:)` was called on.
+    ///     - presenting: The view controller that is presenting.
+    ///     - source: The view controller whose `present(_:animated:completion:)` was called on.
     ///
     /// - Returns:
-    ///     The specified presentation animation.
+    ///     The presentation animation when initializing the `Animation` object.
     ///
     open func animationController(forPresented presented: UIViewController,
                                   presenting: UIViewController,
@@ -80,7 +82,7 @@ extension Animation: UIViewControllerTransitioningDelegate {
     ///     The view controller to be dismissed.
     ///
     /// - Returns:
-    ///     The specified dismissal animation.
+    ///     The dismissal animation when initializing the `Animation` object.
     ///
     open func animationController(forDismissed dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {
         return dismissalAnimation
@@ -91,7 +93,7 @@ extension Animation: UIViewControllerTransitioningDelegate {
     /// for further reference.
     ///
     /// - Parameter animator:
-    ///     The presentation animation.
+    ///     The animator of this transition, which is most likely the presentation animation.
     ///
     /// - Returns:
     ///     The presentation animation's interaction controller.
@@ -106,7 +108,7 @@ extension Animation: UIViewControllerTransitioningDelegate {
     /// for further reference.
     ///
     /// - Parameter animator:
-    ///     The dismissal animation.
+    ///     The animator of this transition, which is most likely the dismissal animation.
     ///
     /// - Returns:
     ///     The dismissal animation's interaction controller.

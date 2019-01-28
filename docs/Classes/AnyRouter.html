@@ -241,10 +241,11 @@
 
                 </div>
               </div>
-            <p>AnyRouter can be used as an abstraction from a specific Router implementation without losing type information about its RouteType.</p>
+            <p>AnyRouter is a type-erasure of a given Router object and, therefore, can be used as an abstraction from a specific Router
+implementation without losing type information about its RouteType.</p>
 
 <p>This type abstraction can be especially helpful when injecting routers into viewModels.
-AnyRouter abstracts away any implementation specifics and reduces coordinators to the capabilities of triggering routes.</p>
+AnyRouter abstracts away any implementation specific details and essentially reduces them to properties specified in the <code><a href="../Protocols/Router.html">Router</a></code> protocol.</p>
 
           </div>
         </section>
@@ -296,7 +297,7 @@ AnyRouter abstracts away any implementation specifics and reduces coordinators t
                               </td>
                               <td>
                                 <div>
-                                  <p>The router to create the AnyRouter of.</p>
+                                  <p>The source router.</p>
                                 </div>
                               </td>
                             </tr>
@@ -330,7 +331,7 @@ AnyRouter abstracts away any implementation specifics and reduces coordinators t
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Triggers routes and returns context in completion-handler.</p>
+                        <p>Triggers routes and provides the transition context in the completion-handler.</p>
 
 <p>Useful for deep linking. It is encouraged to use <code>trigger</code> instead, if the context is not needed.</p>
 
@@ -381,7 +382,8 @@ AnyRouter abstracts away any implementation specifics and reduces coordinators t
                               </td>
                               <td>
                                 <div>
-                                  <p>Optional completion handler. If present, it is executed once the transition is completed (including animations).
+                                  <p>If present, this completion handler is executed once the transition is completed
+(including animations).
 If the context is not needed, use <code>trigger</code> instead.</p>
                                 </div>
                               </td>
@@ -452,7 +454,8 @@ If the context is not needed, use <code>trigger</code> instead.</p>
                               </td>
                               <td>
                                 <div>
-                                  <p>Optional completion handler. If present, it is executed once the transition is completed (including animations).</p>
+                                  <p>If present, this completion handler is executed once the transition is completed
+(including animations).</p>
                                 </div>
                               </td>
                             </tr>
@@ -476,7 +479,7 @@ If the context is not needed, use <code>trigger</code> instead.</p>
                       <div class="pointer"></div>
                       <div class="abstract">
                         <p>This method is called whenever a Presentable is shown to the user.
-It further provides information about the context a presentable is shown in.</p>
+It further provides information about the presentable responsible for the presenting.</p>
 
                       </div>
                       <div class="declaration">

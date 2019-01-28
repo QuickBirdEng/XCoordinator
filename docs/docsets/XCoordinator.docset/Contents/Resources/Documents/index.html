@@ -519,7 +519,7 @@ It&rsquo;s especially useful for implementing MVVM-C, Model-View-ViewModel-Coord
 <p>Describes possible navigation paths within a flow, a collection of closely related scenes.</p>
 <h3 id='coordinator-router' class='heading'>👨‍✈️ Coordinator / Router</h3>
 
-<p>An object loading views and creating viewModels based on triggered routes. A Coordinator creates and performs transitions to these scenes based on the data transferred via the route. In contrast to the coordinator, a router can be seen as an abstraction from that concept limited to triggering routes. Often, a Router is used to abstract away from a specific coordinator in ViewModels.</p>
+<p>An object loading views and creating viewModels based on triggered routes. A Coordinator creates and performs transitions to these scenes based on the data transferred via the route. In contrast to the coordinator, a router can be seen as an abstraction from that concept limited to triggering routes. Often, a Router is used to abstract from a specific coordinator in ViewModels.</p>
 <h3 id='transition' class='heading'>🌗 Transition</h3>
 
 <p>Transitions describe the navigation from one view to another. Transitions are available based on the type of the root view controller in use. Example: Whereas <code><a href="Typealiases.html#/s:12XCoordinator14ViewTransitiona">ViewTransition</a></code> only supports basic transitions that every root view controller supports, <code><a href="Typealiases.html#/s:12XCoordinator20NavigationTransitiona">NavigationTransition</a></code> adds navigation controller specific transitions.</p>

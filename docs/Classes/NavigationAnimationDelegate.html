@@ -248,7 +248,7 @@ to allow for push-transitions to specify animations.</p>
 and is intended for use as the delegate of one navigation controller only.</p>
 <div class="aside aside-note">
     <p class="aside-title">Note</p>
-    Do not override the delegate of a NavigationCoordinator&rsquo;s rootViewController-delegate.
+    Do not override the delegate of a NavigationCoordinator&rsquo;s rootViewController.
 Instead use the delegate property of the NavigationCoordinator itself.
 
 </div>
@@ -280,7 +280,7 @@ Instead use the delegate property of the NavigationCoordinator itself.
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Describes the velocity threshold needed for the interactive pop transition to succeed.</p>
+                        <p>The velocity threshold needed for the interactive pop transition to succeed</p>
 
                       </div>
                       <div class="declaration">
@@ -307,7 +307,7 @@ Instead use the delegate property of the NavigationCoordinator itself.
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Describes the transition progress threshold for the interactive pop transition to succeed.</p>
+                        <p>The transition progress threshold for the interactive pop transition to succeed</p>
 
                       </div>
                       <div class="declaration">
@@ -348,15 +348,6 @@ Instead use the delegate property of the NavigationCoordinator itself.
                         <p>See <a href="https://developer.apple.com/documentation/uikit/uinavigationcontrollerdelegate">UINavigationControllerDelegate documentation</a>
 for further reference.</p>
 
-<ul>
-<li><p>Parameters</p>
-
-<ul>
-<li>navigationController: The navigation controller to which this object is the delegate of.</li>
-<li>animationController: The animationController to return the interactionController for.</li>
-</ul></li>
-</ul>
-
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
@@ -369,8 +360,39 @@ for further reference.</p>
                         </div>
                       </div>
                       <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>navigationController</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The delegate owner.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>animationController</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The animationController to return the interactionController for.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <div>
                         <h4>Return Value</h4>
-                        <p>The interactionController of an animationController of type <code><a href="../Protocols/TransitionAnimation.html">TransitionAnimation</a></code>.
+                        <p>If the animationController is a <code><a href="../Protocols/TransitionAnimation.html">TransitionAnimation</a></code>, it returns its interactionController.
 Otherwise the result of the NavigationCoordinator&rsquo;s delegate.</p>
                       </div>
                     </section>
@@ -392,17 +414,6 @@ Otherwise the result of the NavigationCoordinator&rsquo;s delegate.</p>
                         <p>See <a href="https://developer.apple.com/documentation/uikit/uinavigationcontrollerdelegate">UINavigationControllerDelegate documentation</a>
 for further reference.</p>
 
-<ul>
-<li><p>Parameters</p>
-
-<ul>
-<li>navigationController: The navigation controller to which this object is the delegate of.</li>
-<li>operation: The operation being executed. Possible values are push, pop or none.</li>
-<li>fromVC: The source view controller of the transition.</li>
-<li>toVC: The destination view controller of the transition.</li>
-</ul></li>
-</ul>
-
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
@@ -416,8 +427,64 @@ for further reference.</p>
                         </div>
                       </div>
                       <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>navigationController</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The delegate owner.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>operation</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The operation being executed. Possible values are push, pop or none.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>fromVC</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The source view controller of the transition.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>toVC</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The destination view controller of the transition.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <div>
                         <h4>Return Value</h4>
-                        <p>The presentation animation of the last specified <code><a href="../Classes/Animation.html">Animation</a></code> object.
+                        <p>The destination view controller&rsquo;s animationController depending on its <code>transitioningDelegate</code>.
+In the case of <code>push</code>, it returns the toVC&rsquo;s presentation animation, for <code>pop</code> it is the fromVC&rsquo;s dismissal animation.
 If not present, it uses the NavigationCoordinator&rsquo;s delegate as fallback.</p>
                       </div>
                     </section>
@@ -461,7 +528,7 @@ for further reference.</p>
                               </td>
                               <td>
                                 <div>
-                                  <p>The navigation controller to which this object is the delegate of.</p>
+                                  <p>The delegate owner.</p>
                                 </div>
                               </td>
                             </tr>
@@ -485,7 +552,7 @@ for further reference.</p>
                               </td>
                               <td>
                                 <div>
-                                  <p>The shown view controller.</p>
+                                  <p>The target view controller.</p>
                                 </div>
                               </td>
                             </tr>
@@ -534,7 +601,7 @@ for further reference.</p>
                               </td>
                               <td>
                                 <div>
-                                  <p>The navigation controller to which this object is the delegate of.</p>
+                                  <p>The delegate owner.</p>
                                 </div>
                               </td>
                             </tr>
@@ -594,16 +661,12 @@ for further reference.</p>
                       <div class="abstract">
                         <p>See <a href="https://developer.apple.com/documentation/uikit/UIGestureRecognizerDelegate">UIGestureRecognizerDelegate documentation</a>
 for further reference.</p>
-
-<p>This method returns true, if</p>
-
-<ul>
-<li>there are more than 1 view controllers in the navigation controller</li>
-<li>it is the interactivePopGestureRecognizer to call this method</li>
-</ul>
-
-<p>It further alters the target of the gestureRecognizer to either its former delegate (UIKit default)
+<div class="aside aside-note">
+    <p class="aside-title">Note</p>
+    <p>This method alters the target of the gestureRecognizer to either its former delegate (UIKit default)
 or this class depending on whether a pop animation has been specified.</p>
+
+</div>
 
                       </div>
                       <div class="declaration">
@@ -635,6 +698,15 @@ the navigationController.</p>
                           </tbody>
                         </table>
                       </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p>This method returns true, if</p>
+
+<ul>
+<li>there are more than 1 view controllers in the navigation controller and</li>
+<li>it is the interactivePopGestureRecognizer to call this method</li>
+</ul>
+                      </div>
                     </section>
                   </div>
                 </li>
@@ -662,10 +734,10 @@ the navigationController.</p>
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>This method handles changes of the <code>interactivePopGestureRecognizer</code> of the navigation controller.</p>
+                        <p>This method handles changes of the navigation controller&rsquo;s <code>interactivePopGestureRecognizer</code>.</p>
 
-<p>In general this method updates the interaction controller of the top-most dismissalAnimation
-about the state of the interactivePopGestureRecognizer.</p>
+<p>This method performs the top-most dismissalAnimation and informs its interaction controller about changes
+of the interactivePopGestureRecognizer&rsquo;s state.</p>
 
                       </div>
                       <div class="declaration">
@@ -723,7 +795,8 @@ about the state of the interactivePopGestureRecognizer.</p>
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>This method sets up the <code>interactivePopGestureRecognizer</code> of the navigation controller to work as expected.</p>
+                        <p>This method sets up the <code>interactivePopGestureRecognizer</code> of the navigation controller
+to allow for custom interactive pop animations.</p>
 
 <p>This method overrides the delegate of the <code>interactivePopGestureRecognizer</code> to <code>self</code>,
 but keeps a reference to the original delegate to enable the default pop animations.</p>

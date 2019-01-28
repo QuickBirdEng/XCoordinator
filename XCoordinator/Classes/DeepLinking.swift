@@ -7,7 +7,7 @@
 //
 
 ///
-/// A struct describing context information about transitions.
+/// `PresentationHandlerContext` provides context information about transitions.
 ///
 /// It is especially useful for deep linking as we can internally gather information about
 /// the presentables being pushed onto the view hierarchy.
@@ -31,9 +31,11 @@ extension Coordinator where Self: AnyObject {
     ///         It is given a special place because we can specify its exact type.
     ///     - remainingRoutes:
     ///         The remaining routes of the chain.
-    ///         As we cannot make this type-safe in a reasonable manner, use it with caution.
-    ///         Keep in mind that changes in your app's structure and changes of transitions
-    ///         behind the given routes can lead to runtime errors and, therefore, crashes of your app.
+    ///
+    /// - Note:
+    ///     Use it with caution, as it is not implemented in a type-safe manner.
+    ///     Keep in mind that changes in the app's structure and changes of transitions
+    ///     behind given routes can lead to runtime errors and, therefore, crashes of your app.
     ///
     public func deepLink<RootViewController, S: Sequence>(_ route: RouteType, _ remainingRoutes: S)
         -> Transition<RootViewController> where S.Element == Route, TransitionType == Transition<RootViewController> {

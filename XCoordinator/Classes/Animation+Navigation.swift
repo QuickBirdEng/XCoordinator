@@ -200,8 +200,8 @@ extension NavigationAnimationDelegate: UIGestureRecognizerDelegate {
     ///
     /// This method handles changes of the navigation controller's `interactivePopGestureRecognizer`.
     ///
-    /// In general this method updates the interaction controller of the top-most dismissalAnimation
-    /// about the state of the interactivePopGestureRecognizer.
+    /// This method performs the top-most dismissalAnimation and informs its interaction controller about changes
+    /// of the interactivePopGestureRecognizer's state.
     ///
     /// - Parameter gestureRecognizer: The interactivePopGestureRecognizer of the `UINavigationController`.
     ///
@@ -243,7 +243,8 @@ extension NavigationAnimationDelegate: UIGestureRecognizerDelegate {
     // MARK: - Helpers
 
     ///
-    /// This method sets up the `interactivePopGestureRecognizer` of the navigation controller to work as expected.
+    /// This method sets up the `interactivePopGestureRecognizer` of the navigation controller
+    /// to allow for custom interactive pop animations.
     ///
     /// This method overrides the delegate of the `interactivePopGestureRecognizer` to `self`,
     /// but keeps a reference to the original delegate to enable the default pop animations.

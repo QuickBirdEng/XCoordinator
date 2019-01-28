@@ -30,7 +30,7 @@ public protocol TransitionAnimation: UIViewControllerAnimatedTransitioning {
     /// Starts the animation by possibly creating a new interaction controller.
     func start()
 
-    /// Cleans up any remaining information after an animation has been completed, e.g. by deleting an interaction controller.
+    /// Cleans up a TransitionAnimation after an animation has been completed, e.g. by deleting an interaction controller.
     func cleanup()
 }
 

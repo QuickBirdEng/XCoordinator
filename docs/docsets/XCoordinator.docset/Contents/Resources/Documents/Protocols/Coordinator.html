@@ -599,6 +599,13 @@ It especially decides, which transitions are performed for the triggered routes.
                       <div class="pointer"></div>
                       <div class="abstract">
                         <p>Deep-Linking can be used to chain routes of different types together.</p>
+<div class="aside aside-note">
+    <p class="aside-title">Note</p>
+    <p>Use it with caution, as it is not implemented in a type-safe manner.
+Keep in mind that changes in the app&rsquo;s structure and changes of transitions
+behind given routes can lead to runtime errors and, therefore, crashes of your app.</p>
+
+</div>
 
                       </div>
                       <div class="declaration">
@@ -635,10 +642,7 @@ It is given a special place because we can specify its exact type.</p>
                               </td>
                               <td>
                                 <div>
-                                  <p>The remaining routes of the chain.
-As we cannot make this type-safe in a reasonable manner, use it with caution.
-Keep in mind that changes in your app&rsquo;s structure and changes of transitions
-behind the given routes can lead to runtime errors and, therefore, crashes of your app.</p>
+                                  <p>The remaining routes of the chain.</p>
                                 </div>
                               </td>
                             </tr>
@@ -675,41 +679,6 @@ behind the given routes can lead to runtime errors and, therefore, crashes of yo
     <span class="o">-&gt;</span> <span class="kt"><a href="../Structs/Transition.html">Transition</a></span><span class="o">&lt;</span><span class="kt"><a href="../Protocols/Coordinator.html#/s:12XCoordinator11CoordinatorPAAE18RootViewControllera">RootViewController</a></span><span class="o">&gt;</span> <span class="k">where</span> <span class="kt">TransitionType</span> <span class="o">==</span> <span class="kt"><a href="../Structs/Transition.html">Transition</a></span><span class="o">&lt;</span><span class="kt"><a href="../Protocols/Coordinator.html#/s:12XCoordinator11CoordinatorPAAE18RootViewControllera">RootViewController</a></span><span class="o">&gt;</span></code></pre>
 
                         </div>
-                      </div>
-                      <div>
-                        <h4>Parameters</h4>
-                        <table class="graybox">
-                          <tbody>
-                            <tr>
-                              <td>
-                                <code>
-                                <em>route</em>
-                                </code>
-                              </td>
-                              <td>
-                                <div>
-                                  <p>The first route in the chain.
-It is given a special place because we can specify its exact type.</p>
-                                </div>
-                              </td>
-                            </tr>
-                            <tr>
-                              <td>
-                                <code>
-                                <em>remainingRoutes</em>
-                                </code>
-                              </td>
-                              <td>
-                                <div>
-                                  <p>The remaining routes of the chain.
-As we cannot make this type-safe in a reasonable manner, use it with caution.
-Keep in mind that changes in your app&rsquo;s structure and changes of transitions
-behind the given routes can lead to runtime errors and, therefore, crashes of your app.</p>
-                                </div>
-                              </td>
-                            </tr>
-                          </tbody>
-                        </table>
                       </div>
                     </section>
                   </div>

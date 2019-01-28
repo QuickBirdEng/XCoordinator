@@ -7,10 +7,8 @@
 //
 
 ///
-/// A ReferenceBox can be used for any object that you need different retain strategies for.
-///
-/// For example, a ReferenceBox can be used to hold strongly to an object in the beginning,
-/// but later release this strong reference, but still hold the object weakly.
+/// A ReferenceBox can be used to dynamically change the retain strategy of a certain reference, i.e.
+/// it can dynamically switch between holding an object strongly or weakly.
 ///
 public class ReferenceBox<T: AnyObject> {
 
@@ -26,8 +24,8 @@ public class ReferenceBox<T: AnyObject> {
     ///
     /// - Parameter value:
     ///     The start value. If you specify `nil` here, no reference is set.
-    ///     You will later need to call `set` before you can use the object
-    ///     being referenced with the `get` method.
+    ///     In this case, an object needs to be set by using the `set` method before it can be accessed
+    ///     using the `get` method.
     ///
     public init(_ value: T? = nil) {
         if let value = value {
@@ -50,6 +48,9 @@ public class ReferenceBox<T: AnyObject> {
 
     ///
     /// This method can be used to retrieve the value set in the initializer or using the `set` method.
+    ///
+    /// - Note:
+    ///     It may return `nil`, if the object was only held weakly and not elsewhere held strongly.
     ///
     public func get() -> T? {
         return strongReference ?? weakReference

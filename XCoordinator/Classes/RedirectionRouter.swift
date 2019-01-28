@@ -21,7 +21,7 @@ open class RedirectionRouter<SuperRoute: Route, RouteType: Route>: Router {
 
     // MARK: - Stored properties
 
-    /// An AnyRouter object of the superCoordinator.
+    /// A type-erased Router object of the superCoordinator.
     public let superRouter: AnyRouter<SuperRoute>
 
     private let _map: ((RouteType) -> SuperRoute)?

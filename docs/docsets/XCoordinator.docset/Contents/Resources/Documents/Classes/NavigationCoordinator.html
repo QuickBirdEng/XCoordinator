@@ -241,7 +241,8 @@
 
                 </div>
               </div>
-            <p>NavigationCoordinator acts as a base class for your own custom coordinator with a <code>UINavigationController</code> rootViewController.</p>
+            <p>NavigationCoordinator acts as a base class for custom coordinators with a <code>UINavigationController</code>
+as rootViewController.</p>
 
 <p>NavigationCoordinator especially ensures that transition animations are called,
 which would not be the case when creating a <code>BaseCoordinator&lt;RouteType, NavigationTransition&gt;</code>.</p>
@@ -274,7 +275,7 @@ which would not be the case when creating a <code>BaseCoordinator&lt;RouteType, 
                       <div class="pointer"></div>
                       <div class="abstract">
                         <p>This represents a fallback-delegate to be notified about navigation controller events.
-It is further used for animation methods when no animation has been specified in the transition.</p>
+It is further used to call animation methods when no animation has been specified in the transition.</p>
 
                       </div>
                       <div class="declaration">

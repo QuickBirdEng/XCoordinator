@@ -6,21 +6,23 @@
 //  Copyright © 2018 QuickBird Studios. All rights reserved.
 //
 
-/// An `AnyCoordinator` with a `UINavigationController` as rootViewController.
+/// An type-erased Coordinator (`AnyCoordinator`) with a `UINavigationController` as rootViewController.
 public typealias AnyNavigationCoordinator<RouteType: Route> = AnyCoordinator<RouteType, NavigationTransition>
 
-/// An `AnyCoordinator` with a `UITabBarController` as rootViewController.
+/// An type-erased Coordinator (`AnyCoordinator`) with a `UITabBarController` as rootViewController.
 public typealias AnyTabBarCoordinator<RouteType: Route> = AnyCoordinator<RouteType, TabBarTransition>
 
-/// An `AnyCoordinator` with a `UIViewController` as rootViewController.
+/// An type-erased Coordinator (`AnyCoordinator`) with a `UIViewController` as rootViewController.
 public typealias AnyViewCoordinator<RouteType: Route> = AnyCoordinator<RouteType, ViewTransition>
 
 ///
-/// AnyCoordinator can be used as an abstraction from a specific coordinator class while still specifying
+/// `AnyCoordinator` is a type-erased `Coordinator` (`RouteType` & `TransitionType`) and
+/// can be used as an abstraction from a specific coordinator class while still specifying
 /// TransitionType and RouteType.
 ///
-/// If you do not want/need to specify TransitionType, you might want to look into the `AnyRouter` class.
-/// See `AnyTransitionPerformer` to further abstract away from RouteType.
+/// - Note:
+///     If you do not want/need to specify TransitionType, you might want to look into the `AnyRouter` class.
+///     See `AnyTransitionPerformer` to further abstract from RouteType.
 ///
 public class AnyCoordinator<RouteType: Route, TransitionType: TransitionProtocol>: Coordinator {
 
@@ -34,12 +36,12 @@ public class AnyCoordinator<RouteType: Route, TransitionType: TransitionProtocol
     // MARK: - Initialization
 
     ///
-    /// Creates an AnyCoordinator of a specific coordinator.
+    /// Creates a type-erased Coordinator for a specific coordinator.
     ///
-    /// The specified coordinator is held strongly.
+    /// A strong reference to the source coordinator is kept.
     ///
     /// - Parameter coordinator:
-    ///     The coordinator to be masked.
+    ///     The source coordinator.
     ///
     public init<C: Coordinator>(_ coordinator: C) where C.RouteType == RouteType, C.TransitionType == TransitionType {
         self._prepareTransition = coordinator.prepareTransition
@@ -57,7 +59,7 @@ public class AnyCoordinator<RouteType: Route, TransitionType: TransitionProtocol
     // MARK: - Methods
 
     ///
-    /// Prepare transitions for specific routes and return the transitions.
+    /// Prepare and return transitions for a given route.
     ///
     /// - Parameter route:
     ///     The triggered route for which a transition is to be prepared.

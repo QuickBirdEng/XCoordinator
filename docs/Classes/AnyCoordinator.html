@@ -241,11 +241,15 @@
 
                 </div>
               </div>
-            <p>AnyCoordinator can be used as an abstraction from a specific coordinator class while still specifying
+            <p><code>AnyCoordinator</code> is a type-erased <code><a href="../Protocols/Coordinator.html">Coordinator</a></code> (<code>RouteType</code> &amp; <code>TransitionType</code>) and
+can be used as an abstraction from a specific coordinator class while still specifying
 TransitionType and RouteType.</p>
+<div class="aside aside-note">
+    <p class="aside-title">Note</p>
+    If you do not want/need to specify TransitionType, you might want to look into the <code><a href="../Classes/AnyRouter.html">AnyRouter</a></code> class.
+See <code><a href="../Classes/AnyTransitionPerformer.html">AnyTransitionPerformer</a></code> to further abstract from RouteType.
 
-<p>If you do not want/need to specify TransitionType, you might want to look into the <code><a href="../Classes/AnyRouter.html">AnyRouter</a></code> class.
-See <code><a href="../Classes/AnyTransitionPerformer.html">AnyTransitionPerformer</a></code> to further abstract away from RouteType.</p>
+</div>
 
           </div>
         </section>
@@ -274,9 +278,9 @@ See <code><a href="../Classes/AnyTransitionPerformer.html">AnyTransitionPerforme
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Creates an AnyCoordinator of a specific coordinator.</p>
+                        <p>Creates a type-erased Coordinator for a specific coordinator.</p>
 
-<p>The specified coordinator is held strongly.</p>
+<p>A strong reference to the source coordinator is kept.</p>
 
                       </div>
                       <div class="declaration">
@@ -299,7 +303,7 @@ See <code><a href="../Classes/AnyTransitionPerformer.html">AnyTransitionPerforme
                               </td>
                               <td>
                                 <div>
-                                  <p>The coordinator to be masked.</p>
+                                  <p>The source coordinator.</p>
                                 </div>
                               </td>
                             </tr>
@@ -370,7 +374,7 @@ See <code><a href="../Classes/AnyTransitionPerformer.html">AnyTransitionPerforme
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Prepare transitions for specific routes and return the transitions.</p>
+                        <p>Prepare and return transitions for a given route.</p>
 
                       </div>
                       <div class="declaration">

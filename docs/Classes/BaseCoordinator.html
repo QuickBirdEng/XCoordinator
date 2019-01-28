@@ -243,7 +243,7 @@
               </div>
             <p>BaseCoordinator can (and is encouraged to) be used as a superclass for any custom implementation of a coordinator.</p>
 
-<p>We encourage the use of already provided subclasses of BaseCoordinator such as
+<p>We also encourage the use of already provided subclasses of BaseCoordinator such as
 <code><a href="../Classes/NavigationCoordinator.html">NavigationCoordinator</a></code>, <code><a href="../Classes/TabBarCoordinator.html">TabBarCoordinator</a></code>, <code><a href="../Classes/ViewCoordinator.html">ViewCoordinator</a></code>, <code><a href="../Classes/SplitCoordinator.html">SplitCoordinator</a></code>
 and <code><a href="../Classes/PageCoordinator.html">PageCoordinator</a></code>.</p>
 
@@ -311,7 +311,7 @@ and <code><a href="../Classes/PageCoordinator.html">PageCoordinator</a></code>.<
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Use this initializer to trigger a route before the coordinator is made visible.</p>
+                        <p>This initializer trigger a route before the coordinator is made visible.</p>
 
                       </div>
                       <div class="declaration">
@@ -358,7 +358,7 @@ If you specify <code>nil</code>, no route is triggered.</p>
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Use this initializer to perform a transition before the coordinator is made visible.</p>
+                        <p>This initializer performs a transition before the coordinator is made visible.</p>
 
                       </div>
                       <div class="declaration">
@@ -444,9 +444,13 @@ If you specify <code>nil</code>, no transition is performed.</p>
                       <div class="abstract">
                         <p>This method generates the <code><a href="../Classes/BaseCoordinator.html#/s:12XCoordinator19TransitionPerformerP18rootViewController0B4Type_04RooteF0QZvp">rootViewController</a></code> on initialization.</p>
 
-<p>This method is only called once during initalization. Make sure to use the result from
-<code>super.generateRootViewController()</code> when overriding to make sure transition animations
-work as expected.</p>
+<p>This method is only called once during initalization.</p>
+<div class="aside aside-note">
+    <p class="aside-title">Note</p>
+    Make sure to use the result from <code>super.generateRootViewController()</code> when overriding to
+make sure transition animations work as expected.
+
+</div>
 
                       </div>
                       <div class="declaration">
@@ -813,7 +817,7 @@ Hint: Might be called multiple times but only once per performing the transition
                       <div class="abstract">
                         <p>Unregisters a previously registered interactive transition.</p>
 
-<p>Unregistering does not need to happen to not create reference cycles, etc.
+<p>Unregistering is not mandatory to prevent reference cycles, etc.
 It is useful, though, to remove previously registered interactive transitions that are no longer needed or wanted.</p>
 
                       </div>

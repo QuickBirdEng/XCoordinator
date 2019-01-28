@@ -244,14 +244,14 @@
             <p>This struct represents the common implementation of the <code><a href="../Protocols/TransitionProtocol.html">TransitionProtocol</a></code>.
 It is used in every of the provided <code><a href="../Classes/BaseCoordinator.html">BaseCoordinator</a></code> subclasses and provides all transitions implemented in XCoordinator.</p>
 
-<p>In a <code>Transition</code> struct, transitions are defined by a <code><a href="../Structs/Transition.html#/s:12XCoordinator10TransitionV7Performa">Transition.Perform</a></code> closure.
+<p><code>Transitions</code> are defined by a <code><a href="../Structs/Transition.html#/s:12XCoordinator10TransitionV7Performa">Transition.Perform</a></code> closure.
 It further provides different context information such as <code>Transition.presentable</code> and <code><a href="../Structs/Transition.html#/s:12XCoordinator10TransitionV9animationAA0B9Animation_pSgvp">Transition.animation</a></code>.
 You can create your own custom transitions using <code>Transition.init(presentable:animation:perform:)</code> or
 use one of the many provided static functions to create the most common transitions.</p>
 <div class="aside aside-note">
     <p class="aside-title">Note</p>
     Transitions have a generic constraint to the rootViewController in use.
-This leads to not all transitions being available in every coordinator.
+Therefore, not all transitions are available in every coordinator.
 Make sure to specify the <code>RootViewController</code> type of the <code>TransitionType</code> of your coordinator as precise as possible
 to get all already available transitions.
 
@@ -511,9 +511,12 @@ Make sure to specify an animation here to use your transition with the
                       <div class="pointer"></div>
                       <div class="abstract">
                         <p>The method to perform a certain transition using a coordinator.</p>
+<div class="aside aside-warning">
+    <p class="aside-title">Warning</p>
+    Do not call this method directly. Instead use your coordinator&rsquo;s <code>performTransition</code> method or trigger
+a specified route (latter option is encouraged).
 
-<p>Do not call this method directly. Instead use your coordinator&rsquo;s <code>performTransition</code> method or trigger
-a specified route (latter option is encouraged).</p>
+</div>
 
                       </div>
                       <div class="declaration">
@@ -771,7 +774,7 @@ on this presentable.</p>
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Sets the navigation stack of the rootViewController to the specified presentables.</p>
+                        <p>Replaces the navigation stack of the rootViewController to the specified presentables.</p>
 
                       </div>
                       <div class="declaration">
@@ -916,6 +919,11 @@ with <code>isDoubleSided</code> enabled or not.</p>
                       <div class="pointer"></div>
                       <div class="abstract">
                         <p>Transition to set the tabs of the rootViewController with an optional custom animation.</p>
+<div class="aside aside-note">
+    <p class="aside-title">Note</p>
+    <p>Only the presentation animation of the Animation object is used.</p>
+
+</div>
 
                       </div>
                       <div class="declaration">
@@ -950,8 +958,7 @@ with <code>isDoubleSided</code> enabled or not.</p>
                               </td>
                               <td>
                                 <div>
-                                  <p>The animation to be used. If you specify <code>nil</code> here, the default animation by UIKit is used.
-Only the presentation animation of the Animation object is used.</p>
+                                  <p>The animation to be used. If you specify <code>nil</code> here, the default animation by UIKit is used.</p>
                                 </div>
                               </td>
                             </tr>
@@ -975,6 +982,11 @@ Only the presentation animation of the Animation object is used.</p>
                       <div class="pointer"></div>
                       <div class="abstract">
                         <p>Transition to select a tab with an optional custom animation.</p>
+<div class="aside aside-note">
+    <p class="aside-title">Note</p>
+    <p>Only the presentation animation of the Animation object is used.</p>
+
+</div>
 
                       </div>
                       <div class="declaration">
@@ -1010,8 +1022,7 @@ previously specified tabs of the rootViewController.</p>
                               </td>
                               <td>
                                 <div>
-                                  <p>The animation to be used. If you specify <code>nil</code> here, the default animation by UIKit is used.
-Only the presentation animation of the Animation object is used.</p>
+                                  <p>The animation to be used. If you specify <code>nil</code> here, the default animation by UIKit is used.</p>
                                 </div>
                               </td>
                             </tr>
@@ -1035,6 +1046,11 @@ Only the presentation animation of the Animation object is used.</p>
                       <div class="pointer"></div>
                       <div class="abstract">
                         <p>Transition to select a tab with an optional custom animation.</p>
+<div class="aside aside-note">
+    <p class="aside-title">Note</p>
+    <p>Only the presentation animation of the Animation object is used.</p>
+
+</div>
 
                       </div>
                       <div class="declaration">
@@ -1069,8 +1085,7 @@ Only the presentation animation of the Animation object is used.</p>
                               </td>
                               <td>
                                 <div>
-                                  <p>The animation to be used. If you specify <code>nil</code> here, the default animation by UIKit is used.
-Only the presentation animation of the Animation object is used.</p>
+                                  <p>The animation to be used. If you specify <code>nil</code> here, the default animation by UIKit is used.</p>
                                 </div>
                               </td>
                             </tr>
@@ -1097,7 +1112,7 @@ Only the presentation animation of the Animation object is used.</p>
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Transition to call show on the rootViewController.</p>
+                        <p>Shows a viewController by calling <code>show</code> on the rootViewController.</p>
 <div class="aside aside-note">
     <p class="aside-title">Note</p>
     <p>Prefer <code>Transition.push</code> when using transitions on a <code>UINavigationController</code> rootViewController.
@@ -1149,7 +1164,7 @@ In contrast to this transition, you can specify an animation.</p>
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Transition to call showDetail on the rootViewController.</p>
+                        <p>Shows a detail viewController by calling <code>showDetail</code> on the rootViewController.</p>
 <div class="aside aside-note">
     <p class="aside-title">Note</p>
     <p>Prefer <code>Transition.push</code> when using transitions on a <code>UINavigationController</code> rootViewController.

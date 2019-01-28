@@ -241,7 +241,7 @@
 
                 </div>
               </div>
-            <p>TransitionProtocol is used to abstract away from any concrete implementation of transitions.</p>
+            <p>TransitionProtocol is used to abstract from any concrete implementation of transitions.</p>
 
 <p>We provide an easily-extensible transition type called <code><a href="../Structs/Transition.html">Transition</a></code> as a default transition type.</p>
 
@@ -320,9 +320,12 @@
                       <div class="pointer"></div>
                       <div class="abstract">
                         <p>The transition animation directly used in the transition, if applicable.</p>
+<div class="aside aside-note">
+    <p class="aside-title">Note</p>
+    Make sure to not return <code>nil</code>, if you want to use <code>BaseCoordinator.registerInteractiveTransition</code>
+to realize an interactive transition.
 
-<p>Make sure to not return <code>nil</code>,
-if you want to use <code>BaseCoordinator.registerInteractiveTransition</code> to realize an interactive transition.</p>
+</div>
 
                       </div>
                       <div class="declaration">
@@ -433,12 +436,12 @@ if you want to use <code>BaseCoordinator.registerInteractiveTransition</code> to
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Create one transition by chaining multiple transitions together.</p>
+                        <p>Creates a compound transition by chaining multiple transitions together.</p>
 
                       </div>
                       <h4>Default Implementation</h4>
                       <div class="default_impl abstract">
-                        <p>Create one transition by chaining multiple transitions together.</p>
+                        <p>Creates a compound transition by chaining multiple transitions together.</p>
 
                       </div>
                       <div class="declaration">

@@ -9,10 +9,11 @@
 ///
 /// `StaticTransitionAnimation` is a class to realize static transition animations.
 ///
-/// We advise against its use in favor of `InteractiveTransitionAnimation`, if possible, as it is as simple
-/// to use. However, this class is helpful to make sure your transition animation is not mistaken to be
-/// interactive, if your animation code does not fulfill the requirements of an interactive transition
-/// animation.
+/// - Note:
+///     We advise against its use in favor of `InteractiveTransitionAnimation`, if possible, as it is as simple
+///     to use. However, this class is helpful to make sure your transition animation is not mistaken to be
+///     interactive, if your animation code does not fulfill the requirements of an interactive transition
+///     animation.
 ///
 open class StaticTransitionAnimation: NSObject, TransitionAnimation {
 

@@ -241,7 +241,7 @@
 
                 </div>
               </div>
-            <p>The Router protocol is used to abstract away from the transition-type specific characteristics of a Coordinator.</p>
+            <p>The Router protocol is used to abstract the transition-type specific characteristics of a Coordinator.</p>
 
 <p>A Router can trigger routes, which lead to transitions being executed. In constrast to the Coordinator protocol,
 the router does not specify a TransitionType and can therefore be used in the form of an AnyRouter to reduce a coordinator&rsquo;s
@@ -343,7 +343,8 @@ capabilities to the triggering of routes. This may especially be useful in viewM
                               </td>
                               <td>
                                 <div>
-                                  <p>Optional completion handler. If present, it is executed once the transition is completed (including animations).
+                                  <p>If present, this completion handler is executed once the transition is completed
+(including animations).
 If the context is not needed, use <code>trigger</code> instead.</p>
                                 </div>
                               </td>
@@ -442,8 +443,7 @@ If the context is not needed, use <code>trigger</code> instead.</p>
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Triggers the specified route without the need of specifying transition options.
-Instead default transition options are used, which allow the animation of the transition.</p>
+                        <p>Triggers the specified route with default transition options enabling the animation of the transition.</p>
 
                       </div>
                       <div class="declaration">
@@ -478,7 +478,8 @@ Instead default transition options are used, which allow the animation of the tr
                               </td>
                               <td>
                                 <div>
-                                  <p>Optional completion handler. If present, it is executed once the transition is completed (including animations).</p>
+                                  <p>If present, this completion handler is executed once the transition is completed
+(including animations).</p>
                                 </div>
                               </td>
                             </tr>
@@ -551,7 +552,8 @@ Instead default transition options are used, which allow the animation of the tr
                               </td>
                               <td>
                                 <div>
-                                  <p>Optional completion handler. If present, it is executed once the transition is completed (including animations).</p>
+                                  <p>If present, this completion handler is executed once the transition is completed
+(including animations).</p>
                                 </div>
                               </td>
                             </tr>
@@ -588,7 +590,7 @@ Instead default transition options are used, which allow the animation of the tr
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Creates an AnyRouter object from the given router to abstract away from concrete implementations
+                        <p>Creates an AnyRouter object from the given router to abstract from concrete implementations
 while maintaining information necessary to fulfill the Router protocol.</p>
 
                       </div>
@@ -651,7 +653,7 @@ while maintaining information necessary to fulfill the Router protocol.</p>
                       </div>
                       <div>
                         <h4>Return Value</h4>
-                        <p>It returns <code>nil</code>, if the route is not of type <code><a href="../Protocols/Router.html#/s:12XCoordinator6RouterP9RouteTypeQa">Router.RouteType</a></code>, otherwise it returns its anyRouter.</p>
+                        <p>It returns the router&rsquo;s anyRouter, if it is compatible with the given route, otherwise <code>nil</code>.</p>
                       </div>
                     </section>
                   </div>
@@ -676,7 +678,7 @@ while maintaining information necessary to fulfill the Router protocol.</p>
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>The reactive extensions of a <code>Router</code>.</p>
+                        <p>Use this to access the reactive extensions of <code>Router</code> objects.</p>
 
                       </div>
                       <div class="declaration">

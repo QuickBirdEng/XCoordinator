@@ -257,7 +257,7 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>A struct describing context information about transitions.</p>
+                        <p><code>PresentationHandlerContext</code> provides context information about transitions.</p>
 
 <p>It is especially useful for deep linking as we can internally gather information about
 the presentables being pushed onto the view hierarchy.</p>
@@ -294,14 +294,14 @@ the presentables being pushed onto the view hierarchy.</p>
                         <p>This struct represents the common implementation of the <code><a href="Protocols/TransitionProtocol.html">TransitionProtocol</a></code>.
 It is used in every of the provided <code><a href="Classes/BaseCoordinator.html">BaseCoordinator</a></code> subclasses and provides all transitions implemented in XCoordinator.</p>
 
-<p>In a <code>Transition</code> struct, transitions are defined by a <code><a href="Structs/Transition.html#/s:12XCoordinator10TransitionV7Performa">Transition.Perform</a></code> closure.
+<p><code>Transitions</code> are defined by a <code><a href="Structs/Transition.html#/s:12XCoordinator10TransitionV7Performa">Transition.Perform</a></code> closure.
 It further provides different context information such as <code>Transition.presentable</code> and <code><a href="Structs/Transition.html#/s:12XCoordinator10TransitionV9animationAA0B9Animation_pSgvp">Transition.animation</a></code>.
 You can create your own custom transitions using <code>Transition.init(presentable:animation:perform:)</code> or
 use one of the many provided static functions to create the most common transitions.</p>
 <div class="aside aside-note">
     <p class="aside-title">Note</p>
     Transitions have a generic constraint to the rootViewController in use.
-This leads to not all transitions being available in every coordinator.
+Therefore, not all transitions are available in every coordinator.
 Make sure to specify the <code>RootViewController</code> type of the <code>TransitionType</code> of your coordinator as precise as possible
 to get all already available transitions.
 
@@ -339,8 +339,12 @@ to get all already available transitions.
                       <div class="abstract">
                         <p>TransitionOptions specifies transition customization points defined at the point of triggering a transition.</p>
 
-<p>You can use TransitionOptions to define whether or not a transition should be animated.
-It might be extended in the future to enable more advanced customization options.</p>
+<p>You can use TransitionOptions to define whether or not a transition should be animated.</p>
+<div class="aside aside-note">
+    <p class="aside-title">Note</p>
+    It might be extended in the future to enable more advanced customization options.
+
+</div>
 
                         <a href="Structs/TransitionOptions.html" class="slightly-smaller">See more</a>
                       </div>

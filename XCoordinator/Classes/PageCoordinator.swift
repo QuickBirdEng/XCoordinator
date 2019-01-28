@@ -31,10 +31,13 @@ open class PageCoordinator<RouteType: Route>: BaseCoordinator<RouteType, PageTra
     // MARK: - Initialization
 
     ///
-    /// Creates a PageCoordinator with several sequential pages, potentially looping.
-    /// It further sets the currently shown page and a direction for the animation of displaying it.
-    /// If you need custom configuration of the rootViewController, modify the `configuration` parameter,
-    /// since you cannot change this after the initialization.
+    /// Creates a PageCoordinator with several sequential (potentially looping) pages.
+    ///
+    /// It further sets the current page of the rootViewController animated in the specified direction.
+    ///
+    /// - Note:
+    ///     If you need custom configuration of the rootViewController, modify the `configuration` parameter,
+    ///     since you cannot change this after the initialization.
     ///
     /// - Parameters:
     ///     - pages:

@@ -68,12 +68,12 @@ open class InteractiveTransitionAnimation: NSObject, TransitionAnimation { // sw
     ///
     /// Convenience initializer for `init(duration:transition:generateInteractionController:)`.
     /// By ommitting the `generateInteractionController` closure, the transition will use
-    /// `UIPercentDrivenInteractiveTransition` to create interaction controllers.
+    /// [UIPercentDrivenInteractiveTransition](https://developer.apple.com/documentation/uikit/UIPercentDrivenInteractiveTransition)
+    /// to create interaction controllers.
     ///
     /// - Parameters:
     ///     - duration: The duration of the animation.
     ///     - transition: The animation code.
-    ///     - context: The context in which the transition is performed.
     ///
     public convenience init(duration: TimeInterval,
                             transition: @escaping (UIViewControllerContextTransitioning) -> Void) {
@@ -86,10 +86,10 @@ open class InteractiveTransitionAnimation: NSObject, TransitionAnimation { // sw
 
     ///
     /// Convenience initializer for `init(duration:transition:generateInteractionController:)`.
-    /// Provides a simple interface to make StaticTransitionAnimations interactive.
+    /// Provides a simple interface to convert StaticTransitionAnimations to interactive transition animations.
     ///
     /// - Parameters:
-    ///     - transitionAnimation: The StaticTransitionAnimation to be made interactive.
+    ///     - transitionAnimation: The StaticTransitionAnimation to be converted.
     ///     - generateInteractionController:
     ///         The closure to generate an interaction controller when needed,
     ///         usually at the beginning of a transition.
@@ -105,10 +105,10 @@ open class InteractiveTransitionAnimation: NSObject, TransitionAnimation { // sw
 
     ///
     /// Convenience initializer for `init(duration:transition:)`.
-    /// Provides a simple interface to make StaticTransitionAnimations interactive.
+    /// Provides a simple interface to convert StaticTransitionAnimations to interactive transition animations.
     ///
     /// - Parameter transitionAnimation:
-    ///     The StaticTransitionAnimation to be made interactive.
+    ///     The StaticTransitionAnimation to be converted.
     ///
     public convenience init(transitionAnimation: StaticTransitionAnimation) {
         self.init(
@@ -124,10 +124,10 @@ open class InteractiveTransitionAnimation: NSObject, TransitionAnimation { // sw
     /// for further information.
     ///
     /// - Parameter transitionContext:
-    ///     The context of a transition for which the duration should be returned.
+    ///     The context of the transition.
     ///
     /// - Returns:
-    ///     The duration as specified in the initializer.
+    ///     The transition duration as specified in the initializer.
     ///
     open func transitionDuration(using transitionContext: UIViewControllerContextTransitioning?) -> TimeInterval {
         return _duration
@@ -148,8 +148,10 @@ open class InteractiveTransitionAnimation: NSObject, TransitionAnimation { // sw
 
     ///
     /// This method is used to generate an applicable interaction controller.
-    /// If you need more complex logic to create a specific interaction controller, override this method
-    /// in your subclass.
+    ///
+    /// - Note:
+    ///     If you need more complex logic to create a specific interaction controller, override this method
+    ///     in your subclass.
     ///
     open func generateInteractionController() -> PercentDrivenInteractionController? {
         return _generateInteractionController()

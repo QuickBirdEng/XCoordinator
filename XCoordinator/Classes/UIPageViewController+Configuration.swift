@@ -23,7 +23,7 @@ extension UIPageViewController {
     }
 
     ///
-    /// Configuration is used to wrap different configuration options of a `UIPageViewController` into a single struct.
+    /// Configuration is used to wrap different configuration options of a `UIPageViewController`.
     ///
     /// It provides customization options for the transitionStyle, navigationOrientation and further options.
     ///

@@ -333,62 +333,6 @@ generate an interaction controller.</p>
 
                         </div>
                       </div>
-                      <div>
-                        <h4>Parameters</h4>
-                        <table class="graybox">
-                          <tbody>
-                            <tr>
-                              <td>
-                                <code>
-                                <em>duration</em>
-                                </code>
-                              </td>
-                              <td>
-                                <div>
-                                  <p>The duration of the animation.</p>
-                                </div>
-                              </td>
-                            </tr>
-                            <tr>
-                              <td>
-                                <code>
-                                <em>transition</em>
-                                </code>
-                              </td>
-                              <td>
-                                <div>
-                                  <p>The animation code.</p>
-                                </div>
-                              </td>
-                            </tr>
-                            <tr>
-                              <td>
-                                <code>
-                                <em>context</em>
-                                </code>
-                              </td>
-                              <td>
-                                <div>
-                                  <p>The context in which the transition is performed.</p>
-                                </div>
-                              </td>
-                            </tr>
-                            <tr>
-                              <td>
-                                <code>
-                                <em>generateInteractionController</em>
-                                </code>
-                              </td>
-                              <td>
-                                <div>
-                                  <p>The closure to generate an interaction controller when needed,
-usually at the beginning of a transition.</p>
-                                </div>
-                              </td>
-                            </tr>
-                          </tbody>
-                        </table>
-                      </div>
                     </section>
                   </div>
                 </li>
@@ -407,7 +351,8 @@ usually at the beginning of a transition.</p>
                       <div class="abstract">
                         <p>Convenience initializer for <code><a href="../Classes/InteractiveTransitionAnimation.html#/s:12XCoordinator30InteractiveTransitionAnimationC8duration10transition29generateInteractionControllerACSd_ySo06UIViewI20ContextTransitioning_pcAA013PercentDrivenhI0_pSgyctcfc">init(duration:transition:generateInteractionController:)</a></code>.
 By ommitting the <code>generateInteractionController</code> closure, the transition will use
-<code>UIPercentDrivenInteractiveTransition</code> to create interaction controllers.</p>
+<a href="https://developer.apple.com/documentation/uikit/UIPercentDrivenInteractiveTransition">UIPercentDrivenInteractiveTransition</a>
+to create interaction controllers.</p>
 
                       </div>
                       <div class="declaration">
@@ -447,18 +392,6 @@ By ommitting the <code>generateInteractionController</code> closure, the transit
                                 </div>
                               </td>
                             </tr>
-                            <tr>
-                              <td>
-                                <code>
-                                <em>context</em>
-                                </code>
-                              </td>
-                              <td>
-                                <div>
-                                  <p>The context in which the transition is performed.</p>
-                                </div>
-                              </td>
-                            </tr>
                           </tbody>
                         </table>
                       </div>
@@ -479,7 +412,7 @@ By ommitting the <code>generateInteractionController</code> closure, the transit
                       <div class="pointer"></div>
                       <div class="abstract">
                         <p>Convenience initializer for <code><a href="../Classes/InteractiveTransitionAnimation.html#/s:12XCoordinator30InteractiveTransitionAnimationC8duration10transition29generateInteractionControllerACSd_ySo06UIViewI20ContextTransitioning_pcAA013PercentDrivenhI0_pSgyctcfc">init(duration:transition:generateInteractionController:)</a></code>.
-Provides a simple interface to make StaticTransitionAnimations interactive.</p>
+Provides a simple interface to convert StaticTransitionAnimations to interactive transition animations.</p>
 
                       </div>
                       <div class="declaration">
@@ -503,7 +436,7 @@ Provides a simple interface to make StaticTransitionAnimations interactive.</p>
                               </td>
                               <td>
                                 <div>
-                                  <p>The StaticTransitionAnimation to be made interactive.</p>
+                                  <p>The StaticTransitionAnimation to be converted.</p>
                                 </div>
                               </td>
                             </tr>
@@ -540,7 +473,7 @@ usually at the beginning of a transition.</p>
                       <div class="pointer"></div>
                       <div class="abstract">
                         <p>Convenience initializer for <code><a href="../Classes/InteractiveTransitionAnimation.html#/s:12XCoordinator30InteractiveTransitionAnimationC8duration10transitionACSd_ySo36UIViewControllerContextTransitioning_pctcfc">init(duration:transition:)</a></code>.
-Provides a simple interface to make StaticTransitionAnimations interactive.</p>
+Provides a simple interface to convert StaticTransitionAnimations to interactive transition animations.</p>
 
                       </div>
                       <div class="declaration">
@@ -563,7 +496,7 @@ Provides a simple interface to make StaticTransitionAnimations interactive.</p>
                               </td>
                               <td>
                                 <div>
-                                  <p>The StaticTransitionAnimation to be made interactive.</p>
+                                  <p>The StaticTransitionAnimation to be converted.</p>
                                 </div>
                               </td>
                             </tr>
@@ -621,7 +554,7 @@ for further information.</p>
                               </td>
                               <td>
                                 <div>
-                                  <p>The context of a transition for which the duration should be returned.</p>
+                                  <p>The context of the transition.</p>
                                 </div>
                               </td>
                             </tr>
@@ -630,7 +563,7 @@ for further information.</p>
                       </div>
                       <div>
                         <h4>Return Value</h4>
-                        <p>The duration as specified in the initializer.</p>
+                        <p>The transition duration as specified in the initializer.</p>
                       </div>
                     </section>
                   </div>
@@ -706,9 +639,13 @@ for further information.</p>
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>This method is used to generate an applicable interaction controller.
-If you need more complex logic to create a specific interaction controller, override this method
-in your subclass.</p>
+                        <p>This method is used to generate an applicable interaction controller.</p>
+<div class="aside aside-note">
+    <p class="aside-title">Note</p>
+    If you need more complex logic to create a specific interaction controller, override this method
+in your subclass.
+
+</div>
 
                       </div>
                       <div class="declaration">

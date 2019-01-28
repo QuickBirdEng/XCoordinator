@@ -12,8 +12,7 @@
 public typealias ViewTransition = Transition<UIViewController>
 
 ///
-/// ViewCoordinator is a base class for your own custom coordinator with a `UIViewController`
-/// rootViewController.
+/// ViewCoordinator is a base class for custom coordinators with a `UIViewController` rootViewController.
 ///
 open class ViewCoordinator<RouteType: Route>: BaseCoordinator<RouteType, ViewTransition> {
 
@@ -24,7 +23,7 @@ open class ViewCoordinator<RouteType: Route>: BaseCoordinator<RouteType, ViewTra
     }
 
     ///
-    /// Creates a ViewCoordinator and embeds the root-presentable into the rootViewController.
+    /// Creates a ViewCoordinator and embeds the root presentable into the rootViewController.
     ///
     /// - Parameter root:
     ///     The presentable to be embedded.

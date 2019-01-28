@@ -9,7 +9,7 @@
 extension Transition {
 
     ///
-    /// Transition to call show on the rootViewController.
+    /// Shows a viewController by calling `show` on the rootViewController.
     ///
     /// - Note:
     ///     Prefer `Transition.push` when using transitions on a `UINavigationController` rootViewController.
@@ -33,7 +33,7 @@ extension Transition {
     }
 
     ///
-    /// Transition to call showDetail on the rootViewController.
+    /// Shows a detail viewController by calling `showDetail` on the rootViewController.
     ///
     /// - Note:
     ///     Prefer `Transition.push` when using transitions on a `UINavigationController` rootViewController.

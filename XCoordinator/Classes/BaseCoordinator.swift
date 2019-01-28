@@ -14,7 +14,7 @@ extension BaseCoordinator {
 ///
 /// BaseCoordinator can (and is encouraged to) be used as a superclass for any custom implementation of a coordinator.
 ///
-/// We encourage the use of already provided subclasses of BaseCoordinator such as
+/// We also encourage the use of already provided subclasses of BaseCoordinator such as
 /// `NavigationCoordinator`, `TabBarCoordinator`, `ViewCoordinator`, `SplitCoordinator`
 /// and `PageCoordinator`.
 ///
@@ -35,7 +35,7 @@ open class BaseCoordinator<RouteType: Route, TransitionType: TransitionProtocol>
     // MARK: - Initialization
 
     ///
-    /// Use this initializer to trigger a route before the coordinator is made visible.
+    /// This initializer trigger a route before the coordinator is made visible.
     ///
     /// - Parameter initialRoute:
     ///     The route to be triggered before making the coordinator visible.
@@ -47,7 +47,7 @@ open class BaseCoordinator<RouteType: Route, TransitionType: TransitionProtocol>
     }
 
     ///
-    /// Use this initializer to perform a transition before the coordinator is made visible.
+    /// This initializer performs a transition before the coordinator is made visible.
     ///
     /// - Parameter initialTransition:
     ///     The transition to be performed before making the coordinator visible.
@@ -67,9 +67,11 @@ open class BaseCoordinator<RouteType: Route, TransitionType: TransitionProtocol>
     ///
     /// This method generates the `rootViewController` on initialization.
     ///
-    /// This method is only called once during initalization. Make sure to use the result from
-    /// `super.generateRootViewController()` when overriding to make sure transition animations
-    /// work as expected.
+    /// This method is only called once during initalization.
+    ///
+    /// - Note:
+    ///     Make sure to use the result from `super.generateRootViewController()` when overriding to
+    ///     make sure transition animations work as expected.
     ///
     open func generateRootViewController() -> RootViewController {
         return RootViewController()
@@ -229,7 +231,7 @@ extension BaseCoordinator {
     ///
     /// Unregisters a previously registered interactive transition.
     ///
-    /// Unregistering does not need to happen to not create reference cycles, etc.
+    /// Unregistering is not mandatory to prevent reference cycles, etc.
     /// It is useful, though, to remove previously registered interactive transitions that are no longer needed or wanted.
     ///
     /// - Parameter recognizer:

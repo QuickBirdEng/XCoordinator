@@ -363,8 +363,11 @@ Presentable is often used for transitions to allow for view controllers and coor
                       <div class="pointer"></div>
                       <div class="abstract">
                         <p>This is the protocol your route types need to conform to.</p>
+<div class="aside aside-note">
+    <p class="aside-title">Note</p>
+    It has no requirements, although we encourage the use of enums to make your navigation code type safe.
 
-<p>It has no requirements, although we encourage the use of enums to make your navigation code type safe.</p>
+</div>
 
                       </div>
                       <div class="declaration">
@@ -395,7 +398,7 @@ Presentable is often used for transitions to allow for view controllers and coor
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>The Router protocol is used to abstract away from the transition-type specific characteristics of a Coordinator.</p>
+                        <p>The Router protocol is used to abstract the transition-type specific characteristics of a Coordinator.</p>
 
 <p>A Router can trigger routes, which lead to transitions being executed. In constrast to the Coordinator protocol,
 the router does not specify a TransitionType and can therefore be used in the form of an AnyRouter to reduce a coordinator&rsquo;s
@@ -503,8 +506,8 @@ UIKit offers a default implementation with <code>UIPercentDrivenInteractiveTrans
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>The TransitionPerformer protocol is used to abstract away from the router capabilities of a coordinator and instead focusing on its
-rootViewController type and transition performing capabilities.</p>
+                        <p>The TransitionPerformer protocol is used to abstract the route-type specific characteristics of a Coordinator.
+It keeps type information about its transition performing capabilities.</p>
 
                         <a href="Protocols/TransitionPerformer.html" class="slightly-smaller">See more</a>
                       </div>
@@ -536,7 +539,7 @@ rootViewController type and transition performing capabilities.</p>
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>TransitionProtocol is used to abstract away from any concrete implementation of transitions.</p>
+                        <p>TransitionProtocol is used to abstract from any concrete implementation of transitions.</p>
 
 <p>We provide an easily-extensible transition type called <code><a href="Structs/Transition.html">Transition</a></code> as a default transition type.</p>
 

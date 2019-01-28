@@ -10,14 +10,14 @@
 /// This struct represents the common implementation of the `TransitionProtocol`.
 /// It is used in every of the provided `BaseCoordinator` subclasses and provides all transitions implemented in XCoordinator.
 ///
-/// In a `Transition` struct, transitions are defined by a `Transition.Perform` closure.
+/// `Transitions` are defined by a `Transition.Perform` closure.
 /// It further provides different context information such as `Transition.presentable` and `Transition.animation`.
 /// You can create your own custom transitions using `Transition.init(presentable:animation:perform:)` or
 /// use one of the many provided static functions to create the most common transitions.
 ///
 /// - Note:
 ///     Transitions have a generic constraint to the rootViewController in use.
-///     This leads to not all transitions being available in every coordinator.
+///     Therefore, not all transitions are available in every coordinator.
 ///     Make sure to specify the `RootViewController` type of the `TransitionType` of your coordinator as precise as possible
 ///     to get all already available transitions.
 ///
@@ -95,8 +95,9 @@ public struct Transition<RootViewController: UIViewController>: TransitionProtoc
     ///
     /// The method to perform a certain transition using a coordinator.
     ///
-    /// Do not call this method directly. Instead use your coordinator's `performTransition` method or trigger
-    /// a specified route (latter option is encouraged).
+    /// - Warning:
+    ///     Do not call this method directly. Instead use your coordinator's `performTransition` method or trigger
+    ///     a specified route (latter option is encouraged).
     ///
     public func perform<T: TransitionPerformer>(options: TransitionOptions,
                                                 coordinator: T,

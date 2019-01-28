@@ -8,8 +8,9 @@
 import Foundation
 
 ///
-/// Use InterruptibleTransitionAnimation to define interactive transitions based on the `UIViewPropertyAnimator` APIs
-/// introduced in iOS 10.
+/// Use InterruptibleTransitionAnimation to define interactive transitions based on the
+/// [UIViewPropertyAnimator](https://developer.apple.com/documentation/uikit/UIViewPropertyAnimator)
+/// APIs introduced in iOS 10.
 ///
 @available(iOS 10.0, *)
 open class InterruptibleTransitionAnimation: InteractiveTransitionAnimation {

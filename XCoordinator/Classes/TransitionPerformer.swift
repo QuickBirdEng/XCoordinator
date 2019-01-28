@@ -7,8 +7,8 @@
 //
 
 ///
-/// The TransitionPerformer protocol is used to abstract away from the router capabilities of a coordinator and instead focusing on its
-/// rootViewController type and transition performing capabilities.
+/// The TransitionPerformer protocol is used to abstract the route-type specific characteristics of a Coordinator.
+/// It keeps type information about its transition performing capabilities.
 ///
 public protocol TransitionPerformer: Presentable {
 
@@ -21,7 +21,7 @@ public protocol TransitionPerformer: Presentable {
     ///
     /// Perform a transition.
     ///
-    /// - Note:
+    /// - Warning:
     ///     We advise against the use of this method directly.
     ///     Try to use the `trigger` method of your coordinator instead wherever possible.
     ///

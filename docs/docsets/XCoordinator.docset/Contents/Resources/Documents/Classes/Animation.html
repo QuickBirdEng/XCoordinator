@@ -241,15 +241,14 @@
 
                 </div>
               </div>
-            <p>Use <code>Animation</code> to set presentation and dismissal animations for presentables.</p>
+            <p><code>Animation</code> is used to set presentation and dismissal animations for presentables.</p>
 
-<p>Depending on the transition in use, we set different properties of a <code>UIViewController</code> to make sure the transition animation is used.</p>
+<p>Depending on the transition in use, different properties of a <code>UIViewController</code> are set to make sure the transition animation is used.</p>
 <div class="aside aside-note">
     <p class="aside-title">Note</p>
     <p>To not override the previously set <code>Animation</code>, use <code>nil</code> when initializing a transition.</p>
 
-<p>Make sure to hold a strong reference to the <code>Animation</code> object, as XCoordinator does not ensure
-to hold the <code>Animation</code> strongly by itself.</p>
+<p>Make sure to hold a strong reference to the <code>Animation</code> object, as it is only held a weak reference to the <code>Animation</code> object.</p>
 
 </div>
 
@@ -282,8 +281,11 @@ to hold the <code>Animation</code> strongly by itself.</p>
                       <div class="abstract">
                         <p>Use <code>Animation.default</code> to override currently set animations
 and reset to the default animations provided by iOS</p>
+<div class="aside aside-note">
+    <p class="aside-title">Note</p>
+    To disable animations make sure to use non-animating <code><a href="../Structs/TransitionOptions.html">TransitionOptions</a></code> when triggering.
 
-<p>To disable animations make sure to use non-animating <code><a href="../Structs/TransitionOptions.html">TransitionOptions</a></code> when triggering.</p>
+</div>
 
                       </div>
                       <div class="declaration">
@@ -321,7 +323,7 @@ and reset to the default animations provided by iOS</p>
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>The transition animation shown when transitioning to a presentable.</p>
+                        <p>The transition animation performed when transitioning to a presentable.</p>
 
                       </div>
                       <div class="declaration">
@@ -348,7 +350,7 @@ and reset to the default animations provided by iOS</p>
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>The transition animation shown when transitioning away from a presentable.</p>
+                        <p>The transition animation performed when transitioning away from a presentable.</p>
 
                       </div>
                       <div class="declaration">
@@ -386,7 +388,8 @@ and reset to the default animations provided by iOS</p>
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        
+                        <p>Creates an Animation object containing a presentation and a dismissal animation.</p>
+
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
@@ -408,7 +411,7 @@ and reset to the default animations provided by iOS</p>
                               </td>
                               <td>
                                 <div>
-                                  <p>The transition animation shown when transitioning to a presentable.</p>
+                                  <p>The transition animation performed when transitioning to a presentable.</p>
                                 </div>
                               </td>
                             </tr>
@@ -420,7 +423,7 @@ and reset to the default animations provided by iOS</p>
                               </td>
                               <td>
                                 <div>
-                                  <p>The transition animation shown when transitioning away from a presentable.</p>
+                                  <p>The transition animation performed when transitioning away from a presentable.</p>
                                 </div>
                               </td>
                             </tr>
@@ -492,7 +495,7 @@ for further reference.</p>
                               </td>
                               <td>
                                 <div>
-                                  <p>The view controller to present.</p>
+                                  <p>The view controller that is presenting.</p>
                                 </div>
                               </td>
                             </tr>
@@ -504,7 +507,7 @@ for further reference.</p>
                               </td>
                               <td>
                                 <div>
-                                  <p>The view controller <code>present(_:animated:completion:)</code> was called on.</p>
+                                  <p>The view controller whose <code>present(_:animated:completion:)</code> was called on.</p>
                                 </div>
                               </td>
                             </tr>
@@ -513,7 +516,7 @@ for further reference.</p>
                       </div>
                       <div>
                         <h4>Return Value</h4>
-                        <p>The specified presentation animation.</p>
+                        <p>The presentation animation when initializing the <code>Animation</code> object.</p>
                       </div>
                     </section>
                   </div>
@@ -564,7 +567,7 @@ for further reference.</p>
                       </div>
                       <div>
                         <h4>Return Value</h4>
-                        <p>The specified dismissal animation.</p>
+                        <p>The dismissal animation when initializing the <code>Animation</code> object.</p>
                       </div>
                     </section>
                   </div>
@@ -607,7 +610,7 @@ for further reference.</p>
                               </td>
                               <td>
                                 <div>
-                                  <p>The presentation animation.</p>
+                                  <p>The animator of this transition, which is most likely the presentation animation.</p>
                                 </div>
                               </td>
                             </tr>
@@ -659,7 +662,7 @@ for further reference.</p>
                               </td>
                               <td>
                                 <div>
-                                  <p>The dismissal animation.</p>
+                                  <p>The animator of this transition, which is most likely the dismissal animation.</p>
                                 </div>
                               </td>
                             </tr>

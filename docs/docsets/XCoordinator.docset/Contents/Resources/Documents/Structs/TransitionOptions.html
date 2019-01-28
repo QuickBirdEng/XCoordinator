@@ -243,8 +243,12 @@
               </div>
             <p>TransitionOptions specifies transition customization points defined at the point of triggering a transition.</p>
 
-<p>You can use TransitionOptions to define whether or not a transition should be animated.
-It might be extended in the future to enable more advanced customization options.</p>
+<p>You can use TransitionOptions to define whether or not a transition should be animated.</p>
+<div class="aside aside-note">
+    <p class="aside-title">Note</p>
+    It might be extended in the future to enable more advanced customization options.
+
+</div>
 
           </div>
         </section>
@@ -312,6 +316,12 @@ It might be extended in the future to enable more advanced customization options
                       <div class="pointer"></div>
                       <div class="abstract">
                         <p>Creates transition options on the basis of whether or not it should be animated.</p>
+<div class="aside aside-note">
+    <p class="aside-title">Note</p>
+    <p>Specifying <code>true</code> to enable animations does not necessarily lead to an animated transition,
+if the transition does not support it.</p>
+
+</div>
 
                       </div>
                       <div class="declaration">
@@ -334,8 +344,7 @@ It might be extended in the future to enable more advanced customization options
                               </td>
                               <td>
                                 <div>
-                                  <p>Whether or not the animation should be animated.
-Specifying <code>true</code> does not necessarily lead to an animated transition, if the transition does not support it.</p>
+                                  <p>Whether or not the animation should be animated.</p>
                                 </div>
                               </td>
                             </tr>
