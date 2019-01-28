@@ -6,7 +6,7 @@
 //  Copyright © 2018 QuickBird Studios. All rights reserved.
 //
 
-/// PageTransition describes transitions that can be used
+/// PageTransition offers transitions that can be used
 /// with a `UIPageViewController` rootViewController.
 public typealias PageTransition = Transition<UIPageViewController>
 

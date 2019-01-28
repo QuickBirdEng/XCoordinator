@@ -6,7 +6,7 @@
 //  Copyright © 2018 QuickBird Studios. All rights reserved.
 //
 
-/// NavigationTransition describes transitions that can be used
+/// NavigationTransition offers transitions that can be used
 /// with a `UINavigationController` rootViewController.
 public typealias NavigationTransition = Transition<UINavigationController>
 

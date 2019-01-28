@@ -14,7 +14,7 @@
 /// and is intended for use as the delegate of one navigation controller only.
 ///
 /// - Note:
-///     Do not override the delegate of a NavigationCoordinator's rootViewController-delegate.
+///     Do not override the delegate of a NavigationCoordinator's rootViewController.
 ///     Instead use the delegate property of the NavigationCoordinator itself.
 ///
 open class NavigationAnimationDelegate: NSObject {
@@ -26,10 +26,10 @@ open class NavigationAnimationDelegate: NSObject {
 
     // MARK: - Stored properties
 
-    /// Describes the velocity threshold needed for the interactive pop transition to succeed.
+    /// The velocity threshold needed for the interactive pop transition to succeed
     open var velocityThreshold: CGFloat { return UIScreen.main.bounds.width / 2 }
 
-    /// Describes the transition progress threshold for the interactive pop transition to succeed.
+    /// The transition progress threshold for the interactive pop transition to succeed
     open var transitionProgressThreshold: CGFloat { return 0.5 }
 
     private var animations = [Animation?]()
@@ -65,13 +65,12 @@ extension NavigationAnimationDelegate: UINavigationControllerDelegate {
     /// for further reference.
     ///
     /// - Parameters:
-    ///     - navigationController: The navigation controller to which this object is the delegate of.
+    ///     - navigationController: The delegate owner.
     ///     - animationController: The animationController to return the interactionController for.
     ///
     /// - Returns:
-    ///     The interactionController of an animationController of type `TransitionAnimation`.
+    ///     If the animationController is a `TransitionAnimation`, it returns its interactionController.
     ///     Otherwise the result of the NavigationCoordinator's delegate.
-    ///
     ///
     open func navigationController(_ navigationController: UINavigationController,
                                    interactionControllerFor animationController: UIViewControllerAnimatedTransitioning
@@ -85,13 +84,14 @@ extension NavigationAnimationDelegate: UINavigationControllerDelegate {
     /// for further reference.
     ///
     /// - Parameters:
-    ///     - navigationController: The navigation controller to which this object is the delegate of.
+    ///     - navigationController: The delegate owner.
     ///     - operation: The operation being executed. Possible values are push, pop or none.
     ///     - fromVC: The source view controller of the transition.
     ///     - toVC: The destination view controller of the transition.
     ///
     /// - Returns:
-    ///     The presentation animation of the last specified `Animation` object.
+    ///     The destination view controller's animationController depending on its `transitioningDelegate`.
+    ///     In the case of `push`, it returns the toVC's presentation animation, for `pop` it is the fromVC's dismissal animation.
     ///     If not present, it uses the NavigationCoordinator's delegate as fallback.
     ///
     open func navigationController(_ navigationController: UINavigationController,
@@ -120,9 +120,9 @@ extension NavigationAnimationDelegate: UINavigationControllerDelegate {
     /// for further reference.
     ///
     /// - Parameters:
-    ///     - navigationController: The navigation controller to which this object is the delegate of.
+    ///     - navigationController: The delegate owner.
     ///     - operation: The operation being executed. Possible values are push, pop or none.
-    ///     - viewController: The shown view controller.
+    ///     - viewController: The target view controller.
     ///
     open func navigationController(_ navigationController: UINavigationController,
                                    didShow viewController: UIViewController, animated: Bool) {
@@ -135,7 +135,7 @@ extension NavigationAnimationDelegate: UINavigationControllerDelegate {
     /// for further reference.
     ///
     /// - Parameters:
-    ///     - navigationController: The navigation controller to which this object is the delegate of.
+    ///     - navigationController: The delegate owner.
     ///     - operation: The operation being executed. Possible values are push, pop or none.
     ///     - viewController: The view controller to be shown.
     ///
@@ -156,17 +156,19 @@ extension NavigationAnimationDelegate: UIGestureRecognizerDelegate {
     /// See [UIGestureRecognizerDelegate documentation](https://developer.apple.com/documentation/uikit/UIGestureRecognizerDelegate)
     /// for further reference.
     ///
-    /// This method returns true, if
-    /// - there are more than 1 view controllers in the navigation controller
-    /// - it is the interactivePopGestureRecognizer to call this method
-    ///
-    /// It further alters the target of the gestureRecognizer to either its former delegate (UIKit default)
-    /// or this class depending on whether a pop animation has been specified.
+    /// - Note:
+    ///     This method alters the target of the gestureRecognizer to either its former delegate (UIKit default)
+    ///     or this class depending on whether a pop animation has been specified.
     ///
     /// - Parameter gestureRecognizer:
     ///     The gesture recognizer this class is the delegate of.
     ///     This class is used as the delegate for the interactivePopGestureRecognizer of
     ///     the navigationController.
+    ///
+    /// - Returns:
+    ///     This method returns true, if
+    ///     - there are more than 1 view controllers in the navigation controller and
+    ///     - it is the interactivePopGestureRecognizer to call this method
     ///
     open func gestureRecognizerShouldBegin(_ gestureRecognizer: UIGestureRecognizer) -> Bool {
         switch gestureRecognizer {
@@ -196,7 +198,7 @@ extension NavigationAnimationDelegate: UIGestureRecognizerDelegate {
     // MARK: - Target actions
 
     ///
-    /// This method handles changes of the `interactivePopGestureRecognizer` of the navigation controller.
+    /// This method handles changes of the navigation controller's `interactivePopGestureRecognizer`.
     ///
     /// In general this method updates the interaction controller of the top-most dismissalAnimation
     /// about the state of the interactivePopGestureRecognizer.

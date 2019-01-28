@@ -38,7 +38,7 @@ extension TabBarAnimationDelegate: UITabBarControllerDelegate {
     ///     - animationController: The animationController to return the interactionController for.
     ///
     /// - Returns:
-    ///     The interactionController of an animationController of type `TransitionAnimation`.
+    ///     If the animationController is a `TransitionAnimation`, it returns its interactionController.
     ///     Otherwise the result of the TabBarCoordinator's delegate.
     ///
     open func tabBarController(_ tabBarController: UITabBarController,
@@ -58,7 +58,7 @@ extension TabBarAnimationDelegate: UITabBarControllerDelegate {
     ///     - toVC: The destination view controller of the transition.
     ///
     /// - Returns:
-    ///     The presentation animation of the last specified `Animation` object.
+    ///     The presentation animation of the last specified `Animation` object of a `set` or `select` transition.
     ///     If not present, it uses the TabBarCoordinator's delegate as fallback.
     ///
     open func tabBarController(_ tabBarController: UITabBarController,

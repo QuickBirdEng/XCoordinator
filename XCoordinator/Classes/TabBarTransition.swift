@@ -6,7 +6,7 @@
 //  Copyright © 2018 QuickBird Studios. All rights reserved.
 //
 
-/// TabBarTransition describes transitions that can be used
+/// TabBarTransition offers transitions that can be used
 /// with a `UITabBarController` rootViewController.
 public typealias TabBarTransition = Transition<UITabBarController>
 
