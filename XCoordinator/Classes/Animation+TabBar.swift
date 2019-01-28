@@ -34,7 +34,7 @@ extension TabBarAnimationDelegate: UITabBarControllerDelegate {
     /// for further reference.
     ///
     /// - Parameters
-    ///     - tabBarController: The tabBarController to which this object is the delegate of.
+    ///     - tabBarController: The delegate owner.
     ///     - animationController: The animationController to return the interactionController for.
     ///
     /// - Returns:
@@ -53,7 +53,7 @@ extension TabBarAnimationDelegate: UITabBarControllerDelegate {
     /// for further reference.
     ///
     /// - Parameters:
-    ///     - tabBarController: The tabBarController to which this object is the delegate of.
+    ///     - tabBarController: The delegate owner.
     ///     - fromVC: The source view controller of the transition.
     ///     - toVC: The destination view controller of the transition.
     ///
@@ -75,7 +75,7 @@ extension TabBarAnimationDelegate: UITabBarControllerDelegate {
     /// This method delegates to the delegate specified in the TabBarCoordinator.
     ///
     /// - Parameters:
-    ///     - tabBarController: The tabBarController to which this object is the delegate of.
+    ///     - tabBarController: The delegate owner.
     ///     - viewController: The viewController that was selected.
     ///
     open func tabBarController(_ tabBarController: UITabBarController,
@@ -90,7 +90,7 @@ extension TabBarAnimationDelegate: UITabBarControllerDelegate {
     /// This method delegates to the delegate specified in the TabBarCoordinator.
     ///
     /// - Parameters:
-    ///     - tabBarController: The tabBarController to which this object is the delegate of.
+    ///     - tabBarController: The delegate owner.
     ///     - viewController: The viewController that may be selected.
     ///
     /// - Returns:
@@ -108,7 +108,7 @@ extension TabBarAnimationDelegate: UITabBarControllerDelegate {
     /// This method delegates to the delegate specified in the TabBarCoordinator.
     ///
     /// - Parameters:
-    ///     - tabBarController: The tabBarController to which this object is the delegate of.
+    ///     - tabBarController: The delegate owner.
     ///     - viewControllers: The viewControllers that will begin to be customized.
     ///
     open func tabBarController(_ tabBarController: UITabBarController,
@@ -123,7 +123,7 @@ extension TabBarAnimationDelegate: UITabBarControllerDelegate {
     /// This method delegates to the delegate specified in the TabBarCoordinator.
     ///
     /// - Parameters:
-    ///     - tabBarController: The tabBarController to which this object is the delegate of.
+    ///     - tabBarController: The delegate owner.
     ///     - viewControllers: The viewControllers that ended to be customized.
     ///
     open func tabBarController(_ tabBarController: UITabBarController,
@@ -138,7 +138,7 @@ extension TabBarAnimationDelegate: UITabBarControllerDelegate {
     /// This method delegates to the delegate specified in the TabBarCoordinator.
     ///
     /// - Parameters:
-    ///     - tabBarController: The tabBarController to which this object is the delegate of.
+    ///     - tabBarController: The delegate owner.
     ///     - viewControllers: The viewControllers that will end to be customized.
     ///
     open func tabBarController(_ tabBarController: UITabBarController,
