@@ -86,6 +86,6 @@ extension Coordinator {
     public func performTransition(_ transition: TransitionType,
                                   with options: TransitionOptions,
                                   completion: PresentationHandler? = nil) {
-        transition.perform(options: options, coordinator: self, completion: completion)
+        transition.perform(on: rootViewController, with: options, completion: completion)
     }
 }

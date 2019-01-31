@@ -27,13 +27,13 @@ extension Transition where RootViewController: UITabBarController {
     public static func set(_ presentables: [Presentable], animation: Animation? = nil) -> Transition {
         return Transition(presentables: presentables,
                           animation: animation?.presentationAnimation
-        ) { options, performer, completion in
-            performer.set(presentables.map { $0.viewController },
-                          with: options,
-                          animation: animation,
-                          completion: {
-                            presentables.forEach { $0.presented(from: performer) }
-                            completion?()
+        ) { rootViewController, options, completion in
+            rootViewController.set(presentables.map { $0.viewController },
+                                   with: options,
+                                   animation: animation,
+                                   completion: {
+                                    presentables.forEach { $0.presented(from: rootViewController) }
+                                    completion?()
             })
         }
     }
@@ -54,11 +54,11 @@ extension Transition where RootViewController: UITabBarController {
     public static func select(_ presentable: Presentable, animation: Animation? = nil) -> Transition {
         return Transition(presentables: [presentable],
                           animation: animation?.presentationAnimation
-        ) { options, performer, completion in
-            performer.select(presentable.viewController,
-                             with: options,
-                             animation: animation,
-                             completion: completion)
+        ) { rootViewController, options, completion in
+            rootViewController.select(presentable.viewController,
+                                      with: options,
+                                      animation: animation,
+                                      completion: completion)
         }
     }
 
@@ -77,11 +77,11 @@ extension Transition where RootViewController: UITabBarController {
     public static func select(index: Int, animation: Animation? = nil) -> Transition {
         return Transition(presentables: [],
                           animation: animation?.presentationAnimation
-        ) { options, performer, completion in
-            performer.select(index: index,
-                             with: options,
-                             animation: animation,
-                             completion: completion)
+        ) { rootViewController, options, completion in
+            rootViewController.select(index: index,
+                                      with: options,
+                                      animation: animation,
+                                      completion: completion)
         }
     }
 }

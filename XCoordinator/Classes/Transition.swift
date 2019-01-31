@@ -29,17 +29,16 @@ public struct Transition<RootViewController: UIViewController>: TransitionProtoc
     /// Perform is the type of closure used to perform the transition.
     ///
     /// - Parameters:
+    ///     - rootViewController:
+    ///         The rootViewController to perform the transition on.
     ///     - options:
     ///         The options on how to perform the transition, e.g. whether it should be animated or not.
-    ///     - performer:
-    ///         An AnyTransitionPerformer-object of the coordinator in use.
-    ///         Use this to access the rootViewController.
     ///     - completion:
     ///         The completion handler of the transition.
     ///         It is called when the transition (including all animations) is completed.
     ///
-    public typealias Perform = (_ options: TransitionOptions,
-                                _ performer: AnyTransitionPerformer<Transition<RootViewController>>,
+    public typealias Perform = (_ rootViewController: RootViewController,
+                                _ options: TransitionOptions,
                                 _ completion: PresentationHandler?) -> Void
 
     // MARK: - Stored properties
@@ -113,7 +112,11 @@ public struct Transition<RootViewController: UIViewController>: TransitionProtoc
     internal func perform(options: TransitionOptions,
                           performer: AnyTransitionPerformer<Transition>,
                           completion: PresentationHandler?) {
-        _perform(options, performer, completion)
+        _perform(performer.rootViewController, options, completion)
+    }
+
+    public func perform(on rootViewController: RootViewController, with options: TransitionOptions, completion: PresentationHandler?) {
+        _perform(rootViewController, options, completion)
     }
 }
 

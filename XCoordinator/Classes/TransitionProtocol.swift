@@ -43,6 +43,10 @@ public protocol TransitionProtocol {
                                  coordinator: C,
                                  completion: PresentationHandler?) where C.TransitionType == Self
 
+    func perform(on rootViewController: RootViewController,
+                 with options: TransitionOptions,
+                 completion: PresentationHandler?)
+
     // MARK: - Always accessible transitions
 
     ///

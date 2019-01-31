@@ -6,7 +6,7 @@
 //  Copyright © 2018 QuickBird Studios. All rights reserved.
 //
 
-extension TransitionPerformer {
+extension UIViewController {
 
     func show(_ viewController: UIViewController,
               with options: TransitionOptions,
@@ -15,7 +15,7 @@ extension TransitionPerformer {
         CATransaction.begin()
         CATransaction.setCompletionBlock(completion)
 
-        rootViewController.show(viewController, sender: nil)
+        show(viewController, sender: nil)
 
         CATransaction.commit()
     }
@@ -27,7 +27,7 @@ extension TransitionPerformer {
         CATransaction.begin()
         CATransaction.setCompletionBlock(completion)
 
-        rootViewController.showDetailViewController(viewController, sender: nil)
+        showDetailViewController(viewController, sender: nil)
 
         CATransaction.commit()
     }
@@ -42,8 +42,8 @@ extension TransitionPerformer {
             viewController.transitioningDelegate = animation
         }
         let presentingViewController = onRoot
-            ? rootViewController
-            : (rootViewController.presentedViewController ?? rootViewController)
+            ? self
+            : (presentedViewController ?? self)
         presentingViewController.present(viewController, animated: options.animated, completion: completion)
     }
 
@@ -51,11 +51,11 @@ extension TransitionPerformer {
                  with options: TransitionOptions,
                  animation: Animation?,
                  completion: PresentationHandler?) {
-        let presentedViewController = rootViewController.presentedViewController ?? rootViewController
+        let presentedViewController = self.presentedViewController ?? self
         if let animation = animation {
             presentedViewController.transitioningDelegate = animation
         }
-        let dismissalViewController = toRoot ? rootViewController : presentedViewController
+        let dismissalViewController = toRoot ? self : presentedViewController
         dismissalViewController.dismiss(animated: options.animated, completion: completion)
     }
 
@@ -87,23 +87,24 @@ extension TransitionPerformer {
     }
 }
 
-extension AnyTransitionPerformer {
+extension Presentable where Self: UIViewController {
 
     @available(iOS 9.0, *)
-    func registerPeek(from sourceView: UIView,
-                      transitionGenerator: @escaping () -> TransitionType,
-                      completion: PresentationHandler?) {
+    func registerPeek<TransitionType: TransitionProtocol>(
+        from sourceView: UIView,
+        transitionGenerator: @escaping () -> TransitionType,
+        completion: PresentationHandler?) where TransitionType.RootViewController == Self {
         let delegate = CoordinatorPreviewingDelegateObject(
             transition: transitionGenerator,
-            performer: self,
+            rootViewController: self,
             completion: completion
         )
 
         if let context = sourceView.removePreviewingContext(for: TransitionType.self) {
-            rootViewController.unregisterForPreviewing(withContext: context)
+            unregisterForPreviewing(withContext: context)
         }
 
         sourceView.strongReferences.append(delegate)
-        delegate.context = rootViewController.registerForPreviewing(with: delegate, sourceView: sourceView)
+        delegate.context = registerForPreviewing(with: delegate, sourceView: sourceView)
     }
 }
