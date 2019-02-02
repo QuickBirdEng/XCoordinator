@@ -37,15 +37,15 @@ public struct Transition<RootViewController: UIViewController>: TransitionProtoc
     ///         The completion handler of the transition.
     ///         It is called when the transition (including all animations) is completed.
     ///
-    public typealias Perform = (_ rootViewController: RootViewController,
-                                _ options: TransitionOptions,
-                                _ completion: PresentationHandler?) -> Void
+    public typealias PerformClosure = (_ rootViewController: RootViewController,
+                                       _ options: TransitionOptions,
+                                       _ completion: PresentationHandler?) -> Void
 
     // MARK: - Stored properties
 
     private var _presentables: [Presentable]
     private var _animation: TransitionAnimation?
-    private var _perform: Perform
+    private var _perform: PerformClosure
 
     // MARK: - Computed properties
 
@@ -85,7 +85,7 @@ public struct Transition<RootViewController: UIViewController>: TransitionProtoc
     ///         Make sure to specify an animation here to use your transition with the
     ///         `registerInteractiveTransition` method in your coordinator.
     ///
-    public init(presentables: [Presentable], animationInUse: TransitionAnimation?, perform: @escaping Perform) {
+    public init(presentables: [Presentable], animationInUse: TransitionAnimation?, perform: @escaping PerformClosure) {
         self._presentables = presentables
         self._animation = animationInUse
         self._perform = perform
@@ -130,7 +130,9 @@ public struct Transition<RootViewController: UIViewController>: TransitionProtoc
 }
 
 extension Transition {
-    public typealias DeprecatedPerform = (TransitionOptions, AnyTransitionPerformer<Transition>, PresentationHandler?) -> Void
+
+    @available(*, deprecated, renamed: "PerformClosure")
+    public typealias Perform = (TransitionOptions, AnyTransitionPerformer<Transition>, PresentationHandler?) -> Void
 
     ///
     /// Create your custom transitions with this initializer.
@@ -144,7 +146,7 @@ extension Transition {
     ///     These presentables are used in the deep-linking feature.
     ///
     @available(*, deprecated, renamed: "init(presentables:animationInUse:perform:)")
-    public init(presentables: [Presentable], animation: TransitionAnimation?, perform: @escaping DeprecatedPerform) {
+    public init(presentables: [Presentable], animation: TransitionAnimation? = nil, perform: @escaping Perform) {
         self.init(presentables: presentables, animationInUse: animation) { rootViewController, options, completion in
             let transitionPerformer = AnyTransitionPerformer(
                 ViewControllerTransitionPerformer(rootViewController)
