@@ -26,7 +26,7 @@ extension Transition where RootViewController: UINavigationController {
     ///
     public static func push(_ presentable: Presentable, animation: Animation? = nil) -> NavigationTransition {
         return NavigationTransition(presentables: [presentable],
-                                    animation: animation?.presentationAnimation
+                                    animationInUse: animation?.presentationAnimation
         ) { rootViewController, options, completion in
             rootViewController.push(presentable.viewController,
                                     with: options,
@@ -49,7 +49,7 @@ extension Transition where RootViewController: UINavigationController {
     ///
     public static func pop(animation: Animation? = nil) -> NavigationTransition {
         return NavigationTransition(presentables: [],
-                                    animation: animation?.dismissalAnimation
+                                    animationInUse: animation?.dismissalAnimation
         ) { rootViewController, options, completion in
             rootViewController.pop(toRoot: false,
                                    with: options,
@@ -74,7 +74,7 @@ extension Transition where RootViewController: UINavigationController {
     ///
     public static func pop(to presentable: Presentable, animation: Animation? = nil) -> NavigationTransition {
         return NavigationTransition(presentables: [presentable],
-                                    animation: animation?.dismissalAnimation
+                                    animationInUse: animation?.dismissalAnimation
         ) { rootViewController, options, completion in
             rootViewController.pop(to: presentable.viewController,
                                    options: options,
@@ -95,7 +95,7 @@ extension Transition where RootViewController: UINavigationController {
     ///
     public static func popToRoot(animation: Animation? = nil) -> NavigationTransition {
         return NavigationTransition(presentables: [],
-                                    animation: animation?.dismissalAnimation
+                                    animationInUse: animation?.dismissalAnimation
         ) { rootViewController, options, completion in
             rootViewController.pop(toRoot: true,
                                    with: options,
@@ -118,7 +118,7 @@ extension Transition where RootViewController: UINavigationController {
     ///
     public static func set(_ presentables: [Presentable], animation: Animation? = nil) -> NavigationTransition {
         return NavigationTransition(presentables: presentables,
-                                    animation: animation?.presentationAnimation
+                                    animationInUse: animation?.presentationAnimation
         ) { rootViewController, options, completion in
             rootViewController.set(presentables.map { $0.viewController },
                                    with: options,

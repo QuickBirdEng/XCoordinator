@@ -21,8 +21,7 @@
 open class RedirectionCoordinator<RouteType: Route, TransitionType: TransitionProtocol>: Coordinator {
 
     // MARK: - Stored properties
-
-    private let rootViewControllerBox = ReferenceBox<RootViewController>()
+    private let superTransitionPerformer: AnyTransitionPerformer<TransitionType>
     private let viewControllerBox = ReferenceBox<UIViewController>()
     private let _prepareTransition: ((RouteType) -> TransitionType)?
 
@@ -30,7 +29,7 @@ open class RedirectionCoordinator<RouteType: Route, TransitionType: TransitionPr
 
     /// The viewController used in transitions, e.g. when presenting, pushing or otherwise displaying a RedirectionCoordinator.
     public var rootViewController: TransitionType.RootViewController {
-        return rootViewControllerBox.get()! // swiftlint:disable:this force_unwrapping
+        return superTransitionPerformer.rootViewController
     }
 
     open var viewController: UIViewController! {
@@ -55,11 +54,11 @@ open class RedirectionCoordinator<RouteType: Route, TransitionType: TransitionPr
     ///         A closure preparing transitions for triggered routes.
     ///
     public init(viewController: UIViewController,
-                rootViewController: RootViewController,
+                superTransitionPerformer: AnyTransitionPerformer<TransitionType>,
                 prepareTransition: ((RouteType) -> TransitionType)?) {
 
         viewControllerBox.set(viewController)
-        rootViewControllerBox.set(rootViewController)
+        self.superTransitionPerformer = superTransitionPerformer
         _prepareTransition = prepareTransition
     }
 
@@ -84,7 +83,7 @@ open class RedirectionCoordinator<RouteType: Route, TransitionType: TransitionPr
         ) where T.TransitionType == TransitionType {
 
         viewControllerBox.set(viewController)
-        rootViewControllerBox.set(superTransitionPerformer.rootViewController)
+        self.superTransitionPerformer = AnyTransitionPerformer(superTransitionPerformer)
         _prepareTransition = prepareTransition
     }
 
@@ -92,9 +91,7 @@ open class RedirectionCoordinator<RouteType: Route, TransitionType: TransitionPr
 
     open func presented(from presentable: Presentable?) {
         viewController?.presented(from: presentable)
-        rootViewController.presented(from: presentable)
         viewControllerBox.releaseStrongReference()
-        rootViewControllerBox.releaseStrongReference()
     }
 
     open func prepareTransition(for route: RouteType) -> TransitionType {
@@ -107,12 +104,11 @@ open class RedirectionCoordinator<RouteType: Route, TransitionType: TransitionPr
     public func performTransition(_ transition: TransitionType,
                                   with options: TransitionOptions,
                                   completion: PresentationHandler?) {
-        transition.perform(on: rootViewController, with: options, completion: completion)
+        superTransitionPerformer.performTransition(transition, with: options, completion: completion)
     }
 }
 
 // MARK: - Deprecated
-
 extension RedirectionCoordinator {
 
     ///
@@ -135,7 +131,7 @@ extension RedirectionCoordinator {
                                             superCoordinator: C,
                                             prepareTransition: ((RouteType) -> TransitionType)?) where C.TransitionType == TransitionType {
         self.init(viewController: viewController,
-                  rootViewController: superCoordinator.rootViewController,
+                  superTransitionPerformer: AnyTransitionPerformer(superCoordinator),
                   prepareTransition: prepareTransition)
     }
 }

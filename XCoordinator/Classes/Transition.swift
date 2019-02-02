@@ -79,15 +79,15 @@ public struct Transition<RootViewController: UIViewController>: TransitionProtoc
     ///     - presentables:
     ///         The presentables this transition is putting into the view hierarchy, if specifiable.
     ///         These presentables are used in the deep-linking feature.
-    ///     - animation:
+    ///     - animationInUse:
     ///         The transition animation this transition is using during the transition, i.e. the present animation
     ///         of a presenting transition or the dismissal animation of a dismissing transition.
     ///         Make sure to specify an animation here to use your transition with the
     ///         `registerInteractiveTransition` method in your coordinator.
     ///
-    public init(presentables: [Presentable], animation: TransitionAnimation?, perform: @escaping Perform) {
+    public init(presentables: [Presentable], animationInUse: TransitionAnimation?, perform: @escaping Perform) {
         self._presentables = presentables
-        self._animation = animation
+        self._animation = animationInUse
         self._perform = perform
     }
 
@@ -100,6 +100,7 @@ public struct Transition<RootViewController: UIViewController>: TransitionProtoc
     ///     Do not call this method directly. Instead use your coordinator's `performTransition` method or trigger
     ///     a specified route (latter option is encouraged).
     ///
+    @available(*, deprecated, renamed: "perform(on:with:completion:)")
     public func perform<T: TransitionPerformer>(options: TransitionOptions,
                                                 coordinator: T,
                                                 completion: PresentationHandler?
@@ -109,18 +110,27 @@ public struct Transition<RootViewController: UIViewController>: TransitionProtoc
         perform(options: options, performer: anyPerformer, completion: completion)
     }
 
+    @available(*, deprecated, renamed: "perform(on:with:completion:)")
     internal func perform(options: TransitionOptions,
                           performer: AnyTransitionPerformer<Transition>,
                           completion: PresentationHandler?) {
         _perform(performer.rootViewController, options, completion)
     }
 
+    ///
+    /// The method to perform a certain transition using a coordinator.
+    ///
+    /// - Warning:
+    ///     Do not call this method directly. Instead use your coordinator's `performTransition` method or trigger
+    ///     a specified route (latter option is encouraged).
+    ///
     public func perform(on rootViewController: RootViewController, with options: TransitionOptions, completion: PresentationHandler?) {
         _perform(rootViewController, options, completion)
     }
 }
 
 extension Transition {
+    public typealias DeprecatedPerform = (TransitionOptions, AnyTransitionPerformer<Transition>, PresentationHandler?) -> Void
 
     ///
     /// Create your custom transitions with this initializer.
@@ -133,12 +143,33 @@ extension Transition {
     ///     The presentables this transition is putting into the view hierarchy, if specifiable.
     ///     These presentables are used in the deep-linking feature.
     ///
-    @available(*, deprecated, renamed: "init(presentables:animation:perform:)")
-    public init(presentables: [Presentable], perform: @escaping Perform) {
-        self.init(
-            presentables: presentables,
-            animation: nil,
-            perform: perform
-        )
+    @available(*, deprecated, renamed: "init(presentables:animationInUse:perform:)")
+    public init(presentables: [Presentable], animation: TransitionAnimation?, perform: @escaping DeprecatedPerform) {
+        self.init(presentables: presentables, animationInUse: animation) { rootViewController, options, completion in
+            let transitionPerformer = AnyTransitionPerformer(
+                ViewControllerTransitionPerformer(rootViewController)
+            )
+            perform(options, transitionPerformer, completion)
+        }
+    }
+}
+
+class ViewControllerTransitionPerformer<RootViewController: UIViewController>: TransitionPerformer {
+
+    internal let rootViewController: RootViewController
+
+    init(_ rootViewController: RootViewController) {
+        self.rootViewController = rootViewController
+    }
+
+    var viewController: UIViewController! {
+        return rootViewController
+    }
+
+    func presented(from presentable: Presentable?) {}
+
+    func performTransition(_ transition: Transition<RootViewController>,
+                           with options: TransitionOptions, completion: PresentationHandler?) {
+        transition.perform(on: rootViewController, with: options, completion: completion)
     }
 }

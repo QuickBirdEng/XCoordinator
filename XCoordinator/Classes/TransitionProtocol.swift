@@ -39,6 +39,7 @@ public protocol TransitionProtocol {
     ///     - completion:
     ///         The completion handler. Make sure to call this, whenever the transition is completed.
     ///
+    @available(*, deprecated, renamed: "perform(on:with:completion:)")
     func perform<C: Coordinator>(options: TransitionOptions,
                                  coordinator: C,
                                  completion: PresentationHandler?) where C.TransitionType == Self
