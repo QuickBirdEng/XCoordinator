@@ -156,19 +156,30 @@ extension Transition {
     }
 }
 
+@available(*, deprecated)
 class ViewControllerTransitionPerformer<RootViewController: UIViewController>: TransitionPerformer {
 
+    // MARK: - Stored properties
+
     internal let rootViewController: RootViewController
+
+    // MARK: - Init
 
     init(_ rootViewController: RootViewController) {
         self.rootViewController = rootViewController
     }
 
+    // MARK: - Computed properties
+
     var viewController: UIViewController! {
         return rootViewController
     }
 
+    // MARK: - Presentable
+
     func presented(from presentable: Presentable?) {}
+
+    // MARK: - TransitionPerformer
 
     func performTransition(_ transition: Transition<RootViewController>,
                            with options: TransitionOptions, completion: PresentationHandler?) {
