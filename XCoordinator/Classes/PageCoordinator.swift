@@ -29,7 +29,7 @@ open class PageCoordinator<RouteType: Route>: BaseCoordinator<RouteType, PageTra
             return
         }
 
-        super.init(initialTransition: .set(firstPage, direction: direction))
+        super.init(initialTransition: .multiple(.initial(pages: pages), .set(firstPage, direction: direction)))
     }
 
     // MARK: - Overrides
