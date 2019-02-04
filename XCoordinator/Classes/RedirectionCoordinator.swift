@@ -6,6 +6,7 @@
 //  Copyright © 2018 QuickBird Studios. All rights reserved.
 //
 
+
 ///
 /// RedirectionCoordinators can be used to break up huge routes into smaller ones, like dividing a flow into subflows.
 /// In contrast to the RedirectionRouter, the RedirectionCoordinator does not need to know about the coordinator's RouteType
