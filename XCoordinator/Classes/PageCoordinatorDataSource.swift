@@ -83,7 +83,7 @@ open class PageCoordinatorDataSource: NSObject, UIPageViewControllerDataSource {
     ///
     /// - Parameters:
     ///     - pageViewController: The dataSource owner.
-    ///     - viewController: The viewController to the preceeding viewController of.
+    ///     - viewController: The viewController to find the preceeding viewController of.
     ///
     /// - Returns:
     ///     The preceeding viewController.
@@ -109,7 +109,7 @@ open class PageCoordinatorDataSource: NSObject, UIPageViewControllerDataSource {
     ///
     /// - Parameters:
     ///     - pageViewController: The dataSource owner.
-    ///     - viewController: The viewController to find the follwing viewController of.
+    ///     - viewController: The viewController to find the following viewController of.
     ///
     /// - Returns:
     ///     The following viewController.
