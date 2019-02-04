@@ -236,6 +236,24 @@ extension Transition {
     }
 
     ///
+    /// Performs a transition on a different viewController than the coordinator's rootViewController.
+    ///
+    /// This might be helpful when creating a coordinator for a specific viewController would create unnecessary complicated code.
+    ///
+    /// - Parameters:
+    ///     - transition: The transition to be performed.
+    ///     - viewController: The viewController to perform the transition on.
+    ///
+    public static func perform<TransitionType: TransitionProtocol>(_ transition: TransitionType,
+                                                                   on viewController: TransitionType.RootViewController) -> Transition {
+        return Transition(presentables: transition.presentables,
+                          animationInUse: transition.animation
+        ) { _, options, completion in
+            transition.perform(on: viewController, with: options, completion: completion)
+        }
+    }
+
+    ///
     /// Use this transition to register 3D Touch Peek and Pop functionality.
     ///
     /// - Parameters:
