@@ -79,14 +79,14 @@ open class PageCoordinatorDataSource: NSObject, UIPageViewControllerDataSource {
     /// for further information.
     ///
     /// This method first searches for the index of the given viewController in the `pages` array.
-    /// It then tries to find a viewController at the preceeding position by potentially looping.
+    /// It then tries to find a viewController at the preceding position by potentially looping.
     ///
     /// - Parameters:
     ///     - pageViewController: The dataSource owner.
-    ///     - viewController: The viewController to find the preceeding viewController of.
+    ///     - viewController: The viewController to find the preceding viewController of.
     ///
     /// - Returns:
-    ///     The preceeding viewController.
+    ///     The preceding viewController.
     ///
     open func pageViewController(_ pageViewController: UIPageViewController,
                                  viewControllerBefore viewController: UIViewController) -> UIViewController? {
