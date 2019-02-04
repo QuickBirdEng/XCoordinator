@@ -1,6 +1,5 @@
 author: "Stefan Kofler & Paul Kraft"
 author_url: https://quickbirdstudios.com
-module: XCoordinator
 podspec: XCoordinator.podspec
 docset_icon: Example/XCoordinator/Common/Images.xcassets/AppLogo.imageset/iTunesArtwork@2x.png
 github_url: https://github.com/quickbirdstudios/XCoordinator
