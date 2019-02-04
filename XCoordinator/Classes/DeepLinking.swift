@@ -6,6 +6,12 @@
 //  Copyright © 2018 QuickBird Studios. All rights reserved.
 //
 
+///
+/// `PresentationHandlerContext` provides context information about transitions.
+///
+/// It is especially useful for deep linking as we can internally gather information about
+/// the presentables being pushed onto the view hierarchy.
+///
 public struct PresentationHandlerContext {
     internal let presentables: [Presentable]
 
@@ -15,11 +21,40 @@ public struct PresentationHandlerContext {
 // MARK: - Coordinator + DeepLinking
 
 extension Coordinator where Self: AnyObject {
+
+    ///
+    /// Deep-Linking can be used to chain routes of different types together.
+    ///
+    /// - Parameters:
+    ///     - route:
+    ///         The first route in the chain.
+    ///         It is given a special place because we can specify its exact type.
+    ///     - remainingRoutes:
+    ///         The remaining routes of the chain.
+    ///
+    /// - Note:
+    ///     Use it with caution, as it is not implemented in a type-safe manner.
+    ///     Keep in mind that changes in the app's structure and changes of transitions
+    ///     behind given routes can lead to runtime errors and, therefore, crashes of your app.
+    ///
     public func deepLink<RootViewController, S: Sequence>(_ route: RouteType, _ remainingRoutes: S)
         -> Transition<RootViewController> where S.Element == Route, TransitionType == Transition<RootViewController> {
         return .deepLink(with: self, route, array: Array(remainingRoutes))
     }
 
+    ///
+    /// Deep-Linking can be used to chain routes of different types together.
+    ///
+    /// - Parameters
+    ///     - route:
+    ///         The first route in the chain.
+    ///         It is given a special place because we can specify its exact type.
+    ///     - remainingRoutes:
+    ///         The remaining routes of the chain.
+    ///         As we cannot make this type-safe in a reasonable manner, use it with caution.
+    ///         Keep in mind that changes in your app's structure and changes of transitions
+    ///         behind the given routes can lead to runtime errors and, therefore, crashes of your app.
+    ///
     public func deepLink<RootViewController>(_ route: RouteType, _ remainingRoutes: Route...)
         -> Transition<RootViewController> where TransitionType == Transition<RootViewController> {
         return .deepLink(with: self, route, array: remainingRoutes)

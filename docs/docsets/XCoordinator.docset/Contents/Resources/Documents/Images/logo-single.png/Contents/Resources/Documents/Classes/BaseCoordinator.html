@@ -1,0 +1,864 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>BaseCoordinator Class Reference</title>
+    <link rel="stylesheet" type="text/css" href="../css/jazzy.css" />
+    <link rel="stylesheet" type="text/css" href="../css/highlight.css" />
+    <meta charset="utf-8">
+    <script src="../js/jquery.min.js" defer></script>
+    <script src="../js/jazzy.js" defer></script>
+    
+    <script src="../js/lunr.min.js" defer></script>
+    <script src="../js/typeahead.jquery.js" defer></script>
+    <script src="../js/jazzy.search.js" defer></script>
+  </head>
+  <body>
+
+    <a name="//apple_ref/swift/Class/BaseCoordinator" class="dashAnchor"></a>
+
+    <a title="BaseCoordinator Class Reference"></a>
+
+    <header class="header">
+      <p class="header-col header-col--primary">
+        <a class="header-link" href="../index.html">
+          XCoordinator Docs
+        </a>
+        
+      </p>
+    
+      <p class="header-col--secondary">
+        <form role="search" action="../search.json">
+          <input type="text" placeholder="Search documentation" data-typeahead>
+        </form>
+      </p>
+    
+        <p class="header-col header-col--secondary">
+          <a class="header-link" href="https://github.com/quickbirdstudios.com/XCoordinator">
+            <img class="header-icon" src="../img/gh.png"/>
+            View on GitHub
+          </a>
+        </p>
+    
+    </header>
+
+    <p class="breadcrumbs">
+      <a class="breadcrumb" href="../index.html">XCoordinator Reference</a>
+      <img class="carat" src="../img/carat.png" />
+      BaseCoordinator Class Reference
+    </p>
+
+    <div class="content-wrapper">
+      <nav class="navigation">
+        <ul class="nav-groups">
+          <li class="nav-group-name">
+            <a class="nav-group-name-link" href="../Classes.html">Classes</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Classes/Animation.html">Animation</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Classes/AnyCoordinator.html">AnyCoordinator</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Classes/AnyRouter.html">AnyRouter</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Classes/AnyTransitionPerformer.html">AnyTransitionPerformer</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Classes/BaseCoordinator.html">BaseCoordinator</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Classes/BasicCoordinator.html">BasicCoordinator</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Classes/BasicCoordinator/InitialLoadingType.html">– InitialLoadingType</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Classes/InteractiveTransitionAnimation.html">InteractiveTransitionAnimation</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Classes/InterruptibleTransitionAnimation.html">InterruptibleTransitionAnimation</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Classes/NavigationAnimationDelegate.html">NavigationAnimationDelegate</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Classes/NavigationCoordinator.html">NavigationCoordinator</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Classes/PageCoordinator.html">PageCoordinator</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Classes/PageCoordinatorDataSource.html">PageCoordinatorDataSource</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Classes/RedirectionCoordinator.html">RedirectionCoordinator</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Classes/RedirectionRouter.html">RedirectionRouter</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Classes/ReferenceBox.html">ReferenceBox</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Classes/SplitCoordinator.html">SplitCoordinator</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Classes/StaticTransitionAnimation.html">StaticTransitionAnimation</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Classes/TabBarAnimationDelegate.html">TabBarAnimationDelegate</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Classes/TabBarCoordinator.html">TabBarCoordinator</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Classes/ViewCoordinator.html">ViewCoordinator</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a class="nav-group-name-link" href="../Extensions.html">Extensions</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Extensions/Reactive.html">Reactive</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Extensions/UIPageViewController.html">UIPageViewController</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Extensions/UIPageViewController/Configuration.html">– Configuration</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Extensions/UIView.html">UIView</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Extensions/UIViewController.html">UIViewController</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a class="nav-group-name-link" href="../Protocols.html">Protocols</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Protocols/Container.html">Container</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Protocols/Coordinator.html">Coordinator</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Protocols/PercentDrivenInteractionController.html">PercentDrivenInteractionController</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Protocols/Presentable.html">Presentable</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Protocols.html#/s:12XCoordinator5RouteP">Route</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Protocols/Router.html">Router</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Protocols/TransitionAnimation.html">TransitionAnimation</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Protocols/TransitionPerformer.html">TransitionPerformer</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Protocols/TransitionProtocol.html">TransitionProtocol</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a class="nav-group-name-link" href="../Structs.html">Structures</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Structs.html#/s:12XCoordinator26PresentationHandlerContextV">PresentationHandlerContext</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Structs/Transition.html">Transition</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Structs/TransitionOptions.html">TransitionOptions</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a class="nav-group-name-link" href="../Typealiases.html">Type Aliases</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Typealiases.html#/s:12XCoordinator24AnyNavigationCoordinatora">AnyNavigationCoordinator</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Typealiases.html#/s:12XCoordinator20AnyTabBarCoordinatora">AnyTabBarCoordinator</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Typealiases.html#/s:12XCoordinator18AnyViewCoordinatora">AnyViewCoordinator</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Typealiases.html#/s:12XCoordinator26BasicNavigationCoordinatora">BasicNavigationCoordinator</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Typealiases.html#/s:12XCoordinator22BasicTabBarCoordinatora">BasicTabBarCoordinator</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Typealiases.html#/s:12XCoordinator20BasicViewCoordinatora">BasicViewCoordinator</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Typealiases.html#/s:12XCoordinator26ContextPresentationHandlera">ContextPresentationHandler</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Typealiases.html#/s:12XCoordinator20NavigationTransitiona">NavigationTransition</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Typealiases.html#/s:12XCoordinator14PageTransitiona">PageTransition</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Typealiases.html#/s:12XCoordinator19PresentationHandlera">PresentationHandler</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Typealiases.html#/s:12XCoordinator15SplitTransitiona">SplitTransition</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Typealiases.html#/s:12XCoordinator16TabBarTransitiona">TabBarTransition</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Typealiases.html#/s:12XCoordinator14ViewTransitiona">ViewTransition</a>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </nav>
+      <article class="main-content">
+
+        <section class="section">
+          <div class="section-content">
+            <h1>BaseCoordinator</h1>
+              <div class="declaration">
+                <div class="language">
+                  <pre class="highlight swift"><code><span class="kd">open</span> <span class="kd">class</span> <span class="kt">BaseCoordinator</span><span class="o">&lt;</span><span class="kt">RouteType</span><span class="p">,</span> <span class="kt">TransitionType</span><span class="o">&gt;</span> <span class="p">:</span> <span class="kt"><a href="../Protocols/Coordinator.html">Coordinator</a></span> <span class="k">where</span> <span class="kt">RouteType</span> <span class="p">:</span> <span class="kt"><a href="../Protocols.html#/s:12XCoordinator5RouteP">Route</a></span><span class="p">,</span> <span class="kt">TransitionType</span> <span class="p">:</span> <span class="kt"><a href="../Protocols/TransitionProtocol.html">TransitionProtocol</a></span></code></pre>
+
+                </div>
+              </div>
+            <p>BaseCoordinator can (and is encouraged to) be used as a superclass for any custom implementation of a coordinator.</p>
+
+<p>We encourage the use of already provided subclasses of BaseCoordinator such as
+<code><a href="../Classes/NavigationCoordinator.html">NavigationCoordinator</a></code>, <code><a href="../Classes/TabBarCoordinator.html">TabBarCoordinator</a></code>, <code><a href="../Classes/ViewCoordinator.html">ViewCoordinator</a></code>, <code><a href="../Classes/SplitCoordinator.html">SplitCoordinator</a></code>
+and <code><a href="../Classes/PageCoordinator.html">PageCoordinator</a></code>.</p>
+
+          </div>
+        </section>
+
+        <section class="section">
+          <div class="section-content">
+            <div class="task-group">
+              <div class="task-name-container">
+                <a name="/Computed%20properties"></a>
+                <a name="//apple_ref/swift/Section/Computed properties" class="dashAnchor"></a>
+                <a href="#/Computed%20properties">
+                  <h3 class="section-name">Computed properties</h3>
+                </a>
+              </div>
+              <ul class="item-container">
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:12XCoordinator19TransitionPerformerP18rootViewController0B4Type_04RooteF0QZvp"></a>
+                    <a name="//apple_ref/swift/Property/rootViewController" class="dashAnchor"></a>
+                    <a class="token" href="#/s:12XCoordinator19TransitionPerformerP18rootViewController0B4Type_04RooteF0QZvp">rootViewController</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="k">var</span> <span class="nv">rootViewController</span><span class="p">:</span> <span class="kt"><a href="../Classes/BaseCoordinator.html#/s:12XCoordinator15BaseCoordinatorC18RootViewControllera">RootViewController</a></span> <span class="p">{</span> <span class="k">get</span> <span class="p">}</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <div class="task-name-container">
+                <a name="/Initialization"></a>
+                <a name="//apple_ref/swift/Section/Initialization" class="dashAnchor"></a>
+                <a href="#/Initialization">
+                  <h3 class="section-name">Initialization</h3>
+                </a>
+              </div>
+              <ul class="item-container">
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:12XCoordinator15BaseCoordinatorC12initialRouteACyxq_GxSg_tcfc"></a>
+                    <a name="//apple_ref/swift/Method/init(initialRoute:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:12XCoordinator15BaseCoordinatorC12initialRouteACyxq_GxSg_tcfc">init(initialRoute:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Use this initializer to trigger a route before the coordinator is made visible.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="nf">init</span><span class="p">(</span><span class="nv">initialRoute</span><span class="p">:</span> <span class="kt">RouteType</span><span class="p">?)</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>initialRoute</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The route to be triggered before making the coordinator visible.
+If you specify <code>nil</code>, no route is triggered.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:12XCoordinator15BaseCoordinatorC17initialTransitionACyxq_Gq_Sg_tcfc"></a>
+                    <a name="//apple_ref/swift/Method/init(initialTransition:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:12XCoordinator15BaseCoordinatorC17initialTransitionACyxq_Gq_Sg_tcfc">init(initialTransition:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Use this initializer to perform a transition before the coordinator is made visible.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="nf">init</span><span class="p">(</span><span class="nv">initialTransition</span><span class="p">:</span> <span class="kt">TransitionType</span><span class="p">?)</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>initialTransition</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The transition to be performed before making the coordinator visible.
+If you specify <code>nil</code>, no transition is performed.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <div class="task-name-container">
+                <a name="/Open%20methods"></a>
+                <a name="//apple_ref/swift/Section/Open methods" class="dashAnchor"></a>
+                <a href="#/Open%20methods">
+                  <h3 class="section-name">Open methods</h3>
+                </a>
+              </div>
+              <ul class="item-container">
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:12XCoordinator11PresentableP9presented4fromyAaB_pSg_tF"></a>
+                    <a name="//apple_ref/swift/Method/presented(from:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:12XCoordinator11PresentableP9presented4fromyAaB_pSg_tF">presented(from:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">open</span> <span class="kd">func</span> <span class="nf">presented</span><span class="p">(</span><span class="n">from</span> <span class="nv">presentable</span><span class="p">:</span> <span class="kt"><a href="../Protocols/Presentable.html">Presentable</a></span><span class="p">?)</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:12XCoordinator15BaseCoordinatorC26generateRootViewController0efG0Qy_yF"></a>
+                    <a name="//apple_ref/swift/Method/generateRootViewController()" class="dashAnchor"></a>
+                    <a class="token" href="#/s:12XCoordinator15BaseCoordinatorC26generateRootViewController0efG0Qy_yF">generateRootViewController()</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>This method generates the <code><a href="../Classes/BaseCoordinator.html#/s:12XCoordinator19TransitionPerformerP18rootViewController0B4Type_04RooteF0QZvp">rootViewController</a></code> on initialization.</p>
+
+<p>This method is only called once during initalization. Make sure to use the result from
+<code>super.generateRootViewController()</code> when overriding to make sure transition animations
+work as expected.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">open</span> <span class="kd">func</span> <span class="nf">generateRootViewController</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="kt"><a href="../Classes/BaseCoordinator.html#/s:12XCoordinator15BaseCoordinatorC18RootViewControllera">RootViewController</a></span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:12XCoordinator15BaseCoordinatorC17prepareTransition3forq_x_tF"></a>
+                    <a name="//apple_ref/swift/Method/prepareTransition(for:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:12XCoordinator15BaseCoordinatorC17prepareTransition3forq_x_tF">prepareTransition(for:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>This method prepares transitions for routes.
+Override this method to define transitions for triggered routes.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">open</span> <span class="kd">func</span> <span class="nf">prepareTransition</span><span class="p">(</span><span class="k">for</span> <span class="nv">route</span><span class="p">:</span> <span class="kt">RouteType</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">TransitionType</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>route</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The triggered route for which a transition is to be prepared.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p>The prepared transition.</p>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <ul class="item-container">
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:12XCoordinator15BaseCoordinatorC18RootViewControllera"></a>
+                    <a name="//apple_ref/swift/Alias/RootViewController" class="dashAnchor"></a>
+                    <a class="token" href="#/s:12XCoordinator15BaseCoordinatorC18RootViewControllera">RootViewController</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Shortcut for <code>BaseCoordinator.TransitionType.RootViewController</code></p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">typealias</span> <span class="kt">RootViewController</span> <span class="o">=</span> <span class="kt">TransitionType</span><span class="o">.</span><span class="kt">RootViewController</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <div class="task-name-container">
+                <a name="/Registering"></a>
+                <a name="//apple_ref/swift/Section/Registering" class="dashAnchor"></a>
+                <a href="#/Registering">
+                  <h3 class="section-name">Registering</h3>
+                </a>
+              </div>
+              <ul class="item-container">
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:12XCoordinator15BaseCoordinatorC29registerInteractiveTransition3for11triggeredBy7handler10completionyx_qd__yqd___AA0F9Animation_pSgyXEtcyycSgtSo19UIGestureRecognizerCRbd__lF"></a>
+                    <a name="//apple_ref/swift/Method/registerInteractiveTransition(for:triggeredBy:handler:completion:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:12XCoordinator15BaseCoordinatorC29registerInteractiveTransition3for11triggeredBy7handler10completionyx_qd__yqd___AA0F9Animation_pSgyXEtcyycSgtSo19UIGestureRecognizerCRbd__lF">registerInteractiveTransition(for:triggeredBy:handler:completion:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Register an interactive transition triggered by a gesture recognizer.</p>
+
+<p>Also consider <code><a href="../Classes/BaseCoordinator.html#/s:12XCoordinator15BaseCoordinatorC29registerInteractiveTransition3for11triggeredBy8progress12shouldFinish10completionyx_qd__12CoreGraphics7CGFloatVqd__cSbqd__cyycSgtSo19UIGestureRecognizerCRbd__lF">registerInteractiveTransition(for:triggeredBy:progress:shouldFinish:completion:)</a></code> as it might make it easier
+to implement an interactive transition. This is meant for cases where the other method does not provide enough customization
+options.</p>
+
+<p>A target is added to the gestureRecognizer so that the handler is executed every time the state of the gesture recognizer changes.</p>
+<div class="aside aside-note">
+    <p class="aside-title">Note</p>
+    <p>Use <code>unregisterInteractiveTransition(triggeredBy:)</code> to remove previously added interactive transitions.</p>
+
+</div>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">open</span> <span class="kd">func</span> <span class="n">registerInteractiveTransition</span><span class="o">&lt;</span><span class="kt">GestureRecognizer</span><span class="p">:</span> <span class="kt">UIGestureRecognizer</span><span class="o">&gt;</span><span class="p">(</span>
+    <span class="k">for</span> <span class="nv">route</span><span class="p">:</span> <span class="kt">RouteType</span><span class="p">,</span>
+    <span class="n">triggeredBy</span> <span class="nv">recognizer</span><span class="p">:</span> <span class="kt">GestureRecognizer</span><span class="p">,</span>
+    <span class="nv">handler</span><span class="p">:</span> <span class="kd">@escaping</span> <span class="p">(</span><span class="n">_</span> <span class="nv">handlerRecognizer</span><span class="p">:</span> <span class="kt">GestureRecognizer</span><span class="p">,</span> <span class="n">_</span> <span class="nv">transition</span><span class="p">:</span> <span class="p">()</span> <span class="o">-&gt;</span> <span class="kt"><a href="../Protocols/TransitionAnimation.html">TransitionAnimation</a></span><span class="p">?)</span> <span class="o">-&gt;</span> <span class="kt">Void</span><span class="p">,</span>
+    <span class="nv">completion</span><span class="p">:</span> <span class="kt"><a href="../Typealiases.html#/s:12XCoordinator19PresentationHandlera">PresentationHandler</a></span><span class="p">?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>route</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The route to be triggered when the gestureRecognizer begins.
+Make sure that the transition behind is interactive as otherwise the transition is simply performed.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>recognizer</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The gesture recognizer to be used to update the interactive transition.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>handler</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The handler to update the interaction controller of the animation generated by the given <code>transition</code> closure.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>handlerRecognizer</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The gestureRecognizer with which the handler has been registered.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>transition</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The closure to perform the transition. It returns the transition animation to control the interaction controller of.
+<code><a href="../Protocols/TransitionAnimation.html#/s:12XCoordinator19TransitionAnimationP5startyyF">TransitionAnimation.start()</a></code> is automatically called.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>completion</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The closure to be called whenever the transition completes.
+Hint: Might be called multiple times but only once per performing the transition.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:12XCoordinator15BaseCoordinatorC29registerInteractiveTransition3for11triggeredBy8progress12shouldFinish10completionyx_qd__12CoreGraphics7CGFloatVqd__cSbqd__cyycSgtSo19UIGestureRecognizerCRbd__lF"></a>
+                    <a name="//apple_ref/swift/Method/registerInteractiveTransition(for:triggeredBy:progress:shouldFinish:completion:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:12XCoordinator15BaseCoordinatorC29registerInteractiveTransition3for11triggeredBy8progress12shouldFinish10completionyx_qd__12CoreGraphics7CGFloatVqd__cSbqd__cyycSgtSo19UIGestureRecognizerCRbd__lF">registerInteractiveTransition(for:triggeredBy:progress:shouldFinish:completion:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Register an interactive transition triggered by a gesture recognizer.</p>
+
+<p>To get more customization options, check out <code><a href="../Classes/BaseCoordinator.html#/s:12XCoordinator15BaseCoordinatorC29registerInteractiveTransition3for11triggeredBy7handler10completionyx_qd__yqd___AA0F9Animation_pSgyXEtcyycSgtSo19UIGestureRecognizerCRbd__lF">registerInteractiveTransition(for:triggeredBy:handler:completion:)</a></code>.</p>
+
+<p>A target is added to the gestureRecognizer so that the handler is executed every time the state of the gesture recognizer changes.</p>
+<div class="aside aside-note">
+    <p class="aside-title">Note</p>
+    <p>Use <code>unregisterInteractiveTransition(triggeredBy:)</code> to remove previously added interactive transitions.</p>
+
+</div>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">open</span> <span class="kd">func</span> <span class="n">registerInteractiveTransition</span><span class="o">&lt;</span><span class="kt">GestureRecognizer</span><span class="p">:</span> <span class="kt">UIGestureRecognizer</span><span class="o">&gt;</span><span class="p">(</span>
+    <span class="k">for</span> <span class="nv">route</span><span class="p">:</span> <span class="kt">RouteType</span><span class="p">,</span>
+    <span class="n">triggeredBy</span> <span class="nv">recognizer</span><span class="p">:</span> <span class="kt">GestureRecognizer</span><span class="p">,</span>
+    <span class="nv">progress</span><span class="p">:</span> <span class="kd">@escaping</span> <span class="p">(</span><span class="kt">GestureRecognizer</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">CGFloat</span><span class="p">,</span>
+    <span class="nv">shouldFinish</span><span class="p">:</span> <span class="kd">@escaping</span> <span class="p">(</span><span class="kt">GestureRecognizer</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Bool</span><span class="p">,</span>
+    <span class="nv">completion</span><span class="p">:</span> <span class="kt"><a href="../Typealiases.html#/s:12XCoordinator19PresentationHandlera">PresentationHandler</a></span><span class="p">?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>route</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The route to be triggered when the gestureRecognizer begins.
+Make sure that the transition behind is interactive as otherwise the transition is simply performed.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>recognizer</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The gesture recognizer to be used to update the interactive transition.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>progress</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>Return the progress as CGFloat between 0 (start) and 1 (finish).</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>shouldFinish</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>Decide depending on the gestureRecognizer&rsquo;s state whether to finish or cancel a given transition.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>completion</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The closure to be called whenever the transition completes.
+Hint: Might be called multiple times but only once per performing the transition.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <div class="task-name-container">
+                <a name="/Unregistering"></a>
+                <a name="//apple_ref/swift/Section/Unregistering" class="dashAnchor"></a>
+                <a href="#/Unregistering">
+                  <h3 class="section-name">Unregistering</h3>
+                </a>
+              </div>
+              <ul class="item-container">
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:12XCoordinator15BaseCoordinatorC32unregisterInteractiveTransitions11triggeredByySo19UIGestureRecognizerC_tF"></a>
+                    <a name="//apple_ref/swift/Method/unregisterInteractiveTransitions(triggeredBy:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:12XCoordinator15BaseCoordinatorC32unregisterInteractiveTransitions11triggeredByySo19UIGestureRecognizerC_tF">unregisterInteractiveTransitions(triggeredBy:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Unregisters a previously registered interactive transition.</p>
+
+<p>Unregistering does not need to happen to not create reference cycles, etc.
+It is useful, though, to remove previously registered interactive transitions that are no longer needed or wanted.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">open</span> <span class="kd">func</span> <span class="nf">unregisterInteractiveTransitions</span><span class="p">(</span><span class="n">triggeredBy</span> <span class="nv">recognizer</span><span class="p">:</span> <span class="kt">UIGestureRecognizer</span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>recognizer</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The recognizer to unregister interactive transitions for.
+This method will unregister all interactive transitions with that gesture recognizer.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </section>
+
+      </article>
+    </div>
+    <section class="footer">
+      <p>&copy; 2019 <a class="link" href="https://quickbirdstudios.com" target="_blank" rel="external">Stefan Kofler &amp; Paul Kraft</a>. All rights reserved. (Last updated: 2019-01-11)</p>
+      <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.9.4</a>, a <a class="link" href="https://realm.io" target="_blank" rel="external">Realm</a> project.</p>
+    </section>
+  </body>
+</div>
+</html>

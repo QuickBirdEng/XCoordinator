@@ -59,6 +59,8 @@
 		9BE02325214DF68E0093001A /* NibIdentifiable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BE02322214DF68E0093001A /* NibIdentifiable.swift */; };
 		9BE0232C214DF7E50093001A /* TransitionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BE0232A214DF7BE0093001A /* TransitionTests.swift */; };
 		9BE0232D214DF7E80093001A /* TestRoute.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BE02328214DF7970093001A /* TestRoute.swift */; };
+		9BF4109F21F30C3D00184237 /* Animation+Navigation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BF4109E21F30C3D00184237 /* Animation+Navigation.swift */; };
+		9BF410A121F326BA00184237 /* Animation+Modal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BF410A021F326BA00184237 /* Animation+Modal.swift */; };
 		CD716A4E6BA9C2B6CB54E9E3 /* Pods_XCoordinator_Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BF0506F73018088DFA2F8D0C /* Pods_XCoordinator_Tests.framework */; };
 /* End PBXBuildFile section */
 
@@ -141,6 +143,8 @@
 		9BE02322214DF68E0093001A /* NibIdentifiable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NibIdentifiable.swift; sourceTree = "<group>"; };
 		9BE02328214DF7970093001A /* TestRoute.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestRoute.swift; sourceTree = "<group>"; };
 		9BE0232A214DF7BE0093001A /* TransitionTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransitionTests.swift; sourceTree = "<group>"; };
+		9BF4109E21F30C3D00184237 /* Animation+Navigation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Animation+Navigation.swift"; sourceTree = "<group>"; };
+		9BF410A021F326BA00184237 /* Animation+Modal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Animation+Modal.swift"; sourceTree = "<group>"; };
 		B299AC83F329D65CD398756E /* Pods_XCoordinator_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_XCoordinator_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		BF0506F73018088DFA2F8D0C /* Pods_XCoordinator_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_XCoordinator_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D1254A702051E4AC33843829 /* XCoordinator.podspec */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = XCoordinator.podspec; path = ../XCoordinator.podspec; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
@@ -216,6 +220,7 @@
 				9BC67A0F21A451730076D6EF /* Services */,
 				9BC67A0E21A451570076D6EF /* Views */,
 				9BE0231F214DF68E0093001A /* Utils */,
+				9BF410A221F3299F00184237 /* Animations */,
 				9B33481621C4802700E954A3 /* Extensions */,
 				607FACD31AFB9204008FA782 /* Supporting Files */,
 			);
@@ -266,9 +271,6 @@
 			isa = PBXGroup;
 			children = (
 				9B07F06821D6D3DB00A0C149 /* TransitionAnimation+Defaults.swift */,
-				9B07F06421D6D2BF00A0C149 /* Animation+Scale.swift */,
-				9B07F06621D6D35500A0C149 /* Animation+Fade.swift */,
-				9B07F06A21D6D44200A0C149 /* Animation+Swirl.swift */,
 				9B33481221C47F9700E954A3 /* Presentable+Rx.swift */,
 				9B33481721C4804600E954A3 /* Coordinator+Rx.swift */,
 				9B07F06221D6D26700A0C149 /* CGAffineTransform+InPlace.swift */,
@@ -413,6 +415,18 @@
 			path = Coordinators;
 			sourceTree = "<group>";
 		};
+		9BF410A221F3299F00184237 /* Animations */ = {
+			isa = PBXGroup;
+			children = (
+				9BF4109E21F30C3D00184237 /* Animation+Navigation.swift */,
+				9BF410A021F326BA00184237 /* Animation+Modal.swift */,
+				9B07F06421D6D2BF00A0C149 /* Animation+Scale.swift */,
+				9B07F06621D6D35500A0C149 /* Animation+Fade.swift */,
+				9B07F06A21D6D44200A0C149 /* Animation+Swirl.swift */,
+			);
+			path = Animations;
+			sourceTree = "<group>";
+		};
 		9E9FF366511AAF2BC5797BB7 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -490,6 +504,7 @@
 		607FACC81AFB9204008FA782 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				DefaultBuildSystemTypeForWorkspace = Original;
 				LastSwiftUpdateCheck = 0940;
 				LastUpgradeCheck = 1000;
 				ORGANIZATIONNAME = "QuickBird Studios";
@@ -660,11 +675,13 @@
 				9BE0231A214DF6740093001A /* UsersViewController.swift in Sources */,
 				9B07F06B21D6D44200A0C149 /* Animation+Swirl.swift in Sources */,
 				607FACD61AFB9204008FA782 /* AppDelegate.swift in Sources */,
+				9BF4109F21F30C3D00184237 /* Animation+Navigation.swift in Sources */,
 				9BC67A1321A4526B0076D6EF /* HomeViewModelImpl.swift in Sources */,
 				9B07F06921D6D3DB00A0C149 /* TransitionAnimation+Defaults.swift in Sources */,
 				9BE02316214DF6740093001A /* LoginViewController.swift in Sources */,
 				9BE02311214DF6740093001A /* NewsViewController.swift in Sources */,
 				9BE02310214DF6740093001A /* NewsViewModelImpl.swift in Sources */,
+				9BF410A121F326BA00184237 /* Animation+Modal.swift in Sources */,
 				9BC67A1721A454800076D6EF /* UsersViewModelImpl.swift in Sources */,
 				9BE02319214DF6740093001A /* UserViewController.swift in Sources */,
 				9BC67A1521A4537F0076D6EF /* UserViewModelImpl.swift in Sources */,
@@ -850,7 +867,7 @@
 				DEVELOPMENT_TEAM = 77E79NGPCV;
 				INFOPLIST_FILE = XCoordinator/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited)";
 				MODULE_NAME = ExampleApp;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.quickbirdstudios.XCoordinator-Example";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -867,7 +884,7 @@
 				DEVELOPMENT_TEAM = 77E79NGPCV;
 				INFOPLIST_FILE = XCoordinator/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited)";
 				MODULE_NAME = ExampleApp;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.quickbirdstudios.XCoordinator-Example";
 				PRODUCT_NAME = "$(TARGET_NAME)";

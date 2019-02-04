@@ -6,6 +6,14 @@
 //  Copyright © 2018 QuickBird Studios. All rights reserved.
 //
 
+///
+/// AnyTransitionPerformer can be used as an abstraction from a specific TransitionPerformer implementation
+/// without losing type information about its TransitionType.
+///
+/// This type abstraction can be especially helpful when performing transitions.
+/// AnyTransitionPerformer abstracts away any implementation specific details and reduces coordinators to the capabilities
+/// of the `TransitionPerformer` protocol.
+///
 public class AnyTransitionPerformer<TransitionType: TransitionProtocol>: TransitionPerformer {
 
     // MARK: - Stored properties
@@ -37,7 +45,7 @@ public class AnyTransitionPerformer<TransitionType: TransitionProtocol>: Transit
         _perform(transition, options, completion)
     }
 
-    // MARK: - Init
+    // MARK: - Initialization
 
     init<T: TransitionPerformer>(_ coordinator: T) where TransitionType == T.TransitionType {
         self._viewController = { coordinator.viewController }

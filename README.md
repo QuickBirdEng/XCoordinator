@@ -277,7 +277,7 @@ Describes possible navigation paths within a flow, a collection of closely relat
 
 ### 👨‍✈️ Coordinator / Router
 
-An object loading views and creating viewModels based on triggered routes. A Coordinator creates and performs transitions to these scenes based on the data transferred via the route. In contrast to the coordinator, a router can be seen as an abstraction from that concept limited to triggering routes. Often, a Router is used to abstract away from a specific coordinator in ViewModels.
+An object loading views and creating viewModels based on triggered routes. A Coordinator creates and performs transitions to these scenes based on the data transferred via the route. In contrast to the coordinator, a router can be seen as an abstraction from that concept limited to triggering routes. Often, a Router is used to abstract from a specific coordinator in ViewModels.
 
 ### 🌗 Transition
 

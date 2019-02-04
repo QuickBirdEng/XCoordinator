@@ -70,10 +70,10 @@ class TransitionTests: XCTestCase {
 
     // MARK: - Helpers
 
-    private func testStandardTransitions<C: Coordinator>(on coordinator: C) {
+    private func testStandardTransitions<C: Coordinator, RootViewController>(on coordinator: C) where C.TransitionType == Transition<RootViewController> {
         testCompletionCalled(on: coordinator, transition: .none())
-        testCompletionCalled(on: coordinator, transition: .present(UIViewController(), animation: nil))
-        testCompletionCalled(on: coordinator, transition: .dismiss(animation: nil))
+        testCompletionCalled(on: coordinator, transition: .present(UIViewController()))
+        testCompletionCalled(on: coordinator, transition: .dismiss())
         testCompletionCalled(on: coordinator, transition: .embed(UIViewController(), in: UIViewController()))
         testCompletionCalled(on: coordinator, transition: .multiple(.none()))
         testCompletionCalled(on: coordinator, transition: .multiple())

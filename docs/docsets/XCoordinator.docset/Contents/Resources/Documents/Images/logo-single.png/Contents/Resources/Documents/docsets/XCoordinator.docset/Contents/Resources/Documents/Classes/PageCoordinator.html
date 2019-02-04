@@ -1,0 +1,459 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>PageCoordinator Class Reference</title>
+    <link rel="stylesheet" type="text/css" href="../css/jazzy.css" />
+    <link rel="stylesheet" type="text/css" href="../css/highlight.css" />
+    <meta charset='utf-8'>
+    <script src="../js/jquery.min.js" defer></script>
+    <script src="../js/jazzy.js" defer></script>
+    
+  </head>
+  <body>
+    <a name="//apple_ref/swift/Class/PageCoordinator" class="dashAnchor"></a>
+    <a title="PageCoordinator Class Reference"></a>
+    <header>
+      <div class="content-wrapper">
+        <p><a href="../index.html">XCoordinator Docs</a> (100% documented)</p>
+      </div>
+    </header>
+    <div class="content-wrapper">
+      <p id="breadcrumbs">
+        <a href="../index.html">XCoordinator Reference</a>
+        <img id="carat" src="../img/carat.png" />
+        PageCoordinator Class Reference
+      </p>
+    </div>
+    <div class="content-wrapper">
+      <nav class="sidebar">
+        <ul class="nav-groups">
+          <li class="nav-group-name">
+            <a href="../Classes.html">Classes</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Classes/Animation.html">Animation</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/AnyCoordinator.html">AnyCoordinator</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/AnyRouter.html">AnyRouter</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/AnyTransitionPerformer.html">AnyTransitionPerformer</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/BaseCoordinator.html">BaseCoordinator</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/BasicCoordinator.html">BasicCoordinator</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/BasicCoordinator/InitialLoadingType.html">– InitialLoadingType</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/InteractiveTransitionAnimation.html">InteractiveTransitionAnimation</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/InterruptibleTransitionAnimation.html">InterruptibleTransitionAnimation</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/NavigationAnimationDelegate.html">NavigationAnimationDelegate</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/NavigationCoordinator.html">NavigationCoordinator</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/PageCoordinator.html">PageCoordinator</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/PageCoordinatorDataSource.html">PageCoordinatorDataSource</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/RedirectionCoordinator.html">RedirectionCoordinator</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/RedirectionRouter.html">RedirectionRouter</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/ReferenceBox.html">ReferenceBox</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/SplitCoordinator.html">SplitCoordinator</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/StaticTransitionAnimation.html">StaticTransitionAnimation</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/TabBarAnimationDelegate.html">TabBarAnimationDelegate</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/TabBarCoordinator.html">TabBarCoordinator</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/ViewCoordinator.html">ViewCoordinator</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="../Extensions.html">Extensions</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Extensions/Reactive.html">Reactive</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Extensions/UIPageViewController.html">UIPageViewController</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Extensions/UIPageViewController/Configuration.html">– Configuration</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Extensions/UIView.html">UIView</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Extensions/UIViewController.html">UIViewController</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="../Protocols.html">Protocols</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Protocols/Container.html">Container</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols/Coordinator.html">Coordinator</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols/PercentDrivenInteractionController.html">PercentDrivenInteractionController</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols/Presentable.html">Presentable</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols.html#/s:12XCoordinator5RouteP">Route</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols/Router.html">Router</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols/TransitionAnimation.html">TransitionAnimation</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols/TransitionPerformer.html">TransitionPerformer</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols/TransitionProtocol.html">TransitionProtocol</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="../Structs.html">Structures</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Structs.html#/s:12XCoordinator26PresentationHandlerContextV">PresentationHandlerContext</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/Transition.html">Transition</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/TransitionOptions.html">TransitionOptions</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="../Typealiases.html">Type Aliases</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Typealiases.html#/s:12XCoordinator24AnyNavigationCoordinatora">AnyNavigationCoordinator</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Typealiases.html#/s:12XCoordinator20AnyTabBarCoordinatora">AnyTabBarCoordinator</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Typealiases.html#/s:12XCoordinator18AnyViewCoordinatora">AnyViewCoordinator</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Typealiases.html#/s:12XCoordinator26BasicNavigationCoordinatora">BasicNavigationCoordinator</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Typealiases.html#/s:12XCoordinator22BasicTabBarCoordinatora">BasicTabBarCoordinator</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Typealiases.html#/s:12XCoordinator20BasicViewCoordinatora">BasicViewCoordinator</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Typealiases.html#/s:12XCoordinator26ContextPresentationHandlera">ContextPresentationHandler</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Typealiases.html#/s:12XCoordinator20NavigationTransitiona">NavigationTransition</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Typealiases.html#/s:12XCoordinator14PageTransitiona">PageTransition</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Typealiases.html#/s:12XCoordinator19PresentationHandlera">PresentationHandler</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Typealiases.html#/s:12XCoordinator15SplitTransitiona">SplitTransition</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Typealiases.html#/s:12XCoordinator16TabBarTransitiona">TabBarTransition</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Typealiases.html#/s:12XCoordinator14ViewTransitiona">ViewTransition</a>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </nav>
+      <article class="main-content">
+        <section>
+          <section class="section">
+            <h1>PageCoordinator</h1>
+              <div class="declaration">
+                <div class="language">
+                  <pre class="highlight swift"><code><span class="kd">open</span> <span class="kd">class</span> <span class="kt">PageCoordinator</span><span class="o">&lt;</span><span class="kt">RouteType</span><span class="o">&gt;</span> <span class="p">:</span> <span class="kt"><a href="../Classes/BaseCoordinator.html">BaseCoordinator</a></span><span class="o">&lt;</span><span class="kt">RouteType</span><span class="p">,</span> <span class="kt"><a href="../Typealiases.html#/s:12XCoordinator14PageTransitiona">PageTransition</a></span><span class="o">&gt;</span> <span class="k">where</span> <span class="kt">RouteType</span> <span class="p">:</span> <span class="kt"><a href="../Protocols.html#/s:12XCoordinator5RouteP">Route</a></span></code></pre>
+
+                </div>
+              </div>
+            <p>PageCoordinator provides a base class for your custom coordinator with a <code>UIPageViewController</code> rootViewController.</p>
+<div class="aside aside-note">
+    <p class="aside-title">Note</p>
+    PageCoordinator sets the dataSource of the rootViewController to reflect the parameters in the initializer.
+
+</div>
+
+          </section>
+          <section class="section task-group-section">
+            <div class="task-group">
+              <div class="task-name-container">
+                <a name="/Stored%20properties"></a>
+                <a name="//apple_ref/swift/Section/Stored properties" class="dashAnchor"></a>
+                <a href="#/Stored%20properties">
+                  <h3 class="section-name">Stored properties</h3>
+                </a>
+              </div>
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:12XCoordinator15PageCoordinatorC10dataSourceAA0bc4DataE0Cvp"></a>
+                    <a name="//apple_ref/swift/Property/dataSource" class="dashAnchor"></a>
+                    <a class="token" href="#/s:12XCoordinator15PageCoordinatorC10dataSourceAA0bc4DataE0Cvp">dataSource</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>The dataSource of the rootViewController.</p>
+
+<p>Feel free to change the pages at runtime. To reflect the changes in the rootViewController, perform a <code>set</code> transition as well.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="k">let</span> <span class="nv">dataSource</span><span class="p">:</span> <span class="kt"><a href="../Classes/PageCoordinatorDataSource.html">PageCoordinatorDataSource</a></span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:12XCoordinator15PageCoordinatorC13configurationSo20UIPageViewControllerCAAE13ConfigurationVvp"></a>
+                    <a name="//apple_ref/swift/Property/configuration" class="dashAnchor"></a>
+                    <a class="token" href="#/s:12XCoordinator15PageCoordinatorC13configurationSo20UIPageViewControllerCAAE13ConfigurationVvp">configuration</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>The configuration of the rootViewController. See <code><a href="../Extensions/UIPageViewController/Configuration.html">UIPageViewController.Configuration</a></code> for more information.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="k">let</span> <span class="nv">configuration</span><span class="p">:</span> <span class="kt">UIPageViewController</span><span class="o">.</span><span class="kt">Configuration</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <div class="task-name-container">
+                <a name="/Initialization"></a>
+                <a name="//apple_ref/swift/Section/Initialization" class="dashAnchor"></a>
+                <a href="#/Initialization">
+                  <h3 class="section-name">Initialization</h3>
+                </a>
+              </div>
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:12XCoordinator15PageCoordinatorC5pages4loop3set9direction13configurationACyxGSayAA11Presentable_pG_SbAaJ_pSgSo39UIPageViewControllerNavigationDirectionVSo0jkL0CAAE13ConfigurationVtcfc"></a>
+                    <a name="//apple_ref/swift/Method/init(pages:loop:set:direction:configuration:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:12XCoordinator15PageCoordinatorC5pages4loop3set9direction13configurationACyxGSayAA11Presentable_pG_SbAaJ_pSgSo39UIPageViewControllerNavigationDirectionVSo0jkL0CAAE13ConfigurationVtcfc">init(pages:loop:set:direction:configuration:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Creates a PageCoordinator with several sequential pages, potentially looping.
+It further sets the currently shown page and a direction for the animation of displaying it.
+If you need custom configuration of the rootViewController, modify the <code><a href="../Classes/PageCoordinator.html#/s:12XCoordinator15PageCoordinatorC13configurationSo20UIPageViewControllerCAAE13ConfigurationVvp">configuration</a></code> parameter,
+since you cannot change this after the initialization.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="nf">init</span><span class="p">(</span><span class="nv">pages</span><span class="p">:</span> <span class="p">[</span><span class="kt"><a href="../Protocols/Presentable.html">Presentable</a></span><span class="p">],</span>
+            <span class="nv">loop</span><span class="p">:</span> <span class="kt">Bool</span> <span class="o">=</span> <span class="kc">false</span><span class="p">,</span>
+            <span class="nv">set</span><span class="p">:</span> <span class="kt"><a href="../Protocols/Presentable.html">Presentable</a></span><span class="p">?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span>
+            <span class="nv">direction</span><span class="p">:</span> <span class="kt">UIPageViewController</span><span class="o">.</span><span class="kt">NavigationDirection</span> <span class="o">=</span> <span class="o">.</span><span class="n">forward</span><span class="p">,</span>
+            <span class="nv">configuration</span><span class="p">:</span> <span class="kt">UIPageViewController</span><span class="o">.</span><span class="kt">Configuration</span> <span class="o">=</span> <span class="o">.</span><span class="k">default</span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>pages</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The pages of the PageCoordinator.
+These can later be changed, if necessary, using the <code><a href="../Classes/PageCoordinator.html#/s:12XCoordinator15PageCoordinatorC10dataSourceAA0bc4DataE0Cvp">PageCoordinator.dataSource</a></code> property.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>loop</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>Whether or not the PageCoordinator should loop when hitting an end of the specified pages.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>set</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The presentable to be shown right from the start.
+This should be one of the elements of the specified pages.
+If not specified, no <code>set</code> transition is triggered, which results in the first page being shown.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>direction</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The direction in which the transition to set the specified first page (parameter <code>set</code>) should be animated in.
+If you specify <code>nil</code> for <code>set</code>, this parameter is ignored.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>configuration</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The configuration of the rootViewController. You cannot change this configuration later anymore (Limitation of UIKit).</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <div class="task-name-container">
+                <a name="/Overrides"></a>
+                <a name="//apple_ref/swift/Section/Overrides" class="dashAnchor"></a>
+                <a href="#/Overrides">
+                  <h3 class="section-name">Overrides</h3>
+                </a>
+              </div>
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:12XCoordinator15PageCoordinatorC26generateRootViewControllerSo06UIPagefG0CyF"></a>
+                    <a name="//apple_ref/swift/Method/generateRootViewController()" class="dashAnchor"></a>
+                    <a class="token" href="#/s:12XCoordinator15PageCoordinatorC26generateRootViewControllerSo06UIPagefG0CyF">generateRootViewController()</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">open</span> <span class="k">override</span> <span class="kd">func</span> <span class="nf">generateRootViewController</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="kt">UIPageViewController</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </section>
+        </section>
+        <section id="footer">
+          <p>&copy; 2019 <a class="link" href="https://github.com/quickbirdstudios/XCoordinator" target="_blank" rel="external">Stefan Kofler and Paul Kraft</a>. All rights reserved. (Last updated: 2019-01-07)</p>
+          <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.9.4</a>, a <a class="link" href="https://realm.io" target="_blank" rel="external">Realm</a> project.</p>
+        </section>
+      </article>
+    </div>
+  </body>
+</div>
+</html>

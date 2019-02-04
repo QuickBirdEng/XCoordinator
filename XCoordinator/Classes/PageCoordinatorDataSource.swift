@@ -6,15 +6,37 @@
 //  Copyright © 2018 QuickBird Studios. All rights reserved.
 //
 
-open class PageCoordinatorDataSource: NSObject, UIPageViewControllerDataSource, UIPageViewControllerDelegate {
+///
+/// PageCoordinatorDataSource is a
+/// [UIPageViewControllerDataSource](https://developer.apple.com/documentation/uikit/UIPageViewControllerDataSource)
+/// implementation with a rather static list of pages. It further allows looping through the given pages.
+///
+open class PageCoordinatorDataSource: NSObject, UIPageViewControllerDataSource {
 
     // MARK: - Stored properties
 
-    open private(set) var pages: [UIViewController]
-    open private(set) var loop: Bool
+    /// The pages of the `UIPageViewController` in sequential order.
+    open var pages: [UIViewController]
 
-    // MARK: - Init
+    /// Whether or not the pages of the `UIPageViewController` should be in a loop,
+    /// i.e. whether a swipe to the left of the last page should result in the first page being shown
+    /// (or the last shown when swiping right on the first page)
+    open var loop: Bool
 
+    // MARK: - Initialization
+
+    ///
+    /// Creates a PageCoordinatorDataSource with the given pages and looping capabilities.
+    ///
+    /// - Parameters:
+    ///     - pages:
+    ///         The pages to be shown in the `UIPageViewController`.
+    ///     - loop:
+    ///         Whether or not the pages of the `UIPageViewController` should be in a loop,
+    ///         i.e. whether a swipe to the left of the last page should result in the first page being shown
+    ///         (or the last shown when swiping right on the first page)
+    ///         If you specify `false` here, the user cannot swipe left on the last page and right on the first.
+    ///
     public init(pages: [UIViewController], loop: Bool) {
         self.pages = pages
         self.loop = loop
@@ -22,16 +44,50 @@ open class PageCoordinatorDataSource: NSObject, UIPageViewControllerDataSource, 
 
     // MARK: - Methods
 
+    ///
+    /// See [UIPageViewControllerDataSource](https://developer.apple.com/documentation/uikit/UIPageViewControllerDataSource)
+    /// for further information.
+    ///
+    /// - Parameter pageViewController:
+    ///     The dataSource owner.
+    ///
+    /// - Returns:
+    ///     The count of `pages`, if it is displayed. Otherwise 0.
+    ///
     open func presentationCount(for pageViewController: UIPageViewController) -> Int {
         let isNotDisplaying = pageViewController.viewControllers?.isEmpty ?? true
         return isNotDisplaying ? 0 : pages.count
     }
 
+    ///
+    /// See [UIPageViewControllerDataSource](https://developer.apple.com/documentation/uikit/UIPageViewControllerDataSource)
+    /// for further information.
+    ///
+    /// - Parameter pageViewController:
+    ///     The dataSource owner.
+    ///
+    /// - Returns:
+    ///     The index of the currently visible view controller.
+    ///
     open func presentationIndex(for pageViewController: UIPageViewController) -> Int {
         guard let viewController = pageViewController.viewControllers?.first else { return 0 }
         return pages.firstIndex(of: viewController) ?? 0
     }
 
+    ///
+    /// See [UIPageViewControllerDataSource](https://developer.apple.com/documentation/uikit/UIPageViewControllerDataSource)
+    /// for further information.
+    ///
+    /// This method first searches for the index of the given viewController in the `pages` array.
+    /// It then tries to find a viewController at the preceding position by potentially looping.
+    ///
+    /// - Parameters:
+    ///     - pageViewController: The dataSource owner.
+    ///     - viewController: The viewController to find the preceding viewController of.
+    ///
+    /// - Returns:
+    ///     The preceding viewController.
+    ///
     open func pageViewController(_ pageViewController: UIPageViewController,
                                  viewControllerBefore viewController: UIViewController) -> UIViewController? {
         guard let index = pages.firstIndex(of: viewController) else {
@@ -44,6 +100,20 @@ open class PageCoordinatorDataSource: NSObject, UIPageViewControllerDataSource, 
         return pages[prevIndex].viewController
     }
 
+    ///
+    /// See [UIPageViewControllerDataSource](https://developer.apple.com/documentation/uikit/UIPageViewControllerDataSource)
+    /// for further information.
+    ///
+    /// This method first searches for the index of the given viewController in the `pages` array.
+    /// It then tries to find a viewController at the following position by potentially looping.
+    ///
+    /// - Parameters:
+    ///     - pageViewController: The dataSource owner.
+    ///     - viewController: The viewController to find the following viewController of.
+    ///
+    /// - Returns:
+    ///     The following viewController.
+    ///
     open func pageViewController(_ pageViewController: UIPageViewController,
                                  viewControllerAfter viewController: UIViewController) -> UIViewController? {
         guard let index = pages.firstIndex(of: viewController) else {

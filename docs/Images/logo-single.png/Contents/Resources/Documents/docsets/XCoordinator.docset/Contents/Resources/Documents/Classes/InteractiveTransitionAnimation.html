@@ -1,0 +1,841 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>InteractiveTransitionAnimation Class Reference</title>
+    <link rel="stylesheet" type="text/css" href="../css/jazzy.css" />
+    <link rel="stylesheet" type="text/css" href="../css/highlight.css" />
+    <meta charset='utf-8'>
+    <script src="../js/jquery.min.js" defer></script>
+    <script src="../js/jazzy.js" defer></script>
+    
+  </head>
+  <body>
+    <a name="//apple_ref/swift/Class/InteractiveTransitionAnimation" class="dashAnchor"></a>
+    <a title="InteractiveTransitionAnimation Class Reference"></a>
+    <header>
+      <div class="content-wrapper">
+        <p><a href="../index.html">XCoordinator Docs</a> (100% documented)</p>
+      </div>
+    </header>
+    <div class="content-wrapper">
+      <p id="breadcrumbs">
+        <a href="../index.html">XCoordinator Reference</a>
+        <img id="carat" src="../img/carat.png" />
+        InteractiveTransitionAnimation Class Reference
+      </p>
+    </div>
+    <div class="content-wrapper">
+      <nav class="sidebar">
+        <ul class="nav-groups">
+          <li class="nav-group-name">
+            <a href="../Classes.html">Classes</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Classes/Animation.html">Animation</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/AnyCoordinator.html">AnyCoordinator</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/AnyRouter.html">AnyRouter</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/AnyTransitionPerformer.html">AnyTransitionPerformer</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/BaseCoordinator.html">BaseCoordinator</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/BasicCoordinator.html">BasicCoordinator</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/BasicCoordinator/InitialLoadingType.html">– InitialLoadingType</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/InteractiveTransitionAnimation.html">InteractiveTransitionAnimation</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/InterruptibleTransitionAnimation.html">InterruptibleTransitionAnimation</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/NavigationAnimationDelegate.html">NavigationAnimationDelegate</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/NavigationCoordinator.html">NavigationCoordinator</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/PageCoordinator.html">PageCoordinator</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/PageCoordinatorDataSource.html">PageCoordinatorDataSource</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/RedirectionCoordinator.html">RedirectionCoordinator</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/RedirectionRouter.html">RedirectionRouter</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/ReferenceBox.html">ReferenceBox</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/SplitCoordinator.html">SplitCoordinator</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/StaticTransitionAnimation.html">StaticTransitionAnimation</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/TabBarAnimationDelegate.html">TabBarAnimationDelegate</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/TabBarCoordinator.html">TabBarCoordinator</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/ViewCoordinator.html">ViewCoordinator</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="../Extensions.html">Extensions</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Extensions/Reactive.html">Reactive</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Extensions/UIPageViewController.html">UIPageViewController</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Extensions/UIPageViewController/Configuration.html">– Configuration</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Extensions/UIView.html">UIView</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Extensions/UIViewController.html">UIViewController</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="../Protocols.html">Protocols</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Protocols/Container.html">Container</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols/Coordinator.html">Coordinator</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols/PercentDrivenInteractionController.html">PercentDrivenInteractionController</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols/Presentable.html">Presentable</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols.html#/s:12XCoordinator5RouteP">Route</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols/Router.html">Router</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols/TransitionAnimation.html">TransitionAnimation</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols/TransitionPerformer.html">TransitionPerformer</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols/TransitionProtocol.html">TransitionProtocol</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="../Structs.html">Structures</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Structs.html#/s:12XCoordinator26PresentationHandlerContextV">PresentationHandlerContext</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/Transition.html">Transition</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/TransitionOptions.html">TransitionOptions</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="../Typealiases.html">Type Aliases</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Typealiases.html#/s:12XCoordinator24AnyNavigationCoordinatora">AnyNavigationCoordinator</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Typealiases.html#/s:12XCoordinator20AnyTabBarCoordinatora">AnyTabBarCoordinator</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Typealiases.html#/s:12XCoordinator18AnyViewCoordinatora">AnyViewCoordinator</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Typealiases.html#/s:12XCoordinator26BasicNavigationCoordinatora">BasicNavigationCoordinator</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Typealiases.html#/s:12XCoordinator22BasicTabBarCoordinatora">BasicTabBarCoordinator</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Typealiases.html#/s:12XCoordinator20BasicViewCoordinatora">BasicViewCoordinator</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Typealiases.html#/s:12XCoordinator26ContextPresentationHandlera">ContextPresentationHandler</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Typealiases.html#/s:12XCoordinator20NavigationTransitiona">NavigationTransition</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Typealiases.html#/s:12XCoordinator14PageTransitiona">PageTransition</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Typealiases.html#/s:12XCoordinator19PresentationHandlera">PresentationHandler</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Typealiases.html#/s:12XCoordinator15SplitTransitiona">SplitTransition</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Typealiases.html#/s:12XCoordinator16TabBarTransitiona">TabBarTransition</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Typealiases.html#/s:12XCoordinator14ViewTransitiona">ViewTransition</a>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </nav>
+      <article class="main-content">
+        <section>
+          <section class="section">
+            <h1>InteractiveTransitionAnimation</h1>
+              <div class="declaration">
+                <div class="language">
+                  <pre class="highlight swift"><code><span class="kd">open</span> <span class="kd">class</span> <span class="kt">InteractiveTransitionAnimation</span> <span class="p">:</span> <span class="kt">NSObject</span><span class="p">,</span> <span class="kt"><a href="../Protocols/TransitionAnimation.html">TransitionAnimation</a></span></code></pre>
+
+                </div>
+              </div>
+            <p><code>InteractiveTransitionAnimation</code> provides a simple interface to create interactive transition animations.</p>
+
+<p>You can simply create an <code>InteractiveTransitionAnimation</code> by providing the duration, the animation code
+and (optionally) a closure to create an interaction controller.</p>
+<div class="aside aside-note">
+    <p class="aside-title">Note</p>
+    To get further information read the UIKit documentation of <code>UIViewControllerAnimatedTransitioning</code>,
+<code>UIViewControllerInteractiveTransitioning</code>, <code>UIViewControllerContextTransitioning</code> and
+<code>UIPercentDrivenInteractiveTransition</code>.
+
+</div>
+
+          </section>
+          <section class="section task-group-section">
+            <div class="task-group">
+              <div class="task-name-container">
+                <a name="/Computed%20properties"></a>
+                <a name="//apple_ref/swift/Section/Computed properties" class="dashAnchor"></a>
+                <a href="#/Computed%20properties">
+                  <h3 class="section-name">Computed properties</h3>
+                </a>
+              </div>
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:12XCoordinator19TransitionAnimationP21interactionControllerAA024PercentDrivenInteractionE0_pSgvp"></a>
+                    <a name="//apple_ref/swift/Property/interactionController" class="dashAnchor"></a>
+                    <a class="token" href="#/s:12XCoordinator19TransitionAnimationP21interactionControllerAA024PercentDrivenInteractionE0_pSgvp">interactionController</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">open</span> <span class="k">var</span> <span class="nv">interactionController</span><span class="p">:</span> <span class="kt"><a href="../Protocols/PercentDrivenInteractionController.html">PercentDrivenInteractionController</a></span><span class="p">?</span> <span class="p">{</span> <span class="k">get</span> <span class="p">}</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <div class="task-name-container">
+                <a name="/Initialization"></a>
+                <a name="//apple_ref/swift/Section/Initialization" class="dashAnchor"></a>
+                <a href="#/Initialization">
+                  <h3 class="section-name">Initialization</h3>
+                </a>
+              </div>
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:12XCoordinator30InteractiveTransitionAnimationC8duration10transition29generateInteractionControllerACSd_ySo06UIViewI20ContextTransitioning_pcAA013PercentDrivenhI0_pSgyctcfc"></a>
+                    <a name="//apple_ref/swift/Method/init(duration:transition:generateInteractionController:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:12XCoordinator30InteractiveTransitionAnimationC8duration10transition29generateInteractionControllerACSd_ySo06UIViewI20ContextTransitioning_pcAA013PercentDrivenhI0_pSgyctcfc">init(duration:transition:generateInteractionController:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Creates an InteractiveTransitionAnimation with a duration, an animation closure and a closure to
+generate an interaction controller.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="nf">init</span><span class="p">(</span><span class="nv">duration</span><span class="p">:</span> <span class="kt">TimeInterval</span><span class="p">,</span>
+            <span class="nv">transition</span><span class="p">:</span> <span class="kd">@escaping</span> <span class="p">(</span><span class="kt">UIViewControllerContextTransitioning</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Void</span><span class="p">,</span>
+            <span class="nv">generateInteractionController</span><span class="p">:</span> <span class="kd">@escaping</span> <span class="p">()</span> <span class="o">-&gt;</span> <span class="kt"><a href="../Protocols/PercentDrivenInteractionController.html">PercentDrivenInteractionController</a></span><span class="p">?)</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>duration</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The duration of the animation.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>transition</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The animation code.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>context</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The context in which the transition is performed.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>generateInteractionController</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The closure to generate an interaction controller when needed,
+usually at the beginning of a transition.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:12XCoordinator30InteractiveTransitionAnimationC8duration10transitionACSd_ySo36UIViewControllerContextTransitioning_pctcfc"></a>
+                    <a name="//apple_ref/swift/Method/init(duration:transition:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:12XCoordinator30InteractiveTransitionAnimationC8duration10transitionACSd_ySo36UIViewControllerContextTransitioning_pctcfc">init(duration:transition:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Convenience initializer for <code><a href="../Classes/InteractiveTransitionAnimation.html#/s:12XCoordinator30InteractiveTransitionAnimationC8duration10transition29generateInteractionControllerACSd_ySo06UIViewI20ContextTransitioning_pcAA013PercentDrivenhI0_pSgyctcfc">init(duration:transition:generateInteractionController:)</a></code>.
+By ommitting the <code>generateInteractionController</code> closure, the transition will use
+<code>UIPercentDrivenInteractiveTransition</code> to create interaction controllers.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="n">convenience</span> <span class="nf">init</span><span class="p">(</span><span class="nv">duration</span><span class="p">:</span> <span class="kt">TimeInterval</span><span class="p">,</span>
+                        <span class="nv">transition</span><span class="p">:</span> <span class="kd">@escaping</span> <span class="p">(</span><span class="kt">UIViewControllerContextTransitioning</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Void</span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>duration</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The duration of the animation.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>transition</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The animation code.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>context</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The context in which the transition is performed.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:12XCoordinator30InteractiveTransitionAnimationC010transitionD029generateInteractionControllerAcA06StaticcD0C_AA013PercentDrivengH0_pSgyctcfc"></a>
+                    <a name="//apple_ref/swift/Method/init(transitionAnimation:generateInteractionController:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:12XCoordinator30InteractiveTransitionAnimationC010transitionD029generateInteractionControllerAcA06StaticcD0C_AA013PercentDrivengH0_pSgyctcfc">init(transitionAnimation:generateInteractionController:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Convenience initializer for <code><a href="../Classes/InteractiveTransitionAnimation.html#/s:12XCoordinator30InteractiveTransitionAnimationC8duration10transition29generateInteractionControllerACSd_ySo06UIViewI20ContextTransitioning_pcAA013PercentDrivenhI0_pSgyctcfc">init(duration:transition:generateInteractionController:)</a></code>.
+Provides a simple interface to make StaticTransitionAnimations interactive.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="n">convenience</span> <span class="nf">init</span><span class="p">(</span><span class="nv">transitionAnimation</span><span class="p">:</span> <span class="kt"><a href="../Classes/StaticTransitionAnimation.html">StaticTransitionAnimation</a></span><span class="p">,</span>
+                        <span class="nv">generateInteractionController</span><span class="p">:</span> <span class="kd">@escaping</span> <span class="p">()</span> <span class="o">-&gt;</span> <span class="kt"><a href="../Protocols/PercentDrivenInteractionController.html">PercentDrivenInteractionController</a></span><span class="p">?)</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>transitionAnimation</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The StaticTransitionAnimation to be made interactive.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>generateInteractionController</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The closure to generate an interaction controller when needed,
+usually at the beginning of a transition.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:12XCoordinator30InteractiveTransitionAnimationC010transitionD0AcA06StaticcD0C_tcfc"></a>
+                    <a name="//apple_ref/swift/Method/init(transitionAnimation:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:12XCoordinator30InteractiveTransitionAnimationC010transitionD0AcA06StaticcD0C_tcfc">init(transitionAnimation:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Convenience initializer for <code><a href="../Classes/InteractiveTransitionAnimation.html#/s:12XCoordinator30InteractiveTransitionAnimationC8duration10transitionACSd_ySo36UIViewControllerContextTransitioning_pctcfc">init(duration:transition:)</a></code>.
+Provides a simple interface to make StaticTransitionAnimations interactive.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="n">convenience</span> <span class="nf">init</span><span class="p">(</span><span class="nv">transitionAnimation</span><span class="p">:</span> <span class="kt"><a href="../Classes/StaticTransitionAnimation.html">StaticTransitionAnimation</a></span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>transitionAnimation</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The StaticTransitionAnimation to be made interactive.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <div class="task-name-container">
+                <a name="/Methods"></a>
+                <a name="//apple_ref/swift/Section/Methods" class="dashAnchor"></a>
+                <a href="#/Methods">
+                  <h3 class="section-name">Methods</h3>
+                </a>
+              </div>
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:@M@XCoordinator@objc(cs)InteractiveTransitionAnimation(im)transitionDuration:"></a>
+                    <a name="//apple_ref/swift/Method/transitionDuration(using:)" class="dashAnchor"></a>
+                    <a class="token" href="#/c:@M@XCoordinator@objc(cs)InteractiveTransitionAnimation(im)transitionDuration:">transitionDuration(using:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>See UIKit documentation for further information.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">open</span> <span class="kd">func</span> <span class="nf">transitionDuration</span><span class="p">(</span><span class="n">using</span> <span class="nv">transitionContext</span><span class="p">:</span> <span class="kt">UIViewControllerContextTransitioning</span><span class="p">?)</span> <span class="o">-&gt;</span> <span class="kt">TimeInterval</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>transitionContext</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The context of a transition for which the duration should be returned.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p>The duration as specified in the initializer.</p>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:@M@XCoordinator@objc(cs)InteractiveTransitionAnimation(im)animateTransition:"></a>
+                    <a name="//apple_ref/swift/Method/animateTransition(using:)" class="dashAnchor"></a>
+                    <a class="token" href="#/c:@M@XCoordinator@objc(cs)InteractiveTransitionAnimation(im)animateTransition:">animateTransition(using:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>See UIKit documentation for further information.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">open</span> <span class="kd">func</span> <span class="nf">animateTransition</span><span class="p">(</span><span class="n">using</span> <span class="nv">transitionContext</span><span class="p">:</span> <span class="kt">UIViewControllerContextTransitioning</span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>transitionContext</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The context of a transition for which the animation should be started.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <div class="task-name-container">
+                <a name="/TransitionAnimation"></a>
+                <a name="//apple_ref/swift/Section/TransitionAnimation" class="dashAnchor"></a>
+                <a href="#/TransitionAnimation">
+                  <h3 class="section-name">TransitionAnimation</h3>
+                </a>
+              </div>
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:12XCoordinator30InteractiveTransitionAnimationC29generateInteractionControllerAA013PercentDrivenfG0_pSgyF"></a>
+                    <a name="//apple_ref/swift/Method/generateInteractionController()" class="dashAnchor"></a>
+                    <a class="token" href="#/s:12XCoordinator30InteractiveTransitionAnimationC29generateInteractionControllerAA013PercentDrivenfG0_pSgyF">generateInteractionController()</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>This method is used to generate an applicable interaction controller.
+If you need more complex logic to create a specific interaction controller, override this method
+in your subclass.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">open</span> <span class="kd">func</span> <span class="nf">generateInteractionController</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="kt"><a href="../Protocols/PercentDrivenInteractionController.html">PercentDrivenInteractionController</a></span><span class="p">?</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:12XCoordinator30InteractiveTransitionAnimationC5startyyF"></a>
+                    <a name="//apple_ref/swift/Method/start()" class="dashAnchor"></a>
+                    <a class="token" href="#/s:12XCoordinator30InteractiveTransitionAnimationC5startyyF">start()</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Starts the transition animation by generating an interaction controller.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">open</span> <span class="kd">func</span> <span class="nf">start</span><span class="p">()</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:12XCoordinator30InteractiveTransitionAnimationC6updateyy12CoreGraphics7CGFloatVF"></a>
+                    <a name="//apple_ref/swift/Method/update(_:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:12XCoordinator30InteractiveTransitionAnimationC6updateyy12CoreGraphics7CGFloatVF">update(_:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Updates the interaction controller about the current progress of the animation.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">open</span> <span class="kd">func</span> <span class="nf">update</span><span class="p">(</span><span class="n">_</span> <span class="nv">percentComplete</span><span class="p">:</span> <span class="kt">CGFloat</span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:12XCoordinator30InteractiveTransitionAnimationC6cancelyyF"></a>
+                    <a name="//apple_ref/swift/Method/cancel()" class="dashAnchor"></a>
+                    <a class="token" href="#/s:12XCoordinator30InteractiveTransitionAnimationC6cancelyyF">cancel()</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Updates the interaction controller about the cancellation of the animation.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">open</span> <span class="kd">func</span> <span class="nf">cancel</span><span class="p">()</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:12XCoordinator30InteractiveTransitionAnimationC6finishyyF"></a>
+                    <a name="//apple_ref/swift/Method/finish()" class="dashAnchor"></a>
+                    <a class="token" href="#/s:12XCoordinator30InteractiveTransitionAnimationC6finishyyF">finish()</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Updates the interaction controller about the finishing of the animation.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">open</span> <span class="kd">func</span> <span class="nf">finish</span><span class="p">()</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:12XCoordinator30InteractiveTransitionAnimationC7cleanupyyF"></a>
+                    <a name="//apple_ref/swift/Method/cleanup()" class="dashAnchor"></a>
+                    <a class="token" href="#/s:12XCoordinator30InteractiveTransitionAnimationC7cleanupyyF">cleanup()</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Ends the transition animation by deleting the interaction controller.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">open</span> <span class="kd">func</span> <span class="nf">cleanup</span><span class="p">()</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </section>
+        </section>
+        <section id="footer">
+          <p>&copy; 2019 <a class="link" href="https://github.com/quickbirdstudios/XCoordinator" target="_blank" rel="external">Stefan Kofler and Paul Kraft</a>. All rights reserved. (Last updated: 2019-01-07)</p>
+          <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.9.4</a>, a <a class="link" href="https://realm.io" target="_blank" rel="external">Realm</a> project.</p>
+        </section>
+      </article>
+    </div>
+  </body>
+</div>
+</html>

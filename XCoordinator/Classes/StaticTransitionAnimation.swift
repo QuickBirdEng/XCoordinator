@@ -6,38 +6,91 @@
 //  Copyright © 2018 QuickBird Studios. All rights reserved.
 //
 
+///
+/// `StaticTransitionAnimation` is a class to realize static transition animations.
+///
+/// - Note:
+///     We advise against its use in favor of `InteractiveTransitionAnimation`, if possible, as it is as simple
+///     to use. However, this class is helpful to make sure your transition animation is not mistaken to be
+///     interactive, if your animation code does not fulfill the requirements of an interactive transition
+///     animation.
+///
 open class StaticTransitionAnimation: NSObject, TransitionAnimation {
 
     // MARK: - Stored properties
 
     internal let duration: TimeInterval
-    public let performAnimation: (_ transitionContext: UIViewControllerContextTransitioning) -> Void
+    private let _performAnimation: (_ transitionContext: UIViewControllerContextTransitioning) -> Void
 
     // MARK: - Computed properties
 
-    public var interactionController: PercentDrivenInteractionController? {
+    open var interactionController: PercentDrivenInteractionController? {
         return self as? PercentDrivenInteractionController
     }
 
-    // MARK: - Init
+    // MARK: - Initialization
 
-    public init(duration: TimeInterval, performAnimation: @escaping (UIViewControllerContextTransitioning) -> Void) {
+    ///
+    /// Creates a StaticTransitionAnimation to be used as presentation or dismissal transition animation in
+    /// an `Animation` object.
+    ///
+    /// - Parameters:
+    ///     - duration: The total duration of the animation.
+    ///     - performAnimation: Your animation code.
+    ///     - context:
+    ///         From the context, you can access source and destination views and
+    ///         viewControllers and the containerView.
+    ///
+    public init(duration: TimeInterval, performAnimation: @escaping (_ context: UIViewControllerContextTransitioning) -> Void) {
         self.duration = duration
-        self.performAnimation = performAnimation
+        self._performAnimation = performAnimation
     }
 
     // MARK: - Methods
 
-    public func transitionDuration(using transitionContext: UIViewControllerContextTransitioning?) -> TimeInterval {
+    ///
+    /// See [UIViewControllerAnimatedTransitioning](https://developer.apple.com/documentation/uikit/UIViewControllerAnimatedTransitioning)
+    /// for further information.
+    ///
+    /// - Parameter transitionContext:
+    ///     The context of the current transition.
+    ///
+    /// - Returns:
+    ///     The duration of the animation as specified in the initializer.
+    ///
+    open func transitionDuration(using transitionContext: UIViewControllerContextTransitioning?) -> TimeInterval {
         return duration
     }
 
-    public func animateTransition(using transitionContext: UIViewControllerContextTransitioning) {
-        performAnimation(transitionContext)
+    ///
+    /// See [UIViewControllerAnimatedTransitioning](https://developer.apple.com/documentation/uikit/UIViewControllerAnimatedTransitioning)
+    /// for further information.
+    ///
+    /// This method performs the animation as specified in the initializer.
+    ///
+    /// - Parameter transitionContext:
+    ///     The context of the current transition.
+    ///
+    open func animateTransition(using transitionContext: UIViewControllerContextTransitioning) {
+        _performAnimation(transitionContext)
     }
 
     // MARK: - TransitionAnimation
 
-    public func start() {}
-    public func cleanup() {}
+    open func start() {}
+    open func cleanup() {}
+}
+
+extension StaticTransitionAnimation {
+
+    ///
+    /// This method performs the animation as specified in the initializer.
+    ///
+    /// - Parameter transitionContext:
+    ///     The context of the current transition.
+    ///
+    @available(*, deprecated, renamed: "animateTransition(using:)")
+    public func performTransition(_ transitionContext: UIViewControllerContextTransitioning) {
+        _performAnimation(transitionContext)
+    }
 }

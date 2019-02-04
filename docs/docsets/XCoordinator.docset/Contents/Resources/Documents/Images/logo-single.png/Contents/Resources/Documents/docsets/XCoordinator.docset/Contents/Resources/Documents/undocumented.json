@@ -1,0 +1,26 @@
+{
+  "warnings": [
+    {
+      "file": "/Users/pauljohanneskraft/Documents/QuickBirdStudios/XCoordinator/XCoordinator/Classes/RedirectionCoordinator.swift",
+      "line": 126,
+      "symbol": "RedirectionCoordinator.init(viewController:superCoordinator:prepareTransition:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/pauljohanneskraft/Documents/QuickBirdStudios/XCoordinator/XCoordinator/Classes/RedirectionCoordinator.swift",
+      "line": 126,
+      "symbol": "RedirectionCoordinator.init(viewController:superCoordinator:prepareTransition:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/pauljohanneskraft/Documents/QuickBirdStudios/XCoordinator/XCoordinator/Classes/RedirectionCoordinator.swift",
+      "line": 126,
+      "symbol": "RedirectionCoordinator.init(viewController:superCoordinator:prepareTransition:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    }
+  ],
+  "source_directory": "/Users/pauljohanneskraft/Documents/QuickBirdStudios/XCoordinator"
+}

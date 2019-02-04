@@ -1,10 +1,13 @@
 //
 //  SplitTransition.swift
-//  Action
+//  XCoordinator
 //
 //  Created by Paul Kraft on 10.01.19.
 //
 
+///
+/// SplitTransition offers different transitions common to a `UISplitViewController` rootViewController.
+///
 public typealias SplitTransition = Transition<UISplitViewController>
 
 extension Transition where RootViewController: UISplitViewController {
