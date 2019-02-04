@@ -84,6 +84,10 @@ public struct Transition<RootViewController: UIViewController>: TransitionProtoc
     ///         of a presenting transition or the dismissal animation of a dismissing transition.
     ///         Make sure to specify an animation here to use your transition with the
     ///         `registerInteractiveTransition` method in your coordinator.
+    ///     - perform:
+    ///         The perform closure executes the transition.
+    ///         To create custom transitions, make sure to call the completion handler after all animations are done.
+    ///         If applicable, make sure to use the TransitionOptions to, e.g., decide whether a transition should be animated or not.
     ///
     public init(presentables: [Presentable], animationInUse: TransitionAnimation?, perform: @escaping PerformClosure) {
         self._presentables = presentables
@@ -118,7 +122,7 @@ public struct Transition<RootViewController: UIViewController>: TransitionProtoc
     }
 
     ///
-    /// The method to perform a certain transition using a coordinator.
+    /// Performs a transition on the given viewController.
     ///
     /// - Warning:
     ///     Do not call this method directly. Instead use your coordinator's `performTransition` method or trigger
@@ -131,8 +135,21 @@ public struct Transition<RootViewController: UIViewController>: TransitionProtoc
 
 extension Transition {
 
+    ///
+    /// Perform is the type of closure used to perform the transition.
+    ///
+    /// - Parameters:
+    ///     - options:
+    ///         The options on how to perform the transition, e.g. whether it should be animated or not.
+    ///     - transitionPerformer:
+    ///         The type-erased transition performer. The transition is performed on its rootViewController.
+    ///     - completion:
+    ///         The completion handler of the transition. It should always be called whenever the transition is completed.
+    ///
     @available(*, deprecated, renamed: "PerformClosure")
-    public typealias Perform = (TransitionOptions, AnyTransitionPerformer<Transition>, PresentationHandler?) -> Void
+    public typealias Perform = (_ options: TransitionOptions,
+                                _ transitionPerformer: AnyTransitionPerformer<Transition>,
+                                _ completion: PresentationHandler?) -> Void
 
     ///
     /// Create your custom transitions with this initializer.
@@ -153,36 +170,5 @@ extension Transition {
             )
             perform(options, transitionPerformer, completion)
         }
-    }
-}
-
-@available(*, deprecated)
-class ViewControllerTransitionPerformer<RootViewController: UIViewController>: TransitionPerformer {
-
-    // MARK: - Stored properties
-
-    internal let rootViewController: RootViewController
-
-    // MARK: - Init
-
-    init(_ rootViewController: RootViewController) {
-        self.rootViewController = rootViewController
-    }
-
-    // MARK: - Computed properties
-
-    var viewController: UIViewController! {
-        return rootViewController
-    }
-
-    // MARK: - Presentable
-
-    func presented(from presentable: Presentable?) {}
-
-    // MARK: - TransitionPerformer
-
-    func performTransition(_ transition: Transition<RootViewController>,
-                           with options: TransitionOptions, completion: PresentationHandler?) {
-        transition.perform(on: rootViewController, with: options, completion: completion)
     }
 }
