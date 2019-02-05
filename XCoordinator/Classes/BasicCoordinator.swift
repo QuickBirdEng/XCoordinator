@@ -18,7 +18,7 @@ public typealias BasicTabBarCoordinator<R: Route> = BasicCoordinator<R, TabBarTr
 ///
 /// BasicCoordinator is a coordinator class that can be used without subclassing.
 ///
-/// Although subclassing of coordinators is encouraged for more complex cases, a `BaseCoordinator` can easily
+/// Although subclassing of coordinators is encouraged for more complex cases, a `BasicCoordinator` can easily
 /// be created by only providing a `prepareTransition` closure, an `initialRoute` and an `initialLoadingType`.
 ///
 open class BasicCoordinator<RouteType: Route, TransitionType: TransitionProtocol>: BaseCoordinator<RouteType, TransitionType> {
