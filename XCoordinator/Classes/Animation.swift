@@ -14,7 +14,7 @@
 /// - Note:
 ///     To not override the previously set `Animation`, use `nil` when initializing a transition.
 ///
-///     Make sure to hold a strong reference to the `Animation` object, as it is only held a weak reference to the `Animation` object.
+///     Make sure to hold a strong reference to the `Animation` object, as it is only held by a weak reference.
 ///
 open class Animation: NSObject {
 
