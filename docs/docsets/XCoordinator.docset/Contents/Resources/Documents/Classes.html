@@ -426,7 +426,8 @@ See <code><a href="Classes/AnyTransitionPerformer.html">AnyTransitionPerformer</
 implementation without losing type information about its RouteType.</p>
 
 <p>This type abstraction can be especially helpful when injecting routers into viewModels.
-AnyRouter abstracts away any implementation specific details and essentially reduces them to properties specified in the <code><a href="Protocols/Router.html">Router</a></code> protocol.</p>
+AnyRouter abstracts away any implementation specific details and
+essentially reduces them to properties specified in the <code><a href="Protocols/Router.html">Router</a></code> protocol.</p>
 
                         <a href="Classes/AnyRouter.html" class="slightly-smaller">See more</a>
                       </div>
@@ -497,7 +498,7 @@ of the <code><a href="Protocols/TransitionPerformer.html">TransitionPerformer</a
                       <div class="abstract">
                         <p>BaseCoordinator can (and is encouraged to) be used as a superclass for any custom implementation of a coordinator.</p>
 
-<p>We also encourage the use of already provided subclasses of BaseCoordinator such as
+<p>It is also encouraged to use already provided subclasses of BaseCoordinator such as
 <code><a href="Classes/NavigationCoordinator.html">NavigationCoordinator</a></code>, <code><a href="Classes/TabBarCoordinator.html">TabBarCoordinator</a></code>, <code><a href="Classes/ViewCoordinator.html">ViewCoordinator</a></code>, <code><a href="Classes/SplitCoordinator.html">SplitCoordinator</a></code>
 and <code><a href="Classes/PageCoordinator.html">PageCoordinator</a></code>.</p>
 
@@ -533,7 +534,7 @@ and <code><a href="Classes/PageCoordinator.html">PageCoordinator</a></code>.</p>
                       <div class="abstract">
                         <p>BasicCoordinator is a coordinator class that can be used without subclassing.</p>
 
-<p>Although we encourage subclassing of coordinators for more complex cases, a <code><a href="Classes/BaseCoordinator.html">BaseCoordinator</a></code> can easily
+<p>Although subclassing of coordinators is encouraged for more complex cases, a <code><a href="Classes/BaseCoordinator.html">BaseCoordinator</a></code> can easily
 be created by only providing a <code>prepareTransition</code> closure, an <code>initialRoute</code> and an <code>initialLoadingType</code>.</p>
 
                         <a href="Classes/BasicCoordinator.html" class="slightly-smaller">See more</a>
@@ -568,7 +569,7 @@ be created by only providing a <code>prepareTransition</code> closure, an <code>
                       <div class="abstract">
                         <p><code>InteractiveTransitionAnimation</code> provides a simple interface to create interactive transition animations.</p>
 
-<p>You can simply create an <code>InteractiveTransitionAnimation</code> by providing the duration, the animation code
+<p>An <code>InteractiveTransitionAnimation</code> can be created by providing the duration, the animation code
 and (optionally) a closure to create an interaction controller.</p>
 <div class="aside aside-note">
     <p class="aside-title">Note</p>
@@ -720,7 +721,11 @@ which would not be the case when creating a <code>BaseCoordinator&lt;RouteType, 
                       <div class="abstract">
                         <p>PageCoordinatorDataSource is a
 <a href="https://developer.apple.com/documentation/uikit/UIPageViewControllerDataSource">UIPageViewControllerDataSource</a>
-implementation with a rather static list of pages. It further allows looping through the given pages.</p>
+implementation with a rather static list of pages.</p>
+
+<p>It further allows looping through the given pages. When looping is active the pages are wrapped around in the given presentables array.
+When the user navigates beyond the end of the specified pages, the pages are wrapped around by displaying the first page.
+In analogy to that, it also wraps to the last page when navigating beyond the beginning.</p>
 
                         <a href="Classes/PageCoordinatorDataSource.html" class="slightly-smaller">See more</a>
                       </div>
@@ -902,10 +907,10 @@ it can dynamically switch between holding an object strongly or weakly.</p>
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p><code>StaticTransitionAnimation</code> is a class to realize static transition animations.</p>
+                        <p><code>StaticTransitionAnimation</code> can be used to realize static transition animations.</p>
 <div class="aside aside-note">
     <p class="aside-title">Note</p>
-    We advise against its use in favor of <code><a href="Classes/InteractiveTransitionAnimation.html">InteractiveTransitionAnimation</a></code>, if possible, as it is as simple
+    Consider using <code><a href="Classes/InteractiveTransitionAnimation.html">InteractiveTransitionAnimation</a></code> instead, if possible, as it is as simple
 to use. However, this class is helpful to make sure your transition animation is not mistaken to be
 interactive, if your animation code does not fulfill the requirements of an interactive transition
 animation.
@@ -998,7 +1003,7 @@ With a TabBarCoordinator, you get access to all tabbarController-related transit
       </article>
     </div>
     <section class="footer">
-      <p>&copy; 2019 <a class="link" href="https://quickbirdstudios.com" target="_blank" rel="external">Stefan Kofler &amp; Paul Kraft</a>. All rights reserved. (Last updated: 2019-02-04)</p>
+      <p>&copy; 2019 <a class="link" href="https://quickbirdstudios.com" target="_blank" rel="external">Stefan Kofler &amp; Paul Kraft</a>. All rights reserved. (Last updated: 2019-02-05)</p>
       <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.9.4</a>, a <a class="link" href="https://realm.io" target="_blank" rel="external">Realm</a> project.</p>
     </section>
   </body>

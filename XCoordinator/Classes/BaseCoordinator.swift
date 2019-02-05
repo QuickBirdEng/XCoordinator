@@ -14,7 +14,7 @@ extension BaseCoordinator {
 ///
 /// BaseCoordinator can (and is encouraged to) be used as a superclass for any custom implementation of a coordinator.
 ///
-/// We also encourage the use of already provided subclasses of BaseCoordinator such as
+/// It is also encouraged to use already provided subclasses of BaseCoordinator such as
 /// `NavigationCoordinator`, `TabBarCoordinator`, `ViewCoordinator`, `SplitCoordinator`
 /// and `PageCoordinator`.
 ///
@@ -38,8 +38,7 @@ open class BaseCoordinator<RouteType: Route, TransitionType: TransitionProtocol>
     /// This initializer trigger a route before the coordinator is made visible.
     ///
     /// - Parameter initialRoute:
-    ///     The route to be triggered before making the coordinator visible.
-    ///     If you specify `nil`, no route is triggered.
+    ///     If a route is specified, it is triggered before making the coordinator visible.
     ///
     public init(initialRoute: RouteType?) {
         rootViewControllerBox.set(generateRootViewController())
@@ -50,8 +49,7 @@ open class BaseCoordinator<RouteType: Route, TransitionType: TransitionProtocol>
     /// This initializer performs a transition before the coordinator is made visible.
     ///
     /// - Parameter initialTransition:
-    ///     The transition to be performed before making the coordinator visible.
-    ///     If you specify `nil`, no transition is performed.
+    ///     If a transition is specified, it is performed before making the coordinator visible.
     ///
     public init(initialTransition: TransitionType?) {
         rootViewControllerBox.set(generateRootViewController())

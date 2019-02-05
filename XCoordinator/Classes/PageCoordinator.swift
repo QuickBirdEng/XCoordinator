@@ -42,9 +42,9 @@ open class PageCoordinator<RouteType: Route>: BaseCoordinator<RouteType, PageTra
     /// - Parameters:
     ///     - pages:
     ///         The pages of the PageCoordinator.
-    ///         These can later be changed, if necessary, using the `PageCoordinator.dataSource` property.
+    ///         These can be changed later, if necessary, using the `PageCoordinator.dataSource` property.
     ///     - loop:
-    ///         Whether or not the PageCoordinator should loop when hitting an end of the specified pages.
+    ///         Whether or not the PageCoordinator should loop when hitting the end or the beginning of the specified pages.
     ///     - set:
     ///         The presentable to be shown right from the start.
     ///         This should be one of the elements of the specified pages.

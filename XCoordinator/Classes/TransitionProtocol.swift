@@ -7,9 +7,9 @@
 //
 
 ///
-/// TransitionProtocol is used to abstract from any concrete implementation of transitions.
+/// `TransitionProtocol` is used to abstract any concrete transition implementation.
 ///
-/// We provide an easily-extensible transition type called `Transition` as a default transition type.
+/// `Transition` is provided as an easily-extensible default transition type implementation.
 ///
 public protocol TransitionProtocol {
 

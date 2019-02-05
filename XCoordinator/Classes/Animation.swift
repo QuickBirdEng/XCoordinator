@@ -63,7 +63,7 @@ extension Animation: UIViewControllerTransitioningDelegate {
     /// - Parameters:
     ///     - presented: The view controller to be presented.
     ///     - presenting: The view controller that is presenting.
-    ///     - source: The view controller whose `present(_:animated:completion:)` was called on.
+    ///     - source: The view controller whose `present(_:animated:completion:)` was called.
     ///
     /// - Returns:
     ///     The presentation animation when initializing the `Animation` object.

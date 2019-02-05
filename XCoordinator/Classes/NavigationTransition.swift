@@ -105,7 +105,7 @@ extension Transition where RootViewController: UINavigationController {
     }
 
     ///
-    /// Replaces the navigation stack of the rootViewController to the specified presentables.
+    /// Replaces the navigation stack of the rootViewController with the specified presentables.
     ///
     /// - Parameters:
     ///     - presentables: The presentables to make up the navigation stack after the transition is done.

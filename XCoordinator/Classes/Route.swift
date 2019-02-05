@@ -10,6 +10,7 @@
 /// This is the protocol your route types need to conform to.
 ///
 /// - Note:
-///     It has no requirements, although we encourage the use of enums to make your navigation code type safe.
+///     It has no requirements, although the use of enums is encouraged to make your
+///     navigation code type safe.
 ///
 public protocol Route {}

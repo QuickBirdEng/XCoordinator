@@ -11,7 +11,7 @@
 ///
 /// `InteractiveTransitionAnimation` provides a simple interface to create interactive transition animations.
 ///
-/// You can simply create an `InteractiveTransitionAnimation` by providing the duration, the animation code
+/// An `InteractiveTransitionAnimation` can be created by providing the duration, the animation code
 /// and (optionally) a closure to create an interaction controller.
 ///
 /// - Note:
@@ -150,8 +150,8 @@ open class InteractiveTransitionAnimation: NSObject, TransitionAnimation { // sw
     /// This method is used to generate an applicable interaction controller.
     ///
     /// - Note:
-    ///     If you need more complex logic to create a specific interaction controller, override this method
-    ///     in your subclass.
+    ///     To allow for more complex logic to create a specific interaction controller,
+    ///     override this method in your subclass.
     ///
     open func generateInteractionController() -> PercentDrivenInteractionController? {
         return _generateInteractionController()

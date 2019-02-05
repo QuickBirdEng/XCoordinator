@@ -70,7 +70,7 @@ extension NavigationAnimationDelegate: UINavigationControllerDelegate {
     ///
     /// - Returns:
     ///     If the animationController is a `TransitionAnimation`, it returns its interactionController.
-    ///     Otherwise the result of the NavigationCoordinator's delegate.
+    ///     Otherwise it requests an interactionController from the NavigationCoordinator's delegate.
     ///
     open func navigationController(_ navigationController: UINavigationController,
                                    interactionControllerFor animationController: UIViewControllerAnimatedTransitioning
@@ -91,8 +91,9 @@ extension NavigationAnimationDelegate: UINavigationControllerDelegate {
     ///
     /// - Returns:
     ///     The destination view controller's animationController depending on its `transitioningDelegate`.
-    ///     In the case of `push`, it returns the toVC's presentation animation, for `pop` it is the fromVC's dismissal animation.
-    ///     If not present, it uses the NavigationCoordinator's delegate as fallback.
+    ///     In the case of a `push` operation, it returns the toVC's presentation animation.
+    ///     For `pop` it is the fromVC's dismissal animation. If there is no transitioningDelegate or the operation `none` is used,
+    ///     it uses the NavigationCoordinator's delegate as fallback.
     ///
     open func navigationController(_ navigationController: UINavigationController,
                                    animationControllerFor operation: UINavigationController.Operation,
@@ -166,8 +167,8 @@ extension NavigationAnimationDelegate: UIGestureRecognizerDelegate {
     ///     the navigationController.
     ///
     /// - Returns:
-    ///     This method returns true, if
-    ///     - there are more than 1 view controllers in the navigation controller and
+    ///     This method returns true, if and only if
+    ///     - there are more than 1 view controllers on the navigation controller stack (so that it is possible to pop a viewController) and
     ///     - it is the interactivePopGestureRecognizer to call this method
     ///
     open func gestureRecognizerShouldBegin(_ gestureRecognizer: UIGestureRecognizer) -> Bool {

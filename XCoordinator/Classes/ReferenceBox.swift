@@ -24,8 +24,8 @@ public class ReferenceBox<T: AnyObject> {
     ///
     /// - Parameter value:
     ///     The start value. If you specify `nil` here, no reference is set.
-    ///     In this case, an object needs to be set by using the `set` method before it can be accessed
-    ///     using the `get` method.
+    ///     In this case, an object needs to be set (by using the `set` method)
+    ///     before it can be accessed (using the `get` method).
     ///
     public init(_ value: T? = nil) {
         if let value = value {
@@ -50,7 +50,7 @@ public class ReferenceBox<T: AnyObject> {
     /// This method can be used to retrieve the value set in the initializer or using the `set` method.
     ///
     /// - Note:
-    ///     It may return `nil`, if the object was only held weakly and not elsewhere held strongly.
+    ///     It may return `nil`, if the held object was already deallocated due to the reference counter becoming zero.
     ///
     public func get() -> T? {
         return strongReference ?? weakReference

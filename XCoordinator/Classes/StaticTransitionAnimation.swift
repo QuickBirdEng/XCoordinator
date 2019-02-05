@@ -7,10 +7,10 @@
 //
 
 ///
-/// `StaticTransitionAnimation` is a class to realize static transition animations.
+/// `StaticTransitionAnimation` can be used to realize static transition animations.
 ///
 /// - Note:
-///     We advise against its use in favor of `InteractiveTransitionAnimation`, if possible, as it is as simple
+///     Consider using `InteractiveTransitionAnimation` instead, if possible, as it is as simple
 ///     to use. However, this class is helpful to make sure your transition animation is not mistaken to be
 ///     interactive, if your animation code does not fulfill the requirements of an interactive transition
 ///     animation.
@@ -36,7 +36,7 @@ open class StaticTransitionAnimation: NSObject, TransitionAnimation {
     ///
     /// - Parameters:
     ///     - duration: The total duration of the animation.
-    ///     - performAnimation: Your animation code.
+    ///     - performAnimation: A closure performing the animation.
     ///     - context:
     ///         From the context, you can access source and destination views and
     ///         viewControllers and the containerView.
