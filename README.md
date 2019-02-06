@@ -5,6 +5,7 @@
 [![Build Status](https://travis-ci.com/quickbirdstudios/XCoordinator.svg?branch=master)](https://travis-ci.org/quickbirdstudios/XCoordinator)
 [![CocoaPods Compatible](https://img.shields.io/cocoapods/v/XCoordinator.svg)](https://img.shields.io/cocoapods/v/XCoordinator.svg)
 [![Carthage Compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage)
+[![Documentation](https://raw.githubusercontent.com/quickbirdstudios/XCoordinator/master/docs/badge.svg)](https://quickbirdstudios.github.io/XCoordinator)
 [![Platform](https://img.shields.io/badge/platform-iOS-lightgrey.svg)](https://github.com/quickbirdstudios/XCoordinator)
 [![License](https://img.shields.io/cocoapods/l/XCoordinator.svg)](https://github.com/quickbirdstudios/XCoordinator)
 
