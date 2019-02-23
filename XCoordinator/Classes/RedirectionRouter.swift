@@ -76,7 +76,7 @@ open class RedirectionRouter<SuperRoute: Route, RouteType: Route>: Router {
     ///
     public init<RouterType: Router>(viewController: UIViewController,
                                     superRouter: RouterType,
-                                    map: ((RouteType) -> SuperRoute)?) where RouterType.RouteType == SuperRoute {
+                                    map: ((RouteType) -> SuperRoute)?) where RouterType.RouteType == SuperRoute, RouterType: AnyObject {
         self.superRouter = AnyRouter(superRouter)
         self._map = map
         self.viewControllerBox = ReferenceBox(viewController)

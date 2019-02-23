@@ -32,6 +32,9 @@ public class AnyCoordinator<RouteType: Route, TransitionType: TransitionProtocol
     private let _rootViewController: () -> TransitionType.RootViewController
     private let _presented: (Presentable?) -> Void
     private let _setRoot: (UIWindow) -> Void
+    private let _addChild: (Presentable) -> Void
+    private let _removeChild: (Presentable) -> Void
+    private let _removeChildrenIfNeeded: () -> Void
 
     // MARK: - Initialization
 
@@ -48,6 +51,9 @@ public class AnyCoordinator<RouteType: Route, TransitionType: TransitionProtocol
         self._rootViewController = { coordinator.rootViewController }
         self._presented = coordinator.presented
         self._setRoot = coordinator.setRoot
+        self._addChild = coordinator.addChild
+        self._removeChild = coordinator.removeChild
+        self._removeChildrenIfNeeded = coordinator.removeChildrenIfNeeded
     }
 
     // MARK: - Computed properties
@@ -77,5 +83,17 @@ public class AnyCoordinator<RouteType: Route, TransitionType: TransitionProtocol
 
     public func setRoot(for window: UIWindow) {
         _setRoot(window)
+    }
+
+    public func addChild(_ presentable: Presentable) {
+        _addChild(presentable)
+    }
+
+    public func removeChild(_ presentable: Presentable) {
+        _removeChild(presentable)
+    }
+
+    public func removeChildrenIfNeeded() {
+       _removeChildrenIfNeeded()
     }
 }

@@ -30,14 +30,14 @@ class HomeTabCoordinator: TabBarCoordinator<HomeRoute> {
         let userListCoordinator = UserListCoordinator()
         userListCoordinator.rootViewController.tabBarItem = UITabBarItem(tabBarSystemItem: .more, tag: 1)
 
-        self.init(newsRouter: newsCoordinator.anyRouter,
-                  userListRouter: userListCoordinator.anyRouter)
+        self.init(newsRouter: StrongAnyRouter(newsCoordinator),
+                  userListRouter: StrongAnyRouter(userListCoordinator))
     }
 
-    init(newsRouter: AnyRouter<NewsRoute>,
-         userListRouter: AnyRouter<UserListRoute>) {
-        self.newsRouter = newsRouter
-        self.userListRouter = userListRouter
+    init(newsRouter: StrongAnyRouter<NewsRoute>,
+         userListRouter: StrongAnyRouter<UserListRoute>) {
+        self.newsRouter = newsRouter.anyRouter
+        self.userListRouter = userListRouter.anyRouter
 
         super.init(tabs: [newsRouter, userListRouter], select: userListRouter)
     }

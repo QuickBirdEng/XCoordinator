@@ -79,7 +79,7 @@ extension Router {
     }
 }
 
-extension Router where Self: Presentable {
+extension Router where Self: Presentable & AnyObject {
 
     // MARK: - Computed properties
 

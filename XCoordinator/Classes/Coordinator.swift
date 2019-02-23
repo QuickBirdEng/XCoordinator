@@ -31,6 +31,12 @@ public protocol Coordinator: Router, TransitionPerformer {
     ///     The prepared transition.
     ///
     func prepareTransition(for route: RouteType) -> TransitionType
+
+    func addChild(_ presentable: Presentable)
+
+    func removeChild(_ presentable: Presentable)
+
+    func removeChildrenIfNeeded()
 }
 
 // MARK: - Typealiases
@@ -53,7 +59,7 @@ extension Coordinator {
 
 // MARK: - Default implementations
 
-extension Coordinator {
+extension Coordinator where Self: AnyObject {
 
     /// Creates an AnyCoordinator based on the current coordinator.
     public var anyCoordinator: AnyCoordinator<RouteType, TransitionType> {
@@ -86,6 +92,10 @@ extension Coordinator {
     public func performTransition(_ transition: TransitionType,
                                   with options: TransitionOptions,
                                   completion: PresentationHandler? = nil) {
-        transition.perform(on: rootViewController, with: options, completion: completion)
+        transition.presentables.forEach(addChild)
+        transition.perform(on: rootViewController, with: options) { [weak self] in
+            self?.removeChildrenIfNeeded()
+            completion?()
+        }
     }
 }

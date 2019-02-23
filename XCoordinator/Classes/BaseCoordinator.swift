@@ -27,6 +27,12 @@ open class BaseCoordinator<RouteType: Route, TransitionType: TransitionProtocol>
 
     // MARK: - Computed properties
 
+    public private(set) var children = [Presentable]() {
+        willSet {
+            print("update", #function, newValue, "in", self)
+        }
+    }
+
     public var rootViewController: RootViewController {
         // swiftlint:disable:next force_unwrapping
         return rootViewControllerBox.get()!
@@ -59,7 +65,20 @@ open class BaseCoordinator<RouteType: Route, TransitionType: TransitionProtocol>
     // MARK: - Open methods
 
     open func presented(from presentable: Presentable?) {
-        rootViewControllerBox.releaseStrongReference()
+        // rootViewControllerBox.releaseStrongReference()
+    }
+
+    open func removeChildrenIfNeeded() {
+        children.removeAll { $0.viewController?.view?.window == nil }
+    }
+
+    open func addChild(_ presentable: Presentable) {
+        children.append(presentable)
+    }
+
+    open func removeChild(_ presentable: Presentable) {
+        children.removeAll { $0.viewController === presentable.viewController }
+        removeChildrenIfNeeded()
     }
 
     ///

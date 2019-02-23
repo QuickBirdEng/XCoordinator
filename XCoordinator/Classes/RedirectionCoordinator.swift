@@ -37,6 +37,8 @@ open class RedirectionCoordinator<RouteType: Route, TransitionType: TransitionPr
         return viewControllerBox.get()
     }
 
+    public private(set) var children = [Presentable]()
+
     // MARK: - Initialization
 
     ///
@@ -93,6 +95,18 @@ open class RedirectionCoordinator<RouteType: Route, TransitionType: TransitionPr
     open func presented(from presentable: Presentable?) {
         viewController?.presented(from: presentable)
         viewControllerBox.releaseStrongReference()
+    }
+
+    public func addChild(_ presentable: Presentable) {
+        children.append(presentable)
+    }
+
+    public func removeChild(_ presentable: Presentable) {
+        children.removeAll { $0.viewController == presentable.viewController }
+    }
+
+    public func removeChildrenIfNeeded() {
+        children.removeAll { $0.viewController?.view?.window == nil }
     }
 
     open func prepareTransition(for route: RouteType) -> TransitionType {

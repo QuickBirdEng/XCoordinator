@@ -12,11 +12,11 @@ import XCoordinator
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
     let window: UIWindow! = UIWindow()
-    let router = AppCoordinator().anyRouter
+    let coordinator = AppCoordinator()
 
     func application(_ application: UIApplication,
                      didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        router.setRoot(for: window)
+        coordinator.setRoot(for: window)
         return true
     }
 }

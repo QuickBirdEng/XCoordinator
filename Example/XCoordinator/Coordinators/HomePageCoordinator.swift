@@ -17,10 +17,10 @@ class HomePageCoordinator: PageCoordinator<HomeRoute> {
 
     // MARK: - Init
 
-    init(newsRouter: AnyRouter<NewsRoute> = NewsCoordinator().anyRouter,
-         userListRouter: AnyRouter<UserListRoute> = UserListCoordinator().anyRouter) {
-        self.newsRouter = newsRouter
-        self.userListRouter = userListRouter
+    init(newsRouter: StrongAnyRouter<NewsRoute> = StrongAnyRouter(NewsCoordinator()),
+         userListRouter: StrongAnyRouter<UserListRoute> = StrongAnyRouter(UserListCoordinator())) {
+        self.newsRouter = newsRouter.anyRouter
+        self.userListRouter = userListRouter.anyRouter
         
         super.init(
             pages: [newsRouter, userListRouter], loop: true,
