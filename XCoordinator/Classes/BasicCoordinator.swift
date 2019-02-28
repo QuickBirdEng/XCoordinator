@@ -18,7 +18,7 @@ public typealias BasicTabBarCoordinator<R: Route> = BasicCoordinator<R, TabBarTr
 ///
 /// BasicCoordinator is a coordinator class that can be used without subclassing.
 ///
-/// Although we encourage subclassing of coordinators for more complex cases, a `BaseCoordinator` can easily
+/// Although subclassing of coordinators is encouraged for more complex cases, a `BasicCoordinator` can easily
 /// be created by only providing a `prepareTransition` closure, an `initialRoute` and an `initialLoadingType`.
 ///
 open class BasicCoordinator<RouteType: Route, TransitionType: TransitionProtocol>: BaseCoordinator<RouteType, TransitionType> {
@@ -51,10 +51,9 @@ open class BasicCoordinator<RouteType: Route, TransitionType: TransitionProtocol
     ///
     /// - Parameters:
     ///     - initialRoute:
-    ///         The route to be triggered first.
-    ///         If you specify `nil`, no route is triggered - You can still trigger routes later on.
+    ///         If a route is specified, it is triggered depending on the initialLoadingType.
     ///     - initialLoadingType:
-    ///         The point in time when the initial route is triggered.
+    ///         The initialLoadingType specifies when the initialRoute is triggered.
     ///     - prepareTransition:
     ///         A closure to define transitions based on triggered routes.
     ///         Make sure to override `prepareTransition` by subclassing, if you specify `nil` here.

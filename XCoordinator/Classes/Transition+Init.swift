@@ -240,7 +240,7 @@ extension Transition {
     ///
     /// - Parameters:
     ///     - source: The view to register peek and pop on.
-    ///     - transition: A generator closure to create a transition with.
+    ///     - transition: A generator closure to create a transition.
     ///
     @available(iOS, introduced: 9.0, deprecated, message: "Use Coordinator.registerPeek instead.")
     public static func registerPeek(for source: Container,

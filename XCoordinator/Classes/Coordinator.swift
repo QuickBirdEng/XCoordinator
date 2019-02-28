@@ -71,7 +71,7 @@ extension Coordinator {
     }
 
     ///
-    /// With `chain(routes:)` you can chain different routes to form a combined transition.
+    /// With `chain(routes:)` different routes can be chained together to form a combined transition.
     ///
     /// - Parameter routes:
     ///     The routes to be chained.

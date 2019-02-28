@@ -344,6 +344,12 @@ Please provide either a <code>prepareTransition</code> closure in the initialize
                       <div class="pointer"></div>
                       <div class="abstract">
                         <p>Creates a RedirectionCoordinator with a viewController, a superTransitionPerfomer and an optional <code>prepareTransition</code> closure.</p>
+<div class="aside aside-note">
+    <p class="aside-title">Note</p>
+    <p>Make sure to either override <code><a href="../Classes/RedirectionCoordinator.html#/s:12XCoordinator11CoordinatorP17prepareTransition3for0D4TypeQz05RouteF0Qz_tF">prepareTransition(for:)</a></code> or to specify a closure as the <code>prepareTransition</code> parameter.
+Overriding <code><a href="../Classes/RedirectionCoordinator.html#/s:12XCoordinator11CoordinatorP17prepareTransition3for0D4TypeQz05RouteF0Qz_tF">prepareTransition(for:)</a></code> results in the closure being ignored.</p>
+
+</div>
 
                       </div>
                       <div class="declaration">
@@ -392,9 +398,7 @@ Please provide either a <code>prepareTransition</code> closure in the initialize
                               </td>
                               <td>
                                 <div>
-                                  <p>A closure preparing transitions for triggered routes.
-If you specify <code>nil</code> here, make sure to override <code>prepareTransiton(for:)</code>.
-If you override <code><a href="../Classes/RedirectionCoordinator.html#/s:12XCoordinator11CoordinatorP17prepareTransition3for0D4TypeQz05RouteF0Qz_tF">prepareTransition(for:)</a></code>, this closure will be ignored.</p>
+                                  <p>A closure preparing transitions for triggered routes.</p>
                                 </div>
                               </td>
                             </tr>
@@ -418,6 +422,12 @@ If you override <code><a href="../Classes/RedirectionCoordinator.html#/s:12XCoor
                       <div class="pointer"></div>
                       <div class="abstract">
                         <p>Creates a RedirectionCoordinator with a viewController, a superTransitionPerfomer and an optional <code>prepareTransition</code> closure.</p>
+<div class="aside aside-note">
+    <p class="aside-title">Note</p>
+    <p>Make sure to either override <code><a href="../Classes/RedirectionCoordinator.html#/s:12XCoordinator11CoordinatorP17prepareTransition3for0D4TypeQz05RouteF0Qz_tF">prepareTransition(for:)</a></code> or to specify a closure as the <code>prepareTransition</code> parameter.
+Overriding <code><a href="../Classes/RedirectionCoordinator.html#/s:12XCoordinator11CoordinatorP17prepareTransition3for0D4TypeQz05RouteF0Qz_tF">prepareTransition(for:)</a></code> results in the closure being ignored.</p>
+
+</div>
 
                       </div>
                       <div class="declaration">
@@ -467,9 +477,7 @@ If you override <code><a href="../Classes/RedirectionCoordinator.html#/s:12XCoor
                               </td>
                               <td>
                                 <div>
-                                  <p>A closure preparing transitions for triggered routes.
-If you specify <code>nil</code> here, make sure to override <code>prepareTransiton(for:)</code>.
-If you override <code><a href="../Classes/RedirectionCoordinator.html#/s:12XCoordinator11CoordinatorP17prepareTransition3for0D4TypeQz05RouteF0Qz_tF">prepareTransition(for:)</a></code>, this closure will be ignored.</p>
+                                  <p>A closure preparing transitions for triggered routes.</p>
                                 </div>
                               </td>
                             </tr>
@@ -595,6 +603,12 @@ If you override <code><a href="../Classes/RedirectionCoordinator.html#/s:12XCoor
                       <div class="pointer"></div>
                       <div class="abstract">
                         <p>Creates a RedirectionCoordinator with a viewController, a superCoordinaror and an optional <code>prepareTransition</code> closure.</p>
+<div class="aside aside-note">
+    <p class="aside-title">Note</p>
+    <p>Make sure to either override <code><a href="../Classes/RedirectionCoordinator.html#/s:12XCoordinator11CoordinatorP17prepareTransition3for0D4TypeQz05RouteF0Qz_tF">prepareTransition(for:)</a></code> or to specify a closure as the <code>prepareTransition</code> parameter.
+Overriding <code><a href="../Classes/RedirectionCoordinator.html#/s:12XCoordinator11CoordinatorP17prepareTransition3for0D4TypeQz05RouteF0Qz_tF">prepareTransition(for:)</a></code> results in the closure being ignored.</p>
+
+</div>
 
                       </div>
                       <div class="declaration">
@@ -632,7 +646,7 @@ If you override <code><a href="../Classes/RedirectionCoordinator.html#/s:12XCoor
                               </td>
                               <td>
                                 <div>
-                                  <p>The superCoordinator. All transitions are redirected to it.</p>
+                                  <p>All transitions are redirected to the superCoordinator.</p>
                                 </div>
                               </td>
                             </tr>
@@ -644,9 +658,7 @@ If you override <code><a href="../Classes/RedirectionCoordinator.html#/s:12XCoor
                               </td>
                               <td>
                                 <div>
-                                  <p>A closure preparing transitions for triggered routes.
-If you specify <code>nil</code> here, make sure to override <code>prepareTransiton(for:)</code>.
-If you override <code><a href="../Classes/RedirectionCoordinator.html#/s:12XCoordinator11CoordinatorP17prepareTransition3for0D4TypeQz05RouteF0Qz_tF">prepareTransition(for:)</a></code>, this closure will be ignored.</p>
+                                  <p>A closure preparing transitions for triggered routes.</p>
                                 </div>
                               </td>
                             </tr>
@@ -664,7 +676,7 @@ If you override <code><a href="../Classes/RedirectionCoordinator.html#/s:12XCoor
       </article>
     </div>
     <section class="footer">
-      <p>&copy; 2019 <a class="link" href="https://quickbirdstudios.com" target="_blank" rel="external">Stefan Kofler &amp; Paul Kraft</a>. All rights reserved. (Last updated: 2019-02-04)</p>
+      <p>&copy; 2019 <a class="link" href="https://quickbirdstudios.com" target="_blank" rel="external">Stefan Kofler &amp; Paul Kraft</a>. All rights reserved. (Last updated: 2019-02-06)</p>
       <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.9.4</a>, a <a class="link" href="https://realm.io" target="_blank" rel="external">Realm</a> project.</p>
     </section>
   </body>

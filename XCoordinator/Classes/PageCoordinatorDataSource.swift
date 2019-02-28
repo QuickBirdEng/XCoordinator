@@ -9,7 +9,11 @@
 ///
 /// PageCoordinatorDataSource is a
 /// [UIPageViewControllerDataSource](https://developer.apple.com/documentation/uikit/UIPageViewControllerDataSource)
-/// implementation with a rather static list of pages. It further allows looping through the given pages.
+/// implementation with a rather static list of pages.
+///
+/// It further allows looping through the given pages. When looping is active the pages are wrapped around in the given presentables array.
+/// When the user navigates beyond the end of the specified pages, the pages are wrapped around by displaying the first page.
+/// In analogy to that, it also wraps to the last page when navigating beyond the beginning.
 ///
 open class PageCoordinatorDataSource: NSObject, UIPageViewControllerDataSource {
 

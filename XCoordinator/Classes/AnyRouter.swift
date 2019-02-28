@@ -11,7 +11,8 @@
 /// implementation without losing type information about its RouteType.
 ///
 /// This type abstraction can be especially helpful when injecting routers into viewModels.
-/// AnyRouter abstracts away any implementation specific details and essentially reduces them to properties specified in the `Router` protocol.
+/// AnyRouter abstracts away any implementation specific details and
+/// essentially reduces them to properties specified in the `Router` protocol.
 ///
 public final class AnyRouter<RouteType: Route>: Router {
 

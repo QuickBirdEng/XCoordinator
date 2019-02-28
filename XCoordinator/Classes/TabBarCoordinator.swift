@@ -23,8 +23,8 @@ open class TabBarCoordinator<RouteType: Route>: BaseCoordinator<RouteType, TabBa
     /// Use this delegate to get informed about tabbarController-related notifications and delegate methods
     /// specifying transition animations. The delegate is only referenced weakly.
     ///
-    /// We encourage the setting of this delegate instead of overriding the `generateRootViewController`
-    /// method, if possible, to allow for transition animations to be executed as specified in the
+    /// Set this delegate instead of overriding the `generateRootViewController` method, if possible,
+    /// to allow for transition animations to be executed as specified in the
     /// `prepareTransition(for:)` method.
     ///
     public var delegate: UITabBarControllerDelegate? {

@@ -14,7 +14,7 @@
 /// - Note:
 ///     To not override the previously set `Animation`, use `nil` when initializing a transition.
 ///
-///     Make sure to hold a strong reference to the `Animation` object, as it is only held a weak reference to the `Animation` object.
+///     Make sure to hold a strong reference to the `Animation` object, as it is only held by a weak reference.
 ///
 open class Animation: NSObject {
 
@@ -63,7 +63,7 @@ extension Animation: UIViewControllerTransitioningDelegate {
     /// - Parameters:
     ///     - presented: The view controller to be presented.
     ///     - presenting: The view controller that is presenting.
-    ///     - source: The view controller whose `present(_:animated:completion:)` was called on.
+    ///     - source: The view controller whose `present(_:animated:completion:)` was called.
     ///
     /// - Returns:
     ///     The presentation animation when initializing the `Animation` object.

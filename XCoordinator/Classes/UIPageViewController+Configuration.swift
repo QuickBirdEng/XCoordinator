@@ -28,8 +28,8 @@ extension UIPageViewController {
     /// It provides customization options for the transitionStyle, navigationOrientation and further options.
     ///
     /// - Note:
-    ///     We do not fully cover the implications of the configuration options in use.
-    ///     Read the UIKit documentation of the `UIPageViewController` to get further information.
+    ///     Read the [UIPageViewController documentation](https://developer.apple.com/documentation/uikit/UIPageViewController)
+    ///     to get further information on the implications of these configuration options.
     ///
     public struct Configuration {
 

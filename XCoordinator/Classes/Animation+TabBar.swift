@@ -39,7 +39,7 @@ extension TabBarAnimationDelegate: UITabBarControllerDelegate {
     ///
     /// - Returns:
     ///     If the animationController is a `TransitionAnimation`, it returns its interactionController.
-    ///     Otherwise the result of the TabBarCoordinator's delegate.
+    ///     Otherwise it requests an interactionController from the TabBarCoordinator's delegate.
     ///
     open func tabBarController(_ tabBarController: UITabBarController,
                                interactionControllerFor animationController: UIViewControllerAnimatedTransitioning
@@ -76,7 +76,7 @@ extension TabBarAnimationDelegate: UITabBarControllerDelegate {
     ///
     /// - Parameters:
     ///     - tabBarController: The delegate owner.
-    ///     - viewController: The selected viewController.
+    ///     - viewController: The destination viewController.
     ///
     open func tabBarController(_ tabBarController: UITabBarController,
                                didSelect viewController: UIViewController) {
@@ -91,7 +91,7 @@ extension TabBarAnimationDelegate: UITabBarControllerDelegate {
     ///
     /// - Parameters:
     ///     - tabBarController: The delegate owner.
-    ///     - viewController: The viewController that may be selected.
+    ///     - viewController: The destination viewController.
     ///
     /// - Returns:
     ///     The result of the TabBarCooordinator's delegate. If not specified, it returns true.

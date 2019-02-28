@@ -35,7 +35,8 @@ public struct Transition<RootViewController: UIViewController>: TransitionProtoc
     ///         An AnyTransitionPerformer-object of the coordinator in use.
     ///         Use this to access the rootViewController.
     ///     - completion:
-    ///         The completion handler of the transition. It should always be called whenever the transition is completed.
+    ///         The completion handler of the transition.
+    ///         It is called when the transition (including all animations) is completed.
     ///
     public typealias Perform = (_ options: TransitionOptions,
                                 _ performer: AnyTransitionPerformer<Transition<RootViewController>>,
@@ -71,8 +72,9 @@ public struct Transition<RootViewController: UIViewController>: TransitionProtoc
     ///
     /// Create your custom transitions with this initializer.
     ///
-    /// We advise to extend Transition with static functions to create transitions with this initializer
-    /// instead of calling this initializer in your `prepareTransition(for:)` method.
+    /// Extending Transition with static functions to create transitions with this initializer
+    /// (instead of calling this initializer in your `prepareTransition(for:)` method) is advised
+    /// as it makes reuse easier.
     ///
     /// - Parameters:
     ///     - presentables:
@@ -120,8 +122,9 @@ extension Transition {
     ///
     /// Create your custom transitions with this initializer.
     ///
-    /// We advise to extend Transition with static functions to create transitions with this initializer
-    /// instead of calling this initializer in your `prepareTransition(for:)` method.
+    /// Extending Transition with static functions to create transitions with this initializer
+    /// (instead of calling this initializer in your `prepareTransition(for:)` method) is advised
+    /// as it makes reuse easier.
     ///
     /// - Parameter presentables:
     ///     The presentables this transition is putting into the view hierarchy, if specifiable.

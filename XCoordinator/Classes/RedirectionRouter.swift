@@ -39,15 +39,17 @@ open class RedirectionRouter<SuperRoute: Route, RouteType: Route>: Router {
     ///
     /// Creates a RedirectionRouter with a certain viewController, a superRouter and an optional mapping.
     ///
+    /// - Note:
+    ///     Make sure to either override `mapToSuperRoute` or to specify a closure for the `map` parameter.
+    ///     If you override `mapToSuperRoute`, the `map` parameter is ignored.
+    ///
     /// - Parameters:
     ///     - viewController:
     ///         The view controller to be used in transitions, e.g. when pushing, presenting or otherwise displaying the RedirectionRouter.
     ///     - superRouter:
-    ///         An AnyRouter object of the superCoordinator. Triggered routes will be rerouted there.
+    ///         Triggered routes will be rerouted to the superRouter.
     ///     - map:
     ///         A mapping from this RedirectionRouter's routes to the superRouter's routes.
-    ///         If you specify `nil` here, make sure to override `mapToSuperRoute`.
-    ///         If you specify a closure, but also override `mapToSuperRoute`, the closure is ignored.
     ///
     public init(viewController: UIViewController,
                 superRouter: AnyRouter<SuperRoute>,
@@ -60,6 +62,10 @@ open class RedirectionRouter<SuperRoute: Route, RouteType: Route>: Router {
     ///
     /// Creates a RedirectionRouter with a certain viewController, a superRouter and an optional mapping.
     ///
+    /// - Note:
+    ///     Make sure to either override `mapToSuperRoute` or to specify a closure for the `map` parameter.
+    ///     If you override `mapToSuperRoute`, the `map` parameter is ignored.
+    ///
     /// - Parameters:
     ///     - viewController:
     ///         The view controller to be used in transitions, e.g. when pushing, presenting or otherwise displaying the RedirectionRouter.
@@ -67,8 +73,6 @@ open class RedirectionRouter<SuperRoute: Route, RouteType: Route>: Router {
     ///         The superCoordinator. Triggered routes will be rerouted there.
     ///     - map:
     ///         A mapping from this RedirectionRouter's routes to the superRouter's routes.
-    ///         If you specify `nil` here, make sure to override `mapToSuperRoute`.
-    ///         If you specify a closure, but also override `mapToSuperRoute`, the closure is ignored.
     ///
     public init<RouterType: Router>(viewController: UIViewController,
                                     superRouter: RouterType,
