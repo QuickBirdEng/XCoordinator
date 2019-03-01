@@ -32,8 +32,6 @@ open class NavigationAnimationDelegate: NSObject {
     /// The transition progress threshold for the interactive pop transition to succeed
     open var transitionProgressThreshold: CGFloat { return 0.5 }
 
-    private var animations = [Animation?]()
-
     // swiftlint:disable:next weak_delegate
     private var interactivePopGestureRecognizerDelegate: UIGestureRecognizerDelegate?
 
@@ -45,14 +43,9 @@ open class NavigationAnimationDelegate: NSObject {
     // MARK: - Computed properties
 
     private var popAnimation: TransitionAnimation? {
-        return animations.last??.dismissalAnimation
-    }
-
-    // MARK: - Methods
-
-    internal func resetChildrenAnimations(for navigationController: UINavigationController) {
-        animations = navigationController.children.map { $0.transitioningDelegate as? Animation }
-        assert(animations.count == navigationController.children.count)
+        guard let topViewController = navigationController?.topViewController else { return nil }
+        return topViewController.transitioningDelegate?
+            .animationController?(forDismissed: topViewController) as? TransitionAnimation
     }
 }
 

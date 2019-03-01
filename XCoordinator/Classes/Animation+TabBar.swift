@@ -21,7 +21,6 @@ open class TabBarAnimationDelegate: NSObject {
 
     // MARK: - Stored properties
 
-    internal var animation: Animation?
     internal weak var delegate: UITabBarControllerDelegate?
 }
 
@@ -64,7 +63,7 @@ extension TabBarAnimationDelegate: UITabBarControllerDelegate {
     open func tabBarController(_ tabBarController: UITabBarController,
                                animationControllerForTransitionFrom fromVC: UIViewController,
                                to toVC: UIViewController) -> UIViewControllerAnimatedTransitioning? {
-        return animation?.presentationAnimation
+        return toVC.transitioningDelegate?.animationController?(forPresented: toVC, presenting: tabBarController, source: fromVC)
             ?? delegate?.tabBarController?(tabBarController, animationControllerForTransitionFrom: fromVC, to: toVC)
     }
 

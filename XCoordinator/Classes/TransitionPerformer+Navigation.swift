@@ -7,10 +7,6 @@
 //
 
 extension UINavigationController {
-    private func resetChildrenAnimations(holding: [Animation?]) {
-        animationDelegate?.resetChildrenAnimations(for: self)
-    }
-
     func push(_ viewController: UIViewController,
               with options: TransitionOptions,
               animation: Animation?,
@@ -27,10 +23,7 @@ extension UINavigationController {
         """)
 
         CATransaction.begin()
-        CATransaction.setCompletionBlock {
-            self.resetChildrenAnimations(holding: [animation])
-            completion?()
-        }
+        CATransaction.setCompletionBlock(completion)
 
         pushViewController(viewController, animated: options.animated)
 
@@ -50,10 +43,7 @@ extension UINavigationController {
         """)
 
         CATransaction.begin()
-        CATransaction.setCompletionBlock {
-            self.resetChildrenAnimations(holding: [animation])
-            completion?()
-        }
+        CATransaction.setCompletionBlock(completion)
 
         if toRoot {
             popToRootViewController(animated: options.animated)
@@ -72,7 +62,6 @@ extension UINavigationController {
         if let animation = animation {
             viewControllers.last?.transitioningDelegate = animation
         }
-        resetChildrenAnimations(holding: [animation])
         assert(animation == nil || animationDelegate != nil, """
         Animations do not work, if the navigation controller's delegate is not a NavigationAnimationDelegate.
         This assertion might fail, if NavigationCoordinator.generateRootViewController was not used to generate the navigation controller
@@ -85,7 +74,6 @@ extension UINavigationController {
             if let animation = animation {
                 viewControllers.forEach { $0.transitioningDelegate = animation }
             }
-            self.resetChildrenAnimations(holding: [animation])
             completion?()
         }
 
@@ -112,10 +100,7 @@ extension UINavigationController {
         """)
 
         CATransaction.begin()
-        CATransaction.setCompletionBlock {
-            self.resetChildrenAnimations(holding: [animation])
-            completion?()
-        }
+        CATransaction.setCompletionBlock(completion)
 
         popToViewController(viewController, animated: options.animated)
 
