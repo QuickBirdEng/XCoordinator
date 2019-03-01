@@ -6,9 +6,9 @@
 //  Copyright © 2018 QuickBird Studios. All rights reserved.
 //
 
-extension TransitionPerformer where TransitionType.RootViewController: UINavigationController {
+extension UINavigationController {
     private func resetChildrenAnimations(holding: [Animation?]) {
-        rootViewController.animationDelegate?.resetChildrenAnimations(for: rootViewController)
+        animationDelegate?.resetChildrenAnimations(for: self)
     }
 
     func push(_ viewController: UIViewController,
@@ -19,11 +19,11 @@ extension TransitionPerformer where TransitionType.RootViewController: UINavigat
         if let animation = animation {
             viewController.transitioningDelegate = animation
         }
-        assert(animation == nil || rootViewController.animationDelegate != nil, """
-        Animations do not work, if your rootViewController's delegate is not a NavigationAnimationDelegate.
-        This assertion might fail, if you did not call super.generateRootViewController to generate your rootViewController,
-        or you set another delegate on your rootViewController. To set another delegate of your rootViewController, have a look
-        at `NavigationCoordinator.delegate`.
+        assert(animation == nil || animationDelegate != nil, """
+        Animations do not work, if the navigation controller's delegate is not a NavigationAnimationDelegate.
+        This assertion might fail, if NavigationCoordinator.generateRootViewController was not used to generate the navigation controller
+        as a coordinator's rootViewController or another delegate was set on its rootViewController.
+        To set another delegate of a rootViewController in a NavigationCoordinator, have a look at `NavigationCoordinator.delegate`.
         """)
 
         CATransaction.begin()
@@ -32,7 +32,7 @@ extension TransitionPerformer where TransitionType.RootViewController: UINavigat
             completion?()
         }
 
-        self.rootViewController.pushViewController(viewController, animated: options.animated)
+        pushViewController(viewController, animated: options.animated)
 
         CATransaction.commit()
     }
@@ -40,13 +40,13 @@ extension TransitionPerformer where TransitionType.RootViewController: UINavigat
     func pop(toRoot: Bool, with options: TransitionOptions, animation: Animation?, completion: PresentationHandler?) {
 
         if let animation = animation {
-            rootViewController.topViewController?.transitioningDelegate = animation
+            topViewController?.transitioningDelegate = animation
         }
-        assert(animation == nil || rootViewController.animationDelegate != nil, """
-        Animations do not work, if your rootViewController's delegate is not a NavigationAnimationDelegate.
-        This assertion might fail, if you did not call super.generateRootViewController to generate your rootViewController,
-        or you set another delegate on your rootViewController. To set another delegate of your rootViewController, have a look
-        at `NavigationCoordinator.delegate`.
+        assert(animation == nil || animationDelegate != nil, """
+        Animations do not work, if the navigation controller's delegate is not a NavigationAnimationDelegate.
+        This assertion might fail, if NavigationCoordinator.generateRootViewController was not used to generate the navigation controller
+        as a coordinator's rootViewController or another delegate was set on its rootViewController.
+        To set another delegate of a rootViewController in a NavigationCoordinator, have a look at `NavigationCoordinator.delegate`.
         """)
 
         CATransaction.begin()
@@ -56,9 +56,9 @@ extension TransitionPerformer where TransitionType.RootViewController: UINavigat
         }
 
         if toRoot {
-            self.rootViewController.popToRootViewController(animated: options.animated)
+            popToRootViewController(animated: options.animated)
         } else {
-            self.rootViewController.popViewController(animated: options.animated)
+            popViewController(animated: options.animated)
         }
 
         CATransaction.commit()
@@ -73,11 +73,11 @@ extension TransitionPerformer where TransitionType.RootViewController: UINavigat
             viewControllers.last?.transitioningDelegate = animation
         }
         resetChildrenAnimations(holding: [animation])
-        assert(animation == nil || rootViewController.animationDelegate != nil, """
-        Animations do not work, if your rootViewController's delegate is not a NavigationAnimationDelegate.
-        This assertion might fail, if you did not call super.generateRootViewController to generate your rootViewController,
-        or you set another delegate on your rootViewController. To set another delegate of your rootViewController, have a look
-        at `NavigationCoordinator.delegate`.
+        assert(animation == nil || animationDelegate != nil, """
+        Animations do not work, if the navigation controller's delegate is not a NavigationAnimationDelegate.
+        This assertion might fail, if NavigationCoordinator.generateRootViewController was not used to generate the navigation controller
+        as a coordinator's rootViewController or another delegate was set on its rootViewController.
+        To set another delegate of a rootViewController in a NavigationCoordinator, have a look at `NavigationCoordinator.delegate`.
         """)
 
         CATransaction.begin()
@@ -89,7 +89,7 @@ extension TransitionPerformer where TransitionType.RootViewController: UINavigat
             completion?()
         }
 
-        self.rootViewController.setViewControllers(viewControllers, animated: options.animated)
+        setViewControllers(viewControllers, animated: options.animated)
 
         CATransaction.commit()
     }
@@ -100,14 +100,15 @@ extension TransitionPerformer where TransitionType.RootViewController: UINavigat
              completion: PresentationHandler?) {
 
         if let animation = animation {
-            rootViewController.topViewController?.transitioningDelegate = animation
+            topViewController?.transitioningDelegate = animation
             viewController.transitioningDelegate = animation
         }
-        assert(animation == nil || rootViewController.animationDelegate != nil, """
-        Animations do not work, if your rootViewController's delegate is not a NavigationAnimationDelegate.
-        This assertion might fail, if you did not call super.generateRootViewController to generate your rootViewController,
-        or you set another delegate on your rootViewController. To set another delegate of your rootViewController, have a look
-        at `NavigationCoordinator.delegate`.
+
+        assert(animation == nil || animationDelegate != nil, """
+        Animations do not work, if the navigation controller's delegate is not a NavigationAnimationDelegate.
+        This assertion might fail, if NavigationCoordinator.generateRootViewController was not used to generate the navigation controller
+        as a coordinator's rootViewController or another delegate was set on its rootViewController.
+        To set another delegate of a rootViewController in a NavigationCoordinator, have a look at `NavigationCoordinator.delegate`.
         """)
 
         CATransaction.begin()
@@ -116,7 +117,7 @@ extension TransitionPerformer where TransitionType.RootViewController: UINavigat
             completion?()
         }
 
-        self.rootViewController.popToViewController(viewController, animated: options.animated)
+        popToViewController(viewController, animated: options.animated)
 
         CATransaction.commit()
     }

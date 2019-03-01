@@ -16,16 +16,16 @@ NSObject, UIViewControllerPreviewingDelegate {
     private weak var viewController: UIViewController?
 
     private let transition: () -> TransitionType
-    private let performer: AnyTransitionPerformer<TransitionType>
+    private let rootViewController: TransitionType.RootViewController
     private let completion: PresentationHandler?
 
     // MARK: - Initialization
 
     internal init(transition: @escaping () -> TransitionType,
-                  performer: AnyTransitionPerformer<TransitionType>,
+                  rootViewController: TransitionType.RootViewController,
                   completion: PresentationHandler?) {
         self.transition = transition
-        self.performer = performer
+        self.rootViewController = rootViewController
         self.completion = completion
     }
 
@@ -46,7 +46,6 @@ NSObject, UIViewControllerPreviewingDelegate {
 
     internal func previewingContext(_ previewingContext: UIViewControllerPreviewing,
                                     commit viewControllerToCommit: UIViewController) {
-        performer.performTransition(transition(), with: .default)
-        completion?()
+        transition().perform(on: rootViewController, with: .default, completion: completion)
     }
 }

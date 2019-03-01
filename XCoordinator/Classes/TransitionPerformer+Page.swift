@@ -6,12 +6,12 @@
 //  Copyright © 2018 QuickBird Studios. All rights reserved.
 //
 
-extension TransitionPerformer where TransitionType.RootViewController: UIPageViewController {
+extension UIPageViewController {
     func set(_ viewControllers: [UIViewController],
              direction: UIPageViewController.NavigationDirection,
              with options: TransitionOptions,
              completion: PresentationHandler?) {
-        rootViewController.setViewControllers(
+        setViewControllers(
             viewControllers,
             direction: direction,
             animated: options.animated,

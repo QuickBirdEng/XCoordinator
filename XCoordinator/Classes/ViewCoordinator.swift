@@ -30,6 +30,6 @@ open class ViewCoordinator<RouteType: Route>: BaseCoordinator<RouteType, ViewTra
     ///
     public init(root: Presentable) {
         super.init(initialRoute: nil)
-        embed(root.viewController, in: rootViewController, with: TransitionOptions(animated: false), completion: nil)
+        performTransition(.embed(root, in: rootViewController), with: TransitionOptions(animated: false))
     }
 }

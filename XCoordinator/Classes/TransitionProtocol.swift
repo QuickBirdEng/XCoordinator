@@ -39,9 +39,21 @@ public protocol TransitionProtocol {
     ///     - completion:
     ///         The completion handler. Make sure to call this, whenever the transition is completed.
     ///
+    @available(*, deprecated, renamed: "perform(on:with:completion:)")
     func perform<C: Coordinator>(options: TransitionOptions,
                                  coordinator: C,
                                  completion: PresentationHandler?) where C.TransitionType == Self
+
+    ///
+    /// Performs a transition on the given viewController.
+    ///
+    /// - Warning:
+    ///     Do not call this method directly. Instead use your coordinator's `performTransition` method or trigger
+    ///     a specified route (latter option is encouraged).
+    ///
+    func perform(on rootViewController: RootViewController,
+                 with options: TransitionOptions,
+                 completion: PresentationHandler?)
 
     // MARK: - Always accessible transitions
 

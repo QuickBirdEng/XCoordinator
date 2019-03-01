@@ -29,22 +29,22 @@ extension Transition where RootViewController: UIPageViewController {
     public static func set(_ first: Presentable, _ second: Presentable? = nil,
                            direction: UIPageViewController.NavigationDirection) -> PageTransition {
         let presentables = [first, second].compactMap { $0 }
-        return PageTransition(presentables: presentables, animation: nil) { options, performer, completion in
-            performer.set(presentables.map { $0.viewController },
-                          direction: direction,
-                          with: options
+        return PageTransition(presentables: presentables, animationInUse: nil) { rootViewController, options, completion in
+            rootViewController.set(presentables.map { $0.viewController },
+                                   direction: direction,
+                                   with: options
             ) {
-                presentables.forEach { $0.presented(from: performer) }
+                presentables.forEach { $0.presented(from: rootViewController) }
                 completion?()
             }
         }
     }
 
     static func initial(pages: [Presentable]) -> Transition {
-        return Transition(presentables: pages, animation: nil) { _, performer, completion in
+        return Transition(presentables: pages, animationInUse: nil) { rootViewController, _, completion in
             CATransaction.begin()
             CATransaction.setCompletionBlock {
-                pages.forEach { $0.presented(from: performer) }
+                pages.forEach { $0.presented(from: rootViewController) }
                 completion?()
             }
             CATransaction.commit()

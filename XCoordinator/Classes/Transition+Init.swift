@@ -20,13 +20,13 @@ extension Transition {
     ///
     public static func show(_ presentable: Presentable) -> Transition {
         return Transition(presentables: [presentable],
-                          animation: nil
-        ) { options, performer, completion in
-            performer.show(
+                          animationInUse: nil
+        ) { rootViewController, options, completion in
+            rootViewController.show(
                 presentable.viewController,
                 with: options
             ) {
-                presentable.presented(from: performer)
+                presentable.presented(from: rootViewController)
                 completion?()
             }
         }
@@ -44,13 +44,13 @@ extension Transition {
     ///
     public static func showDetail(_ presentable: Presentable) -> Transition {
         return Transition(presentables: [presentable],
-                          animation: nil
-        ) { options, performer, completion in
-            performer.showDetail(
+                          animationInUse: nil
+        ) { rootViewController, options, completion in
+            rootViewController.showDetail(
                 presentable.viewController,
                 with: options
             ) {
-                presentable.presented(from: performer)
+                presentable.presented(from: rootViewController)
                 completion?()
             }
         }
@@ -71,14 +71,14 @@ extension Transition {
     ///
     public static func presentOnRoot(_ presentable: Presentable, animation: Animation? = nil) -> Transition {
         return Transition(presentables: [presentable],
-                          animation: animation?.presentationAnimation
-        ) { options, performer, completion in
-            performer.present(onRoot: true,
-                              presentable.viewController,
-                              with: options,
-                              animation: animation
+                          animationInUse: animation?.presentationAnimation
+        ) { rootViewController, options, completion in
+            rootViewController.present(onRoot: true,
+                                       presentable.viewController,
+                                       with: options,
+                                       animation: animation
             ) {
-                presentable.presented(from: performer)
+                presentable.presented(from: rootViewController)
                 completion?()
             }
         }
@@ -97,14 +97,14 @@ extension Transition {
     ///
     public static func present(_ presentable: Presentable, animation: Animation? = nil) -> Transition {
         return Transition(presentables: [presentable],
-                          animation: animation?.presentationAnimation
-        ) { options, performer, completion in
-            performer.present(onRoot: false,
-                              presentable.viewController,
-                              with: options,
-                              animation: animation
+                          animationInUse: animation?.presentationAnimation
+        ) { rootViewController, options, completion in
+            rootViewController.present(onRoot: false,
+                                       presentable.viewController,
+                                       with: options,
+                                       animation: animation
             ) {
-                presentable.presented(from: performer)
+                presentable.presented(from: rootViewController)
                 completion?()
             }
         }
@@ -118,12 +118,12 @@ extension Transition {
     ///     - container: The container to embed the presentable in.
     ///
     public static func embed(_ presentable: Presentable, in container: Container) -> Transition {
-        return Transition(presentables: [presentable], animation: nil) { options, performer, completion in
-            performer.embed(presentable.viewController,
-                            in: container,
-                            with: options
+        return Transition(presentables: [presentable], animationInUse: nil) { rootViewController, options, completion in
+            rootViewController.embed(presentable.viewController,
+                                     in: container,
+                                     with: options
             ) {
-                presentable.presented(from: performer)
+                presentable.presented(from: rootViewController)
                 completion?()
             }
         }
@@ -140,12 +140,12 @@ extension Transition {
     ///
     public static func dismissToRoot(animation: Animation? = nil) -> Transition {
         return Transition(presentables: [],
-                          animation: animation?.dismissalAnimation
-        ) { options, performer, completion in
-            performer.dismiss(toRoot: true,
-                              with: options,
-                              animation: animation,
-                              completion: completion)
+                          animationInUse: animation?.dismissalAnimation
+        ) { rootViewController, options, completion in
+            rootViewController.dismiss(toRoot: true,
+                                       with: options,
+                                       animation: animation,
+                                       completion: completion)
         }
     }
 
@@ -160,12 +160,12 @@ extension Transition {
     ///
     public static func dismiss(animation: Animation? = nil) -> Transition {
         return Transition(presentables: [],
-                          animation: animation?.dismissalAnimation
-        ) { options, performer, completion in
-            performer.dismiss(toRoot: false,
-                              with: options,
-                              animation: animation,
-                              completion: completion)
+                          animationInUse: animation?.dismissalAnimation
+        ) { rootViewController, options, completion in
+            rootViewController.dismiss(toRoot: false,
+                                       with: options,
+                                       animation: animation,
+                                       completion: completion)
         }
     }
 
@@ -174,7 +174,7 @@ extension Transition {
     /// routes.
     ///
     public static func none() -> Transition {
-        return Transition(presentables: [], animation: nil) { _, _, completion in
+        return Transition(presentables: [], animationInUse: nil) { _, _, completion in
             completion?()
         }
     }
@@ -187,17 +187,17 @@ extension Transition {
     ///
     public static func multiple<C: Collection>(_ transitions: C) -> Transition where C.Element == Transition {
         return Transition(presentables: transitions.flatMap { $0.presentables },
-                          animation: transitions.compactMap { $0.animation }.last
-        ) { options, performer, completion in
+                          animationInUse: transitions.compactMap { $0.animation }.last
+        ) { rootViewController, options, completion in
             guard let firstTransition = transitions.first else {
                 completion?()
                 return
             }
-            firstTransition.perform(options: options, performer: performer) {
+            firstTransition.perform(on: rootViewController, with: options) {
                 let newTransitions = Array(transitions.dropFirst())
-                performer.performTransition(.multiple(newTransitions),
-                                            with: options,
-                                            completion: completion)
+                Transition
+                    .multiple(newTransitions)
+                    .perform(on: rootViewController, with: options, completion: completion)
             }
         }
     }
@@ -213,8 +213,8 @@ extension Transition {
     public static func route<C: Coordinator>(_ route: C.RouteType, on coordinator: C) -> Transition {
         let transition = coordinator.prepareTransition(for: route)
         return Transition(presentables: transition.presentables,
-                          animation: transition.animation
-        ) { options, _, completion in
+                          animationInUse: transition.animation
+        ) { _, options, completion in
             coordinator.performTransition(transition, with: options, completion: completion)
         }
     }
@@ -230,8 +230,26 @@ extension Transition {
     ///     - router: The router to trigger the route on.
     ///
     public static func trigger<R: Router>(_ route: R.RouteType, on router: R) -> Transition {
-        return Transition(presentables: [], animation: nil) { options, _, completion in
+        return Transition(presentables: [], animationInUse: nil) { _, options, completion in
             router.trigger(route, with: options, completion: completion)
+        }
+    }
+
+    ///
+    /// Performs a transition on a different viewController than the coordinator's rootViewController.
+    ///
+    /// This might be helpful when creating a coordinator for a specific viewController would create unnecessary complicated code.
+    ///
+    /// - Parameters:
+    ///     - transition: The transition to be performed.
+    ///     - viewController: The viewController to perform the transition on.
+    ///
+    public static func perform<TransitionType: TransitionProtocol>(_ transition: TransitionType,
+                                                                   on viewController: TransitionType.RootViewController) -> Transition {
+        return Transition(presentables: transition.presentables,
+                          animationInUse: transition.animation
+        ) { _, options, completion in
+            transition.perform(on: viewController, with: options, completion: completion)
         }
     }
 
@@ -245,10 +263,10 @@ extension Transition {
     @available(iOS, introduced: 9.0, deprecated, message: "Use Coordinator.registerPeek instead.")
     public static func registerPeek(for source: Container,
                                     transition: @escaping () -> Transition) -> Transition {
-        return Transition(presentables: [], animation: nil) { _, performer, completion in
-            performer.registerPeek(from: source.view,
-                                   transitionGenerator: transition,
-                                   completion: completion)
+        return Transition(presentables: [], animationInUse: nil) { rootViewController, _, completion in
+            rootViewController.registerPeek(from: source.view,
+                                            transitionGenerator: transition,
+                                            completion: completion)
         }
     }
 
@@ -281,10 +299,13 @@ extension Coordinator where Self: AnyObject {
     public func registerPeek<RootViewController>(for source: Container,
                                                  route: RouteType
         ) -> Transition<RootViewController> where Self.TransitionType == Transition<RootViewController> {
-            return Transition(presentables: [], animation: nil) { [weak self] _, performer, completion in
-                performer.registerPeek(from: source.view,
-                                       transitionGenerator: { self?.prepareTransition(for: route) ?? .none() },
-                                       completion: completion)
-            }
+        let transitionGenerator = { [weak self] () -> TransitionType in
+            self?.prepareTransition(for: route) ?? .none()
+        }
+        return Transition(presentables: [], animationInUse: nil) { rootViewController, _, completion in
+            rootViewController.registerPeek(from: source.view,
+                                            transitionGenerator: transitionGenerator,
+                                            completion: completion)
+        }
     }
 }

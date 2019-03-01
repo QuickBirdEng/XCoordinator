@@ -233,6 +233,7 @@
 		9988354555E2EC5D65611E038C069771 /* NSObject+Rx+RawRepresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BEE52A9945527EFCBD21CA9F3A28DBD /* NSObject+Rx+RawRepresentable.swift */; };
 		99E5513325C685E8C50A609AC5FD169C /* NSObject+Rx+KVORepresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37A0811477EBB52C7918B7C2B2669765 /* NSObject+Rx+KVORepresentable.swift */; };
 		9A3C1F797E0618E09C8EC3CAF51851A8 /* Using.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACD6BF60232C5F780B6ED6D51838654B /* Using.swift */; };
+		9B1733E12208BDDA002EF4FF /* ViewControllerTransitionPerformer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B1733E02208BDDA002EF4FF /* ViewControllerTransitionPerformer.swift */; };
 		9B266862B0B77ECC079B5B8365DEBE29 /* PublishRelay+Signal.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7272E7C43A1E55D261192ADFA43B65B /* PublishRelay+Signal.swift */; };
 		9B3C49C0E9D84CD4117408135491E095 /* UITextField+Rx.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A3EBEDF33832A73B40D9491D766095F /* UITextField+Rx.swift */; };
 		9B778AAD0E88F3BDDD602B2B2FEC1B1D /* Queue.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBFC64BE15D06BBC2789A3ECD0453A64 /* Queue.swift */; };
@@ -765,6 +766,7 @@
 		9A5FBD22367E60422746B197D7730469 /* Classes.html */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.html.documentation; name = Classes.html; path = docs/docsets/XCoordinator.docset/Contents/Resources/Documents/Classes.html; sourceTree = "<group>"; };
 		9A90979C7E51C008AB58DDA3ABB949EA /* Router.html */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.html; name = Router.html; path = docs/Protocols/Router.html; sourceTree = "<group>"; };
 		9B11588755FBE191A25510E868E4F79F /* RxTarget.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = RxTarget.swift; path = RxCocoa/Common/RxTarget.swift; sourceTree = "<group>"; };
+		9B1733E02208BDDA002EF4FF /* ViewControllerTransitionPerformer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ViewControllerTransitionPerformer.swift; path = XCoordinator/Classes/ViewControllerTransitionPerformer.swift; sourceTree = "<group>"; };
 		9B448D17AE1C3B2AAE0CB56276E2AED9 /* carat.png */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = image.png; name = carat.png; path = docs/docsets/XCoordinator.docset/Contents/Resources/Documents/img/carat.png; sourceTree = "<group>"; };
 		9BEE2AE339E1563ACE8C043A2269FB49 /* Animation.html */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.html.documentation; name = Animation.html; path = docs/docsets/XCoordinator.docset/Contents/Resources/Documents/Classes/Animation.html; sourceTree = "<group>"; };
 		9CE8241B1400168A1C6BD6C38FEB3B0F /* RetryWhen.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = RetryWhen.swift; path = RxSwift/Observables/RetryWhen.swift; sourceTree = "<group>"; };
@@ -1256,6 +1258,7 @@
 				825805BB6C4E8AFF32925B9FF2524AFF /* UIPageViewController+Configuration.swift */,
 				A4876B3EED760683557C8D9110BBE494 /* UIView+Store.swift */,
 				DCC26CFDD320E51F8EA9FC9CF998EB75 /* ViewCoordinator.swift */,
+				9B1733E02208BDDA002EF4FF /* ViewControllerTransitionPerformer.swift */,
 				6C77CBCD192781781784E165453A8FDC /* Core */,
 				D2A9C3CB3D4E29CF4D24ED3AB7231B61 /* Pod */,
 				438F59E3568E041B85D86024428775CB /* RxSwift */,
@@ -2043,6 +2046,7 @@
 				4B028E8C272CE353FB12B408B333AC0F /* Coordinator+Rx.swift in Sources */,
 				758C532139BB1D5DB96DF146FA3D3797 /* Coordinator.swift in Sources */,
 				3757800FD35AC5F9DD3F094EFF2669A3 /* CoordinatorPreviewingDelegateObject.swift in Sources */,
+				9B1733E12208BDDA002EF4FF /* ViewControllerTransitionPerformer.swift in Sources */,
 				F823A12CF692D00284BA0FAE121CD3D2 /* DeepLinking.swift in Sources */,
 				D9ED93B34ED8AEE978D974AD5D3554D7 /* GestureRecognizerTarget.swift in Sources */,
 				26C5210AD075AF7881E22AC0D846B87A /* InteractiveTransitionAnimation.swift in Sources */,
