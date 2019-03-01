@@ -179,7 +179,7 @@ extension NavigationAnimationDelegate: UIGestureRecognizerDelegate {
             guard let delegate = interactivePopGestureRecognizerDelegate,
                 delegate.responds(to: delegateAction) else {
                     // swiftlint:disable:next line_length
-                    assertionFailure("Please don't set your own delegate on \(String(describing: UINavigationController.self)).\(#selector(getter: UINavigationController.interactivePopGestureRecognizer)).")
+                    assertionFailure("Please don't set a custom delegate on \(UINavigationController.self).\(#selector(getter: UINavigationController.interactivePopGestureRecognizer)).")
                     return false
             }
 

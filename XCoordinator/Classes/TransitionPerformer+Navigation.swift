@@ -21,9 +21,9 @@ extension UINavigationController {
         }
         assert(animation == nil || animationDelegate != nil, """
         Animations do not work, if the navigation controller's delegate is not a NavigationAnimationDelegate.
-        This assertion might fail, if you did not call super.generateRootViewController to generate the navigation controller
-        as a coordinator's rootViewController or you set another delegate on your rootViewController.
-        To set another delegate of your rootViewController in a NavigationCoordinator, have a look at `NavigationCoordinator.delegate`.
+        This assertion might fail, if NavigationCoordinator.generateRootViewController was not used to generate the navigation controller
+        as a coordinator's rootViewController or another delegate was set on its rootViewController.
+        To set another delegate of a rootViewController in a NavigationCoordinator, have a look at `NavigationCoordinator.delegate`.
         """)
 
         CATransaction.begin()
@@ -44,9 +44,9 @@ extension UINavigationController {
         }
         assert(animation == nil || animationDelegate != nil, """
         Animations do not work, if the navigation controller's delegate is not a NavigationAnimationDelegate.
-        This assertion might fail, if you did not call super.generateRootViewController to generate the navigation controller
-        as a coordinator's rootViewController or you set another delegate on your rootViewController.
-        To set another delegate of your rootViewController in a NavigationCoordinator, have a look at `NavigationCoordinator.delegate`.
+        This assertion might fail, if NavigationCoordinator.generateRootViewController was not used to generate the navigation controller
+        as a coordinator's rootViewController or another delegate was set on its rootViewController.
+        To set another delegate of a rootViewController in a NavigationCoordinator, have a look at `NavigationCoordinator.delegate`.
         """)
 
         CATransaction.begin()
@@ -75,9 +75,9 @@ extension UINavigationController {
         resetChildrenAnimations(holding: [animation])
         assert(animation == nil || animationDelegate != nil, """
         Animations do not work, if the navigation controller's delegate is not a NavigationAnimationDelegate.
-        This assertion might fail, if you did not call super.generateRootViewController to generate the navigation controller
-        as a coordinator's rootViewController or you set another delegate on your rootViewController.
-        To set another delegate of your rootViewController in a NavigationCoordinator, have a look at `NavigationCoordinator.delegate`.
+        This assertion might fail, if NavigationCoordinator.generateRootViewController was not used to generate the navigation controller
+        as a coordinator's rootViewController or another delegate was set on its rootViewController.
+        To set another delegate of a rootViewController in a NavigationCoordinator, have a look at `NavigationCoordinator.delegate`.
         """)
 
         CATransaction.begin()
@@ -106,9 +106,9 @@ extension UINavigationController {
 
         assert(animation == nil || animationDelegate != nil, """
         Animations do not work, if the navigation controller's delegate is not a NavigationAnimationDelegate.
-        This assertion might fail, if you did not call super.generateRootViewController to generate the navigation controller
-        as a coordinator's rootViewController or you set another delegate on your rootViewController.
-        To set another delegate of your rootViewController in a NavigationCoordinator, have a look at `NavigationCoordinator.delegate`.
+        This assertion might fail, if NavigationCoordinator.generateRootViewController was not used to generate the navigation controller
+        as a coordinator's rootViewController or another delegate was set on its rootViewController.
+        To set another delegate of a rootViewController in a NavigationCoordinator, have a look at `NavigationCoordinator.delegate`.
         """)
 
         CATransaction.begin()

@@ -13,11 +13,11 @@ extension UITabBarController {
              completion: PresentationHandler?) {
 
         animationDelegate?.animation = animation
-        assert(animation == nil || animationDelegate != nil,"""
+        assert(animation == nil || animationDelegate != nil, """
         Animations do not work, if the tabbar controller's delegate is not a TabBarAnimationDelegate.
-        This assertion might fail, if you did not call super.generateRootViewController to generate the tabbar controller
-        as a coordinator's rootViewController or you set another delegate on your rootViewController.
-        To set another delegate of your rootViewController in a TabBarCoordinator, have a look at `TabBarCoordinator.delegate`.
+        This assertion might fail, if TabBarCoordinator.generateRootViewController was not used to generate the tabbar controller
+        as a coordinator's rootViewController or another delegate was set on its rootViewController.
+        To set another delegate of a rootViewController in a TabBarCoordinator, have a look at `TabBarCoordinator.delegate`.
         """)
 
         CATransaction.begin()
@@ -36,9 +36,9 @@ extension UITabBarController {
         animationDelegate?.animation = animation
         assert(animation == nil || animationDelegate != nil, """
         Animations do not work, if the tabbar controller's delegate is not a TabBarAnimationDelegate.
-        This assertion might fail, if you did not call super.generateRootViewController to generate the tabbar controller
-        as a coordinator's rootViewController or you set another delegate on your rootViewController.
-        To set another delegate of your rootViewController in a TabBarCoordinator, have a look at `TabBarCoordinator.delegate`.
+        This assertion might fail, if TabBarCoordinator.generateRootViewController was not used to generate the tabbar controller
+        as a coordinator's rootViewController or another delegate was set on its rootViewController.
+        To set another delegate of a rootViewController in a TabBarCoordinator, have a look at `TabBarCoordinator.delegate`.
         """)
 
         CATransaction.begin()
@@ -54,9 +54,9 @@ extension UITabBarController {
         animationDelegate?.animation = animation
         assert(animation == nil || animationDelegate != nil, """
         Animations do not work, if the tabbar controller's delegate is not a TabBarAnimationDelegate.
-        This assertion might fail, if you did not call super.generateRootViewController to generate the tabbar controller
-        as a coordinator's rootViewController or you set another delegate on your rootViewController.
-        To set another delegate of your rootViewController in a TabBarCoordinator, have a look at `TabBarCoordinator.delegate`.
+        This assertion might fail, if TabBarCoordinator.generateRootViewController was not used to generate the tabbar controller
+        as a coordinator's rootViewController or another delegate was set on its rootViewController.
+        To set another delegate of a rootViewController in a TabBarCoordinator, have a look at `TabBarCoordinator.delegate`.
         """)
 
         CATransaction.begin()
