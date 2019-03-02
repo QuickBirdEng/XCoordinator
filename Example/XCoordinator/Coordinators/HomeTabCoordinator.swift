@@ -18,8 +18,8 @@ class HomeTabCoordinator: TabBarCoordinator<HomeRoute> {
 
     // MARK: - Stored properties
 
-    private let newsRouter: AnyRouter<NewsRoute>
-    private let userListRouter: AnyRouter<UserListRoute>
+    private let newsPresentable: Presentable
+    private let userListPresentable: Presentable
 
     // MARK: - Init
 
@@ -30,16 +30,16 @@ class HomeTabCoordinator: TabBarCoordinator<HomeRoute> {
         let userListCoordinator = UserListCoordinator()
         userListCoordinator.rootViewController.tabBarItem = UITabBarItem(tabBarSystemItem: .more, tag: 1)
 
-        self.init(newsRouter: StrongAnyRouter(newsCoordinator),
-                  userListRouter: StrongAnyRouter(userListCoordinator))
+        self.init(newsPresentable: newsCoordinator,
+                  userListPresentable: userListCoordinator)
     }
 
-    init(newsRouter: StrongAnyRouter<NewsRoute>,
-         userListRouter: StrongAnyRouter<UserListRoute>) {
-        self.newsRouter = newsRouter.anyRouter
-        self.userListRouter = userListRouter.anyRouter
+    init(newsPresentable: Presentable,
+         userListPresentable: Presentable) {
+        self.newsPresentable = newsPresentable
+        self.userListPresentable = userListPresentable
 
-        super.init(tabs: [newsRouter, userListRouter], select: userListRouter)
+        super.init(tabs: [newsPresentable, userListPresentable], select: userListPresentable)
     }
 
     // MARK: - Overrides
@@ -47,9 +47,9 @@ class HomeTabCoordinator: TabBarCoordinator<HomeRoute> {
     override func prepareTransition(for route: HomeRoute) -> TabBarTransition {
         switch route {
         case .news:
-            return .select(newsRouter)
+            return .select(newsPresentable)
         case .userList:
-            return .select(userListRouter)
+            return .select(userListPresentable)
         }
     }
 }
