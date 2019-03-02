@@ -57,7 +57,7 @@ extension TabBarAnimationDelegate: UITabBarControllerDelegate {
     ///     - toVC: The destination view controller of the transition.
     ///
     /// - Returns:
-    ///     The presentation animation of the last specified `Animation` object of a `set` or `select` transition.
+    ///     The presentation animation controller from the toVC's transitioningDelegate.
     ///     If not present, it uses the TabBarCoordinator's delegate as fallback.
     ///
     open func tabBarController(_ tabBarController: UITabBarController,
