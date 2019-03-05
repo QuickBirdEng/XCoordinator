@@ -28,40 +28,40 @@ class XCoordinator_ExampleUITests: XCTestCase {
 
     func testNavigation() {
         let app = XCUIApplication()
-        clickThroughTabHomeFromLogin(app: app)
-        clickThroughSplitHomeFromLogin(app: app)
-        clickThroughPageHomeFromLogin(app: app)
+        navigateTabHomeFromLogin(app: app)
+        navigateSplitHomeFromLogin(app: app)
+        navigatePageHomeFromLogin(app: app)
     }
 
     // MARK: - Helpers
 
-    private func clickThroughPageHomeFromLogin(app: XCUIApplication) {
+    private func navigatePageHomeFromLogin(app: XCUIApplication) {
         app.buttons["Login"].tap()
         app.swipeLeft()
-        clickThroughNewsDetailScreenFromNews(app: app, trySwiping: false)
+        navigateNewsDetailFromNews(app: app, trySwiping: false)
         app.swipeRight()
-        clickThroughUserScreenFromHome(app: app)
+        navigateUserFromUserList(app: app)
         app.buttons["Logout"].tap()
     }
 
-    private func clickThroughSplitHomeFromLogin(app: XCUIApplication) {
+    private func navigateSplitHomeFromLogin(app: XCUIApplication) {
         app.buttons["Login"].tap()
-        clickThroughNewsDetailScreenFromNews(app: app, trySwiping: true)
+        navigateNewsDetailFromNews(app: app, trySwiping: true)
         app.navigationBars.buttons["Home"].tap()
-        clickThroughUserScreenFromHome(app: app)
+        navigateUserFromUserList(app: app)
         app.buttons["Logout"].tap()
     }
 
-    private func clickThroughTabHomeFromLogin(app: XCUIApplication) {
+    private func navigateTabHomeFromLogin(app: XCUIApplication) {
         app.buttons["Login"].tap()
         app.tabBars.buttons["Recents"].tap()
-        clickThroughNewsDetailScreenFromNews(app: app, trySwiping: true)
+        navigateNewsDetailFromNews(app: app, trySwiping: true)
         app.tabBars.buttons["More"].tap()
-        clickThroughUserScreenFromHome(app: app)
+        navigateUserFromUserList(app: app)
         app.buttons["Logout"].tap()
     }
 
-    private func clickThroughNewsDetailScreenFromNews(app: XCUIApplication, trySwiping: Bool) {
+    private func navigateNewsDetailFromNews(app: XCUIApplication, trySwiping: Bool) {
         app.tables.staticTexts["Example article 0"].tap()
         if trySwiping {
             let window = app.children(matching: .window).element(boundBy: 1)
@@ -71,7 +71,7 @@ class XCoordinator_ExampleUITests: XCTestCase {
         app.navigationBars.buttons["QuickBird Studios Blog"].tap()
     }
 
-    private func clickThroughUserScreenFromHome(app: XCUIApplication) {
+    private func navigateUserFromUserList(app: XCUIApplication) {
         app.buttons["Users"].tap()
         app.tables/*@START_MENU_TOKEN@*/.staticTexts["Stefan"]/*[[".cells.staticTexts[\"Stefan\"]",".staticTexts[\"Stefan\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/.tap()
         app.buttons["Show alert"].tap()
