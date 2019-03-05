@@ -40,14 +40,13 @@ class AppCoordinator: NavigationCoordinator<AppRoute> {
             viewController.bind(to: viewModel)
             return .push(viewController)
         case .home:
-            defer { homeRouteTriggerCount += 1 }
-
             let presentables: [Presentable] = [
                 HomeTabCoordinator(),
                 HomeSplitCoordinator(),
                 HomePageCoordinator()
             ]
             let presentable = presentables[homeRouteTriggerCount % presentables.count]
+            homeRouteTriggerCount = (homeRouteTriggerCount + 1) % presentables.count
             self.home = presentable
             return .present(presentable, animation: .fade)
         case .newsDetail(let news):
