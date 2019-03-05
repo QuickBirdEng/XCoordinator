@@ -22,6 +22,7 @@ class AppCoordinator: NavigationCoordinator<AppRoute> {
     // We need to keep a reference to the HomeCoordinator
     // as it is not held by any viewModel or viewController
     private var home: Presentable?
+    private var homeRouteTriggerCount = 0
 
     // MARK: - Init
 
@@ -39,14 +40,14 @@ class AppCoordinator: NavigationCoordinator<AppRoute> {
             viewController.bind(to: viewModel)
             return .push(viewController)
         case .home:
-            guard let presentable: Presentable =
-                [
-                    HomeTabCoordinator(),
-                    HomeSplitCoordinator(),
-                    HomePageCoordinator()
-                ].randomElement() else {
-                    return .none()
-            }
+            defer { homeRouteTriggerCount += 1 }
+
+            let presentables: [Presentable] = [
+                HomeTabCoordinator(),
+                HomeSplitCoordinator(),
+                HomePageCoordinator()
+            ]
+            let presentable = presentables[homeRouteTriggerCount % presentables.count]
             self.home = presentable
             return .present(presentable, animation: .fade)
         case .newsDetail(let news):
