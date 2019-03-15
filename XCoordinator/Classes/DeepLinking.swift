@@ -10,7 +10,7 @@
 public typealias PresentationHandlerContext = TransitionContext
 
 ///
-/// `PresentationHandlerContext` provides context information about transitions.
+/// `TransitionContext` provides context information about transitions.
 ///
 /// It is especially useful for deep linking as XCoordinator can internally gather information about
 /// the presentables being pushed onto the view hierarchy.
