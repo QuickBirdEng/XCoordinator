@@ -11,22 +11,10 @@
 ///
 /// `Transition` is provided as an easily-extensible default transition type implementation.
 ///
-public protocol TransitionProtocol {
+public protocol TransitionProtocol: TransitionContext {
 
     /// The type of the rootViewController that can execute the transition.
     associatedtype RootViewController: UIViewController
-
-    /// The presentables being shown to the user by this transition.
-    var presentables: [Presentable] { get }
-
-    ///
-    /// The transition animation directly used in the transition, if applicable.
-    ///
-    /// - Note:
-    ///     Make sure to not return `nil`, if you want to use `BaseCoordinator.registerInteractiveTransition`
-    ///     to realize an interactive transition.
-    ///
-    var animation: TransitionAnimation? { get }
 
     ///
     /// Perform the transition on the specified coordinator.
