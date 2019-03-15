@@ -6,6 +6,11 @@
 //  Copyright © 2018 QuickBird Studios. All rights reserved.
 //
 
+///
+/// `PresentationHandlerContext` provides context information about transitions.
+/// It was replaced by `TransitionContext` to allow for transitions to be handed
+/// over directly as context of a triggered route.
+///
 @available(*, deprecated, renamed: "TransitionContext")
 public typealias PresentationHandlerContext = TransitionContext
 

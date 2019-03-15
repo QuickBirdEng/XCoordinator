@@ -163,6 +163,9 @@
                 <a class="nav-group-task-link" href="Protocols/TransitionAnimation.html">TransitionAnimation</a>
               </li>
               <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Protocols/TransitionContext.html">TransitionContext</a>
+              </li>
+              <li class="nav-group-task">
                 <a class="nav-group-task-link" href="Protocols/TransitionPerformer.html">TransitionPerformer</a>
               </li>
               <li class="nav-group-task">
@@ -173,9 +176,6 @@
           <li class="nav-group-name">
             <a class="nav-group-name-link" href="Structs.html">Structures</a>
             <ul class="nav-group-tasks">
-              <li class="nav-group-task">
-                <a class="nav-group-task-link" href="Structs.html#/s:12XCoordinator26PresentationHandlerContextV">PresentationHandlerContext</a>
-              </li>
               <li class="nav-group-task">
                 <a class="nav-group-task-link" href="Structs/Transition.html">Transition</a>
               </li>
@@ -216,6 +216,9 @@
               </li>
               <li class="nav-group-task">
                 <a class="nav-group-task-link" href="Typealiases.html#/s:12XCoordinator19PresentationHandlera">PresentationHandler</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Typealiases.html#/s:12XCoordinator26PresentationHandlerContexta">PresentationHandlerContext</a>
               </li>
               <li class="nav-group-task">
                 <a class="nav-group-task-link" href="Typealiases.html#/s:12XCoordinator15SplitTransitiona">SplitTransition</a>
@@ -304,6 +307,41 @@ This connection is created using the <code>prepareTransition(for:)</code> method
                         <div class="language">
                           <p class="aside-title">Swift</p>
                           <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">protocol</span> <span class="kt">Coordinator</span> <span class="p">:</span> <span class="kt"><a href="Protocols/Router.html">Router</a></span><span class="p">,</span> <span class="kt"><a href="Protocols/TransitionPerformer.html">TransitionPerformer</a></span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <ul class="item-container">
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:12XCoordinator17TransitionContextP"></a>
+                    <a name="//apple_ref/swift/Protocol/TransitionContext" class="dashAnchor"></a>
+                    <a class="token" href="#/s:12XCoordinator17TransitionContextP">TransitionContext</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p><code>TransitionContext</code> provides context information about transitions.</p>
+
+<p>It is especially useful for deep linking as XCoordinator can internally gather information about
+the presentables being pushed onto the view hierarchy.</p>
+
+                        <a href="Protocols/TransitionContext.html" class="slightly-smaller">See more</a>
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">protocol</span> <span class="kt">TransitionContext</span></code></pre>
 
                         </div>
                       </div>
@@ -550,7 +588,7 @@ It keeps type information about its transition performing capabilities.</p>
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">protocol</span> <span class="kt">TransitionProtocol</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">protocol</span> <span class="kt">TransitionProtocol</span> <span class="p">:</span> <span class="kt"><a href="Protocols/TransitionContext.html">TransitionContext</a></span></code></pre>
 
                         </div>
                       </div>
@@ -565,7 +603,7 @@ It keeps type information about its transition performing capabilities.</p>
       </article>
     </div>
     <section class="footer">
-      <p>&copy; 2019 <a class="link" href="https://quickbirdstudios.com" target="_blank" rel="external">Stefan Kofler &amp; Paul Kraft</a>. All rights reserved. (Last updated: 2019-02-28)</p>
+      <p>&copy; 2019 <a class="link" href="https://quickbirdstudios.com" target="_blank" rel="external">Stefan Kofler &amp; Paul Kraft</a>. All rights reserved. (Last updated: 2019-03-15)</p>
       <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.9.4</a>, a <a class="link" href="https://realm.io" target="_blank" rel="external">Realm</a> project.</p>
     </section>
   </body>
