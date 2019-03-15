@@ -1,26 +1,6 @@
 {
   "warnings": [
-    {
-      "file": "/Users/pauljohanneskraft/Documents/QuickBirdStudios/Frameworks/XCoordinator/XCoordinator/Classes/DeepLinking.swift",
-      "line": 10,
-      "symbol": "PresentationHandlerContext",
-      "symbol_kind": "source.lang.swift.decl.typealias",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/pauljohanneskraft/Documents/QuickBirdStudios/Frameworks/XCoordinator/XCoordinator/Classes/DeepLinking.swift",
-      "line": 10,
-      "symbol": "PresentationHandlerContext",
-      "symbol_kind": "source.lang.swift.decl.typealias",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/pauljohanneskraft/Documents/QuickBirdStudios/Frameworks/XCoordinator/XCoordinator/Classes/DeepLinking.swift",
-      "line": 10,
-      "symbol": "PresentationHandlerContext",
-      "symbol_kind": "source.lang.swift.decl.typealias",
-      "warning": "undocumented"
-    }
+
   ],
   "source_directory": "/Users/pauljohanneskraft/Documents/QuickBirdStudios/Frameworks/XCoordinator"
 }

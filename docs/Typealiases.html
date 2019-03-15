@@ -488,14 +488,17 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p><code>PresentationHandlerContext</code> provides context information about transitions.
+It was replaced by <code><a href="Protocols/TransitionContext.html">TransitionContext</a></code> to allow for transitions to be handed
+over directly as context of a triggered route.</p>
 
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">typealias</span> <span class="kt">PresentationHandlerContext</span> <span class="o">=</span> <span class="kt"><a href="Protocols/TransitionContext.html">TransitionContext</a></span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">@available(*, deprecated, renamed: "TransitionContext")</span>
+<span class="kd">public</span> <span class="kd">typealias</span> <span class="kt">PresentationHandlerContext</span> <span class="o">=</span> <span class="kt"><a href="Protocols/TransitionContext.html">TransitionContext</a></span></code></pre>
 
                         </div>
                       </div>
