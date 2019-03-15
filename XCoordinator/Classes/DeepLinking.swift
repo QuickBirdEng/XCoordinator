@@ -7,7 +7,7 @@
 //
 
 @available(*, deprecated, renamed: "TransitionContext")
-typealias PresentationHandlerContext = TransitionContext
+public typealias PresentationHandlerContext = TransitionContext
 
 ///
 /// `PresentationHandlerContext` provides context information about transitions.
