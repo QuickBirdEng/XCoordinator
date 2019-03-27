@@ -109,6 +109,8 @@ extension NavigationAnimationDelegate: UINavigationControllerDelegate {
                     .animationController?(forDismissed: fromVC)
             case .none:
                 return nil
+            @unknown default:
+                return nil
             }
         }()
         return transitionAnimation
@@ -238,6 +240,8 @@ extension NavigationAnimationDelegate: UIGestureRecognizerDelegate {
             } else {
                 interactionController?.cancel()
             }
+        @unknown default:
+            return
         }
     }
 

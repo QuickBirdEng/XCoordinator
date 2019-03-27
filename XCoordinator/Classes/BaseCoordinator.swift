@@ -218,6 +218,8 @@ extension BaseCoordinator {
                     } else {
                         animation?.interactionController?.cancel()
                     }
+                @unknown default:
+                    break
                 }
             },
             completion: completion

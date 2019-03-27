@@ -13,7 +13,7 @@ public extension UIAlertAction {
     
     public static func Action(_ title: String?, style: ActionStyle) -> UIAlertAction {
         return UIAlertAction(title: title, style: style, handler: { action in
-            action.rx.action?.execute(())
+            action.rx.action?.execute()
             return
         })
     }
