@@ -288,6 +288,7 @@
 		C675630E90D85C3AE617C1073E334D3D /* AnyObserver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 092E663DAAC22087136DA7D7D026D52A /* AnyObserver.swift */; };
 		C6A5A4F377557770679BB46593946E45 /* RxAtomic.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3CF306C2DDA872F8AACBC747F2764B52 /* RxAtomic.framework */; };
 		C6C667561E8CCE966898379594E9F078 /* DispatchQueue+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34C568086AA1C60552BC7B39B0C08D92 /* DispatchQueue+Extensions.swift */; };
+		C77715EA226E36490018D765 /* Coordinator+RxCocoa.swift in Sources */ = {isa = PBXBuildFile; fileRef = C77715E9226E36490018D765 /* Coordinator+RxCocoa.swift */; };
 		C84ED2FF9E243390304F02C5B5B7E479 /* PageCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55AB565D30A9C7199CA165B7B1DE4A6C /* PageCoordinator.swift */; };
 		C8C043742A79D6734B7B38DB886A46E5 /* PriorityQueue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54B75D45072CB89606CAB2DB17A882B0 /* PriorityQueue.swift */; };
 		C9490A72A32CAFF28F1B6EF571D5243C /* Timer.swift in Sources */ = {isa = PBXBuildFile; fileRef = D489102186DF86A8C62396559CDB6B9A /* Timer.swift */; };
@@ -864,6 +865,7 @@
 		C5D2168DAC47C74FEE1817F74FD10999 /* Debug.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Debug.swift; path = RxSwift/Observables/Debug.swift; sourceTree = "<group>"; };
 		C5F3E8766954D8854E9CE1FFBCEAF09B /* Materialize.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Materialize.swift; path = RxSwift/Observables/Materialize.swift; sourceTree = "<group>"; };
 		C6507DF58EE1B47D4C13CD79B2CB91E6 /* Pods-XCoordinator_Tests.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-XCoordinator_Tests.modulemap"; sourceTree = "<group>"; };
+		C77715E9226E36490018D765 /* Coordinator+RxCocoa.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Coordinator+RxCocoa.swift"; sourceTree = "<group>"; };
 		C87DA7373B312320214004EE3A1831BD /* RxSearchBarDelegateProxy.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = RxSearchBarDelegateProxy.swift; path = RxCocoa/iOS/Proxies/RxSearchBarDelegateProxy.swift; sourceTree = "<group>"; };
 		C89F58FC2FC76F0D0F45FDF36FD69D3B /* UISearchBar+Rx.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "UISearchBar+Rx.swift"; path = "RxCocoa/iOS/UISearchBar+Rx.swift"; sourceTree = "<group>"; };
 		C905E6C351AEF8478649E247CFCB3130 /* SplitTransition.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SplitTransition.swift; path = XCoordinator/Classes/SplitTransition.swift; sourceTree = "<group>"; };
@@ -1290,6 +1292,7 @@
 			isa = PBXGroup;
 			children = (
 				BCEC7DC32D8338D53E7F5DFD9E4321F0 /* Coordinator+Rx.swift */,
+				C77715E9226E36490018D765 /* Coordinator+RxCocoa.swift */,
 			);
 			name = RxSwift;
 			sourceTree = "<group>";
@@ -2036,6 +2039,7 @@
 			files = (
 				00E87468F891151046A858A61AF1F3A8 /* Animation+Navigation.swift in Sources */,
 				DDA849D4BAFE1C5AF745AD40B5765DF2 /* Animation+TabBar.swift in Sources */,
+				C77715EA226E36490018D765 /* Coordinator+RxCocoa.swift in Sources */,
 				1D3D5AD083305AB4531C63824B0D05AD /* Animation.swift in Sources */,
 				84C10BB278FA5840C11EF63EFCEDDDE5 /* AnyCoordinator.swift in Sources */,
 				F130DA808CEC20A6ACDB7FB532224334 /* AnyRouter.swift in Sources */,
