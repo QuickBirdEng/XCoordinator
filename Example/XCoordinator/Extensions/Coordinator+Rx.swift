@@ -13,7 +13,7 @@ import XCoordinator
 
 extension Reactive where Base: Router & AnyObject {
     public func contextTrigger(_ route: Base.RouteType,
-                               with options: TransitionOptions) -> Observable<PresentationHandlerContext> {
+                               with options: TransitionOptions) -> Observable<TransitionContext> {
         return Observable.create { [weak base] observer -> Disposable in
             guard let base = base else {
                 observer.onCompleted()
@@ -29,7 +29,7 @@ extension Reactive where Base: Router & AnyObject {
 
     // MARK: - Convenience methods
 
-    public func contextTrigger(_ route: Base.RouteType) -> Observable<PresentationHandlerContext> {
+    public func contextTrigger(_ route: Base.RouteType) -> Observable<TransitionContext> {
         return contextTrigger(route, with: TransitionOptions(animated: true))
     }
 }

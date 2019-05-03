@@ -10,7 +10,7 @@
 public typealias PresentationHandler = () -> Void
 
 /// The completion handler for transitions, which also provides the context information about the transition.
-public typealias ContextPresentationHandler = (PresentationHandlerContext) -> Void
+public typealias ContextPresentationHandler = (TransitionContext) -> Void
 
 ///
 /// Coordinator is the protocol every coordinator conforms to.
@@ -66,8 +66,7 @@ extension Coordinator {
                                with options: TransitionOptions,
                                completion: ContextPresentationHandler?) {
         let transition = prepareTransition(for: route)
-        let context = PresentationHandlerContext(presentables: transition.presentables)
-        performTransition(transition, with: options) { completion?(context) }
+        performTransition(transition, with: options) { completion?(transition) }
     }
 
     ///
