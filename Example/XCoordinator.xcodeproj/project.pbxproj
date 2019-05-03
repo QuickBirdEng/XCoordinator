@@ -18,6 +18,7 @@
 		9B07F06B21D6D44200A0C149 /* Animation+Swirl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B07F06A21D6D44200A0C149 /* Animation+Swirl.swift */; };
 		9B33481321C47F9700E954A3 /* Presentable+Rx.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B33481221C47F9700E954A3 /* Presentable+Rx.swift */; };
 		9B33481821C4804600E954A3 /* Coordinator+Rx.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B33481721C4804600E954A3 /* Coordinator+Rx.swift */; };
+		9BA54440222EF5B0000556DC /* XCUIElement+EdgeSwipe.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BA5443F222EF5B0000556DC /* XCUIElement+EdgeSwipe.swift */; };
 		9BC60AFE214EA6AA00ECFF9A /* AnimationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BC60AFC214EA6A500ECFF9A /* AnimationTests.swift */; };
 		9BC60B00214EA71300ECFF9A /* TestAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BC60AFF214EA71300ECFF9A /* TestAnimation.swift */; };
 		9BC60B1A214EF8D900ECFF9A /* UITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BC60B19214EF8D900ECFF9A /* UITests.swift */; };
@@ -100,6 +101,7 @@
 		9B07F06A21D6D44200A0C149 /* Animation+Swirl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Animation+Swirl.swift"; sourceTree = "<group>"; };
 		9B33481221C47F9700E954A3 /* Presentable+Rx.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Presentable+Rx.swift"; sourceTree = "<group>"; };
 		9B33481721C4804600E954A3 /* Coordinator+Rx.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Coordinator+Rx.swift"; sourceTree = "<group>"; };
+		9BA5443F222EF5B0000556DC /* XCUIElement+EdgeSwipe.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "XCUIElement+EdgeSwipe.swift"; sourceTree = "<group>"; };
 		9BC60AFC214EA6A500ECFF9A /* AnimationTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimationTests.swift; sourceTree = "<group>"; };
 		9BC60AFF214EA71300ECFF9A /* TestAnimation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestAnimation.swift; sourceTree = "<group>"; };
 		9BC60B17214EF8D900ECFF9A /* XCoordinator_UITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = XCoordinator_UITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -282,6 +284,7 @@
 			isa = PBXGroup;
 			children = (
 				9BC60B19214EF8D900ECFF9A /* UITests.swift */,
+				9BA5443F222EF5B0000556DC /* XCUIElement+EdgeSwipe.swift */,
 				9BC60B1B214EF8D900ECFF9A /* Info.plist */,
 			);
 			path = UITests;
@@ -726,6 +729,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				9BC60B1A214EF8D900ECFF9A /* UITests.swift in Sources */,
+				9BA54440222EF5B0000556DC /* XCUIElement+EdgeSwipe.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
