@@ -7,7 +7,7 @@ Pod::Spec.new do |spec|
     spec.summary      = 'Navigation framework based on coordinator pattern.'
     spec.source       = { :git => 'https://github.com/quickbirdstudios/XCoordinator.git', :tag => spec.version }
     spec.module_name = 'XCoordinator'
-    spec.swift_version = '4.2'
+    spec.swift_version = '5.0'
     spec.ios.deployment_target = '8.0'
     spec.source_files = 'XCoordinator/Classes/*.swift'
     spec.default_subspec = 'Core'

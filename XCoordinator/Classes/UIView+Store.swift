@@ -26,7 +26,7 @@ extension UIView {
     func removePreviewingContext<TransitionType: TransitionProtocol>(for _: TransitionType.Type)
         -> UIViewControllerPreviewing? {
         guard let existingContextIndex = strongReferences
-            .index(where: { $0 is CoordinatorPreviewingDelegateObject<TransitionType> }),
+            .firstIndex(where: { $0 is CoordinatorPreviewingDelegateObject<TransitionType> }),
             let contextDelegate = strongReferences
                 .remove(at: existingContextIndex) as? CoordinatorPreviewingDelegateObject<TransitionType>,
             let context = contextDelegate.context else {

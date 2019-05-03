@@ -83,6 +83,8 @@ open class InterruptibleTransitionAnimation: InteractiveTransitionAnimation {
                 self?._interruptibleAnimator = nil
             case .current:
                 break
+            @unknown default:
+                break
             }
         }
         _interruptibleAnimator = animator
