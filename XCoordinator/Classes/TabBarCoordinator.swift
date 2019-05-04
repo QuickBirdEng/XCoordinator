@@ -38,8 +38,8 @@ open class TabBarCoordinator<RouteType: Route>: BaseCoordinator<RouteType, TabBa
 
     // MARK: - Initialization
 
-    public override init(initialRoute: RouteType?) {
-        super.init(initialRoute: initialRoute)
+    public override init(rootViewController: RootViewController? = nil, initialRoute: RouteType?) {
+        super.init(rootViewController: rootViewController, initialRoute: initialRoute)
     }
 
     ///

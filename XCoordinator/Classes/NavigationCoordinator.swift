@@ -43,8 +43,8 @@ open class NavigationCoordinator<RouteType: Route>: BaseCoordinator<RouteType, N
     /// - Parameter initialRoute:
     ///     The route to be triggered.
     ///
-    public override init(initialRoute: RouteType? = nil) {
-        super.init(initialRoute: initialRoute)
+    public override init(rootViewController: RootViewController? = nil, initialRoute: RouteType? = nil) {
+        super.init(rootViewController: rootViewController, initialRoute: initialRoute)
     }
 
     ///

@@ -40,8 +40,8 @@ open class BaseCoordinator<RouteType: Route, TransitionType: TransitionProtocol>
     /// - Parameter initialRoute:
     ///     If a route is specified, it is triggered before making the coordinator visible.
     ///
-    public init(initialRoute: RouteType?) {
-        rootViewControllerBox.set(generateRootViewController())
+    public init(rootViewController: RootViewController? = nil, initialRoute: RouteType?) {
+        rootViewControllerBox.set(rootViewController ?? generateRootViewController())
         initialRoute.map(prepareTransition).map(performTransitionAfterWindowAppeared)
     }
 
@@ -51,8 +51,8 @@ open class BaseCoordinator<RouteType: Route, TransitionType: TransitionProtocol>
     /// - Parameter initialTransition:
     ///     If a transition is specified, it is performed before making the coordinator visible.
     ///
-    public init(initialTransition: TransitionType?) {
-        rootViewControllerBox.set(generateRootViewController())
+    public init(rootViewController: RootViewController? = nil, initialTransition: TransitionType?) {
+        rootViewControllerBox.set(rootViewController ?? generateRootViewController())
         initialTransition.map(performTransitionAfterWindowAppeared)
     }
 
