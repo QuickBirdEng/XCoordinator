@@ -10,7 +10,7 @@ import Action
 import RxSwift
 
 protocol NewsViewModelInput {
-    var selectedNews: InputSubject<News> { get }
+    var selectedNews: AnyObserver<News> { get }
 }
 
 protocol NewsViewModelOutput {

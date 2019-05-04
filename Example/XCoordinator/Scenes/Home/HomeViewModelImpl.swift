@@ -14,8 +14,8 @@ class HomeViewModelImpl: HomeViewModel, HomeViewModelInput, HomeViewModelOutput 
 
     // MARK: - Inputs
 
-    private(set) lazy var logoutTrigger: InputSubject<Void> = logoutAction.inputs
-    private(set) lazy var usersTrigger: InputSubject<Void> = usersAction.inputs
+    private(set) lazy var logoutTrigger: AnyObserver<Void> = logoutAction.inputs
+    private(set) lazy var usersTrigger: AnyObserver<Void> = usersAction.inputs
 
     // MARK: - Actions
 

@@ -11,7 +11,7 @@ import RxSwift
 import XCoordinator
 
 protocol UsersViewModelInput {
-    var showUserTrigger: InputSubject<String> { get }
+    var showUserTrigger: AnyObserver<String> { get }
 }
 
 protocol UsersViewModelOutput {

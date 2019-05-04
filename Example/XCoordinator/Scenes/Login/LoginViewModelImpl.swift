@@ -14,7 +14,7 @@ class LoginViewModelImpl: LoginViewModel, LoginViewModelInput, LoginViewModelOut
 
     // MARK: - Inputs
 
-    private(set) lazy var loginTrigger: InputSubject<Void> = loginAction.inputs
+    private(set) lazy var loginTrigger: AnyObserver<Void> = loginAction.inputs
 
     // MARK: - Actions
 

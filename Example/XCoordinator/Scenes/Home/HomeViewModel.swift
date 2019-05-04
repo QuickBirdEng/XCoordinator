@@ -11,8 +11,8 @@ import RxSwift
 import XCoordinator
 
 protocol HomeViewModelInput {
-    var logoutTrigger: InputSubject<Void> { get }
-    var usersTrigger: InputSubject<Void> { get }
+    var logoutTrigger: AnyObserver<Void> { get }
+    var usersTrigger: AnyObserver<Void> { get }
 }
 
 protocol HomeViewModelOutput {}
