@@ -11,7 +11,7 @@ import RxSwift
 import XCoordinator
 
 protocol LoginViewModelInput {
-    var loginTrigger: InputSubject<Void> { get }
+    var loginTrigger: AnyObserver<Void> { get }
 }
 
 protocol LoginViewModelOutput {}

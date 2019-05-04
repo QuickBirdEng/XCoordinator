@@ -14,7 +14,7 @@ class UsersViewModelImpl: UsersViewModel, UsersViewModelInput, UsersViewModelOut
 
     // MARK: - Inputs
 
-    lazy var showUserTrigger: InputSubject<String> = showUserAction.inputs
+    private(set) lazy var showUserTrigger = showUserAction.inputs
 
     // MARK: - Actions
 
@@ -24,7 +24,7 @@ class UsersViewModelImpl: UsersViewModel, UsersViewModelInput, UsersViewModelOut
 
     // MARK: - Outputs
 
-    var usernames: Observable<[String]> = .just([
+    let usernames: Observable<[String]> = .just([
         "Stefan", "Malte", "Sebi", "Patrick", "Julian", "Quirin", "Paul", "Michael", "Eduardo", "Lizzie"
     ])
 
