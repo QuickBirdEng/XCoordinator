@@ -2,21 +2,21 @@ PODS:
   - Action (3.11.0):
     - RxCocoa (~> 4.0)
     - RxSwift (~> 4.0)
-  - RxAtomic (4.4.2)
-  - RxCocoa (4.4.2):
+  - RxCocoa (4.5.0):
     - RxSwift (>= 4.4.2, ~> 4.4)
-  - RxSwift (4.4.2):
-    - RxAtomic (>= 4.4.2, ~> 4.4)
-  - SwiftLint (0.31.0)
-  - XCoordinator (1.4.0):
-    - XCoordinator/Core (= 1.4.0)
-  - XCoordinator/Core (1.4.0)
-  - XCoordinator/RxSwift (1.4.0):
+  - RxSwift (4.5.0)
+  - SwiftLint (0.32.0)
+  - XCoordinator (1.5.0):
+    - XCoordinator/Core (= 1.5.0)
+  - XCoordinator/Core (1.5.0)
+  - XCoordinator/RxSwift (1.5.0):
     - RxSwift (~> 4.0)
     - XCoordinator/Core
 
 DEPENDENCIES:
   - Action (~> 3.9)
+  - RxCocoa (~> 4.5)
+  - RxSwift (~> 4.5)
   - SwiftLint
   - XCoordinator (from `../`)
   - XCoordinator/RxSwift (from `../`)
@@ -24,7 +24,6 @@ DEPENDENCIES:
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
     - Action
-    - RxAtomic
     - RxCocoa
     - RxSwift
     - SwiftLint
@@ -35,12 +34,11 @@ EXTERNAL SOURCES:
 
 SPEC CHECKSUMS:
   Action: 689181e4c3f6566844178d8a7da6fef39a9597fc
-  RxAtomic: d00e97c10db88c6f08540e0bf2752fc5a2404167
-  RxCocoa: 477990dc3b4c3ff55fb0ac77e1cc06244e0aaec8
-  RxSwift: 74c29b693c8e42b0f64400e8b06564575742d649
-  SwiftLint: 7a0227733d786395817373b2d0ca799fd0093ff3
-  XCoordinator: c24865c3722779f716551e63da71ce64ece576fb
+  RxCocoa: cbf70265dc65a981d4ac982e513c10cf23df24a0
+  RxSwift: f172070dfd1a93d70a9ab97a5a01166206e1c575
+  SwiftLint: 009a898ef2a1c851f45e1b59349bf6ff2ddc990d
+  XCoordinator: 4cb9530e886ecb5ad8c448361c60950fe49451c2
 
-PODFILE CHECKSUM: 14c5bdcd898ea0f09e76fcd87a67d54de2725512
+PODFILE CHECKSUM: bf9a84ab1ec8d516f3d96703eca5a0975a00d2af
 
-COCOAPODS: 1.5.3
+COCOAPODS: 1.7.0.rc.1
