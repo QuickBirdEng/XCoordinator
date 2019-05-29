@@ -626,7 +626,7 @@
 			files = (
 			);
 			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-XCoordinator_Example/Pods-XCoordinator_Example-frameworks.sh",
+				"${PODS_ROOT}/Target Support Files/Pods-XCoordinator_Example/Pods-XCoordinator_Example-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Action/Action.framework",
 				"${BUILT_PRODUCTS_DIR}/RxAtomic/RxAtomic.framework",
 				"${BUILT_PRODUCTS_DIR}/RxCocoa/RxCocoa.framework",
@@ -643,7 +643,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-XCoordinator_Example/Pods-XCoordinator_Example-frameworks.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-XCoordinator_Example/Pods-XCoordinator_Example-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		9B07F06C21D6FADA00A0C149 /* ShellScript */ = {
