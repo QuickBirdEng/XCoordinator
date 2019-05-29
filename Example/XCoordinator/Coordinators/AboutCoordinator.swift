@@ -9,10 +9,10 @@
 import XCoordinator
 
 enum AboutRoute: Route {
-    case home
+    
 }
 
-class AboutCoordinator: RedirectionCoordinator<UserListRoute, NavigationTransition> {
+class AboutCoordinator: RedirectionCoordinator<AboutRoute, NavigationTransition> {
     
     // MARK: - Init
     
@@ -21,6 +21,10 @@ class AboutCoordinator: RedirectionCoordinator<UserListRoute, NavigationTransiti
         vc.loadViewIfNeeded()
         vc.view.backgroundColor = .green
         super.init(viewController: vc, superTransitionPerformer: superCoordinator, prepareTransition: nil)
+    }
+    
+    override func prepareTransition(for route: AboutRoute) -> NavigationTransition {
+        switch route {}
     }
     
 }
