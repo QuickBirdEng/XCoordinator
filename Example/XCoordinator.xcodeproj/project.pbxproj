@@ -11,6 +11,7 @@
 		607FACDD1AFB9204008FA782 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 607FACDC1AFB9204008FA782 /* Images.xcassets */; };
 		607FACE01AFB9204008FA782 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 607FACDE1AFB9204008FA782 /* LaunchScreen.xib */; };
 		8FD8948D182C4083F453F873 /* Pods_XCoordinator_Example.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B299AC83F329D65CD398756E /* Pods_XCoordinator_Example.framework */; };
+		92593148229EB1C300E6533B /* AboutCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92593147229EB1C300E6533B /* AboutCoordinator.swift */; };
 		9B07F06321D6D26700A0C149 /* CGAffineTransform+InPlace.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B07F06221D6D26700A0C149 /* CGAffineTransform+InPlace.swift */; };
 		9B07F06521D6D2BF00A0C149 /* Animation+Scale.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B07F06421D6D2BF00A0C149 /* Animation+Scale.swift */; };
 		9B07F06721D6D35500A0C149 /* Animation+Fade.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B07F06621D6D35500A0C149 /* Animation+Fade.swift */; };
@@ -94,6 +95,7 @@
 		607FACE51AFB9204008FA782 /* XCoordinator_Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = XCoordinator_Tests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		607FACEA1AFB9204008FA782 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8311BE8E1B21258643BC45D1 /* Pods-XCoordinator_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-XCoordinator_Tests.release.xcconfig"; path = "Pods/Target Support Files/Pods-XCoordinator_Tests/Pods-XCoordinator_Tests.release.xcconfig"; sourceTree = "<group>"; };
+		92593147229EB1C300E6533B /* AboutCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutCoordinator.swift; sourceTree = "<group>"; };
 		9B07F06221D6D26700A0C149 /* CGAffineTransform+InPlace.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CGAffineTransform+InPlace.swift"; sourceTree = "<group>"; };
 		9B07F06421D6D2BF00A0C149 /* Animation+Scale.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Animation+Scale.swift"; sourceTree = "<group>"; };
 		9B07F06621D6D35500A0C149 /* Animation+Fade.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Animation+Fade.swift"; sourceTree = "<group>"; };
@@ -414,6 +416,7 @@
 				9BE022DD214DF6550093001A /* NewsCoordinator.swift */,
 				9BE022E2214DF6560093001A /* UserCoordinator.swift */,
 				9BE022E1214DF6560093001A /* UserListCoordinator.swift */,
+				92593147229EB1C300E6533B /* AboutCoordinator.swift */,
 			);
 			path = Coordinators;
 			sourceTree = "<group>";
@@ -514,17 +517,18 @@
 				TargetAttributes = {
 					607FACCF1AFB9204008FA782 = {
 						CreatedOnToolsVersion = 6.3.1;
-						DevelopmentTeam = 77E79NGPCV;
+						DevelopmentTeam = CJUP6WN8Y4;
 						LastSwiftMigration = 1020;
 					};
 					607FACE41AFB9204008FA782 = {
 						CreatedOnToolsVersion = 6.3.1;
+						DevelopmentTeam = CJUP6WN8Y4;
 						LastSwiftMigration = 1020;
 						TestTargetID = 607FACCF1AFB9204008FA782;
 					};
 					9BC60B16214EF8D900ECFF9A = {
 						CreatedOnToolsVersion = 9.4.1;
-						DevelopmentTeam = 77E79NGPCV;
+						DevelopmentTeam = CJUP6WN8Y4;
 						LastSwiftMigration = 1020;
 						ProvisioningStyle = Automatic;
 						TestTargetID = 607FACCF1AFB9204008FA782;
@@ -702,6 +706,7 @@
 				9BE0230C214DF6740093001A /* NewsDetailViewModelImpl.swift in Sources */,
 				9BE02317214DF6740093001A /* UserViewModel.swift in Sources */,
 				9BE0230B214DF6740093001A /* NewsDetailViewController.swift in Sources */,
+				92593148229EB1C300E6533B /* AboutCoordinator.swift in Sources */,
 				9B33481321C47F9700E954A3 /* Presentable+Rx.swift in Sources */,
 				9BE022E6214DF6560093001A /* HomeSplitCoordinator.swift in Sources */,
 				9BE022E3214DF6560093001A /* HomeTabCoordinator.swift in Sources */,
@@ -868,12 +873,12 @@
 			baseConfigurationReference = 08514425C889EBC6D31DE6E6 /* Pods-XCoordinator_Example.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = 77E79NGPCV;
+				DEVELOPMENT_TEAM = CJUP6WN8Y4;
 				INFOPLIST_FILE = XCoordinator/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited)";
 				MODULE_NAME = ExampleApp;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.quickbirdstudios.XCoordinator-Example";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.davydov.XCoordinator-Example";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -885,12 +890,12 @@
 			baseConfigurationReference = 2DFD91193F4D8C149C715063 /* Pods-XCoordinator_Example.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = 77E79NGPCV;
+				DEVELOPMENT_TEAM = CJUP6WN8Y4;
 				INFOPLIST_FILE = XCoordinator/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited)";
 				MODULE_NAME = ExampleApp;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.quickbirdstudios.XCoordinator-Example";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.davydov.XCoordinator-Example";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -901,6 +906,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = D79CCDBD1375CE30F45F3531 /* Pods-XCoordinator_Tests.debug.xcconfig */;
 			buildSettings = {
+				DEVELOPMENT_TEAM = CJUP6WN8Y4;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",
@@ -922,6 +928,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 8311BE8E1B21258643BC45D1 /* Pods-XCoordinator_Tests.release.xcconfig */;
 			buildSettings = {
+				DEVELOPMENT_TEAM = CJUP6WN8Y4;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",
@@ -949,7 +956,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				DEBUG_INFORMATION_FORMAT = dwarf;
-				DEVELOPMENT_TEAM = 77E79NGPCV;
+				DEVELOPMENT_TEAM = CJUP6WN8Y4;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				INFOPLIST_FILE = UITests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.4;
@@ -976,7 +983,7 @@
 				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 77E79NGPCV;
+				DEVELOPMENT_TEAM = CJUP6WN8Y4;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				INFOPLIST_FILE = UITests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.4;

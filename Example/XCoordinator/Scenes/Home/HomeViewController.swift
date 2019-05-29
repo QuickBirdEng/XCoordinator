@@ -18,6 +18,8 @@ class HomeViewController: UIViewController, BindableType {
     @IBOutlet private var logoutButton: UIButton!
     @IBOutlet private var usersButton: UIButton!
 
+    @IBOutlet var aboutButton: UIButton!
+    
     // MARK: - Stored properties
 
     private let disposeBag = DisposeBag()
@@ -41,6 +43,10 @@ class HomeViewController: UIViewController, BindableType {
             .bind(to: viewModel.input.usersTrigger)
             .disposed(by: disposeBag)
 
+        aboutButton.rx.tap
+            .bind(to: viewModel.input.aboutTrigger)
+            .disposed(by: disposeBag)
+        
         viewModel.registerPeek(for: usersButton)
     }
 }
