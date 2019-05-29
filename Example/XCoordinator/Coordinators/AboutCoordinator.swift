@@ -18,7 +18,6 @@ class AboutCoordinator: RedirectionCoordinator<AboutRoute, NavigationTransition>
     
     init<T: TransitionPerformer>(superCoordinator: T) where T.TransitionType == NavigationTransition {
         let viewController = UIViewController()
-        viewController.loadViewIfNeeded()
         viewController.view.backgroundColor = .green
         super.init(viewController: viewController, superTransitionPerformer: superCoordinator, prepareTransition: nil)
     }
