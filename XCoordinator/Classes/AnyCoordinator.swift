@@ -29,6 +29,7 @@ public class AnyCoordinator<RouteType: Route, TransitionType: TransitionProtocol
     // MARK: - Stored properties
 
     private let _prepareTransition: (RouteType) -> TransitionType
+    private let _viewController: () -> UIViewController
     private let _rootViewController: () -> TransitionType.RootViewController
     private let _presented: (Presentable?) -> Void
     private let _setRoot: (UIWindow) -> Void
@@ -45,6 +46,7 @@ public class AnyCoordinator<RouteType: Route, TransitionType: TransitionProtocol
     ///
     public init<C: Coordinator>(_ coordinator: C) where C.RouteType == RouteType, C.TransitionType == TransitionType {
         self._prepareTransition = coordinator.prepareTransition
+        self._viewController = { coordinator.viewController }
         self._rootViewController = { coordinator.rootViewController }
         self._presented = coordinator.presented
         self._setRoot = coordinator.setRoot
@@ -54,6 +56,10 @@ public class AnyCoordinator<RouteType: Route, TransitionType: TransitionProtocol
 
     public var rootViewController: TransitionType.RootViewController {
         return _rootViewController()
+    }
+
+    public var viewController: UIViewController {
+        return _viewController()
     }
 
     // MARK: - Methods
