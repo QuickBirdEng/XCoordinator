@@ -17,10 +17,10 @@ class AboutCoordinator: RedirectionCoordinator<AboutRoute, NavigationTransition>
     // MARK: - Init
     
     init<T: TransitionPerformer>(superCoordinator: T) where T.TransitionType == NavigationTransition {
-        let vc = UIViewController()
-        vc.loadViewIfNeeded()
-        vc.view.backgroundColor = .green
-        super.init(viewController: vc, superTransitionPerformer: superCoordinator, prepareTransition: nil)
+        let viewController = UIViewController()
+        viewController.loadViewIfNeeded()
+        viewController.view.backgroundColor = .green
+        super.init(viewController: viewController, superTransitionPerformer: superCoordinator, prepareTransition: nil)
     }
     
     override func prepareTransition(for route: AboutRoute) -> NavigationTransition {

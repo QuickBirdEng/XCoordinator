@@ -17,8 +17,7 @@ class HomeViewController: UIViewController, BindableType {
 
     @IBOutlet private var logoutButton: UIButton!
     @IBOutlet private var usersButton: UIButton!
-
-    @IBOutlet var aboutButton: UIButton!
+    @IBOutlet private var aboutButton: UIButton!
     
     // MARK: - Stored properties
 

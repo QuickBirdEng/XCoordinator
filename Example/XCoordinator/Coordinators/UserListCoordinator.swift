@@ -48,7 +48,7 @@ class UserListCoordinator: NavigationCoordinator<UserListRoute> {
             return .dismiss()
         case .about:
             let coordinator = AboutCoordinator(superCoordinator: self)
-            return .push(coordinator.anyCoordinator)
+            return .push(coordinator)
         }
     }
 }
