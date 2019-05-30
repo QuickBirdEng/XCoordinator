@@ -29,7 +29,7 @@ public class AnyCoordinator<RouteType: Route, TransitionType: TransitionProtocol
     // MARK: - Stored properties
 
     private let _prepareTransition: (RouteType) -> TransitionType
-    private let _viewController: () -> UIViewController
+    private let _viewController: () -> UIViewController?
     private let _rootViewController: () -> TransitionType.RootViewController
     private let _presented: (Presentable?) -> Void
     private let _setRoot: (UIWindow) -> Void
@@ -58,7 +58,7 @@ public class AnyCoordinator<RouteType: Route, TransitionType: TransitionProtocol
         return _rootViewController()
     }
 
-    public var viewController: UIViewController {
+    public var viewController: UIViewController! {
         return _viewController()
     }
 
