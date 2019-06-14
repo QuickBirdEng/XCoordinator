@@ -13,6 +13,7 @@ import XCoordinator
 protocol HomeViewModelInput {
     var logoutTrigger: InputSubject<Void> { get }
     var usersTrigger: InputSubject<Void> { get }
+    var aboutTrigger: InputSubject<Void> { get }
 }
 
 protocol HomeViewModelOutput {}

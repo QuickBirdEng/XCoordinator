@@ -14,6 +14,7 @@ enum UserListRoute: Route {
     case user(String)
     case registerUsersPeek(from: Container)
     case logout
+    case about
 }
 
 class UserListCoordinator: NavigationCoordinator<UserListRoute> {
@@ -45,6 +46,9 @@ class UserListCoordinator: NavigationCoordinator<UserListRoute> {
             return registerPeek(for: source, route: .users)
         case .logout:
             return .dismiss()
+        case .about:
+            let coordinator = AboutCoordinator(superCoordinator: self)
+            return .push(coordinator)
         }
     }
 }

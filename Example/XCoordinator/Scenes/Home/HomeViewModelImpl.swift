@@ -16,6 +16,7 @@ class HomeViewModelImpl: HomeViewModel, HomeViewModelInput, HomeViewModelOutput 
 
     private(set) lazy var logoutTrigger: InputSubject<Void> = logoutAction.inputs
     private(set) lazy var usersTrigger: InputSubject<Void> = usersAction.inputs
+    private(set) lazy var aboutTrigger: InputSubject<Void> = aboutAction.inputs
 
     // MARK: - Actions
 
@@ -27,6 +28,9 @@ class HomeViewModelImpl: HomeViewModel, HomeViewModelInput, HomeViewModelOutput 
         self.router.rx.trigger(.users)
     }
 
+    private lazy var aboutAction = CocoaAction { [unowned self] in
+        self.router.rx.trigger(.about)
+    }
     // MARK: - Private
 
     private let router: AnyRouter<UserListRoute>
