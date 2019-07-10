@@ -16,7 +16,7 @@ NSObject, UIViewControllerPreviewingDelegate {
     private weak var viewController: UIViewController?
 
     private let transition: () -> TransitionType
-    private let rootViewController: TransitionType.RootViewController
+    private weak var rootViewController: TransitionType.RootViewController?
     private let completion: PresentationHandler?
 
     // MARK: - Initialization
@@ -46,6 +46,10 @@ NSObject, UIViewControllerPreviewingDelegate {
 
     internal func previewingContext(_ previewingContext: UIViewControllerPreviewing,
                                     commit viewControllerToCommit: UIViewController) {
+        guard let rootViewController = rootViewController else {
+            assertionFailure("The rootViewController is no longer available to perform this preview transition on.")
+            return
+        }
         transition().perform(on: rootViewController, with: .default, completion: completion)
     }
 }
