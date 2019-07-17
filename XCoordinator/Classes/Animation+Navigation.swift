@@ -34,18 +34,25 @@ open class NavigationAnimationDelegate: NSObject {
 
     // swiftlint:disable:next weak_delegate
     private var interactivePopGestureRecognizerDelegate: UIGestureRecognizerDelegate?
+    private var popAnimation: TransitionAnimation?
 
     // MARK: - Weak properties
 
     internal weak var delegate: UINavigationControllerDelegate?
     private weak var navigationController: UINavigationController?
 
-    // MARK: - Computed properties
+    // MARK: - Helper methods
 
-    private var popAnimation: TransitionAnimation? {
+    private func currentPopAnimation() -> TransitionAnimation? {
         guard let topViewController = navigationController?.topViewController else { return nil }
         return topViewController.transitioningDelegate?
             .animationController?(forDismissed: topViewController) as? TransitionAnimation
+    }
+
+    @discardableResult
+    private func resetPopAnimation() -> TransitionAnimation? {
+        popAnimation = currentPopAnimation()
+        return popAnimation
     }
 }
 
@@ -180,7 +187,7 @@ extension NavigationAnimationDelegate: UIGestureRecognizerDelegate {
 
             gestureRecognizer.removeTarget(nil, action: nil)
 
-            if popAnimation != nil {
+            if resetPopAnimation() != nil {
                 gestureRecognizer.addTarget(self, action: #selector(handleInteractivePopGestureRecognizer(_:)))
             } else {
                 gestureRecognizer.addTarget(delegate, action: delegateAction)
