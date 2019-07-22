@@ -20,7 +20,7 @@ Pod::Spec.new do |spec|
 
     spec.subspec 'RxSwift' do |ss|
         ss.dependency 'XCoordinator/Core'
-        ss.dependency 'RxSwift', '~> 4.0'
+        ss.dependency 'RxSwift', '~> 5.0'
 
         ss.source_files = 'XCoordinator/Classes/RxSwift/*.swift'
     end

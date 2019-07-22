@@ -6,16 +6,16 @@
 //  Copyright © 2015 Krunoslav Zaher. All rights reserved.
 //
 
-class Sink<O : ObserverType> : Disposable {
-    fileprivate let _observer: O
+class Sink<Observer: ObserverType> : Disposable {
+    fileprivate let _observer: Observer
     fileprivate let _cancel: Cancelable
-    fileprivate var _disposed = AtomicInt(0)
+    fileprivate let _disposed = AtomicInt(0)
 
     #if DEBUG
         fileprivate let _synchronizationTracker = SynchronizationTracker()
     #endif
 
-    init(observer: O, cancel: Cancelable) {
+    init(observer: Observer, cancel: Cancelable) {
 #if TRACE_RESOURCES
         _ = Resources.incrementTotal()
 #endif
@@ -23,27 +23,27 @@ class Sink<O : ObserverType> : Disposable {
         self._cancel = cancel
     }
 
-    final func forwardOn(_ event: Event<O.E>) {
+    final func forwardOn(_ event: Event<Observer.Element>) {
         #if DEBUG
             self._synchronizationTracker.register(synchronizationErrorMessage: .default)
             defer { self._synchronizationTracker.unregister() }
         #endif
-        if isFlagSet(&self._disposed, 1) {
+        if isFlagSet(self._disposed, 1) {
             return
         }
         self._observer.on(event)
     }
 
-    final func forwarder() -> SinkForward<O> {
+    final func forwarder() -> SinkForward<Observer> {
         return SinkForward(forward: self)
     }
 
     final var disposed: Bool {
-        return isFlagSet(&self._disposed, 1)
+        return isFlagSet(self._disposed, 1)
     }
 
     func dispose() {
-        fetchOr(&self._disposed, 1)
+        fetchOr(self._disposed, 1)
         self._cancel.dispose()
     }
 
@@ -54,16 +54,16 @@ class Sink<O : ObserverType> : Disposable {
     }
 }
 
-final class SinkForward<O: ObserverType>: ObserverType {
-    typealias E = O.E
+final class SinkForward<Observer: ObserverType>: ObserverType {
+    typealias Element = Observer.Element 
 
-    private let _forward: Sink<O>
+    private let _forward: Sink<Observer>
 
-    init(forward: Sink<O>) {
+    init(forward: Sink<Observer>) {
         self._forward = forward
     }
 
-    final func on(_ event: Event<E>) {
+    final func on(_ event: Event<Element>) {
         switch event {
         case .next:
             self._forward._observer.on(event)

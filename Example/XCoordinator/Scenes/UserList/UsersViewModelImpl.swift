@@ -14,7 +14,7 @@ class UsersViewModelImpl: UsersViewModel, UsersViewModelInput, UsersViewModelOut
 
     // MARK: - Inputs
 
-    lazy var showUserTrigger: InputSubject<String> = showUserAction.inputs
+    lazy var showUserTrigger: AnyObserver<String> = showUserAction.inputs
 
     // MARK: - Actions
 

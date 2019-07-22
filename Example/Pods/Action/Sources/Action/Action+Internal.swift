@@ -11,7 +11,7 @@ internal struct AssociatedKeys {
 internal extension NSObject {
 
     // A dispose bag to be used exclusively for the instance's rx.action.
-    internal var actionDisposeBag: DisposeBag {
+    var actionDisposeBag: DisposeBag {
         var disposeBag: DisposeBag
 
         if let lookup = objc_getAssociatedObject(self, &AssociatedKeys.DisposeBag) as? DisposeBag {
@@ -25,12 +25,12 @@ internal extension NSObject {
     }
 
     // Resets the actionDisposeBag to nil, disposeing of any subscriptions within it.
-    internal func resetActionDisposeBag() {
+    func resetActionDisposeBag() {
         objc_setAssociatedObject(self, &AssociatedKeys.DisposeBag, nil, .OBJC_ASSOCIATION_RETAIN_NONATOMIC)
     }
 
     // Uses objc_sync on self to perform a locked operation.
-    internal func doLocked(_ closure: () -> Void) {
+    func doLocked(_ closure: () -> Void) {
         objc_sync_enter(self); defer { objc_sync_exit(self) }
         closure()
     }

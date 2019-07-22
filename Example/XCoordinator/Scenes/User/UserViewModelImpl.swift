@@ -14,8 +14,8 @@ class UserViewModelImpl: UserViewModel, UserViewModelInput, UserViewModelOutput 
 
     // MARK: - Inputs
 
-    private(set) lazy var alertTrigger: InputSubject<Void> = alertAction.inputs
-    private(set) lazy var closeTrigger: InputSubject<Void> = closeAction.inputs
+    private(set) lazy var alertTrigger: AnyObserver<Void> = alertAction.inputs
+    private(set) lazy var closeTrigger: AnyObserver<Void> = closeAction.inputs
 
     // MARK: - Actions
 

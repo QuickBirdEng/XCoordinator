@@ -10,8 +10,8 @@ public typealias ActionStyle = UIAlertActionStyle
 #endif
 
 public extension UIAlertAction {
-    
-    public static func Action(_ title: String?, style: ActionStyle) -> UIAlertAction {
+
+    static func Action(_ title: String?, style: ActionStyle) -> UIAlertAction {
         return UIAlertAction(title: title, style: style, handler: { action in
             action.rx.action?.execute()
             return
@@ -24,7 +24,7 @@ public extension Reactive where Base: UIAlertAction {
     /// Binds enabled state of action to button, and subscribes to rx_tap to execute action.
     /// These subscriptions are managed in a private, inaccessible dispose bag. To cancel
     /// them, set the rx.action to nil or another action.
-    public var action: CocoaAction? {
+    var action: CocoaAction? {
         get {
             var action: CocoaAction?
             action = objc_getAssociatedObject(base, &AssociatedKeys.Action) as? Action
@@ -34,10 +34,10 @@ public extension Reactive where Base: UIAlertAction {
         set {
             // Store new value.
             objc_setAssociatedObject(base, &AssociatedKeys.Action, newValue, .OBJC_ASSOCIATION_RETAIN_NONATOMIC)
-            
+
             // This effectively disposes of any existing subscriptions.
             self.base.resetActionDisposeBag()
-            
+
             // Set up new bindings, if applicable.
             if let action = newValue {
                 action
@@ -48,7 +48,7 @@ public extension Reactive where Base: UIAlertAction {
         }
     }
 
-    public var enabled: AnyObserver<Bool> {
+    var enabled: AnyObserver<Bool> {
         return AnyObserver { [weak base] event in
             MainScheduler.ensureExecutingOnScheduler()
 

@@ -1,6 +1,6 @@
 {
   "name": "XCoordinator",
-  "version": "1.4.0",
+  "version": "1.5.1",
   "license": {
     "type": "MIT"
   },
@@ -12,7 +12,7 @@
   "summary": "Navigation framework based on coordinator pattern.",
   "source": {
     "git": "https://github.com/quickbirdstudios/XCoordinator.git",
-    "tag": "1.4.0"
+    "tag": "1.5.1"
   },
   "module_name": "XCoordinator",
   "swift_version": "5.0",
@@ -34,7 +34,7 @@
 
         ],
         "RxSwift": [
-          "~> 4.0"
+          "~> 5.0"
         ]
       },
       "source_files": "XCoordinator/Classes/RxSwift/*.swift"
