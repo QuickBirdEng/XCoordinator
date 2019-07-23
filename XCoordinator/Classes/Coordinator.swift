@@ -85,6 +85,13 @@ extension Coordinator {
     public func performTransition(_ transition: TransitionType,
                                   with options: TransitionOptions,
                                   completion: PresentationHandler? = nil) {
-        transition.perform(on: rootViewController, with: options, completion: completion)
+        
+        if Thread.isMainThread {
+            transition.perform(on: rootViewController, with: options, completion: completion)
+        } else {
+            DispatchQueue.main.sync {
+                transition.perform(on: self.rootViewController, with: options, completion: completion)
+            }
+        }
     }
 }
