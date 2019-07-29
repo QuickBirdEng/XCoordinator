@@ -8,6 +8,10 @@
 
 extension UIViewController {
 
+    private var topPresentedViewController: UIViewController? {
+        return presentedViewController?.topPresentedViewController ?? presentedViewController
+    }
+
     func show(_ viewController: UIViewController,
               with options: TransitionOptions,
               completion: PresentationHandler?) {
@@ -43,7 +47,7 @@ extension UIViewController {
         }
         let presentingViewController = onRoot
             ? self
-            : (presentedViewController ?? self)
+            : (topPresentedViewController ?? self)
         presentingViewController.present(viewController, animated: options.animated, completion: completion)
     }
 
@@ -51,7 +55,7 @@ extension UIViewController {
                  with options: TransitionOptions,
                  animation: Animation?,
                  completion: PresentationHandler?) {
-        let presentedViewController = self.presentedViewController ?? self
+        let presentedViewController = topPresentedViewController ?? self
         if let animation = animation {
             presentedViewController.transitioningDelegate = animation
         }
