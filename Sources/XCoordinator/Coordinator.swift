@@ -69,6 +69,10 @@ extension Coordinator where Self: AnyObject {
     }
 
     public func presented(from presentable: Presentable?) {}
+    
+    public func childTransitionCompleted() {
+        removeChildrenIfNeeded()
+    }
 
     public func contextTrigger(_ route: RouteType,
                                with options: TransitionOptions,

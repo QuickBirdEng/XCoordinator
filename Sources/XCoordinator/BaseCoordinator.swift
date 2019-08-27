@@ -24,6 +24,7 @@ open class BaseCoordinator<RouteType: Route, TransitionType: TransitionProtocol>
 
     // MARK: - Stored properties
 
+    private var removeParentChildren: () -> Void = {}
     private var gestureRecognizerTargets = [GestureRecognizerTarget]()
     public private(set) var children = [Presentable]()
 
@@ -90,6 +91,11 @@ open class BaseCoordinator<RouteType: Route, TransitionType: TransitionProtocol>
     ///
     open func prepareTransition(for route: RouteType) -> TransitionType {
         fatalError("Please override the \(#function) method.")
+    }
+    
+    public func registerParent(_ presentable: Presentable & AnyObject) {
+        let previous = removeParentChildren
+        removeParentChildren = { [weak presentable] in previous(); presentable?.childTransitionCompleted() }
     }
 
     // MARK: - Private methods
