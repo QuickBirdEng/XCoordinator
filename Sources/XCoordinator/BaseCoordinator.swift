@@ -66,15 +66,17 @@ open class BaseCoordinator<RouteType: Route, TransitionType: TransitionProtocol>
         // $_rootViewController.releaseStrongReference()
     }
 
-    open func removeChildrenIfNeeded() {
+    public func removeChildrenIfNeeded() {
         children.removeAll { $0.viewController?.view?.window == nil }
+        removeParentChildren()
     }
     
-    open func addChild(_ presentable: Presentable) {
+    public func addChild(_ presentable: Presentable) {
         children.append(presentable)
+        presentable.registerParent(self)
     }
     
-    open func removeChild(_ presentable: Presentable) {
+    public func removeChild(_ presentable: Presentable) {
         children.removeAll { $0.viewController === presentable.viewController }
         removeChildrenIfNeeded()
     }
@@ -95,7 +97,7 @@ open class BaseCoordinator<RouteType: Route, TransitionType: TransitionProtocol>
     
     public func registerParent(_ presentable: Presentable & AnyObject) {
         let previous = removeParentChildren
-        removeParentChildren = { [weak presentable] in previous(); presentable?.childTransitionCompleted() }
+        removeParentChildren = { [unowned presentable] in previous(); presentable.childTransitionCompleted() }
     }
 
     // MARK: - Private methods
