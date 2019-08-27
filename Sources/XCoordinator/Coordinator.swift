@@ -94,8 +94,8 @@ extension Coordinator where Self: AnyObject {
                                   with options: TransitionOptions,
                                   completion: PresentationHandler? = nil) {
         transition.presentables.forEach(addChild)
-        transition.perform(on: rootViewController, with: options) { [weak self] in
-            self?.removeChildrenIfNeeded()
+        transition.perform(on: rootViewController, with: options) {
+            self.removeChildrenIfNeeded()
             completion?()
         }
     }
