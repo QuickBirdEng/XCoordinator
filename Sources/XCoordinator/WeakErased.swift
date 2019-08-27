@@ -8,7 +8,7 @@
 
 import Foundation
 
-public typealias WeakRouter<RouteType: Route> = UnownedErased<StrongRouter<RouteType>>
+public typealias WeakRouter<RouteType: Route> = WeakErased<StrongRouter<RouteType>>
 
 @propertyWrapper @dynamicMemberLookup
 public struct WeakErased<Value> {

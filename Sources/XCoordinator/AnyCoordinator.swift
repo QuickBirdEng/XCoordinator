@@ -38,6 +38,7 @@ public class AnyCoordinator<RouteType: Route, TransitionType: TransitionProtocol
     private let _addChild: (Presentable) -> Void
     private let _removeChild: (Presentable) -> Void
     private let _removeChildrenIfNeeded: () -> Void
+    private let _registerParent: (Presentable & AnyObject) -> Void
     
     // MARK: - Initialization
 
@@ -58,6 +59,7 @@ public class AnyCoordinator<RouteType: Route, TransitionType: TransitionProtocol
         self._addChild = coordinator.addChild
         self._removeChild = coordinator.removeChild
         self._removeChildrenIfNeeded = coordinator.removeChildrenIfNeeded
+        self._registerParent = coordinator.registerParent
     }
 
     // MARK: - Computed properties
@@ -87,6 +89,10 @@ public class AnyCoordinator<RouteType: Route, TransitionType: TransitionProtocol
 
     public func presented(from presentable: Presentable?) {
         _presented(presentable)
+    }
+    
+    public func registerParent(_ presentable: Presentable & AnyObject) {
+        _registerParent(presentable)
     }
 
     public func setRoot(for window: UIWindow) {

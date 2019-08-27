@@ -45,6 +45,9 @@ public protocol Presentable {
     ///     `nil` is specified whenever a context cannot be easily determined.
     ///
     func presented(from presentable: Presentable?)
+    
+    func registerParent(_ presentable: Presentable & AnyObject)
+    func childTransitionCompleted()
 
     ///
     /// Sets the presentable as the root of the window, makes the window key and visible and calls `presented(from:)` on the presentable.
@@ -56,6 +59,9 @@ public protocol Presentable {
 }
 
 extension Presentable {
+    
+    public func registerParent(_ presentable: Presentable & AnyObject) {}
+    public func childTransitionCompleted() {}
 
     ///
     /// Sets the presentable as the root of the window.
