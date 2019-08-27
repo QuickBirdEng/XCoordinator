@@ -19,3 +19,5 @@ Pods/*.xcodeproj/xcuserdata/
 *~.nib
 \#*#
 .#*
+
+.swiftpm
