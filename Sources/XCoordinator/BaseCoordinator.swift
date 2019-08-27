@@ -97,7 +97,7 @@ open class BaseCoordinator<RouteType: Route, TransitionType: TransitionProtocol>
     
     public func registerParent(_ presentable: Presentable & AnyObject) {
         let previous = removeParentChildren
-        removeParentChildren = { [unowned presentable] in previous(); presentable.childTransitionCompleted() }
+        removeParentChildren = { [weak presentable] in previous(); presentable?.childTransitionCompleted() }
     }
 
     // MARK: - Private methods
