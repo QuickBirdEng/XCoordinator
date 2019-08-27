@@ -128,11 +128,7 @@ extension Presentable {
             return true
         }
         if let viewController = viewController {
-            if viewController.isBeingPresented
-                || viewController.parent != nil
-                || viewController.view.window != nil
-                || viewController.navigationController != nil
-                || viewController.tabBarController != nil {
+            if viewController.isInViewHierarchy {
                 return false
             }
             
@@ -140,6 +136,18 @@ extension Presentable {
         } else {
             return true
         }
+    }
+}
+
+extension UIViewController {
+    var isInViewHierarchy: Bool {
+        isBeingPresented
+        || presentingViewController != nil
+        || presentedViewController != nil
+        || parent != nil
+        || view.window != nil
+        || navigationController != nil
+        || tabBarController != nil
     }
 }
 
