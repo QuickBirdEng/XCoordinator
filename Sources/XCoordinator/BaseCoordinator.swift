@@ -62,14 +62,10 @@ open class BaseCoordinator<RouteType: Route, TransitionType: TransitionProtocol>
 
     // MARK: - Open methods
 
-    open func presented(from presentable: Presentable?) {
-        // $_rootViewController.releaseStrongReference()
-    }
+    open func presented(from presentable: Presentable?) {}
 
     public func removeChildrenIfNeeded() {
-        print(type(of: self), #function, "before:", children.map { "\(type(of: $0))" })
         children.removeAll { $0.canBeRemovedAsChild() }
-        print(type(of: self), #function, "after:", children.map { "\(type(of: $0))" })
         removeParentChildren()
     }
     
@@ -99,7 +95,10 @@ open class BaseCoordinator<RouteType: Route, TransitionType: TransitionProtocol>
     
     public func registerParent(_ presentable: Presentable & AnyObject) {
         let previous = removeParentChildren
-        removeParentChildren = { [weak presentable] in previous(); presentable?.childTransitionCompleted() }
+        removeParentChildren = { [weak presentable] in
+            previous()
+            presentable?.childTransitionCompleted()
+        }
     }
 
     // MARK: - Private methods
@@ -123,24 +122,19 @@ open class BaseCoordinator<RouteType: Route, TransitionType: TransitionProtocol>
 }
 
 extension Presentable {
+
     fileprivate func canBeRemovedAsChild() -> Bool {
-        if self is UIViewController {
-            return true
-        }
-        if let viewController = viewController {
-            if viewController.isInViewHierarchy {
-                return false
-            }
-            
-            return viewController.children.allSatisfy { $0.canBeRemovedAsChild() }
-        } else {
-            return true
-        }
+        guard !(self is UIViewController) else { return true }
+        guard let viewController = viewController else { return true }
+        return !viewController.isInViewHierarchy
+            && viewController.children.allSatisfy { $0.canBeRemovedAsChild() }
     }
+
 }
 
 extension UIViewController {
-    var isInViewHierarchy: Bool {
+
+    fileprivate var isInViewHierarchy: Bool {
         isBeingPresented
         || presentingViewController != nil
         || presentedViewController != nil
@@ -148,7 +142,9 @@ extension UIViewController {
         || view.window != nil
         || navigationController != nil
         || tabBarController != nil
+        || splitViewController != nil
     }
+
 }
 
 // MARK: - Interactive Transitions
