@@ -67,9 +67,9 @@ open class BaseCoordinator<RouteType: Route, TransitionType: TransitionProtocol>
     }
 
     public func removeChildrenIfNeeded() {
-        print(type(of: self), #function, "before:", children.count)
+        print(type(of: self), #function, "before:", children.map { "\(type(of: $0))" })
         children.removeAll { $0.canBeRemovedAsChild() }
-        print(type(of: self), #function, "after:", children.count)
+        print(type(of: self), #function, "after:", children.map { "\(type(of: $0))" })
         removeParentChildren()
     }
     
