@@ -124,7 +124,7 @@ open class BaseCoordinator<RouteType: Route, TransitionType: TransitionProtocol>
 
 extension Presentable {
     fileprivate func canBeRemovedAsChild() -> Bool {
-        guard !(self is UIViewController) else { return false }
+        guard !(self is UIViewController) else { return true }
         guard let viewController = viewController else { return true }
         guard !viewController.isBeingPresented,
             viewController.view?.window == nil else { return false }
