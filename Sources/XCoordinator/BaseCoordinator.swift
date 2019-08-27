@@ -67,7 +67,7 @@ open class BaseCoordinator<RouteType: Route, TransitionType: TransitionProtocol>
     }
 
     public func removeChildrenIfNeeded() {
-        children.removeAll { $0.viewController?.view?.window == nil }
+        children.removeAll { $0.canBeRemovedAsChild() }
         removeParentChildren()
     }
     
@@ -117,6 +117,13 @@ open class BaseCoordinator<RouteType: Route, TransitionType: TransitionProtocol>
             self?.performTransition(transition, with: TransitionOptions(animated: false))
             self?.rootViewController.endAppearanceTransition()
         }
+    }
+}
+
+extension Presentable {
+    fileprivate func canBeRemovedAsChild() -> Bool {
+        guard viewController?.view?.window == nil else { return false }
+        return viewController.children.allSatisfy { $0.canBeRemovedAsChild() }
     }
 }
 
