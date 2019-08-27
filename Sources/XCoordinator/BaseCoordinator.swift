@@ -128,11 +128,14 @@ extension Presentable {
             return true
         }
         if let viewController = viewController {
-            if viewController.isBeingPresented {
-                return false
-            } else if viewController.view?.window != nil {
+            if viewController.isBeingPresented
+                || viewController.parent != nil
+                || viewController.view.window != nil
+                || viewController.navigationController != nil
+                || viewController.tabBarController != nil {
                 return false
             }
+            
             return viewController.children.allSatisfy { $0.canBeRemovedAsChild() }
         } else {
             return true
