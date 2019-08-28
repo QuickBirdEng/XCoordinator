@@ -62,7 +62,7 @@ class TransitionTests: XCTestCase {
     }
 
     func testViewCoordinator() {
-        let coordinator = ViewCoordinator<TestRoute>(root: UIViewController())
+        let coordinator = ViewCoordinator<TestRoute>(rootViewController: .init(), root: .init())
         coordinator.setRoot(for: window)
         testStandardTransitions(on: coordinator)
     }

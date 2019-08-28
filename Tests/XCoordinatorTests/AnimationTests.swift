@@ -32,7 +32,8 @@ class AnimationTests: XCTestCase {
     // MARK: Tests
 
     func testViewCoordinator() {
-        let coordinator = ViewCoordinator<TestRoute>(root: UIViewController())
+        let coordinator = ViewCoordinator<TestRoute>(rootViewController: .init(),
+                                                     root: UIViewController())
         coordinator.setRoot(for: window)
         testStandardAnimationsCalled(on: coordinator)
     }

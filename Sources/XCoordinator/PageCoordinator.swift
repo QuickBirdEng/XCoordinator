@@ -52,7 +52,7 @@ open class PageCoordinator<RouteType: Route>: BaseCoordinator<RouteType, PageTra
     ///     - configuration:
     ///         The configuration of the rootViewController. You cannot change this configuration later anymore (Limitation of UIKit).
     ///
-    public init(rootViewController: RootViewController,
+    public init(rootViewController: RootViewController = .init(),
                 pages: [Presentable],
                 loop: Bool = false,
                 set: Presentable? = nil,
@@ -88,7 +88,7 @@ open class PageCoordinator<RouteType: Route>: BaseCoordinator<RouteType, PageTra
     ///     - configuration:
     ///         The configuration of the rootViewController. You cannot change this configuration later anymore (Limitation of UIKit).
     ///
-    public init(rootViewController: RootViewController,
+    public init(rootViewController: RootViewController = .init(),
                 dataSource: UIPageViewControllerDataSource,
                 set: Presentable,
                 direction: UIPageViewController.NavigationDirection) {
