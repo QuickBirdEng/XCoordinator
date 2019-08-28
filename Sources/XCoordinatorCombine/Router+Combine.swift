@@ -6,6 +6,8 @@
 //  Copyright © 2018 QuickBird Studios. All rights reserved.
 //
 
+#if canImport(Combine) && canImport(XCoordinator)
+
 import Combine
 import XCoordinator
 
@@ -21,3 +23,5 @@ extension Router {
     }
     
 }
+
+#endif
