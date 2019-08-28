@@ -14,10 +14,6 @@ import Foundation
 ///     Do not create an `UnownedRouter` from a `StrongRouter` since `StrongRouter` is only another wrapper
 ///     and does not represent the  might instantly
 ///
-/// Create this wrapper using an initial value and a closure to create the type-erased object.
-/// Make sure to not create an `UnownedErased` wrapper for already type-erased objects,
-/// since their reference is most likely instantly lost.
-///
 public typealias UnownedRouter<RouteType: Route> = UnownedErased<StrongRouter<RouteType>>
 
 ///

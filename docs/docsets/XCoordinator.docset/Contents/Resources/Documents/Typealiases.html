@@ -654,10 +654,6 @@ and does not represent the  might instantly
 
 </div>
 
-<p>Create this wrapper using an initial value and a closure to create the type-erased object.
-Make sure to not create an <code><a href="Structs/UnownedErased.html">UnownedErased</a></code> wrapper for already type-erased objects,
-since their reference is most likely instantly lost.</p>
-
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
@@ -718,19 +714,15 @@ since their reference is most likely instantly lost.</p>
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>An <code><a href="Structs/WeakErased.html">WeakErased</a></code> is a weak version of a router object to be used in view controllers or view models.</p>
+                        <p>A <code>WeakRouter</code> is a weak version of a router object to be used in view controllers or view models.</p>
 <div class="aside aside-note">
     <p class="aside-title">Note</p>
-    Do not create an <code><a href="Structs/WeakErased.html">WeakErased</a></code> from a <code><a href="Classes/StrongRouter.html">StrongRouter</a></code> since <code><a href="Classes/StrongRouter.html">StrongRouter</a></code> is only another wrapper
+    Do not create an <code>WeakRouter</code> from a <code><a href="Classes/StrongRouter.html">StrongRouter</a></code> since <code><a href="Classes/StrongRouter.html">StrongRouter</a></code> is only another wrapper
 and does not represent the  might instantly.
 Also keep in mind that once the original router object has been deallocated,
 calling <code>trigger</code> on this wrapper will have no effect.
 
 </div>
-
-<p>Create this wrapper using an initial value and a closure to create the type-erased object.
-Make sure to not create a <code><a href="Structs/WeakErased.html">WeakErased</a></code> wrapper for already type-erased objects,
-since their reference is most likely instantly lost.</p>
 
                       </div>
                       <div class="declaration">
