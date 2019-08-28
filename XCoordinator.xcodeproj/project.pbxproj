@@ -177,7 +177,7 @@
 		OBJ_404 /* Animation+TabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_12 /* Animation+TabBar.swift */; };
 		OBJ_405 /* Animation.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_13 /* Animation.swift */; };
 		OBJ_406 /* AnyCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_14 /* AnyCoordinator.swift */; };
-		OBJ_407 /* AnyRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_15 /* AnyRouter.swift */; };
+		OBJ_407 /* StrongRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_15 /* StrongRouter.swift */; };
 		OBJ_408 /* AnyTransitionPerformer.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_16 /* AnyTransitionPerformer.swift */; };
 		OBJ_409 /* BaseCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_17 /* BaseCoordinator.swift */; };
 		OBJ_410 /* BasicCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_18 /* BasicCoordinator.swift */; };
@@ -194,7 +194,6 @@
 		OBJ_421 /* PageCoordinatorDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_29 /* PageCoordinatorDataSource.swift */; };
 		OBJ_422 /* PageTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_30 /* PageTransition.swift */; };
 		OBJ_423 /* Presentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_31 /* Presentable.swift */; };
-		OBJ_424 /* RedirectionCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_32 /* RedirectionCoordinator.swift */; };
 		OBJ_425 /* RedirectionRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_33 /* RedirectionRouter.swift */; };
 		OBJ_426 /* Route.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_34 /* Route.swift */; };
 		OBJ_427 /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_35 /* Router.swift */; };
@@ -230,35 +229,35 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		9B87D2382330019F00EB739D /* PBXContainerItemProxy */ = {
+		9B0A753B2316C8ED0092CA3A /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = OBJ_1 /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = "RxSwift::RxSwift";
 			remoteInfo = RxSwift;
 		};
-		9B87D2392330019F00EB739D /* PBXContainerItemProxy */ = {
+		9B0A753C2316C8ED0092CA3A /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = OBJ_1 /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = "XCoordinator::XCoordinator";
 			remoteInfo = XCoordinator;
 		};
-		9B87D23A2330019F00EB739D /* PBXContainerItemProxy */ = {
+		9B0A753D2316C8ED0092CA3A /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = OBJ_1 /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = "XCoordinator::XCoordinator";
 			remoteInfo = XCoordinator;
 		};
-		9B87D23B2330019F00EB739D /* PBXContainerItemProxy */ = {
+		9B0A753E2316C8ED0092CA3A /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = OBJ_1 /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = "XCoordinator::XCoordinator";
 			remoteInfo = XCoordinator;
 		};
-		9B87D23C2330019F00EB739D /* PBXContainerItemProxy */ = {
+		9B0A753F2316C8EF0092CA3A /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = OBJ_1 /* Project object */;
 			proxyType = 1;
@@ -322,7 +321,7 @@
 		OBJ_147 /* Observable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Observable.swift; sourceTree = "<group>"; };
 		OBJ_148 /* ObservableConvertibleType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObservableConvertibleType.swift; sourceTree = "<group>"; };
 		OBJ_149 /* ObservableType+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ObservableType+Extensions.swift"; sourceTree = "<group>"; };
-		OBJ_15 /* AnyRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnyRouter.swift; sourceTree = "<group>"; };
+		OBJ_15 /* StrongRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StrongRouter.swift; sourceTree = "<group>"; };
 		OBJ_150 /* ObservableType+PrimitiveSequence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ObservableType+PrimitiveSequence.swift"; sourceTree = "<group>"; };
 		OBJ_151 /* ObservableType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObservableType.swift; sourceTree = "<group>"; };
 		OBJ_152 /* ObserveOn.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObserveOn.swift; sourceTree = "<group>"; };
@@ -417,7 +416,6 @@
 		OBJ_29 /* PageCoordinatorDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageCoordinatorDataSource.swift; sourceTree = "<group>"; };
 		OBJ_30 /* PageTransition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageTransition.swift; sourceTree = "<group>"; };
 		OBJ_31 /* Presentable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Presentable.swift; sourceTree = "<group>"; };
-		OBJ_32 /* RedirectionCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RedirectionCoordinator.swift; sourceTree = "<group>"; };
 		OBJ_33 /* RedirectionRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RedirectionRouter.swift; sourceTree = "<group>"; };
 		OBJ_34 /* Route.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Route.swift; sourceTree = "<group>"; };
 		OBJ_35 /* Router.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Router.swift; sourceTree = "<group>"; };
@@ -533,7 +531,7 @@
 				OBJ_12 /* Animation+TabBar.swift */,
 				OBJ_13 /* Animation.swift */,
 				OBJ_14 /* AnyCoordinator.swift */,
-				OBJ_15 /* AnyRouter.swift */,
+				OBJ_15 /* StrongRouter.swift */,
 				OBJ_16 /* AnyTransitionPerformer.swift */,
 				OBJ_17 /* BaseCoordinator.swift */,
 				OBJ_18 /* BasicCoordinator.swift */,
@@ -550,7 +548,6 @@
 				OBJ_29 /* PageCoordinatorDataSource.swift */,
 				OBJ_30 /* PageTransition.swift */,
 				OBJ_31 /* Presentable.swift */,
-				OBJ_32 /* RedirectionCoordinator.swift */,
 				OBJ_33 /* RedirectionRouter.swift */,
 				OBJ_34 /* Route.swift */,
 				OBJ_35 /* Router.swift */,
@@ -599,7 +596,7 @@
 			name = Products;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		OBJ_5 /*  */ = {
+		OBJ_5 = {
 			isa = PBXGroup;
 			children = (
 				OBJ_6 /* Package.swift */,
@@ -614,7 +611,6 @@
 				OBJ_233 /* LICENSE */,
 				OBJ_234 /* README.md */,
 			);
-			name = "";
 			sourceTree = "<group>";
 		};
 		OBJ_56 /* XCoordinatorCombine */ = {
@@ -1015,7 +1011,7 @@
 			knownRegions = (
 				en,
 			);
-			mainGroup = OBJ_5 /*  */;
+			mainGroup = OBJ_5;
 			productRefGroup = OBJ_224 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -1207,7 +1203,7 @@
 				OBJ_404 /* Animation+TabBar.swift in Sources */,
 				OBJ_405 /* Animation.swift in Sources */,
 				OBJ_406 /* AnyCoordinator.swift in Sources */,
-				OBJ_407 /* AnyRouter.swift in Sources */,
+				OBJ_407 /* StrongRouter.swift in Sources */,
 				OBJ_408 /* AnyTransitionPerformer.swift in Sources */,
 				OBJ_409 /* BaseCoordinator.swift in Sources */,
 				OBJ_410 /* BasicCoordinator.swift in Sources */,
@@ -1224,7 +1220,6 @@
 				OBJ_421 /* PageCoordinatorDataSource.swift in Sources */,
 				OBJ_422 /* PageTransition.swift in Sources */,
 				OBJ_423 /* Presentable.swift in Sources */,
-				OBJ_424 /* RedirectionCoordinator.swift in Sources */,
 				OBJ_425 /* RedirectionRouter.swift in Sources */,
 				OBJ_426 /* Route.swift in Sources */,
 				OBJ_427 /* Router.swift in Sources */,
@@ -1290,27 +1285,27 @@
 		OBJ_457 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = "XCoordinator::XCoordinator" /* XCoordinator */;
-			targetProxy = 9B87D23A2330019F00EB739D /* PBXContainerItemProxy */;
+			targetProxy = 9B0A753D2316C8ED0092CA3A /* PBXContainerItemProxy */;
 		};
 		OBJ_468 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = "XCoordinator::XCoordinatorTests" /* XCoordinatorTests */;
-			targetProxy = 9B87D23C2330019F00EB739D /* PBXContainerItemProxy */;
+			targetProxy = 9B0A753F2316C8EF0092CA3A /* PBXContainerItemProxy */;
 		};
 		OBJ_479 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = "RxSwift::RxSwift" /* RxSwift */;
-			targetProxy = 9B87D2382330019F00EB739D /* PBXContainerItemProxy */;
+			targetProxy = 9B0A753B2316C8ED0092CA3A /* PBXContainerItemProxy */;
 		};
 		OBJ_480 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = "XCoordinator::XCoordinator" /* XCoordinator */;
-			targetProxy = 9B87D2392330019F00EB739D /* PBXContainerItemProxy */;
+			targetProxy = 9B0A753C2316C8ED0092CA3A /* PBXContainerItemProxy */;
 		};
 		OBJ_489 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = "XCoordinator::XCoordinator" /* XCoordinator */;
-			targetProxy = 9B87D23B2330019F00EB739D /* PBXContainerItemProxy */;
+			targetProxy = 9B0A753E2316C8ED0092CA3A /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 

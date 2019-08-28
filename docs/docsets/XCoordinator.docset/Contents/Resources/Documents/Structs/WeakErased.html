@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>AnyTransitionPerformer Class Reference</title>
+    <title>WeakErased Structure Reference</title>
     <link rel="stylesheet" type="text/css" href="../css/jazzy.css" />
     <link rel="stylesheet" type="text/css" href="../css/highlight.css" />
     <meta charset="utf-8">
@@ -14,9 +14,9 @@
   </head>
   <body>
 
-    <a name="//apple_ref/swift/Class/AnyTransitionPerformer" class="dashAnchor"></a>
+    <a name="//apple_ref/swift/Struct/WeakErased" class="dashAnchor"></a>
 
-    <a title="AnyTransitionPerformer Class Reference"></a>
+    <a title="WeakErased Structure Reference"></a>
 
     <header class="header">
       <p class="header-col header-col--primary">
@@ -44,7 +44,7 @@
     <p class="breadcrumbs">
       <a class="breadcrumb" href="../index.html">XCoordinator Reference</a>
       <img class="carat" src="../img/carat.png" />
-      AnyTransitionPerformer Class Reference
+      WeakErased Structure Reference
     </p>
 
     <div class="content-wrapper">
@@ -234,19 +234,19 @@
 
         <section class="section">
           <div class="section-content">
-            <h1>AnyTransitionPerformer</h1>
+            <h1>WeakErased</h1>
               <div class="declaration">
                 <div class="language">
-                  <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">class</span> <span class="kt">AnyTransitionPerformer</span><span class="o">&lt;</span><span class="kt">TransitionType</span><span class="o">&gt;</span> <span class="p">:</span> <span class="kt"><a href="../Protocols/TransitionPerformer.html">TransitionPerformer</a></span> <span class="k">where</span> <span class="kt">TransitionType</span> <span class="p">:</span> <span class="kt"><a href="../Protocols/TransitionProtocol.html">TransitionProtocol</a></span></code></pre>
+                  <pre class="highlight swift"><code><span class="kd">@propertyWrapper</span>
+<span class="kd">public</span> <span class="kd">struct</span> <span class="kt">WeakErased</span><span class="o">&lt;</span><span class="kt">Value</span><span class="o">&gt;</span></code></pre>
 
                 </div>
               </div>
-            <p>AnyTransitionPerformer can be used as an abstraction from a specific TransitionPerformer implementation
-without losing type information about its TransitionType.</p>
+            <p><code>WeakErased</code> is a property wrapper to hold objects with a weak reference when using type-erasure.</p>
 
-<p>This type abstraction can be especially helpful when performing transitions.
-AnyTransitionPerformer abstracts away any implementation specific details and reduces coordinators to the capabilities
-of the <code><a href="../Protocols/TransitionPerformer.html">TransitionPerformer</a></code> protocol.</p>
+<p>Create this wrapper using an initial value and a closure to create the type-erased object.
+Make sure to not create an <code>WeakErased</code> wrapper for already type-erased objects,
+since their reference is most likely instantly lost.</p>
 
           </div>
         </section>
@@ -254,13 +254,93 @@ of the <code><a href="../Protocols/TransitionPerformer.html">TransitionPerformer
         <section class="section">
           <div class="section-content">
             <div class="task-group">
-              <div class="task-name-container">
-                <a name="/Computed%20properties"></a>
-                <a name="//apple_ref/swift/Section/Computed properties" class="dashAnchor"></a>
-                <a href="#/Computed%20properties">
-                  <h3 class="section-name">Computed properties</h3>
-                </a>
-              </div>
+              <ul class="item-container">
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:12XCoordinator10WeakErasedV12wrappedValuexSgvp"></a>
+                    <a name="//apple_ref/swift/Property/wrappedValue" class="dashAnchor"></a>
+                    <a class="token" href="#/s:12XCoordinator10WeakErasedV12wrappedValuexSgvp">wrappedValue</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>The type-erased or otherwise mapped version of the value being held weakly.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="k">var</span> <span class="nv">wrappedValue</span><span class="p">:</span> <span class="kt">Value</span><span class="p">?</span> <span class="p">{</span> <span class="k">get</span> <span class="p">}</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:12XCoordinator10WeakErasedV_5eraseACyxGqd___xqd__ctcRld__Clufc"></a>
+                    <a name="//apple_ref/swift/Method/init(_:erase:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:12XCoordinator10WeakErasedV_5eraseACyxGqd___xqd__ctcRld__Clufc">init(_:erase:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Create a <code>WeakErased</code> wrapper using an initial value and a closure to create the type-erased object.
+Make sure to not create an <code>WeakErased</code> wrapper for already type-erased objects,
+since their reference is most likely instantly lost.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">init</span><span class="o">&lt;</span><span class="kt">Erasable</span><span class="p">:</span> <span class="kt">AnyObject</span><span class="o">&gt;</span><span class="p">(</span><span class="n">_</span> <span class="nv">value</span><span class="p">:</span> <span class="kt">Erasable</span><span class="p">,</span> <span class="nv">erase</span><span class="p">:</span> <span class="kd">@escaping</span> <span class="p">(</span><span class="kt">Erasable</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Value</span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:12XCoordinator10WeakErasedV3set_5eraseyqd___xqd__ctRld__ClF"></a>
+                    <a name="//apple_ref/swift/Method/set(_:erase:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:12XCoordinator10WeakErasedV3set_5eraseyqd___xqd__ctRld__ClF">set(_:erase:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Set a new value by providing a non-type-erased value and a closure to create the type-erased object.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="k">mutating</span> <span class="kd">func</span> <span class="k">set</span><span class="o">&lt;</span><span class="kt">Erasable</span><span class="p">:</span> <span class="kt">AnyObject</span><span class="o">&gt;</span><span class="p">(</span><span class="n">_</span> <span class="nv">value</span><span class="p">:</span> <span class="kt">Erasable</span><span class="p">,</span> <span class="nv">erase</span><span class="p">:</span> <span class="kd">@escaping</span> <span class="p">(</span><span class="kt">Erasable</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Value</span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
               <ul class="item-container">
                 <li class="item">
                   <div>
@@ -288,49 +368,16 @@ of the <code><a href="../Protocols/TransitionPerformer.html">TransitionPerformer
                     </section>
                   </div>
                 </li>
-                <li class="item">
-                  <div>
-                    <code>
-                    <a name="/s:12XCoordinator19TransitionPerformerP18rootViewController0B4Type_04RooteF0QZvp"></a>
-                    <a name="//apple_ref/swift/Property/rootViewController" class="dashAnchor"></a>
-                    <a class="token" href="#/s:12XCoordinator19TransitionPerformerP18rootViewController0B4Type_04RooteF0QZvp">rootViewController</a>
-                    </code>
-                  </div>
-                  <div class="height-container">
-                    <div class="pointer-container"></div>
-                    <section class="section">
-                      <div class="pointer"></div>
-                      <div class="abstract">
-                        
-                      </div>
-                      <div class="declaration">
-                        <h4>Declaration</h4>
-                        <div class="language">
-                          <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="k">var</span> <span class="nv">rootViewController</span><span class="p">:</span> <span class="kt">TransitionType</span><span class="o">.</span><span class="kt">RootViewController</span> <span class="p">{</span> <span class="k">get</span> <span class="p">}</span></code></pre>
-
-                        </div>
-                      </div>
-                    </section>
-                  </div>
-                </li>
               </ul>
             </div>
             <div class="task-group">
-              <div class="task-name-container">
-                <a name="/Methods"></a>
-                <a name="//apple_ref/swift/Section/Methods" class="dashAnchor"></a>
-                <a href="#/Methods">
-                  <h3 class="section-name">Methods</h3>
-                </a>
-              </div>
               <ul class="item-container">
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:12XCoordinator11PresentableP9presented4fromyAaB_pSg_tF"></a>
-                    <a name="//apple_ref/swift/Method/presented(from:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:12XCoordinator11PresentableP9presented4fromyAaB_pSg_tF">presented(from:)</a>
+                    <a name="/s:12XCoordinator6RouterP14contextTrigger_4with10completiony9RouteTypeQz_AA17TransitionOptionsVyAA0I7Context_pcSgtF"></a>
+                    <a name="//apple_ref/swift/Method/contextTrigger(_:with:completion:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:12XCoordinator6RouterP14contextTrigger_4with10completiony9RouteTypeQz_AA17TransitionOptionsVyAA0I7Context_pcSgtF">contextTrigger(_:with:completion:)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -344,35 +391,7 @@ of the <code><a href="../Protocols/TransitionPerformer.html">TransitionPerformer
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">presented</span><span class="p">(</span><span class="n">from</span> <span class="nv">presentable</span><span class="p">:</span> <span class="kt"><a href="../Protocols/Presentable.html">Presentable</a></span><span class="p">?)</span></code></pre>
-
-                        </div>
-                      </div>
-                    </section>
-                  </div>
-                </li>
-                <li class="item">
-                  <div>
-                    <code>
-                    <a name="/s:12XCoordinator19TransitionPerformerP07performB0_4with10completiony0B4TypeQz_AA0B7OptionsVyycSgtF"></a>
-                    <a name="//apple_ref/swift/Method/performTransition(_:with:completion:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:12XCoordinator19TransitionPerformerP07performB0_4with10completiony0B4TypeQz_AA0B7OptionsVyycSgtF">performTransition(_:with:completion:)</a>
-                    </code>
-                  </div>
-                  <div class="height-container">
-                    <div class="pointer-container"></div>
-                    <section class="section">
-                      <div class="pointer"></div>
-                      <div class="abstract">
-                        
-                      </div>
-                      <div class="declaration">
-                        <h4>Declaration</h4>
-                        <div class="language">
-                          <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">performTransition</span><span class="p">(</span><span class="n">_</span> <span class="nv">transition</span><span class="p">:</span> <span class="kt">TransitionType</span><span class="p">,</span>
-                              <span class="n">with</span> <span class="nv">options</span><span class="p">:</span> <span class="kt"><a href="../Structs/TransitionOptions.html">TransitionOptions</a></span><span class="p">,</span>
-                              <span class="nv">completion</span><span class="p">:</span> <span class="kt"><a href="../Typealiases.html#/s:12XCoordinator19PresentationHandlera">PresentationHandler</a></span><span class="p">?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">)</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">contextTrigger</span><span class="p">(</span><span class="n">_</span> <span class="nv">route</span><span class="p">:</span> <span class="kt">Value</span><span class="o">.</span><span class="kt">RouteType</span><span class="p">,</span> <span class="n">with</span> <span class="nv">options</span><span class="p">:</span> <span class="kt"><a href="../Structs/TransitionOptions.html">TransitionOptions</a></span><span class="p">,</span> <span class="nv">completion</span><span class="p">:</span> <span class="kt"><a href="../Typealiases.html#/s:12XCoordinator26ContextPresentationHandlera">ContextPresentationHandler</a></span><span class="p">?)</span></code></pre>
 
                         </div>
                       </div>

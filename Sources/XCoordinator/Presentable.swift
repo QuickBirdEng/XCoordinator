@@ -46,11 +46,27 @@ public protocol Presentable {
     ///
     func presented(from presentable: Presentable?)
     
+    ///
+    /// This method is used to register a parent coordinator to a child coordinator.
+    ///
+    /// - Note:
+    ///     This method is used internally and should never be called directly.
+    ///
     func registerParent(_ presentable: Presentable & AnyObject)
+    
+    ///
+    /// This method gets called when the transition of a child coordinator is being reported to its parent.
+    ///
+    /// - Note:
+    ///     This method is used internally and should never be called directly.
+    ///
     func childTransitionCompleted()
 
     ///
-    /// Sets the presentable as the root of the window, makes the window key and visible and calls `presented(from:)` on the presentable.
+    /// Sets the presentable as the root of the window.
+    ///
+    /// This method sets the rootViewController of the window and makes it key and visible.
+    /// Furthermore, it calls `presented(from:)` with the window as its parameter.
     ///
     /// - Parameter window:
     ///     The window to set the root of.
@@ -63,15 +79,6 @@ extension Presentable {
     public func registerParent(_ presentable: Presentable & AnyObject) {}
     public func childTransitionCompleted() {}
 
-    ///
-    /// Sets the presentable as the root of the window.
-    ///
-    /// This method sets the rootViewController of the window and makes it key and visible.
-    /// Furthermore, it calls `presented(from:)` with the window as its parameter.
-    ///
-    /// - Parameter window:
-    ///     The window to set the root of.
-    ///
     public func setRoot(for window: UIWindow) {
         window.rootViewController = viewController
         window.makeKeyAndVisible()

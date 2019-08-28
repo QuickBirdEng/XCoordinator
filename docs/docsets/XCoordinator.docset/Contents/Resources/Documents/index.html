@@ -59,9 +59,6 @@
                 <a class="nav-group-task-link" href="Classes/AnyCoordinator.html">AnyCoordinator</a>
               </li>
               <li class="nav-group-task">
-                <a class="nav-group-task-link" href="Classes/AnyRouter.html">AnyRouter</a>
-              </li>
-              <li class="nav-group-task">
                 <a class="nav-group-task-link" href="Classes/AnyTransitionPerformer.html">AnyTransitionPerformer</a>
               </li>
               <li class="nav-group-task">
@@ -92,19 +89,16 @@
                 <a class="nav-group-task-link" href="Classes/PageCoordinatorDataSource.html">PageCoordinatorDataSource</a>
               </li>
               <li class="nav-group-task">
-                <a class="nav-group-task-link" href="Classes/RedirectionCoordinator.html">RedirectionCoordinator</a>
-              </li>
-              <li class="nav-group-task">
                 <a class="nav-group-task-link" href="Classes/RedirectionRouter.html">RedirectionRouter</a>
-              </li>
-              <li class="nav-group-task">
-                <a class="nav-group-task-link" href="Classes/ReferenceBox.html">ReferenceBox</a>
               </li>
               <li class="nav-group-task">
                 <a class="nav-group-task-link" href="Classes/SplitCoordinator.html">SplitCoordinator</a>
               </li>
               <li class="nav-group-task">
                 <a class="nav-group-task-link" href="Classes/StaticTransitionAnimation.html">StaticTransitionAnimation</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Classes/StrongRouter.html">StrongRouter</a>
               </li>
               <li class="nav-group-task">
                 <a class="nav-group-task-link" href="Classes/TabBarAnimationDelegate.html">TabBarAnimationDelegate</a>
@@ -120,15 +114,6 @@
           <li class="nav-group-name">
             <a class="nav-group-name-link" href="Extensions.html">Extensions</a>
             <ul class="nav-group-tasks">
-              <li class="nav-group-task">
-                <a class="nav-group-task-link" href="Extensions/Reactive.html">Reactive</a>
-              </li>
-              <li class="nav-group-task">
-                <a class="nav-group-task-link" href="Extensions/UIPageViewController.html">UIPageViewController</a>
-              </li>
-              <li class="nav-group-task">
-                <a class="nav-group-task-link" href="Extensions/UIPageViewController/Configuration.html">– Configuration</a>
-              </li>
               <li class="nav-group-task">
                 <a class="nav-group-task-link" href="Extensions/UIView.html">UIView</a>
               </li>
@@ -181,6 +166,12 @@
               <li class="nav-group-task">
                 <a class="nav-group-task-link" href="Structs/TransitionOptions.html">TransitionOptions</a>
               </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Structs/UnownedErased.html">UnownedErased</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Structs/WeakErased.html">WeakErased</a>
+              </li>
             </ul>
           </li>
           <li class="nav-group-name">
@@ -226,7 +217,13 @@
                 <a class="nav-group-task-link" href="Typealiases.html#/s:12XCoordinator16TabBarTransitiona">TabBarTransition</a>
               </li>
               <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Typealiases.html#/s:12XCoordinator13UnownedRoutera">UnownedRouter</a>
+              </li>
+              <li class="nav-group-task">
                 <a class="nav-group-task-link" href="Typealiases.html#/s:12XCoordinator14ViewTransitiona">ViewTransition</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Typealiases.html#/s:12XCoordinator10WeakRoutera">WeakRouter</a>
               </li>
             </ul>
           </li>
@@ -377,13 +374,13 @@ It&rsquo;s especially useful for implementing MVVM-C, Model-View-ViewModel-Coord
 <p>⚠️ XCoordinator does not check at compile-time, whether a deep link can be executed. Rather it uses assertionFailures to inform about incorrect chaining at runtime, when it cannot find an appriopriate router for a given route. Keep this in mind when changing the structure of your app.</p>
 <h3 id='redirection' class='heading'>🚏 Redirection</h3>
 
-<p>Let&rsquo;s assume, there is a route type called <code>HugeRoute</code> with more than 10 routes. To decrease coupling, <code>HugeRoute</code> needs to be split up into mutliple route types. As you will discover, many routes in <code>HugeRoute</code> use transitions dependent on a specific rootViewController, such as <code>push</code>, <code>show</code>, <code>pop</code>, etc. If splitting up routes by introducing a new router/coordinator is not an option, XCoordinator has two solutions for you to solve such a case: <code><a href="Classes/RedirectionRouter.html">RedirectionRouter</a></code> and <code><a href="Classes/RedirectionCoordinator.html">RedirectionCoordinator</a></code>.</p>
+<p>Let&rsquo;s assume, there is a route type called <code>HugeRoute</code> with more than 10 routes. To decrease coupling, <code>HugeRoute</code> needs to be split up into mutliple route types. As you will discover, many routes in <code>HugeRoute</code> use transitions dependent on a specific rootViewController, such as <code>push</code>, <code>show</code>, <code>pop</code>, etc. If splitting up routes by introducing a new router/coordinator is not an option, XCoordinator has two solutions for you to solve such a case: <code><a href="Classes/RedirectionRouter.html">RedirectionRouter</a></code> and <code>RedirectionCoordinator</code>.</p>
 
-<p>A <code><a href="Classes/RedirectionRouter.html">RedirectionRouter</a></code> can be used to map a new route type onto a generalized <code>SuperRoute</code>. A <code><a href="Classes/RedirectionRouter.html">RedirectionRouter</a></code> is independent of the <code>TransitionType</code> of its superRouter. You can use <code><a href="Classes/RedirectionRouter.html#/s:12XCoordinator17RedirectionRouterC14viewController05superC03mapACyxq_GSo06UIViewE0C_AA03AnyC0CyxGxq_cSgtcfc">RedirectionRouter.init(viewController:superRouter:map:)</a></code> or subclassing by overriding <code>mapToSuperRoute(_:)</code> to create a <code><a href="Classes/RedirectionRouter.html">RedirectionRouter</a></code>.</p>
+<p>A <code><a href="Classes/RedirectionRouter.html">RedirectionRouter</a></code> can be used to map a new route type onto a generalized <code>SuperRoute</code>. A <code><a href="Classes/RedirectionRouter.html">RedirectionRouter</a></code> is independent of the <code>TransitionType</code> of its superRouter. You can use <code><a href="Classes/RedirectionRouter.html#/s:12XCoordinator17RedirectionRouterC14viewController05superC03mapACyxq_GSo06UIViewE0C_AA13UnownedErasedVyAA06StrongC0CyxGGxq_cSgtcfc">RedirectionRouter.init(viewController:superRouter:map:)</a></code> or subclassing by overriding <code>mapToSuperRoute(_:)</code> to create a <code><a href="Classes/RedirectionRouter.html">RedirectionRouter</a></code>.</p>
 
-<p>A <code><a href="Classes/RedirectionCoordinator.html">RedirectionCoordinator</a></code> is not dependent on a specific <code>SuperRoute</code>, instead it uses its <code>superTransitionPerformer</code> to perform transitions. Due to constraints of UIKit, this is especially helpful when nesting routes dependent on a <code>UINavigationController</code>, since pushing navigation controllers on top of each other is not possible. Similar to the <code><a href="Classes/RedirectionRouter.html">RedirectionRouter</a></code>, you can use a <code><a href="Classes/RedirectionCoordinator.html">RedirectionCoordinator</a></code> by providing a prepareTransition-closure to map from a route to a transition or by subclassing including the overriding of <code>prepareTransition(for:)</code>.</p>
+<p>A <code>RedirectionCoordinator</code> is not dependent on a specific <code>SuperRoute</code>, instead it uses its <code>superTransitionPerformer</code> to perform transitions. Due to constraints of UIKit, this is especially helpful when nesting routes dependent on a <code>UINavigationController</code>, since pushing navigation controllers on top of each other is not possible. Similar to the <code><a href="Classes/RedirectionRouter.html">RedirectionRouter</a></code>, you can use a <code>RedirectionCoordinator</code> by providing a prepareTransition-closure to map from a route to a transition or by subclassing including the overriding of <code>prepareTransition(for:)</code>.</p>
 
-<p>The following table describes how using a <code><a href="Classes/RedirectionRouter.html">RedirectionRouter</a></code>, <code><a href="Classes/RedirectionCoordinator.html">RedirectionCoordinator</a></code> and creating a new coordinator independent from a superCoordinator stack up:</p>
+<p>The following table describes how using a <code><a href="Classes/RedirectionRouter.html">RedirectionRouter</a></code>, <code>RedirectionCoordinator</code> and creating a new coordinator independent from a superCoordinator stack up:</p>
 
 <table><thead>
 <tr>
@@ -419,7 +416,7 @@ It&rsquo;s especially useful for implementing MVVM-C, Model-View-ViewModel-Coord
 </tr>
 </tbody></table>
 
-<p>The following code example illustrates how a <code><a href="Classes/RedirectionCoordinator.html">RedirectionCoordinator</a></code> is initialized and used. The use of a <code><a href="Classes/RedirectionRouter.html">RedirectionRouter</a></code> is similar, but one would need different type-constraints in <code>SubCoordinator.init</code> and override <code>mapToSuperRoute</code> instead of <code>prepareTransition</code>.</p>
+<p>The following code example illustrates how a <code>RedirectionCoordinator</code> is initialized and used. The use of a <code><a href="Classes/RedirectionRouter.html">RedirectionRouter</a></code> is similar, but one would need different type-constraints in <code>SubCoordinator.init</code> and override <code>mapToSuperRoute</code> instead of <code>prepareTransition</code>.</p>
 <pre class="highlight swift"><code><span class="kd">class</span> <span class="kt">SuperCoordinator</span><span class="p">:</span> <span class="kt">NavigationCoordinator</span><span class="o">&lt;</span><span class="kt">SuperRoute</span><span class="o">&gt;</span> <span class="p">{</span>
     <span class="cm">/* ... */</span>
 
@@ -579,8 +576,8 @@ Additionally, this <a href="https://github.com/quickbirdstudios/XCoordinator/tre
       </article>
     </div>
     <section class="footer">
-      <p>&copy; 2019 <a class="link" href="https://quickbirdstudios.com" target="_blank" rel="external">Stefan Kofler &amp; Paul Kraft</a>. All rights reserved. (Last updated: 2019-03-15)</p>
-      <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.9.4</a>, a <a class="link" href="https://realm.io" target="_blank" rel="external">Realm</a> project.</p>
+      <p>&copy; 2019 <a class="link" href="https://quickbirdstudios.com" target="_blank" rel="external">Stefan Kofler &amp; Paul Kraft</a>. All rights reserved. (Last updated: 2019-08-28)</p>
+      <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.10.0</a>, a <a class="link" href="https://realm.io" target="_blank" rel="external">Realm</a> project.</p>
     </section>
   </body>
 </div>
