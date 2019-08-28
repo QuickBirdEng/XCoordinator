@@ -1,6 +1,6 @@
 Pod::Spec.new do |spec|
     spec.name         = 'XCoordinator'
-    spec.version      = '1.5.2'
+    spec.version      = '2.0.0-beta1'
     spec.license      = { :type => 'MIT' }
     spec.homepage     = 'https://github.com/quickbirdstudios/XCoordinator'
     spec.authors      = { 'Stefan Kofler' => 'stefan.kofler@quickbirdstudios.com', 'Paul Kraft' => 'pauljohannes.kraft@quickbirdstudios.com' }
@@ -9,11 +9,11 @@ Pod::Spec.new do |spec|
     spec.module_name = 'XCoordinator'
     spec.swift_version = '5.0'
     spec.ios.deployment_target = '8.0'
-    spec.source_files = 'XCoordinator/Classes/*.swift'
+    spec.source_files = 'Sources/XCoordinator/*.swift'
     spec.default_subspec = 'Core'
 
     spec.subspec 'Core' do |ss|
-        ss.source_files = 'XCoordinator/Classes/*.swift'
+        ss.source_files = 'Sources/XCoordinator/*.swift'
         ss.framework  = 'Foundation'
         ss.framework  = 'UIKit'
     end
@@ -22,6 +22,13 @@ Pod::Spec.new do |spec|
         ss.dependency 'XCoordinator/Core'
         ss.dependency 'RxSwift', '~> 4.0'
 
-        ss.source_files = 'XCoordinator/Classes/RxSwift/*.swift'
+        ss.source_files = 'Sources/XCoordinator+Rx/*.swift'
+    end
+
+    spec.subspec 'Combine' do |ss|
+        ss.dependency 'XCoordinator/Core'
+        ss.dependency 'RxSwift', '~> 4.0'
+
+        ss.source_files = 'Sources/XCoordinator+Combine/*.swift'
     end
 end
