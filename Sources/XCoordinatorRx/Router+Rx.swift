@@ -6,6 +6,8 @@
 //  Copyright © 2018 QuickBird Studios. All rights reserved.
 //
 
+#if canImport(XCoordinator) && canImport(RxSwift)
+
 import XCoordinator
 import RxSwift
 
@@ -59,3 +61,5 @@ extension Reactive where Base: Router & AnyObject {
         return trigger(route, with: TransitionOptions(animated: true))
     }
 }
+
+#endif
