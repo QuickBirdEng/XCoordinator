@@ -21,6 +21,11 @@
 /* End PBXAggregateTarget section */
 
 /* Begin PBXBuildFile section */
+		9B57256423171D7600B90C66 /* TransitionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B57255F23171D7500B90C66 /* TransitionTests.swift */; };
+		9B57256523171D7600B90C66 /* TestAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B57256023171D7500B90C66 /* TestAnimation.swift */; };
+		9B57256623171D7600B90C66 /* TestRoute.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B57256123171D7500B90C66 /* TestRoute.swift */; };
+		9B57256723171D7600B90C66 /* AnimationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B57256223171D7500B90C66 /* AnimationTests.swift */; };
+		9B57256823171D7600B90C66 /* XCText+Extras.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B57256323171D7600B90C66 /* XCText+Extras.swift */; };
 		OBJ_240 /* AddRef.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_71 /* AddRef.swift */; };
 		OBJ_241 /* Amb.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_72 /* Amb.swift */; };
 		OBJ_242 /* AnonymousDisposable.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_73 /* AnonymousDisposable.swift */; };
@@ -224,7 +229,6 @@
 		OBJ_477 /* RxSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = "RxSwift::RxSwift::Product" /* RxSwift.framework */; };
 		OBJ_478 /* XCoordinator.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = "XCoordinator::XCoordinator::Product" /* XCoordinator.framework */; };
 		OBJ_485 /* XCTestManifests.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_62 /* XCTestManifests.swift */; };
-		OBJ_486 /* XCoordinatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_63 /* XCoordinatorTests.swift */; };
 		OBJ_488 /* XCoordinator.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = "XCoordinator::XCoordinator::Product" /* XCoordinator.framework */; };
 /* End PBXBuildFile section */
 
@@ -267,6 +271,11 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		9B57255F23171D7500B90C66 /* TransitionTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TransitionTests.swift; sourceTree = "<group>"; };
+		9B57256023171D7500B90C66 /* TestAnimation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestAnimation.swift; sourceTree = "<group>"; };
+		9B57256123171D7500B90C66 /* TestRoute.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestRoute.swift; sourceTree = "<group>"; };
+		9B57256223171D7500B90C66 /* AnimationTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnimationTests.swift; sourceTree = "<group>"; };
+		9B57256323171D7600B90C66 /* XCText+Extras.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "XCText+Extras.swift"; sourceTree = "<group>"; };
 		OBJ_100 /* Create.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Create.swift; sourceTree = "<group>"; };
 		OBJ_101 /* CurrentThreadScheduler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentThreadScheduler.swift; sourceTree = "<group>"; };
 		OBJ_102 /* Date+Dispatch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Dispatch.swift"; sourceTree = "<group>"; };
@@ -443,7 +452,6 @@
 		OBJ_59 /* Router+Rx.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Router+Rx.swift"; sourceTree = "<group>"; };
 		OBJ_6 /* Package.swift */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; path = Package.swift; sourceTree = "<group>"; };
 		OBJ_62 /* XCTestManifests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XCTestManifests.swift; sourceTree = "<group>"; };
-		OBJ_63 /* XCoordinatorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XCoordinatorTests.swift; sourceTree = "<group>"; };
 		OBJ_71 /* AddRef.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddRef.swift; sourceTree = "<group>"; };
 		OBJ_72 /* Amb.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Amb.swift; sourceTree = "<group>"; };
 		OBJ_73 /* AnonymousDisposable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnonymousDisposable.swift; sourceTree = "<group>"; };
@@ -643,7 +651,11 @@
 			isa = PBXGroup;
 			children = (
 				OBJ_62 /* XCTestManifests.swift */,
-				OBJ_63 /* XCoordinatorTests.swift */,
+				9B57256223171D7500B90C66 /* AnimationTests.swift */,
+				9B57256023171D7500B90C66 /* TestAnimation.swift */,
+				9B57256123171D7500B90C66 /* TestRoute.swift */,
+				9B57255F23171D7500B90C66 /* TransitionTests.swift */,
+				9B57256323171D7600B90C66 /* XCText+Extras.swift */,
 			);
 			name = XCoordinatorTests;
 			path = Tests/XCoordinatorTests;
@@ -1274,8 +1286,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 0;
 			files = (
+				9B57256823171D7600B90C66 /* XCText+Extras.swift in Sources */,
+				9B57256723171D7600B90C66 /* AnimationTests.swift in Sources */,
 				OBJ_485 /* XCTestManifests.swift in Sources */,
-				OBJ_486 /* XCoordinatorTests.swift in Sources */,
+				9B57256423171D7600B90C66 /* TransitionTests.swift in Sources */,
+				9B57256523171D7600B90C66 /* TestAnimation.swift in Sources */,
+				9B57256623171D7600B90C66 /* TestRoute.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
