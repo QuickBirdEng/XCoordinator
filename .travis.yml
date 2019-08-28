@@ -1,4 +1,6 @@
 language: objective-c
 osx_image: xcode11
 
-script: ./build.sh
+script:
+    - chmod +x .build.sh 
+    - ./.build.sh
