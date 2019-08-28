@@ -1,6 +1,6 @@
 language: objective-c
-osx_image: xcode10.2
+osx_image: xcode11.0
 
 script:
     - set -o pipefail
-    - xcodebuild -workspace Example/XCoordinator.xcworkspace -scheme XCoordinator-Example -destination platform\=iOS\ Simulator,OS\=11.4,name\=iPhone\ X build test | xcpretty
+    - swift build && swift test
