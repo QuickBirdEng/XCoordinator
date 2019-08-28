@@ -12,10 +12,6 @@ import XCoordinatorCombine
 import XCoordinatorRx
 import XCTest
 
-extension Animation {
-    static let `default` = Animation(presentation: nil, dismissal: nil)
-}
-
 class TestAnimation: Animation {
 
     static func `static`(presentation: XCTestExpectation, dismissal: XCTestExpectation) -> TestAnimation {
