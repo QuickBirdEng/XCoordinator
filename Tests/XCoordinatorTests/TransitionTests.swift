@@ -9,7 +9,6 @@
 import UIKit
 import RxSwift
 import XCoordinator
-import XCoordinatorCombine
 import XCoordinatorRx
 import XCTest
 
