@@ -22,13 +22,13 @@ Pod::Spec.new do |spec|
         ss.dependency 'XCoordinator/Core'
         ss.dependency 'RxSwift', '~> 4.0'
 
-        ss.source_files = 'Sources/XCoordinator+Rx/*.swift'
+        ss.source_files = 'Sources/XCoordinatorRx/*.swift'
     end
 
     spec.subspec 'Combine' do |ss|
         ss.dependency 'XCoordinator/Core'
         ss.dependency 'RxSwift', '~> 4.0'
 
-        ss.source_files = 'Sources/XCoordinator+Combine/*.swift'
+        ss.source_files = 'Sources/XCoordinatorCombine/*.swift'
     end
 end
