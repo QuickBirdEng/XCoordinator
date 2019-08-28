@@ -20,19 +20,9 @@ open class ViewCoordinator<RouteType: Route>: BaseCoordinator<RouteType, ViewTra
 
     // MARK: - Initialization
 
-    public override init(rootViewController: RootViewController, initialRoute: RouteType?) {
+    public override init(rootViewController: RootViewController, initialRoute: RouteType? = nil) {
         super.init(rootViewController: rootViewController,
                    initialRoute: initialRoute)
     }
 
-    ///
-    /// Creates a ViewCoordinator and embeds the root presentable into the rootViewController.
-    ///
-    /// - Parameter root:
-    ///     The presentable to be embedded.
-    ///
-    public init(rootViewController: RootViewController, root: Presentable) {
-        super.init(rootViewController: rootViewController, initialRoute: nil)
-        performTransition(.embed(root, in: rootViewController), with: TransitionOptions(animated: false))
-    }
 }
