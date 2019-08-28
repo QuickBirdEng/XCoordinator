@@ -9,17 +9,13 @@
 import Foundation
 
 ///
-/// An `WeakErased` is a weak version of a router object to be used in view controllers or view models.
+/// A `WeakRouter` is a weak version of a router object to be used in view controllers or view models.
 ///
 /// - Note:
-///     Do not create an `WeakErased` from a `StrongRouter` since `StrongRouter` is only another wrapper
+///     Do not create an `WeakRouter` from a `StrongRouter` since `StrongRouter` is only another wrapper
 ///     and does not represent the  might instantly.
 ///     Also keep in mind that once the original router object has been deallocated,
 ///     calling `trigger` on this wrapper will have no effect.
-///
-/// Create this wrapper using an initial value and a closure to create the type-erased object.
-/// Make sure to not create a `WeakErased` wrapper for already type-erased objects,
-/// since their reference is most likely instantly lost.
 ///
 public typealias WeakRouter<RouteType: Route> = WeakErased<StrongRouter<RouteType>>
 
