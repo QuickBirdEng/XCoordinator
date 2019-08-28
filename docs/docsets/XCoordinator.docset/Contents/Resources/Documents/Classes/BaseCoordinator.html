@@ -60,9 +60,6 @@
                 <a class="nav-group-task-link" href="../Classes/AnyCoordinator.html">AnyCoordinator</a>
               </li>
               <li class="nav-group-task">
-                <a class="nav-group-task-link" href="../Classes/AnyRouter.html">AnyRouter</a>
-              </li>
-              <li class="nav-group-task">
                 <a class="nav-group-task-link" href="../Classes/AnyTransitionPerformer.html">AnyTransitionPerformer</a>
               </li>
               <li class="nav-group-task">
@@ -93,19 +90,16 @@
                 <a class="nav-group-task-link" href="../Classes/PageCoordinatorDataSource.html">PageCoordinatorDataSource</a>
               </li>
               <li class="nav-group-task">
-                <a class="nav-group-task-link" href="../Classes/RedirectionCoordinator.html">RedirectionCoordinator</a>
-              </li>
-              <li class="nav-group-task">
                 <a class="nav-group-task-link" href="../Classes/RedirectionRouter.html">RedirectionRouter</a>
-              </li>
-              <li class="nav-group-task">
-                <a class="nav-group-task-link" href="../Classes/ReferenceBox.html">ReferenceBox</a>
               </li>
               <li class="nav-group-task">
                 <a class="nav-group-task-link" href="../Classes/SplitCoordinator.html">SplitCoordinator</a>
               </li>
               <li class="nav-group-task">
                 <a class="nav-group-task-link" href="../Classes/StaticTransitionAnimation.html">StaticTransitionAnimation</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Classes/StrongRouter.html">StrongRouter</a>
               </li>
               <li class="nav-group-task">
                 <a class="nav-group-task-link" href="../Classes/TabBarAnimationDelegate.html">TabBarAnimationDelegate</a>
@@ -121,15 +115,6 @@
           <li class="nav-group-name">
             <a class="nav-group-name-link" href="../Extensions.html">Extensions</a>
             <ul class="nav-group-tasks">
-              <li class="nav-group-task">
-                <a class="nav-group-task-link" href="../Extensions/Reactive.html">Reactive</a>
-              </li>
-              <li class="nav-group-task">
-                <a class="nav-group-task-link" href="../Extensions/UIPageViewController.html">UIPageViewController</a>
-              </li>
-              <li class="nav-group-task">
-                <a class="nav-group-task-link" href="../Extensions/UIPageViewController/Configuration.html">– Configuration</a>
-              </li>
               <li class="nav-group-task">
                 <a class="nav-group-task-link" href="../Extensions/UIView.html">UIView</a>
               </li>
@@ -182,6 +167,12 @@
               <li class="nav-group-task">
                 <a class="nav-group-task-link" href="../Structs/TransitionOptions.html">TransitionOptions</a>
               </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Structs/UnownedErased.html">UnownedErased</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Structs/WeakErased.html">WeakErased</a>
+              </li>
             </ul>
           </li>
           <li class="nav-group-name">
@@ -227,7 +218,13 @@
                 <a class="nav-group-task-link" href="../Typealiases.html#/s:12XCoordinator16TabBarTransitiona">TabBarTransition</a>
               </li>
               <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Typealiases.html#/s:12XCoordinator13UnownedRoutera">UnownedRouter</a>
+              </li>
+              <li class="nav-group-task">
                 <a class="nav-group-task-link" href="../Typealiases.html#/s:12XCoordinator14ViewTransitiona">ViewTransition</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Typealiases.html#/s:12XCoordinator10WeakRoutera">WeakRouter</a>
               </li>
             </ul>
           </li>
@@ -257,6 +254,46 @@ and <code><a href="../Classes/PageCoordinator.html">PageCoordinator</a></code>.<
           <div class="section-content">
             <div class="task-group">
               <div class="task-name-container">
+                <a name="/Stored%20properties"></a>
+                <a name="//apple_ref/swift/Section/Stored properties" class="dashAnchor"></a>
+                <a href="#/Stored%20properties">
+                  <h3 class="section-name">Stored properties</h3>
+                </a>
+              </div>
+              <ul class="item-container">
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:12XCoordinator15BaseCoordinatorC8childrenSayAA11Presentable_pGvp"></a>
+                    <a name="//apple_ref/swift/Property/children" class="dashAnchor"></a>
+                    <a class="token" href="#/s:12XCoordinator15BaseCoordinatorC8childrenSayAA11Presentable_pGvp">children</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>The child coordinators that are currently in the view hierarchy.
+When performing a transition, children are automatically added and removed from this array
+depending on whether they are in the view hierarchy.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">private(set)</span> <span class="k">var</span> <span class="nv">children</span><span class="p">:</span> <span class="p">[</span><span class="kt"><a href="../Protocols/Presentable.html">Presentable</a></span><span class="p">]</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <div class="task-name-container">
                 <a name="/Computed%20properties"></a>
                 <a name="//apple_ref/swift/Section/Computed properties" class="dashAnchor"></a>
                 <a href="#/Computed%20properties">
@@ -283,7 +320,33 @@ and <code><a href="../Classes/PageCoordinator.html">PageCoordinator</a></code>.<
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="k">var</span> <span class="nv">rootViewController</span><span class="p">:</span> <span class="kt"><a href="../Classes/BaseCoordinator.html#/s:12XCoordinator15BaseCoordinatorC18RootViewControllera">RootViewController</a></span> <span class="p">{</span> <span class="k">get</span> <span class="p">}</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">private(set)</span> <span class="k">var</span> <span class="nv">rootViewController</span><span class="p">:</span> <span class="kt"><a href="../Classes/BaseCoordinator.html#/s:12XCoordinator15BaseCoordinatorC18RootViewControllera">RootViewController</a></span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:12XCoordinator11PresentableP14viewControllerSo06UIViewD0CSgvp"></a>
+                    <a name="//apple_ref/swift/Property/viewController" class="dashAnchor"></a>
+                    <a class="token" href="#/s:12XCoordinator11PresentableP14viewControllerSo06UIViewD0CSgvp">viewController</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="k">var</span> <span class="nv">viewController</span><span class="p">:</span> <span class="kt">UIViewController</span><span class="o">!</span> <span class="p">{</span> <span class="k">get</span> <span class="p">}</span></code></pre>
 
                         </div>
                       </div>
@@ -304,9 +367,9 @@ and <code><a href="../Classes/PageCoordinator.html">PageCoordinator</a></code>.<
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:12XCoordinator15BaseCoordinatorC12initialRouteACyxq_GxSg_tcfc"></a>
-                    <a name="//apple_ref/swift/Method/init(initialRoute:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:12XCoordinator15BaseCoordinatorC12initialRouteACyxq_GxSg_tcfc">init(initialRoute:)</a>
+                    <a name="/s:12XCoordinator15BaseCoordinatorC18rootViewController12initialRouteACyxq_G04RooteF0Qy__xSgtcfc"></a>
+                    <a name="//apple_ref/swift/Method/init(rootViewController:initialRoute:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:12XCoordinator15BaseCoordinatorC18rootViewController12initialRouteACyxq_G04RooteF0Qy__xSgtcfc">init(rootViewController:initialRoute:)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -321,7 +384,7 @@ and <code><a href="../Classes/PageCoordinator.html">PageCoordinator</a></code>.<
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="nf">init</span><span class="p">(</span><span class="nv">initialRoute</span><span class="p">:</span> <span class="kt">RouteType</span><span class="p">?)</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="nf">init</span><span class="p">(</span><span class="nv">rootViewController</span><span class="p">:</span> <span class="kt"><a href="../Classes/BaseCoordinator.html#/s:12XCoordinator15BaseCoordinatorC18RootViewControllera">RootViewController</a></span><span class="p">,</span> <span class="nv">initialRoute</span><span class="p">:</span> <span class="kt">RouteType</span><span class="p">?)</span></code></pre>
 
                         </div>
                       </div>
@@ -350,9 +413,9 @@ and <code><a href="../Classes/PageCoordinator.html">PageCoordinator</a></code>.<
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:12XCoordinator15BaseCoordinatorC17initialTransitionACyxq_Gq_Sg_tcfc"></a>
-                    <a name="//apple_ref/swift/Method/init(initialTransition:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:12XCoordinator15BaseCoordinatorC17initialTransitionACyxq_Gq_Sg_tcfc">init(initialTransition:)</a>
+                    <a name="/s:12XCoordinator15BaseCoordinatorC18rootViewController17initialTransitionACyxq_G04RooteF0Qy__q_Sgtcfc"></a>
+                    <a name="//apple_ref/swift/Method/init(rootViewController:initialTransition:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:12XCoordinator15BaseCoordinatorC18rootViewController17initialTransitionACyxq_G04RooteF0Qy__q_Sgtcfc">init(rootViewController:initialTransition:)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -367,7 +430,7 @@ and <code><a href="../Classes/PageCoordinator.html">PageCoordinator</a></code>.<
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="nf">init</span><span class="p">(</span><span class="nv">initialTransition</span><span class="p">:</span> <span class="kt">TransitionType</span><span class="p">?)</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="nf">init</span><span class="p">(</span><span class="nv">rootViewController</span><span class="p">:</span> <span class="kt"><a href="../Classes/BaseCoordinator.html#/s:12XCoordinator15BaseCoordinatorC18RootViewControllera">RootViewController</a></span><span class="p">,</span> <span class="nv">initialTransition</span><span class="p">:</span> <span class="kt">TransitionType</span><span class="p">?)</span></code></pre>
 
                         </div>
                       </div>
@@ -433,9 +496,9 @@ and <code><a href="../Classes/PageCoordinator.html">PageCoordinator</a></code>.<
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:12XCoordinator15BaseCoordinatorC26generateRootViewController0efG0Qy_yF"></a>
-                    <a name="//apple_ref/swift/Method/generateRootViewController()" class="dashAnchor"></a>
-                    <a class="token" href="#/s:12XCoordinator15BaseCoordinatorC26generateRootViewController0efG0Qy_yF">generateRootViewController()</a>
+                    <a name="/s:12XCoordinator11CoordinatorP22removeChildrenIfNeededyyF"></a>
+                    <a name="//apple_ref/swift/Method/removeChildrenIfNeeded()" class="dashAnchor"></a>
+                    <a class="token" href="#/s:12XCoordinator11CoordinatorP22removeChildrenIfNeededyyF">removeChildrenIfNeeded()</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -443,22 +506,65 @@ and <code><a href="../Classes/PageCoordinator.html">PageCoordinator</a></code>.<
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>This method generates the <code><a href="../Classes/BaseCoordinator.html#/s:12XCoordinator19TransitionPerformerP18rootViewController0B4Type_04RooteF0QZvp">rootViewController</a></code> on initialization.</p>
-
-<p>This method is only called once during initalization.</p>
-<div class="aside aside-note">
-    <p class="aside-title">Note</p>
-    Make sure to use the result from <code>super.generateRootViewController()</code> when overriding to
-make sure transition animations work as expected.
-
-</div>
-
+                        
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">open</span> <span class="kd">func</span> <span class="nf">generateRootViewController</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="kt"><a href="../Classes/BaseCoordinator.html#/s:12XCoordinator15BaseCoordinatorC18RootViewControllera">RootViewController</a></span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">removeChildrenIfNeeded</span><span class="p">()</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:12XCoordinator11CoordinatorP8addChildyyAA11Presentable_pF"></a>
+                    <a name="//apple_ref/swift/Method/addChild(_:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:12XCoordinator11CoordinatorP8addChildyyAA11Presentable_pF">addChild(_:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">addChild</span><span class="p">(</span><span class="n">_</span> <span class="nv">presentable</span><span class="p">:</span> <span class="kt"><a href="../Protocols/Presentable.html">Presentable</a></span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:12XCoordinator11CoordinatorP11removeChildyyAA11Presentable_pF"></a>
+                    <a name="//apple_ref/swift/Method/removeChild(_:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:12XCoordinator11CoordinatorP11removeChildyyAA11Presentable_pF">removeChild(_:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">removeChild</span><span class="p">(</span><span class="n">_</span> <span class="nv">presentable</span><span class="p">:</span> <span class="kt"><a href="../Protocols/Presentable.html">Presentable</a></span><span class="p">)</span></code></pre>
 
                         </div>
                       </div>
@@ -512,6 +618,32 @@ Override this method to define transitions for triggered routes.</p>
                       <div>
                         <h4>Return Value</h4>
                         <p>The prepared transition.</p>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:12XCoordinator11PresentableP14registerParentyyAaB_XlF"></a>
+                    <a name="//apple_ref/swift/Method/registerParent(_:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:12XCoordinator11PresentableP14registerParentyyAaB_XlF">registerParent(_:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">registerParent</span><span class="p">(</span><span class="n">_</span> <span class="nv">presentable</span><span class="p">:</span> <span class="kt"><a href="../Protocols/Presentable.html">Presentable</a></span> <span class="o">&amp;</span> <span class="kt">AnyObject</span><span class="p">)</span></code></pre>
+
+                        </div>
                       </div>
                     </section>
                   </div>
@@ -861,8 +993,8 @@ This method will unregister all interactive transitions with that gesture recogn
       </article>
     </div>
     <section class="footer">
-      <p>&copy; 2019 <a class="link" href="https://quickbirdstudios.com" target="_blank" rel="external">Stefan Kofler &amp; Paul Kraft</a>. All rights reserved. (Last updated: 2019-03-15)</p>
-      <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.9.4</a>, a <a class="link" href="https://realm.io" target="_blank" rel="external">Realm</a> project.</p>
+      <p>&copy; 2019 <a class="link" href="https://quickbirdstudios.com" target="_blank" rel="external">Stefan Kofler &amp; Paul Kraft</a>. All rights reserved. (Last updated: 2019-08-28)</p>
+      <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.10.0</a>, a <a class="link" href="https://realm.io" target="_blank" rel="external">Realm</a> project.</p>
     </section>
   </body>
 </div>

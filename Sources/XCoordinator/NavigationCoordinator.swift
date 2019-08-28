@@ -19,8 +19,15 @@ open class NavigationCoordinator<RouteType: Route>: BaseCoordinator<RouteType, N
 
     // MARK: - Stored properties
 
-    // swiftlint:disable:next weak_delegate
+    ///
+    /// The animation delegate controlling the rootViewController's transition animations.
+    /// This animation delegate is set to be the rootViewController's rootViewController, if you did not set one earlier.
+    ///
+    /// - Note:
+    ///     Use the `delegate` property to set a custom delegate and use transition animations provided by XCoordinator.
+    ///
     public let animationDelegate = NavigationAnimationDelegate()
+    // swiftlint:disable:previous weak_delegate
 
     // MARK: - Computed properties
 

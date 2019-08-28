@@ -8,26 +8,51 @@
 
 import Foundation
 
+///
+/// An `WeakErased` is a weak version of a router object to be used in view controllers or view models.
+///
+/// - Note:
+///     Do not create an `WeakErased` from a `StrongRouter` since `StrongRouter` is only another wrapper
+///     and does not represent the  might instantly.
+///     Also keep in mind that once the original router object has been deallocated,
+///     calling `trigger` on this wrapper will have no effect.
+///
+/// Create this wrapper using an initial value and a closure to create the type-erased object.
+/// Make sure to not create a `WeakErased` wrapper for already type-erased objects,
+/// since their reference is most likely instantly lost.
+///
 public typealias WeakRouter<RouteType: Route> = WeakErased<StrongRouter<RouteType>>
 
-@propertyWrapper @dynamicMemberLookup
+///
+/// `WeakErased` is a property wrapper to hold objects with a weak reference when using type-erasure.
+///
+/// Create this wrapper using an initial value and a closure to create the type-erased object.
+/// Make sure to not create an `WeakErased` wrapper for already type-erased objects,
+/// since their reference is most likely instantly lost.
+///
+@propertyWrapper
 public struct WeakErased<Value> {
     private var _value: () -> Value?
     
+    /// The type-erased or otherwise mapped version of the value being held weakly.
     public var wrappedValue: Value? {
         _value()
     }
     
+    ///
+    /// Create a `WeakErased` wrapper using an initial value and a closure to create the type-erased object.
+    /// Make sure to not create an `WeakErased` wrapper for already type-erased objects,
+    /// since their reference is most likely instantly lost.
+    ///
     public init<Erasable: AnyObject>(_ value: Erasable, erase: @escaping (Erasable) -> Value) {
         self._value = WeakErased.createValueClosure(for: value, erase: erase)
     }
     
+    ///
+    /// Set a new value by providing a non-type-erased value and a closure to create the type-erased object.
+    ///
     public mutating func set<Erasable: AnyObject>(_ value: Erasable, erase: @escaping (Erasable) -> Value) {
         self._value = WeakErased.createValueClosure(for: value, erase: erase)
-    }
-    
-    public subscript<T>(dynamicMember keyPath: KeyPath<Value, T>) -> T? {
-        wrappedValue?[keyPath: keyPath]
     }
     
     private static func createValueClosure<Erasable: AnyObject>(
