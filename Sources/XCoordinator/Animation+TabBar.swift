@@ -23,7 +23,6 @@ open class TabBarAnimationDelegate: NSObject {
 
     // MARK: - Stored properties
 
-    internal var animation: Animation?
     internal weak var delegate: UITabBarControllerDelegate?
 }
 
@@ -60,13 +59,13 @@ extension TabBarAnimationDelegate: UITabBarControllerDelegate {
     ///     - toVC: The destination view controller of the transition.
     ///
     /// - Returns:
-    ///     The presentation animation of the last specified `Animation` object of a `set` or `select` transition.
+    ///     The presentation animation controller from the toVC's transitioningDelegate.
     ///     If not present, it uses the TabBarCoordinator's delegate as fallback.
     ///
     open func tabBarController(_ tabBarController: UITabBarController,
                                animationControllerForTransitionFrom fromVC: UIViewController,
                                to toVC: UIViewController) -> UIViewControllerAnimatedTransitioning? {
-        return animation?.presentationAnimation
+        return toVC.transitioningDelegate?.animationController?(forPresented: toVC, presenting: tabBarController, source: fromVC)
             ?? delegate?.tabBarController?(tabBarController, animationControllerForTransitionFrom: fromVC, to: toVC)
     }
 

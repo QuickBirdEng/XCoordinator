@@ -9,12 +9,15 @@
 import UIKit
 
 extension UITabBarController {
+    
     func set(_ viewControllers: [UIViewController],
              with options: TransitionOptions,
              animation: Animation?,
              completion: PresentationHandler?) {
 
-        animationDelegate?.animation = animation
+        if let animation = animation {
+            viewControllers.first?.transitioningDelegate = animation
+        }
         assert(animation == nil || animationDelegate != nil, """
         Animations do not work, if the tabbar controller's delegate is not a TabBarAnimationDelegate.
         This assertion might fail, if TabBarCoordinator.generateRootViewController was not used to generate the tabbar controller
@@ -35,7 +38,9 @@ extension UITabBarController {
                 animation: Animation?,
                 completion: PresentationHandler?) {
 
-        animationDelegate?.animation = animation
+        if let animation = animation {
+            viewController.transitioningDelegate = animation
+        }
         assert(animation == nil || animationDelegate != nil, """
         Animations do not work, if the tabbar controller's delegate is not a TabBarAnimationDelegate.
         This assertion might fail, if TabBarCoordinator.generateRootViewController was not used to generate the tabbar controller
@@ -53,7 +58,9 @@ extension UITabBarController {
 
     func select(index: Int, with options: TransitionOptions, animation: Animation?, completion: PresentationHandler?) {
 
-        animationDelegate?.animation = animation
+        if let animation = animation {
+            viewControllers?[index].transitioningDelegate = animation
+        }
         assert(animation == nil || animationDelegate != nil, """
         Animations do not work, if the tabbar controller's delegate is not a TabBarAnimationDelegate.
         This assertion might fail, if TabBarCoordinator.generateRootViewController was not used to generate the tabbar controller
@@ -68,4 +75,5 @@ extension UITabBarController {
 
         CATransaction.commit()
     }
+    
 }
