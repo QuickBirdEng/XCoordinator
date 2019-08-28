@@ -62,7 +62,7 @@ class TransitionTests: XCTestCase {
     }
 
     func testViewCoordinator() {
-        let coordinator = ViewCoordinator<TestRoute>(rootViewController: .init(), root: .init())
+        let coordinator = ViewCoordinator<TestRoute>(rootViewController: .init())
         coordinator.setRoot(for: window)
         testStandardTransitions(on: coordinator)
     }
@@ -95,7 +95,7 @@ class TransitionTests: XCTestCase {
     private func testCompletionCalled<C: Coordinator>(on coordinator: C, transition: C.TransitionType) {
         let exp = expectation(description: "\(Date().timeIntervalSince1970)")
         DispatchQueue.main.async {
-            coordinator.performTransition(transition, with: .default) {
+            coordinator.performTransition(transition, with: .init(animated: true)) {
                 exp.fulfill()
             }
         }
