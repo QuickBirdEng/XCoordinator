@@ -34,27 +34,27 @@ open class NavigationAnimationDelegate: NSObject {
     /// The transition progress threshold for the interactive pop transition to succeed
     open var transitionProgressThreshold: CGFloat { return 0.5 }
 
-    private var animations = [Animation?]()
-
     // swiftlint:disable:next weak_delegate
     private var interactivePopGestureRecognizerDelegate: UIGestureRecognizerDelegate?
+    private var popAnimation: TransitionAnimation?
 
     // MARK: - Weak properties
 
     internal weak var delegate: UINavigationControllerDelegate?
     private weak var navigationController: UINavigationController?
 
-    // MARK: - Computed properties
+    // MARK: - Helper methods
 
-    private var popAnimation: TransitionAnimation? {
-        return animations.last??.dismissalAnimation
+    private func currentPopAnimation() -> TransitionAnimation? {
+        guard let topViewController = navigationController?.topViewController else { return nil }
+        return topViewController.transitioningDelegate?
+            .animationController?(forDismissed: topViewController) as? TransitionAnimation
     }
 
-    // MARK: - Methods
-
-    internal func resetChildrenAnimations(for navigationController: UINavigationController) {
-        animations = navigationController.children.map { $0.transitioningDelegate as? Animation }
-        assert(animations.count == navigationController.children.count)
+    @discardableResult
+    private func resetPopAnimation() -> TransitionAnimation? {
+        popAnimation = currentPopAnimation()
+        return popAnimation
     }
 }
 
@@ -189,7 +189,7 @@ extension NavigationAnimationDelegate: UIGestureRecognizerDelegate {
 
             gestureRecognizer.removeTarget(nil, action: nil)
 
-            if popAnimation != nil {
+            if resetPopAnimation() != nil {
                 gestureRecognizer.addTarget(self, action: #selector(handleInteractivePopGestureRecognizer(_:)))
             } else {
                 gestureRecognizer.addTarget(delegate, action: delegateAction)
