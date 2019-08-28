@@ -37,6 +37,6 @@ let package = Package(
             dependencies: ["XCoordinator"]),
         .testTarget(
             name: "XCoordinatorTests",
-            dependencies: ["XCoordinator", "XCoordinatorRx", "XCoordinatorCombine"]),
+            dependencies: ["XCoordinator", "XCoordinatorRx"]),
     ]
 )
