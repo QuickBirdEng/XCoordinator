@@ -12,7 +12,6 @@ import UIKit
 /// StrongRouter is a type-erasure of a given Router object and, therefore, can be used as an abstraction from a specific Router
 /// implementation without losing type information about its RouteType.
 ///
-/// This type abstraction can be especially helpful when injecting routers into viewModels.
 /// StrongRouter abstracts away any implementation specific details and
 /// essentially reduces them to properties specified in the `Router` protocol.
 ///
