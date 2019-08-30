@@ -106,6 +106,11 @@ open class BaseCoordinator<RouteType: Route, TransitionType: TransitionProtocol>
             presentable?.childTransitionCompleted()
         }
     }
+    
+    @available(iOS, unavailable, message: "Please specify the rootViewController in the initializer of your coordinator instead.")
+    open func generateRootViewController() -> RootViewController {
+        return .init()
+    }
 
     // MARK: - Private methods
 
