@@ -79,19 +79,64 @@ extension Router {
     }
 }
 
-extension Router where Self: AnyObject & Presentable {
-    
+extension Coordinator where Self: AnyObject & Presentable {
+
     ///
-    /// Creates an AnyRouter object from the given router to abstract from concrete implementations
+    /// Use `strongRouter`, `unownedRouter` or `weakRouter` instead.
+    ///
+    /// To help you choose between router types, ask the following question:
+    ///
+    /// Will there be a reference from the view hierarchy to this router?
+    ///
+    /// Yes (e.g. viewController or viewModel)
+    ///     - Use `unownedRouter` or `weakRouter`.
+    ///
+    /// No (e.g. parent/child coordinator)
+    ///     - Use `strongRouter` for references to child coordinators.
+    ///     - Use `unownedRouter` or `weakRouter` for references to parent and sibling coordinators. 
+    ///
+    @available(iOS, deprecated, message: "Use `strongRouter`, `unownedRouter` or `weakRouter` instead.")
+    public var anyRouter: AnyRouter<RouteType> {
+        return unownedRouter
+    }
+
+    ///
+    /// Creates a StrongRouter object from the given router to abstract from concrete implementations
     /// while maintaining information necessary to fulfill the Router protocol.
+    ///
+    /// It further holds a strong reference to the original coordinator.
+    ///
+    /// - Note:
+    ///     Do not use this in any view controller!
+    ///     Keeping a strong reference to the coordinator results in memory cycles.
+    ///     Use `unownedRouter` or `weakRouter` instead for use in the view hierarchy.
+    ///
+    public var strongRouter: StrongRouter<RouteType> {
+        return StrongRouter(self)
+    }
+
+    ///
+    /// Creates an WeakRouter object from the given router to abstract from concrete implementations
+    /// while maintaining information necessary to fulfill the Router protocol.
+    ///
+    /// It further holds a weak reference to the original coordinator.
+    /// If you need a strong reference to the original object, use `strongRouter` instead.
+    ///
+    /// - Note:
+    ///     If you call functions from the Router protocol on this object,
+    ///     it might not get called, when the original object was already deallocated.
     ///
     public var weakRouter: WeakRouter<RouteType> {
         return WeakRouter(self) { $0.strongRouter }
     }
 
     ///
-    /// Creates an AnyRouter object from the given router to abstract from concrete implementations
+    /// Creates an UnownedRouter object from the given router to
+    /// abstract from concrete implementations
     /// while maintaining information necessary to fulfill the Router protocol.
+    ///
+    /// It further holds an unowned reference to the original coordinator.
+    /// If you need a strong reference to the original object, use `strongRouter` instead.
     ///
     public var unownedRouter: UnownedRouter<RouteType> {
         return UnownedRouter(self) { $0.strongRouter }
@@ -100,16 +145,6 @@ extension Router where Self: AnyObject & Presentable {
 }
 
 extension Router where Self: Presentable {
-
-    // MARK: - Computed properties
-
-    ///
-    /// Creates an AnyRouter object from the given router to abstract from concrete implementations
-    /// while maintaining information necessary to fulfill the Router protocol.
-    ///
-    public var strongRouter: StrongRouter<RouteType> {
-        return StrongRouter(self)
-    }
 
     ///
     /// Returns a router for the specified route, if possible.
@@ -120,7 +155,7 @@ extension Router where Self: Presentable {
     /// - Returns:
     ///     It returns the router's anyRouter, if it is compatible with the given route, otherwise `nil`.
     ///
-    public func router<R: Route>(for route: R) -> StrongRouter<R>? {
-        return strongRouter as? StrongRouter<R>
+    public func router<R: Route>(for route: R.Type) -> StrongRouter<R>? {
+        return StrongRouter<RouteType>(self) as? StrongRouter<R>
     }
 }

@@ -33,7 +33,7 @@ public protocol Presentable {
     /// - Parameter route:
     ///     The route to determine a router for.
     ///
-    func router<R: Route>(for route: R) -> StrongRouter<R>?
+    func router<R: Route>(for route: R.Type) -> StrongRouter<R>?
 
     ///
     /// This method is called whenever a Presentable is shown to the user.
@@ -85,7 +85,7 @@ extension Presentable {
         presented(from: window)
     }
 
-    public func router<R: Route>(for route: R) -> StrongRouter<R>? {
+    public func router<R: Route>(for route: R.Type) -> StrongRouter<R>? {
         return self as? StrongRouter<R>
     }
 

@@ -8,6 +8,18 @@
 import Foundation
 
 ///
+/// Please use `StrongRouter`, `WeakRouter` or `UnownedRouter` instead.
+///
+/// - Note:
+///     Use a `StrongRouter`, if you need to hold a router even
+///     when it is not in the view hierarchy.
+///     Use a `WeakRouter` or `UnownedRouter` when you are accessing
+///     any router from the view hierarchy.
+///
+@available(iOS, deprecated)
+public typealias AnyRouter<RouteType: Route> = UnownedRouter<RouteType>
+
+///
 /// An `UnownedRouter` is an unowned version of a router object to be used in view controllers or view models.
 ///
 /// - Note:

@@ -103,7 +103,7 @@ extension Transition {
 extension Route {
     private func router(fromStack stack: inout [Presentable]) -> StrongRouter<Self>? {
         while !stack.isEmpty {
-            if let router = stack.last?.router(for: self) {
+            if let router = stack.last?.router(for: Self.self) {
                 return router
             }
             stack.removeLast()
