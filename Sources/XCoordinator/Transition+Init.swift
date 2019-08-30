@@ -266,7 +266,7 @@ extension Coordinator where Self: AnyObject {
     ///     - source: The view to register peek and pop on.
     ///     - route: The route to be triggered for peek and pop.
     ///
-    @available(iOS 9.0, *)
+    @available(iOS, introduced: 9.0, deprecated: 13.0, message: "Use `UIContextMenuInteraction` instead.")
     public func registerPeek<RootViewController>(for source: Container,
                                                  route: RouteType
         ) -> Transition<RootViewController> where Self.TransitionType == Transition<RootViewController> {

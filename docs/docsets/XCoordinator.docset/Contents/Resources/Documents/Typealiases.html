@@ -171,6 +171,12 @@
                 <a class="nav-group-task-link" href="Structs/UnownedErased.html">UnownedErased</a>
               </li>
               <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Structs/UnownedErased.html">UnownedErased</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Structs/WeakErased.html">WeakErased</a>
+              </li>
+              <li class="nav-group-task">
                 <a class="nav-group-task-link" href="Structs/WeakErased.html">WeakErased</a>
               </li>
             </ul>
@@ -180,6 +186,9 @@
             <ul class="nav-group-tasks">
               <li class="nav-group-task">
                 <a class="nav-group-task-link" href="Typealiases.html#/s:12XCoordinator24AnyNavigationCoordinatora">AnyNavigationCoordinator</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Typealiases.html#/s:12XCoordinator9AnyRoutera">AnyRouter</a>
               </li>
               <li class="nav-group-task">
                 <a class="nav-group-task-link" href="Typealiases.html#/s:12XCoordinator20AnyTabBarCoordinatora">AnyTabBarCoordinator</a>
@@ -207,9 +216,6 @@
               </li>
               <li class="nav-group-task">
                 <a class="nav-group-task-link" href="Typealiases.html#/s:12XCoordinator19PresentationHandlera">PresentationHandler</a>
-              </li>
-              <li class="nav-group-task">
-                <a class="nav-group-task-link" href="Typealiases.html#/s:12XCoordinator26PresentationHandlerContexta">PresentationHandlerContext</a>
               </li>
               <li class="nav-group-task">
                 <a class="nav-group-task-link" href="Typealiases.html#/s:12XCoordinator15SplitTransitiona">SplitTransition</a>
@@ -475,40 +481,6 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:12XCoordinator26PresentationHandlerContexta"></a>
-                    <a name="//apple_ref/swift/Alias/PresentationHandlerContext" class="dashAnchor"></a>
-                    <a class="token" href="#/s:12XCoordinator26PresentationHandlerContexta">PresentationHandlerContext</a>
-                    </code>
-                  </div>
-                  <div class="height-container">
-                    <div class="pointer-container"></div>
-                    <section class="section">
-                      <div class="pointer"></div>
-                      <div class="abstract">
-                        <p><code>PresentationHandlerContext</code> provides context information about transitions.
-It was replaced by <code><a href="Protocols/TransitionContext.html">TransitionContext</a></code> to allow for transitions to be handed
-over directly as context of a triggered route.</p>
-
-                      </div>
-                      <div class="declaration">
-                        <h4>Declaration</h4>
-                        <div class="language">
-                          <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">@available(*, deprecated, renamed: "TransitionContext")</span>
-<span class="kd">public</span> <span class="kd">typealias</span> <span class="kt">PresentationHandlerContext</span> <span class="o">=</span> <span class="kt"><a href="Protocols/TransitionContext.html">TransitionContext</a></span></code></pre>
-
-                        </div>
-                      </div>
-                    </section>
-                  </div>
-                </li>
-              </ul>
-            </div>
-            <div class="task-group">
-              <ul class="item-container">
-                <li class="item">
-                  <div>
-                    <code>
                     <a name="/s:12XCoordinator20NavigationTransitiona"></a>
                     <a name="//apple_ref/swift/Alias/NavigationTransition" class="dashAnchor"></a>
                     <a class="token" href="#/s:12XCoordinator20NavigationTransitiona">NavigationTransition</a>
@@ -636,6 +608,42 @@ with a <code>UITabBarController</code> rootViewController.</p>
                 <li class="item">
                   <div>
                     <code>
+                    <a name="/s:12XCoordinator9AnyRoutera"></a>
+                    <a name="//apple_ref/swift/Alias/AnyRouter" class="dashAnchor"></a>
+                    <a class="token" href="#/s:12XCoordinator9AnyRoutera">AnyRouter</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Please use <code><a href="Classes/StrongRouter.html">StrongRouter</a></code>, <code><a href="Typealiases.html#/s:12XCoordinator10WeakRoutera">WeakRouter</a></code> or <code><a href="Typealiases.html#/s:12XCoordinator13UnownedRoutera">UnownedRouter</a></code> instead.</p>
+<div class="aside aside-note">
+    <p class="aside-title">Note</p>
+    Use a <code><a href="Classes/StrongRouter.html">StrongRouter</a></code>, if you need to hold a router even
+when it is not in the view hierarchy.
+Use a <code><a href="Typealiases.html#/s:12XCoordinator10WeakRoutera">WeakRouter</a></code> or <code><a href="Typealiases.html#/s:12XCoordinator13UnownedRoutera">UnownedRouter</a></code> when you are accessing
+any router from the view hierarchy.
+
+</div>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">@available(iOS, deprecated)</span>
+<span class="kd">public</span> <span class="kd">typealias</span> <span class="kt">AnyRouter</span><span class="o">&lt;</span><span class="kt">RouteType</span><span class="o">&gt;</span> <span class="o">=</span> <span class="kt"><a href="Typealiases.html#/s:12XCoordinator13UnownedRoutera">UnownedRouter</a></span><span class="o">&lt;</span><span class="kt">RouteType</span><span class="o">&gt;</span> <span class="k">where</span> <span class="kt">RouteType</span> <span class="p">:</span> <span class="kt"><a href="Protocols.html#/s:12XCoordinator5RouteP">Route</a></span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
                     <a name="/s:12XCoordinator13UnownedRoutera"></a>
                     <a name="//apple_ref/swift/Alias/UnownedRouter" class="dashAnchor"></a>
                     <a class="token" href="#/s:12XCoordinator13UnownedRoutera">UnownedRouter</a>
@@ -744,7 +752,7 @@ calling <code>trigger</code> on this wrapper will have no effect.
       </article>
     </div>
     <section class="footer">
-      <p>&copy; 2019 <a class="link" href="https://quickbirdstudios.com" target="_blank" rel="external">Stefan Kofler &amp; Paul Kraft</a>. All rights reserved. (Last updated: 2019-08-28)</p>
+      <p>&copy; 2019 <a class="link" href="https://quickbirdstudios.com" target="_blank" rel="external">Stefan Kofler &amp; Paul Kraft</a>. All rights reserved. (Last updated: 2019-08-30)</p>
       <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.10.0</a>, a <a class="link" href="https://realm.io" target="_blank" rel="external">Realm</a> project.</p>
     </section>
   </body>

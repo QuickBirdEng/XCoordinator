@@ -26,10 +26,9 @@ public typealias WeakRouter<RouteType: Route> = WeakErased<StrongRouter<RouteTyp
 /// Make sure to not create a `WeakErased` wrapper for already type-erased objects,
 /// since their reference is most likely instantly lost.
 ///
+
 #if swift(>=5.1)
 @propertyWrapper
-#else
-#endif
 public struct WeakErased<Value> {
     private var _value: () -> Value?
     
@@ -37,6 +36,19 @@ public struct WeakErased<Value> {
     public var wrappedValue: Value? {
         return _value()
     }
+}
+#else
+public struct WeakErased<Value> {
+    private var _value: () -> Value?
+    
+    /// The type-erased or otherwise mapped version of the value being held weakly.
+    public var wrappedValue: Value? {
+        return _value()
+    }
+}
+#endif
+
+extension WeakErased {
     
     ///
     /// Create a `WeakErased` wrapper using an initial value and a closure to create the type-erased object.
