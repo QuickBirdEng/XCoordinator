@@ -20,7 +20,7 @@ extension Router {
     }
 }
 
-extension Reactive where Base: Router & AnyObject {
+extension Reactive where Base: Router {
 
     ///
     /// This method transforms the completion block of a router's trigger method into an observable.
