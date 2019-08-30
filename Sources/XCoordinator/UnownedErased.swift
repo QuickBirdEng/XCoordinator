@@ -23,13 +23,15 @@ public typealias UnownedRouter<RouteType: Route> = UnownedErased<StrongRouter<Ro
 /// Make sure to not create an `UnownedErased` wrapper for already type-erased objects,
 /// since their reference is most likely instantly lost.
 ///
+#if swift(>=5.1)
 @propertyWrapper
+#endif
 public struct UnownedErased<Value> {
     private var _value: () -> Value
     
     /// The type-erased or otherwise mapped version of the value being held unowned.
     public var wrappedValue: Value {
-        _value()
+        return _value()
     }
     
     ///
@@ -60,7 +62,7 @@ import UIKit
 extension UnownedErased: Presentable where Value: Presentable {
     
     public var viewController: UIViewController! {
-        wrappedValue.viewController
+        return wrappedValue.viewController
     }
     
 }

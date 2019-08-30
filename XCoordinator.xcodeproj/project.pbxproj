@@ -219,7 +219,6 @@
 		OBJ_442 /* TransitionProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_50 /* TransitionProtocol.swift */; };
 		OBJ_443 /* UIView+Store.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_51 /* UIView+Store.swift */; };
 		OBJ_444 /* UnownedErased.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_52 /* UnownedErased.swift */; };
-		OBJ_445 /* ViewControllerTransitionPerformer.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_53 /* ViewControllerTransitionPerformer.swift */; };
 		OBJ_446 /* ViewCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_54 /* ViewCoordinator.swift */; };
 		OBJ_447 /* WeakErased.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_55 /* WeakErased.swift */; };
 		OBJ_454 /* Router+Combine.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_57 /* Router+Combine.swift */; };
@@ -445,7 +444,6 @@
 		OBJ_50 /* TransitionProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransitionProtocol.swift; sourceTree = "<group>"; };
 		OBJ_51 /* UIView+Store.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Store.swift"; sourceTree = "<group>"; };
 		OBJ_52 /* UnownedErased.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnownedErased.swift; sourceTree = "<group>"; };
-		OBJ_53 /* ViewControllerTransitionPerformer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewControllerTransitionPerformer.swift; sourceTree = "<group>"; };
 		OBJ_54 /* ViewCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewCoordinator.swift; sourceTree = "<group>"; };
 		OBJ_55 /* WeakErased.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeakErased.swift; sourceTree = "<group>"; };
 		OBJ_57 /* Router+Combine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Router+Combine.swift"; sourceTree = "<group>"; };
@@ -576,7 +574,6 @@
 				OBJ_50 /* TransitionProtocol.swift */,
 				OBJ_51 /* UIView+Store.swift */,
 				OBJ_52 /* UnownedErased.swift */,
-				OBJ_53 /* ViewControllerTransitionPerformer.swift */,
 				OBJ_54 /* ViewCoordinator.swift */,
 				OBJ_55 /* WeakErased.swift */,
 			);
@@ -1252,7 +1249,6 @@
 				OBJ_442 /* TransitionProtocol.swift in Sources */,
 				OBJ_443 /* UIView+Store.swift in Sources */,
 				OBJ_444 /* UnownedErased.swift in Sources */,
-				OBJ_445 /* ViewControllerTransitionPerformer.swift in Sources */,
 				OBJ_446 /* ViewCoordinator.swift in Sources */,
 				OBJ_447 /* WeakErased.swift in Sources */,
 			);

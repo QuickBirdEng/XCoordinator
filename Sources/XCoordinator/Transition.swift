@@ -100,30 +100,6 @@ public struct Transition<RootViewController: UIViewController>: TransitionProtoc
     // MARK: - Methods
 
     ///
-    /// The method to perform a certain transition using a coordinator.
-    ///
-    /// - Warning:
-    ///     Do not call this method directly. Instead use your coordinator's `performTransition` method or trigger
-    ///     a specified route (latter option is encouraged).
-    ///
-    @available(*, deprecated, renamed: "perform(on:with:completion:)")
-    public func perform<T: TransitionPerformer>(options: TransitionOptions,
-                                                coordinator: T,
-                                                completion: PresentationHandler?
-        ) where T.TransitionType == Transition<RootViewController> {
-
-        let anyPerformer = AnyTransitionPerformer(coordinator)
-        perform(options: options, performer: anyPerformer, completion: completion)
-    }
-
-    @available(*, deprecated, renamed: "perform(on:with:completion:)")
-    internal func perform(options: TransitionOptions,
-                          performer: AnyTransitionPerformer<Transition>,
-                          completion: PresentationHandler?) {
-        _perform(performer.rootViewController, options, completion)
-    }
-
-    ///
     /// Performs a transition on the given viewController.
     ///
     /// - Warning:
@@ -134,43 +110,4 @@ public struct Transition<RootViewController: UIViewController>: TransitionProtoc
         _perform(rootViewController, options, completion)
     }
 }
-
-extension Transition {
-
-    ///
-    /// Perform is the type of closure used to perform the transition.
-    ///
-    /// - Parameters:
-    ///     - options:
-    ///         The options on how to perform the transition, e.g. whether it should be animated or not.
-    ///     - transitionPerformer:
-    ///         The type-erased transition performer. The transition is performed on its rootViewController.
-    ///     - completion:
-    ///         The completion handler of the transition. It should always be called whenever the transition is completed.
-    ///
-    @available(*, deprecated, renamed: "PerformClosure")
-    public typealias Perform = (_ options: TransitionOptions,
-                                _ transitionPerformer: AnyTransitionPerformer<Transition>,
-                                _ completion: PresentationHandler?) -> Void
-
-    ///
-    /// Create your custom transitions with this initializer.
-    ///
-    /// Extending Transition with static functions to create transitions with this initializer
-    /// (instead of calling this initializer in your `prepareTransition(for:)` method) is advised
-    /// as it makes reuse easier.
-    ///
-    /// - Parameter presentables:
-    ///     The presentables this transition is putting into the view hierarchy, if specifiable.
-    ///     These presentables are used in the deep-linking feature.
-    ///
-    @available(*, deprecated, renamed: "init(presentables:animationInUse:perform:)")
-    public init(presentables: [Presentable], animation: TransitionAnimation? = nil, perform: @escaping Perform) {
-        self.init(presentables: presentables, animationInUse: animation) { rootViewController, options, completion in
-            let transitionPerformer = AnyTransitionPerformer(
-                ViewControllerTransitionPerformer(rootViewController)
-            )
-            perform(options, transitionPerformer, completion)
-        }
-    }
-}
+ 

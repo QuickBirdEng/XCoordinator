@@ -82,17 +82,3 @@ open class StaticTransitionAnimation: NSObject, TransitionAnimation {
     open func start() {}
     open func cleanup() {}
 }
-
-extension StaticTransitionAnimation {
-
-    ///
-    /// This method performs the animation as specified in the initializer.
-    ///
-    /// - Parameter transitionContext:
-    ///     The context of the current transition.
-    ///
-    @available(*, deprecated, renamed: "animateTransition(using:)")
-    public func performTransition(_ transitionContext: UIViewControllerContextTransitioning) {
-        _performAnimation(transitionContext)
-    }
-}
