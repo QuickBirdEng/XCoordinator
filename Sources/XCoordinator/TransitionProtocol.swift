@@ -19,22 +19,6 @@ public protocol TransitionProtocol: TransitionContext {
     associatedtype RootViewController: UIViewController
 
     ///
-    /// Perform the transition on the specified coordinator.
-    ///
-    /// - Parameters:
-    ///     - options:
-    ///         The options with which a transition is performed, e.g. whether the animation is to be used.
-    ///     - coordinator:
-    ///         The coordinator to perform the transition on.
-    ///     - completion:
-    ///         The completion handler. Make sure to call this, whenever the transition is completed.
-    ///
-    @available(*, deprecated, renamed: "perform(on:with:completion:)")
-    func perform<C: Coordinator>(options: TransitionOptions,
-                                 coordinator: C,
-                                 completion: PresentationHandler?) where C.TransitionType == Self
-
-    ///
     /// Performs a transition on the given viewController.
     ///
     /// - Warning:

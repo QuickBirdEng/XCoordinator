@@ -142,14 +142,14 @@ extension Presentable {
 extension UIViewController {
 
     fileprivate var isInViewHierarchy: Bool {
-        isBeingPresented
-        || presentingViewController != nil
-        || presentedViewController != nil
-        || parent != nil
-        || view.window != nil
-        || navigationController != nil
-        || tabBarController != nil
-        || splitViewController != nil
+        return isBeingPresented
+            || presentingViewController != nil
+            || presentedViewController != nil
+            || parent != nil
+            || view.window != nil
+            || navigationController != nil
+            || tabBarController != nil
+            || splitViewController != nil
     }
 
 }
