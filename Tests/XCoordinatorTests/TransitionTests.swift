@@ -26,7 +26,7 @@ class TransitionTests: XCTestCase {
 
     // MARK: Stored properties
 
-    let window = UIWindow()
+    lazy var window = UIWindow()
 
     // MARK: Tests
 
