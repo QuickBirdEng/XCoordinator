@@ -28,6 +28,7 @@ public typealias WeakRouter<RouteType: Route> = WeakErased<StrongRouter<RouteTyp
 ///
 #if swift(>=5.1)
 @propertyWrapper
+#else
 #endif
 public struct WeakErased<Value> {
     private var _value: () -> Value?
