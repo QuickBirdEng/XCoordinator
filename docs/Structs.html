@@ -171,6 +171,12 @@
                 <a class="nav-group-task-link" href="Structs/UnownedErased.html">UnownedErased</a>
               </li>
               <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Structs/UnownedErased.html">UnownedErased</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Structs/WeakErased.html">WeakErased</a>
+              </li>
+              <li class="nav-group-task">
                 <a class="nav-group-task-link" href="Structs/WeakErased.html">WeakErased</a>
               </li>
             </ul>
@@ -180,6 +186,9 @@
             <ul class="nav-group-tasks">
               <li class="nav-group-task">
                 <a class="nav-group-task-link" href="Typealiases.html#/s:12XCoordinator24AnyNavigationCoordinatora">AnyNavigationCoordinator</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Typealiases.html#/s:12XCoordinator9AnyRoutera">AnyRouter</a>
               </li>
               <li class="nav-group-task">
                 <a class="nav-group-task-link" href="Typealiases.html#/s:12XCoordinator20AnyTabBarCoordinatora">AnyTabBarCoordinator</a>
@@ -207,9 +216,6 @@
               </li>
               <li class="nav-group-task">
                 <a class="nav-group-task-link" href="Typealiases.html#/s:12XCoordinator19PresentationHandlera">PresentationHandler</a>
-              </li>
-              <li class="nav-group-task">
-                <a class="nav-group-task-link" href="Typealiases.html#/s:12XCoordinator26PresentationHandlerContexta">PresentationHandlerContext</a>
               </li>
               <li class="nav-group-task">
                 <a class="nav-group-task-link" href="Typealiases.html#/s:12XCoordinator15SplitTransitiona">SplitTransition</a>
@@ -260,7 +266,7 @@
                         <p>This struct represents the common implementation of the <code><a href="Protocols/TransitionProtocol.html">TransitionProtocol</a></code>.
 It is used in every of the provided <code><a href="Classes/BaseCoordinator.html">BaseCoordinator</a></code> subclasses and provides all transitions implemented in XCoordinator.</p>
 
-<p><code>Transitions</code> are defined by a <code><a href="Structs/Transition.html#/s:12XCoordinator10TransitionV7Performa">Transition.Perform</a></code> closure.
+<p><code>Transitions</code> are defined by a <code>Transition.Perform</code> closure.
 It further provides different context information such as <code>Transition.presentable</code> and <code><a href="Structs/Transition.html#/s:12XCoordinator10TransitionV9animationAA0B9Animation_pSgvp">Transition.animation</a></code>.
 You can create your own custom transitions using <code>Transition.init(presentable:animation:perform:)</code> or
 use one of the many provided static functions to create the most common transitions.</p>
@@ -342,11 +348,7 @@ to get all already available transitions.
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p><code>UnownedErased</code> is a property wrapper to hold objects with an unowned reference when using type-erasure.</p>
-
-<p>Create this wrapper using an initial value and a closure to create the type-erased object.
-Make sure to not create an <code>UnownedErased</code> wrapper for already type-erased objects,
-since their reference is most likely instantly lost.</p>
+                        <p>Undocumented</p>
 
                         <a href="Structs/UnownedErased.html" class="slightly-smaller">See more</a>
                       </div>
@@ -358,6 +360,25 @@ since their reference is most likely instantly lost.</p>
 <span class="kd">public</span> <span class="kd">struct</span> <span class="kt">UnownedErased</span><span class="o">&lt;</span><span class="kt">Value</span><span class="o">&gt;</span></code></pre>
 
                         </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/"></a>
+                    <a name="//apple_ref/swift/Struct/UnownedErased" class="dashAnchor"></a>
+                    <a class="token" href="#/">UnownedErased</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        
+                        <a href="Structs/UnownedErased.html" class="slightly-smaller">See more</a>
                       </div>
                     </section>
                   </div>
@@ -379,11 +400,7 @@ since their reference is most likely instantly lost.</p>
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p><code>WeakErased</code> is a property wrapper to hold objects with a weak reference when using type-erasure.</p>
-
-<p>Create this wrapper using an initial value and a closure to create the type-erased object.
-Make sure to not create a <code>WeakErased</code> wrapper for already type-erased objects,
-since their reference is most likely instantly lost.</p>
+                        <p>Undocumented</p>
 
                         <a href="Structs/WeakErased.html" class="slightly-smaller">See more</a>
                       </div>
@@ -399,6 +416,25 @@ since their reference is most likely instantly lost.</p>
                     </section>
                   </div>
                 </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/"></a>
+                    <a name="//apple_ref/swift/Struct/WeakErased" class="dashAnchor"></a>
+                    <a class="token" href="#/">WeakErased</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        
+                        <a href="Structs/WeakErased.html" class="slightly-smaller">See more</a>
+                      </div>
+                    </section>
+                  </div>
+                </li>
               </ul>
             </div>
           </div>
@@ -407,7 +443,7 @@ since their reference is most likely instantly lost.</p>
       </article>
     </div>
     <section class="footer">
-      <p>&copy; 2019 <a class="link" href="https://quickbirdstudios.com" target="_blank" rel="external">Stefan Kofler &amp; Paul Kraft</a>. All rights reserved. (Last updated: 2019-08-28)</p>
+      <p>&copy; 2019 <a class="link" href="https://quickbirdstudios.com" target="_blank" rel="external">Stefan Kofler &amp; Paul Kraft</a>. All rights reserved. (Last updated: 2019-08-30)</p>
       <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.10.0</a>, a <a class="link" href="https://realm.io" target="_blank" rel="external">Realm</a> project.</p>
     </section>
   </body>

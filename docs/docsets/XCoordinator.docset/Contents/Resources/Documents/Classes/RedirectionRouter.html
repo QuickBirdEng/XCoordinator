@@ -171,6 +171,12 @@
                 <a class="nav-group-task-link" href="../Structs/UnownedErased.html">UnownedErased</a>
               </li>
               <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Structs/UnownedErased.html">UnownedErased</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Structs/WeakErased.html">WeakErased</a>
+              </li>
+              <li class="nav-group-task">
                 <a class="nav-group-task-link" href="../Structs/WeakErased.html">WeakErased</a>
               </li>
             </ul>
@@ -180,6 +186,9 @@
             <ul class="nav-group-tasks">
               <li class="nav-group-task">
                 <a class="nav-group-task-link" href="../Typealiases.html#/s:12XCoordinator24AnyNavigationCoordinatora">AnyNavigationCoordinator</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Typealiases.html#/s:12XCoordinator9AnyRoutera">AnyRouter</a>
               </li>
               <li class="nav-group-task">
                 <a class="nav-group-task-link" href="../Typealiases.html#/s:12XCoordinator20AnyTabBarCoordinatora">AnyTabBarCoordinator</a>
@@ -207,9 +216,6 @@
               </li>
               <li class="nav-group-task">
                 <a class="nav-group-task-link" href="../Typealiases.html#/s:12XCoordinator19PresentationHandlera">PresentationHandler</a>
-              </li>
-              <li class="nav-group-task">
-                <a class="nav-group-task-link" href="../Typealiases.html#/s:12XCoordinator26PresentationHandlerContexta">PresentationHandlerContext</a>
               </li>
               <li class="nav-group-task">
                 <a class="nav-group-task-link" href="../Typealiases.html#/s:12XCoordinator15SplitTransitiona">SplitTransition</a>
@@ -419,84 +425,6 @@ If you override <code>mapToSuperRoute</code>, the <code>map</code> parameter is 
                     </section>
                   </div>
                 </li>
-                <li class="item">
-                  <div>
-                    <code>
-                    <a name="/s:12XCoordinator17RedirectionRouterC14viewController05superC03mapACyxq_GSo06UIViewE0C_qd__xq_cSgtc9RouteTypeQyd__RszRld__CAA0C0Rd__lufc"></a>
-                    <a name="//apple_ref/swift/Method/init(viewController:superRouter:map:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:12XCoordinator17RedirectionRouterC14viewController05superC03mapACyxq_GSo06UIViewE0C_qd__xq_cSgtc9RouteTypeQyd__RszRld__CAA0C0Rd__lufc">init(viewController:superRouter:map:)</a>
-                    </code>
-                  </div>
-                  <div class="height-container">
-                    <div class="pointer-container"></div>
-                    <section class="section">
-                      <div class="pointer"></div>
-                      <div class="abstract">
-                        <p>Creates a RedirectionRouter with a certain viewController, a superRouter and an optional mapping.</p>
-<div class="aside aside-note">
-    <p class="aside-title">Note</p>
-    <p>Make sure to either override <code>mapToSuperRoute</code> or to specify a closure for the <code>map</code> parameter.
-If you override <code>mapToSuperRoute</code>, the <code>map</code> parameter is ignored.</p>
-
-</div>
-
-                      </div>
-                      <div class="declaration">
-                        <h4>Declaration</h4>
-                        <div class="language">
-                          <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">init</span><span class="o">&lt;</span><span class="kt">RouterType</span><span class="p">:</span> <span class="kt"><a href="../Protocols/Router.html">Router</a></span><span class="o">&gt;</span><span class="p">(</span><span class="nv">viewController</span><span class="p">:</span> <span class="kt">UIViewController</span><span class="p">,</span>
-                                <span class="nv">superRouter</span><span class="p">:</span> <span class="kt">RouterType</span><span class="p">,</span>
-                                <span class="nv">map</span><span class="p">:</span> <span class="p">((</span><span class="kt">RouteType</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">SuperRoute</span><span class="p">)?)</span> <span class="k">where</span> <span class="kt">RouterType</span><span class="o">.</span><span class="kt">RouteType</span> <span class="o">==</span> <span class="kt">SuperRoute</span><span class="p">,</span> <span class="kt">RouterType</span><span class="p">:</span> <span class="kt">AnyObject</span></code></pre>
-
-                        </div>
-                      </div>
-                      <div>
-                        <h4>Parameters</h4>
-                        <table class="graybox">
-                          <tbody>
-                            <tr>
-                              <td>
-                                <code>
-                                <em>viewController</em>
-                                </code>
-                              </td>
-                              <td>
-                                <div>
-                                  <p>The view controller to be used in transitions, e.g. when pushing, presenting or otherwise displaying the RedirectionRouter.</p>
-                                </div>
-                              </td>
-                            </tr>
-                            <tr>
-                              <td>
-                                <code>
-                                <em>superRouter</em>
-                                </code>
-                              </td>
-                              <td>
-                                <div>
-                                  <p>The superCoordinator. Triggered routes will be rerouted there.</p>
-                                </div>
-                              </td>
-                            </tr>
-                            <tr>
-                              <td>
-                                <code>
-                                <em>map</em>
-                                </code>
-                              </td>
-                              <td>
-                                <div>
-                                  <p>A mapping from this RedirectionRouter&rsquo;s routes to the superRouter&rsquo;s routes.</p>
-                                </div>
-                              </td>
-                            </tr>
-                          </tbody>
-                        </table>
-                      </div>
-                    </section>
-                  </div>
-                </li>
               </ul>
             </div>
             <div class="task-group">
@@ -597,7 +525,7 @@ It is used to translate RouteType routes to the superRouter&rsquo;s routes which
       </article>
     </div>
     <section class="footer">
-      <p>&copy; 2019 <a class="link" href="https://quickbirdstudios.com" target="_blank" rel="external">Stefan Kofler &amp; Paul Kraft</a>. All rights reserved. (Last updated: 2019-08-28)</p>
+      <p>&copy; 2019 <a class="link" href="https://quickbirdstudios.com" target="_blank" rel="external">Stefan Kofler &amp; Paul Kraft</a>. All rights reserved. (Last updated: 2019-08-30)</p>
       <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.10.0</a>, a <a class="link" href="https://realm.io" target="_blank" rel="external">Realm</a> project.</p>
     </section>
   </body>

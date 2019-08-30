@@ -37,8 +37,6 @@ public typealias UnownedRouter<RouteType: Route> = UnownedErased<StrongRouter<Ro
 ///
 #if swift(>=5.1)
 @propertyWrapper
-#else
-#endif
 public struct UnownedErased<Value> {
     private var _value: () -> Value
     
@@ -46,7 +44,20 @@ public struct UnownedErased<Value> {
     public var wrappedValue: Value {
         return _value()
     }
+}
+#else
+public struct UnownedErased<Value> {
+    private var _value: () -> Value
     
+    /// The type-erased or otherwise mapped version of the value being held unowned.
+    public var wrappedValue: Value {
+        return _value()
+    }
+}
+#endif
+
+extension UnownedErased {
+
     ///
     /// Create an `UnownedErased` wrapper using an initial value and a closure to create the type-erased object.
     /// Make sure to not create an `UnownedErased` wrapper for already type-erased objects,
