@@ -270,6 +270,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		9B4DE0322319314F0065FB53 /* XCoordinatorTests.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; path = XCoordinatorTests.xctestplan; sourceTree = "<group>"; };
 		9B57255F23171D7500B90C66 /* TransitionTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TransitionTests.swift; sourceTree = "<group>"; };
 		9B57256023171D7500B90C66 /* TestAnimation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestAnimation.swift; sourceTree = "<group>"; };
 		9B57256123171D7500B90C66 /* TestRoute.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestRoute.swift; sourceTree = "<group>"; };
@@ -647,6 +648,7 @@
 		OBJ_61 /* XCoordinatorTests */ = {
 			isa = PBXGroup;
 			children = (
+				9B4DE0322319314F0065FB53 /* XCoordinatorTests.xctestplan */,
 				OBJ_62 /* XCTestManifests.swift */,
 				9B57256223171D7500B90C66 /* AnimationTests.swift */,
 				9B57256023171D7500B90C66 /* TestAnimation.swift */,
