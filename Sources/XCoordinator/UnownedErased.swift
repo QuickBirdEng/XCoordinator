@@ -37,6 +37,7 @@ public typealias UnownedRouter<RouteType: Route> = UnownedErased<StrongRouter<Ro
 ///
 #if swift(>=5.1)
 @propertyWrapper
+#else
 #endif
 public struct UnownedErased<Value> {
     private var _value: () -> Value
