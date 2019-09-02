@@ -14,21 +14,17 @@ Pod::Spec.new do |spec|
 
     spec.subspec 'Core' do |ss|
         ss.source_files = 'Sources/XCoordinator/*.swift'
-        ss.framework  = 'Foundation'
         ss.framework  = 'UIKit'
     end
 
     spec.subspec 'RxSwift' do |ss|
         ss.dependency 'XCoordinator/Core'
         ss.dependency 'RxSwift', '~> 5.0'
-
         ss.source_files = 'Sources/XCoordinatorRx/*.swift'
     end
 
     spec.subspec 'Combine' do |ss|
         ss.dependency 'XCoordinator/Core'
-        ss.dependency 'RxSwift', '~> 4.0'
-
         ss.source_files = 'Sources/XCoordinatorCombine/*.swift'
     end
 end
