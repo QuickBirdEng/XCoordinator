@@ -7,9 +7,7 @@
 //
 
 import UIKit
-import RxSwift
 import XCoordinator
-import XCoordinatorRx
 import XCTest
 
 class TransitionTests: XCTestCase {
@@ -83,11 +81,17 @@ class TransitionTests: XCTestCase {
     // MARK: - Helpers
 
     private func testStandardTransitions<C: Coordinator, RootViewController>(on coordinator: C) where C.TransitionType == Transition<RootViewController> {
+        print("none")
         testCompletionCalled(on: coordinator, transition: .none())
+        print("present")
         testCompletionCalled(on: coordinator, transition: .present(UIViewController()))
+        print("dismiss")
         testCompletionCalled(on: coordinator, transition: .dismiss())
+        print("embed")
         testCompletionCalled(on: coordinator, transition: .embed(UIViewController(), in: UIViewController()))
+        print("multiple(none)")
         testCompletionCalled(on: coordinator, transition: .multiple(.none()))
+        print("multiple(empty)")
         testCompletionCalled(on: coordinator, transition: .multiple())
     }
 

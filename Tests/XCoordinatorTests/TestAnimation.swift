@@ -6,10 +6,7 @@
 //  Copyright © 2018 QuickBird Studios. All rights reserved.
 //
 
-import RxSwift
 import XCoordinator
-import XCoordinatorCombine
-import XCoordinatorRx
 import XCTest
 
 class TestAnimation: Animation {

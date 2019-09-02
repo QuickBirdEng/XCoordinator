@@ -115,7 +115,7 @@ open class BaseCoordinator<RouteType: Route, TransitionType: TransitionProtocol>
     // MARK: - Private methods
 
     private func performTransitionAfterWindowAppeared(_ transition: TransitionType) {
-        guard UIApplication.shared.windows.contains(where: { $0.isKeyWindow }) else {
+        guard !UIApplication.shared.windows.contains(where: { $0.isKeyWindow }) else {
             return performTransition(transition, with: TransitionOptions(animated: false))
         }
 
@@ -126,8 +126,9 @@ open class BaseCoordinator<RouteType: Route, TransitionType: TransitionProtocol>
             forName: UIWindow.didBecomeKeyNotification, object: nil, queue: .main) { [weak self] _ in
             windowAppearanceObserver.map(NotificationCenter.default.removeObserver)
             windowAppearanceObserver = nil
-            self?.performTransition(transition, with: TransitionOptions(animated: false)) {
-                self?.rootViewController.endAppearanceTransition()
+            self?.rootViewController.endAppearanceTransition()
+            DispatchQueue.main.async {
+                self?.performTransition(transition, with: TransitionOptions(animated: false))
             }
         }
     }

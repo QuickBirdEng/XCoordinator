@@ -481,8 +481,8 @@
 		OBJ_97 /* ConcurrentDispatchQueueScheduler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConcurrentDispatchQueueScheduler.swift; sourceTree = "<group>"; };
 		OBJ_98 /* ConcurrentMainScheduler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConcurrentMainScheduler.swift; sourceTree = "<group>"; };
 		OBJ_99 /* ConnectableObservableType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConnectableObservableType.swift; sourceTree = "<group>"; };
-		"RxSwift::RxSwift::Product" /* RxSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = RxSwift.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		"XCoordinator::XCoordinator::Product" /* XCoordinator.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = XCoordinator.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		"RxSwift::RxSwift::Product" /* RxSwift.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = RxSwift.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		"XCoordinator::XCoordinator::Product" /* XCoordinator.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = XCoordinator.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		"XCoordinator::XCoordinatorCombine::Product" /* XCoordinatorCombine.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = XCoordinatorCombine.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		"XCoordinator::XCoordinatorRx::Product" /* XCoordinatorRx.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = XCoordinatorRx.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		"XCoordinator::XCoordinatorTests::Product" /* XCoordinatorTests.xctest */ = {isa = PBXFileReference; lastKnownFileType = file; path = XCoordinatorTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
