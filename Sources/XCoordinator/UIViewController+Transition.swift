@@ -1,5 +1,5 @@
 //
-//  Coordinator+Transition.swift
+//  UIViewController+Transition.swift
 //  XCoordinator
 //
 //  Created by Paul Kraft on 28.07.18.

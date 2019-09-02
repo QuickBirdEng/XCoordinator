@@ -11,7 +11,7 @@ import UIKit
 internal class CoordinatorPreviewingDelegateObject<TransitionType: TransitionProtocol>:
 NSObject, UIViewControllerPreviewingDelegate {
 
-    // MARK: - Stored properties
+    // MARK: Stored properties
 
     internal var context: UIViewControllerPreviewing?
 
@@ -21,7 +21,7 @@ NSObject, UIViewControllerPreviewingDelegate {
     private let rootViewController: TransitionType.RootViewController
     private let completion: PresentationHandler?
 
-    // MARK: - Initialization
+    // MARK: Initialization
 
     internal init(transition: @escaping () -> TransitionType,
                   rootViewController: TransitionType.RootViewController,
@@ -31,7 +31,7 @@ NSObject, UIViewControllerPreviewingDelegate {
         self.completion = completion
     }
 
-    // MARK: - Methods
+    // MARK: Methods
 
     internal func previewingContext(_ previewingContext: UIViewControllerPreviewing,
                                     viewControllerForLocation location: CGPoint) -> UIViewController? {

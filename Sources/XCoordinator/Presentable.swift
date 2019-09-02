@@ -77,6 +77,7 @@ public protocol Presentable {
 extension Presentable {
     
     public func registerParent(_ presentable: Presentable & AnyObject) {}
+
     public func childTransitionCompleted() {}
 
     public func setRoot(for window: UIWindow) {

@@ -26,6 +26,8 @@
 		9B57256623171D7600B90C66 /* TestRoute.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B57256123171D7500B90C66 /* TestRoute.swift */; };
 		9B57256723171D7600B90C66 /* AnimationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B57256223171D7500B90C66 /* AnimationTests.swift */; };
 		9B57256823171D7600B90C66 /* XCText+Extras.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B57256323171D7600B90C66 /* XCText+Extras.swift */; };
+		9B94E145231DB351008CEAC2 /* WeakErased+Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B94E143231DB345008CEAC2 /* WeakErased+Router.swift */; };
+		9B94E147231DB391008CEAC2 /* UnownedErased+Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B94E146231DB391008CEAC2 /* UnownedErased+Router.swift */; };
 		OBJ_240 /* AddRef.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_71 /* AddRef.swift */; };
 		OBJ_241 /* Amb.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_72 /* Amb.swift */; };
 		OBJ_242 /* AnonymousDisposable.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_73 /* AnonymousDisposable.swift */; };
@@ -178,8 +180,8 @@
 		OBJ_389 /* Zip+arity.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_220 /* Zip+arity.swift */; };
 		OBJ_390 /* Zip.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_221 /* Zip.swift */; };
 		OBJ_397 /* Package.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_223 /* Package.swift */; };
-		OBJ_403 /* Animation+Navigation.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_11 /* Animation+Navigation.swift */; };
-		OBJ_404 /* Animation+TabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_12 /* Animation+TabBar.swift */; };
+		OBJ_403 /* NavigationAnimationDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_11 /* NavigationAnimationDelegate.swift */; };
+		OBJ_404 /* TabBarAnimationDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_12 /* TabBarAnimationDelegate.swift */; };
 		OBJ_405 /* Animation.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_13 /* Animation.swift */; };
 		OBJ_406 /* AnyCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_14 /* AnyCoordinator.swift */; };
 		OBJ_407 /* StrongRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_15 /* StrongRouter.swift */; };
@@ -211,10 +213,10 @@
 		OBJ_434 /* Transition.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_42 /* Transition.swift */; };
 		OBJ_435 /* TransitionAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_43 /* TransitionAnimation.swift */; };
 		OBJ_436 /* TransitionOptions.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_44 /* TransitionOptions.swift */; };
-		OBJ_437 /* TransitionPerformer+Navigation.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_45 /* TransitionPerformer+Navigation.swift */; };
-		OBJ_438 /* TransitionPerformer+Page.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_46 /* TransitionPerformer+Page.swift */; };
-		OBJ_439 /* TransitionPerformer+TabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_47 /* TransitionPerformer+TabBar.swift */; };
-		OBJ_440 /* TransitionPerformer+Transition.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_48 /* TransitionPerformer+Transition.swift */; };
+		OBJ_437 /* UINavigationController+Transition.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_45 /* UINavigationController+Transition.swift */; };
+		OBJ_438 /* UIPageViewController+Transition.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_46 /* UIPageViewController+Transition.swift */; };
+		OBJ_439 /* UITabBarController+Transition.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_47 /* UITabBarController+Transition.swift */; };
+		OBJ_440 /* UIViewController+Transition.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_48 /* UIViewController+Transition.swift */; };
 		OBJ_441 /* TransitionPerformer.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_49 /* TransitionPerformer.swift */; };
 		OBJ_442 /* TransitionProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_50 /* TransitionProtocol.swift */; };
 		OBJ_443 /* UIView+Store.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_51 /* UIView+Store.swift */; };
@@ -276,6 +278,8 @@
 		9B57256123171D7500B90C66 /* TestRoute.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestRoute.swift; sourceTree = "<group>"; };
 		9B57256223171D7500B90C66 /* AnimationTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnimationTests.swift; sourceTree = "<group>"; };
 		9B57256323171D7600B90C66 /* XCText+Extras.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "XCText+Extras.swift"; sourceTree = "<group>"; };
+		9B94E143231DB345008CEAC2 /* WeakErased+Router.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "WeakErased+Router.swift"; sourceTree = "<group>"; };
+		9B94E146231DB391008CEAC2 /* UnownedErased+Router.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UnownedErased+Router.swift"; sourceTree = "<group>"; };
 		OBJ_100 /* Create.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Create.swift; sourceTree = "<group>"; };
 		OBJ_101 /* CurrentThreadScheduler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentThreadScheduler.swift; sourceTree = "<group>"; };
 		OBJ_102 /* Date+Dispatch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Dispatch.swift"; sourceTree = "<group>"; };
@@ -286,7 +290,7 @@
 		OBJ_107 /* Delay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Delay.swift; sourceTree = "<group>"; };
 		OBJ_108 /* DelaySubscription.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DelaySubscription.swift; sourceTree = "<group>"; };
 		OBJ_109 /* Dematerialize.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dematerialize.swift; sourceTree = "<group>"; };
-		OBJ_11 /* Animation+Navigation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Animation+Navigation.swift"; sourceTree = "<group>"; };
+		OBJ_11 /* NavigationAnimationDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationAnimationDelegate.swift; sourceTree = "<group>"; };
 		OBJ_110 /* Deprecated.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Deprecated.swift; sourceTree = "<group>"; };
 		OBJ_111 /* DispatchQueue+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DispatchQueue+Extensions.swift"; sourceTree = "<group>"; };
 		OBJ_112 /* DispatchQueueConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DispatchQueueConfiguration.swift; sourceTree = "<group>"; };
@@ -297,7 +301,7 @@
 		OBJ_117 /* DistinctUntilChanged.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DistinctUntilChanged.swift; sourceTree = "<group>"; };
 		OBJ_118 /* Do.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Do.swift; sourceTree = "<group>"; };
 		OBJ_119 /* ElementAt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ElementAt.swift; sourceTree = "<group>"; };
-		OBJ_12 /* Animation+TabBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Animation+TabBar.swift"; sourceTree = "<group>"; };
+		OBJ_12 /* TabBarAnimationDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarAnimationDelegate.swift; sourceTree = "<group>"; };
 		OBJ_120 /* Empty.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Empty.swift; sourceTree = "<group>"; };
 		OBJ_121 /* Enumerated.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Enumerated.swift; sourceTree = "<group>"; };
 		OBJ_122 /* Error.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Error.swift; sourceTree = "<group>"; };
@@ -437,10 +441,10 @@
 		OBJ_42 /* Transition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Transition.swift; sourceTree = "<group>"; };
 		OBJ_43 /* TransitionAnimation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransitionAnimation.swift; sourceTree = "<group>"; };
 		OBJ_44 /* TransitionOptions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransitionOptions.swift; sourceTree = "<group>"; };
-		OBJ_45 /* TransitionPerformer+Navigation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TransitionPerformer+Navigation.swift"; sourceTree = "<group>"; };
-		OBJ_46 /* TransitionPerformer+Page.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TransitionPerformer+Page.swift"; sourceTree = "<group>"; };
-		OBJ_47 /* TransitionPerformer+TabBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TransitionPerformer+TabBar.swift"; sourceTree = "<group>"; };
-		OBJ_48 /* TransitionPerformer+Transition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TransitionPerformer+Transition.swift"; sourceTree = "<group>"; };
+		OBJ_45 /* UINavigationController+Transition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UINavigationController+Transition.swift"; sourceTree = "<group>"; };
+		OBJ_46 /* UIPageViewController+Transition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIPageViewController+Transition.swift"; sourceTree = "<group>"; };
+		OBJ_47 /* UITabBarController+Transition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITabBarController+Transition.swift"; sourceTree = "<group>"; };
+		OBJ_48 /* UIViewController+Transition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Transition.swift"; sourceTree = "<group>"; };
 		OBJ_49 /* TransitionPerformer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransitionPerformer.swift; sourceTree = "<group>"; };
 		OBJ_50 /* TransitionProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransitionProtocol.swift; sourceTree = "<group>"; };
 		OBJ_51 /* UIView+Store.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Store.swift"; sourceTree = "<group>"; };
@@ -534,8 +538,8 @@
 		OBJ_10 /* XCoordinator */ = {
 			isa = PBXGroup;
 			children = (
-				OBJ_11 /* Animation+Navigation.swift */,
-				OBJ_12 /* Animation+TabBar.swift */,
+				OBJ_11 /* NavigationAnimationDelegate.swift */,
+				OBJ_12 /* TabBarAnimationDelegate.swift */,
 				OBJ_13 /* Animation.swift */,
 				OBJ_14 /* AnyCoordinator.swift */,
 				OBJ_15 /* StrongRouter.swift */,
@@ -567,16 +571,18 @@
 				OBJ_42 /* Transition.swift */,
 				OBJ_43 /* TransitionAnimation.swift */,
 				OBJ_44 /* TransitionOptions.swift */,
-				OBJ_45 /* TransitionPerformer+Navigation.swift */,
-				OBJ_46 /* TransitionPerformer+Page.swift */,
-				OBJ_47 /* TransitionPerformer+TabBar.swift */,
-				OBJ_48 /* TransitionPerformer+Transition.swift */,
+				OBJ_45 /* UINavigationController+Transition.swift */,
+				OBJ_46 /* UIPageViewController+Transition.swift */,
+				OBJ_47 /* UITabBarController+Transition.swift */,
+				OBJ_48 /* UIViewController+Transition.swift */,
 				OBJ_49 /* TransitionPerformer.swift */,
 				OBJ_50 /* TransitionProtocol.swift */,
 				OBJ_51 /* UIView+Store.swift */,
 				OBJ_52 /* UnownedErased.swift */,
+				9B94E146231DB391008CEAC2 /* UnownedErased+Router.swift */,
 				OBJ_54 /* ViewCoordinator.swift */,
 				OBJ_55 /* WeakErased.swift */,
+				9B94E143231DB345008CEAC2 /* WeakErased+Router.swift */,
 			);
 			name = XCoordinator;
 			path = Sources/XCoordinator;
@@ -1210,8 +1216,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 0;
 			files = (
-				OBJ_403 /* Animation+Navigation.swift in Sources */,
-				OBJ_404 /* Animation+TabBar.swift in Sources */,
+				OBJ_403 /* NavigationAnimationDelegate.swift in Sources */,
+				OBJ_404 /* TabBarAnimationDelegate.swift in Sources */,
 				OBJ_405 /* Animation.swift in Sources */,
 				OBJ_406 /* AnyCoordinator.swift in Sources */,
 				OBJ_407 /* StrongRouter.swift in Sources */,
@@ -1222,6 +1228,7 @@
 				OBJ_412 /* Coordinator.swift in Sources */,
 				OBJ_413 /* CoordinatorPreviewingDelegateObject.swift in Sources */,
 				OBJ_414 /* DeepLinking.swift in Sources */,
+				9B94E147231DB391008CEAC2 /* UnownedErased+Router.swift in Sources */,
 				OBJ_415 /* GestureRecognizerTarget.swift in Sources */,
 				OBJ_416 /* InteractiveTransitionAnimation.swift in Sources */,
 				OBJ_417 /* InterruptibleTransitionAnimation.swift in Sources */,
@@ -1236,6 +1243,7 @@
 				OBJ_427 /* Router.swift in Sources */,
 				OBJ_428 /* SplitCoordinator.swift in Sources */,
 				OBJ_429 /* SplitTransition.swift in Sources */,
+				9B94E145231DB351008CEAC2 /* WeakErased+Router.swift in Sources */,
 				OBJ_430 /* StaticTransitionAnimation.swift in Sources */,
 				OBJ_431 /* TabBarCoordinator.swift in Sources */,
 				OBJ_432 /* TabBarTransition.swift in Sources */,
@@ -1243,10 +1251,10 @@
 				OBJ_434 /* Transition.swift in Sources */,
 				OBJ_435 /* TransitionAnimation.swift in Sources */,
 				OBJ_436 /* TransitionOptions.swift in Sources */,
-				OBJ_437 /* TransitionPerformer+Navigation.swift in Sources */,
-				OBJ_438 /* TransitionPerformer+Page.swift in Sources */,
-				OBJ_439 /* TransitionPerformer+TabBar.swift in Sources */,
-				OBJ_440 /* TransitionPerformer+Transition.swift in Sources */,
+				OBJ_437 /* UINavigationController+Transition.swift in Sources */,
+				OBJ_438 /* UIPageViewController+Transition.swift in Sources */,
+				OBJ_439 /* UITabBarController+Transition.swift in Sources */,
+				OBJ_440 /* UIViewController+Transition.swift in Sources */,
 				OBJ_441 /* TransitionPerformer.swift in Sources */,
 				OBJ_442 /* TransitionProtocol.swift in Sources */,
 				OBJ_443 /* UIView+Store.swift in Sources */,

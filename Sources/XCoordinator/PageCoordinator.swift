@@ -16,7 +16,7 @@ import UIKit
 ///
 open class PageCoordinator<RouteType: Route>: BaseCoordinator<RouteType, PageTransition> {
 
-    // MARK: - Stored properties
+    // MARK: Stored properties
 
     ///
     /// The dataSource of the rootViewController.
@@ -25,7 +25,7 @@ open class PageCoordinator<RouteType: Route>: BaseCoordinator<RouteType, PageTra
     ///
     public let dataSource: UIPageViewControllerDataSource
 
-    // MARK: - Initialization
+    // MARK: Initialization
 
     ///
     /// Creates a PageCoordinator with several sequential (potentially looping) pages.

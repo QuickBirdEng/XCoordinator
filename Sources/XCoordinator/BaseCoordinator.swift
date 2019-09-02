@@ -22,7 +22,7 @@ extension BaseCoordinator {
 ///
 open class BaseCoordinator<RouteType: Route, TransitionType: TransitionProtocol>: Coordinator {
 
-    // MARK: - Stored properties
+    // MARK: Stored properties
 
     private var removeParentChildren: () -> Void = {}
     private var gestureRecognizerTargets = [GestureRecognizerTarget]()
@@ -34,7 +34,7 @@ open class BaseCoordinator<RouteType: Route, TransitionType: TransitionProtocol>
     ///
     public private(set) var children = [Presentable]()
 
-    // MARK: - Computed properties
+    // MARK: Computed properties
 
     public private(set) var rootViewController: RootViewController
     
@@ -42,7 +42,7 @@ open class BaseCoordinator<RouteType: Route, TransitionType: TransitionProtocol>
         return rootViewController
     }
 
-    // MARK: - Initialization
+    // MARK: Initialization
 
     ///
     /// This initializer trigger a route before the coordinator is made visible.
@@ -66,7 +66,7 @@ open class BaseCoordinator<RouteType: Route, TransitionType: TransitionProtocol>
         initialTransition.map(performTransitionAfterWindowAppeared)
     }
 
-    // MARK: - Open methods
+    // MARK: Open methods
 
     open func presented(from presentable: Presentable?) {}
 
@@ -112,7 +112,7 @@ open class BaseCoordinator<RouteType: Route, TransitionType: TransitionProtocol>
         return .init()
     }
 
-    // MARK: - Private methods
+    // MARK: Private methods
 
     private func performTransitionAfterWindowAppeared(_ transition: TransitionType) {
         guard !UIApplication.shared.windows.contains(where: { $0.isKeyWindow }) else {
@@ -164,7 +164,7 @@ extension UIViewController {
 
 extension BaseCoordinator {
 
-    // MARK: - Registering
+    // MARK: Registering
 
     ///
     /// Register an interactive transition triggered by a gesture recognizer.
@@ -277,7 +277,7 @@ extension BaseCoordinator {
         )
     }
 
-    // MARK: - Unregistering
+    // MARK: Unregistering
 
     ///
     /// Unregisters a previously registered interactive transition.
@@ -296,4 +296,5 @@ extension BaseCoordinator {
             return true
         }
     }
+
 }

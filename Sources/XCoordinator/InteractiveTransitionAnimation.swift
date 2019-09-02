@@ -25,13 +25,13 @@ import UIKit
 ///
 open class InteractiveTransitionAnimation: NSObject, TransitionAnimation { // swiftlint:enable line_length
 
-    // MARK: - Static properties
+    // MARK: Static properties
 
     internal static let generateDefaultInteractionController: () -> PercentDrivenInteractionController? = {
         UIPercentDrivenInteractiveTransition()
     }
 
-    // MARK: - Stored properties
+    // MARK: Stored properties
 
     private let _duration: TimeInterval
     private let _animation: (UIViewControllerContextTransitioning) -> Void
@@ -39,13 +39,13 @@ open class InteractiveTransitionAnimation: NSObject, TransitionAnimation { // sw
 
     private var _interactionController: PercentDrivenInteractionController?
 
-    // MARK: - Computed properties
+    // MARK: Computed properties
 
     open var interactionController: PercentDrivenInteractionController? {
         return _interactionController
     }
 
-    // MARK: - Initialization
+    // MARK: Initialization
 
     ///
     /// Creates an InteractiveTransitionAnimation with a duration, an animation closure and a closure to
@@ -119,7 +119,7 @@ open class InteractiveTransitionAnimation: NSObject, TransitionAnimation { // sw
         )
     }
 
-    // MARK: - Methods
+    // MARK: Methods
 
     ///
     /// See [UIViewControllerAnimatedTransitioning](https://developer.apple.com/documentation/uikit/UIViewControllerAnimatedTransitioning)
@@ -146,7 +146,7 @@ open class InteractiveTransitionAnimation: NSObject, TransitionAnimation { // sw
         return _animation(transitionContext)
     }
 
-    // MARK: - TransitionAnimation
+    // MARK: TransitionAnimation
 
     ///
     /// This method is used to generate an applicable interaction controller.

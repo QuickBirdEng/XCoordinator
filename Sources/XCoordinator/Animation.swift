@@ -20,7 +20,7 @@ import UIKit
 ///
 open class Animation: NSObject {
 
-    // MARK: - Static properties
+    // MARK: Static properties
 
     ///
     /// Use `Animation.default` to override currently set animations
@@ -31,7 +31,7 @@ open class Animation: NSObject {
     ///
     public static let `default` = Animation(presentation: nil, dismissal: nil)
 
-    // MARK: - Stored properties
+    // MARK: Stored properties
 
     /// The transition animation performed when transitioning to a presentable.
     open var presentationAnimation: TransitionAnimation?
@@ -39,7 +39,7 @@ open class Animation: NSObject {
     /// The transition animation performed when transitioning away from a presentable.
     open var dismissalAnimation: TransitionAnimation?
 
-    // MARK: - Initialization
+    // MARK: Initialization
 
     ///
     /// Creates an Animation object containing a presentation and a dismissal animation.

@@ -44,7 +44,7 @@ extension Reactive where Base: Router {
         }
     }
 
-    // MARK: - Convenience methods
+    // MARK: Convenience methods
 
     ///
     /// This method transforms the completion block of a router's trigger method into an observable.

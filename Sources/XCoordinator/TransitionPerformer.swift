@@ -33,4 +33,5 @@ public protocol TransitionPerformer: Presentable {
     func performTransition(_ transition: TransitionType,
                            with options: TransitionOptions,
                            completion: PresentationHandler?)
+
 }

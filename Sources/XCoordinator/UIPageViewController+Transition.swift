@@ -1,5 +1,5 @@
 //
-//  Coordinator+PageView.swift
+//  UIPageViewController+Transition.swift
 //  XCoordinator
 //
 //  Created by Paul Kraft on 30.07.18.

@@ -18,14 +18,14 @@ import UIKit
 ///
 public class AnyTransitionPerformer<TransitionType: TransitionProtocol>: TransitionPerformer {
 
-    // MARK: - Stored properties
+    // MARK: Stored properties
 
     private var _viewController: () -> UIViewController?
     private var _rootViewController: () -> TransitionType.RootViewController
     private var _presented: (Presentable?) -> Void
     private var _perform: (TransitionType, TransitionOptions, PresentationHandler?) -> Void
 
-    // MARK: - Computed properties
+    // MARK: Computed properties
 
     public var viewController: UIViewController! {
         return _viewController()
@@ -35,7 +35,7 @@ public class AnyTransitionPerformer<TransitionType: TransitionProtocol>: Transit
         return _rootViewController()
     }
 
-    // MARK: - Methods
+    // MARK: Methods
 
     public func presented(from presentable: Presentable?) {
         return _presented(presentable)
@@ -47,7 +47,7 @@ public class AnyTransitionPerformer<TransitionType: TransitionProtocol>: Transit
         _perform(transition, options, completion)
     }
 
-    // MARK: - Initialization
+    // MARK: Initialization
 
     init<T: TransitionPerformer>(_ coordinator: T) where TransitionType == T.TransitionType {
         self._viewController = { coordinator.viewController }

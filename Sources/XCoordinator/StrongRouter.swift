@@ -22,7 +22,7 @@ import UIKit
 ///
 public final class StrongRouter<RouteType: Route>: Router {
 
-    // MARK: - Stored properties
+    // MARK: Stored properties
 
     private let _contextTrigger: (RouteType, TransitionOptions, ContextPresentationHandler?) -> Void
     private let _trigger: (RouteType, TransitionOptions, PresentationHandler?) -> Void
@@ -30,7 +30,7 @@ public final class StrongRouter<RouteType: Route>: Router {
     private let _viewController: () -> UIViewController?
     private let _setRoot: (UIWindow) -> Void
 
-    // MARK: - Initialization
+    // MARK: Initialization
 
     ///
     /// Creates an AnyRouter object from a given router.
@@ -46,7 +46,7 @@ public final class StrongRouter<RouteType: Route>: Router {
         _contextTrigger = router.contextTrigger
     }
 
-    // MARK: - Public methods
+    // MARK: Public methods
 
     ///
     /// Triggers routes and provides the transition context in the completion-handler.

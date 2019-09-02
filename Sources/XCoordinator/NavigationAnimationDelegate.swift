@@ -21,12 +21,12 @@ import UIKit
 ///
 open class NavigationAnimationDelegate: NSObject {
 
-    // MARK: - Static properties
+    // MARK: Static properties
 
     // swiftlint:disable:next identifier_name
     private static let interactivePopGestureRecognizerDelegateAction = Selector(("handleNavigationTransition:"))
 
-    // MARK: - Stored properties
+    // MARK: Stored properties
 
     /// The velocity threshold needed for the interactive pop transition to succeed
     open var velocityThreshold: CGFloat { return UIScreen.main.bounds.width / 2 }
@@ -38,12 +38,12 @@ open class NavigationAnimationDelegate: NSObject {
     private var interactivePopGestureRecognizerDelegate: UIGestureRecognizerDelegate?
     private var popAnimation: TransitionAnimation?
 
-    // MARK: - Weak properties
+    // MARK: Weak properties
 
     internal weak var delegate: UINavigationControllerDelegate?
     private weak var navigationController: UINavigationController?
 
-    // MARK: - Helper methods
+    // MARK: Helper methods
 
     private func currentPopAnimation() -> TransitionAnimation? {
         guard let topViewController = navigationController?.topViewController else { return nil }
@@ -155,7 +155,7 @@ extension NavigationAnimationDelegate: UINavigationControllerDelegate {
 
 extension NavigationAnimationDelegate: UIGestureRecognizerDelegate {
 
-    // MARK: - Delegate methods
+    // MARK: Delegate methods
 
     ///
     /// See [UIGestureRecognizerDelegate documentation](https://developer.apple.com/documentation/uikit/UIGestureRecognizerDelegate)
@@ -200,7 +200,7 @@ extension NavigationAnimationDelegate: UIGestureRecognizerDelegate {
         }
     }
 
-    // MARK: - Target actions
+    // MARK: Target actions
 
     ///
     /// This method handles changes of the navigation controller's `interactivePopGestureRecognizer`.
@@ -247,7 +247,7 @@ extension NavigationAnimationDelegate: UIGestureRecognizerDelegate {
         }
     }
 
-    // MARK: - Helpers
+    // MARK: Helpers
 
     ///
     /// This method sets up the `interactivePopGestureRecognizer` of the navigation controller

@@ -28,7 +28,7 @@ public typealias AnyViewCoordinator<RouteType: Route> = AnyCoordinator<RouteType
 ///
 public class AnyCoordinator<RouteType: Route, TransitionType: TransitionProtocol>: Coordinator {
 
-    // MARK: - Stored properties
+    // MARK: Stored properties
 
     private let _prepareTransition: (RouteType) -> TransitionType
     private let _viewController: () -> UIViewController?
@@ -40,7 +40,7 @@ public class AnyCoordinator<RouteType: Route, TransitionType: TransitionProtocol
     private let _removeChildrenIfNeeded: () -> Void
     private let _registerParent: (Presentable & AnyObject) -> Void
     
-    // MARK: - Initialization
+    // MARK: Initialization
 
     ///
     /// Creates a type-erased Coordinator for a specific coordinator.
@@ -62,7 +62,7 @@ public class AnyCoordinator<RouteType: Route, TransitionType: TransitionProtocol
         self._registerParent = coordinator.registerParent
     }
 
-    // MARK: - Computed properties
+    // MARK: Computed properties
 
     public var rootViewController: TransitionType.RootViewController {
         return _rootViewController()
@@ -72,7 +72,7 @@ public class AnyCoordinator<RouteType: Route, TransitionType: TransitionProtocol
         return _viewController()
     }
 
-    // MARK: - Methods
+    // MARK: Methods
 
     ///
     /// Prepare and return transitions for a given route.

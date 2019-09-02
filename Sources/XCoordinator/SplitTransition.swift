@@ -1,8 +1,9 @@
 //
-//  SplitTransition.swift
+//  UISplitViewController+Transition.swift
 //  XCoordinator
 //
 //  Created by Paul Kraft on 10.01.19.
+//  Copyright © 2018 QuickBird Studios. All rights reserved.
 //
 
 import UIKit
@@ -13,6 +14,7 @@ import UIKit
 public typealias SplitTransition = Transition<UISplitViewController>
 
 extension Transition where RootViewController: UISplitViewController {
+
     static func set(_ presentables: [Presentable]) -> Transition {
         return Transition(presentables: presentables, animationInUse: nil) { rootViewController, _, completion in
             CATransaction.begin()
@@ -24,4 +26,5 @@ extension Transition where RootViewController: UISplitViewController {
             CATransaction.commit()
         }
     }
+
 }

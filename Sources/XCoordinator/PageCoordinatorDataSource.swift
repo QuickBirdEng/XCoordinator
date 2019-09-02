@@ -19,7 +19,7 @@ import UIKit
 ///
 open class PageCoordinatorDataSource: NSObject, UIPageViewControllerDataSource {
 
-    // MARK: - Stored properties
+    // MARK: Stored properties
 
     /// The pages of the `UIPageViewController` in sequential order.
     open var pages: [UIViewController]
@@ -29,7 +29,7 @@ open class PageCoordinatorDataSource: NSObject, UIPageViewControllerDataSource {
     /// (or the last shown when swiping right on the first page)
     open var loop: Bool
 
-    // MARK: - Initialization
+    // MARK: Initialization
 
     ///
     /// Creates a PageCoordinatorDataSource with the given pages and looping capabilities.
@@ -48,7 +48,7 @@ open class PageCoordinatorDataSource: NSObject, UIPageViewControllerDataSource {
         self.loop = loop
     }
 
-    // MARK: - Methods
+    // MARK: Methods
 
     ///
     /// See [UIPageViewControllerDataSource](https://developer.apple.com/documentation/uikit/UIPageViewControllerDataSource)

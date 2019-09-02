@@ -14,7 +14,7 @@ import UIKit
 ///
 open class TabBarCoordinator<RouteType: Route>: BaseCoordinator<RouteType, TabBarTransition> {
 
-    // MARK: - Stored properties
+    // MARK: Stored properties
 
     ///
     /// The animation delegate controlling the rootViewController's transition animations.
@@ -26,15 +26,15 @@ open class TabBarCoordinator<RouteType: Route>: BaseCoordinator<RouteType, TabBa
     private let animationDelegate = TabBarAnimationDelegate()
     // swiftlint:disable:previous weak_delegate
 
-    // MARK: - Computed properties
+    // MARK: Computed properties
 
     ///
     /// Use this delegate to get informed about tabbarController-related notifications and delegate methods
     /// specifying transition animations. The delegate is only referenced weakly.
     ///
-    /// Set this delegate instead of overriding the `generateRootViewController` method, if possible,
-    /// to allow for transition animations to be executed as specified in the
-    /// `prepareTransition(for:)` method.
+    /// Set this delegate instead of overriding the delegate of the rootViewController
+    /// specified in the initializer, if possible, to allow for transition animations
+    /// to be executed as specified in the `prepareTransition(for:)` method.
     ///
     public var delegate: UITabBarControllerDelegate? {
         get {
@@ -45,7 +45,7 @@ open class TabBarCoordinator<RouteType: Route>: BaseCoordinator<RouteType, TabBa
         }
     }
 
-    // MARK: - Initialization
+    // MARK: Initialization
 
     public override init(rootViewController: RootViewController = .init(), initialRoute: RouteType?) {
         if rootViewController.delegate == nil {
@@ -98,4 +98,5 @@ open class TabBarCoordinator<RouteType: Route>: BaseCoordinator<RouteType, TabBa
         super.init(rootViewController: rootViewController,
                    initialTransition: .multiple(.set(tabs), .select(index: select)))
     }
+
 }

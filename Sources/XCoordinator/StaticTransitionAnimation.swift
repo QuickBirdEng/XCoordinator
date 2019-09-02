@@ -19,18 +19,18 @@ import UIKit
 ///
 open class StaticTransitionAnimation: NSObject, TransitionAnimation {
 
-    // MARK: - Stored properties
+    // MARK: Stored properties
 
     internal let duration: TimeInterval
     private let _performAnimation: (_ transitionContext: UIViewControllerContextTransitioning) -> Void
 
-    // MARK: - Computed properties
+    // MARK: Computed properties
 
     open var interactionController: PercentDrivenInteractionController? {
         return self as? PercentDrivenInteractionController
     }
 
-    // MARK: - Initialization
+    // MARK: Initialization
 
     ///
     /// Creates a StaticTransitionAnimation to be used as presentation or dismissal transition animation in
@@ -48,7 +48,7 @@ open class StaticTransitionAnimation: NSObject, TransitionAnimation {
         self._performAnimation = performAnimation
     }
 
-    // MARK: - Methods
+    // MARK: Methods
 
     ///
     /// See [UIViewControllerAnimatedTransitioning](https://developer.apple.com/documentation/uikit/UIViewControllerAnimatedTransitioning)
@@ -77,8 +77,9 @@ open class StaticTransitionAnimation: NSObject, TransitionAnimation {
         _performAnimation(transitionContext)
     }
 
-    // MARK: - TransitionAnimation
+    // MARK: TransitionAnimation
 
     open func start() {}
     open func cleanup() {}
+
 }

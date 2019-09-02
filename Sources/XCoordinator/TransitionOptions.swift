@@ -16,12 +16,12 @@
 ///
 public struct TransitionOptions {
 
-    // MARK: - Stored properties
+    // MARK: Stored properties
 
     /// Specifies whether or not the transition should be animated.
     public let animated: Bool
 
-    // MARK: - Initialization
+    // MARK: Initialization
 
     ///
     /// Creates transition options on the basis of whether or not it should be animated.
@@ -37,9 +37,10 @@ public struct TransitionOptions {
         self.animated = animated
     }
 
-    // MARK: - Static computed properties
+    // MARK: Static computed properties
 
     static var `default`: TransitionOptions {
         return TransitionOptions(animated: true)
     }
+
 }

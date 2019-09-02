@@ -15,13 +15,13 @@ import UIKit
 @available(iOS 10.0, *)
 open class InterruptibleTransitionAnimation: InteractiveTransitionAnimation {
 
-    // MARK: - Stored properties
+    // MARK: Stored properties
 
     private let _generateInterruptibleAnimator: (UIViewControllerContextTransitioning) -> UIViewImplicitlyAnimating
 
     private var _interruptibleAnimator: UIViewImplicitlyAnimating?
 
-    // MARK: - Init
+    // MARK: Initialization
 
     ///
     /// Creates an interruptible transition animation based on duration, an animator generator closure
@@ -62,7 +62,7 @@ open class InterruptibleTransitionAnimation: InteractiveTransitionAnimation {
         )
     }
 
-    // MARK: - Methods
+    // MARK: Methods
 
     ///
     /// Generates an interruptible animator based on the transitionContext.
@@ -91,7 +91,7 @@ open class InterruptibleTransitionAnimation: InteractiveTransitionAnimation {
         return animator
     }
 
-    // MARK: - TransitionAnimation
+    // MARK: TransitionAnimation
 
     ///
     /// See [UIViewControllerAnimatedTransitioning](https://developer.apple.com/documentation/uikit/UIViewControllerAnimatedTransitioning)
