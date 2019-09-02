@@ -160,35 +160,35 @@ class AppCoordinator: NavigationCoordinator<AppRoute> {
 
 Let's assume, there is a route type called `HugeRoute` with more than 10 routes. To decrease coupling, `HugeRoute` needs to be split up into mutliple route types. As you will discover, many routes in `HugeRoute` use transitions dependent on a specific rootViewController, such as `push`, `show`, `pop`, etc. If splitting up routes by introducing a new router/coordinator is not an option, XCoordinator has two solutions for you to solve such a case: `RedirectionRouter` or using multiple coordinators with the same rootViewController ([see this section for more information](#using-multiple-coordinators-with-the-same-rootviewcontroller)).
 
-A `RedirectionRouter` can be used to map a new route type onto a generalized `SuperRoute`. A `RedirectionRouter` is independent of the `TransitionType` of its superRouter. You can use `RedirectionRouter.init(viewController:superRouter:map:)` or subclassing by overriding `mapToSuperRoute(_:)` to create a `RedirectionRouter`.
+A `RedirectionRouter` can be used to map a new route type onto a generalized `ParentRoute`. A `RedirectionRouter` is independent of the `TransitionType` of its parent router. You can use `RedirectionRouter.init(viewController:parent:map:)` or subclassing by overriding `mapToParentRoute(_:)` to create a `RedirectionRouter`.
 
 The following code example illustrates how a `RedirectionRouter` is initialized and used.
 
 ```swift
-class SuperCoordinator: NavigationCoordinator<SuperRoute> {
+class ParentCoordinator: NavigationCoordinator<ParentRoute> {
     /* ... */
     
-    override func prepareTransition(for route: SuperRoute) -> NavigationTransition {
+    override func prepareTransition(for route: ParentRoute) -> NavigationTransition {
         switch route {
         /* ... */
         case .subCoordinator:
-            let subCoordinator = SubCoordinator(superRouter: unownedRouter)
+            let subCoordinator = SubCoordinator(parent: unownedRouter)
             return .push(subCoordinator)
         }
     }
 }
 
-class SubCoordinator: RedirectionRouter<SuperRoute, SubRoute> {
-    init(superRouter: UnownedRouter<SuperRoute>) {
+class ChildCoordinator: RedirectionRouter<ParentRoute, ChildRoute> {
+    init(parent: UnownedRouter<ParentRoute>) {
         let viewController = UIViewController() 
         // this viewController is used when performing transitions with the Subcoordinator directly.
-        super.init(viewController: viewController, superRouter: superRouter, map: nil)
+        super.init(viewController: viewController, parent: parent, map: nil)
     }
     
     /* ... */
     
-    override func mapToSuperRoute(for route: SubRoute) -> SuperRoute {
-        // you can map your subRoute enum to SuperRoute cases here that will get triggered on the superRouter.
+    override func mapToSuperRoute(for route: ChildRoute) -> ParentRoute {
+        // you can map your ChildRoute enum to ParentRoute cases here that will get triggered on the parent router.
     }
 }
 ```
