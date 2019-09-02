@@ -1,5 +1,5 @@
 //
-//  Coordinator+TabBar.swift
+//  UITabBarController+Transition.swift
 //  XCoordinator
 //
 //  Created by Paul Kraft on 27.07.18.
@@ -19,9 +19,9 @@ extension UITabBarController {
             viewControllers.first?.transitioningDelegate = animation
         }
         assert(animation == nil || animationDelegate != nil, """
-        Animations do not work, if the tabbar controller's delegate is not a TabBarAnimationDelegate.
-        This assertion might fail, if TabBarCoordinator.generateRootViewController was not used to generate the tabbar controller
-        as a coordinator's rootViewController or another delegate was set on its rootViewController.
+        Animations do not work, if the navigation controller's delegate is not a NavigationAnimationDelegate.
+        This assertion might fail, if the rootViewController specified in the TabBarCoordinator's
+        initializer already had a delegate when initializing the TabBarCoordinator.
         To set another delegate of a rootViewController in a TabBarCoordinator, have a look at `TabBarCoordinator.delegate`.
         """)
 
@@ -42,9 +42,9 @@ extension UITabBarController {
             viewController.transitioningDelegate = animation
         }
         assert(animation == nil || animationDelegate != nil, """
-        Animations do not work, if the tabbar controller's delegate is not a TabBarAnimationDelegate.
-        This assertion might fail, if TabBarCoordinator.generateRootViewController was not used to generate the tabbar controller
-        as a coordinator's rootViewController or another delegate was set on its rootViewController.
+        Animations do not work, if the navigation controller's delegate is not a NavigationAnimationDelegate.
+        This assertion might fail, if the rootViewController specified in the TabBarCoordinator's
+        initializer already had a delegate when initializing the TabBarCoordinator.
         To set another delegate of a rootViewController in a TabBarCoordinator, have a look at `TabBarCoordinator.delegate`.
         """)
 
@@ -62,9 +62,9 @@ extension UITabBarController {
             viewControllers?[index].transitioningDelegate = animation
         }
         assert(animation == nil || animationDelegate != nil, """
-        Animations do not work, if the tabbar controller's delegate is not a TabBarAnimationDelegate.
-        This assertion might fail, if TabBarCoordinator.generateRootViewController was not used to generate the tabbar controller
-        as a coordinator's rootViewController or another delegate was set on its rootViewController.
+        Animations do not work, if the navigation controller's delegate is not a NavigationAnimationDelegate.
+        This assertion might fail, if the rootViewController specified in the TabBarCoordinator's
+        initializer already had a delegate when initializing the TabBarCoordinator.
         To set another delegate of a rootViewController in a TabBarCoordinator, have a look at `TabBarCoordinator.delegate`.
         """)
 

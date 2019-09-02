@@ -37,7 +37,7 @@ public protocol Router: Presentable {
 
 extension Router {
 
-    // MARK: - Convenience methods
+    // MARK: Convenience methods
 
     ///
     /// Triggers the specified route without the need of specifying a completion handler.

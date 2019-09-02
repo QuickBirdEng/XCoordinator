@@ -17,7 +17,7 @@ import UIKit
 ///
 open class NavigationCoordinator<RouteType: Route>: BaseCoordinator<RouteType, NavigationTransition> {
 
-    // MARK: - Stored properties
+    // MARK: Stored properties
 
     ///
     /// The animation delegate controlling the rootViewController's transition animations.
@@ -29,7 +29,7 @@ open class NavigationCoordinator<RouteType: Route>: BaseCoordinator<RouteType, N
     public let animationDelegate = NavigationAnimationDelegate()
     // swiftlint:disable:previous weak_delegate
 
-    // MARK: - Computed properties
+    // MARK: Computed properties
 
     ///
     /// This represents a fallback-delegate to be notified about navigation controller events.
@@ -44,7 +44,7 @@ open class NavigationCoordinator<RouteType: Route>: BaseCoordinator<RouteType, N
         }
     }
 
-    // MARK: - Initialization
+    // MARK: Initialization
 
     ///
     /// Creates a NavigationCoordinator and optionally triggers an initial route.
@@ -71,4 +71,5 @@ open class NavigationCoordinator<RouteType: Route>: BaseCoordinator<RouteType, N
         }
         super.init(rootViewController: rootViewController, initialTransition: .push(root))
     }
+
 }

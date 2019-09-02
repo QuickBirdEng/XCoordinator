@@ -18,7 +18,7 @@ public typealias ViewTransition = Transition<UIViewController>
 ///
 open class ViewCoordinator<RouteType: Route>: BaseCoordinator<RouteType, ViewTransition> {
 
-    // MARK: - Initialization
+    // MARK: Initialization
 
     public override init(rootViewController: RootViewController, initialRoute: RouteType? = nil) {
         super.init(rootViewController: rootViewController,

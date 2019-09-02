@@ -15,7 +15,7 @@
 ///
 open class SplitCoordinator<RouteType: Route>: BaseCoordinator<RouteType, SplitTransition> {
 
-    // MARK: - Initialization
+    // MARK: Initialization
 
     public override init(rootViewController: RootViewController = .init(), initialRoute: RouteType?) {
         super.init(rootViewController: rootViewController, initialRoute: initialRoute)

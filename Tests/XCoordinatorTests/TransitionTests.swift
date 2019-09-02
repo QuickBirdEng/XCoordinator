@@ -78,7 +78,7 @@ class TransitionTests: XCTestCase {
         testCompletionCalled(on: coordinator, transition: .pop(to: viewControllers[0]))
     }
 
-    // MARK: - Helpers
+    // MARK: Helpers
 
     private func testStandardTransitions<C: Coordinator, RootViewController>(on coordinator: C) where C.TransitionType == Transition<RootViewController> {
         print("none")

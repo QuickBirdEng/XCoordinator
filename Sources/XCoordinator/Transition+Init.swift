@@ -279,4 +279,5 @@ extension Coordinator where Self: AnyObject {
                                             completion: completion)
         }
     }
+
 }

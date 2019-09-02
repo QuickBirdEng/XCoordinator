@@ -21,19 +21,22 @@ import UIKit
 ///
 open class RedirectionRouter<SuperRoute: Route, RouteType: Route>: Router {
 
-    // MARK: - Stored properties
+    // MARK: Stored properties
 
     /// A type-erased Router object of the superCoordinator.
     public let superRouter: UnownedRouter<SuperRoute>
 
     private let _map: ((RouteType) -> SuperRoute)?
 
-    // MARK: - Computed properties
+    // MARK: Computed properties
 
-    /// The viewController used in transitions, e.g. when pushing, presenting or otherwise displaying the RedirectionRouter.
+    ///
+    /// The viewController used in transitions, e.g. when pushing, presenting
+    /// or otherwise displaying the RedirectionRouter.
+    ///
     public private(set) var viewController: UIViewController!
 
-    // MARK: - Initialization
+    // MARK: Initialization
 
     ///
     /// Creates a RedirectionRouter with a certain viewController, a superRouter and an optional mapping.
@@ -58,30 +61,7 @@ open class RedirectionRouter<SuperRoute: Route, RouteType: Route>: Router {
         self.viewController = viewController
     }
 
-    ///
-    /// Creates a RedirectionRouter with a certain viewController, a superRouter and an optional mapping.
-    ///
-    /// - Note:
-    ///     Make sure to either override `mapToSuperRoute` or to specify a closure for the `map` parameter.
-    ///     If you override `mapToSuperRoute`, the `map` parameter is ignored.
-    ///
-    /// - Parameters:
-    ///     - viewController:
-    ///         The view controller to be used in transitions, e.g. when pushing, presenting or otherwise displaying the RedirectionRouter.
-    ///     - superRouter:
-    ///         The superCoordinator. Triggered routes will be rerouted there.
-    ///     - map:
-    ///         A mapping from this RedirectionRouter's routes to the superRouter's routes.
-    ///
-    public init<RouterType: Router>(viewController: UIViewController,
-                                    superRouter: RouterType,
-                                    map: ((RouteType) -> SuperRoute)?) where RouterType.RouteType == SuperRoute, RouterType: AnyObject {
-        self.superRouter = superRouter.unownedRouter
-        self._map = map
-        self.viewController = viewController
-    }
-
-    // MARK: - Methods
+    // MARK: Methods
 
     open func contextTrigger(_ route: RouteType,
                              with options: TransitionOptions,

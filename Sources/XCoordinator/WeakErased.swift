@@ -9,17 +9,6 @@
 import Foundation
 
 ///
-/// A `WeakRouter` is a weak version of a router object to be used in view controllers or view models.
-///
-/// - Note:
-///     Do not create a `WeakRouter` from a `StrongRouter` since `StrongRouter` is only another wrapper
-///     and does not represent the  might instantly.
-///     Also keep in mind that once the original router object has been deallocated,
-///     calling `trigger` on this wrapper will have no effect.
-///
-public typealias WeakRouter<RouteType: Route> = WeakErased<StrongRouter<RouteType>>
-
-///
 /// `WeakErased` is a property wrapper to hold objects with a weak reference when using type-erasure.
 ///
 /// Create this wrapper using an initial value and a closure to create the type-erased object.
@@ -74,22 +63,5 @@ extension WeakErased {
             return erase(value)
         }
     }
-}
 
-import UIKit
-
-extension WeakErased: Presentable where Value: Presentable {
-    
-    public var viewController: UIViewController! {
-        return wrappedValue?.viewController
-    }
-    
-}
-
-extension WeakErased: Router where Value: Router {
-    
-    public func contextTrigger(_ route: Value.RouteType, with options: TransitionOptions, completion: ContextPresentationHandler?) {
-        wrappedValue?.contextTrigger(route, with: options, completion: completion)
-    }
-    
 }

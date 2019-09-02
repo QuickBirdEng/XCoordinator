@@ -32,6 +32,7 @@ public protocol TransitionAnimation: UIViewControllerAnimatedTransitioning {
 
     /// Cleans up a TransitionAnimation after an animation has been completed, e.g. by deleting an interaction controller.
     func cleanup()
+
 }
 
 ///
@@ -63,6 +64,7 @@ public protocol PercentDrivenInteractionController: UIViewControllerInteractiveT
     /// Finishes the animation by completing it from the current progress onwards.
     ///
     func finish()
+
 }
 
 extension UIPercentDrivenInteractiveTransition: PercentDrivenInteractionController {}

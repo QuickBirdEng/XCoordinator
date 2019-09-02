@@ -23,7 +23,7 @@ public typealias BasicTabBarCoordinator<R: Route> = BasicCoordinator<R, TabBarTr
 ///
 open class BasicCoordinator<RouteType: Route, TransitionType: TransitionProtocol>: BaseCoordinator<RouteType, TransitionType> {
 
-    // MARK: - Nested types
+    // MARK: Nested types
 
     ///
     /// `InitialLoadingType` differentiates between different points in time when the initital route is to
@@ -38,13 +38,13 @@ open class BasicCoordinator<RouteType: Route, TransitionType: TransitionProtocol
         case presented
     }
 
-    // MARK: - Stored properties
+    // MARK: Stored properties
 
     private let initialRoute: RouteType?
     private let initialLoadingType: InitialLoadingType
     private let prepareTransition: ((RouteType) -> TransitionType)?
 
-    // MARK: - Initialization
+    // MARK: Initialization
 
     ///
     /// Creates a BasicCoordinator.
@@ -76,7 +76,7 @@ open class BasicCoordinator<RouteType: Route, TransitionType: TransitionProtocol
         }
     }
 
-    // MARK: - Open methods
+    // MARK: Open methods
 
     ///
     /// This method is called whenever the BasicCoordinator is shown to the user.

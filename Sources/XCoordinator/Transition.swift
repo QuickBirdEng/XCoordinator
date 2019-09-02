@@ -25,7 +25,7 @@ import UIKit
 ///
 public struct Transition<RootViewController: UIViewController>: TransitionProtocol {
 
-    // MARK: - Typealias
+    // MARK: Typealias
 
     ///
     /// Perform is the type of closure used to perform the transition.
@@ -43,13 +43,13 @@ public struct Transition<RootViewController: UIViewController>: TransitionProtoc
                                        _ options: TransitionOptions,
                                        _ completion: PresentationHandler?) -> Void
 
-    // MARK: - Stored properties
+    // MARK: Stored properties
 
     private var _presentables: [Presentable]
     private var _animation: TransitionAnimation?
     private var _perform: PerformClosure
 
-    // MARK: - Computed properties
+    // MARK: Computed properties
 
     ///
     /// The presentables this transition is putting into the view hierarchy. This is especially useful for
@@ -68,7 +68,7 @@ public struct Transition<RootViewController: UIViewController>: TransitionProtoc
         return _animation
     }
 
-    // MARK: - Initialization
+    // MARK: Initialization
 
     ///
     /// Create your custom transitions with this initializer.
@@ -97,7 +97,7 @@ public struct Transition<RootViewController: UIViewController>: TransitionProtoc
         self._perform = perform
     }
 
-    // MARK: - Methods
+    // MARK: Methods
 
     ///
     /// Performs a transition on the given viewController.
@@ -109,5 +109,6 @@ public struct Transition<RootViewController: UIViewController>: TransitionProtoc
     public func perform(on rootViewController: RootViewController, with options: TransitionOptions, completion: PresentationHandler?) {
         _perform(rootViewController, options, completion)
     }
+
 }
  

@@ -8,15 +8,6 @@
 import Foundation
 
 ///
-/// An `UnownedRouter` is an unowned version of a router object to be used in view controllers or view models.
-///
-/// - Note:
-///     Do not create an `UnownedRouter` from a `StrongRouter` since `StrongRouter` is only another wrapper
-///     and does not represent the  might instantly
-///
-public typealias UnownedRouter<RouteType: Route> = UnownedErased<StrongRouter<RouteType>>
-
-///
 /// `UnownedErased` is a property wrapper to hold objects with an unowned reference when using type-erasure.
 ///
 /// Create this wrapper using an initial value and a closure to create the type-erased object.
@@ -67,22 +58,4 @@ extension UnownedErased {
         erase: @escaping (Erasable) -> Value) -> () -> Value {
         return { [unowned value] in erase(value) }
     }
-}
-
-import UIKit
-
-extension UnownedErased: Presentable where Value: Presentable {
-    
-    public var viewController: UIViewController! {
-        return wrappedValue.viewController
-    }
-    
-}
-
-extension UnownedErased: Router where Value: Router {
-    
-    public func contextTrigger(_ route: Value.RouteType, with options: TransitionOptions, completion: ContextPresentationHandler?) {
-        wrappedValue.contextTrigger(route, with: options, completion: completion)
-    }
-    
 }

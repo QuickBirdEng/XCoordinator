@@ -29,7 +29,7 @@ public protocol TransitionProtocol: TransitionContext {
                  with options: TransitionOptions,
                  completion: PresentationHandler?)
 
-    // MARK: - Always accessible transitions
+    // MARK: Always accessible transitions
 
     ///
     /// Creates a compound transition by chaining multiple transitions together.
@@ -51,4 +51,5 @@ extension TransitionProtocol {
     public static func multiple(_ transitions: Self...) -> Self {
         return multiple(transitions)
     }
+
 }

@@ -21,7 +21,7 @@ import UIKit
 ///
 open class TabBarAnimationDelegate: NSObject {
 
-    // MARK: - Stored properties
+    // MARK: Stored properties
 
     internal weak var delegate: UITabBarControllerDelegate?
 }
