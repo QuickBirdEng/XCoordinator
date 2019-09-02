@@ -7,9 +7,7 @@
 //
 
 import UIKit
-import RxSwift
 import XCoordinator
-import XCoordinatorRx
 import XCTest
 
 class AnimationTests: XCTestCase {
@@ -149,6 +147,7 @@ class AnimationTests: XCTestCase {
         let t = transition(testAnimation)
         coordinator.performTransition(t, with: TransitionOptions(animated: true)) {
             completionExpectation.fulfill()
+            _ = testAnimation
         }
         wait(for: [animationExpectation, completionExpectation], timeout: 3, enforceOrder: true)
         asyncWait(for: 0.1)
