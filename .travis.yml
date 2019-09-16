@@ -2,5 +2,6 @@ language: objective-c
 osx_image: xcode11
 
 script:
-    - ./scripts/build.sh
-    - ./scripts/check_docs.sh
+    - cd scripts
+    - ./build.sh
+    - ./check_docs.sh
