@@ -8,7 +8,8 @@ cd "$( dirname "$0" )"
 ./docs.sh
 
 if [ -z "$(git status --untracked-files=no --porcelain)" ]; then 
-   exit 0
+    exit 0
 else
-   exit 1
+    echo "$(git status)"
+    exit 1
 fi
