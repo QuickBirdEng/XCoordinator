@@ -1,61 +1,6 @@
 {
   "warnings": [
-    {
-      "file": "/Users/pauljohanneskraft/Documents/QuickBirdStudios/Frameworks/XCoordinator/Sources/XCoordinator/UnownedErased.swift",
-      "line": 19,
-      "symbol": "UnownedErased",
-      "symbol_kind": "source.lang.swift.decl.struct",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/pauljohanneskraft/Documents/QuickBirdStudios/Frameworks/XCoordinator/Sources/XCoordinator/UnownedErased.swift",
-      "line": 32,
-      "symbol": "UnownedErased",
-      "symbol_kind": "source.lang.swift.decl.extension",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/pauljohanneskraft/Documents/QuickBirdStudios/Frameworks/XCoordinator/Sources/XCoordinator/UnownedErased.swift",
-      "line": 38,
-      "symbol": "UnownedErased",
-      "symbol_kind": "source.lang.swift.decl.extension",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/pauljohanneskraft/Documents/QuickBirdStudios/Frameworks/XCoordinator/Sources/XCoordinator/UnownedErased.swift",
-      "line": 40,
-      "symbol": "UnownedErased",
-      "symbol_kind": "source.lang.swift.decl.extension",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/pauljohanneskraft/Documents/QuickBirdStudios/Frameworks/XCoordinator/Sources/XCoordinator/WeakErased.swift",
-      "line": 21,
-      "symbol": "WeakErased",
-      "symbol_kind": "source.lang.swift.decl.struct",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/pauljohanneskraft/Documents/QuickBirdStudios/Frameworks/XCoordinator/Sources/XCoordinator/WeakErased.swift",
-      "line": 22,
-      "symbol": "WeakErased",
-      "symbol_kind": "source.lang.swift.decl.extension",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/pauljohanneskraft/Documents/QuickBirdStudios/Frameworks/XCoordinator/Sources/XCoordinator/WeakErased.swift",
-      "line": 30,
-      "symbol": "WeakErased",
-      "symbol_kind": "source.lang.swift.decl.extension",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/pauljohanneskraft/Documents/QuickBirdStudios/Frameworks/XCoordinator/Sources/XCoordinator/WeakErased.swift",
-      "line": 40,
-      "symbol": "WeakErased",
-      "symbol_kind": "source.lang.swift.decl.extension",
-      "warning": "undocumented"
-    }
+
   ],
   "source_directory": "/Users/pauljohanneskraft/Documents/QuickBirdStudios/Frameworks/XCoordinator"
 }

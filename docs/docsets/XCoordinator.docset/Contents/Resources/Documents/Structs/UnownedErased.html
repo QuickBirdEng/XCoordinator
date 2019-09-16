@@ -241,7 +241,12 @@
         <section class="section">
           <div class="section-content">
             <h1>UnownedErased</h1>
-            
+            <p><code>UnownedErased</code> is a property wrapper to hold objects with an unowned reference when using type-erasure.</p>
+
+<p>Create this wrapper using an initial value and a closure to create the type-erased object.
+Make sure to not create an <code>UnownedErased</code> wrapper for already type-erased objects,
+since their reference is most likely instantly lost.</p>
+
           </div>
         </section>
 

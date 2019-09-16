@@ -8,6 +8,8 @@
 
 import Foundation
 
+#if swift(>=5.1)
+
 ///
 /// `WeakErased` is a property wrapper to hold objects with a weak reference when using type-erasure.
 ///
@@ -15,8 +17,6 @@ import Foundation
 /// Make sure to not create a `WeakErased` wrapper for already type-erased objects,
 /// since their reference is most likely instantly lost.
 ///
-
-#if swift(>=5.1)
 @propertyWrapper
 public struct WeakErased<Value> {
     private var _value: () -> Value?
@@ -26,7 +26,16 @@ public struct WeakErased<Value> {
         return _value()
     }
 }
+
 #else
+
+///
+/// `WeakErased` is a property wrapper to hold objects with a weak reference when using type-erasure.
+///
+/// Create this wrapper using an initial value and a closure to create the type-erased object.
+/// Make sure to not create a `WeakErased` wrapper for already type-erased objects,
+/// since their reference is most likely instantly lost.
+///
 public struct WeakErased<Value> {
     private var _value: () -> Value?
     
@@ -35,6 +44,7 @@ public struct WeakErased<Value> {
         return _value()
     }
 }
+
 #endif
 
 extension WeakErased {
