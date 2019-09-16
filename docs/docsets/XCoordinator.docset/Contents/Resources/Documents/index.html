@@ -245,6 +245,8 @@
 </p>
 <h1 id='a-href-https-travis-ci-com-quickbirdstudios-xcoordinator-img-src-https-travis-ci-com-quickbirdstudios-xcoordinator-svg-branch-master-alt-build-status-a-a-href-https-cocoapods-org-pods-xcoordinator-img-src-https-img-shields-io-cocoapods-v-xcoordinator-svg-alt-cocoapods-compatible-a-a-href-https-github-com-carthage-carthage-img-src-https-img-shields-io-badge-carthage-compatible-4bc51d-svg-style-flat-alt-carthage-compatible-a-a-href-https-quickbirdstudios-github-io-xcoordinator-img-src-https-github-com-quickbirdstudios-xcoordinator-blob-master-docs-badge-svg-alt-documentation-a-a-href-https-github-com-quickbirdstudios-xcoordinator-img-src-https-img-shields-io-badge-platform-ios-lightgrey-svg-alt-platform-a-a-href-https-github-com-quickbirdstudios-xcoordinator-blob-master-license-img-src-https-img-shields-io-cocoapods-l-xcoordinator-svg-alt-license-a' class='heading'><a href="https://travis-ci.com/quickbirdstudios/XCoordinator"><img src="https://travis-ci.com/quickbirdstudios/XCoordinator.svg?branch=master" alt="Build Status"></a> <a href="https://cocoapods.org/pods/XCoordinator"><img src="https://img.shields.io/cocoapods/v/XCoordinator.svg" alt="CocoaPods Compatible"></a> <a href="https://github.com/Carthage/Carthage"><img src="https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat" alt="Carthage Compatible"></a> <a href="https://quickbirdstudios.github.io/XCoordinator"><img src="https://github.com/quickbirdstudios/XCoordinator/blob/master/docs/badge.svg" alt="Documentation"></a> <a href="https://github.com/quickbirdstudios/XCoordinator"><img src="https://img.shields.io/badge/platform-iOS-lightgrey.svg" alt="Platform"></a> <a href="https://github.com/quickbirdstudios/XCoordinator/blob/master/LICENSE"><img src="https://img.shields.io/cocoapods/l/XCoordinator.svg" alt="License"></a></h1>
 
+<p>⚠️ We have recently released XCoordinator 2.0. Make sure to read <a href="#when-to-use-which-router-abstraction">this section</a> before migrating. In general, please replace all <code><a href="Typealiases.html#/s:12XCoordinator9AnyRoutera">AnyRouter</a></code> by either <code><a href="Typealiases.html#/s:12XCoordinator13UnownedRoutera">UnownedRouter</a></code> (in viewControllers, viewModels or references to parent coordinators) or <code><a href="Classes/StrongRouter.html">StrongRouter</a></code> in your <code>AppDelegate</code> or for references to child coordinators. In addition to that, the rootViewController is now injected into the initializer instead of being created in the <code>Coordinator.generateRootViewController</code> method.</p>
+
 <p>“How does an app transition from one view controller to another?”.
 This question is common and puzzling regarding iOS development. There are many answers, as every architecture has different implementation variations. Some do it from within the implementation of a view controller, while some use a router/coordinator, an object connecting view models.</p>
 
@@ -300,9 +302,9 @@ It&rsquo;s especially useful for implementing MVVM-C, Model-View-ViewModel-Coord
 
 <p>Routes are triggered from within Coordinators or ViewModels. In the following, we describe how to trigger routes from within a ViewModel. The router of the current flow is injected into the ViewModel.</p>
 <pre class="highlight swift"><code><span class="kd">class</span> <span class="kt">HomeViewModel</span> <span class="p">{</span>
-    <span class="k">let</span> <span class="nv">router</span><span class="p">:</span> <span class="kt">AnyRouter</span><span class="o">&lt;</span><span class="kt">HomeRoute</span><span class="o">&gt;</span>
+    <span class="k">let</span> <span class="nv">router</span><span class="p">:</span> <span class="kt">UnownedRouter</span><span class="o">&lt;</span><span class="kt">HomeRoute</span><span class="o">&gt;</span>
 
-    <span class="nf">init</span><span class="p">(</span><span class="nv">router</span><span class="p">:</span> <span class="kt">AnyRouter</span><span class="o">&lt;</span><span class="kt">HomeRoute</span><span class="o">&gt;</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nf">init</span><span class="p">(</span><span class="nv">router</span><span class="p">:</span> <span class="kt">UnownedRouter</span><span class="o">&lt;</span><span class="kt">HomeRoute</span><span class="o">&gt;</span><span class="p">)</span> <span class="p">{</span>
         <span class="k">self</span><span class="o">.</span><span class="n">router</span> <span class="o">=</span> <span class="n">router</span>
     <span class="p">}</span>
 
@@ -322,11 +324,11 @@ It&rsquo;s especially useful for implementing MVVM-C, Model-View-ViewModel-Coord
 <p>To achieve this behavior, every Coordinator has its own <code>rootViewController</code>. This would be a <code>UINavigationController</code> in the case of a <code><a href="Classes/NavigationCoordinator.html">NavigationCoordinator</a></code>, a <code>UITabBarController</code> in the case of a <code><a href="Classes/TabBarCoordinator.html">TabBarCoordinator</a></code>, etc. When transitioning to a Coordinator/Router, this <code>rootViewController</code> is used as the destination view controller.</p>
 <h3 id='using-xcoordinator-from-app-launch' class='heading'>🏁 Using XCoordinator from App Launch</h3>
 
-<p>To use coordinators from the launch of the app, make sure to create the app&rsquo;s <code>window</code> programmatically in <code>AppDelegate.swift</code> (Don&rsquo;t forget to remove <code>Main Storyboard file base name</code> from <code>Info.plist</code>). Then, set the coordinator as the root of the <code>window</code>&lsquo;s view hierarchy in the <code>AppDelegate.didFinishLaunching</code>.</p>
+<p>To use coordinators from the launch of the app, make sure to create the app&rsquo;s <code>window</code> programmatically in <code>AppDelegate.swift</code> (Don&rsquo;t forget to remove <code>Main Storyboard file base name</code> from <code>Info.plist</code>). Then, set the coordinator as the root of the <code>window</code>&lsquo;s view hierarchy in the <code>AppDelegate.didFinishLaunching</code>. Make sure to hold a strong reference to your app&rsquo;s initial coordinator or a <code>strongRouter</code> reference.</p>
 <pre class="highlight swift"><code><span class="kd">@UIApplicationMain</span>
 <span class="kd">class</span> <span class="kt">AppDelegate</span><span class="p">:</span> <span class="kt">UIResponder</span><span class="p">,</span> <span class="kt">UIApplicationDelegate</span> <span class="p">{</span>
     <span class="k">let</span> <span class="nv">window</span><span class="p">:</span> <span class="kt">UIWindow</span><span class="o">!</span> <span class="o">=</span> <span class="kt">UIWindow</span><span class="p">()</span>
-    <span class="k">let</span> <span class="nv">router</span> <span class="o">=</span> <span class="kt">AppCoordinator</span><span class="p">()</span><span class="o">.</span><span class="n">anyRouter</span>
+    <span class="k">let</span> <span class="nv">router</span> <span class="o">=</span> <span class="kt">AppCoordinator</span><span class="p">()</span><span class="o">.</span><span class="n">strongRouter</span>
 
     <span class="kd">func</span> <span class="nf">application</span><span class="p">(</span><span class="n">_</span> <span class="nv">application</span><span class="p">:</span> <span class="kt">UIApplication</span><span class="p">,</span> <span class="n">didFinishLaunchingWithOptions</span> <span class="nv">launchOptions</span><span class="p">:</span> <span class="p">[</span><span class="kt">UIApplicationLaunchOptionsKey</span><span class="p">:</span> <span class="kt">Any</span><span class="p">]?)</span> <span class="o">-&gt;</span> <span class="kt">Bool</span> <span class="p">{</span>
         <span class="n">router</span><span class="o">.</span><span class="nf">setRoot</span><span class="p">(</span><span class="nv">for</span><span class="p">:</span> <span class="n">window</span><span class="p">)</span>
@@ -336,7 +338,7 @@ It&rsquo;s especially useful for implementing MVVM-C, Model-View-ViewModel-Coord
 </code></pre>
 <h2 id='extras' class='heading'>🤸‍♂️ Extras</h2>
 
-<p>For more advanced use, XCoordinator offers many more customization options. We introduce custom animated transitions and deep linking. Furthermore, extensions for use in reactive programming with RxSwift and options to split up huge routes are described.</p>
+<p>For more advanced use, XCoordinator offers many more customization options. We introduce custom animated transitions and deep linking. Furthermore, extensions for use in reactive programming with RxSwift/Combine and options to split up huge routes are described.</p>
 <h3 id='custom-transitions' class='heading'>🌗 Custom Transitions</h3>
 
 <p>Custom animated transitions define presentation and dismissal animations. You can specify <code><a href="Classes/Animation.html">Animation</a></code> objects in <code>prepareTransition(for:)</code> in your coordinator for several common transitions, such as <code>present</code>, <code>dismiss</code>, <code>push</code> and <code>pop</code>. Specifying no animation (<code>nil</code>) results in not overriding previously set animations. Use <code><a href="Classes/Animation.html#/s:12XCoordinator9AnimationC7defaultACvpZ">Animation.default</a></code> to reset previously set animation to the default animations UIKit offers.</p>
@@ -378,87 +380,69 @@ It&rsquo;s especially useful for implementing MVVM-C, Model-View-ViewModel-Coord
 </code></pre>
 
 <p>⚠️ XCoordinator does not check at compile-time, whether a deep link can be executed. Rather it uses assertionFailures to inform about incorrect chaining at runtime, when it cannot find an appriopriate router for a given route. Keep this in mind when changing the structure of your app.</p>
-<h3 id='redirection' class='heading'>🚏 Redirection</h3>
+<h3 id='redirectionrouter' class='heading'>🚏 RedirectionRouter</h3>
 
-<p>Let&rsquo;s assume, there is a route type called <code>HugeRoute</code> with more than 10 routes. To decrease coupling, <code>HugeRoute</code> needs to be split up into mutliple route types. As you will discover, many routes in <code>HugeRoute</code> use transitions dependent on a specific rootViewController, such as <code>push</code>, <code>show</code>, <code>pop</code>, etc. If splitting up routes by introducing a new router/coordinator is not an option, XCoordinator has two solutions for you to solve such a case: <code><a href="Classes/RedirectionRouter.html">RedirectionRouter</a></code> and <code>RedirectionCoordinator</code>.</p>
+<p>Let&rsquo;s assume, there is a route type called <code>HugeRoute</code> with more than 10 routes. To decrease coupling, <code>HugeRoute</code> needs to be split up into mutliple route types. As you will discover, many routes in <code>HugeRoute</code> use transitions dependent on a specific rootViewController, such as <code>push</code>, <code>show</code>, <code>pop</code>, etc. If splitting up routes by introducing a new router/coordinator is not an option, XCoordinator has two solutions for you to solve such a case: <code><a href="Classes/RedirectionRouter.html">RedirectionRouter</a></code> or using multiple coordinators with the same rootViewController (<a href="#using-multiple-coordinators-with-the-same-rootviewcontroller">see this section for more information</a>).</p>
 
-<p>A <code><a href="Classes/RedirectionRouter.html">RedirectionRouter</a></code> can be used to map a new route type onto a generalized <code>SuperRoute</code>. A <code><a href="Classes/RedirectionRouter.html">RedirectionRouter</a></code> is independent of the <code>TransitionType</code> of its superRouter. You can use <code><a href="Classes/RedirectionRouter.html#/s:12XCoordinator17RedirectionRouterC14viewController05superC03mapACyxq_GSo06UIViewE0C_AA13UnownedErasedVyAA06StrongC0CyxGGxq_cSgtcfc">RedirectionRouter.init(viewController:superRouter:map:)</a></code> or subclassing by overriding <code>mapToSuperRoute(_:)</code> to create a <code><a href="Classes/RedirectionRouter.html">RedirectionRouter</a></code>.</p>
+<p>A <code><a href="Classes/RedirectionRouter.html">RedirectionRouter</a></code> can be used to map a new route type onto a generalized <code>ParentRoute</code>. A <code><a href="Classes/RedirectionRouter.html">RedirectionRouter</a></code> is independent of the <code>TransitionType</code> of its parent router. You can use <code><a href="Classes/RedirectionRouter.html#/s:12XCoordinator17RedirectionRouterC14viewController6parent3mapACyxq_GSo06UIViewE0C_AA13UnownedErasedVyAA06StrongC0CyxGGxq_cSgtcfc">RedirectionRouter.init(viewController:parent:map:)</a></code> or subclassing by overriding <code>mapToParentRoute(_:)</code> to create a <code><a href="Classes/RedirectionRouter.html">RedirectionRouter</a></code>.</p>
 
-<p>A <code>RedirectionCoordinator</code> is not dependent on a specific <code>SuperRoute</code>, instead it uses its <code>superTransitionPerformer</code> to perform transitions. Due to constraints of UIKit, this is especially helpful when nesting routes dependent on a <code>UINavigationController</code>, since pushing navigation controllers on top of each other is not possible. Similar to the <code><a href="Classes/RedirectionRouter.html">RedirectionRouter</a></code>, you can use a <code>RedirectionCoordinator</code> by providing a prepareTransition-closure to map from a route to a transition or by subclassing including the overriding of <code>prepareTransition(for:)</code>.</p>
-
-<p>The following table describes how using a <code><a href="Classes/RedirectionRouter.html">RedirectionRouter</a></code>, <code>RedirectionCoordinator</code> and creating a new coordinator independent from a superCoordinator stack up:</p>
-
-<table><thead>
-<tr>
-<th></th>
-<th><strong>RedirectionRouter</strong></th>
-<th><strong>RedirectionCoordinator</strong></th>
-<th><strong>New Coordinator</strong></th>
-</tr>
-</thead><tbody>
-<tr>
-<td><strong>Dependencies on superCoordinator</strong></td>
-<td>on <code>SuperRoute</code></td>
-<td>on <code>TransitionType</code></td>
-<td>none</td>
-</tr>
-<tr>
-<td><strong>Type constraint of superCoordinator</strong></td>
-<td><code><a href="Protocols/Router.html">Router</a></code></td>
-<td><code><a href="Protocols/TransitionPerformer.html">TransitionPerformer</a></code></td>
-<td>none</td>
-</tr>
-<tr>
-<td><strong>Accessibility of superCoordinator</strong></td>
-<td>map <code>RouteType</code> to <code>SuperRoute</code></td>
-<td>map <code>RouteType</code> to <code>TransitionType</code></td>
-<td>none</td>
-</tr>
-<tr>
-<td><strong>Transition definition</strong></td>
-<td>in superCoordinator</td>
-<td>constrained by <code>TransitionType</code> of superCoordinator</td>
-<td>independent from superCoordinator</td>
-</tr>
-</tbody></table>
-
-<p>The following code example illustrates how a <code>RedirectionCoordinator</code> is initialized and used. The use of a <code><a href="Classes/RedirectionRouter.html">RedirectionRouter</a></code> is similar, but one would need different type-constraints in <code>SubCoordinator.init</code> and override <code>mapToSuperRoute</code> instead of <code>prepareTransition</code>.</p>
-<pre class="highlight swift"><code><span class="kd">class</span> <span class="kt">SuperCoordinator</span><span class="p">:</span> <span class="kt">NavigationCoordinator</span><span class="o">&lt;</span><span class="kt">SuperRoute</span><span class="o">&gt;</span> <span class="p">{</span>
+<p>The following code example illustrates how a <code><a href="Classes/RedirectionRouter.html">RedirectionRouter</a></code> is initialized and used.</p>
+<pre class="highlight swift"><code><span class="kd">class</span> <span class="kt">ParentCoordinator</span><span class="p">:</span> <span class="kt">NavigationCoordinator</span><span class="o">&lt;</span><span class="kt">ParentRoute</span><span class="o">&gt;</span> <span class="p">{</span>
     <span class="cm">/* ... */</span>
 
-    <span class="k">override</span> <span class="kd">func</span> <span class="nf">prepareTransition</span><span class="p">(</span><span class="k">for</span> <span class="nv">route</span><span class="p">:</span> <span class="kt">SuperRoute</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">NavigationTransition</span> <span class="p">{</span>
+    <span class="k">override</span> <span class="kd">func</span> <span class="nf">prepareTransition</span><span class="p">(</span><span class="k">for</span> <span class="nv">route</span><span class="p">:</span> <span class="kt">ParentRoute</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">NavigationTransition</span> <span class="p">{</span>
         <span class="k">switch</span> <span class="n">route</span> <span class="p">{</span>
         <span class="cm">/* ... */</span>
         <span class="k">case</span> <span class="o">.</span><span class="nv">subCoordinator</span><span class="p">:</span>
-            <span class="k">let</span> <span class="nv">subCoordinator</span> <span class="o">=</span> <span class="kt">SubCoordinator</span><span class="p">(</span><span class="nv">superCoordinator</span><span class="p">:</span> <span class="k">self</span><span class="p">)</span>
+            <span class="k">let</span> <span class="nv">subCoordinator</span> <span class="o">=</span> <span class="kt">SubCoordinator</span><span class="p">(</span><span class="nv">parent</span><span class="p">:</span> <span class="n">unownedRouter</span><span class="p">)</span>
             <span class="k">return</span> <span class="o">.</span><span class="nf">push</span><span class="p">(</span><span class="n">subCoordinator</span><span class="p">)</span>
         <span class="p">}</span>
     <span class="p">}</span>
 <span class="p">}</span>
 
-<span class="kd">class</span> <span class="kt">SubCoordinator</span><span class="p">:</span> <span class="kt">RedirectionCoordinator</span><span class="o">&lt;</span><span class="kt">SubRoute</span><span class="p">,</span> <span class="kt">NavigationTransition</span><span class="o">&gt;</span> <span class="p">{</span>
-    <span class="kd">init</span><span class="o">&lt;</span><span class="kt">T</span><span class="p">:</span> <span class="kt">TransitionPerformer</span><span class="o">&gt;</span><span class="p">(</span><span class="nv">superCoordinator</span><span class="p">:</span> <span class="kt">T</span><span class="p">)</span> <span class="k">where</span> <span class="kt">T</span><span class="o">.</span><span class="kt">TransitionType</span> <span class="o">==</span> <span class="kt">NavigationTransition</span> <span class="p">{</span>
-        <span class="k">let</span> <span class="nv">viewController</span> <span class="o">=</span> <span class="kt">SubCoordinatorViewController</span><span class="p">()</span>
-        <span class="k">super</span><span class="o">.</span><span class="nf">init</span><span class="p">(</span><span class="nv">viewController</span><span class="p">:</span> <span class="n">viewController</span><span class="p">,</span> <span class="nv">superTransitionPerformer</span><span class="p">:</span> <span class="n">superCoordinator</span><span class="p">,</span> <span class="nv">prepareTransition</span><span class="p">:</span> <span class="kc">nil</span><span class="p">)</span>
-        <span class="k">let</span> <span class="nv">viewModel</span> <span class="o">=</span> <span class="kt">SubCoordinatorViewModel</span><span class="p">(</span><span class="nv">router</span><span class="p">:</span> <span class="n">anyRouter</span><span class="p">)</span>
-        <span class="c1">// this viewModel has to be initialized after `super.init`</span>
-        <span class="c1">// since it needs `self` to create the `anyRouter`.</span>
-        <span class="n">viewController</span><span class="o">.</span><span class="nf">bind</span><span class="p">(</span><span class="nv">to</span><span class="p">:</span> <span class="n">viewModel</span><span class="p">)</span>
+<span class="kd">class</span> <span class="kt">ChildCoordinator</span><span class="p">:</span> <span class="kt">RedirectionRouter</span><span class="o">&lt;</span><span class="kt">ParentRoute</span><span class="p">,</span> <span class="kt">ChildRoute</span><span class="o">&gt;</span> <span class="p">{</span>
+    <span class="nf">init</span><span class="p">(</span><span class="nv">parent</span><span class="p">:</span> <span class="kt">UnownedRouter</span><span class="o">&lt;</span><span class="kt">ParentRoute</span><span class="o">&gt;</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">let</span> <span class="nv">viewController</span> <span class="o">=</span> <span class="kt">UIViewController</span><span class="p">()</span> 
+        <span class="c1">// this viewController is used when performing transitions with the Subcoordinator directly.</span>
+        <span class="k">super</span><span class="o">.</span><span class="nf">init</span><span class="p">(</span><span class="nv">viewController</span><span class="p">:</span> <span class="n">viewController</span><span class="p">,</span> <span class="nv">parent</span><span class="p">:</span> <span class="n">parent</span><span class="p">,</span> <span class="nv">map</span><span class="p">:</span> <span class="kc">nil</span><span class="p">)</span>
     <span class="p">}</span>
 
     <span class="cm">/* ... */</span>
 
-    <span class="k">override</span> <span class="kd">func</span> <span class="nf">prepareTransition</span><span class="p">(</span><span class="k">for</span> <span class="nv">route</span><span class="p">:</span> <span class="kt">SubRoute</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">NavigationTransition</span> <span class="p">{</span>
-        <span class="c1">// you can prepare routes here just like in any other NavigationCoordinator</span>
+    <span class="k">override</span> <span class="kd">func</span> <span class="nf">mapToSuperRoute</span><span class="p">(</span><span class="k">for</span> <span class="nv">route</span><span class="p">:</span> <span class="kt">ChildRoute</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">ParentRoute</span> <span class="p">{</span>
+        <span class="c1">// you can map your ChildRoute enum to ParentRoute cases here that will get triggered on the parent router.</span>
     <span class="p">}</span>
 <span class="p">}</span>
 </code></pre>
-<h3 id='rxswift-extensions' class='heading'>🚀 RxSwift extensions</h3>
+<h3 id='using-multiple-coordinators-with-the-same-rootviewcontroller' class='heading'>🚏Using multiple coordinators with the same rootViewController</h3>
+
+<p>With XCoordinator 2.0, we introduce the option to use different coordinators with the same rootViewController.
+Since you can specify the rootViewController in the initializer of a new coordinator, you can specify an existing coordinator&rsquo;s rootViewController as in the following:</p>
+<pre class="highlight swift"><code><span class="kd">class</span> <span class="kt">FirstCoordinator</span><span class="p">:</span> <span class="kt">NavigationCoordinator</span><span class="o">&lt;</span><span class="kt">FirstRoute</span><span class="o">&gt;</span> <span class="p">{</span>
+    <span class="cm">/* ... */</span>
+
+    <span class="k">override</span> <span class="kd">func</span> <span class="nf">prepareTransition</span><span class="p">(</span><span class="k">for</span> <span class="nv">route</span><span class="p">:</span> <span class="kt">FirstRoute</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">NavigationTransition</span> <span class="p">{</span>
+        <span class="k">switch</span> <span class="n">route</span> <span class="p">{</span>
+        <span class="k">case</span> <span class="o">.</span><span class="nv">secondCoordinator</span><span class="p">:</span>
+            <span class="k">let</span> <span class="nv">secondCoordinator</span> <span class="o">=</span> <span class="kt">SecondCoordinator</span><span class="p">(</span><span class="nv">rootViewController</span><span class="p">:</span> <span class="k">self</span><span class="o">.</span><span class="n">rootViewController</span><span class="p">)</span>
+            <span class="nf">addChild</span><span class="p">(</span><span class="n">secondCoordinator</span><span class="p">)</span>
+            <span class="k">return</span> <span class="o">.</span><span class="nf">none</span><span class="p">()</span> 
+            <span class="c1">// you could also trigger a specific initial route at this point, </span>
+            <span class="c1">// such as `.trigger(SecondRoute.initial, on: secondCoordinator)`</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre>
+
+<p>We suggest to not use initial routes in the initializers of sibling coordinators, but instead using the transition option in the <code>FirstCoordinator</code> instead. </p>
+
+<p>⚠️ If you perform transitions involving a sibling coordinator directly (e.g. pushing a sibling coordinator without overriding its <code>viewController</code> property), your app will most likely crash.</p>
+<h3 id='rxswift-combine-extensions' class='heading'>🚀 RxSwift/Combine extensions</h3>
 
 <p>Reactive programming can be very useful to keep the state of view and model consistent in a MVVM architecture. Instead of relying on the completion handler of the <code>trigger</code> method available in any <code><a href="Protocols/Router.html">Router</a></code>, you can also use our RxSwift-extension. In the example application, we use Actions (from the <a href="https://github.com/RxSwiftCommunity/Action">Action</a> framework) to trigger routes on certain UI events - e.g. to trigger <code>LoginRoute.home</code> in <code>LoginViewModel</code>, when the login button is tapped.</p>
 <pre class="highlight swift"><code><span class="kd">class</span> <span class="kt">LoginViewModelImpl</span><span class="p">:</span> <span class="kt">LoginViewModel</span><span class="p">,</span> <span class="kt">LoginViewModelInput</span><span class="p">,</span> <span class="kt">LoginViewModelOutput</span> <span class="p">{</span>
 
-    <span class="kd">private</span> <span class="k">let</span> <span class="nv">router</span><span class="p">:</span> <span class="kt">AnyRouter</span><span class="o">&lt;</span><span class="kt">AppRoute</span><span class="o">&gt;</span>
+    <span class="kd">private</span> <span class="k">let</span> <span class="nv">router</span><span class="p">:</span> <span class="kt">UnownedRouter</span><span class="o">&lt;</span><span class="kt">AppRoute</span><span class="o">&gt;</span>
 
     <span class="kd">private</span> <span class="kd">lazy</span> <span class="k">var</span> <span class="nv">loginAction</span> <span class="o">=</span> <span class="kt">CocoaAction</span> <span class="p">{</span> <span class="p">[</span><span class="k">unowned</span> <span class="k">self</span><span class="p">]</span> <span class="k">in</span>
         <span class="k">return</span> <span class="k">self</span><span class="o">.</span><span class="n">router</span><span class="o">.</span><span class="n">rx</span><span class="o">.</span><span class="nf">trigger</span><span class="p">(</span><span class="o">.</span><span class="n">home</span><span class="p">)</span>
@@ -476,6 +460,8 @@ It&rsquo;s especially useful for implementing MVVM-C, Model-View-ViewModel-Coord
         <span class="o">.</span><span class="n">map</span> <span class="p">{</span> <span class="kc">true</span> <span class="p">}</span>
         <span class="o">.</span><span class="nf">startWith</span><span class="p">(</span><span class="kc">false</span><span class="p">)</span>
 </code></pre>
+
+<p>When using <code>XCoordinator</code> with the <code>Combine</code> extensions, you can use <code>router.publishers.trigger</code> instead of <code>router.rx.trigger</code>.</p>
 <h2 id='documentation-amp-example-app' class='heading'>📚 Documentation &amp; Example app</h2>
 
 <p>To get more information about XCoordinator, check out the <a href="https://quickbirdstudios.github.io/XCoordinator">documentation</a>.
@@ -522,6 +508,18 @@ Additionally, this <a href="https://github.com/quickbirdstudios/XCoordinator/tre
 <h3 id='coordinator-router' class='heading'>👨‍✈️ Coordinator / Router</h3>
 
 <p>An object loading views and creating viewModels based on triggered routes. A Coordinator creates and performs transitions to these scenes based on the data transferred via the route. In contrast to the coordinator, a router can be seen as an abstraction from that concept limited to triggering routes. Often, a Router is used to abstract from a specific coordinator in ViewModels.</p>
+<h4 id='when-to-use-which-router-abstraction' class='heading'>When to use which Router abstraction</h4>
+
+<p>You can create different router abstractions using the <code>unownedRouter</code>, <code>weakRouter</code> or <code>strongRouter</code> properties of your <code><a href="Protocols/Coordinator.html">Coordinator</a></code>.
+You can decide between the following router abstractions of your coordinator:</p>
+
+<ul>
+<li><strong>StrongRouter</strong> holds a strong reference to the original coordinator. You can use this to hold child coordinators or to specify a certain router in the <code>AppDelegate</code>.</li>
+<li><strong>WeakRouter</strong> holds a weak reference to the original coordinator. You can use this to hold a coordinator in a viewController or viewModel. It can also be used to keep a reference to a sibling or parent coordinator.</li>
+<li><strong>UnownedRouter</strong> holds an unowned reference to the original coordinator. You can use this to hold a coordinator in a viewController or viewModel. It can also be used to keep a reference to a sibling or parent coordinator.</li>
+</ul>
+
+<p>If you want to know more about the differences on how references can be held, have a look <a href="https://docs.swift.org/swift-book/LanguageGuide/AutomaticReferenceCounting.html">here</a>.</p>
 <h3 id='transition' class='heading'>🌗 Transition</h3>
 
 <p>Transitions describe the navigation from one view to another. Transitions are available based on the type of the root view controller in use. Example: Whereas <code><a href="Typealiases.html#/s:12XCoordinator14ViewTransitiona">ViewTransition</a></code> only supports basic transitions that every root view controller supports, <code><a href="Typealiases.html#/s:12XCoordinator20NavigationTransitiona">NavigationTransition</a></code> adds navigation controller specific transitions.</p>
@@ -543,21 +541,32 @@ Additionally, this <a href="https://github.com/quickbirdstudios/XCoordinator/tre
 <h4 id='cocoapods' class='heading'>CocoaPods</h4>
 
 <p>To integrate XCoordinator into your Xcode project using CocoaPods, add this to your <code>Podfile</code>:</p>
-<pre class="highlight ruby"><code><span class="n">pod</span> <span class="s1">'XCoordinator'</span><span class="p">,</span> <span class="s1">'~&gt; 1.0'</span>
+<pre class="highlight ruby"><code><span class="n">pod</span> <span class="s1">'XCoordinator'</span><span class="p">,</span> <span class="s1">'~&gt; 2.0'</span>
 </code></pre>
 
 <p>To use the RxSwift extensions, add this to your <code>Podfile</code>:</p>
-<pre class="highlight ruby"><code><span class="n">pod</span> <span class="s1">'XCoordinator/RxSwift'</span><span class="p">,</span> <span class="s1">'~&gt; 1.0'</span>
+<pre class="highlight ruby"><code><span class="n">pod</span> <span class="s1">'XCoordinator/RxSwift'</span><span class="p">,</span> <span class="s1">'~&gt; 2.0'</span>
+</code></pre>
+
+<p>To use the Combine extensions, add this to your <code>Podfile</code>:</p>
+<pre class="highlight ruby"><code><span class="n">pod</span> <span class="s1">'XCoordinator/Combine'</span><span class="p">,</span> <span class="s1">'~&gt; 2.0'</span>
 </code></pre>
 <h4 id='carthage' class='heading'>Carthage</h4>
 
 <p>To integrate XCoordinator into your Xcode project using Carthage, add this to your <code>Cartfile</code>:</p>
-<pre class="highlight plaintext"><code>github "quickbirdstudios/XCoordinator" ~&gt; 1.0
+<pre class="highlight plaintext"><code>github "quickbirdstudios/XCoordinator" ~&gt; 2.0
 </code></pre>
 
 <p>Then run <code>carthage update</code>.</p>
 
 <p>If this is your first time using Carthage in the project, you&rsquo;ll need to go through some additional steps as explained <a href="https://github.com/Carthage/Carthage#adding-frameworks-to-an-application">over at Carthage</a>.</p>
+<h4 id='swift-package-manager' class='heading'>Swift Package Manager</h4>
+
+<p>See <a href="https://developer.apple.com/videos/play/wwdc2019/408/">this WWDC presentation</a> about more information how to adopt Swift packages in your app.</p>
+
+<p>Specify <code>https://github.com/quickbirdstudios/XCoordinator.git</code> as the <code>XCoordinator</code> package link. 
+You can then decide between three different frameworks, i.e. <code>XCoordinator</code>, <code>XCoordinatorRx</code> and <code>XCoordinatorCombine</code>. 
+While <code>XCoordinator</code> contains the main framework, you can choose <code>XCoordinatorRx</code> or <code>XCoordinatorCombine</code> to get <code>RxSwift</code> or <code>Combine</code> extensions as well.</p>
 <h4 id='manually' class='heading'>Manually</h4>
 
 <p>If you prefer not to use any of the dependency managers, you can integrate XCoordinator into your project manually, by downloading the source code and placing the files on your project directory.  </p>
@@ -582,8 +591,8 @@ Additionally, this <a href="https://github.com/quickbirdstudios/XCoordinator/tre
       </article>
     </div>
     <section class="footer">
-      <p>&copy; 2019 <a class="link" href="https://quickbirdstudios.com" target="_blank" rel="external">Stefan Kofler &amp; Paul Kraft</a>. All rights reserved. (Last updated: 2019-08-30)</p>
-      <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.10.0</a>, a <a class="link" href="https://realm.io" target="_blank" rel="external">Realm</a> project.</p>
+      <p>&copy; 2019 <a class="link" href="https://quickbirdstudios.com" target="_blank" rel="external">Stefan Kofler &amp; Paul Kraft</a>. All rights reserved. (Last updated: 2019-09-16)</p>
+      <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.9.6</a>, a <a class="link" href="https://realm.io" target="_blank" rel="external">Realm</a> project.</p>
     </section>
   </body>
 </div>
