@@ -1,22 +1,25 @@
 PODS:
-  - Action (3.11.0):
-    - RxCocoa (~> 4.0)
-    - RxSwift (~> 4.0)
-  - RxAtomic (4.4.2)
-  - RxCocoa (4.4.2):
-    - RxSwift (>= 4.4.2, ~> 4.4)
-  - RxSwift (4.4.2):
-    - RxAtomic (>= 4.4.2, ~> 4.4)
-  - SwiftLint (0.31.0)
-  - XCoordinator (1.4.0):
-    - XCoordinator/Core (= 1.4.0)
-  - XCoordinator/Core (1.4.0)
-  - XCoordinator/RxSwift (1.4.0):
-    - RxSwift (~> 4.0)
+  - Action (4.0.0):
+    - RxCocoa (~> 5.0)
+    - RxSwift (~> 5.0)
+  - RxCocoa (5.0.0):
+    - RxRelay (~> 5)
+    - RxSwift (~> 5)
+  - RxRelay (5.0.0):
+    - RxSwift (~> 5)
+  - RxSwift (5.0.0)
+  - SwiftLint (0.32.0)
+  - XCoordinator (1.5.0):
+    - XCoordinator/Core (= 1.5.0)
+  - XCoordinator/Core (1.5.0)
+  - XCoordinator/RxSwift (1.5.0):
+    - RxSwift (~> 5.0)
     - XCoordinator/Core
 
 DEPENDENCIES:
-  - Action (~> 3.9)
+  - Action (~> 4.0)
+  - RxCocoa (~> 5.0)
+  - RxSwift (~> 5.0)
   - SwiftLint
   - XCoordinator (from `../`)
   - XCoordinator/RxSwift (from `../`)
@@ -24,8 +27,8 @@ DEPENDENCIES:
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
     - Action
-    - RxAtomic
     - RxCocoa
+    - RxRelay
     - RxSwift
     - SwiftLint
 
@@ -34,13 +37,13 @@ EXTERNAL SOURCES:
     :path: "../"
 
 SPEC CHECKSUMS:
-  Action: 689181e4c3f6566844178d8a7da6fef39a9597fc
-  RxAtomic: d00e97c10db88c6f08540e0bf2752fc5a2404167
-  RxCocoa: 477990dc3b4c3ff55fb0ac77e1cc06244e0aaec8
-  RxSwift: 74c29b693c8e42b0f64400e8b06564575742d649
-  SwiftLint: 7a0227733d786395817373b2d0ca799fd0093ff3
-  XCoordinator: c24865c3722779f716551e63da71ce64ece576fb
+  Action: 0d14986aad0f1330aa27ce65d0cdeaacbb63d91c
+  RxCocoa: fcf32050ac00d801f34a7f71d5e8e7f23026dcd8
+  RxRelay: 4f7409406a51a55cd88483f21ed898c234d60f18
+  RxSwift: 8b0671caa829a763bbce7271095859121cbd895f
+  SwiftLint: 009a898ef2a1c851f45e1b59349bf6ff2ddc990d
+  XCoordinator: 6c2d6e9a15b386332684b96e5ed9b41a1fa6f472
 
-PODFILE CHECKSUM: 14c5bdcd898ea0f09e76fcd87a67d54de2725512
+PODFILE CHECKSUM: dddbfd86aa3048f1f1ffd88a084fde3826901a14
 
-COCOAPODS: 1.5.3
+COCOAPODS: 1.7.0.rc.1

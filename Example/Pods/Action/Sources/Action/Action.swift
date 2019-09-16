@@ -25,11 +25,8 @@ public final class Action<Input, Element> {
     public let _enabledIf: Observable<Bool>
     public let workFactory: WorkFactory
 
-    /// Inputs that triggers execution of action.
-    /// This subject also includes inputs as aguments of execute().
-    /// All inputs are always appear in this subject even if the action is not enabled.
-    /// Thus, inputs count equals elements count + errors count.
-    public let inputs = InputSubject<Input>()
+    /// Bindable sink for inputs that triggers execution of action.
+    public let inputs: AnyObserver<Input>
 
     /// Errors aggrevated from invocations of execute().
     /// Delivered on whatever scheduler they were sent from.
@@ -57,7 +54,7 @@ public final class Action<Input, Element> {
     public convenience init<O: ObservableConvertibleType>(
         enabledIf: Observable<Bool> = Observable.just(true),
         workFactory: @escaping (Input) -> O
-    ) where O.E == Element {
+    ) where O.Element == Element {
         self.init(enabledIf: enabledIf) {
             workFactory($0).asObservable()
         }
@@ -76,7 +73,13 @@ public final class Action<Input, Element> {
         let errorsSubject = PublishSubject<ActionError>()
         errors = errorsSubject.asObservable()
 
-        executionObservables = inputs
+        let inputsSubject = PublishSubject<Input>()
+        inputs = AnyObserver { event in
+            guard case .next(let value) = event else { return }
+            inputsSubject.onNext(value)
+        }
+
+        executionObservables = inputsSubject
             .withLatestFrom(enabled) { input, enabled in (input, enabled) }
             .flatMap { input, enabled -> Observable<Observable<Element>> in
                 if enabled {

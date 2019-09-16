@@ -11,8 +11,8 @@ import RxSwift
 import XCoordinator
 
 protocol UserViewModelInput {
-    var alertTrigger: InputSubject<Void> { get }
-    var closeTrigger: InputSubject<Void> { get }
+    var alertTrigger: AnyObserver<Void> { get }
+    var closeTrigger: AnyObserver<Void> { get }
 }
 
 protocol UserViewModelOutput {
