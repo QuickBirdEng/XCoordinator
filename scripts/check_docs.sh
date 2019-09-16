@@ -10,6 +10,6 @@ cd "$( dirname "$0" )"
 if [ -z "$(git status --untracked-files=no --porcelain)" ]; then 
     exit 0
 else
-    echo "$(git status)"
+    echo "$(git status)\n$(git diff)"
     exit 1
 fi
