@@ -11,26 +11,29 @@
 import Combine
 import XCoordinator
 
-@available(iOS 13.0, *)
-extension Router {
+public struct PublisherExtension<Base> {
+    public let base: Base
+}
 
-    public func triggerFuture(_ route: RouteType,
-                              with options: TransitionOptions = .init(animated: true)
+extension Router {
+    public var publishers: PublisherExtension<Self> {
+        return .init(base: self)
+    }
+}
+
+@available(iOS 13.0, *)
+extension PublisherExtension where Base: Router {
+
+    public func trigger(_ route: RouteType,
+                        with options: TransitionOptions = .init(animated: true)
         ) -> Future<Void, Never> {
         return Future { completion in
-            self.trigger(route, with: options) {
+            self.base.trigger(route, with: options) {
                 completion(.success(()))
             }
         }
     }
 
-    public func triggerPublisher(_ route: RouteType,
-                                 with options: TransitionOptions = .init(animated: true)
-        ) -> AnyPublisher<Void, Never> {
-        return triggerFuture(route, with: options)
-            .eraseToAnyPublisher()
-    }
-    
 }
 
 #endif

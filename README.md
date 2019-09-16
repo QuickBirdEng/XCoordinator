@@ -247,7 +247,7 @@ let doneWithBothTransitions =
         .startWith(false)
 ```
 
-When using `XCoordinator` with the `Combine` extensions, you can use `router.triggerFuture` instead of `router.rx.trigger`.
+When using `XCoordinator` with the `Combine` extensions, you can use `router.publishers.trigger` instead of `router.rx.trigger`.
 
 ## 📚 Documentation & Example app
 
