@@ -24,7 +24,7 @@ extension Router {
 @available(iOS 13.0, *)
 extension PublisherExtension where Base: Router {
 
-    public func trigger(_ route: RouteType,
+    public func trigger(_ route: Base.RouteType,
                         with options: TransitionOptions = .init(animated: true)
         ) -> Future<Void, Never> {
         return Future { completion in
