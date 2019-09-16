@@ -2,10 +2,11 @@ language: objective-c
 osx_image: xcode11
 
 install:
-    - brew update
-    - gem install jazzy
-    - brew install sourcekitten
+#    - gem update
+#    - gem install jazzy
+#    - brew update
+#    - brew install sourcekitten
 script:
     - cd scripts
     - ./build.sh
-    - ./check_docs.sh
+#    - ./check_docs.sh
