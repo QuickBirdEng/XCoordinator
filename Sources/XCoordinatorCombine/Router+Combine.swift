@@ -13,13 +13,22 @@ import XCoordinator
 
 @available(iOS 13.0, *)
 extension Router {
-    
-    public func triggerFuture(_ route: RouteType, with options: TransitionOptions = .init(animated: true)) -> Future<Void, Never> {
+
+    public func triggerFuture(_ route: RouteType,
+                              with options: TransitionOptions = .init(animated: true)
+        ) -> Future<Void, Never> {
         return Future { completion in
             self.trigger(route, with: options) {
                 completion(.success(()))
             }
         }
+    }
+
+    public func triggerPublisher(_ route: RouteType,
+                                 with options: TransitionOptions = .init(animated: true)
+        ) -> AnyPublisher<Void, Never> {
+        return triggerFuture(route, with: options)
+            .eraseToAnyPublisher()
     }
     
 }

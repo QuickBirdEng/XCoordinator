@@ -1,5 +1,5 @@
 //
-//  Animation+Navigation.swift
+//  NavigationAnimationDelegate.swift
 //  XCoordinator
 //
 //  Created by Paul Kraft on 24.10.18.
