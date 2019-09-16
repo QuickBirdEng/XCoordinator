@@ -1,7 +1,7 @@
 language: objective-c
 osx_image: xcode11
 
-install
+install:
     - gem install jazzy
     - brew install sourcekitten
 script:
