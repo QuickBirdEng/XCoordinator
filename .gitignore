@@ -15,6 +15,7 @@ Pods/*.xcodeproj/xcuserdata/
 # Generated files
 *.o
 *.pyc
+docs/docsets/XCoordinator.tgz
 
 # Backup files
 *~.nib
