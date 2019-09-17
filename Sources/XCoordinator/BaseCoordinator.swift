@@ -121,12 +121,10 @@ open class BaseCoordinator<RouteType: Route, TransitionType: TransitionProtocol>
 
         var windowAppearanceObserver: Any?
 
-        rootViewController.beginAppearanceTransition(true, animated: false)
         windowAppearanceObserver = NotificationCenter.default.addObserver(
             forName: UIWindow.didBecomeKeyNotification, object: nil, queue: .main) { [weak self] _ in
             windowAppearanceObserver.map(NotificationCenter.default.removeObserver)
             windowAppearanceObserver = nil
-            self?.rootViewController.endAppearanceTransition()
             DispatchQueue.main.async {
                 self?.performTransition(transition, with: TransitionOptions(animated: false))
             }
