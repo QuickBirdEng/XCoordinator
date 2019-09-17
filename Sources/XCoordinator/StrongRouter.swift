@@ -29,6 +29,8 @@ public final class StrongRouter<RouteType: Route>: Router {
     private let _presented: (Presentable?) -> Void
     private let _viewController: () -> UIViewController?
     private let _setRoot: (UIWindow) -> Void
+    private let _registerParent: (Presentable & AnyObject) -> Void
+    private let _childTransitionCompleted: () -> Void
 
     // MARK: Initialization
 
@@ -44,6 +46,8 @@ public final class StrongRouter<RouteType: Route>: Router {
         _viewController = { router.viewController }
         _setRoot = router.setRoot
         _contextTrigger = router.contextTrigger
+        _registerParent = router.registerParent
+        _childTransitionCompleted = router.childTransitionCompleted
     }
 
     // MARK: Public methods
