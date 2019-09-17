@@ -60,9 +60,6 @@
                 <a class="nav-group-task-link" href="../Classes/AnyCoordinator.html">AnyCoordinator</a>
               </li>
               <li class="nav-group-task">
-                <a class="nav-group-task-link" href="../Classes/AnyRouter.html">AnyRouter</a>
-              </li>
-              <li class="nav-group-task">
                 <a class="nav-group-task-link" href="../Classes/AnyTransitionPerformer.html">AnyTransitionPerformer</a>
               </li>
               <li class="nav-group-task">
@@ -93,19 +90,16 @@
                 <a class="nav-group-task-link" href="../Classes/PageCoordinatorDataSource.html">PageCoordinatorDataSource</a>
               </li>
               <li class="nav-group-task">
-                <a class="nav-group-task-link" href="../Classes/RedirectionCoordinator.html">RedirectionCoordinator</a>
-              </li>
-              <li class="nav-group-task">
                 <a class="nav-group-task-link" href="../Classes/RedirectionRouter.html">RedirectionRouter</a>
-              </li>
-              <li class="nav-group-task">
-                <a class="nav-group-task-link" href="../Classes/ReferenceBox.html">ReferenceBox</a>
               </li>
               <li class="nav-group-task">
                 <a class="nav-group-task-link" href="../Classes/SplitCoordinator.html">SplitCoordinator</a>
               </li>
               <li class="nav-group-task">
                 <a class="nav-group-task-link" href="../Classes/StaticTransitionAnimation.html">StaticTransitionAnimation</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Classes/StrongRouter.html">StrongRouter</a>
               </li>
               <li class="nav-group-task">
                 <a class="nav-group-task-link" href="../Classes/TabBarAnimationDelegate.html">TabBarAnimationDelegate</a>
@@ -121,15 +115,6 @@
           <li class="nav-group-name">
             <a class="nav-group-name-link" href="../Extensions.html">Extensions</a>
             <ul class="nav-group-tasks">
-              <li class="nav-group-task">
-                <a class="nav-group-task-link" href="../Extensions/Reactive.html">Reactive</a>
-              </li>
-              <li class="nav-group-task">
-                <a class="nav-group-task-link" href="../Extensions/UIPageViewController.html">UIPageViewController</a>
-              </li>
-              <li class="nav-group-task">
-                <a class="nav-group-task-link" href="../Extensions/UIPageViewController/Configuration.html">– Configuration</a>
-              </li>
               <li class="nav-group-task">
                 <a class="nav-group-task-link" href="../Extensions/UIView.html">UIView</a>
               </li>
@@ -182,6 +167,18 @@
               <li class="nav-group-task">
                 <a class="nav-group-task-link" href="../Structs/TransitionOptions.html">TransitionOptions</a>
               </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Structs/UnownedErased.html">UnownedErased</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Structs/UnownedErased.html">UnownedErased</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Structs/WeakErased.html">WeakErased</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Structs/WeakErased.html">WeakErased</a>
+              </li>
             </ul>
           </li>
           <li class="nav-group-name">
@@ -189,6 +186,9 @@
             <ul class="nav-group-tasks">
               <li class="nav-group-task">
                 <a class="nav-group-task-link" href="../Typealiases.html#/s:12XCoordinator24AnyNavigationCoordinatora">AnyNavigationCoordinator</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Typealiases.html#/s:12XCoordinator9AnyRoutera">AnyRouter</a>
               </li>
               <li class="nav-group-task">
                 <a class="nav-group-task-link" href="../Typealiases.html#/s:12XCoordinator20AnyTabBarCoordinatora">AnyTabBarCoordinator</a>
@@ -218,16 +218,19 @@
                 <a class="nav-group-task-link" href="../Typealiases.html#/s:12XCoordinator19PresentationHandlera">PresentationHandler</a>
               </li>
               <li class="nav-group-task">
-                <a class="nav-group-task-link" href="../Typealiases.html#/s:12XCoordinator26PresentationHandlerContexta">PresentationHandlerContext</a>
-              </li>
-              <li class="nav-group-task">
                 <a class="nav-group-task-link" href="../Typealiases.html#/s:12XCoordinator15SplitTransitiona">SplitTransition</a>
               </li>
               <li class="nav-group-task">
                 <a class="nav-group-task-link" href="../Typealiases.html#/s:12XCoordinator16TabBarTransitiona">TabBarTransition</a>
               </li>
               <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Typealiases.html#/s:12XCoordinator13UnownedRoutera">UnownedRouter</a>
+              </li>
+              <li class="nav-group-task">
                 <a class="nav-group-task-link" href="../Typealiases.html#/s:12XCoordinator14ViewTransitiona">ViewTransition</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Typealiases.html#/s:12XCoordinator10WeakRoutera">WeakRouter</a>
               </li>
             </ul>
           </li>
@@ -277,9 +280,9 @@ With a TabBarCoordinator, you get access to all tabbarController-related transit
                         <p>Use this delegate to get informed about tabbarController-related notifications and delegate methods
 specifying transition animations. The delegate is only referenced weakly.</p>
 
-<p>Set this delegate instead of overriding the <code>generateRootViewController</code> method, if possible,
-to allow for transition animations to be executed as specified in the
-<code>prepareTransition(for:)</code> method.</p>
+<p>Set this delegate instead of overriding the delegate of the rootViewController
+specified in the initializer, if possible, to allow for transition animations
+to be executed as specified in the <code>prepareTransition(for:)</code> method.</p>
 
                       </div>
                       <div class="declaration">
@@ -307,9 +310,9 @@ to allow for transition animations to be executed as specified in the
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:12XCoordinator17TabBarCoordinatorC12initialRouteACyxGxSg_tcfc"></a>
-                    <a name="//apple_ref/swift/Method/init(initialRoute:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:12XCoordinator17TabBarCoordinatorC12initialRouteACyxGxSg_tcfc">init(initialRoute:)</a>
+                    <a name="/s:12XCoordinator17TabBarCoordinatorC18rootViewController12initialRouteACyxGSo05UITabcG0C_xSgtcfc"></a>
+                    <a name="//apple_ref/swift/Method/init(rootViewController:initialRoute:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:12XCoordinator17TabBarCoordinatorC18rootViewController12initialRouteACyxGSo05UITabcG0C_xSgtcfc">init(rootViewController:initialRoute:)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -323,7 +326,7 @@ to allow for transition animations to be executed as specified in the
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="k">override</span> <span class="nf">init</span><span class="p">(</span><span class="nv">initialRoute</span><span class="p">:</span> <span class="kt">RouteType</span><span class="p">?)</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="k">override</span> <span class="nf">init</span><span class="p">(</span><span class="nv">rootViewController</span><span class="p">:</span> <span class="kt">RootViewController</span> <span class="o">=</span> <span class="o">.</span><span class="nf">init</span><span class="p">(),</span> <span class="nv">initialRoute</span><span class="p">:</span> <span class="kt">RouteType</span><span class="p">?)</span></code></pre>
 
                         </div>
                       </div>
@@ -333,9 +336,9 @@ to allow for transition animations to be executed as specified in the
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:12XCoordinator17TabBarCoordinatorC4tabsACyxGSayAA11Presentable_pG_tcfc"></a>
-                    <a name="//apple_ref/swift/Method/init(tabs:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:12XCoordinator17TabBarCoordinatorC4tabsACyxGSayAA11Presentable_pG_tcfc">init(tabs:)</a>
+                    <a name="/s:12XCoordinator17TabBarCoordinatorC18rootViewController4tabsACyxGSo05UITabcG0C_SayAA11Presentable_pGtcfc"></a>
+                    <a name="//apple_ref/swift/Method/init(rootViewController:tabs:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:12XCoordinator17TabBarCoordinatorC18rootViewController4tabsACyxGSo05UITabcG0C_SayAA11Presentable_pGtcfc">init(rootViewController:tabs:)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -350,7 +353,7 @@ to allow for transition animations to be executed as specified in the
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="nf">init</span><span class="p">(</span><span class="nv">tabs</span><span class="p">:</span> <span class="p">[</span><span class="kt"><a href="../Protocols/Presentable.html">Presentable</a></span><span class="p">])</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="nf">init</span><span class="p">(</span><span class="nv">rootViewController</span><span class="p">:</span> <span class="kt">RootViewController</span> <span class="o">=</span> <span class="o">.</span><span class="nf">init</span><span class="p">(),</span> <span class="nv">tabs</span><span class="p">:</span> <span class="p">[</span><span class="kt"><a href="../Protocols/Presentable.html">Presentable</a></span><span class="p">])</span></code></pre>
 
                         </div>
                       </div>
@@ -379,9 +382,9 @@ to allow for transition animations to be executed as specified in the
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:12XCoordinator17TabBarCoordinatorC4tabs6selectACyxGSayAA11Presentable_pG_AaG_ptcfc"></a>
-                    <a name="//apple_ref/swift/Method/init(tabs:select:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:12XCoordinator17TabBarCoordinatorC4tabs6selectACyxGSayAA11Presentable_pG_AaG_ptcfc">init(tabs:select:)</a>
+                    <a name="/s:12XCoordinator17TabBarCoordinatorC18rootViewController4tabs6selectACyxGSo05UITabcG0C_SayAA11Presentable_pGAaJ_ptcfc"></a>
+                    <a name="//apple_ref/swift/Method/init(rootViewController:tabs:select:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:12XCoordinator17TabBarCoordinatorC18rootViewController4tabs6selectACyxGSo05UITabcG0C_SayAA11Presentable_pGAaJ_ptcfc">init(rootViewController:tabs:select:)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -396,7 +399,7 @@ to allow for transition animations to be executed as specified in the
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="nf">init</span><span class="p">(</span><span class="nv">tabs</span><span class="p">:</span> <span class="p">[</span><span class="kt"><a href="../Protocols/Presentable.html">Presentable</a></span><span class="p">],</span> <span class="nv">select</span><span class="p">:</span> <span class="kt"><a href="../Protocols/Presentable.html">Presentable</a></span><span class="p">)</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="nf">init</span><span class="p">(</span><span class="nv">rootViewController</span><span class="p">:</span> <span class="kt">RootViewController</span> <span class="o">=</span> <span class="o">.</span><span class="nf">init</span><span class="p">(),</span> <span class="nv">tabs</span><span class="p">:</span> <span class="p">[</span><span class="kt"><a href="../Protocols/Presentable.html">Presentable</a></span><span class="p">],</span> <span class="nv">select</span><span class="p">:</span> <span class="kt"><a href="../Protocols/Presentable.html">Presentable</a></span><span class="p">)</span></code></pre>
 
                         </div>
                       </div>
@@ -438,9 +441,9 @@ specified tabs in the other parameter.</p>
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:12XCoordinator17TabBarCoordinatorC4tabs6selectACyxGSayAA11Presentable_pG_Sitcfc"></a>
-                    <a name="//apple_ref/swift/Method/init(tabs:select:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:12XCoordinator17TabBarCoordinatorC4tabs6selectACyxGSayAA11Presentable_pG_Sitcfc">init(tabs:select:)</a>
+                    <a name="/s:12XCoordinator17TabBarCoordinatorC18rootViewController4tabs6selectACyxGSo05UITabcG0C_SayAA11Presentable_pGSitcfc"></a>
+                    <a name="//apple_ref/swift/Method/init(rootViewController:tabs:select:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:12XCoordinator17TabBarCoordinatorC18rootViewController4tabs6selectACyxGSo05UITabcG0C_SayAA11Presentable_pGSitcfc">init(rootViewController:tabs:select:)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -455,7 +458,7 @@ specified tabs in the other parameter.</p>
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="nf">init</span><span class="p">(</span><span class="nv">tabs</span><span class="p">:</span> <span class="p">[</span><span class="kt"><a href="../Protocols/Presentable.html">Presentable</a></span><span class="p">],</span> <span class="nv">select</span><span class="p">:</span> <span class="kt">Int</span><span class="p">)</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="nf">init</span><span class="p">(</span><span class="nv">rootViewController</span><span class="p">:</span> <span class="kt">RootViewController</span> <span class="o">=</span> <span class="o">.</span><span class="nf">init</span><span class="p">(),</span> <span class="nv">tabs</span><span class="p">:</span> <span class="p">[</span><span class="kt"><a href="../Protocols/Presentable.html">Presentable</a></span><span class="p">],</span> <span class="nv">select</span><span class="p">:</span> <span class="kt">Int</span><span class="p">)</span></code></pre>
 
                         </div>
                       </div>
@@ -495,56 +498,14 @@ specified tabs in the other parameter.</p>
                 </li>
               </ul>
             </div>
-            <div class="task-group">
-              <div class="task-name-container">
-                <a name="/Overrides"></a>
-                <a name="//apple_ref/swift/Section/Overrides" class="dashAnchor"></a>
-                <a href="#/Overrides">
-                  <h3 class="section-name">Overrides</h3>
-                </a>
-              </div>
-              <ul class="item-container">
-                <li class="item">
-                  <div>
-                    <code>
-                    <a name="/s:12XCoordinator17TabBarCoordinatorC26generateRootViewControllerSo05UITabcH0CyF"></a>
-                    <a name="//apple_ref/swift/Method/generateRootViewController()" class="dashAnchor"></a>
-                    <a class="token" href="#/s:12XCoordinator17TabBarCoordinatorC26generateRootViewControllerSo05UITabcH0CyF">generateRootViewController()</a>
-                    </code>
-                  </div>
-                  <div class="height-container">
-                    <div class="pointer-container"></div>
-                    <section class="section">
-                      <div class="pointer"></div>
-                      <div class="abstract">
-                        <p>Generates the rootViewController and sets its delegate.</p>
-
-<p>Use the <code>TabBarCoordinator.delegate</code> property to get informed about tabbarController-related
-notifications and specify animations. If you set the delegate of the rootViewController yourself,
-you will not get the transition animations specified in <code>prepareTransition</code> to work.</p>
-
-                      </div>
-                      <div class="declaration">
-                        <h4>Declaration</h4>
-                        <div class="language">
-                          <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">open</span> <span class="k">override</span> <span class="kd">func</span> <span class="nf">generateRootViewController</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="kt">UITabBarController</span></code></pre>
-
-                        </div>
-                      </div>
-                    </section>
-                  </div>
-                </li>
-              </ul>
-            </div>
           </div>
         </section>
 
       </article>
     </div>
     <section class="footer">
-      <p>&copy; 2019 <a class="link" href="https://quickbirdstudios.com" target="_blank" rel="external">Stefan Kofler &amp; Paul Kraft</a>. All rights reserved. (Last updated: 2019-03-15)</p>
-      <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.9.4</a>, a <a class="link" href="https://realm.io" target="_blank" rel="external">Realm</a> project.</p>
+      <p>&copy; 2019 <a class="link" href="https://quickbirdstudios.com" target="_blank" rel="external">Stefan Kofler &amp; Paul Kraft</a>. All rights reserved. (Last updated: 2019-09-17)</p>
+      <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.11.0</a>, a <a class="link" href="https://realm.io" target="_blank" rel="external">Realm</a> project.</p>
     </section>
   </body>
 </div>

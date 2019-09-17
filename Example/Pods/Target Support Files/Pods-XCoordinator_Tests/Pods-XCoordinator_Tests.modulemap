@@ -1,6 +1,0 @@
-framework module Pods_XCoordinator_Tests {
-  umbrella header "Pods-XCoordinator_Tests-umbrella.h"
-
-  export *
-  module * { export * }
-}

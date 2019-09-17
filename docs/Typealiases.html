@@ -60,9 +60,6 @@
                 <a class="nav-group-task-link" href="Classes/AnyCoordinator.html">AnyCoordinator</a>
               </li>
               <li class="nav-group-task">
-                <a class="nav-group-task-link" href="Classes/AnyRouter.html">AnyRouter</a>
-              </li>
-              <li class="nav-group-task">
                 <a class="nav-group-task-link" href="Classes/AnyTransitionPerformer.html">AnyTransitionPerformer</a>
               </li>
               <li class="nav-group-task">
@@ -93,19 +90,16 @@
                 <a class="nav-group-task-link" href="Classes/PageCoordinatorDataSource.html">PageCoordinatorDataSource</a>
               </li>
               <li class="nav-group-task">
-                <a class="nav-group-task-link" href="Classes/RedirectionCoordinator.html">RedirectionCoordinator</a>
-              </li>
-              <li class="nav-group-task">
                 <a class="nav-group-task-link" href="Classes/RedirectionRouter.html">RedirectionRouter</a>
-              </li>
-              <li class="nav-group-task">
-                <a class="nav-group-task-link" href="Classes/ReferenceBox.html">ReferenceBox</a>
               </li>
               <li class="nav-group-task">
                 <a class="nav-group-task-link" href="Classes/SplitCoordinator.html">SplitCoordinator</a>
               </li>
               <li class="nav-group-task">
                 <a class="nav-group-task-link" href="Classes/StaticTransitionAnimation.html">StaticTransitionAnimation</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Classes/StrongRouter.html">StrongRouter</a>
               </li>
               <li class="nav-group-task">
                 <a class="nav-group-task-link" href="Classes/TabBarAnimationDelegate.html">TabBarAnimationDelegate</a>
@@ -121,15 +115,6 @@
           <li class="nav-group-name">
             <a class="nav-group-name-link" href="Extensions.html">Extensions</a>
             <ul class="nav-group-tasks">
-              <li class="nav-group-task">
-                <a class="nav-group-task-link" href="Extensions/Reactive.html">Reactive</a>
-              </li>
-              <li class="nav-group-task">
-                <a class="nav-group-task-link" href="Extensions/UIPageViewController.html">UIPageViewController</a>
-              </li>
-              <li class="nav-group-task">
-                <a class="nav-group-task-link" href="Extensions/UIPageViewController/Configuration.html">– Configuration</a>
-              </li>
               <li class="nav-group-task">
                 <a class="nav-group-task-link" href="Extensions/UIView.html">UIView</a>
               </li>
@@ -182,6 +167,18 @@
               <li class="nav-group-task">
                 <a class="nav-group-task-link" href="Structs/TransitionOptions.html">TransitionOptions</a>
               </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Structs/UnownedErased.html">UnownedErased</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Structs/UnownedErased.html">UnownedErased</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Structs/WeakErased.html">WeakErased</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Structs/WeakErased.html">WeakErased</a>
+              </li>
             </ul>
           </li>
           <li class="nav-group-name">
@@ -189,6 +186,9 @@
             <ul class="nav-group-tasks">
               <li class="nav-group-task">
                 <a class="nav-group-task-link" href="Typealiases.html#/s:12XCoordinator24AnyNavigationCoordinatora">AnyNavigationCoordinator</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Typealiases.html#/s:12XCoordinator9AnyRoutera">AnyRouter</a>
               </li>
               <li class="nav-group-task">
                 <a class="nav-group-task-link" href="Typealiases.html#/s:12XCoordinator20AnyTabBarCoordinatora">AnyTabBarCoordinator</a>
@@ -218,16 +218,19 @@
                 <a class="nav-group-task-link" href="Typealiases.html#/s:12XCoordinator19PresentationHandlera">PresentationHandler</a>
               </li>
               <li class="nav-group-task">
-                <a class="nav-group-task-link" href="Typealiases.html#/s:12XCoordinator26PresentationHandlerContexta">PresentationHandlerContext</a>
-              </li>
-              <li class="nav-group-task">
                 <a class="nav-group-task-link" href="Typealiases.html#/s:12XCoordinator15SplitTransitiona">SplitTransition</a>
               </li>
               <li class="nav-group-task">
                 <a class="nav-group-task-link" href="Typealiases.html#/s:12XCoordinator16TabBarTransitiona">TabBarTransition</a>
               </li>
               <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Typealiases.html#/s:12XCoordinator13UnownedRoutera">UnownedRouter</a>
+              </li>
+              <li class="nav-group-task">
                 <a class="nav-group-task-link" href="Typealiases.html#/s:12XCoordinator14ViewTransitiona">ViewTransition</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Typealiases.html#/s:12XCoordinator10WeakRoutera">WeakRouter</a>
               </li>
             </ul>
           </li>
@@ -260,14 +263,14 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>An type-erased Coordinator (<code><a href="Classes/AnyCoordinator.html">AnyCoordinator</a></code>) with a <code>UINavigationController</code> as rootViewController.</p>
+                        <p>A type-erased Coordinator (<code><a href="Classes/AnyCoordinator.html">AnyCoordinator</a></code>) with a <code>UINavigationController</code> as rootViewController.</p>
 
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">typealias</span> <span class="kt">AnyNavigationCoordinator</span><span class="o">&lt;</span><span class="kt">RouteType</span><span class="o">&gt;</span> <span class="o">=</span> <span class="kt"><a href="Classes/AnyCoordinator.html">AnyCoordinator</a></span><span class="o">&lt;</span><span class="kt">RouteType</span><span class="p">,</span> <span class="kt"><a href="Typealiases.html#/s:12XCoordinator20NavigationTransitiona">NavigationTransition</a></span><span class="o">&gt;</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">typealias</span> <span class="kt">AnyNavigationCoordinator</span><span class="o">&lt;</span><span class="kt">RouteType</span><span class="o">&gt;</span> <span class="o">=</span> <span class="kt"><a href="Classes/AnyCoordinator.html">AnyCoordinator</a></span><span class="o">&lt;</span><span class="kt">RouteType</span><span class="p">,</span> <span class="kt"><a href="Typealiases.html#/s:12XCoordinator20NavigationTransitiona">NavigationTransition</a></span><span class="o">&gt;</span> <span class="k">where</span> <span class="kt">RouteType</span> <span class="p">:</span> <span class="kt"><a href="Protocols.html#/s:12XCoordinator5RouteP">Route</a></span></code></pre>
 
                         </div>
                       </div>
@@ -287,14 +290,14 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>An type-erased Coordinator (<code><a href="Classes/AnyCoordinator.html">AnyCoordinator</a></code>) with a <code>UITabBarController</code> as rootViewController.</p>
+                        <p>A type-erased Coordinator (<code><a href="Classes/AnyCoordinator.html">AnyCoordinator</a></code>) with a <code>UITabBarController</code> as rootViewController.</p>
 
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">typealias</span> <span class="kt">AnyTabBarCoordinator</span><span class="o">&lt;</span><span class="kt">RouteType</span><span class="o">&gt;</span> <span class="o">=</span> <span class="kt"><a href="Classes/AnyCoordinator.html">AnyCoordinator</a></span><span class="o">&lt;</span><span class="kt">RouteType</span><span class="p">,</span> <span class="kt"><a href="Typealiases.html#/s:12XCoordinator16TabBarTransitiona">TabBarTransition</a></span><span class="o">&gt;</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">typealias</span> <span class="kt">AnyTabBarCoordinator</span><span class="o">&lt;</span><span class="kt">RouteType</span><span class="o">&gt;</span> <span class="o">=</span> <span class="kt"><a href="Classes/AnyCoordinator.html">AnyCoordinator</a></span><span class="o">&lt;</span><span class="kt">RouteType</span><span class="p">,</span> <span class="kt"><a href="Typealiases.html#/s:12XCoordinator16TabBarTransitiona">TabBarTransition</a></span><span class="o">&gt;</span> <span class="k">where</span> <span class="kt">RouteType</span> <span class="p">:</span> <span class="kt"><a href="Protocols.html#/s:12XCoordinator5RouteP">Route</a></span></code></pre>
 
                         </div>
                       </div>
@@ -314,14 +317,14 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>An type-erased Coordinator (<code><a href="Classes/AnyCoordinator.html">AnyCoordinator</a></code>) with a <code>UIViewController</code> as rootViewController.</p>
+                        <p>A type-erased Coordinator (<code><a href="Classes/AnyCoordinator.html">AnyCoordinator</a></code>) with a <code>UIViewController</code> as rootViewController.</p>
 
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">typealias</span> <span class="kt">AnyViewCoordinator</span><span class="o">&lt;</span><span class="kt">RouteType</span><span class="o">&gt;</span> <span class="o">=</span> <span class="kt"><a href="Classes/AnyCoordinator.html">AnyCoordinator</a></span><span class="o">&lt;</span><span class="kt">RouteType</span><span class="p">,</span> <span class="kt"><a href="Typealiases.html#/s:12XCoordinator14ViewTransitiona">ViewTransition</a></span><span class="o">&gt;</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">typealias</span> <span class="kt">AnyViewCoordinator</span><span class="o">&lt;</span><span class="kt">RouteType</span><span class="o">&gt;</span> <span class="o">=</span> <span class="kt"><a href="Classes/AnyCoordinator.html">AnyCoordinator</a></span><span class="o">&lt;</span><span class="kt">RouteType</span><span class="p">,</span> <span class="kt"><a href="Typealiases.html#/s:12XCoordinator14ViewTransitiona">ViewTransition</a></span><span class="o">&gt;</span> <span class="k">where</span> <span class="kt">RouteType</span> <span class="p">:</span> <span class="kt"><a href="Protocols.html#/s:12XCoordinator5RouteP">Route</a></span></code></pre>
 
                         </div>
                       </div>
@@ -352,7 +355,7 @@
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">typealias</span> <span class="kt">BasicNavigationCoordinator</span><span class="o">&lt;</span><span class="kt">R</span><span class="o">&gt;</span> <span class="o">=</span> <span class="kt"><a href="Classes/BasicCoordinator.html">BasicCoordinator</a></span><span class="o">&lt;</span><span class="kt">R</span><span class="p">,</span> <span class="kt"><a href="Typealiases.html#/s:12XCoordinator20NavigationTransitiona">NavigationTransition</a></span><span class="o">&gt;</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">typealias</span> <span class="kt">BasicNavigationCoordinator</span><span class="o">&lt;</span><span class="kt">R</span><span class="o">&gt;</span> <span class="o">=</span> <span class="kt"><a href="Classes/BasicCoordinator.html">BasicCoordinator</a></span><span class="o">&lt;</span><span class="kt">R</span><span class="p">,</span> <span class="kt"><a href="Typealiases.html#/s:12XCoordinator20NavigationTransitiona">NavigationTransition</a></span><span class="o">&gt;</span> <span class="k">where</span> <span class="kt">R</span> <span class="p">:</span> <span class="kt"><a href="Protocols.html#/s:12XCoordinator5RouteP">Route</a></span></code></pre>
 
                         </div>
                       </div>
@@ -379,7 +382,7 @@
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">typealias</span> <span class="kt">BasicViewCoordinator</span><span class="o">&lt;</span><span class="kt">R</span><span class="o">&gt;</span> <span class="o">=</span> <span class="kt"><a href="Classes/BasicCoordinator.html">BasicCoordinator</a></span><span class="o">&lt;</span><span class="kt">R</span><span class="p">,</span> <span class="kt"><a href="Typealiases.html#/s:12XCoordinator14ViewTransitiona">ViewTransition</a></span><span class="o">&gt;</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">typealias</span> <span class="kt">BasicViewCoordinator</span><span class="o">&lt;</span><span class="kt">R</span><span class="o">&gt;</span> <span class="o">=</span> <span class="kt"><a href="Classes/BasicCoordinator.html">BasicCoordinator</a></span><span class="o">&lt;</span><span class="kt">R</span><span class="p">,</span> <span class="kt"><a href="Typealiases.html#/s:12XCoordinator14ViewTransitiona">ViewTransition</a></span><span class="o">&gt;</span> <span class="k">where</span> <span class="kt">R</span> <span class="p">:</span> <span class="kt"><a href="Protocols.html#/s:12XCoordinator5RouteP">Route</a></span></code></pre>
 
                         </div>
                       </div>
@@ -406,7 +409,7 @@
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">typealias</span> <span class="kt">BasicTabBarCoordinator</span><span class="o">&lt;</span><span class="kt">R</span><span class="o">&gt;</span> <span class="o">=</span> <span class="kt"><a href="Classes/BasicCoordinator.html">BasicCoordinator</a></span><span class="o">&lt;</span><span class="kt">R</span><span class="p">,</span> <span class="kt"><a href="Typealiases.html#/s:12XCoordinator16TabBarTransitiona">TabBarTransition</a></span><span class="o">&gt;</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">typealias</span> <span class="kt">BasicTabBarCoordinator</span><span class="o">&lt;</span><span class="kt">R</span><span class="o">&gt;</span> <span class="o">=</span> <span class="kt"><a href="Classes/BasicCoordinator.html">BasicCoordinator</a></span><span class="o">&lt;</span><span class="kt">R</span><span class="p">,</span> <span class="kt"><a href="Typealiases.html#/s:12XCoordinator16TabBarTransitiona">TabBarTransition</a></span><span class="o">&gt;</span> <span class="k">where</span> <span class="kt">R</span> <span class="p">:</span> <span class="kt"><a href="Protocols.html#/s:12XCoordinator5RouteP">Route</a></span></code></pre>
 
                         </div>
                       </div>
@@ -465,40 +468,6 @@
                         <div class="language">
                           <p class="aside-title">Swift</p>
                           <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">typealias</span> <span class="kt">ContextPresentationHandler</span> <span class="o">=</span> <span class="p">(</span><span class="kt"><a href="Protocols/TransitionContext.html">TransitionContext</a></span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Void</span></code></pre>
-
-                        </div>
-                      </div>
-                    </section>
-                  </div>
-                </li>
-              </ul>
-            </div>
-            <div class="task-group">
-              <ul class="item-container">
-                <li class="item">
-                  <div>
-                    <code>
-                    <a name="/s:12XCoordinator26PresentationHandlerContexta"></a>
-                    <a name="//apple_ref/swift/Alias/PresentationHandlerContext" class="dashAnchor"></a>
-                    <a class="token" href="#/s:12XCoordinator26PresentationHandlerContexta">PresentationHandlerContext</a>
-                    </code>
-                  </div>
-                  <div class="height-container">
-                    <div class="pointer-container"></div>
-                    <section class="section">
-                      <div class="pointer"></div>
-                      <div class="abstract">
-                        <p><code>PresentationHandlerContext</code> provides context information about transitions.
-It was replaced by <code><a href="Protocols/TransitionContext.html">TransitionContext</a></code> to allow for transitions to be handed
-over directly as context of a triggered route.</p>
-
-                      </div>
-                      <div class="declaration">
-                        <h4>Declaration</h4>
-                        <div class="language">
-                          <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">@available(*, deprecated, renamed: "TransitionContext")</span>
-<span class="kd">public</span> <span class="kd">typealias</span> <span class="kt">PresentationHandlerContext</span> <span class="o">=</span> <span class="kt"><a href="Protocols/TransitionContext.html">TransitionContext</a></span></code></pre>
 
                         </div>
                       </div>
@@ -639,6 +608,79 @@ with a <code>UITabBarController</code> rootViewController.</p>
                 <li class="item">
                   <div>
                     <code>
+                    <a name="/s:12XCoordinator9AnyRoutera"></a>
+                    <a name="//apple_ref/swift/Alias/AnyRouter" class="dashAnchor"></a>
+                    <a class="token" href="#/s:12XCoordinator9AnyRoutera">AnyRouter</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Please use <code><a href="Classes/StrongRouter.html">StrongRouter</a></code>, <code><a href="Typealiases.html#/s:12XCoordinator10WeakRoutera">WeakRouter</a></code> or <code><a href="Typealiases.html#/s:12XCoordinator13UnownedRoutera">UnownedRouter</a></code> instead.</p>
+<div class="aside aside-note">
+    <p class="aside-title">Note</p>
+    Use a <code><a href="Classes/StrongRouter.html">StrongRouter</a></code>, if you need to hold a router even
+when it is not in the view hierarchy.
+Use a <code><a href="Typealiases.html#/s:12XCoordinator10WeakRoutera">WeakRouter</a></code> or <code><a href="Typealiases.html#/s:12XCoordinator13UnownedRoutera">UnownedRouter</a></code> when you are accessing
+any router from the view hierarchy.
+
+</div>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">@available(iOS, deprecated)</span>
+<span class="kd">public</span> <span class="kd">typealias</span> <span class="kt">AnyRouter</span><span class="o">&lt;</span><span class="kt">RouteType</span><span class="o">&gt;</span> <span class="o">=</span> <span class="kt"><a href="Typealiases.html#/s:12XCoordinator13UnownedRoutera">UnownedRouter</a></span><span class="o">&lt;</span><span class="kt">RouteType</span><span class="o">&gt;</span> <span class="k">where</span> <span class="kt">RouteType</span> <span class="p">:</span> <span class="kt"><a href="Protocols.html#/s:12XCoordinator5RouteP">Route</a></span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:12XCoordinator13UnownedRoutera"></a>
+                    <a name="//apple_ref/swift/Alias/UnownedRouter" class="dashAnchor"></a>
+                    <a class="token" href="#/s:12XCoordinator13UnownedRoutera">UnownedRouter</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>An <code>UnownedRouter</code> is an unowned version of a router object to be used in view controllers or view models.</p>
+<div class="aside aside-note">
+    <p class="aside-title">Note</p>
+    Do not create an <code>UnownedRouter</code> from a <code><a href="Classes/StrongRouter.html">StrongRouter</a></code> since <code><a href="Classes/StrongRouter.html">StrongRouter</a></code> is only another wrapper
+and does not represent the  might instantly
+
+</div>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">typealias</span> <span class="kt">UnownedRouter</span><span class="o">&lt;</span><span class="kt">RouteType</span><span class="o">&gt;</span> <span class="o">=</span> <span class="kt"><a href="Structs/UnownedErased.html">UnownedErased</a></span><span class="o">&lt;</span><span class="kt"><a href="Classes/StrongRouter.html">StrongRouter</a></span><span class="o">&lt;</span><span class="kt">RouteType</span><span class="o">&gt;&gt;</span> <span class="k">where</span> <span class="kt">RouteType</span> <span class="p">:</span> <span class="kt"><a href="Protocols.html#/s:12XCoordinator5RouteP">Route</a></span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <ul class="item-container">
+                <li class="item">
+                  <div>
+                    <code>
                     <a name="/s:12XCoordinator14ViewTransitiona"></a>
                     <a name="//apple_ref/swift/Alias/ViewTransition" class="dashAnchor"></a>
                     <a class="token" href="#/s:12XCoordinator14ViewTransitiona">ViewTransition</a>
@@ -665,14 +707,53 @@ with a <code>UITabBarController</code> rootViewController.</p>
                 </li>
               </ul>
             </div>
+            <div class="task-group">
+              <ul class="item-container">
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:12XCoordinator10WeakRoutera"></a>
+                    <a name="//apple_ref/swift/Alias/WeakRouter" class="dashAnchor"></a>
+                    <a class="token" href="#/s:12XCoordinator10WeakRoutera">WeakRouter</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>A <code>WeakRouter</code> is a weak version of a router object to be used in view controllers or view models.</p>
+<div class="aside aside-note">
+    <p class="aside-title">Note</p>
+    Do not create a <code>WeakRouter</code> from a <code><a href="Classes/StrongRouter.html">StrongRouter</a></code> since <code><a href="Classes/StrongRouter.html">StrongRouter</a></code> is only another wrapper
+and does not represent the  might instantly.
+Also keep in mind that once the original router object has been deallocated,
+calling <code>trigger</code> on this wrapper will have no effect.
+
+</div>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">typealias</span> <span class="kt">WeakRouter</span><span class="o">&lt;</span><span class="kt">RouteType</span><span class="o">&gt;</span> <span class="o">=</span> <span class="kt"><a href="Structs/WeakErased.html">WeakErased</a></span><span class="o">&lt;</span><span class="kt"><a href="Classes/StrongRouter.html">StrongRouter</a></span><span class="o">&lt;</span><span class="kt">RouteType</span><span class="o">&gt;&gt;</span> <span class="k">where</span> <span class="kt">RouteType</span> <span class="p">:</span> <span class="kt"><a href="Protocols.html#/s:12XCoordinator5RouteP">Route</a></span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
           </div>
         </section>
 
       </article>
     </div>
     <section class="footer">
-      <p>&copy; 2019 <a class="link" href="https://quickbirdstudios.com" target="_blank" rel="external">Stefan Kofler &amp; Paul Kraft</a>. All rights reserved. (Last updated: 2019-03-15)</p>
-      <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.9.4</a>, a <a class="link" href="https://realm.io" target="_blank" rel="external">Realm</a> project.</p>
+      <p>&copy; 2019 <a class="link" href="https://quickbirdstudios.com" target="_blank" rel="external">Stefan Kofler &amp; Paul Kraft</a>. All rights reserved. (Last updated: 2019-09-17)</p>
+      <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.11.0</a>, a <a class="link" href="https://realm.io" target="_blank" rel="external">Realm</a> project.</p>
     </section>
   </body>
 </div>

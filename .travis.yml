@@ -1,6 +1,12 @@
 language: objective-c
-osx_image: xcode10.2
+osx_image: xcode11
 
+install:
+#    - gem update
+#    - gem install jazzy
+#    - brew update
+#    - brew install sourcekitten
 script:
-    - set -o pipefail
-    - xcodebuild -workspace Example/XCoordinator.xcworkspace -scheme XCoordinator-Example -destination platform\=iOS\ Simulator,OS\=11.4,name\=iPhone\ X build test | xcpretty
+    - cd scripts
+    - ./build.sh
+#    - ./check_docs.sh

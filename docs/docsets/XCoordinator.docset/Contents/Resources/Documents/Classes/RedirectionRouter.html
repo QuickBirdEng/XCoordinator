@@ -60,9 +60,6 @@
                 <a class="nav-group-task-link" href="../Classes/AnyCoordinator.html">AnyCoordinator</a>
               </li>
               <li class="nav-group-task">
-                <a class="nav-group-task-link" href="../Classes/AnyRouter.html">AnyRouter</a>
-              </li>
-              <li class="nav-group-task">
                 <a class="nav-group-task-link" href="../Classes/AnyTransitionPerformer.html">AnyTransitionPerformer</a>
               </li>
               <li class="nav-group-task">
@@ -93,19 +90,16 @@
                 <a class="nav-group-task-link" href="../Classes/PageCoordinatorDataSource.html">PageCoordinatorDataSource</a>
               </li>
               <li class="nav-group-task">
-                <a class="nav-group-task-link" href="../Classes/RedirectionCoordinator.html">RedirectionCoordinator</a>
-              </li>
-              <li class="nav-group-task">
                 <a class="nav-group-task-link" href="../Classes/RedirectionRouter.html">RedirectionRouter</a>
-              </li>
-              <li class="nav-group-task">
-                <a class="nav-group-task-link" href="../Classes/ReferenceBox.html">ReferenceBox</a>
               </li>
               <li class="nav-group-task">
                 <a class="nav-group-task-link" href="../Classes/SplitCoordinator.html">SplitCoordinator</a>
               </li>
               <li class="nav-group-task">
                 <a class="nav-group-task-link" href="../Classes/StaticTransitionAnimation.html">StaticTransitionAnimation</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Classes/StrongRouter.html">StrongRouter</a>
               </li>
               <li class="nav-group-task">
                 <a class="nav-group-task-link" href="../Classes/TabBarAnimationDelegate.html">TabBarAnimationDelegate</a>
@@ -121,15 +115,6 @@
           <li class="nav-group-name">
             <a class="nav-group-name-link" href="../Extensions.html">Extensions</a>
             <ul class="nav-group-tasks">
-              <li class="nav-group-task">
-                <a class="nav-group-task-link" href="../Extensions/Reactive.html">Reactive</a>
-              </li>
-              <li class="nav-group-task">
-                <a class="nav-group-task-link" href="../Extensions/UIPageViewController.html">UIPageViewController</a>
-              </li>
-              <li class="nav-group-task">
-                <a class="nav-group-task-link" href="../Extensions/UIPageViewController/Configuration.html">– Configuration</a>
-              </li>
               <li class="nav-group-task">
                 <a class="nav-group-task-link" href="../Extensions/UIView.html">UIView</a>
               </li>
@@ -182,6 +167,18 @@
               <li class="nav-group-task">
                 <a class="nav-group-task-link" href="../Structs/TransitionOptions.html">TransitionOptions</a>
               </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Structs/UnownedErased.html">UnownedErased</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Structs/UnownedErased.html">UnownedErased</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Structs/WeakErased.html">WeakErased</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Structs/WeakErased.html">WeakErased</a>
+              </li>
             </ul>
           </li>
           <li class="nav-group-name">
@@ -189,6 +186,9 @@
             <ul class="nav-group-tasks">
               <li class="nav-group-task">
                 <a class="nav-group-task-link" href="../Typealiases.html#/s:12XCoordinator24AnyNavigationCoordinatora">AnyNavigationCoordinator</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Typealiases.html#/s:12XCoordinator9AnyRoutera">AnyRouter</a>
               </li>
               <li class="nav-group-task">
                 <a class="nav-group-task-link" href="../Typealiases.html#/s:12XCoordinator20AnyTabBarCoordinatora">AnyTabBarCoordinator</a>
@@ -218,16 +218,19 @@
                 <a class="nav-group-task-link" href="../Typealiases.html#/s:12XCoordinator19PresentationHandlera">PresentationHandler</a>
               </li>
               <li class="nav-group-task">
-                <a class="nav-group-task-link" href="../Typealiases.html#/s:12XCoordinator26PresentationHandlerContexta">PresentationHandlerContext</a>
-              </li>
-              <li class="nav-group-task">
                 <a class="nav-group-task-link" href="../Typealiases.html#/s:12XCoordinator15SplitTransitiona">SplitTransition</a>
               </li>
               <li class="nav-group-task">
                 <a class="nav-group-task-link" href="../Typealiases.html#/s:12XCoordinator16TabBarTransitiona">TabBarTransition</a>
               </li>
               <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Typealiases.html#/s:12XCoordinator13UnownedRoutera">UnownedRouter</a>
+              </li>
+              <li class="nav-group-task">
                 <a class="nav-group-task-link" href="../Typealiases.html#/s:12XCoordinator14ViewTransitiona">ViewTransition</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Typealiases.html#/s:12XCoordinator10WeakRoutera">WeakRouter</a>
               </li>
             </ul>
           </li>
@@ -240,16 +243,16 @@
             <h1>RedirectionRouter</h1>
               <div class="declaration">
                 <div class="language">
-                  <pre class="highlight swift"><code><span class="kd">open</span> <span class="kd">class</span> <span class="kt">RedirectionRouter</span><span class="o">&lt;</span><span class="kt">SuperRoute</span><span class="p">,</span> <span class="kt">RouteType</span><span class="o">&gt;</span> <span class="p">:</span> <span class="kt"><a href="../Protocols/Router.html">Router</a></span> <span class="k">where</span> <span class="kt">SuperRoute</span> <span class="p">:</span> <span class="kt"><a href="../Protocols.html#/s:12XCoordinator5RouteP">Route</a></span><span class="p">,</span> <span class="kt">RouteType</span> <span class="p">:</span> <span class="kt"><a href="../Protocols.html#/s:12XCoordinator5RouteP">Route</a></span></code></pre>
+                  <pre class="highlight swift"><code><span class="kd">open</span> <span class="kd">class</span> <span class="kt">RedirectionRouter</span><span class="o">&lt;</span><span class="kt">ParentRoute</span><span class="p">,</span> <span class="kt">RouteType</span><span class="o">&gt;</span> <span class="p">:</span> <span class="kt"><a href="../Protocols/Router.html">Router</a></span> <span class="k">where</span> <span class="kt">ParentRoute</span> <span class="p">:</span> <span class="kt"><a href="../Protocols.html#/s:12XCoordinator5RouteP">Route</a></span><span class="p">,</span> <span class="kt">RouteType</span> <span class="p">:</span> <span class="kt"><a href="../Protocols.html#/s:12XCoordinator5RouteP">Route</a></span></code></pre>
 
                 </div>
               </div>
             <p>RedirectionRouters can be used to extract routes into different route types.
 Instead of having one huge route and one or more huge coordinators, you can create separate redirecting routers.</p>
 
-<p>Create a RedirectionRouter from a superCoordinator by providing a reference to the superCoordinator.
-Triggered routes of the RedirectionRouter will be redirected to this superCoordinator according to the provided mapping.
-Please provide either a <code>map</code> closure in the initializer or override the <code>mapToSuperRoute</code> method.</p>
+<p>Create a RedirectionRouter from a parent router by providing a reference to that parent.
+Triggered routes of the RedirectionRouter will be redirected to this parent router according to the provided mapping.
+Please provide either a <code>map</code> closure in the initializer or override the <code>mapToParentRoute</code> method.</p>
 
 <p>A RedirectionRouter has a viewController which is used in transitions,
 e.g. when you are presenting, pushing, or otherwise displaying it.</p>
@@ -271,9 +274,9 @@ e.g. when you are presenting, pushing, or otherwise displaying it.</p>
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:12XCoordinator17RedirectionRouterC05superC0AA03AnyC0CyxGvp"></a>
-                    <a name="//apple_ref/swift/Property/superRouter" class="dashAnchor"></a>
-                    <a class="token" href="#/s:12XCoordinator17RedirectionRouterC05superC0AA03AnyC0CyxGvp">superRouter</a>
+                    <a name="/s:12XCoordinator17RedirectionRouterC6parentAA13UnownedErasedVyAA06StrongC0CyxGGvp"></a>
+                    <a name="//apple_ref/swift/Property/parent" class="dashAnchor"></a>
+                    <a class="token" href="#/s:12XCoordinator17RedirectionRouterC6parentAA13UnownedErasedVyAA06StrongC0CyxGGvp">parent</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -281,14 +284,14 @@ e.g. when you are presenting, pushing, or otherwise displaying it.</p>
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>A type-erased Router object of the superCoordinator.</p>
+                        <p>A type-erased Router object of the parent router.</p>
 
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="k">let</span> <span class="nv">superRouter</span><span class="p">:</span> <span class="kt"><a href="../Classes/AnyRouter.html">AnyRouter</a></span><span class="o">&lt;</span><span class="kt">SuperRoute</span><span class="o">&gt;</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="k">let</span> <span class="nv">parent</span><span class="p">:</span> <span class="kt"><a href="../Typealiases.html#/s:12XCoordinator13UnownedRoutera">UnownedRouter</a></span><span class="o">&lt;</span><span class="kt">ParentRoute</span><span class="o">&gt;</span></code></pre>
 
                         </div>
                       </div>
@@ -319,14 +322,15 @@ e.g. when you are presenting, pushing, or otherwise displaying it.</p>
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>The viewController used in transitions, e.g. when pushing, presenting or otherwise displaying the RedirectionRouter.</p>
+                        <p>The viewController used in transitions, e.g. when pushing, presenting
+or otherwise displaying the RedirectionRouter.</p>
 
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="k">var</span> <span class="nv">viewController</span><span class="p">:</span> <span class="kt">UIViewController</span><span class="o">!</span> <span class="p">{</span> <span class="k">get</span> <span class="p">}</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">private(set)</span> <span class="k">var</span> <span class="nv">viewController</span><span class="p">:</span> <span class="kt">UIViewController</span><span class="o">!</span></code></pre>
 
                         </div>
                       </div>
@@ -347,9 +351,9 @@ e.g. when you are presenting, pushing, or otherwise displaying it.</p>
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:12XCoordinator17RedirectionRouterC14viewController05superC03mapACyxq_GSo06UIViewE0C_AA03AnyC0CyxGxq_cSgtcfc"></a>
-                    <a name="//apple_ref/swift/Method/init(viewController:superRouter:map:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:12XCoordinator17RedirectionRouterC14viewController05superC03mapACyxq_GSo06UIViewE0C_AA03AnyC0CyxGxq_cSgtcfc">init(viewController:superRouter:map:)</a>
+                    <a name="/s:12XCoordinator17RedirectionRouterC14viewController6parent3mapACyxq_GSo06UIViewE0C_AA13UnownedErasedVyAA06StrongC0CyxGGxq_cSgtcfc"></a>
+                    <a name="//apple_ref/swift/Method/init(viewController:parent:map:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:12XCoordinator17RedirectionRouterC14viewController6parent3mapACyxq_GSo06UIViewE0C_AA13UnownedErasedVyAA06StrongC0CyxGGxq_cSgtcfc">init(viewController:parent:map:)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -357,7 +361,8 @@ e.g. when you are presenting, pushing, or otherwise displaying it.</p>
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Creates a RedirectionRouter with a certain viewController, a superRouter and an optional mapping.</p>
+                        <p>Creates a RedirectionRouter with a certain viewController, a parent router
+and an optional mapping.</p>
 <div class="aside aside-note">
     <p class="aside-title">Note</p>
     <p>Make sure to either override <code>mapToSuperRoute</code> or to specify a closure for the <code>map</code> parameter.
@@ -371,8 +376,8 @@ If you override <code>mapToSuperRoute</code>, the <code>map</code> parameter is 
                         <div class="language">
                           <p class="aside-title">Swift</p>
                           <pre class="highlight swift"><code><span class="kd">public</span> <span class="nf">init</span><span class="p">(</span><span class="nv">viewController</span><span class="p">:</span> <span class="kt">UIViewController</span><span class="p">,</span>
-            <span class="nv">superRouter</span><span class="p">:</span> <span class="kt"><a href="../Classes/AnyRouter.html">AnyRouter</a></span><span class="o">&lt;</span><span class="kt">SuperRoute</span><span class="o">&gt;</span><span class="p">,</span>
-            <span class="nv">map</span><span class="p">:</span> <span class="p">((</span><span class="kt">RouteType</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">SuperRoute</span><span class="p">)?)</span></code></pre>
+            <span class="nv">parent</span><span class="p">:</span> <span class="kt"><a href="../Typealiases.html#/s:12XCoordinator13UnownedRoutera">UnownedRouter</a></span><span class="o">&lt;</span><span class="kt">ParentRoute</span><span class="o">&gt;</span><span class="p">,</span>
+            <span class="nv">map</span><span class="p">:</span> <span class="p">((</span><span class="kt">RouteType</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">ParentRoute</span><span class="p">)?)</span></code></pre>
 
                         </div>
                       </div>
@@ -395,12 +400,12 @@ If you override <code>mapToSuperRoute</code>, the <code>map</code> parameter is 
                             <tr>
                               <td>
                                 <code>
-                                <em>superRouter</em>
+                                <em>parent</em>
                                 </code>
                               </td>
                               <td>
                                 <div>
-                                  <p>Triggered routes will be rerouted to the superRouter.</p>
+                                  <p>Triggered routes will be rerouted to the parent router.</p>
                                 </div>
                               </td>
                             </tr>
@@ -412,85 +417,7 @@ If you override <code>mapToSuperRoute</code>, the <code>map</code> parameter is 
                               </td>
                               <td>
                                 <div>
-                                  <p>A mapping from this RedirectionRouter&rsquo;s routes to the superRouter&rsquo;s routes.</p>
-                                </div>
-                              </td>
-                            </tr>
-                          </tbody>
-                        </table>
-                      </div>
-                    </section>
-                  </div>
-                </li>
-                <li class="item">
-                  <div>
-                    <code>
-                    <a name="/s:12XCoordinator17RedirectionRouterC14viewController05superC03mapACyxq_GSo06UIViewE0C_qd__xq_cSgtc9RouteTypeQyd__RszAA0C0Rd__lufc"></a>
-                    <a name="//apple_ref/swift/Method/init(viewController:superRouter:map:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:12XCoordinator17RedirectionRouterC14viewController05superC03mapACyxq_GSo06UIViewE0C_qd__xq_cSgtc9RouteTypeQyd__RszAA0C0Rd__lufc">init(viewController:superRouter:map:)</a>
-                    </code>
-                  </div>
-                  <div class="height-container">
-                    <div class="pointer-container"></div>
-                    <section class="section">
-                      <div class="pointer"></div>
-                      <div class="abstract">
-                        <p>Creates a RedirectionRouter with a certain viewController, a superRouter and an optional mapping.</p>
-<div class="aside aside-note">
-    <p class="aside-title">Note</p>
-    <p>Make sure to either override <code>mapToSuperRoute</code> or to specify a closure for the <code>map</code> parameter.
-If you override <code>mapToSuperRoute</code>, the <code>map</code> parameter is ignored.</p>
-
-</div>
-
-                      </div>
-                      <div class="declaration">
-                        <h4>Declaration</h4>
-                        <div class="language">
-                          <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">init</span><span class="o">&lt;</span><span class="kt">RouterType</span><span class="p">:</span> <span class="kt"><a href="../Protocols/Router.html">Router</a></span><span class="o">&gt;</span><span class="p">(</span><span class="nv">viewController</span><span class="p">:</span> <span class="kt">UIViewController</span><span class="p">,</span>
-                                <span class="nv">superRouter</span><span class="p">:</span> <span class="kt">RouterType</span><span class="p">,</span>
-                                <span class="nv">map</span><span class="p">:</span> <span class="p">((</span><span class="kt">RouteType</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">SuperRoute</span><span class="p">)?)</span> <span class="k">where</span> <span class="kt">RouterType</span><span class="o">.</span><span class="kt">RouteType</span> <span class="o">==</span> <span class="kt">SuperRoute</span></code></pre>
-
-                        </div>
-                      </div>
-                      <div>
-                        <h4>Parameters</h4>
-                        <table class="graybox">
-                          <tbody>
-                            <tr>
-                              <td>
-                                <code>
-                                <em>viewController</em>
-                                </code>
-                              </td>
-                              <td>
-                                <div>
-                                  <p>The view controller to be used in transitions, e.g. when pushing, presenting or otherwise displaying the RedirectionRouter.</p>
-                                </div>
-                              </td>
-                            </tr>
-                            <tr>
-                              <td>
-                                <code>
-                                <em>superRouter</em>
-                                </code>
-                              </td>
-                              <td>
-                                <div>
-                                  <p>The superCoordinator. Triggered routes will be rerouted there.</p>
-                                </div>
-                              </td>
-                            </tr>
-                            <tr>
-                              <td>
-                                <code>
-                                <em>map</em>
-                                </code>
-                              </td>
-                              <td>
-                                <div>
-                                  <p>A mapping from this RedirectionRouter&rsquo;s routes to the superRouter&rsquo;s routes.</p>
+                                  <p>A mapping from this RedirectionRouter&rsquo;s routes to the parent&rsquo;s routes.</p>
                                 </div>
                               </td>
                             </tr>
@@ -542,9 +469,9 @@ If you override <code>mapToSuperRoute</code>, the <code>map</code> parameter is 
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:12XCoordinator17RedirectionRouterC15mapToSuperRouteyxq_F"></a>
-                    <a name="//apple_ref/swift/Method/mapToSuperRoute(_:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:12XCoordinator17RedirectionRouterC15mapToSuperRouteyxq_F">mapToSuperRoute(_:)</a>
+                    <a name="/s:12XCoordinator17RedirectionRouterC16mapToParentRouteyxq_F"></a>
+                    <a name="//apple_ref/swift/Method/mapToParentRoute(_:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:12XCoordinator17RedirectionRouterC16mapToParentRouteyxq_F">mapToParentRoute(_:)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -552,17 +479,17 @@ If you override <code>mapToSuperRoute</code>, the <code>map</code> parameter is 
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Map RouteType to SuperRoute.</p>
+                        <p>Map RouteType to ParentRoute.</p>
 
 <p>This method is called when a route is triggered in the RedirectionRouter.
-It is used to translate RouteType routes to the superRouter&rsquo;s routes which are then triggered in the superRouter.</p>
+It is used to translate RouteType routes to the parent&rsquo;s routes which are then triggered in the parent router.</p>
 
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">open</span> <span class="kd">func</span> <span class="nf">mapToSuperRoute</span><span class="p">(</span><span class="n">_</span> <span class="nv">route</span><span class="p">:</span> <span class="kt">RouteType</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">SuperRoute</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">open</span> <span class="kd">func</span> <span class="nf">mapToParentRoute</span><span class="p">(</span><span class="n">_</span> <span class="nv">route</span><span class="p">:</span> <span class="kt">RouteType</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">ParentRoute</span></code></pre>
 
                         </div>
                       </div>
@@ -587,63 +514,7 @@ It is used to translate RouteType routes to the superRouter&rsquo;s routes which
                       </div>
                       <div>
                         <h4>Return Value</h4>
-                        <p>The mapped route for the superRouter.</p>
-                      </div>
-                    </section>
-                  </div>
-                </li>
-                <li class="item">
-                  <div>
-                    <code>
-                    <a name="/s:12XCoordinator11PresentableP9presented4fromyAaB_pSg_tF"></a>
-                    <a name="//apple_ref/swift/Method/presented(from:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:12XCoordinator11PresentableP9presented4fromyAaB_pSg_tF">presented(from:)</a>
-                    </code>
-                  </div>
-                  <div class="height-container">
-                    <div class="pointer-container"></div>
-                    <section class="section">
-                      <div class="pointer"></div>
-                      <div class="abstract">
-                        
-                      </div>
-                      <div class="declaration">
-                        <h4>Declaration</h4>
-                        <div class="language">
-                          <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">open</span> <span class="kd">func</span> <span class="nf">presented</span><span class="p">(</span><span class="n">from</span> <span class="nv">presentable</span><span class="p">:</span> <span class="kt"><a href="../Protocols/Presentable.html">Presentable</a></span><span class="p">?)</span></code></pre>
-
-                        </div>
-                      </div>
-                    </section>
-                  </div>
-                </li>
-              </ul>
-            </div>
-            <div class="task-group">
-              <ul class="item-container">
-                <li class="item">
-                  <div>
-                    <code>
-                    <a name="/s:12XCoordinator11PresentableP6router3forAA9AnyRouterCyqd__GSgqd___tAA5RouteRd__lF"></a>
-                    <a name="//apple_ref/swift/Method/router(for:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:12XCoordinator11PresentableP6router3forAA9AnyRouterCyqd__GSgqd___tAA5RouteRd__lF">router(for:)</a>
-                    </code>
-                  </div>
-                  <div class="height-container">
-                    <div class="pointer-container"></div>
-                    <section class="section">
-                      <div class="pointer"></div>
-                      <div class="abstract">
-                        
-                      </div>
-                      <div class="declaration">
-                        <h4>Declaration</h4>
-                        <div class="language">
-                          <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="n">router</span><span class="o">&lt;</span><span class="kt">R</span><span class="o">&gt;</span><span class="p">(</span><span class="k">for</span> <span class="nv">route</span><span class="p">:</span> <span class="kt">R</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt"><a href="../Classes/AnyRouter.html">AnyRouter</a></span><span class="o">&lt;</span><span class="kt">R</span><span class="o">&gt;</span><span class="p">?</span> <span class="k">where</span> <span class="kt">R</span> <span class="p">:</span> <span class="kt"><a href="../Protocols.html#/s:12XCoordinator5RouteP">Route</a></span></code></pre>
-
-                        </div>
+                        <p>The mapped route for the parent router.</p>
                       </div>
                     </section>
                   </div>
@@ -656,8 +527,8 @@ It is used to translate RouteType routes to the superRouter&rsquo;s routes which
       </article>
     </div>
     <section class="footer">
-      <p>&copy; 2019 <a class="link" href="https://quickbirdstudios.com" target="_blank" rel="external">Stefan Kofler &amp; Paul Kraft</a>. All rights reserved. (Last updated: 2019-03-15)</p>
-      <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.9.4</a>, a <a class="link" href="https://realm.io" target="_blank" rel="external">Realm</a> project.</p>
+      <p>&copy; 2019 <a class="link" href="https://quickbirdstudios.com" target="_blank" rel="external">Stefan Kofler &amp; Paul Kraft</a>. All rights reserved. (Last updated: 2019-09-17)</p>
+      <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.11.0</a>, a <a class="link" href="https://realm.io" target="_blank" rel="external">Realm</a> project.</p>
     </section>
   </body>
 </div>
