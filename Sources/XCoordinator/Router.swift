@@ -6,6 +6,8 @@
 //  Copyright © 2018 QuickBird Studios. All rights reserved.
 //
 
+import Foundation
+
 ///
 /// The Router protocol is used to abstract the transition-type specific characteristics of a Coordinator.
 ///
@@ -75,7 +77,9 @@ extension Router {
     ///         (including animations).
     ///
     public func trigger(_ route: RouteType, with options: TransitionOptions, completion: PresentationHandler?) {
-        contextTrigger(route, with: options) { _ in completion?() }
+        autoreleasepool {
+            contextTrigger(route, with: options) { _ in completion?() }
+        }
     }
 }
 
