@@ -59,8 +59,4 @@ extension UnownedErased: Router where Value: Router {
         wrappedValue.contextTrigger(route, with: options, completion: completion)
     }
 
-    public func trigger(_ route: Value.RouteType, with options: TransitionOptions, completion: PresentationHandler?) {
-        wrappedValue.trigger(route, with: options, completion: completion)
-    }
-
 }

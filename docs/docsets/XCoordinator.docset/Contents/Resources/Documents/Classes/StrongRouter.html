@@ -256,7 +256,7 @@ essentially reduces them to properties specified in the <code><a href="../Protoc
     <p class="aside-title">Note</p>
     Do not hold a reference to any router from the view hierarchy.
 Use <code><a href="../Typealiases.html#/s:12XCoordinator13UnownedRoutera">UnownedRouter</a></code> or <code><a href="../Typealiases.html#/s:12XCoordinator10WeakRoutera">WeakRouter</a></code> in your view controllers or view models instead.
-You can create them using the <code>Coordinator.unownedRouter</code> and <code>Coordinator.weakRouter</code> properties.
+You can create them using the <code><a href="../Protocols/Coordinator.html#/s:12XCoordinator11CoordinatorPAARlzCrlE13unownedRouterAA13UnownedErasedVyAA06StrongD0Cy9RouteTypeQzGGvp">Coordinator.unownedRouter</a></code> and <code><a href="../Protocols/Coordinator.html#/s:12XCoordinator11CoordinatorPAARlzCrlE10weakRouterAA10WeakErasedVyAA06StrongD0Cy9RouteTypeQzGGvp">Coordinator.weakRouter</a></code> properties.
 
 </div>
 
@@ -287,7 +287,7 @@ You can create them using the <code>Coordinator.unownedRouter</code> and <code>C
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Creates an AnyRouter object from a given router.</p>
+                        <p>Creates a StrongRouter object from a given router.</p>
 
                       </div>
                       <div class="declaration">
@@ -557,6 +557,58 @@ A coordinator returns its rootViewController.</p>
                     </section>
                   </div>
                 </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:12XCoordinator11PresentableP14registerParentyyAaB_XlF"></a>
+                    <a name="//apple_ref/swift/Method/registerParent(_:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:12XCoordinator11PresentableP14registerParentyyAaB_XlF">registerParent(_:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">registerParent</span><span class="p">(</span><span class="n">_</span> <span class="nv">presentable</span><span class="p">:</span> <span class="kt"><a href="../Protocols/Presentable.html">Presentable</a></span> <span class="o">&amp;</span> <span class="kt">AnyObject</span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:12XCoordinator11PresentableP24childTransitionCompletedyyF"></a>
+                    <a name="//apple_ref/swift/Method/childTransitionCompleted()" class="dashAnchor"></a>
+                    <a class="token" href="#/s:12XCoordinator11PresentableP24childTransitionCompletedyyF">childTransitionCompleted()</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">childTransitionCompleted</span><span class="p">()</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
               </ul>
             </div>
           </div>
@@ -565,7 +617,7 @@ A coordinator returns its rootViewController.</p>
       </article>
     </div>
     <section class="footer">
-      <p>&copy; 2019 <a class="link" href="https://quickbirdstudios.com" target="_blank" rel="external">Stefan Kofler &amp; Paul Kraft</a>. All rights reserved. (Last updated: 2019-09-17)</p>
+      <p>&copy; 2019 <a class="link" href="https://quickbirdstudios.com" target="_blank" rel="external">Stefan Kofler &amp; Paul Kraft</a>. All rights reserved. (Last updated: 2019-09-18)</p>
       <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.11.0</a>, a <a class="link" href="https://realm.io" target="_blank" rel="external">Realm</a> project.</p>
     </section>
   </body>

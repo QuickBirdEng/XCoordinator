@@ -497,7 +497,7 @@ It especially decides, which transitions are performed for the triggered routes.
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>A Coordinator uses its rootViewController as viewController, with the exception <code>RedirectionCoordinator</code>.</p>
+                        <p>A Coordinator uses its rootViewController as viewController.</p>
 
                       </div>
                       <div class="declaration">
@@ -505,6 +505,81 @@ It especially decides, which transitions are performed for the triggered routes.
                         <div class="language">
                           <p class="aside-title">Swift</p>
                           <pre class="highlight swift"><code><span class="kd">public</span> <span class="k">var</span> <span class="nv">viewController</span><span class="p">:</span> <span class="kt">UIViewController</span><span class="o">!</span> <span class="p">{</span> <span class="k">get</span> <span class="p">}</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <div class="task-name-container">
+                <a name="/Presentable2"></a>
+                <a name="//apple_ref/swift/Section/Presentable" class="dashAnchor"></a>
+                <a href="#/Presentable2">
+                  <h3 class="section-name">Presentable</h3>
+                </a>
+              </div>
+              <ul class="item-container">
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:12XCoordinator11CoordinatorPAARlzCrlE10weakRouterAA10WeakErasedVyAA06StrongD0Cy9RouteTypeQzGGvp"></a>
+                    <a name="//apple_ref/swift/Property/weakRouter" class="dashAnchor"></a>
+                    <a class="token" href="#/s:12XCoordinator11CoordinatorPAARlzCrlE10weakRouterAA10WeakErasedVyAA06StrongD0Cy9RouteTypeQzGGvp">weakRouter</a>
+                    </code>
+                      <span class="declaration-note">
+                        Extension method
+                      </span>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Creates a WeakRouter object from the given router to abstract from concrete implementations
+while maintaining information necessary to fulfill the Router protocol.
+The original router will be held weakly.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="k">var</span> <span class="nv">weakRouter</span><span class="p">:</span> <span class="kt"><a href="../Typealiases.html#/s:12XCoordinator10WeakRoutera">WeakRouter</a></span><span class="o">&lt;</span><span class="kt">RouteType</span><span class="o">&gt;</span> <span class="p">{</span> <span class="k">get</span> <span class="p">}</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:12XCoordinator11CoordinatorPAARlzCrlE13unownedRouterAA13UnownedErasedVyAA06StrongD0Cy9RouteTypeQzGGvp"></a>
+                    <a name="//apple_ref/swift/Property/unownedRouter" class="dashAnchor"></a>
+                    <a class="token" href="#/s:12XCoordinator11CoordinatorPAARlzCrlE13unownedRouterAA13UnownedErasedVyAA06StrongD0Cy9RouteTypeQzGGvp">unownedRouter</a>
+                    </code>
+                      <span class="declaration-note">
+                        Extension method
+                      </span>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Creates an UnownedRouter object from the given router to abstract from concrete implementations
+while maintaining information necessary to fulfill the Router protocol.
+The original router will be held unowned.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="k">var</span> <span class="nv">unownedRouter</span><span class="p">:</span> <span class="kt"><a href="../Typealiases.html#/s:12XCoordinator13UnownedRoutera">UnownedRouter</a></span><span class="o">&lt;</span><span class="kt">RouteType</span><span class="o">&gt;</span> <span class="p">{</span> <span class="k">get</span> <span class="p">}</span></code></pre>
 
                         </div>
                       </div>
@@ -913,7 +988,7 @@ It is given a special place because its exact type can be specified.</p>
       </article>
     </div>
     <section class="footer">
-      <p>&copy; 2019 <a class="link" href="https://quickbirdstudios.com" target="_blank" rel="external">Stefan Kofler &amp; Paul Kraft</a>. All rights reserved. (Last updated: 2019-09-17)</p>
+      <p>&copy; 2019 <a class="link" href="https://quickbirdstudios.com" target="_blank" rel="external">Stefan Kofler &amp; Paul Kraft</a>. All rights reserved. (Last updated: 2019-09-18)</p>
       <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.11.0</a>, a <a class="link" href="https://realm.io" target="_blank" rel="external">Realm</a> project.</p>
     </section>
   </body>

@@ -35,7 +35,7 @@ public final class StrongRouter<RouteType: Route>: Router {
     // MARK: Initialization
 
     ///
-    /// Creates an AnyRouter object from a given router.
+    /// Creates a StrongRouter object from a given router.
     ///
     /// - Parameter router:
     ///     The source router.

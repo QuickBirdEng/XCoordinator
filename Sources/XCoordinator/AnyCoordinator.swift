@@ -23,7 +23,8 @@ public typealias AnyViewCoordinator<RouteType: Route> = AnyCoordinator<RouteType
 /// TransitionType and RouteType.
 ///
 /// - Note:
-///     If you do not want/need to specify TransitionType, you might want to look into the `AnyRouter` class.
+///     If you do not want/need to specify TransitionType, you might want to look into the
+///     different router abstractions `StrongRouter`, `UnownedRouter` and `WeakRouter`.
 ///     See `AnyTransitionPerformer` to further abstract from RouteType.
 ///
 public class AnyCoordinator<RouteType: Route, TransitionType: TransitionProtocol>: Coordinator {

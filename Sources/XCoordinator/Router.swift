@@ -12,8 +12,10 @@ import Foundation
 /// The Router protocol is used to abstract the transition-type specific characteristics of a Coordinator.
 ///
 /// A Router can trigger routes, which lead to transitions being executed. In constrast to the Coordinator protocol,
-/// the router does not specify a TransitionType and can therefore be used in the form of an AnyRouter to reduce a coordinator's
-/// capabilities to the triggering of routes. This may especially be useful in viewModels when using them in different contexts.
+/// the router does not specify a TransitionType and can therefore be used in the form of a
+/// `StrongRouter`, `UnownedRouter` or `WeakRouter` to reduce a coordinator's capabilities to
+/// the triggering of routes.
+/// This may especially be useful in viewModels when using them in different contexts.
 ///
 public protocol Router: Presentable {
 
@@ -100,10 +102,12 @@ extension Router where Self: Presentable {
     /// Returns a router for the specified route, if possible.
     ///
     /// - Parameter route:
-    ///     The route to return an AnyRouter for.
+    ///     The route type to return a router for.
     ///
     /// - Returns:
-    ///     It returns the router's anyRouter, if it is compatible with the given route, otherwise `nil`.
+    ///     It returns the router's strongRouter,
+    ///     if it is compatible with the given route type,
+    ///     otherwise `nil`.
     ///
     public func router<R: Route>(for route: R) -> StrongRouter<R>? {
         return strongRouter as? StrongRouter<R>
