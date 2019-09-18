@@ -252,7 +252,7 @@ When using `XCoordinator` with the `Combine` extensions, you can use `router.pub
 ## 📚 Documentation & Example app
 
 To get more information about XCoordinator, check out the [documentation](https://quickbirdstudios.github.io/XCoordinator).
-Additionally, this [repository](https://github.com/quickbirdstudios/XCoordinator) serves as an example project using a MVVM architecture with XCoordinator.
+Additionally, this [repository](https://github.com/quickbirdstudios/XCoordinator-Example) serves as an example project using a MVVM architecture with XCoordinator.
 
 For a MVC example app, have a look at [a workshop](https://github.com/quickbirdstudios/Mobile-HackNight-XCoordinator) we did with a previous version of XCoordinator.
 
