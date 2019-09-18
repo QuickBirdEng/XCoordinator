@@ -28,7 +28,9 @@ extension UITabBarController {
         CATransaction.begin()
         CATransaction.setCompletionBlock(completion)
 
-        setViewControllers(viewControllers, animated: options.animated)
+        autoreleasepool {
+            setViewControllers(viewControllers, animated: options.animated)
+        }
 
         CATransaction.commit()
     }
@@ -51,7 +53,9 @@ extension UITabBarController {
         CATransaction.begin()
         CATransaction.setCompletionBlock(completion)
 
-        selectedViewController = viewController
+        autoreleasepool {
+            selectedViewController = viewController
+        }
 
         CATransaction.commit()
     }
@@ -71,7 +75,9 @@ extension UITabBarController {
         CATransaction.begin()
         CATransaction.setCompletionBlock(completion)
 
-        selectedIndex = index
+        autoreleasepool {
+            selectedIndex = index
+        }
 
         CATransaction.commit()
     }

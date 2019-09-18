@@ -29,11 +29,13 @@ public final class StrongRouter<RouteType: Route>: Router {
     private let _presented: (Presentable?) -> Void
     private let _viewController: () -> UIViewController?
     private let _setRoot: (UIWindow) -> Void
+    private let _registerParent: (Presentable & AnyObject) -> Void
+    private let _childTransitionCompleted: () -> Void
 
     // MARK: Initialization
 
     ///
-    /// Creates an AnyRouter object from a given router.
+    /// Creates a StrongRouter object from a given router.
     ///
     /// - Parameter router:
     ///     The source router.
@@ -44,6 +46,8 @@ public final class StrongRouter<RouteType: Route>: Router {
         _viewController = { router.viewController }
         _setRoot = router.setRoot
         _contextTrigger = router.contextTrigger
+        _registerParent = router.registerParent
+        _childTransitionCompleted = router.childTransitionCompleted
     }
 
     // MARK: Public methods
@@ -103,4 +107,13 @@ public final class StrongRouter<RouteType: Route>: Router {
     public var viewController: UIViewController! {
         return _viewController()
     }
+
+    public func registerParent(_ presentable: Presentable & AnyObject) {
+        _registerParent(presentable)
+    }
+
+    public func childTransitionCompleted() {
+        _childTransitionCompleted()
+    }
+
 }

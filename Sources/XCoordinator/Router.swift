@@ -6,12 +6,16 @@
 //  Copyright © 2018 QuickBird Studios. All rights reserved.
 //
 
+import Foundation
+
 ///
 /// The Router protocol is used to abstract the transition-type specific characteristics of a Coordinator.
 ///
 /// A Router can trigger routes, which lead to transitions being executed. In constrast to the Coordinator protocol,
-/// the router does not specify a TransitionType and can therefore be used in the form of an AnyRouter to reduce a coordinator's
-/// capabilities to the triggering of routes. This may especially be useful in viewModels when using them in different contexts.
+/// the router does not specify a TransitionType and can therefore be used in the form of a
+/// `StrongRouter`, `UnownedRouter` or `WeakRouter` to reduce a coordinator's capabilities to
+/// the triggering of routes.
+/// This may especially be useful in viewModels when using them in different contexts.
 ///
 public protocol Router: Presentable {
 
@@ -75,37 +79,20 @@ extension Router {
     ///         (including animations).
     ///
     public func trigger(_ route: RouteType, with options: TransitionOptions, completion: PresentationHandler?) {
-        contextTrigger(route, with: options) { _ in completion?() }
+        autoreleasepool {
+            contextTrigger(route, with: options) { _ in completion?() }
+        }
     }
-}
-
-extension Router where Self: AnyObject & Presentable {
-    
-    ///
-    /// Creates an AnyRouter object from the given router to abstract from concrete implementations
-    /// while maintaining information necessary to fulfill the Router protocol.
-    ///
-    public var weakRouter: WeakRouter<RouteType> {
-        return WeakRouter(self) { $0.strongRouter }
-    }
-
-    ///
-    /// Creates an AnyRouter object from the given router to abstract from concrete implementations
-    /// while maintaining information necessary to fulfill the Router protocol.
-    ///
-    public var unownedRouter: UnownedRouter<RouteType> {
-        return UnownedRouter(self) { $0.strongRouter }
-    }
-    
 }
 
 extension Router where Self: Presentable {
 
-    // MARK: - Computed properties
+    // MARK: Computed properties
 
     ///
-    /// Creates an AnyRouter object from the given router to abstract from concrete implementations
+    /// Creates a StrongRouter object from the given router to abstract from concrete implementations
     /// while maintaining information necessary to fulfill the Router protocol.
+    /// The original router will be held strongly.
     ///
     public var strongRouter: StrongRouter<RouteType> {
         return StrongRouter(self)
@@ -115,10 +102,12 @@ extension Router where Self: Presentable {
     /// Returns a router for the specified route, if possible.
     ///
     /// - Parameter route:
-    ///     The route to return an AnyRouter for.
+    ///     The route type to return a router for.
     ///
     /// - Returns:
-    ///     It returns the router's anyRouter, if it is compatible with the given route, otherwise `nil`.
+    ///     It returns the router's strongRouter,
+    ///     if it is compatible with the given route type,
+    ///     otherwise `nil`.
     ///
     public func router<R: Route>(for route: R) -> StrongRouter<R>? {
         return strongRouter as? StrongRouter<R>

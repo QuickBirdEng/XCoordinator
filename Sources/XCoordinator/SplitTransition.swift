@@ -22,7 +22,9 @@ extension Transition where RootViewController: UISplitViewController {
                 presentables.forEach { $0.presented(from: rootViewController) }
                 completion?()
             }
-            rootViewController.viewControllers = presentables.map { $0.viewController }
+            autoreleasepool {
+                rootViewController.viewControllers = presentables.map { $0.viewController }
+            }
             CATransaction.commit()
         }
     }

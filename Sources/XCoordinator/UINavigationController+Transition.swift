@@ -28,7 +28,9 @@ extension UINavigationController {
         CATransaction.begin()
         CATransaction.setCompletionBlock(completion)
 
-        pushViewController(viewController, animated: options.animated)
+        autoreleasepool {
+            pushViewController(viewController, animated: options.animated)
+        }
 
         CATransaction.commit()
     }
@@ -48,10 +50,12 @@ extension UINavigationController {
         CATransaction.begin()
         CATransaction.setCompletionBlock(completion)
 
-        if toRoot {
-            popToRootViewController(animated: options.animated)
-        } else {
-            popViewController(animated: options.animated)
+        autoreleasepool {
+            if toRoot {
+                popToRootViewController(animated: options.animated)
+            } else {
+                popViewController(animated: options.animated)
+            }
         }
 
         CATransaction.commit()
@@ -80,7 +84,9 @@ extension UINavigationController {
             completion?()
         }
 
-        setViewControllers(viewControllers, animated: options.animated)
+        autoreleasepool {
+            setViewControllers(viewControllers, animated: options.animated)
+        }
 
         CATransaction.commit()
     }
@@ -105,7 +111,9 @@ extension UINavigationController {
         CATransaction.begin()
         CATransaction.setCompletionBlock(completion)
 
-        popToViewController(viewController, animated: options.animated)
+        autoreleasepool {
+            _ = popToViewController(viewController, animated: options.animated)
+        }
 
         CATransaction.commit()
     }

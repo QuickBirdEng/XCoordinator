@@ -17,7 +17,9 @@ extension UIViewController {
         CATransaction.begin()
         CATransaction.setCompletionBlock(completion)
 
-        show(viewController, sender: nil)
+        autoreleasepool {
+            show(viewController, sender: nil)
+        }
 
         CATransaction.commit()
     }
@@ -29,7 +31,9 @@ extension UIViewController {
         CATransaction.begin()
         CATransaction.setCompletionBlock(completion)
 
-        showDetailViewController(viewController, sender: nil)
+        autoreleasepool {
+            showDetailViewController(viewController, sender: nil)
+        }
 
         CATransaction.commit()
     }

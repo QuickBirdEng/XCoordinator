@@ -25,6 +25,22 @@ extension WeakErased: Presentable where Value: Presentable {
         return wrappedValue?.viewController
     }
 
+    public func childTransitionCompleted() {
+        wrappedValue?.childTransitionCompleted()
+    }
+
+    public func registerParent(_ presentable: Presentable & AnyObject) {
+        wrappedValue?.registerParent(presentable)
+    }
+
+    public func presented(from presentable: Presentable?) {
+        wrappedValue?.presented(from: presentable)
+    }
+
+    public func setRoot(for window: UIWindow) {
+        wrappedValue?.setRoot(for: window)
+    }
+
 }
 
 extension WeakErased: Router where Value: Router {

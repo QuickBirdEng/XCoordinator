@@ -107,7 +107,9 @@ public struct Transition<RootViewController: UIViewController>: TransitionProtoc
     ///     a specified route (latter option is encouraged).
     ///
     public func perform(on rootViewController: RootViewController, with options: TransitionOptions, completion: PresentationHandler?) {
-        _perform(rootViewController, options, completion)
+        autoreleasepool {
+            _perform(rootViewController, options, completion)
+        }
     }
 
 }
