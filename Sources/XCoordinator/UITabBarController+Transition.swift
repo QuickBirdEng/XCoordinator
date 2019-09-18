@@ -25,12 +25,9 @@ extension UITabBarController {
         To set another delegate of a rootViewController in a TabBarCoordinator, have a look at `TabBarCoordinator.delegate`.
         """)
 
-        CATransaction.begin()
-        CATransaction.setCompletionBlock(completion)
-
-        setViewControllers(viewControllers, animated: options.animated)
-
-        CATransaction.commit()
+        CATransaction.perform(completion: completion) {
+            setViewControllers(viewControllers, animated: options.animated)
+        }
     }
 
     func select(_ viewController: UIViewController,
@@ -48,12 +45,9 @@ extension UITabBarController {
         To set another delegate of a rootViewController in a TabBarCoordinator, have a look at `TabBarCoordinator.delegate`.
         """)
 
-        CATransaction.begin()
-        CATransaction.setCompletionBlock(completion)
-
-        selectedViewController = viewController
-
-        CATransaction.commit()
+        CATransaction.perform(completion: completion) {
+            selectedViewController = viewController
+        }
     }
 
     func select(index: Int, with options: TransitionOptions, animation: Animation?, completion: PresentationHandler?) {
@@ -68,12 +62,9 @@ extension UITabBarController {
         To set another delegate of a rootViewController in a TabBarCoordinator, have a look at `TabBarCoordinator.delegate`.
         """)
 
-        CATransaction.begin()
-        CATransaction.setCompletionBlock(completion)
-
-        selectedIndex = index
-
-        CATransaction.commit()
+        CATransaction.perform(completion: completion) {
+            selectedIndex = index
+        }
     }
     
 }

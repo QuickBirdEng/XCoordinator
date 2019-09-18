@@ -48,12 +48,10 @@ extension Transition where RootViewController: UIPageViewController {
         return Transition(presentables: pages,
                           animationInUse: nil
         ) { rootViewController, _, completion in
-            CATransaction.begin()
-            CATransaction.setCompletionBlock {
+            CATransaction.perform(completion: {
                 pages.forEach { $0.presented(from: rootViewController) }
                 completion?()
-            }
-            CATransaction.commit()
+            })
         }
     }
 }

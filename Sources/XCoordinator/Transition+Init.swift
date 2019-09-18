@@ -8,6 +8,17 @@
 
 import UIKit
 
+extension CATransaction {
+    internal static func perform(completion: (() -> Void)? = nil, perform: () -> Void = {})  {
+        CATransaction.begin()
+        CATransaction.setCompletionBlock(completion)
+        autoreleasepool {
+            perform()
+        }
+        CATransaction.commit()
+    }
+}
+
 extension Transition {
 
     ///

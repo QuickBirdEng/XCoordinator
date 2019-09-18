@@ -14,24 +14,18 @@ extension UIViewController {
               with options: TransitionOptions,
               completion: PresentationHandler?) {
 
-        CATransaction.begin()
-        CATransaction.setCompletionBlock(completion)
-
-        show(viewController, sender: nil)
-
-        CATransaction.commit()
+        CATransaction.perform(completion: completion) {
+            show(viewController, sender: nil)
+        }
     }
 
     func showDetail(_ viewController: UIViewController,
                     with options: TransitionOptions,
                     completion: PresentationHandler?) {
 
-        CATransaction.begin()
-        CATransaction.setCompletionBlock(completion)
-
-        showDetailViewController(viewController, sender: nil)
-
-        CATransaction.commit()
+        CATransaction.perform(completion: completion) {
+            showDetailViewController(viewController, sender: nil)
+        }
     }
 
     func present(onRoot: Bool,
