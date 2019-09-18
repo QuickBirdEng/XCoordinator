@@ -146,7 +146,7 @@ extension Presentable {
 extension UIViewController {
 
     fileprivate var isInViewHierarchy: Bool {
-        let returnValue = isBeingPresented
+        return isBeingPresented
             || presentingViewController != nil
             || presentedViewController != nil
             || parent != nil
@@ -154,20 +154,6 @@ extension UIViewController {
             || navigationController != nil
             || tabBarController != nil
             || splitViewController != nil
-        if returnValue {
-            let properties: [Any?] = [
-                presentingViewController,
-                presentedViewController,
-                parent,
-                view.window,
-                navigationController,
-                tabBarController,
-                splitViewController
-            ]
-            let string = properties.compactMap { $0.map { "\($0)" } }.joined(separator: ", ")
-            print(string)
-        }
-        return returnValue
     }
 
 }

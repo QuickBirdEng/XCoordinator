@@ -107,4 +107,13 @@ public final class StrongRouter<RouteType: Route>: Router {
     public var viewController: UIViewController! {
         return _viewController()
     }
+
+    public func registerParent(_ presentable: Presentable & AnyObject) {
+        _registerParent(presentable)
+    }
+
+    public func childTransitionCompleted() {
+        _childTransitionCompleted()
+    }
+
 }
