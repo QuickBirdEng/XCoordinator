@@ -25,9 +25,14 @@ extension UINavigationController {
         To set another delegate of a rootViewController in a NavigationCoordinator, have a look at `NavigationCoordinator.delegate`.
         """)
 
-        CATransaction.perform(completion: completion) {
+        CATransaction.begin()
+        CATransaction.setCompletionBlock(completion)
+
+        autoreleasepool {
             pushViewController(viewController, animated: options.animated)
         }
+
+        CATransaction.commit()
     }
 
     func pop(toRoot: Bool, with options: TransitionOptions, animation: Animation?, completion: PresentationHandler?) {
@@ -42,13 +47,18 @@ extension UINavigationController {
         To set another delegate of a rootViewController in a NavigationCoordinator, have a look at `NavigationCoordinator.delegate`.
         """)
 
-        CATransaction.perform(completion: completion) {
+        CATransaction.begin()
+        CATransaction.setCompletionBlock(completion)
+
+        autoreleasepool {
             if toRoot {
                 popToRootViewController(animated: options.animated)
             } else {
                 popViewController(animated: options.animated)
             }
         }
+
+        CATransaction.commit()
     }
 
     func set(_ viewControllers: [UIViewController],
@@ -66,12 +76,19 @@ extension UINavigationController {
         To set another delegate of a rootViewController in a NavigationCoordinator, have a look at `NavigationCoordinator.delegate`.
         """)
 
-        CATransaction.perform(completion: {
+        CATransaction.begin()
+        CATransaction.setCompletionBlock {
             if let animation = animation {
                 viewControllers.forEach { $0.transitioningDelegate = animation }
             }
             completion?()
-        }) { setViewControllers(viewControllers, animated: options.animated) }
+        }
+
+        autoreleasepool {
+            setViewControllers(viewControllers, animated: options.animated)
+        }
+
+        CATransaction.commit()
     }
 
     func pop(to viewController: UIViewController,
@@ -91,9 +108,14 @@ extension UINavigationController {
         To set another delegate of a rootViewController in a NavigationCoordinator, have a look at `NavigationCoordinator.delegate`.
         """)
 
-        CATransaction.perform(completion: completion) {
-            popToViewController(viewController, animated: options.animated)
+        CATransaction.begin()
+        CATransaction.setCompletionBlock(completion)
+
+        autoreleasepool {
+            _ = popToViewController(viewController, animated: options.animated)
         }
+
+        CATransaction.commit()
     }
     
 }

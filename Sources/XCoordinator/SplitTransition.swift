@@ -17,12 +17,15 @@ extension Transition where RootViewController: UISplitViewController {
 
     static func set(_ presentables: [Presentable]) -> Transition {
         return Transition(presentables: presentables, animationInUse: nil) { rootViewController, _, completion in
-            CATransaction.perform(completion: {
+            CATransaction.begin()
+            CATransaction.setCompletionBlock {
                 presentables.forEach { $0.presented(from: rootViewController) }
                 completion?()
-            }) {
+            }
+            autoreleasepool {
                 rootViewController.viewControllers = presentables.map { $0.viewController }
             }
+            CATransaction.commit()
         }
     }
 
