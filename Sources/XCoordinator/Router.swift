@@ -83,33 +83,14 @@ extension Router {
     }
 }
 
-extension Router where Self: AnyObject & Presentable {
-    
-    ///
-    /// Creates an AnyRouter object from the given router to abstract from concrete implementations
-    /// while maintaining information necessary to fulfill the Router protocol.
-    ///
-    public var weakRouter: WeakRouter<RouteType> {
-        return WeakRouter(self) { $0.strongRouter }
-    }
-
-    ///
-    /// Creates an AnyRouter object from the given router to abstract from concrete implementations
-    /// while maintaining information necessary to fulfill the Router protocol.
-    ///
-    public var unownedRouter: UnownedRouter<RouteType> {
-        return UnownedRouter(self) { $0.strongRouter }
-    }
-    
-}
-
 extension Router where Self: Presentable {
 
-    // MARK: - Computed properties
+    // MARK: Computed properties
 
     ///
-    /// Creates an AnyRouter object from the given router to abstract from concrete implementations
+    /// Creates a StrongRouter object from the given router to abstract from concrete implementations
     /// while maintaining information necessary to fulfill the Router protocol.
+    /// The original router will be held strongly.
     ///
     public var strongRouter: StrongRouter<RouteType> {
         return StrongRouter(self)

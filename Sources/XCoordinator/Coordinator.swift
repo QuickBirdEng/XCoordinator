@@ -66,10 +66,33 @@ extension Coordinator {
 
 extension Coordinator {
 
-    /// A Coordinator uses its rootViewController as viewController, with the exception `RedirectionCoordinator`.
+    /// A Coordinator uses its rootViewController as viewController.
     public var viewController: UIViewController! {
         return rootViewController
     }
+}
+
+extension Coordinator where Self: Presentable & AnyObject {
+
+    ///
+    /// Creates a WeakRouter object from the given router to abstract from concrete implementations
+    /// while maintaining information necessary to fulfill the Router protocol.
+    /// The original router will be held weakly.
+    ///
+    public var weakRouter: WeakRouter<RouteType> {
+        return WeakRouter(self) { $0.strongRouter }
+    }
+
+    ///
+    /// Creates an UnownedRouter object from the given router to abstract from concrete implementations
+    /// while maintaining information necessary to fulfill the Router protocol.
+    /// The original router will be held unowned.
+    ///
+
+    public var unownedRouter: UnownedRouter<RouteType> {
+        return UnownedRouter(self) { $0.strongRouter }
+    }
+
 }
 
 // MARK: - Default implementations
