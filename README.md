@@ -42,12 +42,12 @@ class UserListCoordinator: NavigationCoordinator<UserListRoute> {
         switch route {
         case .home:
             let viewController = HomeViewController.instantiateFromNib()
-            let viewModel = HomeViewModelImpl(router: anyRouter)
+            let viewModel = HomeViewModelImpl(router: unownedRouter)
             viewController.bind(to: viewModel)
             return .push(viewController)
         case .users:
             let viewController = UsersViewController.instantiateFromNib()
-            let viewModel = UsersViewModelImpl(router: anyRouter)
+            let viewModel = UsersViewModelImpl(router: unownedRouter)
             viewController.bind(to: viewModel)
             return .push(viewController, animation: .interactiveFade)
         case .user(let username):
@@ -126,7 +126,7 @@ class UsersCoordinator: NavigationCoordinator<UserRoute> {
                 dismissalAnimation: YourAwesomeDismissalTransitionAnimation()
             )
             let viewController = UserViewController.instantiateFromNib()
-            let viewModel = UserViewModelImpl(coordinator: coordinator, name: name)
+            let viewModel = UserViewModelImpl(name: name, router: unownedRouter)
             viewController.bind(to: viewModel)
             return .push(viewController, animation: animation)
         /* ... */
@@ -171,9 +171,9 @@ class ParentCoordinator: NavigationCoordinator<ParentRoute> {
     override func prepareTransition(for route: ParentRoute) -> NavigationTransition {
         switch route {
         /* ... */
-        case .subCoordinator:
-            let subCoordinator = SubCoordinator(parent: unownedRouter)
-            return .push(subCoordinator)
+        case .child:
+            let childCoordinator = ChildCoordinator(parent: unownedRouter)
+            return .push(childCoordinator)
         }
     }
 }
@@ -187,7 +187,7 @@ class ChildCoordinator: RedirectionRouter<ParentRoute, ChildRoute> {
     
     /* ... */
     
-    override func mapToSuperRoute(for route: ChildRoute) -> ParentRoute {
+    override func mapToParentRoute(for route: ChildRoute) -> ParentRoute {
         // you can map your ChildRoute enum to ParentRoute cases here that will get triggered on the parent router.
     }
 }
@@ -242,7 +242,7 @@ In addition to the above-mentioned approach, the reactive `trigger` extension ca
 ```swift
 let doneWithBothTransitions = 
     router.rx.trigger(.home)
-        .flatMap { [unowned router] in router.rx.trigger(.news) }
+        .flatMap { [unowned self] in self.router.rx.trigger(.news) }
         .map { true }
         .startWith(false)
 ```
