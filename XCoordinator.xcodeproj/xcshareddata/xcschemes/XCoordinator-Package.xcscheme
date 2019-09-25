@@ -14,9 +14,9 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "XCoordinator::XCoordinator"
-               BuildableName = "XCoordinator.framework"
-               BlueprintName = "XCoordinator"
+               BlueprintIdentifier = "XCoordinator::XCoordinatorCombine"
+               BuildableName = "XCoordinatorCombine.framework"
+               BlueprintName = "XCoordinatorCombine"
                ReferencedContainer = "container:XCoordinator.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -42,9 +42,9 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "XCoordinator::XCoordinatorCombine"
-               BuildableName = "XCoordinatorCombine.framework"
-               BlueprintName = "XCoordinatorCombine"
+               BlueprintIdentifier = "XCoordinator::XCoordinator"
+               BuildableName = "XCoordinator.framework"
+               BlueprintName = "XCoordinator"
                ReferencedContainer = "container:XCoordinator.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
