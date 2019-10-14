@@ -372,7 +372,7 @@ To get more information on XCoordinator check out [our blog post](https://quickb
 
 ## ❤️ Contributing
 
-Open an issue if you need help, if you found a bug, or if you want to discuss a feature request. If you feel like having a chat about XCoordinator with the developers and other users, join our [Slack Workspace](https://join.slack.com/t/xcoordinator/shared_invite/enQtNDg4NDAxNTk1ODQ1LTRhMjY0OTAwNWMyYmQ5ZWI5Mzk3ODU1NGJmMWZlZDY3Y2Q0NTZjOWNkMjgyNmQwYjY4MzZmYTRhN2EzMzczNTM).
+Open an issue if you need help, if you found a bug, or if you want to discuss a feature request. If you feel like having a chat about XCoordinator with the developers and other users, join our [Slack Workspace](https://join.slack.com/t/xcoordinator/shared_invite/enQtNDg4NDAxNTk1ODQ1LTkxYzE3MDM5ZGY1MTVmY2NhNjI0Y2JiYmQ5NTdjZDczZDRjZTg1ZmJlOTZmODYyYzMyYWQ0NzhlNGNkMGIzYjQ).
 
 Open a PR if you want to make changes to XCoordinator.
 
