@@ -58,6 +58,7 @@ open class PageCoordinator<RouteType: Route>: BaseCoordinator<RouteType, PageTra
                 set: Presentable? = nil,
                 direction: UIPageViewController.NavigationDirection = .forward) {
         self.dataSource = PageCoordinatorDataSource(pages: pages.map { $0.viewController }, loop: loop)
+        rootViewController.dataSource = dataSource
 
         guard let firstPage = set ?? pages.first else {
             assertionFailure("Please provide a positive number of pages for use in \(String(describing: PageCoordinator<RouteType>.self))")
