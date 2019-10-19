@@ -61,7 +61,7 @@ open class PageCoordinator<RouteType: Route>: BaseCoordinator<RouteType, PageTra
 
         guard let firstPage = set ?? pages.first else {
             assertionFailure("Please provide a positive number of pages for use in \(String(describing: PageCoordinator<RouteType>.self))")
-            super.init(rootViewController: rootViewController, initialRoute: nil)
+            super.init(rootViewController: rootViewController, initialTransition: .initial(pages: pages))
             return
         }
 
@@ -93,7 +93,7 @@ open class PageCoordinator<RouteType: Route>: BaseCoordinator<RouteType, PageTra
                 set: Presentable,
                 direction: UIPageViewController.NavigationDirection) {
         self.dataSource = dataSource
-        
+        rootViewController.dataSource = dataSource
         super.init(rootViewController: rootViewController,
                    initialTransition: .set(set, direction: direction))
     }
