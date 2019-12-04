@@ -10,6 +10,6 @@ jobs:
     steps:
     - uses: actions/checkout@v1
     - name: Build
-      run: xcodebuild clean build -scheme XCoordinator
+      run: xcodebuild -scheme XCoordinator clean build
     - name: Run tests
-      run: xcodebuild test -scheme XCoordinator
+      run: xcodebuild -scheme XCoordinator test
