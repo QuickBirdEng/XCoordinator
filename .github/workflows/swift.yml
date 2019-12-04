@@ -10,6 +10,6 @@ jobs:
     steps:
     - uses: actions/checkout@v1
     - name: Build
-      run: xcodebuild -v
+      run: swift package generate-xcodeproj && xcodebuild -project XCoordinator.xcodeproj
     - name: Run tests
-      run: xcodebuild test -v
+      run: xcodebuild test -project XCoordinator.xcodeproj
