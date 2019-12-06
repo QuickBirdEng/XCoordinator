@@ -38,7 +38,7 @@ open class BaseCoordinator<RouteType: Route, TransitionType: TransitionProtocol>
 
     public private(set) var rootViewController: RootViewController
     
-    public var viewController: UIViewController! {
+    open var viewController: UIViewController! {
         return rootViewController
     }
 
