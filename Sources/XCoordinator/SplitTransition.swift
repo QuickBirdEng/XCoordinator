@@ -15,7 +15,7 @@ public typealias SplitTransition = Transition<UISplitViewController>
 
 extension Transition where RootViewController: UISplitViewController {
 
-    static func set(_ presentables: [Presentable]) -> Transition {
+    public static func set(_ presentables: [Presentable]) -> Transition {
         return Transition(presentables: presentables, animationInUse: nil) { rootViewController, _, completion in
             CATransaction.begin()
             CATransaction.setCompletionBlock {
