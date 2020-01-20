@@ -48,7 +48,7 @@ extension Coordinator where Self: AnyObject {
     ///
     public func deepLink<RootViewController, S: Sequence>(_ route: RouteType, _ remainingRoutes: S)
         -> Transition<RootViewController> where S.Element == Route, TransitionType == Transition<RootViewController> {
-        return .deepLink(with: self, route, array: Array(remainingRoutes))
+        .deepLink(with: self, route, array: Array(remainingRoutes))
     }
 
     ///
@@ -66,7 +66,7 @@ extension Coordinator where Self: AnyObject {
     ///
     public func deepLink<RootViewController>(_ route: RouteType, _ remainingRoutes: Route...)
         -> Transition<RootViewController> where TransitionType == Transition<RootViewController> {
-        return .deepLink(with: self, route, array: remainingRoutes)
+        .deepLink(with: self, route, array: remainingRoutes)
     }
 }
 
@@ -77,7 +77,7 @@ extension Transition {
                                                                  _ route: C.RouteType,
                                                                  array remainingRoutes: [Route]) -> Transition {
 
-        return Transition(presentables: [], animationInUse: nil) { [weak coordinator] _, options, completion in
+        Transition(presentables: [], animationInUse: nil) { [weak coordinator] _, options, completion in
             guard let coordinator = coordinator else {
                 assertionFailure("Please use the coordinator responsible for executing a deepLink-Transition when initializing.")
                 completion?()

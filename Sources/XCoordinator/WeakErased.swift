@@ -23,7 +23,7 @@ public struct WeakErased<Value> {
     
     /// The type-erased or otherwise mapped version of the value being held weakly.
     public var wrappedValue: Value? {
-        return _value()
+        _value()
     }
 }
 
@@ -41,7 +41,7 @@ public struct WeakErased<Value> {
     
     /// The type-erased or otherwise mapped version of the value being held weakly.
     public var wrappedValue: Value? {
-        return _value()
+        _value()
     }
 }
 
@@ -68,10 +68,7 @@ extension WeakErased {
     private static func createValueClosure<Erasable: AnyObject>(
         for value: Erasable,
         erase: @escaping (Erasable) -> Value) -> () -> Value? {
-        return { [weak value] in
-            guard let value = value else { return nil }
-            return erase(value)
-        }
+        { [weak value] in value.map(erase) }
     }
 
 }

@@ -29,10 +29,10 @@ open class NavigationAnimationDelegate: NSObject {
     // MARK: Stored properties
 
     /// The velocity threshold needed for the interactive pop transition to succeed
-    open var velocityThreshold: CGFloat { return UIScreen.main.bounds.width / 2 }
+    open var velocityThreshold: CGFloat { UIScreen.main.bounds.width / 2 }
 
     /// The transition progress threshold for the interactive pop transition to succeed
-    open var transitionProgressThreshold: CGFloat { return 0.5 }
+    open var transitionProgressThreshold: CGFloat { 0.5 }
 
     // swiftlint:disable:next weak_delegate
     private var interactivePopGestureRecognizerDelegate: UIGestureRecognizerDelegate?
@@ -77,7 +77,7 @@ extension NavigationAnimationDelegate: UINavigationControllerDelegate {
     open func navigationController(_ navigationController: UINavigationController,
                                    interactionControllerFor animationController: UIViewControllerAnimatedTransitioning
         ) -> UIViewControllerInteractiveTransitioning? {
-        return (animationController as? TransitionAnimation)?.interactionController
+        (animationController as? TransitionAnimation)?.interactionController
             ?? delegate?.navigationController?(navigationController, interactionControllerFor: animationController)
     }
 
@@ -267,10 +267,11 @@ extension NavigationAnimationDelegate: UIGestureRecognizerDelegate {
         interactivePopGestureRecognizerDelegate = popRecognizer.delegate
         popRecognizer.delegate = self
     }
+
 }
 
 extension UINavigationController {
     internal var animationDelegate: NavigationAnimationDelegate? {
-        return delegate as? NavigationAnimationDelegate
+        delegate as? NavigationAnimationDelegate
     }
 }

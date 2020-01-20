@@ -105,7 +105,7 @@ public final class StrongRouter<RouteType: Route>: Router {
     /// A coordinator returns its rootViewController.
     ///
     public var viewController: UIViewController! {
-        return _viewController()
+        _viewController()
     }
 
     public func registerParent(_ presentable: Presentable & AnyObject) {

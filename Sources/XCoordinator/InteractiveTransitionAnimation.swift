@@ -42,7 +42,7 @@ open class InteractiveTransitionAnimation: NSObject, TransitionAnimation { // sw
     // MARK: Computed properties
 
     open var interactionController: PercentDrivenInteractionController? {
-        return _interactionController
+        _interactionController
     }
 
     // MARK: Initialization
@@ -132,7 +132,7 @@ open class InteractiveTransitionAnimation: NSObject, TransitionAnimation { // sw
     ///     The transition duration as specified in the initializer.
     ///
     open func transitionDuration(using transitionContext: UIViewControllerContextTransitioning?) -> TimeInterval {
-        return _duration
+        _duration
     }
 
     ///
@@ -143,7 +143,7 @@ open class InteractiveTransitionAnimation: NSObject, TransitionAnimation { // sw
     ///     The context of a transition for which the animation should be started.
     ///
     open func animateTransition(using transitionContext: UIViewControllerContextTransitioning) {
-        return _animation(transitionContext)
+        _animation(transitionContext)
     }
 
     // MARK: TransitionAnimation
@@ -156,7 +156,7 @@ open class InteractiveTransitionAnimation: NSObject, TransitionAnimation { // sw
     ///     override this method in your subclass.
     ///
     open func generateInteractionController() -> PercentDrivenInteractionController? {
-        return _generateInteractionController()
+        _generateInteractionController()
     }
 
     ///

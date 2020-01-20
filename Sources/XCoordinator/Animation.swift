@@ -52,6 +52,7 @@ open class Animation: NSObject {
         self.presentationAnimation = presentation
         self.dismissalAnimation = dismissal
     }
+
 }
 
 // MARK: - UIViewControllerTransitioningDelegate
@@ -73,7 +74,7 @@ extension Animation: UIViewControllerTransitioningDelegate {
     open func animationController(forPresented presented: UIViewController,
                                   presenting: UIViewController,
                                   source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
-        return presentationAnimation
+        presentationAnimation
     }
 
     ///
@@ -87,7 +88,7 @@ extension Animation: UIViewControllerTransitioningDelegate {
     ///     The dismissal animation when initializing the `Animation` object.
     ///
     open func animationController(forDismissed dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {
-        return dismissalAnimation
+        dismissalAnimation
     }
 
     ///
@@ -102,7 +103,7 @@ extension Animation: UIViewControllerTransitioningDelegate {
     ///
     open func interactionControllerForPresentation(using animator: UIViewControllerAnimatedTransitioning)
         -> UIViewControllerInteractiveTransitioning? {
-        return presentationAnimation?.interactionController
+        presentationAnimation?.interactionController
     }
 
     ///
@@ -117,6 +118,7 @@ extension Animation: UIViewControllerTransitioningDelegate {
     ///
     open func interactionControllerForDismissal(using animator: UIViewControllerAnimatedTransitioning)
         -> UIViewControllerInteractiveTransitioning? {
-        return dismissalAnimation?.interactionController
+        dismissalAnimation?.interactionController
     }
+
 }

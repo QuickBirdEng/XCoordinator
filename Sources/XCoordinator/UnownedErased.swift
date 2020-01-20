@@ -22,7 +22,7 @@ public struct UnownedErased<Value> {
     
     /// The type-erased or otherwise mapped version of the value being held unowned.
     public var wrappedValue: Value {
-        return _value()
+        _value()
     }
 }
 
@@ -40,7 +40,7 @@ public struct UnownedErased<Value> {
     
     /// The type-erased or otherwise mapped version of the value being held unowned.
     public var wrappedValue: Value {
-        return _value()
+        _value()
     }
 }
 
@@ -67,6 +67,6 @@ extension UnownedErased {
     private static func createValueClosure<Erasable: AnyObject>(
         for value: Erasable,
         erase: @escaping (Erasable) -> Value) -> () -> Value {
-        return { [unowned value] in erase(value) }
+        { [unowned value] in erase(value) }
     }
 }

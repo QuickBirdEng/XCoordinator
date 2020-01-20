@@ -87,7 +87,7 @@ extension Presentable {
     }
 
     public func router<R: Route>(for route: R) -> StrongRouter<R>? {
-        return self as? StrongRouter<R>
+        self as? StrongRouter<R>
     }
 
     public func presented(from presentable: Presentable?) {}

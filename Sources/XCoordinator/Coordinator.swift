@@ -68,7 +68,7 @@ extension Coordinator {
 
     /// A Coordinator uses its rootViewController as viewController.
     public var viewController: UIViewController! {
-        return rootViewController
+        rootViewController
     }
 }
 
@@ -80,7 +80,7 @@ extension Coordinator where Self: Presentable & AnyObject {
     /// The original router will be held weakly.
     ///
     public var weakRouter: WeakRouter<RouteType> {
-        return WeakRouter(self) { $0.strongRouter }
+        WeakRouter(self) { $0.strongRouter }
     }
 
     ///
@@ -90,7 +90,7 @@ extension Coordinator where Self: Presentable & AnyObject {
     ///
 
     public var unownedRouter: UnownedRouter<RouteType> {
-        return UnownedRouter(self) { $0.strongRouter }
+        UnownedRouter(self) { $0.strongRouter }
     }
 
 }
@@ -101,7 +101,7 @@ extension Coordinator where Self: AnyObject {
 
     /// Creates an AnyCoordinator based on the current coordinator.
     public var anyCoordinator: AnyCoordinator<RouteType, TransitionType> {
-        return AnyCoordinator(self)
+        AnyCoordinator(self)
     }
 
     public func presented(from presentable: Presentable?) {}
@@ -127,7 +127,7 @@ extension Coordinator where Self: AnyObject {
     ///     A transition combining the transitions of the specified routes.
     ///
     public func chain(routes: [RouteType]) -> TransitionType {
-        return .multiple(routes.map(prepareTransition))
+        .multiple(routes.map(prepareTransition))
     }
 
     public func performTransition(_ transition: TransitionType,

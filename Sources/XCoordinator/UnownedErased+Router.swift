@@ -32,7 +32,7 @@ public typealias UnownedRouter<RouteType: Route> = UnownedErased<StrongRouter<Ro
 extension UnownedErased: Presentable where Value: Presentable {
 
     public var viewController: UIViewController! {
-        return wrappedValue.viewController
+        wrappedValue.viewController
     }
 
     public func childTransitionCompleted() {

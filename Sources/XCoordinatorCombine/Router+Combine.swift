@@ -17,7 +17,7 @@ public struct PublisherExtension<Base> {
 
 extension Router {
     public var publishers: PublisherExtension<Self> {
-        return .init(base: self)
+        .init(base: self)
     }
 }
 
@@ -27,7 +27,7 @@ extension PublisherExtension where Base: Router {
     public func trigger(_ route: Base.RouteType,
                         with options: TransitionOptions = .init(animated: true)
         ) -> Future<Void, Never> {
-        return Future { completion in
+        Future { completion in
             self.base.trigger(route, with: options) {
                 completion(.success(()))
             }

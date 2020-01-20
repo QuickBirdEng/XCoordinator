@@ -36,15 +36,15 @@ public protocol Container {
 // MARK: - Extensions
 
 extension UIViewController: Container {
-    public var viewController: UIViewController! { return self }
+    public var viewController: UIViewController! { self }
 }
 
 extension UIView: Container {
     public var viewController: UIViewController! {
-        return viewController(for: self)
+        viewController(for: self)
     }
 
-    public var view: UIView! { return self }
+    public var view: UIView! { self }
 }
 
 extension UIView {

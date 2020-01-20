@@ -14,7 +14,7 @@ extension UIView {
 
     var strongReferences: [Any] {
         get {
-            return objc_getAssociatedObject(self, &associatedObjectHandle) as? [Any] ?? []
+            objc_getAssociatedObject(self, &associatedObjectHandle) as? [Any] ?? []
         }
         set {
             objc_setAssociatedObject(self, &associatedObjectHandle, newValue, .OBJC_ASSOCIATION_RETAIN_NONATOMIC)

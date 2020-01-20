@@ -66,11 +66,11 @@ public class AnyCoordinator<RouteType: Route, TransitionType: TransitionProtocol
     // MARK: Computed properties
 
     public var rootViewController: TransitionType.RootViewController {
-        return _rootViewController()
+        _rootViewController()
     }
 
     public var viewController: UIViewController! {
-        return _viewController()
+        _viewController()
     }
 
     // MARK: Methods
@@ -85,7 +85,7 @@ public class AnyCoordinator<RouteType: Route, TransitionType: TransitionProtocol
     ///     The prepared transition.
     ///
     public func prepareTransition(for route: RouteType) -> TransitionType {
-        return _prepareTransition(route)
+        _prepareTransition(route)
     }
 
     public func presented(from presentable: Presentable?) {
@@ -111,4 +111,5 @@ public class AnyCoordinator<RouteType: Route, TransitionType: TransitionProtocol
     public func removeChildrenIfNeeded() {
         _removeChildrenIfNeeded()
     }
+
 }

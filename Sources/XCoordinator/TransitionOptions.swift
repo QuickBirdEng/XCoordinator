@@ -40,7 +40,7 @@ public struct TransitionOptions {
     // MARK: Static computed properties
 
     static var `default`: TransitionOptions {
-        return TransitionOptions(animated: true)
+        TransitionOptions(animated: true)
     }
 
 }
