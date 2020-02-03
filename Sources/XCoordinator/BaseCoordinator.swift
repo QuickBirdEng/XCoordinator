@@ -147,13 +147,13 @@ extension UIViewController {
 
     fileprivate var isInViewHierarchy: Bool {
         isBeingPresented
-        || presentingViewController != nil
-        || presentedViewController != nil
-        || parent != nil
-        || view.window != nil
-        || navigationController != nil
-        || tabBarController != nil
-        || splitViewController != nil
+            || presentingViewController != nil
+            || presentedViewController != nil
+            || parent != nil
+            || view.window != nil
+            || navigationController != nil
+            || tabBarController != nil
+            || splitViewController != nil
     }
 
 }
