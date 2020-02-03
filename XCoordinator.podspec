@@ -1,6 +1,6 @@
 Pod::Spec.new do |spec|
     spec.name         = 'XCoordinator'
-    spec.version      = '2.0.6'
+    spec.version      = '2.0.7'
     spec.license      = { :type => 'MIT' }
     spec.homepage     = 'https://github.com/quickbirdstudios/XCoordinator'
     spec.authors      = { 'Stefan Kofler' => 'stefan.kofler@quickbirdstudios.com', 'Paul Kraft' => 'pauljohannes.kraft@quickbirdstudios.com' }
