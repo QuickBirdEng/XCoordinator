@@ -37,7 +37,7 @@ open class NavigationCoordinator<RouteType: Route>: BaseCoordinator<RouteType, N
     ///
     public var delegate: UINavigationControllerDelegate? {
         get {
-            return animationDelegate.delegate
+            animationDelegate.delegate
         }
         set {
             animationDelegate.delegate = newValue

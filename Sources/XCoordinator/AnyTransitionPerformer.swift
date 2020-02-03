@@ -28,17 +28,17 @@ public class AnyTransitionPerformer<TransitionType: TransitionProtocol>: Transit
     // MARK: Computed properties
 
     public var viewController: UIViewController! {
-        return _viewController()
+        _viewController()
     }
 
     public var rootViewController: TransitionType.RootViewController {
-        return _rootViewController()
+        _rootViewController()
     }
 
     // MARK: Methods
 
     public func presented(from presentable: Presentable?) {
-        return _presented(presentable)
+        _presented(presentable)
     }
 
     public func performTransition(_ transition: TransitionType,

@@ -56,7 +56,7 @@ public struct Transition<RootViewController: UIViewController>: TransitionProtoc
     /// deep-linking.
     ///
     public var presentables: [Presentable] {
-        return _presentables
+        _presentables
     }
 
     ///
@@ -65,7 +65,7 @@ public struct Transition<RootViewController: UIViewController>: TransitionProtoc
     /// is returned.
     ///
     public var animation: TransitionAnimation? {
-        return _animation
+        _animation
     }
 
     // MARK: Initialization

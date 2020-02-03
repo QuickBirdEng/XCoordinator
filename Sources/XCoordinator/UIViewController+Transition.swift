@@ -11,7 +11,7 @@ import UIKit
 extension UIViewController {
 
     private var topPresentedViewController: UIViewController {
-        return presentedViewController?.topPresentedViewController ?? self
+        presentedViewController?.topPresentedViewController ?? self
     }
 
     func show(_ viewController: UIViewController,

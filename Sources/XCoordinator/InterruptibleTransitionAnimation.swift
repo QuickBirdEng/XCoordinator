@@ -118,6 +118,6 @@ open class InterruptibleTransitionAnimation: InteractiveTransitionAnimation {
     ///
     open func interruptibleAnimator(using transitionContext: UIViewControllerContextTransitioning
         ) -> UIViewImplicitlyAnimating {
-        return _interruptibleAnimator ?? generateInterruptibleAnimator(using: transitionContext)
+        _interruptibleAnimator ?? generateInterruptibleAnimator(using: transitionContext)
     }
 }

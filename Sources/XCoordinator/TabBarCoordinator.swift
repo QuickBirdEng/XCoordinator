@@ -38,7 +38,7 @@ open class TabBarCoordinator<RouteType: Route>: BaseCoordinator<RouteType, TabBa
     ///
     public var delegate: UITabBarControllerDelegate? {
         get {
-            return animationDelegate.delegate
+            animationDelegate.delegate
         }
         set {
             animationDelegate.delegate = newValue

@@ -27,8 +27,8 @@ extension Transition where RootViewController: UITabBarController {
     ///         The animation to be used. If you specify `nil` here, the default animation by UIKit is used.
     ///
     public static func set(_ presentables: [Presentable], animation: Animation? = nil) -> Transition {
-        return Transition(presentables: presentables,
-                          animationInUse: animation?.presentationAnimation
+        Transition(presentables: presentables,
+                   animationInUse: animation?.presentationAnimation
         ) { rootViewController, options, completion in
             rootViewController.set(presentables.map { $0.viewController },
                                    with: options,
@@ -54,8 +54,8 @@ extension Transition where RootViewController: UITabBarController {
     ///         The animation to be used. If you specify `nil` here, the default animation by UIKit is used.
     ///
     public static func select(_ presentable: Presentable, animation: Animation? = nil) -> Transition {
-        return Transition(presentables: [presentable],
-                          animationInUse: animation?.presentationAnimation
+        Transition(presentables: [presentable],
+                   animationInUse: animation?.presentationAnimation
         ) { rootViewController, options, completion in
             rootViewController.select(presentable.viewController,
                                       with: options,
@@ -77,8 +77,8 @@ extension Transition where RootViewController: UITabBarController {
     ///         The animation to be used. If you specify `nil` here, the default animation by UIKit is used.
     ///
     public static func select(index: Int, animation: Animation? = nil) -> Transition {
-        return Transition(presentables: [],
-                          animationInUse: animation?.presentationAnimation
+        Transition(presentables: [],
+                   animationInUse: animation?.presentationAnimation
         ) { rootViewController, options, completion in
             rootViewController.select(index: index,
                                       with: options,

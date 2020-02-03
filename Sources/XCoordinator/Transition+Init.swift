@@ -21,9 +21,7 @@ extension Transition {
     ///     The presentable to be shown as a primary view controller.
     ///
     public static func show(_ presentable: Presentable) -> Transition {
-        return Transition(presentables: [presentable],
-                          animationInUse: nil
-        ) { rootViewController, options, completion in
+        Transition(presentables: [presentable], animationInUse: nil) { rootViewController, options, completion in
             rootViewController.show(
                 presentable.viewController,
                 with: options
@@ -45,9 +43,7 @@ extension Transition {
     ///     The presentable to be shown as a detail view controller.
     ///
     public static func showDetail(_ presentable: Presentable) -> Transition {
-        return Transition(presentables: [presentable],
-                          animationInUse: nil
-        ) { rootViewController, options, completion in
+        Transition(presentables: [presentable], animationInUse: nil) { rootViewController, options, completion in
             rootViewController.showDetail(
                 presentable.viewController,
                 with: options
@@ -72,8 +68,8 @@ extension Transition {
     ///         the default UIKit animations.
     ///
     public static func presentOnRoot(_ presentable: Presentable, animation: Animation? = nil) -> Transition {
-        return Transition(presentables: [presentable],
-                          animationInUse: animation?.presentationAnimation
+        Transition(presentables: [presentable],
+                   animationInUse: animation?.presentationAnimation
         ) { rootViewController, options, completion in
             rootViewController.present(onRoot: true,
                                        presentable.viewController,
@@ -98,8 +94,8 @@ extension Transition {
     ///         the default UIKit animations.
     ///
     public static func present(_ presentable: Presentable, animation: Animation? = nil) -> Transition {
-        return Transition(presentables: [presentable],
-                          animationInUse: animation?.presentationAnimation
+        Transition(presentables: [presentable],
+                   animationInUse: animation?.presentationAnimation
         ) { rootViewController, options, completion in
             rootViewController.present(onRoot: false,
                                        presentable.viewController,
@@ -120,7 +116,7 @@ extension Transition {
     ///     - container: The container to embed the presentable in.
     ///
     public static func embed(_ presentable: Presentable, in container: Container) -> Transition {
-        return Transition(presentables: [presentable], animationInUse: nil) { rootViewController, options, completion in
+        Transition(presentables: [presentable], animationInUse: nil) { rootViewController, options, completion in
             rootViewController.embed(presentable.viewController,
                                      in: container,
                                      with: options
@@ -141,8 +137,8 @@ extension Transition {
     ///     default UIKit animations.
     ///
     public static func dismissToRoot(animation: Animation? = nil) -> Transition {
-        return Transition(presentables: [],
-                          animationInUse: animation?.dismissalAnimation
+        Transition(presentables: [],
+                   animationInUse: animation?.dismissalAnimation
         ) { rootViewController, options, completion in
             rootViewController.dismiss(toRoot: true,
                                        with: options,
@@ -161,8 +157,8 @@ extension Transition {
     ///     default UIKit animations.
     ///
     public static func dismiss(animation: Animation? = nil) -> Transition {
-        return Transition(presentables: [],
-                          animationInUse: animation?.dismissalAnimation
+        Transition(presentables: [],
+                   animationInUse: animation?.dismissalAnimation
         ) { rootViewController, options, completion in
             rootViewController.dismiss(toRoot: false,
                                        with: options,
@@ -176,7 +172,7 @@ extension Transition {
     /// routes.
     ///
     public static func none() -> Transition {
-        return Transition(presentables: [], animationInUse: nil) { _, _, completion in
+        Transition(presentables: [], animationInUse: nil) { _, _, completion in
             completion?()
         }
     }
@@ -188,8 +184,8 @@ extension Transition {
     ///     The transitions to be chained to form the new transition.
     ///
     public static func multiple<C: Collection>(_ transitions: C) -> Transition where C.Element == Transition {
-        return Transition(presentables: transitions.flatMap { $0.presentables },
-                          animationInUse: transitions.compactMap { $0.animation }.last
+        Transition(presentables: transitions.flatMap { $0.presentables },
+                   animationInUse: transitions.compactMap { $0.animation }.last
         ) { rootViewController, options, completion in
             guard let firstTransition = transitions.first else {
                 completion?()
@@ -232,7 +228,7 @@ extension Transition {
     ///     - router: The router to trigger the route on.
     ///
     public static func trigger<R: Router>(_ route: R.RouteType, on router: R) -> Transition {
-        return Transition(presentables: [], animationInUse: nil) { _, options, completion in
+        Transition(presentables: [], animationInUse: nil) { _, options, completion in
             router.trigger(route, with: options, completion: completion)
         }
     }
@@ -248,9 +244,7 @@ extension Transition {
     ///
     public static func perform<TransitionType: TransitionProtocol>(_ transition: TransitionType,
                                                                    on viewController: TransitionType.RootViewController) -> Transition {
-        return Transition(presentables: transition.presentables,
-                          animationInUse: transition.animation
-        ) { _, options, completion in
+        Transition(presentables: transition.presentables, animationInUse: transition.animation) { _, options, completion in
             transition.perform(on: viewController, with: options, completion: completion)
         }
     }

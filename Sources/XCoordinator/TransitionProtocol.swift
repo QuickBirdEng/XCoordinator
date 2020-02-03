@@ -49,7 +49,7 @@ extension TransitionProtocol {
     ///     The transitions to be chained to form a combined transition.
     ///
     public static func multiple(_ transitions: Self...) -> Self {
-        return multiple(transitions)
+        multiple(transitions)
     }
 
 }

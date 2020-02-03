@@ -45,9 +45,7 @@ extension Transition where RootViewController: UIPageViewController {
     }
 
     static func initial(pages: [Presentable]) -> Transition {
-        return Transition(presentables: pages,
-                          animationInUse: nil
-        ) { rootViewController, _, completion in
+        Transition(presentables: pages, animationInUse: nil) { rootViewController, _, completion in
             CATransaction.begin()
             CATransaction.setCompletionBlock {
                 pages.forEach { $0.presented(from: rootViewController) }

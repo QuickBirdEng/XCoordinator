@@ -45,7 +45,7 @@ extension TabBarAnimationDelegate: UITabBarControllerDelegate {
     open func tabBarController(_ tabBarController: UITabBarController,
                                interactionControllerFor animationController: UIViewControllerAnimatedTransitioning
         ) -> UIViewControllerInteractiveTransitioning? {
-        return (animationController as? TransitionAnimation)?.interactionController
+        (animationController as? TransitionAnimation)?.interactionController
             ?? delegate?.tabBarController?(tabBarController, interactionControllerFor: animationController)
     }
 
@@ -65,7 +65,7 @@ extension TabBarAnimationDelegate: UITabBarControllerDelegate {
     open func tabBarController(_ tabBarController: UITabBarController,
                                animationControllerForTransitionFrom fromVC: UIViewController,
                                to toVC: UIViewController) -> UIViewControllerAnimatedTransitioning? {
-        return toVC.transitioningDelegate?.animationController?(forPresented: toVC, presenting: tabBarController, source: fromVC)
+        toVC.transitioningDelegate?.animationController?(forPresented: toVC, presenting: tabBarController, source: fromVC)
             ?? delegate?.tabBarController?(tabBarController, animationControllerForTransitionFrom: fromVC, to: toVC)
     }
 
@@ -99,7 +99,7 @@ extension TabBarAnimationDelegate: UITabBarControllerDelegate {
     ///
     open func tabBarController(_ tabBarController: UITabBarController,
                                shouldSelect viewController: UIViewController) -> Bool {
-        return delegate?.tabBarController?(tabBarController, shouldSelect: viewController) ?? true
+        delegate?.tabBarController?(tabBarController, shouldSelect: viewController) ?? true
     }
 
     ///
@@ -150,6 +150,6 @@ extension TabBarAnimationDelegate: UITabBarControllerDelegate {
 
 extension UITabBarController {
     internal var animationDelegate: TabBarAnimationDelegate? {
-        return delegate as? TabBarAnimationDelegate
+        delegate as? TabBarAnimationDelegate
     }
 }

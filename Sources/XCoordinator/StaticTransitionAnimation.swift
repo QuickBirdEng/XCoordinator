@@ -27,7 +27,7 @@ open class StaticTransitionAnimation: NSObject, TransitionAnimation {
     // MARK: Computed properties
 
     open var interactionController: PercentDrivenInteractionController? {
-        return self as? PercentDrivenInteractionController
+        self as? PercentDrivenInteractionController
     }
 
     // MARK: Initialization
@@ -61,7 +61,7 @@ open class StaticTransitionAnimation: NSObject, TransitionAnimation {
     ///     The duration of the animation as specified in the initializer.
     ///
     open func transitionDuration(using transitionContext: UIViewControllerContextTransitioning?) -> TimeInterval {
-        return duration
+        duration
     }
 
     ///

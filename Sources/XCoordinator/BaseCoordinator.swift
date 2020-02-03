@@ -39,7 +39,7 @@ open class BaseCoordinator<RouteType: Route, TransitionType: TransitionProtocol>
     public private(set) var rootViewController: RootViewController
     
     open var viewController: UIViewController! {
-        return rootViewController
+        rootViewController
     }
 
     // MARK: Initialization
@@ -109,7 +109,7 @@ open class BaseCoordinator<RouteType: Route, TransitionType: TransitionProtocol>
     
     @available(iOS, unavailable, message: "Please specify the rootViewController in the initializer of your coordinator instead.")
     open func generateRootViewController() -> RootViewController {
-        return .init()
+        .init()
     }
 
     // MARK: Private methods
@@ -146,7 +146,7 @@ extension Presentable {
 extension UIViewController {
 
     fileprivate var isInViewHierarchy: Bool {
-        return isBeingPresented
+        isBeingPresented
             || presentingViewController != nil
             || presentedViewController != nil
             || parent != nil

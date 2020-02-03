@@ -95,7 +95,7 @@ extension Router where Self: Presentable {
     /// The original router will be held strongly.
     ///
     public var strongRouter: StrongRouter<RouteType> {
-        return StrongRouter(self)
+        StrongRouter(self)
     }
 
     ///
@@ -110,6 +110,6 @@ extension Router where Self: Presentable {
     ///     otherwise `nil`.
     ///
     public func router<R: Route>(for route: R) -> StrongRouter<R>? {
-        return strongRouter as? StrongRouter<R>
+        strongRouter as? StrongRouter<R>
     }
 }

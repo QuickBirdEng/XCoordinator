@@ -16,7 +16,7 @@ extension Router {
     /// Use this to access the reactive extensions of `Router` objects.
     public var rx: Reactive<Self> {
         // swiftlint:disable:previous identifier_name
-        return Reactive(self)
+        Reactive(self)
     }
 }
 
@@ -35,7 +35,7 @@ extension Reactive where Base: Router {
     ///     An observable informing about the completion of the transition.
     ///
     public func trigger(_ route: Base.RouteType, with options: TransitionOptions) -> Observable<Void> {
-        return Observable.create { [base] observer -> Disposable in
+        Observable.create { [base] observer -> Disposable in
             base.trigger(route, with: options) {
                 observer.onNext(())
                 observer.onCompleted()
@@ -58,7 +58,7 @@ extension Reactive where Base: Router {
     ///     An observable informing about the completion of the transition.
     ///
     public func trigger(_ route: Base.RouteType) -> Observable<Void> {
-        return trigger(route, with: TransitionOptions(animated: true))
+        trigger(route, with: TransitionOptions(animated: true))
     }
 }
 

@@ -22,7 +22,7 @@ public typealias WeakRouter<RouteType: Route> = WeakErased<StrongRouter<RouteTyp
 extension WeakErased: Presentable where Value: Presentable {
 
     public var viewController: UIViewController! {
-        return wrappedValue?.viewController
+        wrappedValue?.viewController
     }
 
     public func childTransitionCompleted() {
