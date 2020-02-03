@@ -57,6 +57,7 @@ open class NavigationCoordinator<RouteType: Route>: BaseCoordinator<RouteType, N
             rootViewController.delegate = animationDelegate
         }
         super.init(rootViewController: rootViewController, initialRoute: initialRoute)
+        animationDelegate.presentable = self
     }
 
     ///
@@ -70,6 +71,7 @@ open class NavigationCoordinator<RouteType: Route>: BaseCoordinator<RouteType, N
             rootViewController.delegate = animationDelegate
         }
         super.init(rootViewController: rootViewController, initialTransition: .push(root))
+        animationDelegate.presentable = self
     }
 
 }

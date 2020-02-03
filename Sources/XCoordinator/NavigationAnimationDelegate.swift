@@ -41,6 +41,7 @@ open class NavigationAnimationDelegate: NSObject {
     // MARK: Weak properties
 
     internal weak var delegate: UINavigationControllerDelegate?
+    internal weak var presentable: (Presentable & AnyObject)?
     private weak var navigationController: UINavigationController?
 
     // MARK: Helper methods
@@ -132,6 +133,7 @@ extension NavigationAnimationDelegate: UINavigationControllerDelegate {
     open func navigationController(_ navigationController: UINavigationController,
                                    didShow viewController: UIViewController, animated: Bool) {
         setupPopGestureRecognizer(for: navigationController)
+        presentable?.childTransitionCompleted()
         delegate?.navigationController?(navigationController, didShow: viewController, animated: animated)
     }
 
