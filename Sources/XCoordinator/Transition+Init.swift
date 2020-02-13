@@ -274,4 +274,31 @@ extension Coordinator where Self: AnyObject {
         }
     }
 
+    ///
+    /// Use this method to create a UIContextMenuInteractionDelegate to generate a preview
+    /// from a given route and perform the route when the preview is tapped.
+    ///
+    /// - Parameters:
+    ///     - route: The route to be triggered when the preview has been selected.
+    ///     - menu: The menu to be shown alongside the preview.
+    ///
+    @available(iOS 13.0, *)
+    public func contextMenuInteractionDelegate(
+        for route: RouteType,
+        identifier: NSCopying? = nil,
+        menu: UIMenu? = nil,
+        completion: PresentationHandler? = nil
+    ) -> UIContextMenuInteractionDelegate {
+
+        CoordinatorContextMenuInteractionDelegate(
+            identifier: identifier,
+            transition: { [weak self] in
+                self?.prepareTransition(for: route) ?? .multiple()
+            },
+            rootViewController: rootViewController,
+            menu: menu,
+            completion: completion
+        )
+    }
+
 }
