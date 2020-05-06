@@ -23,9 +23,6 @@
 /* Begin PBXBuildFile section */
 		7FB0FCAE246310EC0048C8C2 /* RxSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 7FB0FCAD246310EC0048C8C2 /* RxSwift */; };
 		7FB0FCB0246310EC0048C8C2 /* RxTest in Frameworks */ = {isa = PBXBuildFile; productRef = 7FB0FCAF246310EC0048C8C2 /* RxTest */; };
-		7FB0FCB2246310EC0048C8C2 /* RxRelay in Frameworks */ = {isa = PBXBuildFile; productRef = 7FB0FCB1246310EC0048C8C2 /* RxRelay */; };
-		7FB0FCB4246310EC0048C8C2 /* RxCocoa in Frameworks */ = {isa = PBXBuildFile; productRef = 7FB0FCB3246310EC0048C8C2 /* RxCocoa */; };
-		7FB0FCB6246310EC0048C8C2 /* RxBlocking in Frameworks */ = {isa = PBXBuildFile; productRef = 7FB0FCB5246310EC0048C8C2 /* RxBlocking */; };
 		OBJ_405 /* Animation.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_9 /* Animation.swift */; };
 		OBJ_406 /* AnyCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_10 /* AnyCoordinator.swift */; };
 		OBJ_407 /* AnyTransitionPerformer.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_11 /* AnyTransitionPerformer.swift */; };
@@ -212,11 +209,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 0;
 			files = (
-				7FB0FCB2246310EC0048C8C2 /* RxRelay in Frameworks */,
 				7FB0FCAE246310EC0048C8C2 /* RxSwift in Frameworks */,
-				7FB0FCB4246310EC0048C8C2 /* RxCocoa in Frameworks */,
 				OBJ_480 /* XCoordinator.framework in Frameworks */,
-				7FB0FCB6246310EC0048C8C2 /* RxBlocking in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -244,7 +238,7 @@
 			name = Products;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		OBJ_5 /*  */ = {
+		OBJ_5 = {
 			isa = PBXGroup;
 			children = (
 				OBJ_6 /* Package.swift */,
@@ -258,7 +252,6 @@
 				OBJ_236 /* LICENSE */,
 				OBJ_237 /* README.md */,
 			);
-			name = "";
 			sourceTree = "<group>";
 		};
 		OBJ_54 /* XCoordinatorCombine */ = {
@@ -430,9 +423,6 @@
 			name = XCoordinatorRx;
 			packageProductDependencies = (
 				7FB0FCAD246310EC0048C8C2 /* RxSwift */,
-				7FB0FCB1246310EC0048C8C2 /* RxRelay */,
-				7FB0FCB3246310EC0048C8C2 /* RxCocoa */,
-				7FB0FCB5246310EC0048C8C2 /* RxBlocking */,
 			);
 			productName = XCoordinatorRx;
 			productReference = "XCoordinator::XCoordinatorRx::Product" /* XCoordinatorRx.framework */;
@@ -475,7 +465,7 @@
 			knownRegions = (
 				en,
 			);
-			mainGroup = OBJ_5 /*  */;
+			mainGroup = OBJ_5;
 			packageReferences = (
 				7FB0FCAC246310EC0048C8C2 /* XCRemoteSwiftPackageReference "RxSwift" */,
 			);
@@ -1029,21 +1019,6 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 7FB0FCAC246310EC0048C8C2 /* XCRemoteSwiftPackageReference "RxSwift" */;
 			productName = RxTest;
-		};
-		7FB0FCB1246310EC0048C8C2 /* RxRelay */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 7FB0FCAC246310EC0048C8C2 /* XCRemoteSwiftPackageReference "RxSwift" */;
-			productName = RxRelay;
-		};
-		7FB0FCB3246310EC0048C8C2 /* RxCocoa */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 7FB0FCAC246310EC0048C8C2 /* XCRemoteSwiftPackageReference "RxSwift" */;
-			productName = RxCocoa;
-		};
-		7FB0FCB5246310EC0048C8C2 /* RxBlocking */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 7FB0FCAC246310EC0048C8C2 /* XCRemoteSwiftPackageReference "RxSwift" */;
-			productName = RxBlocking;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
