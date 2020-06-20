@@ -126,6 +126,47 @@ extension Transition {
             }
         }
     }
+    
+    ///
+    /// Transition to embed the given presentable in a specific container (i.e. a view or viewController).
+    ///
+    /// - Parameters:
+    ///     - presentable: The presentable to be embedded.
+    ///     - container: The container to embed the presentable in.
+    ///     - animation: The animation to be used by the rootViewController's presentedViewController.
+    ///     Specify `nil` to not override its transitioningDelegate or `Animation.default` to fall back to the
+    ///     default UIKit animations.
+    ///
+    public static func embed(_ presentable: Presentable, in container: Container, animation: TransitionAnimation?) -> Transition {
+        Transition(presentables: [presentable], animationInUse: animation) { rootViewController, options, completion in
+            rootViewController.embed(presentable.viewController,
+                                     in: container,
+                                     with: options
+            ) {
+                presentable.presented(from: rootViewController)
+                completion?()
+            }
+        }
+    }
+    
+    ///
+       /// Transition to unembed the given presentable in a specific container (i.e. a view or viewController).
+       ///
+       /// - Parameters:
+       ///     - presentable: The presentable to be unembedded.
+       ///     - container: The container to unembed the presentable from.
+       ///     - animation: The animation to be used by the rootViewController's presentedViewController.
+       ///     Specify `nil` to not override its transitioningDelegate or `Animation.default` to fall back to the
+       ///     default UIKit animations.
+       ///
+    public static func unembed(_ presentable: Presentable, animation: TransitionAnimation?) -> Transition {
+           Transition(presentables: [presentable], animationInUse: animation) { rootViewController, options, completion in
+               
+               rootViewController.unembed(presentable.viewController, with: options) {
+                   completion?()
+               }
+           }
+       }
 
     ///
     /// Transition to call dismiss on the rootViewController. Also take a look at the `dismiss` transition,

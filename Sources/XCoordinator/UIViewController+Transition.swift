@@ -95,6 +95,17 @@ extension UIViewController {
 
         completion?()
     }
+    
+   func unembed(_ viewController: UIViewController,
+                  with options: TransitionOptions,
+                 completion: PresentationHandler?) {
+        
+        viewController.willMove(toParent: nil)
+        viewController.view.removeFromSuperview()
+        viewController.removeFromParent()
+        
+        completion?()
+    }
 }
 
 extension Presentable where Self: UIViewController {
