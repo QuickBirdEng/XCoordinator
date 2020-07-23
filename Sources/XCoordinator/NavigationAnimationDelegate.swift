@@ -182,6 +182,10 @@ extension NavigationAnimationDelegate: UIGestureRecognizerDelegate {
         case navigationController?.interactivePopGestureRecognizer:
             let delegateAction = NavigationAnimationDelegate.interactivePopGestureRecognizerDelegateAction
 
+            if interactivePopGestureRecognizerDelegate == nil {
+                return true
+            }
+
             guard let delegate = interactivePopGestureRecognizerDelegate,
                 delegate.responds(to: delegateAction) else {
                     // swiftlint:disable:next line_length
