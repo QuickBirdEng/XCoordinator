@@ -188,11 +188,11 @@ extension NavigationAnimationDelegate: UIGestureRecognizerDelegate {
                     return false
             }
 
-            gestureRecognizer.removeTarget(nil, action: nil)
-
             if resetPopAnimation() != nil {
+                gestureRecognizer.removeTarget(nil, action: nil)
                 gestureRecognizer.addTarget(self, action: #selector(handleInteractivePopGestureRecognizer(_:)))
             } else if let interactivePopGestureRecognizerDelegate = interactivePopGestureRecognizerDelegate {
+                gestureRecognizer.removeTarget(nil, action: nil)
                 gestureRecognizer.addTarget(interactivePopGestureRecognizerDelegate, action: delegateAction)
             }
             return (navigationController?.viewControllers.count ?? 0) > 1
