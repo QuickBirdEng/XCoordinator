@@ -24,7 +24,7 @@ open class NavigationAnimationDelegate: NSObject {
     // MARK: Static properties
 
     // swiftlint:disable:next identifier_name
-    private static let interactivePopGestureRecognizerDelegateAction = Selector(("handleInteractivePopGestureRecognizer:"))
+    private static let interactivePopGestureRecognizerDelegateAction = Selector(("handleNavigationTransition:"))
 
     // MARK: Stored properties
 
