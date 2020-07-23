@@ -34,8 +34,6 @@ open class NavigationAnimationDelegate: NSObject {
     /// The transition progress threshold for the interactive pop transition to succeed
     open var transitionProgressThreshold: CGFloat { 0.5 }
 
-    // swiftlint:disable:next weak_delegate
-    private var interactivePopGestureRecognizerDelegate: UIGestureRecognizerDelegate?
     private var popAnimation: TransitionAnimation?
 
     // MARK: Weak properties
@@ -182,7 +180,7 @@ extension NavigationAnimationDelegate: UIGestureRecognizerDelegate {
         case navigationController?.interactivePopGestureRecognizer:
             let delegateAction = NavigationAnimationDelegate.interactivePopGestureRecognizerDelegateAction
 
-            guard let delegate = interactivePopGestureRecognizerDelegate,
+            guard let delegate = navigationController?.interactivePopGestureRecognizer?.delegate,
                 delegate.responds(to: delegateAction) else {
                     // swiftlint:disable:next line_length
                     assertionFailure("Please don't set a custom delegate on \(UINavigationController.self).\(#selector(getter: UINavigationController.interactivePopGestureRecognizer)).")
@@ -266,7 +264,6 @@ extension NavigationAnimationDelegate: UIGestureRecognizerDelegate {
             popRecognizer.delegate !== self else {
                 return
         }
-        interactivePopGestureRecognizerDelegate = popRecognizer.delegate
         popRecognizer.delegate = self
     }
 
