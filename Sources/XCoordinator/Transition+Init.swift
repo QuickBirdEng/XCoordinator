@@ -110,6 +110,7 @@ extension Transition {
 
     ///
     /// Transition to embed the given presentable in a specific container (i.e. a view or viewController).
+    /// Any other presentables previously embedded will be kept in memory, to remove them you can use `switchTo(_:in:)`.
     ///
     /// - Parameters:
     ///     - presentable: The presentable to be embedded.
@@ -125,6 +126,24 @@ extension Transition {
                 completion?()
             }
         }
+    }
+
+    ///
+    /// Transition to embed the given presentable in a specific container (i.e. a view or viewController)
+    /// and to release any other presentables that may be inside the container (effectively removing them from memory).
+    ///
+    /// - Parameters:
+    ///     - presentable: The presentable to be switched to.
+    ///     - container: The container to embed the presentable in.
+    ///
+    public static func switchTo(_ presentable: Presentable, in container: Container) -> Transition {
+        for viewController in container.viewController.children {
+            viewController.willMove(toParent: nil)
+            viewController.view.removeFromSuperview()
+            viewController.removeFromParent()
+        }
+
+        return embed(presentable, in: container)
     }
 
     ///
