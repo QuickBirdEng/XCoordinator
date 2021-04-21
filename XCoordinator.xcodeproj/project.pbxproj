@@ -218,10 +218,8 @@
 		OBJ_449 /* ViewCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_51 /* ViewCoordinator.swift */; };
 		OBJ_450 /* WeakErased+Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_52 /* WeakErased+Router.swift */; };
 		OBJ_451 /* WeakErased.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_53 /* WeakErased.swift */; };
-		OBJ_458 /* Router+Combine.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_55 /* Router+Combine.swift */; };
 		OBJ_460 /* XCoordinator.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = "XCoordinator::XCoordinator::Product" /* XCoordinator.framework */; };
 		OBJ_467 /* Package.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_6 /* Package.swift */; };
-		OBJ_479 /* Router+Rx.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_57 /* Router+Rx.swift */; };
 		OBJ_481 /* RxSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = "RxSwift::RxSwift::Product" /* RxSwift.framework */; };
 		OBJ_482 /* XCoordinator.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = "XCoordinator::XCoordinator::Product" /* XCoordinator.framework */; };
 		OBJ_489 /* AnimationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_61 /* AnimationTests.swift */; };
@@ -464,8 +462,6 @@
 		OBJ_51 /* ViewCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewCoordinator.swift; sourceTree = "<group>"; };
 		OBJ_52 /* WeakErased+Router.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "WeakErased+Router.swift"; sourceTree = "<group>"; };
 		OBJ_53 /* WeakErased.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeakErased.swift; sourceTree = "<group>"; };
-		OBJ_55 /* Router+Combine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Router+Combine.swift"; sourceTree = "<group>"; };
-		OBJ_57 /* Router+Rx.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Router+Rx.swift"; sourceTree = "<group>"; };
 		OBJ_6 /* Package.swift */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; path = Package.swift; sourceTree = "<group>"; };
 		OBJ_60 /* XCoordinatorTests.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; path = XCoordinatorTests.xctestplan; sourceTree = "<group>"; };
 		OBJ_61 /* AnimationTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimationTests.swift; sourceTree = "<group>"; };
@@ -590,24 +586,6 @@
 			);
 			sourceTree = "<group>";
 		};
-		OBJ_54 /* XCoordinatorCombine */ = {
-			isa = PBXGroup;
-			children = (
-				OBJ_55 /* Router+Combine.swift */,
-			);
-			name = XCoordinatorCombine;
-			path = Sources/XCoordinatorCombine;
-			sourceTree = SOURCE_ROOT;
-		};
-		OBJ_56 /* XCoordinatorRx */ = {
-			isa = PBXGroup;
-			children = (
-				OBJ_57 /* Router+Rx.swift */,
-			);
-			name = XCoordinatorRx;
-			path = Sources/XCoordinatorRx;
-			sourceTree = SOURCE_ROOT;
-		};
 		OBJ_58 /* Tests */ = {
 			isa = PBXGroup;
 			children = (
@@ -665,8 +643,6 @@
 			isa = PBXGroup;
 			children = (
 				OBJ_8 /* XCoordinator */,
-				OBJ_54 /* XCoordinatorCombine */,
-				OBJ_56 /* XCoordinatorRx */,
 			);
 			name = Sources;
 			sourceTree = SOURCE_ROOT;
@@ -1302,7 +1278,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 0;
 			files = (
-				OBJ_458 /* Router+Combine.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1318,7 +1293,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 0;
 			files = (
-				OBJ_479 /* Router+Rx.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1755,7 +1729,6 @@
 		OBJ_486 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CLANG_ENABLE_MODULES = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1780,7 +1753,6 @@
 		OBJ_487 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CLANG_ENABLE_MODULES = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
