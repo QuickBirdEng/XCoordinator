@@ -113,3 +113,54 @@ extension Router where Self: Presentable {
         strongRouter as? StrongRouter<R>
     }
 }
+
+@available(iOS 15.0, tvOS 15.0, *)
+extension Router {
+
+    ///
+    /// Triggers the specified route with default transition options enabling the animation of the transition.
+    ///
+    /// - Parameters:
+    ///     - route: The route to be triggered.
+    ///
+    public func trigger(_ route: RouteType) async {
+        await trigger(route, with: .default)
+    }
+
+    ///
+    /// Triggers the specified route by performing a transition.
+    ///
+    /// - Parameters:
+    ///     - route: The route to be triggered.
+    ///     - options: Transition options for performing the transition, e.g. whether it should be animated.
+    ///
+    public func trigger(_ route: RouteType, with options: TransitionOptions) async {
+        _ = await contextTrigger(route, with: options)
+    }
+
+    ///
+    /// Triggers routes and returns context in completion-handler.
+    ///
+    /// Useful for deep linking. It is encouraged to use `trigger` instead, if the context is not needed.
+    ///
+    /// - Parameters:
+    ///     - route: The route to be triggered.
+    ///     - options:
+    ///         Transition options configuring the execution of transitions, e.g. whether it should be animated.
+    ///     - completion:
+    ///         If present, this completion handler is executed once the transition is completed
+    ///         (including animations).
+    ///
+    /// - Returns:
+    ///     The transition context of the performed transition(s).
+    ///     If the context is not needed, use `trigger` instead.
+    ///
+    public func contextTrigger(_ route: RouteType, with options: TransitionOptions) async -> TransitionContext {
+        await withCheckedContinuation { continuation in
+            contextTrigger(route, with: options) { context in
+                continuation.resume(returning: context)
+            }
+        }
+    }
+
+}
