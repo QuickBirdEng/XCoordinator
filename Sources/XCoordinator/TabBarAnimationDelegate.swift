@@ -102,6 +102,8 @@ extension TabBarAnimationDelegate: UITabBarControllerDelegate {
         delegate?.tabBarController?(tabBarController, shouldSelect: viewController) ?? true
     }
 
+    #if !os(tvOS)
+
     ///
     /// See [UITabBarControllerDelegate](https://developer.apple.com/documentation/uikit/UITabBarControllerDelegate)
     /// for further reference.
@@ -146,6 +148,9 @@ extension TabBarAnimationDelegate: UITabBarControllerDelegate {
                                willEndCustomizing viewControllers: [UIViewController], changed: Bool) {
         delegate?.tabBarController?(tabBarController, willEndCustomizing: viewControllers, changed: changed)
     }
+
+    #endif
+
 }
 
 extension UITabBarController {

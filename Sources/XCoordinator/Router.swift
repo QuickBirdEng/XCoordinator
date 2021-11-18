@@ -83,6 +83,7 @@ extension Router {
             contextTrigger(route, with: options) { _ in completion?() }
         }
     }
+
 }
 
 extension Router {
@@ -112,6 +113,7 @@ extension Router {
     public func router<R: Route>(for route: R) -> StrongRouter<R>? {
         strongRouter as? StrongRouter<R>
     }
+
 }
 
 #if swift(>=5.5.2)

@@ -132,7 +132,9 @@ extension NavigationAnimationDelegate: UINavigationControllerDelegate {
     ///
     open func navigationController(_ navigationController: UINavigationController,
                                    didShow viewController: UIViewController, animated: Bool) {
+        #if !os(tvOS)
         setupPopGestureRecognizer(for: navigationController)
+        #endif
         presentable?.childTransitionCompleted()
         delegate?.navigationController?(navigationController, didShow: viewController, animated: animated)
     }
@@ -152,6 +154,8 @@ extension NavigationAnimationDelegate: UINavigationControllerDelegate {
         delegate?.navigationController?(navigationController, willShow: viewController, animated: animated)
     }
 }
+
+#if !os(tvOS)
 
 // MARK: - UIGestureRecognizerDelegate
 
@@ -270,6 +274,8 @@ extension NavigationAnimationDelegate: UIGestureRecognizerDelegate {
     }
 
 }
+
+#endif
 
 extension UINavigationController {
     internal var animationDelegate: NavigationAnimationDelegate? {
