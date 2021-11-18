@@ -182,19 +182,18 @@ extension NavigationAnimationDelegate: UIGestureRecognizerDelegate {
         case navigationController?.interactivePopGestureRecognizer:
             let delegateAction = NavigationAnimationDelegate.interactivePopGestureRecognizerDelegateAction
 
-            guard let delegate = interactivePopGestureRecognizerDelegate,
-                delegate.responds(to: delegateAction) else {
+            guard interactivePopGestureRecognizerDelegate?.responds(to: delegateAction) ?? true else {
                     // swiftlint:disable:next line_length
                     assertionFailure("Please don't set a custom delegate on \(UINavigationController.self).\(#selector(getter: UINavigationController.interactivePopGestureRecognizer)).")
                     return false
             }
 
-            gestureRecognizer.removeTarget(nil, action: nil)
-
             if resetPopAnimation() != nil {
+                gestureRecognizer.removeTarget(nil, action: nil)
                 gestureRecognizer.addTarget(self, action: #selector(handleInteractivePopGestureRecognizer(_:)))
-            } else {
-                gestureRecognizer.addTarget(delegate, action: delegateAction)
+            } else if let interactivePopGestureRecognizerDelegate = interactivePopGestureRecognizerDelegate {
+                gestureRecognizer.removeTarget(nil, action: nil)
+                gestureRecognizer.addTarget(interactivePopGestureRecognizerDelegate, action: delegateAction)
             }
             return (navigationController?.viewControllers.count ?? 0) > 1
         default:
