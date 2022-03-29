@@ -72,7 +72,7 @@ extension Coordinator {
     }
 }
 
-extension Coordinator where Self: Presentable & AnyObject {
+extension Coordinator where Self: AnyObject {
 
     ///
     /// Creates a WeakRouter object from the given router to abstract from concrete implementations
