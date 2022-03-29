@@ -1,6 +1,6 @@
 Pod::Spec.new do |spec|
     spec.name         = 'XCoordinator'
-    spec.version      = '2.1.0'
+    spec.version      = '2.2.0'
     spec.license      = { :type => 'MIT' }
     spec.homepage     = 'https://github.com/quickbirdstudios/XCoordinator'
     spec.authors      = { 'Stefan Kofler' => 'stefan.kofler@quickbirdstudios.com', 'Paul Kraft' => 'pauljohannes.kraft@quickbirdstudios.com' }
@@ -9,6 +9,7 @@ Pod::Spec.new do |spec|
     spec.module_name = 'XCoordinator'
     spec.swift_version = '5.1'
     spec.ios.deployment_target = '9.0'
+    spec.tvos.deployment_target = '9.0'
     spec.source_files = 'Sources/XCoordinator/*.swift'
     spec.default_subspec = 'Core'
 
