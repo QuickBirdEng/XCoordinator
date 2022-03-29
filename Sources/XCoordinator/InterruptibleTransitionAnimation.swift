@@ -12,7 +12,7 @@ import UIKit
 /// [UIViewPropertyAnimator](https://developer.apple.com/documentation/uikit/UIViewPropertyAnimator)
 /// APIs introduced in iOS 10.
 ///
-@available(iOS 10.0, *)
+@available(iOS 10.0, tvOS 10.0, *)
 open class InterruptibleTransitionAnimation: InteractiveTransitionAnimation {
 
     // MARK: Stored properties

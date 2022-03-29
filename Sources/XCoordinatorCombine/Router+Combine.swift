@@ -16,22 +16,33 @@ public struct PublisherExtension<Base> {
 }
 
 extension Router {
+
     public var publishers: PublisherExtension<Self> {
         .init(base: self)
     }
-}
 
-@available(iOS 13.0, *)
-extension PublisherExtension where Base: Router {
-
-    public func trigger(_ route: Base.RouteType,
-                        with options: TransitionOptions = .init(animated: true)
-        ) -> Future<Void, Never> {
+    @available(iOS 13.0, tvOS 13.0, *)
+    public func triggerPublisher(
+        _ route: RouteType,
+        with options: TransitionOptions = .init(animated: true)
+    ) -> Future<Void, Never> {
         Future { completion in
-            self.base.trigger(route, with: options) {
+            self.trigger(route, with: options) {
                 completion(.success(()))
             }
         }
+    }
+
+}
+
+@available(iOS 13.0, tvOS 13.0, *)
+extension PublisherExtension where Base: Router {
+
+    public func trigger(
+        _ route: Base.RouteType,
+        with options: TransitionOptions = .init(animated: true)
+    ) -> Future<Void, Never> {
+        base.triggerPublisher(route, with: options)
     }
 
 }
