@@ -114,7 +114,9 @@ extension Router {
     }
 }
 
-@available(iOS 15.0, tvOS 15.0, *)
+#if swift(>=5.5.2)
+
+@available(iOS 13.0, tvOS 13.0, *)
 extension Router {
 
     ///
@@ -164,3 +166,5 @@ extension Router {
     }
 
 }
+
+#endif
