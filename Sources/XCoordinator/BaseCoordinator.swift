@@ -193,7 +193,7 @@ extension BaseCoordinator {
     ///         The closure to be called whenever the transition completes.
     ///         Hint: Might be called multiple times but only once per performing the transition.
     ///
-    open func registerInteractiveTransition<GestureRecognizer: UIGestureRecognizer>(
+    public func registerInteractiveTransition<GestureRecognizer: UIGestureRecognizer>(
         for route: RouteType,
         triggeredBy recognizer: GestureRecognizer,
         handler: @escaping (_ handlerRecognizer: GestureRecognizer, _ transition: () -> TransitionAnimation?) -> Void,
@@ -238,7 +238,7 @@ extension BaseCoordinator {
     ///         The closure to be called whenever the transition completes.
     ///         Hint: Might be called multiple times but only once per performing the transition.
     ///
-    open func registerInteractiveTransition<GestureRecognizer: UIGestureRecognizer>(
+    public func registerInteractiveTransition<GestureRecognizer: UIGestureRecognizer>(
         for route: RouteType,
         triggeredBy recognizer: GestureRecognizer,
         progress: @escaping (GestureRecognizer) -> CGFloat,
@@ -287,7 +287,7 @@ extension BaseCoordinator {
     ///     The recognizer to unregister interactive transitions for.
     ///     This method will unregister all interactive transitions with that gesture recognizer.
     ///
-    open func unregisterInteractiveTransitions(triggeredBy recognizer: UIGestureRecognizer) {
+    public func unregisterInteractiveTransitions(triggeredBy recognizer: UIGestureRecognizer) {
         gestureRecognizerTargets.removeAll { target in
             guard target.gestureRecognizer === recognizer else { return false }
             recognizer.removeTarget(target, action: nil)
