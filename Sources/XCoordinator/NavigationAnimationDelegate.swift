@@ -263,7 +263,7 @@ extension NavigationAnimationDelegate: UIGestureRecognizerDelegate {
     ///
     /// - Parameter navigationController: The navigation controller to be set up.
     ///
-    open func setupPopGestureRecognizer(for navigationController: UINavigationController) {
+    public func setupPopGestureRecognizer(for navigationController: UINavigationController) {
         self.navigationController = navigationController
         guard let popRecognizer = navigationController.interactivePopGestureRecognizer,
             popRecognizer.delegate !== self else {
