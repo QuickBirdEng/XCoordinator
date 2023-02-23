@@ -24,13 +24,13 @@ internal class Target<GestureRecognizer: UIGestureRecognizer>: GestureRecognizer
         self.handler = handler
         self.gestureRecognizer = gestureRecognizer
         // The method signature "handle(_ gestureRecognizer: UIGestureRecognizer)" is in conflict with validation Apple, use another name : "handleMyGesture"
-        gestureRecognizer.addTarget(self, action: #selector(handleMyGesture))
+        gestureRecognizer.addTarget(self, action: #selector(handleGesture(of: )))
     }
 
     // MARK: Target actions
 
     @objc
-    private func handleMyGesture(_ gestureRecognizer: UIGestureRecognizer) {
+    private func handleGesture(of gestureRecognizer: UIGestureRecognizer) {
         guard let recognizer = gestureRecognizer as? GestureRecognizer else { return }
         handler(recognizer)
     }
