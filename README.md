@@ -1,8 +1,8 @@
 <p align="center">
-  <img src="https://quickbirdstudios.com/files/xcoordinator/logo.png">
+  <img src="https://user-images.githubusercontent.com/15239005/221913790-9c2b89fc-7497-49a1-9087-c3277f3ab4f2.png">
 </p>
 
-# [![Build Status](https://travis-ci.com/quickbirdstudios/XCoordinator.svg?branch=master)](https://travis-ci.com/quickbirdstudios/XCoordinator) [![CocoaPods Compatible](https://img.shields.io/cocoapods/v/XCoordinator.svg)](https://cocoapods.org/pods/XCoordinator) [![Carthage Compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage) [![Documentation](https://img.shields.io/badge/documentation-100%25-brightgreen)](https://quickbirdstudios.github.io/XCoordinator) [![Platform](https://img.shields.io/badge/platform-iOS-lightgrey.svg)](https://github.com/quickbirdstudios/XCoordinator) [![License](https://img.shields.io/cocoapods/l/XCoordinator.svg)](https://github.com/quickbirdstudios/XCoordinator/blob/master/LICENSE)
+# [![Build Status](https://travis-ci.com/quickbirdstudios/XCoordinator.svg?branch=master)](https://travis-ci.com/quickbirdstudios/XCoordinator) [![CocoaPods Compatible](https://img.shields.io/cocoapods/p/XCoordinator)](https://cocoapods.org/pods/XCoordinator) [![Carthage Compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage) [![Documentation](https://img.shields.io/badge/documentation-100%25-brightgreen)](https://quickbirdstudios.github.io/XCoordinator) [![Platform](https://img.shields.io/badge/platform-iOS-lightgrey.svg)](https://github.com/quickbirdstudios/XCoordinator) [![License](https://img.shields.io/cocoapods/l/XCoordinator.svg)](https://github.com/quickbirdstudios/XCoordinator/blob/master/LICENSE)
 
 ⚠️ We have recently released XCoordinator 2.0. Make sure to read [this section](#when-to-use-which-router-abstraction) before migrating. In general, please replace all `AnyRouter` by either `UnownedRouter` (in viewControllers, viewModels or references to parent coordinators) or `StrongRouter` in your `AppDelegate` or for references to child coordinators. In addition to that, the rootViewController is now injected into the initializer instead of being created in the `Coordinator.generateRootViewController` method.
 
@@ -13,7 +13,7 @@ To better answer the question, we are building **XCoordinator**, a navigation fr
 It's especially useful for implementing MVVM-C, Model-View-ViewModel-Coordinator:
 
 <p align="center">
-  <img src="https://quickbirdstudios.com/files/xcoordinator/mvvmc.png">
+  <img src="https://user-images.githubusercontent.com/15239005/221913797-1ebf0fc8-36d5-4a93-b6da-0a86b6105e6a.png">
 </p>
 
 ## 🏃‍♂️Getting started
