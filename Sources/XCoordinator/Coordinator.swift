@@ -23,6 +23,13 @@ public typealias ContextPresentationHandler = (TransitionContext) -> Void
 public protocol Coordinator: Router, TransitionPerformer {
 
     ///
+    /// The child coordinators that are currently in the view hierarchy.
+    /// When performing a transition, children are automatically added and removed from this array
+    /// depending on whether they are in the view hierarchy.
+    ///
+    var children: [Presentable] { get }
+    
+    ///
     /// This method prepares transitions for routes.
     /// It especially decides, which transitions are performed for the triggered routes.
     ///

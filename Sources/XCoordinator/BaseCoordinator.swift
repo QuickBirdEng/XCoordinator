@@ -27,11 +27,6 @@ open class BaseCoordinator<RouteType: Route, TransitionType: TransitionProtocol>
     private var removeParentChildren: () -> Void = {}
     private var gestureRecognizerTargets = [GestureRecognizerTarget]()
     
-    ///
-    /// The child coordinators that are currently in the view hierarchy.
-    /// When performing a transition, children are automatically added and removed from this array
-    /// depending on whether they are in the view hierarchy.
-    ///
     public private(set) var children = [Presentable]()
 
     // MARK: Computed properties
