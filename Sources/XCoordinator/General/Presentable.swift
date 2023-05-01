@@ -95,6 +95,14 @@ extension Presentable {
     }
 
     public func presented(from presentable: (any Presentable)?) {}
+
+    ///
+    /// Returns the value as an `any Presentable`.
+    ///
+    /// This might be useful when getting an error "Runtime support for parameterized protocol types is only available in iOS 16.0.0 or newer" to still use these objects in transitions.
+    ///
+    public var asPresentable: any Presentable { self }
+
 }
 
 extension UIViewController: Presentable {
