@@ -45,7 +45,7 @@ public struct Transition<RootViewController: UIViewController>: TransitionProtoc
 
     // MARK: Stored properties
 
-    private var _presentables: [Presentable]
+    private var _presentables: [any Presentable]
     private var _animation: TransitionAnimation?
     private var _perform: PerformClosure
 
@@ -55,7 +55,7 @@ public struct Transition<RootViewController: UIViewController>: TransitionProtoc
     /// The presentables this transition is putting into the view hierarchy. This is especially useful for
     /// deep-linking.
     ///
-    public var presentables: [Presentable] {
+    public var presentables: [any Presentable] {
         _presentables
     }
 
@@ -91,7 +91,7 @@ public struct Transition<RootViewController: UIViewController>: TransitionProtoc
     ///         To create custom transitions, make sure to call the completion handler after all animations are done.
     ///         If applicable, make sure to use the TransitionOptions to, e.g., decide whether a transition should be animated or not.
     ///
-    public init(presentables: [Presentable], animationInUse: TransitionAnimation?, perform: @escaping PerformClosure) {
+    public init(presentables: [any Presentable], animationInUse: TransitionAnimation?, perform: @escaping PerformClosure) {
         self._presentables = presentables
         self._animation = animationInUse
         self._perform = perform

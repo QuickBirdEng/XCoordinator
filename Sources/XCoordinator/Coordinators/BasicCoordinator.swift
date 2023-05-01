@@ -87,7 +87,7 @@ open class BasicCoordinator<RouteType: Route, TransitionType: TransitionProtocol
     /// - Parameter presentable:
     ///     The context in which this coordinator has been shown to the user.
     ///
-    open override func presented(from presentable: Presentable?) {
+    open override func presented(from presentable: (any Presentable)?) {
         super.presented(from: presentable)
 
         if let initialRoute = initialRoute, initialLoadingType == .presented {

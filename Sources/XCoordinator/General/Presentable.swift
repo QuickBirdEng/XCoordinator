@@ -44,7 +44,7 @@ public protocol Presentable {
     ///     This could be a window, another viewController, a coordinator, etc.
     ///     `nil` is specified whenever a context cannot be easily determined.
     ///
-    func presented(from presentable: Presentable?)
+    func presented(from presentable: (any Presentable)?)
     
     ///
     /// This method is used to register a parent coordinator to a child coordinator.
@@ -52,7 +52,7 @@ public protocol Presentable {
     /// - Note:
     ///     This method is used internally and should never be called directly.
     ///
-    func registerParent(_ presentable: Presentable & AnyObject)
+    func registerParent(_ presentable: any Presentable & AnyObject)
     
     ///
     /// This method gets called when the transition of a child coordinator is being reported to its parent.
@@ -76,7 +76,7 @@ public protocol Presentable {
 
 extension Presentable {
     
-    public func registerParent(_ presentable: Presentable & AnyObject) {}
+    public func registerParent(_ presentable: any Presentable & AnyObject) {}
 
     public func childTransitionCompleted() {}
 
@@ -94,7 +94,7 @@ extension Presentable {
         }
     }
 
-    public func presented(from presentable: Presentable?) {}
+    public func presented(from presentable: (any Presentable)?) {}
 }
 
 extension UIViewController: Presentable {

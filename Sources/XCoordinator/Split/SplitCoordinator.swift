@@ -34,7 +34,7 @@ open class SplitCoordinator<RouteType: Route>: BaseCoordinator<RouteType, SplitT
     ///         The presentable to be shown as secondary in the `UISplitViewController`. This is optional due to
     ///         the fact that it might not be useful to have a detail page right away on a small-screen device.
     ///
-    public init(rootViewController: RootViewController = .init(), primary: Presentable, secondary: Presentable?, supplementary: Presentable? = nil) {
+    public init(rootViewController: RootViewController = .init(), primary: any Presentable, secondary: (any Presentable)?, supplementary: (any Presentable)? = nil) {
         super.init(rootViewController: rootViewController,
                    initialTransition: .set([primary, secondary, supplementary].compactMap { $0 }))
     }

@@ -66,7 +66,7 @@ open class NavigationCoordinator<RouteType: Route>: BaseCoordinator<RouteType, N
     /// - Parameter root:
     ///     The presentable to be pushed.
     ///
-    public init(rootViewController: RootViewController = .init(), root: Presentable) {
+    public init(rootViewController: RootViewController = .init(), root: any Presentable) {
         if rootViewController.delegate == nil {
             rootViewController.delegate = animationDelegate
         }

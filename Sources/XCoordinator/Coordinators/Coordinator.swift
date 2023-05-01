@@ -40,7 +40,7 @@ public protocol Coordinator: Router, TransitionPerformer {
     /// - Parameter presentable:
     ///     The child to be added.
     ///
-    func addChild(_ presentable: Presentable)
+    func addChild(_ presentable: any Presentable)
     
     ///
     /// This method removes a child to a coordinator's children.
@@ -48,7 +48,7 @@ public protocol Coordinator: Router, TransitionPerformer {
     /// - Parameter presentable:
     ///     The child to be removed.
     ///
-    func removeChild(_ presentable: Presentable)
+    func removeChild(_ presentable: any Presentable)
     
     /// This method removes all children that are no longer in the view hierarchy.
     func removeChildrenIfNeeded()
@@ -76,7 +76,7 @@ extension Coordinator {
 
 extension Coordinator where Self: AnyObject {
 
-    public func presented(from presentable: Presentable?) {}
+    public func presented(from presentable: (any Presentable)?) {}
     
     public func childTransitionCompleted() {
         removeChildrenIfNeeded()

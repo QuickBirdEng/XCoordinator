@@ -28,7 +28,7 @@ extension Transition where RootViewController: UIPageViewController {
     ///     - direction:
     ///         The direction in which the transition should be animated.
     ///
-    public static func set(_ first: Presentable, _ second: Presentable? = nil,
+    public static func set(_ first: any Presentable, _ second: (any Presentable)? = nil,
                            direction: UIPageViewController.NavigationDirection) -> Transition {
         let presentables = [first, second].compactMap { $0 }
         return Transition(presentables: presentables,
@@ -44,7 +44,7 @@ extension Transition where RootViewController: UIPageViewController {
         }
     }
 
-    static func initial(pages: [Presentable]) -> Transition {
+    static func initial(pages: [any Presentable]) -> Transition {
         Transition(presentables: pages, animationInUse: nil) { rootViewController, _, completion in
             CATransaction.begin()
             CATransaction.setCompletionBlock {

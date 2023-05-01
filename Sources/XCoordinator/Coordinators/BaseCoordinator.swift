@@ -32,7 +32,7 @@ open class BaseCoordinator<RouteType: Route, TransitionType: TransitionProtocol>
     /// When performing a transition, children are automatically added and removed from this array
     /// depending on whether they are in the view hierarchy.
     ///
-    public private(set) var children = [Presentable]()
+    public private(set) var children = [any Presentable]()
 
     // MARK: Computed properties
 
@@ -72,19 +72,19 @@ open class BaseCoordinator<RouteType: Route, TransitionType: TransitionProtocol>
         self as? BaseCoordinator<R, TransitionType>
     }
 
-    open func presented(from presentable: Presentable?) {}
+    open func presented(from presentable: (any Presentable)?) {}
 
     public func removeChildrenIfNeeded() {
         children.removeAll { $0.canBeRemovedAsChild() }
         removeParentChildren()
     }
     
-    public func addChild(_ presentable: Presentable) {
+    public func addChild(_ presentable: any Presentable) {
         children.append(presentable)
         presentable.registerParent(self)
     }
     
-    public func removeChild(_ presentable: Presentable) {
+    public func removeChild(_ presentable: any Presentable) {
         children.removeAll { $0.viewController === presentable.viewController }
         removeChildrenIfNeeded()
     }
@@ -103,7 +103,7 @@ open class BaseCoordinator<RouteType: Route, TransitionType: TransitionProtocol>
         fatalError("Please override the \(#function) method.")
     }
     
-    public func registerParent(_ presentable: Presentable & AnyObject) {
+    public func registerParent(_ presentable: any Presentable & AnyObject) {
         let previous = removeParentChildren
         removeParentChildren = { [weak presentable] in
             previous()

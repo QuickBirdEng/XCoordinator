@@ -26,7 +26,7 @@ extension Transition where RootViewController: UITabBarController {
     ///     - animation:
     ///         The animation to be used. If you specify `nil` here, the default animation by UIKit is used.
     ///
-    public static func set(_ presentables: [Presentable], animation: Animation? = nil) -> Transition {
+    public static func set(_ presentables: [any Presentable], animation: Animation? = nil) -> Transition {
         Transition(presentables: presentables,
                    animationInUse: animation?.presentationAnimation
         ) { rootViewController, options, completion in
@@ -53,7 +53,7 @@ extension Transition where RootViewController: UITabBarController {
     ///     - animation:
     ///         The animation to be used. If you specify `nil` here, the default animation by UIKit is used.
     ///
-    public static func select(_ presentable: Presentable, animation: Animation? = nil) -> Transition {
+    public static func select(_ presentable: any Presentable, animation: Animation? = nil) -> Transition {
         Transition(presentables: [presentable],
                    animationInUse: animation?.presentationAnimation
         ) { rootViewController, options, completion in

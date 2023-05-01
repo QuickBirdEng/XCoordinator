@@ -55,8 +55,8 @@ open class PageCoordinator<RouteType: Route>: BaseCoordinator<RouteType, PageTra
     public init(rootViewController: RootViewController = .init(),
                 pages: [Presentable],
                 loop: Bool = false,
-                set firstPage: Presentable? = nil,
-                _ secondPage: Presentable? = nil,
+                set firstPage: (any Presentable)? = nil,
+                _ secondPage: (any Presentable)? = nil,
                 direction: UIPageViewController.NavigationDirection = .forward) {
         self.dataSource = PageCoordinatorDataSource(pages: pages.map { $0.viewController }, loop: loop)
         rootViewController.dataSource = dataSource
@@ -94,8 +94,8 @@ open class PageCoordinator<RouteType: Route>: BaseCoordinator<RouteType, PageTra
     ///
     public init(rootViewController: RootViewController = .init(),
                 dataSource: UIPageViewControllerDataSource,
-                set firstPage: Presentable,
-                _ secondPage: Presentable? = nil,
+                set firstPage: any Presentable,
+                _ secondPage: (any Presentable)? = nil,
                 direction: UIPageViewController.NavigationDirection) {
         self.dataSource = dataSource
         rootViewController.dataSource = dataSource
@@ -109,10 +109,10 @@ open class PageCoordinator<RouteType: Route>: BaseCoordinator<RouteType, PageTra
         isDoubleSided: Bool = false,
         spineLocation: UIPageViewController.SpineLocation? = nil,
         interPageSpacing: CGFloat? = nil,
-        pages: [Presentable],
+        pages: [any Presentable],
         loop: Bool = false,
-        set firstPage: Presentable? = nil,
-        _ secondPage: Presentable? = nil,
+        set firstPage: (any Presentable)? = nil,
+        _ secondPage: (any Presentable)? = nil,
         direction: UIPageViewController.NavigationDirection = .forward
     ) {
         var options = [UIPageViewController.OptionsKey: Any]()
