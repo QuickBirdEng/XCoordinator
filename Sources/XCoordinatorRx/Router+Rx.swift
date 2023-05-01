@@ -13,15 +13,6 @@ import RxSwift
 
 extension Router {
 
-    /// Use this to access the reactive extensions of `Router` objects.
-    public var rx: Reactive<Self> {
-        // swiftlint:disable:previous identifier_name
-        Reactive(self)
-    }
-}
-
-extension Reactive where Base: Router {
-
     ///
     /// This method transforms the completion block of a router's trigger method into an observable.
     ///
@@ -34,15 +25,32 @@ extension Reactive where Base: Router {
     /// - Returns:
     ///     An observable informing about the completion of the transition.
     ///
-    public func trigger(_ route: Base.RouteType, with options: TransitionOptions) -> Observable<Void> {
-        Observable.create { [base] observer -> Disposable in
-            base.trigger(route, with: options) {
+    public func rxTrigger(_ route: RouteType, with options: TransitionOptions = .init(animated: true)) -> Observable<Void> {
+        Observable.create { [self] observer -> Disposable in
+            self.trigger(route, with: options) {
                 observer.onNext(())
                 observer.onCompleted()
             }
             return Disposables.create()
         }
     }
+
+}
+
+/*
+
+extension Router {
+
+    /// Use this to access the reactive extensions of `Router` objects.
+    public var rx: Reactive<any Router<RouteType>> {
+        // swiftlint:disable:previous identifier_name
+        Reactive(router(for: RouteType.self)!)
+    }
+}
+
+extension Reactive where Base: Router {
+
+
 
     // MARK: Convenience methods
 
@@ -61,5 +69,7 @@ extension Reactive where Base: Router {
         trigger(route, with: TransitionOptions(animated: true))
     }
 }
+
+ */
 
 #endif
