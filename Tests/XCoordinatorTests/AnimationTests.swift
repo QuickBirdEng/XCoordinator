@@ -35,7 +35,7 @@ class AnimationTests: XCTestCase {
     }
 
     func testSplitCoordinator() {
-        let coordinator = SplitCoordinator<TestRoute>(master: UIViewController(), detail: UIViewController())
+        let coordinator = SplitCoordinator<TestRoute>(primary: UIViewController(), secondary: UIViewController())
         coordinator.setRoot(for: window)
         testStandardAnimationsCalled(on: coordinator)
     }
