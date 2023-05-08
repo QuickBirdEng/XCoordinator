@@ -7,22 +7,21 @@
 
 #if canImport(SwiftUI)
 
-import Foundation
 import SwiftUI
 
 @available(iOS 13.0, tvOS 13.0, *)
-private enum RouterContextKey: EnvironmentKey {
+private enum RoutingContextKey: EnvironmentKey {
 
-    static var defaultValue: RouterContext { .init() }
+    static var defaultValue: RoutingContext { .init() }
 
 }
 
 @available(iOS 13.0, tvOS 13.0, *)
 extension EnvironmentValues {
 
-    public var router: RouterContext {
-        get { self[RouterContextKey.self] }
-        set { self[RouterContextKey.self] = newValue }
+    internal var router: RoutingContext {
+        get { self[RoutingContextKey.self] }
+        set { self[RoutingContextKey.self] = newValue }
     }
 
 }
@@ -47,8 +46,12 @@ public struct Routing<RouteType: Route>: DynamicProperty {
         return router
     }
 
-    public var projectedValue: RouterContext {
-        context
+    public var projectedValue: (any Router<RouteType>)? {
+        context.router(for: RouteType.self)
+    }
+
+    public func router<RouteType: Route>(for: RouteType.Type) -> (any Router<RouteType>)? {
+        context.router(for: RouteType.self)
     }
 
     // MARK: Initialization

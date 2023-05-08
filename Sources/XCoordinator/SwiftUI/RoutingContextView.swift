@@ -10,12 +10,12 @@
 import SwiftUI
 
 @available(iOS 13.0, tvOS 13.0, *)
-public struct RouterContextView<Content: View>: View, RouterContextReplacable {
+public struct RoutingContextView<Content: View>: View {
 
     // MARK: Stored Properties
 
     private let content: () -> Content
-    private let context: RouterContext
+    internal let context: RoutingContext
 
     // MARK: Computed Properties
 
@@ -28,16 +28,10 @@ public struct RouterContextView<Content: View>: View, RouterContextReplacable {
 
     internal init(
         @ViewBuilder content: @escaping () -> Content,
-        context: RouterContext
+        context: RoutingContext
     ) {
         self.content = content
         self.context = context
-    }
-
-    // MARK: Methods
-
-    public func replaceContext(with router: any Router) {
-        context.replaceContext(with: router)
     }
 
 }
