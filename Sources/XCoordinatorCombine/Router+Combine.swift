@@ -62,7 +62,7 @@ extension RouterContext {
         with options: TransitionOptions = .init(animated: true)
     ) -> Future<Bool, Never> {
         Future { completion in
-            guard let router = self.router(for: route) else {
+            guard let router = self.router(for: RouteType.self) else {
                 return completion(.success(false))
             }
             router.trigger(route, with: options) {
@@ -77,7 +77,7 @@ extension RouterContext {
         with options: TransitionOptions = .init(animated: true)
     ) -> Future<(any TransitionProtocol)?, Never> {
         Future { completion in
-            guard let router = self.router(for: route) else {
+            guard let router = self.router(for: RouteType.self) else {
                 return completion(.success(nil))
             }
             router.contextTrigger(route, with: options) {

@@ -119,7 +119,7 @@ extension Reactive where Base == RouterContext {
         with options: TransitionOptions = .init(animated: true)
     ) -> Observable<Bool> {
         Observable.create { [base] observer -> Disposable in
-            guard let router = base.router(for: route) else {
+            guard let router = base.router(for: RouteType.self) else {
                 observer.onNext(false)
                 observer.onCompleted()
                 return Disposables.create()
@@ -148,7 +148,7 @@ extension Reactive where Base == RouterContext {
         with options: TransitionOptions = .init(animated: true)
     ) -> Observable<(any TransitionProtocol)?> {
         Observable.create { [base] observer -> Disposable in
-            guard let router = base.router(for: route) else {
+            guard let router = base.router(for: RouteType.self) else {
                 observer.onNext(nil)
                 observer.onCompleted()
                 return Disposables.create()

@@ -33,7 +33,7 @@ public protocol Presentable {
     /// - Parameter route:
     ///     The route to determine a router for.
     ///
-    func router<R: Route>(for route: R) -> (any Router<R>)?
+    func router<R: Route>(for route: R.Type) -> (any Router<R>)?
 
     ///
     /// This method is called whenever a Presentable is shown to the user.
@@ -106,12 +106,12 @@ extension Presentable {
 }
 
 extension UIViewController: Presentable {
-    public func router<R: Route>(for route: R) -> (any Router<R>)? {
+    public func router<R: Route>(for route: R.Type) -> (any Router<R>)? {
         nil
     }
 }
 extension UIWindow: Presentable {
-    public func router<R: Route>(for route: R) -> (any Router<R>)? {
+    public func router<R: Route>(for route: R.Type) -> (any Router<R>)? {
         nil
     }
 }

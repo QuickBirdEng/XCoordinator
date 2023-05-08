@@ -68,7 +68,7 @@ open class BaseCoordinator<RouteType: Route, TransitionType: TransitionProtocol>
 
     // MARK: Open methods
 
-    public func router<R: Route>(for route: R) -> (any Router<R>)? {
+    public func router<R: Route>(for route: R.Type) -> (any Router<R>)? {
         self as? BaseCoordinator<R, TransitionType>
     }
 
