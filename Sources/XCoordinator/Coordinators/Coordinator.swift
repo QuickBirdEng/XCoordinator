@@ -113,8 +113,8 @@ extension Coordinator where Self: AnyObject {
         }
         #endif
         transition.perform(on: rootViewController, with: options) { [self] in
-            transition.presentables.forEach(addChild)
             removeChildrenIfNeeded()
+            transition.presentables.forEach(addChild)
             completion?()
         }
     }
