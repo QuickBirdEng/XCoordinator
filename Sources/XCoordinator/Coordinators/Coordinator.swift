@@ -86,13 +86,6 @@ extension Coordinator where Self: AnyObject {
                                with options: TransitionOptions,
                                completion: ContextPresentationHandler?) {
         let transition = prepareTransition(for: route)
-        #if canImport(SwiftUI)
-        if #available(iOS 13.0, tvOS 13.0, *) {
-            for presentable in transition.presentables {
-                (presentable as? RouterContextReplacable)?.replaceContext(with: self)
-            }
-        }
-        #endif
         performTransition(transition, with: options) { completion?(transition) }
     }
 
@@ -112,6 +105,13 @@ extension Coordinator where Self: AnyObject {
     public func performTransition(_ transition: TransitionType,
                                   with options: TransitionOptions,
                                   completion: PresentationHandler? = nil) {
+        #if canImport(SwiftUI)
+        if #available(iOS 13.0, tvOS 13.0, *) {
+            for presentable in transition.presentables {
+                (presentable as? RouterContextReplacable)?.replaceContext(with: self)
+            }
+        }
+        #endif
         transition.perform(on: rootViewController, with: options) { [self] in
             transition.presentables.forEach(addChild)
             removeChildrenIfNeeded()
