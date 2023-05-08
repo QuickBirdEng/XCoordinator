@@ -37,7 +37,11 @@ public struct Routing<RouteType: Route>: DynamicProperty {
 
     // MARK: Computed Properties
 
-    public var wrappedValue: (any Router<RouteType>)? {
+    public var wrappedValue: any Router<RouteType> {
+        context.router(for: RouteType.self)!
+    }
+
+    public var projectedValue: (any Router<RouteType>)? {
         context.router(for: RouteType.self)
     }
 
