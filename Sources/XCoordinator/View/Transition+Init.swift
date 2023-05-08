@@ -275,3 +275,26 @@ extension Coordinator where Self: AnyObject {
     }
 
 }
+
+#if swift(>=5.5.2)
+
+@available(iOS 13.0, tvOS 13.0, *)
+extension Transition {
+
+    public static func `do`(
+        presentables: [any Presentable] = [],
+        animationInUse: TransitionAnimation? = nil,
+        priority: TaskPriority? = nil,
+        _ perform: @MainActor @escaping () async -> Void
+    ) -> Transition {
+        Transition(presentables: presentables, animationInUse: animationInUse) { _, _, completion in
+            Task(priority: priority) { @MainActor in
+                await perform()
+                completion?()
+            }
+        }
+    }
+
+}
+
+#endif
