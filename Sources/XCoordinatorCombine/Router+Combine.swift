@@ -47,4 +47,67 @@ extension PublisherExtension where Base: Router {
 
 }
 
+#if canImport(SwiftUI)
+
+@available(iOS 13.0, tvOS 13.0, *)
+extension RouterContext {
+
+    public var publishers: PublisherExtension<RouterContext> {
+        .init(base: self)
+    }
+
+    @available(iOS 13.0, tvOS 13.0, *)
+    public func triggerPublisher<RouteType: Route>(
+        _ route: RouteType,
+        with options: TransitionOptions = .init(animated: true)
+    ) -> Future<Bool, Never> {
+        Future { completion in
+            guard let router = self.router(for: route) else {
+                return completion(.success(false))
+            }
+            router.trigger(route, with: options) {
+                completion(.success(true))
+            }
+        }
+    }
+
+    @available(iOS 13.0, tvOS 13.0, *)
+    public func contextTriggerPublisher<RouteType: Route>(
+        _ route: RouteType,
+        with options: TransitionOptions = .init(animated: true)
+    ) -> Future<(any TransitionProtocol)?, Never> {
+        Future { completion in
+            guard let router = self.router(for: route) else {
+                return completion(.success(nil))
+            }
+            router.contextTrigger(route, with: options) {
+                completion(.success($0))
+            }
+        }
+    }
+
+}
+
+@available(iOS 13.0, tvOS 13.0, *)
+extension PublisherExtension where Base == RouterContext {
+
+    public func contextTrigger<RouteType: Route>(
+        _ route: RouteType,
+        with options: TransitionOptions = .init(animated: true)
+    ) -> Future<(any TransitionProtocol)?, Never> {
+        base.contextTriggerPublisher(route, with: options)
+    }
+
+    public func trigger<RouteType: Route>(
+        _ route: RouteType,
+        with options: TransitionOptions = .init(animated: true)
+    ) -> Future<Bool, Never> {
+        base.triggerPublisher(route, with: options)
+    }
+
+}
+
+
+#endif
+
 #endif
