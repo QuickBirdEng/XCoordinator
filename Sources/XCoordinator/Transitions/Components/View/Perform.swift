@@ -7,7 +7,7 @@
 
 import UIKit
 
-struct Perform<RootViewController, TransitionType: TransitionComponent> {
+public struct Perform<RootViewController, TransitionType: TransitionComponent> {
 
     // MARK: Stored Properties
 
@@ -28,7 +28,7 @@ struct Perform<RootViewController, TransitionType: TransitionComponent> {
 
 extension Perform: TransitionComponent where RootViewController: UIViewController {
 
-    func build() -> Transition<RootViewController> {
+    public func build() -> Transition<RootViewController> {
         let transition = transition()
         return Transition(presentables: transition.presentables, animationInUse: transition.animation) { _, options, completion in
             transition.perform(on: rootViewController, with: options, completion: completion)
