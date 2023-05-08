@@ -34,13 +34,15 @@ public struct Routing<RouteType: Route>: DynamicProperty {
         context.router(for: RouteType.self)
     }
 
-    public func router<RouteType: Route>(for: RouteType.Type) -> (any Router<RouteType>)? {
-        context.router(for: RouteType.self)
-    }
-
     // MARK: Initialization
 
     public init(_ routeType: RouteType.Type) {}
+
+    // MARK: Methods
+
+    public func router<R: Route>(for: R.Type) -> (any Router<R>)? {
+        context.router(for: R.self)
+    }
 
 }
 
