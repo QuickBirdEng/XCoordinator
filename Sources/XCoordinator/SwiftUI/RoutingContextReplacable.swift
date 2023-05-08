@@ -10,8 +10,10 @@
 import Foundation
 
 @available(iOS 13.0, tvOS 13.0, *)
-public protocol RouterContextReplacable {
-    func replaceContext(with router: any Router)
+public protocol RoutingContextReplacable {
+
+    func replaceContext(with router: any Router, override: Bool)
+
 }
 
 #endif

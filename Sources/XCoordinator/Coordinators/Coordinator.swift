@@ -108,7 +108,7 @@ extension Coordinator where Self: AnyObject {
         #if canImport(SwiftUI)
         if #available(iOS 13.0, tvOS 13.0, *) {
             for presentable in transition.presentables {
-                (presentable as? RouterContextReplacable)?.replaceContext(with: self)
+                (presentable as? RoutingContextReplacable)?.replaceContext(with: self, override: false)
             }
         }
         #endif
