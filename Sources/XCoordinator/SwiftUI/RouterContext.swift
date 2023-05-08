@@ -44,6 +44,20 @@ public class RouterContext: RouterContextReplacable {
         return true
     }
 
+    @MainActor
+    @discardableResult
+    public func contextTrigger<RouteType: Route>(
+        _ route: RouteType,
+        with options: TransitionOptions = .init(animated: true),
+        completion: ContextPresentationHandler? = nil
+    ) -> Bool {
+        guard let router = router(for: route) else {
+            return false
+        }
+        router.contextTrigger(route, with: options, completion: completion)
+        return true
+    }
+
 }
 
 #if swift(>=5.5.2)
@@ -62,6 +76,18 @@ extension RouterContext {
         }
         await router.trigger(route, with: options)
         return true
+    }
+
+    @MainActor
+    @discardableResult
+    public func contextTrigger<RouteType: Route>(
+        _ route: RouteType,
+        with options: TransitionOptions = .init(animated: true)
+    ) async -> (any TransitionProtocol)? {
+        guard let router = router(for: route) else {
+            return nil
+        }
+        return await router.contextTrigger(route, with: options)
     }
 
 }
