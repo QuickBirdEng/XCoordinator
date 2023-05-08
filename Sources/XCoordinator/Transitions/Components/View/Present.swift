@@ -7,7 +7,7 @@
 
 import UIKit
 
-struct Present<RootViewController> {
+public struct Present<RootViewController> {
 
     // MARK: Stored Properties
 
@@ -17,7 +17,7 @@ struct Present<RootViewController> {
 
     // MARK: Initialization
 
-    init(
+    public init(
         onRoot: Bool = false,
         animation: Animation? = nil,
         _ presentable: @escaping () -> any Presentable
@@ -31,7 +31,7 @@ struct Present<RootViewController> {
 
 extension Present: TransitionComponent where RootViewController: UIViewController {
 
-    func build() -> Transition<RootViewController> {
+    public func build() -> Transition<RootViewController> {
         let presentable = presentable()
         return Transition(presentables: [presentable], animationInUse: animation?.presentationAnimation) { rootViewController, options, completion in
             if let animation { presentable.viewController.transitioningDelegate = animation }
