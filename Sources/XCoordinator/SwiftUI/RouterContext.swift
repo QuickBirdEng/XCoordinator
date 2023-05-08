@@ -22,10 +22,6 @@ public class RouterContext: RouterContextReplacable {
 
     // MARK: Methods
 
-    public subscript<RouteType: Route>(_ route: RouteType.Type) -> (any Router<RouteType>)? {
-        self.router(for: route)
-    }
-
     public func replaceContext(with router: any Router) {
         self.presentable = router
     }
@@ -41,7 +37,7 @@ public class RouterContext: RouterContextReplacable {
         with options: TransitionOptions = .init(animated: true),
         completion: PresentationHandler? = nil
     ) -> Bool {
-        self[RouteType.self]?.trigger(route, with: options, completion: completion) != nil
+        router(for: RouteType.self)?.trigger(route, with: options, completion: completion) != nil
     }
 
     @MainActor
@@ -51,7 +47,7 @@ public class RouterContext: RouterContextReplacable {
         with options: TransitionOptions = .init(animated: true),
         completion: ContextPresentationHandler? = nil
     ) -> Bool {
-        self[RouteType.self]?.contextTrigger(route, with: options, completion: completion) != nil
+        router(for: RouteType.self)?.contextTrigger(route, with: options, completion: completion) != nil
     }
 
 }
@@ -67,7 +63,7 @@ extension RouterContext {
         _ route: RouteType,
         with options: TransitionOptions = .init(animated: true)
     ) async -> Bool {
-        await self[RouteType.self]?.trigger(route, with: options) != nil
+        await router(for: RouteType.self)?.trigger(route, with: options) != nil
     }
 
     @MainActor
@@ -76,7 +72,7 @@ extension RouterContext {
         _ route: RouteType,
         with options: TransitionOptions = .init(animated: true)
     ) async -> (any TransitionProtocol)? {
-        await self[RouteType.self]?.contextTrigger(route, with: options)
+        await router(for: RouteType.self)?.contextTrigger(route, with: options)
 
     }
 
