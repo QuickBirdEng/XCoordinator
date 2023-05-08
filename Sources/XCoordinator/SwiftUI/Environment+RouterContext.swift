@@ -38,11 +38,17 @@ public struct Routing<RouteType: Route>: DynamicProperty {
     // MARK: Computed Properties
 
     public var wrappedValue: any Router<RouteType> {
-        context.router(for: RouteType.self)!
+        guard let router = context.router(for: RouteType.self) else {
+            fatalError("""
+            The current environment does not contain a router with the route type of \"\(RouteType.self)\".
+            Please make sure to specify the correct route type when using this property wrapper.
+            """)
+        }
+        return router
     }
 
-    public var projectedValue: (any Router<RouteType>)? {
-        context.router(for: RouteType.self)
+    public var projectedValue: RouterContext {
+        context
     }
 
     // MARK: Initialization
