@@ -30,28 +30,21 @@ extension Transition where RootViewController: UIPageViewController {
     ///
     public static func set(_ first: any Presentable, _ second: (any Presentable)? = nil,
                            direction: UIPageViewController.NavigationDirection) -> Transition {
-        let presentables = [first, second].compactMap { $0 }
-        return Transition(presentables: presentables,
-                          animationInUse: nil
-        ) { rootViewController, options, completion in
-            rootViewController.set(presentables.map { $0.viewController },
-                                   direction: direction,
-                                   with: options
-            ) {
-                presentables.forEach { $0.presented(from: rootViewController) }
-                completion?()
+        Transition {
+            PageSet(direction: direction) {
+                first
+            } secondary: {
+                second
             }
         }
     }
 
     static func initial(pages: [any Presentable]) -> Transition {
-        Transition(presentables: pages, animationInUse: nil) { rootViewController, _, completion in
-            CATransaction.begin()
-            CATransaction.setCompletionBlock {
-                pages.forEach { $0.presented(from: rootViewController) }
-                completion?()
+        Transition {
+            PageSetInitial {
+                pages
             }
-            CATransaction.commit()
         }
     }
+
 }

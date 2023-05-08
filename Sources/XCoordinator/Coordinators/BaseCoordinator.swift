@@ -98,6 +98,10 @@ open class BaseCoordinator<RouteType: Route, TransitionType: TransitionProtocol>
         removeChildrenIfNeeded()
     }
 
+    @TransitionBuilder<RootViewController> open func prepare(for route: RouteType) -> Transition<RootViewController> {
+        fatalError("Please override the \(#function) method.")
+    }
+
     ///
     /// This method prepares transitions for routes.
     /// Override this method to define transitions for triggered routes.
@@ -109,7 +113,11 @@ open class BaseCoordinator<RouteType: Route, TransitionType: TransitionProtocol>
     ///     The prepared transition.
     ///
     open func prepareTransition(for route: RouteType) -> TransitionType {
-        fatalError("Please override the \(#function) method.")
+        if let transition = prepare(for: route) as? TransitionType {
+            return transition
+        } else {
+            fatalError("Please override the \(#function) method.")
+        }
     }
     
     public func registerParent(_ presentable: any Presentable & AnyObject) {

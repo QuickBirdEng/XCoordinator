@@ -44,8 +44,7 @@ open class ViewCoordinator<RouteType: Route>: BaseCoordinator<RouteType, ViewTra
     ///   - rootViewController: The view controller that hosts the coordinator's transitions.
     ///   - initialRoute: A route triggered once the coordinator is shown. Defaults to `nil`.
     public override init(rootViewController: RootViewController, initialRoute: RouteType? = nil) {
-        super.init(rootViewController: rootViewController,
-                   initialRoute: initialRoute)
+        super.init(rootViewController: rootViewController, initialRoute: initialRoute)
     }
 
     #if canImport(SwiftUI)
