@@ -21,8 +21,7 @@ open class ViewCoordinator<RouteType: Route>: BaseCoordinator<RouteType, ViewTra
     // MARK: Initialization
 
     public override init(rootViewController: RootViewController, initialRoute: RouteType? = nil) {
-        super.init(rootViewController: rootViewController,
-                   initialRoute: initialRoute)
+        super.init(rootViewController: rootViewController, initialRoute: initialRoute)
     }
 
 }

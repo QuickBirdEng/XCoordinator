@@ -16,32 +16,24 @@ public typealias SplitTransition = Transition<UISplitViewController>
 extension Transition where RootViewController: UISplitViewController {
 
     public static func set(_ presentables: [any Presentable]) -> Transition {
-        Transition(presentables: presentables, animationInUse: nil) { rootViewController, _, completion in
-            CATransaction.begin()
-            CATransaction.setCompletionBlock {
-                presentables.forEach { $0.presented(from: rootViewController) }
-                completion?()
+        Transition {
+            SplitSetAll {
+                presentables
             }
-            autoreleasepool {
-                rootViewController.viewControllers = presentables.map { $0.viewController }
-            }
-            CATransaction.commit()
         }
     }
 
     @available(iOS 14, *)
     public static func set(_ presentable: (any Presentable)?, for column: UISplitViewController.Column) -> Transition {
-        Transition(presentables: [presentable].compactMap { $0 }, animationInUse: nil) { rootViewController, _, completion in
-            CATransaction.begin()
-            CATransaction.setCompletionBlock {
-                presentable?.presented(from: rootViewController)
-                completion?()
+        Transition {
+            SplitSetColumn(column) {
+                presentable
             }
-            autoreleasepool {
-                rootViewController.setViewController(presentable?.viewController, for: column)
-            }
-            CATransaction.commit()
         }
+
     }
 
 }
+
+
+
