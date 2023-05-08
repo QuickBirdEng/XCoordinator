@@ -11,16 +11,13 @@
 import SwiftUI
 
 @available(iOS 13.0, tvOS 13.0, *)
-public typealias RoutingController<Content: View> = UIHostingController<RoutingContextView<Content>>
-
-@available(iOS 13.0, tvOS 13.0, *)
 extension Presentable {
 
     public static func hosted<Content: View>(
         by router: (any Router)? = nil,
         @ViewBuilder content: @escaping () -> Content
     ) -> Self where Self == RoutingController<Content> {
-        RoutingController(rootView: RoutingContextView(content: content, context: .init(router)))
+        RoutingController(rootView: content, router: router)
     }
 
     public static func hosted<Content: View>(
@@ -33,9 +30,30 @@ extension Presentable {
 }
 
 @available(iOS 13.0, tvOS 13.0, *)
-extension UIHostingController: RoutingContextContaining where Content: RoutingContextContaining {
+public class RoutingController<Content: View>: UIHostingController<RoutingContextView<Content>>, RoutingContextContaining {
 
-    func replaceRoutingContext(with router: any Router, override: Bool) {
+    // MARK: Initialization
+
+    public convenience init(rootView: Content, router: (any Router)? = nil) {
+        self.init(rootView: { rootView }, router: router)
+    }
+
+    public init(@ViewBuilder rootView: @escaping () -> Content, router: (any Router)? = nil) {
+        super.init(
+            rootView: .init(
+                content: rootView,
+                context: .init(router)
+            )
+        )
+    }
+
+    public required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+    }
+
+    // MARK: Methods
+
+    internal func replaceRoutingContext(with router: any Router, override: Bool) {
         rootView.replaceRoutingContext(with: router, override: override)
     }
 
