@@ -1,13 +1,17 @@
 //
-//  File.swift
-//  
+//  RoutingController.swift
+//  XCoordinator
 //
 //  Created by Paul Kraft on 08.05.23.
+//  Copyright © 2023 QuickBird Studios. All rights reserved.
 //
 
 #if canImport(SwiftUI)
 
 import SwiftUI
+
+@available(iOS 13.0, tvOS 13.0, *)
+public typealias RoutingController<Content: View> = UIHostingController<RoutingContextView<Content>>
 
 @available(iOS 13.0, tvOS 13.0, *)
 extension Presentable {
@@ -16,7 +20,7 @@ extension Presentable {
         by router: (any Router)? = nil,
         @ViewBuilder content: @escaping () -> Content
     ) -> Self where Self == RoutingController<Content> {
-        RoutingController(rootView: content, router: router)
+        RoutingController(rootView: RoutingContextView(content: content, context: .init(router)))
     }
 
     public static func hosted<Content: View>(
@@ -29,31 +33,10 @@ extension Presentable {
 }
 
 @available(iOS 13.0, tvOS 13.0, *)
-public class RoutingController<Content: View>: UIHostingController<RoutingContextView<Content>>, RoutingContextReplacable {
+extension UIHostingController: RoutingContextContaining where Content: RoutingContextContaining {
 
-    // MARK: Initialization
-
-    public convenience init(rootView: Content, router: (any Router)? = nil) {
-        self.init(rootView: { rootView }, router: router)
-    }
-
-    public init(@ViewBuilder rootView: @escaping () -> Content, router: (any Router)? = nil) {
-        super.init(
-            rootView: .init(
-                content: rootView,
-                context: .init(router)
-            )
-        )
-    }
-
-    public required init?(coder aDecoder: NSCoder) {
-        super.init(coder: aDecoder)
-    }
-
-    // MARK: Methods
-
-    public func replaceContext(with router: any Router, override: Bool = true) {
-        rootView.context.replaceContext(with: router, override: override)
+    func replaceRoutingContext(with router: any Router, override: Bool) {
+        rootView.replaceRoutingContext(with: router, override: override)
     }
 
 }

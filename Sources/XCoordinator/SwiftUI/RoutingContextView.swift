@@ -1,8 +1,9 @@
 //
-//  File.swift
-//  
+//  RoutingContextView.swift
+//  XCoordinator
 //
 //  Created by Paul Kraft on 08.05.23.
+//  Copyright © 2023 QuickBird Studios. All rights reserved.
 //
 
 #if canImport(SwiftUI)
@@ -10,18 +11,18 @@
 import SwiftUI
 
 @available(iOS 13.0, tvOS 13.0, *)
-public struct RoutingContextView<Content: View>: View {
+public struct RoutingContextView<Content: View>: View, RoutingContextContaining {
 
     // MARK: Stored Properties
 
     private let content: () -> Content
-    internal let context: RoutingContext
+    private let context: RoutingContext
 
     // MARK: Computed Properties
 
     public var body: some View {
         content()
-            .environment(\.router, context)
+            .environment(\.routingContext, context)
     }
 
     // MARK: Initialization
@@ -32,6 +33,12 @@ public struct RoutingContextView<Content: View>: View {
     ) {
         self.content = content
         self.context = context
+    }
+
+    // MARK: Methods
+
+    internal func replaceRoutingContext(with router: any Router, override: Bool) {
+        context.replaceRoutingContext(with: router, override: override)
     }
 
 }
