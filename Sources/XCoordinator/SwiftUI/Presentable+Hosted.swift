@@ -15,7 +15,7 @@ extension Presentable {
     public static func hosted<Content: View>(
         @ViewBuilder content: @escaping () -> Content
     ) -> Self where Self == RouterHostingController<Content> {
-        RouterHostingController(rootView: .init(content: content, context: .init()))
+        RouterHostingController(rootView: content)
     }
 
     public static func hosted<Content: View>(
