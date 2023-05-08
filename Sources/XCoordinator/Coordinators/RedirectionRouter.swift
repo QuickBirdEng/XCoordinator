@@ -64,7 +64,7 @@ open class RedirectionRouter<ParentRoute: Route, RouteType: Route>: Router {
 
     // MARK: Methods
 
-    public func router<R: Route>(for route: R) -> (any Router<R>)? {
+    public func router<R: Route>(for route: R.Type) -> (any Router<R>)? {
         self as? RedirectionRouter<ParentRoute, R>
     }
 

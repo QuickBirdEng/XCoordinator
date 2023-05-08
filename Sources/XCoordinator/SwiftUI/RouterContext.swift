@@ -22,11 +22,15 @@ public class RouterContext: RouterContextReplacable {
 
     // MARK: Methods
 
+    public subscript<RouteType: Route>(_ route: RouteType.Type) -> (any Router<RouteType>)? {
+        self.router(for: route)
+    }
+
     public func replaceContext(with router: any Router) {
         self.presentable = router
     }
 
-    public func router<RouteType: Route>(for route: RouteType) -> (any Router<RouteType>)? {
+    public func router<RouteType: Route>(for route: RouteType.Type) -> (any Router<RouteType>)? {
         presentable?.router(for: route)
     }
 
@@ -37,11 +41,7 @@ public class RouterContext: RouterContextReplacable {
         with options: TransitionOptions = .init(animated: true),
         completion: PresentationHandler? = nil
     ) -> Bool {
-        guard let router = router(for: route) else {
-            return false
-        }
-        router.trigger(route, with: options, completion: completion)
-        return true
+        self[RouteType.self]?.trigger(route, with: options, completion: completion) != nil
     }
 
     @MainActor
@@ -51,11 +51,7 @@ public class RouterContext: RouterContextReplacable {
         with options: TransitionOptions = .init(animated: true),
         completion: ContextPresentationHandler? = nil
     ) -> Bool {
-        guard let router = router(for: route) else {
-            return false
-        }
-        router.contextTrigger(route, with: options, completion: completion)
-        return true
+        self[RouteType.self]?.contextTrigger(route, with: options, completion: completion) != nil
     }
 
 }
@@ -71,11 +67,7 @@ extension RouterContext {
         _ route: RouteType,
         with options: TransitionOptions = .init(animated: true)
     ) async -> Bool {
-        guard let router = router(for: route) else {
-            return false
-        }
-        await router.trigger(route, with: options)
-        return true
+        await self[RouteType.self]?.trigger(route, with: options) != nil
     }
 
     @MainActor
@@ -84,10 +76,8 @@ extension RouterContext {
         _ route: RouteType,
         with options: TransitionOptions = .init(animated: true)
     ) async -> (any TransitionProtocol)? {
-        guard let router = router(for: route) else {
-            return nil
-        }
-        return await router.contextTrigger(route, with: options)
+        await self[RouteType.self]?.contextTrigger(route, with: options)
+
     }
 
 }
