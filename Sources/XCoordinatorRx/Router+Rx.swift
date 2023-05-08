@@ -60,7 +60,109 @@ extension ReactiveRouter {
         }
     }
 
+    ///
+    /// This method transforms the completion block of a router's trigger method into an observable.
+    ///
+    /// It uses the default transition options as specified in `Router.trigger`.
+    ///
+    /// - Parameter route:
+    ///     The route to be triggered.
+    ///
+    /// - Returns:
+    ///     An observable informing about the completion of the transition.
+    ///
+    public func contextTrigger(
+        _ route: RouteType,
+        with options: TransitionOptions = .init(animated: true)
+    ) -> Observable<any TransitionProtocol> {
+        Observable.create { [base] observer -> Disposable in
+            base.contextTrigger(route, with: options) {
+                observer.onNext($0)
+                observer.onCompleted()
+            }
+            return Disposables.create()
+        }
+    }
+
 }
 
+#if canImport(SwiftUI)
+
+@available(iOS 13.0, tvOS 13.0, *)
+extension RouterContext {
+
+    /// Use this to access the reactive extensions of `RouterContext` objects.
+    public var rx: Reactive<RouterContext> {
+        // swiftlint:disable:previous identifier_name
+        Reactive(self)
+    }
+}
+
+@available(iOS 13.0, tvOS 13.0, *)
+extension Reactive where Base == RouterContext {
+
+    // MARK: Convenience methods
+
+    ///
+    /// This method transforms the completion block of a router's trigger method into an observable.
+    ///
+    /// It uses the default transition options as specified in `Router.trigger`.
+    ///
+    /// - Parameter route:
+    ///     The route to be triggered.
+    ///
+    /// - Returns:
+    ///     An observable informing about the completion of the transition.
+    ///
+    public func trigger<RouteType: Route>(
+        _ route: RouteType,
+        with options: TransitionOptions = .init(animated: true)
+    ) -> Observable<Bool> {
+        Observable.create { [base] observer -> Disposable in
+            guard let router = base.router(for: route) else {
+                observer.onNext(false)
+                observer.onCompleted()
+                return Disposables.create()
+            }
+            router.trigger(route, with: options) {
+                observer.onNext(true)
+                observer.onCompleted()
+            }
+            return Disposables.create()
+        }
+    }
+
+    ///
+    /// This method transforms the completion block of a router's trigger method into an observable.
+    ///
+    /// It uses the default transition options as specified in `Router.trigger`.
+    ///
+    /// - Parameter route:
+    ///     The route to be triggered.
+    ///
+    /// - Returns:
+    ///     An observable informing about the completion of the transition.
+    ///
+    public func contextTrigger<RouteType: Route>(
+        _ route: RouteType,
+        with options: TransitionOptions = .init(animated: true)
+    ) -> Observable<(any TransitionProtocol)?> {
+        Observable.create { [base] observer -> Disposable in
+            guard let router = base.router(for: route) else {
+                observer.onNext(nil)
+                observer.onCompleted()
+                return Disposables.create()
+            }
+            router.contextTrigger(route, with: options) {
+                observer.onNext($0)
+                observer.onCompleted()
+            }
+            return Disposables.create()
+        }
+    }
+
+}
+
+#endif
 
 #endif
