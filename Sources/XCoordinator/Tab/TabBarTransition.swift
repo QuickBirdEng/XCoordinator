@@ -27,16 +27,10 @@ extension Transition where RootViewController: UITabBarController {
     ///         The animation to be used. If you specify `nil` here, the default animation by UIKit is used.
     ///
     public static func set(_ presentables: [any Presentable], animation: Animation? = nil) -> Transition {
-        Transition(presentables: presentables,
-                   animationInUse: animation?.presentationAnimation
-        ) { rootViewController, options, completion in
-            rootViewController.set(presentables.map { $0.viewController },
-                                   with: options,
-                                   animation: animation,
-                                   completion: {
-                                    presentables.forEach { $0.presented(from: rootViewController) }
-                                    completion?()
-            })
+        Transition {
+            SetTabs(animation: animation) {
+                presentables
+            }
         }
     }
 
@@ -54,13 +48,10 @@ extension Transition where RootViewController: UITabBarController {
     ///         The animation to be used. If you specify `nil` here, the default animation by UIKit is used.
     ///
     public static func select(_ presentable: any Presentable, animation: Animation? = nil) -> Transition {
-        Transition(presentables: [presentable],
-                   animationInUse: animation?.presentationAnimation
-        ) { rootViewController, options, completion in
-            rootViewController.select(presentable.viewController,
-                                      with: options,
-                                      animation: animation,
-                                      completion: completion)
+        Transition {
+            SelectTab(animation: animation) {
+                presentable
+            }
         }
     }
 
@@ -77,13 +68,8 @@ extension Transition where RootViewController: UITabBarController {
     ///         The animation to be used. If you specify `nil` here, the default animation by UIKit is used.
     ///
     public static func select(index: Int, animation: Animation? = nil) -> Transition {
-        Transition(presentables: [],
-                   animationInUse: animation?.presentationAnimation
-        ) { rootViewController, options, completion in
-            rootViewController.select(index: index,
-                                      with: options,
-                                      animation: animation,
-                                      completion: completion)
+        Transition {
+            SelectTab(at: index, animation: animation)
         }
     }
 
