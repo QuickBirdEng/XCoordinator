@@ -15,7 +15,7 @@ public struct Show<RootViewController> {
 
     // MARK: Initialization
 
-    init(_ presentable: @escaping () -> any Presentable) {
+    public init(_ presentable: @escaping () -> any Presentable) {
         self.presentable = presentable
     }
 
