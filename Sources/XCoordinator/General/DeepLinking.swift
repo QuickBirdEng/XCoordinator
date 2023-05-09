@@ -6,6 +6,39 @@
 //  Copyright © 2018 QuickBird Studios. All rights reserved.
 //
 
+import UIKit
+
+public struct DeepLink<RootViewController, CoordinatorType: Coordinator> {
+
+    private let coordinator: CoordinatorType
+    private let route: CoordinatorType.RouteType
+    private let remainingRoutes: [Route]
+
+    public init(with coordinator: CoordinatorType, _ route: CoordinatorType.RouteType, _ remainingRoutes: Route...) {
+        self.coordinator = coordinator
+        self.route = route
+        self.remainingRoutes = remainingRoutes
+    }
+
+}
+
+extension DeepLink: TransitionComponent where RootViewController: UIViewController {
+
+    public func build() -> Transition<RootViewController> {
+        Transition(presentables: [], animationInUse: nil) { [weak coordinator] _, options, completion in
+            guard let coordinator = coordinator else {
+                assertionFailure("Please use the coordinator responsible for executing a deepLink-Transition when initializing.")
+                completion?()
+                return
+            }
+
+            route.trigger(on: [coordinator], remainingRoutes: ArraySlice(remainingRoutes),
+                          with: options, completion: completion)
+        }
+    }
+
+}
+
 // MARK: - Coordinator + DeepLinking
 
 extension Coordinator where Self: AnyObject {
