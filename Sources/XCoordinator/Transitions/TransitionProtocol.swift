@@ -13,7 +13,7 @@ import UIKit
 ///
 /// `Transition` is provided as an easily-extensible default transition type implementation.
 ///
-public protocol TransitionProtocol {
+public protocol TransitionProtocol<RootViewController> {
 
     /// The type of the rootViewController that can execute the transition.
     associatedtype RootViewController: UIViewController

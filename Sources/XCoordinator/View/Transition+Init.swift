@@ -183,7 +183,7 @@ extension Transition {
     /// - Parameter transitions:
     ///     The transitions to be chained to form the new transition.
     ///
-    public static func multiple<C: Collection>(_ transitions: C) -> Transition where C.Element == Transition {
+    public static func multiple(_ transitions: some Collection<Transition>) -> Transition {
         Transition(presentables: transitions.flatMap { $0.presentables },
                    animationInUse: transitions.compactMap { $0.animation }.last
         ) { rootViewController, options, completion in
