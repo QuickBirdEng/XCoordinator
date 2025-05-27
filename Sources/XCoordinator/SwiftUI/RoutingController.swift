@@ -10,51 +10,77 @@
 
 import SwiftUI
 
-@available(iOS 13.0, tvOS 13.0, *)
-extension Presentable {
+@available(iOS 13, tvOS 13, *)
+public class RoutingController<Content: View>: UIHostingController<RoutingController<Content>.InjectorView>, RoutingContextProvider {
+    
+    // MARK: Nested Types
+    
+    public struct InjectorView: View {
+        
+        // MARK: Stored Properties
+        
+        private let routingContext: RoutingContext
+        private let content: Content
+        private let onUpdate: (RoutingContext) -> Void
+        
+        // MARK: Computed Properties
+        
+        public var body: some View {
+            content
+                .environment(\.routingContext, routingContext)
+                .onRoutingContextChanged(perform: onUpdate)
+        }
+        
+        // MARK: Initialization
+        
+        fileprivate init(
+            context: RoutingContext,
+            content: Content,
+            onUpdate: @escaping (RoutingContext) -> Void
+        ) {
+            self.routingContext = context
+            self.content = content
+            self.onUpdate = onUpdate
+        }
 
-    public static func hosted<Content: View>(
-        by router: (any Router)? = nil,
-        @ViewBuilder content: @escaping () -> Content
-    ) -> Self where Self == RoutingController<Content> {
-        RoutingController(rootView: content, router: router)
     }
 
-    public static func hosted<Content: View>(
-        _ content: Content,
-        by router: (any Router)? = nil
-    ) -> Self where Self == RoutingController<Content> {
-        hosted(by: router) { content }
-    }
-
-}
-
-@available(iOS 13.0, tvOS 13.0, *)
-public class RoutingController<Content: View>: UIHostingController<RoutingContextView<Content>>, RoutingContextContaining {
-
+    // MARK: Properties
+    
+    public var routingContext: RoutingContext
+    private var routingContent = RoutingContext()
+    
     // MARK: Initialization
 
-    public convenience init(rootView: Content, router: (any Router)? = nil) {
-        self.init(rootView: { rootView }, router: router)
+    public init(
+        context: RoutingContext = .init(),
+        rootView: Content
+    ) {
+        self.routingContext = context
+        var onUpdate: ((RoutingContext) -> Void)?
+        super.init(
+            rootView: InjectorView(
+                context: context,
+                content: rootView
+            ) { updatedContext in
+                onUpdate?(updatedContext)
+            }
+        )
+        onUpdate = { [weak self] updatedContext in
+            self?.routingContext = updatedContext
+        }
     }
 
-    public init(@ViewBuilder rootView: @escaping () -> Content, router: (any Router)? = nil) {
-        super.init(
-            rootView: .init(
-                content: rootView,
-                context: .init(router)
-            )
-        )
+    public convenience init(
+        context: RoutingContext = .init(),
+        @ViewBuilder rootView: () -> Content
+    ) {
+        self.init(context: context, rootView: rootView())
     }
 
     public required init?(coder aDecoder: NSCoder) {
+        self.routingContext = .init()
         super.init(coder: aDecoder)
-    }
-
-    // MARK: Methods
-
-    internal func replaceRoutingContext(with router: any Router, override: Bool) {
-        rootView.replaceRoutingContext(with: router, override: override)
     }
 
 }

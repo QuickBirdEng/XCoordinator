@@ -6,11 +6,11 @@
 //  Copyright © 2018 QuickBird Studios. All rights reserved.
 //
 
-#if canImport(Combine) && canImport(XCoordinator)
+#if canImport(Combine)
 
 import Combine
-import XCoordinator
 
+@MainActor
 public struct PublisherExtension<Base> {
     public let base: Base
 }

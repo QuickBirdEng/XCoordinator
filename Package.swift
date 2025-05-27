@@ -12,9 +12,6 @@ let package = Package(
         .library(
             name: "XCoordinatorRx",
             targets: ["XCoordinatorRx"]),
-        .library(
-            name: "XCoordinatorCombine",
-            targets: ["XCoordinatorCombine"]),
     ],
     dependencies: [
         .package(url: "https://github.com/apple/swift-docc-plugin", from: "1.0.0"),
@@ -27,9 +24,6 @@ let package = Package(
         .target(
             name: "XCoordinatorRx",
             dependencies: ["XCoordinator", "RxSwift"]),
-        .target(
-            name: "XCoordinatorCombine",
-            dependencies: ["XCoordinator"]),
         .testTarget(
             name: "XCoordinatorTests",
             dependencies: ["XCoordinator", "XCoordinatorRx"]),

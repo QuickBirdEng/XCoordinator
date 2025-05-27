@@ -278,10 +278,10 @@ extension Coordinator where Self: AnyObject {
 
 #if swift(>=5.5.2)
 
-@available(iOS 13.0, tvOS 13.0, *)
+@available(iOS 13, tvOS 13, *)
 extension Transition {
 
-    public static func `do`(
+    public static func perform(
         presentables: [any Presentable] = [],
         animationInUse: TransitionAnimation? = nil,
         priority: TaskPriority? = nil,

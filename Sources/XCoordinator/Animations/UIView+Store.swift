@@ -8,24 +8,10 @@
 
 import UIKit
 
-private var associatedObjectHandle: UInt8 = 0
-
-extension UIView {
-
-    var strongReferences: [Any] {
-        get {
-            objc_getAssociatedObject(self, &associatedObjectHandle) as? [Any] ?? []
-        }
-        set {
-            objc_setAssociatedObject(self, &associatedObjectHandle, newValue, .OBJC_ASSOCIATION_RETAIN_NONATOMIC)
-        }
-    }
-}
-
 extension UIView {
 
     @discardableResult
-    func removePreviewingContext<TransitionType: TransitionProtocol>(for _: TransitionType.Type)
+    internal func removePreviewingContext<TransitionType: TransitionProtocol>(for _: TransitionType.Type)
         -> UIViewControllerPreviewing? {
         guard let existingContextIndex = strongReferences
             .firstIndex(where: { $0 is CoordinatorPreviewingDelegateObject<TransitionType> }),

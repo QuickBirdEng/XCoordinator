@@ -10,6 +10,7 @@
 /// The TransitionPerformer protocol is used to abstract the route-type specific characteristics of a Coordinator.
 /// It keeps type information about its transition performing capabilities.
 ///
+@MainActor
 public protocol TransitionPerformer<TransitionType>: Presentable {
 
     /// The type of transitions that can be executed on the rootViewController.

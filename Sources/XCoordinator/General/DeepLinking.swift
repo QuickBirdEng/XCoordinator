@@ -72,6 +72,7 @@ extension Transition {
 // MARK: - Route + DeepLink
 
 extension Route {
+    @MainActor
     private func router(fromStack stack: inout [Presentable]) -> (any Router<Self>)? {
         while !stack.isEmpty {
             if let router = stack.last?.router(for: Self.self) {
@@ -82,6 +83,7 @@ extension Route {
         return nil
     }
 
+    @MainActor
     fileprivate func trigger(on presentables: [Presentable],
                              remainingRoutes: ArraySlice<Route>,
                              with options: TransitionOptions,

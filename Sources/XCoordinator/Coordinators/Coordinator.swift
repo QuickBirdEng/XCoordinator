@@ -20,6 +20,7 @@ public typealias ContextPresentationHandler = (any TransitionProtocol) -> Void
 /// It requires an object to be able to trigger routes and perform transitions.
 /// This connection is created using the `prepareTransition(for:)` method.
 ///
+@MainActor
 public protocol Coordinator<RouteType, TransitionType>: Router, TransitionPerformer {
 
     ///
@@ -75,7 +76,7 @@ extension Coordinator {
 // MARK: - Default implementations
 
 extension Coordinator where Self: AnyObject {
-
+    
     public func presented(from presentable: (any Presentable)?) {}
     
     public func childTransitionCompleted() {
@@ -106,9 +107,9 @@ extension Coordinator where Self: AnyObject {
                                   with options: TransitionOptions,
                                   completion: PresentationHandler? = nil) {
         #if canImport(SwiftUI)
-        if #available(iOS 13.0, tvOS 13.0, *) {
+        if #available(iOS 13, tvOS 13, *) {
             for presentable in transition.presentables {
-                (presentable as? RoutingContextContaining)?.replaceRoutingContext(with: self, override: false)
+                (presentable as? RoutingContextProvider)?.routingContext.add(self)
             }
         }
         #endif

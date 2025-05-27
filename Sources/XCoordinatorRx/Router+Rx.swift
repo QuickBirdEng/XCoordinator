@@ -8,9 +8,10 @@
 
 #if canImport(XCoordinator) && canImport(RxSwift)
 
-import XCoordinator
 import RxSwift
+import XCoordinator
 
+@MainActor
 public struct ReactiveRouter<RouteType: Route> {
 
     // MARK: Stored Properties
