@@ -14,6 +14,7 @@ import UIKit
 /// Therefore, it is useful for view controllers, coordinators and views.
 /// Presentable is often used for transitions to allow for view controllers and coordinators to be transitioned to.
 ///
+@MainActor
 public protocol Presentable {
 
     ///

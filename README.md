@@ -4,7 +4,9 @@
 
 # [![Build Status](https://travis-ci.com/quickbirdstudios/XCoordinator.svg?branch=master)](https://travis-ci.com/quickbirdstudios/XCoordinator) [![CocoaPods Compatible](https://img.shields.io/cocoapods/p/XCoordinator)](https://cocoapods.org/pods/XCoordinator) [![Carthage Compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage) [![Documentation](https://img.shields.io/badge/documentation-100%25-brightgreen)](https://quickbirdstudios.github.io/XCoordinator) [![Platform](https://img.shields.io/badge/platform-iOS-lightgrey.svg)](https://github.com/quickbirdstudios/XCoordinator) [![License](https://img.shields.io/cocoapods/l/XCoordinator.svg)](https://github.com/quickbirdstudios/XCoordinator/blob/master/LICENSE)
 
-⚠️ We have recently released XCoordinator 2.0. Make sure to read [this section](#when-to-use-which-router-abstraction) before migrating. In general, please replace all `AnyRouter` by either `UnownedRouter` (in viewControllers, viewModels or references to parent coordinators) or `StrongRouter` in your `AppDelegate` or for references to child coordinators. In addition to that, the rootViewController is now injected into the initializer instead of being created in the `Coordinator.generateRootViewController` method.
+
+
+⚠️ We have recently released XCoordinator 3.0. To upgrade your app to the newest version, please make sure to replace all occurrences of `WeakRouter` with `weak any Router`, `UnownedRouter` with `unowned any Router` and `StrongRouter` with `any Router`. The Combine extensions are now available right within the main framework, so no need to import/specify it separately. Further, make sure to check out the new SwiftUI additions!
 
 “How does an app transition from one view controller to another?”.
 This question is common and puzzling regarding iOS development. There are many answers, as every architecture has different implementation variations. Some do it from within the implementation of a view controller, while some use a router/coordinator, an object connecting view models.
@@ -66,9 +68,9 @@ Routes are triggered from within Coordinators or ViewModels. In the following, w
 
 ```swift
 class HomeViewModel {
-    let router: UnownedRouter<HomeRoute>
+    unowned let router: any Router<HomeRoute>
 
-    init(router: UnownedRouter<HomeRoute>) {
+    init(router: any Router<HomeRoute>) {
         self.router = router
     }
 
@@ -96,7 +98,7 @@ To use coordinators from the launch of the app, make sure to create the app's `w
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
     let window: UIWindow! = UIWindow()
-    let router = AppCoordinator().strongRouter
+    let router: any Router<AppRoute> = AppCoordinator()
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         router.setRoot(for: window)
@@ -107,7 +109,75 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 ## 🤸‍♂️ Extras
 
-For more advanced use, XCoordinator offers many more customization options. We introduce custom animated transitions and deep linking. Furthermore, extensions for use in reactive programming with RxSwift/Combine and options to split up huge routes are described.
+For more advanced use, XCoordinator offers many more customization options. We introduce SwiftUI interoperability, custom animated transitions and deep linking. Furthermore, extensions for use in reactive programming with RxSwift/Combine and options to split up huge routes are described.
+
+### 🚀 SwiftUI
+
+To make the use of XCoordinator with SwiftUI easier, we provide the following capabilities:
+
+You can use an existing coordinator in your SwiftUI app by using the `WrappedRouter` view. The closure is performed when the view appears initially and the coordinator stays the same instance while being displayed.
+
+```swift
+struct ContentView: View {
+    var body: some View {
+        WrappedRouter {
+            UsersCoordinator()
+        }
+    }
+}
+```
+
+But how do you navigate to a SwiftUI view from a given coordinator, you are asking? Simply use `RoutingController`, a subclass of `UIHostingController` with some added functionality.
+
+```swift
+class UsersCoordinator: NavigationCoordinator<UserRoute> {
+
+    /* ... */
+    
+    override func prepareTransition(for route: UserRoute) -> NavigationTransition {
+        switch route {
+        case .user(let name):
+            let viewController = RoutingController {
+                UserView(name: name)
+            }
+            return .push(viewController)
+        /* ... */
+        }
+    }
+}
+```
+
+To gain access to a given parent router, you can use the `Routing<RouteType>` property wrapper. Simply specify it in your SwiftUI view like this:
+
+```swift
+struct ChildView: View {
+    @Routing<UsersRoute> var usersRouter
+    
+    var body: some View {
+        Button {
+            usersRouter.trigger(...)
+        } label: {
+            Text("Trigger")
+        }
+    }
+}
+```
+
+Further, if you happen to not want to trigger a UIKit transition, but instead would like to perform some SwiftUI state change, you can use one of the SwiftUI transitions, e.g. `Transition.withAnimation`.
+
+```swift
+class HomeCoordinator: TabCoordinator<HomeRoute> {
+    @Binding var selection: HomeTab
+    
+    override func prepareTransition(for route: HomeRoute) -> TabTransition {
+        switch route {
+        case .select(let index):
+            return .withAnimation { selection = HomeTab.allCases[index] }
+        /* ... */
+        }
+    }
+}
+```
 
 ### 🌗 Custom Transitions
 
@@ -179,7 +249,7 @@ class ParentCoordinator: NavigationCoordinator<ParentRoute> {
 }
 
 class ChildCoordinator: RedirectionRouter<ParentRoute, ChildRoute> {
-    init(parent: UnownedRouter<ParentRoute>) {
+    init(parent: any Router<ParentRoute>) {
         let viewController = UIViewController() 
         // this viewController is used when performing transitions with the Subcoordinator directly.
         super.init(viewController: viewController, parent: parent, map: nil)
@@ -226,7 +296,7 @@ Reactive programming can be very useful to keep the state of view and model cons
 ```swift
 class LoginViewModelImpl: LoginViewModel, LoginViewModelInput, LoginViewModelOutput {
 
-    private let router: UnownedRouter<AppRoute>
+    private unowned let router: any Router<AppRoute>
 
     private lazy var loginAction = CocoaAction { [unowned self] in
         return self.router.rx.trigger(.home)
@@ -247,7 +317,7 @@ let doneWithBothTransitions =
         .startWith(false)
 ```
 
-When using `XCoordinator` with the `Combine` extensions, you can use `router.publishers.trigger` instead of `router.rx.trigger`.
+When using `XCoordinator` with `Combine`, you can use `router.publishers.trigger` instead of `router.rx.trigger`.
 
 ## 📚 Documentation & Example app
 
@@ -326,27 +396,23 @@ The available transition types include:
 To integrate XCoordinator into your Xcode project using CocoaPods, add this to your `Podfile`:
 
 ```ruby
-pod 'XCoordinator', '~> 2.0'
+pod 'XCoordinator', '~> 3.0'
 ```
 
 To use the RxSwift extensions, add this to your `Podfile`:
 
 ```ruby
-pod 'XCoordinator/RxSwift', '~> 2.0'
+pod 'XCoordinator/RxSwift', '~> 3.0'
 ```
 
-To use the Combine extensions, add this to your `Podfile`:
-
-```ruby
-pod 'XCoordinator/Combine', '~> 2.0'
-```
+Since XCoordinator 3.0, we have now integrated the `Combine` extensions into `XCoordinator` directly.
 
 #### Carthage
 
 To integrate XCoordinator into your Xcode project using Carthage, add this to your `Cartfile`:
 
 ```
-github "quickbirdstudios/XCoordinator" ~> 2.0
+github "quickbirdstudios/XCoordinator" ~> 3.0
 ```
 
 Then run `carthage update`.
@@ -358,8 +424,8 @@ If this is your first time using Carthage in the project, you'll need to go thro
 See [this WWDC presentation](https://developer.apple.com/videos/play/wwdc2019/408/) about more information how to adopt Swift packages in your app.
 
 Specify `https://github.com/quickbirdstudios/XCoordinator.git` as the `XCoordinator` package link. 
-You can then decide between three different frameworks, i.e. `XCoordinator`, `XCoordinatorRx` and `XCoordinatorCombine`. 
-While `XCoordinator` contains the main framework, you can choose `XCoordinatorRx` or `XCoordinatorCombine` to get `RxSwift` or `Combine` extensions as well.
+You can then decide between two different frameworks: `XCoordinator` and`XCoordinatorRx`. 
+While `XCoordinator` contains the main framework and the `Combine` extensions, you can choose `XCoordinatorRx` to get `RxSwift` extensions as well.
 
 #### Manually
 

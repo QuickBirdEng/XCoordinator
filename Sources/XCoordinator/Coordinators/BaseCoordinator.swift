@@ -20,6 +20,7 @@ extension BaseCoordinator {
 /// `NavigationCoordinator`, `TabBarCoordinator`, `ViewCoordinator`, `SplitCoordinator`
 /// and `PageCoordinator`.
 ///
+@MainActor
 open class BaseCoordinator<RouteType: Route, TransitionType: TransitionProtocol>: Coordinator {
 
     // MARK: Stored properties
