@@ -26,6 +26,7 @@ public struct RegisterPeek<RootViewController, CoordinatorType: Coordinator> whe
 
 }
 
+/*
 extension RegisterPeek: TransitionComponent where RootViewController: UIViewController {
 
     public func build() -> Transition<RootViewController> {
@@ -49,3 +50,4 @@ extension RegisterPeek: TransitionComponent where RootViewController: UIViewCont
     }
 
 }
+*/

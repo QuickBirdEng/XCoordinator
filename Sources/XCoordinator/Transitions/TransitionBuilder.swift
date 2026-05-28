@@ -7,6 +7,7 @@
 
 import UIKit
 
+@MainActor
 @resultBuilder
 public enum TransitionBuilder<RootViewController: UIViewController> {
 

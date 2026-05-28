@@ -11,7 +11,7 @@ public struct Perform<RootViewController, TransitionType: TransitionComponent> {
 
     // MARK: Stored Properties
 
-    private let transition: () -> Transition<TransitionType.RootViewController>
+    private let transition: @MainActor () -> Transition<TransitionType.RootViewController>
     private let rootViewController: TransitionType.RootViewController
 
     // MARK: Initialization

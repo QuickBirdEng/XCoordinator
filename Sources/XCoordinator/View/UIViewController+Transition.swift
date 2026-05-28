@@ -10,10 +10,6 @@ import UIKit
 
 extension UIViewController {
 
-    private var topPresentedViewController: UIViewController {
-        presentedViewController?.topPresentedViewController ?? self
-    }
-
     func show(_ viewController: UIViewController,
               with options: TransitionOptions,
               completion: PresentationHandler?) {
