@@ -8,9 +8,10 @@ set -e -o pipefail
 
 cd "$(dirname "$0")/.."
 
-swift package \
-    --allow-writing-to-directory Documentation \
-    generate-documentation \
-    --target XCoordinator \
-    --output-path Documentation \
-    --transform-for-static-hosting
+xcodebuild docbuild \
+  -scheme XCoordinator \
+  -destination 'generic/platform=iOS' \
+  -derivedDataPath .build/Documentation \
+  ONLY_ACTIVE_ARCH=YES \
+  CODE_SIGNING_ALLOWED=NO \
+  -quiet

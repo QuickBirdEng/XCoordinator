@@ -7,7 +7,30 @@ set -e -o pipefail
 
 cd "$(dirname "$0")/.."
 
-swift package \
-    --disable-sandbox \
-    preview-documentation \
-    --product XCoordinator
+echo "1. Building documentation archive for iOS..."
+(./Scripts/docs.sh)
+
+# Locate the generated archive
+DOCC_ARCHIVE=$(find .build/Documentation -type d -name "XCoordinator.doccarchive" | head -n 1)
+
+if [ -z "$DOCC_ARCHIVE" ]; then
+  echo "Error: Could not find the generated XCoordinator.doccarchive artifact."
+  exit 1
+fi
+
+echo "2. Transforming archive for local static web hosting..."
+STATIC_OUT=".build/Documentation/static"
+rm -rf "$STATIC_OUT"
+
+xcrun docc process-archive transform-for-static-hosting "$DOCC_ARCHIVE" \
+  --output-path "$STATIC_OUT"
+  
+DOCC_URL=http://localhost:8000/documentation/xcoordinator
+
+echo "--------------------------------------------------------"
+echo "Documentation server running!"
+echo "$DOCC_URL"
+echo "--------------------------------------------------------"
+
+# 3. Serve the interactive documentation site
+python3 -m http.server --directory "$STATIC_OUT" 8000
