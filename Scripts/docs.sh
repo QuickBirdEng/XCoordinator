@@ -1,21 +1,16 @@
 #!/bin/sh
 
-# Preparation
+# Generates static-hosting DocC output into ./Documentation.
+# Uses the iOS Simulator SDK and lets the toolchain pick the matching target triple,
+# so it runs unchanged on Apple Silicon and Intel Macs and on whatever Xcode is current.
 
-set -o pipefail
+set -e -o pipefail
 
-# Constants
-
-TARGET_PLATFORM="iphoneos"
-TARGET_SDK="arm64-apple-ios16.4"
-
-# Execution
+cd "$(dirname "$0")/.."
 
 swift package \
-    -Xswiftc "-sdk" -Xswiftc "`xcrun --sdk $TARGET_PLATFORM --show-sdk-path`" \
-    -Xswiftc "-target" -Xswiftc $TARGET_SDK \
     --allow-writing-to-directory Documentation \
     generate-documentation \
+    --target XCoordinator \
     --output-path Documentation \
-    --transform-for-static-hosting \
-    --target "XCoordinator"
+    --transform-for-static-hosting

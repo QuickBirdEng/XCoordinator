@@ -37,8 +37,14 @@ open class BaseCoordinator<RouteType: Route, TransitionType: TransitionProtocol>
 
     // MARK: Computed properties
 
+    /// The root view controller of this coordinator's flow.
+    ///
+    /// The root view controller's concrete type is determined by `TransitionType.RootViewController` —
+    /// e.g. a `UINavigationController` for a `NavigationCoordinator`. Transitions on this coordinator
+    /// are performed against this view controller.
     public private(set) var rootViewController: RootViewController
-    
+
+    /// The presentable view controller for this coordinator. Returns ``rootViewController`` by default.
     open var viewController: UIViewController! {
         rootViewController
     }
@@ -46,10 +52,11 @@ open class BaseCoordinator<RouteType: Route, TransitionType: TransitionProtocol>
     // MARK: Initialization
 
     ///
-    /// This initializer trigger a route before the coordinator is made visible.
+    /// Creates a coordinator and optionally triggers a route before the coordinator is made visible.
     ///
-    /// - Parameter initialRoute:
-    ///     If a route is specified, it is triggered before making the coordinator visible.
+    /// - Parameters:
+    ///   - rootViewController: The root view controller for this coordinator's flow.
+    ///   - initialRoute: A route to trigger before the coordinator becomes visible. Pass `nil` to skip.
     ///
     public init(rootViewController: RootViewController, initialRoute: RouteType?) {
         self.rootViewController = rootViewController
@@ -57,10 +64,11 @@ open class BaseCoordinator<RouteType: Route, TransitionType: TransitionProtocol>
     }
 
     ///
-    /// This initializer performs a transition before the coordinator is made visible.
+    /// Creates a coordinator and optionally performs a transition before the coordinator is made visible.
     ///
-    /// - Parameter initialTransition:
-    ///     If a transition is specified, it is performed before making the coordinator visible.
+    /// - Parameters:
+    ///   - rootViewController: The root view controller for this coordinator's flow.
+    ///   - initialTransition: A transition to perform before the coordinator becomes visible. Pass `nil` to skip.
     ///
     public init(rootViewController: RootViewController, initialTransition: TransitionType?) {
         self.rootViewController = rootViewController

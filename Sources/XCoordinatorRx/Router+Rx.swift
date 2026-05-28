@@ -11,6 +11,13 @@
 import RxSwift
 import XCoordinator
 
+///
+/// A namespace for RxSwift observables exposed by a `Router`.
+///
+/// Routers expose this namespace via ``Router/rx``, mirroring the `Router.publishers` Combine namespace.
+/// Use the methods on this type — `trigger(_:with:)` and `contextTrigger(_:with:)` — to obtain
+/// observables that emit when transitions complete.
+///
 @MainActor
 public struct ReactiveRouter<RouteType: Route> {
 
@@ -41,15 +48,12 @@ extension ReactiveRouter {
     // MARK: Convenience methods
 
     ///
-    /// This method transforms the completion block of a router's trigger method into an observable.
+    /// Wraps a route trigger in an `Observable<Void>` that emits once the transition has completed.
     ///
-    /// It uses the default transition options as specified in `Router.trigger`.
-    ///
-    /// - Parameter route:
-    ///     The route to be triggered.
-    ///
-    /// - Returns:
-    ///     An observable informing about the completion of the transition.
+    /// - Parameters:
+    ///   - route: The route to trigger.
+    ///   - options: Transition options. Defaults to animated.
+    /// - Returns: An observable emitting `()` and then completing when the transition finishes.
     ///
     public func trigger(_ route: RouteType, with options: TransitionOptions = .init(animated: true)) -> Observable<Void> {
         Observable.create { [base] observer -> Disposable in
@@ -62,15 +66,15 @@ extension ReactiveRouter {
     }
 
     ///
-    /// This method transforms the completion block of a router's trigger method into an observable.
+    /// Wraps a route trigger in an `Observable<any TransitionProtocol>` that emits the resulting
+    /// transition context once the transition has completed.
     ///
-    /// It uses the default transition options as specified in `Router.trigger`.
+    /// Useful for deep linking when the resulting context is required for further processing.
     ///
-    /// - Parameter route:
-    ///     The route to be triggered.
-    ///
-    /// - Returns:
-    ///     An observable informing about the completion of the transition.
+    /// - Parameters:
+    ///   - route: The route to trigger.
+    ///   - options: Transition options. Defaults to animated.
+    /// - Returns: An observable emitting the transition context and then completing.
     ///
     public func contextTrigger(
         _ route: RouteType,

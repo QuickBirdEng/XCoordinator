@@ -26,19 +26,38 @@ open class ViewCoordinator<RouteType: Route>: BaseCoordinator<RouteType, ViewTra
 
     // MARK: Initialization
     
+    ///
+    /// Creates a view coordinator with the given root view controller and an optional initial transition.
+    ///
+    /// - Parameters:
+    ///   - rootViewController: The view controller that hosts the coordinator's transitions.
+    ///   - initialTransition: A transition to perform once the coordinator is shown. Pass `nil` to skip.
     public override init(rootViewController: RootViewController, initialTransition: TransitionType?) {
         super.init(rootViewController: rootViewController,
                    initialTransition: initialTransition)
     }
 
+    ///
+    /// Creates a view coordinator with the given root view controller and an optional initial route.
+    ///
+    /// - Parameters:
+    ///   - rootViewController: The view controller that hosts the coordinator's transitions.
+    ///   - initialRoute: A route triggered once the coordinator is shown. Defaults to `nil`.
     public override init(rootViewController: RootViewController, initialRoute: RouteType? = nil) {
         super.init(rootViewController: rootViewController,
                    initialRoute: initialRoute)
     }
-    
+
     #if canImport(SwiftUI)
-    
-    @available(iOS 13, tvOS 13, *)
+
+    ///
+    /// Creates a view coordinator whose root is a SwiftUI view, optionally triggering an initial route.
+    ///
+    /// The view is hosted inside a ``RoutingController`` so it participates in the routing context.
+    ///
+    /// - Parameters:
+    ///   - initialRoute: A route triggered once the coordinator is shown.
+    ///   - body: A view-builder producing the SwiftUI content.
     public init<Content: View>(
         initialRoute: RouteType? = nil,
         @ViewBuilder body: () -> Content
@@ -48,8 +67,13 @@ open class ViewCoordinator<RouteType: Route>: BaseCoordinator<RouteType, ViewTra
             initialRoute: initialRoute
         )
     }
-    
-    @available(iOS 13, tvOS 13, *)
+
+    ///
+    /// Creates a view coordinator whose root is a SwiftUI view, optionally performing an initial transition.
+    ///
+    /// - Parameters:
+    ///   - initialTransition: A transition to perform once the coordinator is shown.
+    ///   - body: A view-builder producing the SwiftUI content.
     public init<Content: View>(
         initialTransition: TransitionType?,
         @ViewBuilder body: () -> Content
@@ -59,7 +83,7 @@ open class ViewCoordinator<RouteType: Route>: BaseCoordinator<RouteType, ViewTra
             initialTransition: initialTransition
         )
     }
-    
+
     #endif
 
 }

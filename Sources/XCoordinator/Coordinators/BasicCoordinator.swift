@@ -50,16 +50,11 @@ open class BasicCoordinator<RouteType: Route, TransitionType: TransitionProtocol
     /// Creates a BasicCoordinator.
     ///
     /// - Parameters:
-    ///     - initialRoute:
-    ///         If a route is specified, it is triggered depending on the initialLoadingType.
-    ///     - initialLoadingType:
-    ///         The initialLoadingType specifies when the initialRoute is triggered.
-    ///     - prepareTransition:
-    ///         A closure to define transitions based on triggered routes.
-    ///         Make sure to override `prepareTransition` by subclassing, if you specify `nil` here.
-    ///
-    /// - Seealso:
-    ///     See `InitialLoadingType` for more information.
+    ///   - rootViewController: The view controller that hosts the coordinator's transitions.
+    ///   - initialRoute: If specified, this route is triggered depending on `initialLoadingType`.
+    ///   - initialLoadingType: Determines when `initialRoute` is triggered. See ``InitialLoadingType``.
+    ///   - prepareTransition: A closure that returns a transition for each triggered route.
+    ///     Make sure to subclass and override `prepareTransition(for:)` if you pass `nil` here.
     ///
     public init(rootViewController: RootViewController,
                 initialRoute: RouteType? = nil,

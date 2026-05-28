@@ -19,20 +19,25 @@ open class SplitCoordinator<RouteType: Route>: BaseCoordinator<RouteType, SplitT
 
     // MARK: Initialization
 
+    ///
+    /// Creates a SplitCoordinator and optionally triggers an initial route.
+    ///
+    /// - Parameters:
+    ///   - rootViewController: The `UISplitViewController` to host transitions. Defaults to a fresh instance.
+    ///   - initialRoute: A route to trigger once the coordinator is shown.
     public override init(rootViewController: RootViewController = .init(), initialRoute: RouteType?) {
         super.init(rootViewController: rootViewController, initialRoute: initialRoute)
     }
 
     ///
-    /// Creates a SplitCoordinator and sets the specified presentables as the rootViewController's
-    /// viewControllers.
+    /// Creates a SplitCoordinator and sets the specified presentables as the split controller's view controllers.
     ///
     /// - Parameters:
-    ///     - primary:
-    ///         The presentable to be shown as primary in the `UISplitViewController`.
-    ///     - secondary:
-    ///         The presentable to be shown as secondary in the `UISplitViewController`. This is optional due to
-    ///         the fact that it might not be useful to have a detail page right away on a small-screen device.
+    ///   - rootViewController: The `UISplitViewController` to host transitions. Defaults to a fresh instance.
+    ///   - primary: The presentable shown in the primary column.
+    ///   - secondary: The presentable shown in the secondary (detail) column. Optional, because a small-screen
+    ///     device may not want to show a detail right away.
+    ///   - supplementary: The presentable shown in the supplementary column (iOS 14+ triple-column splits). Optional.
     ///
     public init(rootViewController: RootViewController = .init(), primary: any Presentable, secondary: (any Presentable)?, supplementary: (any Presentable)? = nil) {
         super.init(rootViewController: rootViewController,

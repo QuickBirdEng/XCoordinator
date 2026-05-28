@@ -30,27 +30,19 @@ open class PageCoordinator<RouteType: Route>: BaseCoordinator<RouteType, PageTra
     ///
     /// Creates a PageCoordinator with several sequential (potentially looping) pages.
     ///
-    /// It further sets the current page of the rootViewController animated in the specified direction.
-    ///
-    /// - Note:
-    ///     If you need custom configuration of the rootViewController, modify the `configuration` parameter,
-    ///     since you cannot change this after the initialization.
+    /// If neither `firstPage` nor `secondPage` is specified, the coordinator falls back to showing the
+    /// first one or two of `pages` (depending on whether the page view controller is double-sided).
     ///
     /// - Parameters:
-    ///     - pages:
-    ///         The pages of the PageCoordinator.
-    ///         These can be changed later, if necessary, using the `PageCoordinator.dataSource` property.
-    ///     - loop:
-    ///         Whether or not the PageCoordinator should loop when hitting the end or the beginning of the specified pages.
-    ///     - set:
-    ///         The presentable to be shown right from the start.
-    ///         This should be one of the elements of the specified pages.
-    ///         If not specified, no `set` transition is triggered, which results in the first page being shown.
-    ///     - direction:
-    ///         The direction in which the transition to set the specified first page (parameter `set`) should be animated in.
-    ///         If you specify `nil` for `set`, this parameter is ignored.
-    ///     - configuration:
-    ///         The configuration of the rootViewController. You cannot change this configuration later anymore (Limitation of UIKit).
+    ///   - rootViewController: The `UIPageViewController` to host pages. Defaults to a fresh instance.
+    ///     Note that you cannot change its transition style / navigation orientation / options after
+    ///     initialization — use the convenience initializer to configure those up front.
+    ///   - pages: The pages of the PageCoordinator. These can be changed later via ``dataSource``.
+    ///   - loop: Whether the coordinator should loop when reaching the end or the beginning of `pages`.
+    ///   - firstPage: The page to show on appearance. Must be an element of `pages`. If `nil`, falls back
+    ///     to the first page (or first two for double-sided controllers).
+    ///   - secondPage: The second page when the page view controller is double-sided. Optional.
+    ///   - direction: Animation direction for the initial set transition. Ignored if no initial page is set.
     ///
     public init(rootViewController: RootViewController = .init(),
                 pages: [Presentable],
@@ -75,22 +67,13 @@ open class PageCoordinator<RouteType: Route>: BaseCoordinator<RouteType, PageTra
 
     ///
     /// Creates a PageCoordinator with a custom dataSource.
-    /// It further sets the currently shown page and a direction for the animation of displaying it.
-    /// If you need custom configuration of the rootViewController, modify the `configuration` parameter,
-    /// since you cannot change this after the initialization.
     ///
     /// - Parameters:
-    ///     - dataSource:
-    ///         The dataSource of the PageCoordinator.
-    ///     - set:
-    ///         The presentable to be shown right from the start.
-    ///         This should be one of the elements of the specified pages.
-    ///         If not specified, no `set` transition is triggered, which results in the first page being shown.
-    ///     - direction:
-    ///         The direction in which the transition to set the specified first page (parameter `set`) should be animated in.
-    ///         If you specify `nil` for `set`, this parameter is ignored.
-    ///     - configuration:
-    ///         The configuration of the rootViewController. You cannot change this configuration later anymore (Limitation of UIKit).
+    ///   - rootViewController: The `UIPageViewController` to host pages. Defaults to a fresh instance.
+    ///   - dataSource: The dataSource to drive page navigation.
+    ///   - firstPage: The page to show on appearance.
+    ///   - secondPage: The second page when the page view controller is double-sided. Optional.
+    ///   - direction: Animation direction for the initial set transition.
     ///
     public init(rootViewController: RootViewController = .init(),
                 dataSource: UIPageViewControllerDataSource,
@@ -103,6 +86,23 @@ open class PageCoordinator<RouteType: Route>: BaseCoordinator<RouteType, PageTra
                    initialTransition: .set(firstPage, secondPage, direction: direction))
     }
 
+    ///
+    /// Creates a PageCoordinator and its underlying `UIPageViewController` up front, letting you configure
+    /// the controller's transition style, orientation, double-sided mode, spine location, and inter-page spacing.
+    ///
+    /// - Parameters:
+    ///   - transitionStyle: The style used to transition between pages.
+    ///   - navigationOrientation: Horizontal or vertical page navigation.
+    ///   - isDoubleSided: Whether the page view controller renders two pages at once.
+    ///   - spineLocation: The spine location for double-sided controllers. Defaults to `.mid` when
+    ///     `isDoubleSided` is true and `nil` otherwise.
+    ///   - interPageSpacing: The spacing between adjacent pages.
+    ///   - pages: The pages of the PageCoordinator.
+    ///   - loop: Whether the coordinator should loop at the end and the beginning of `pages`.
+    ///   - firstPage: The page to show on appearance. See ``init(rootViewController:pages:loop:set:_:direction:)``
+    ///     for the fallback behaviour when `firstPage` is `nil`.
+    ///   - secondPage: The second page when `isDoubleSided` is true. Optional.
+    ///   - direction: Animation direction for the initial set transition.
     public convenience init(
         transitionStyle: UIPageViewController.TransitionStyle = .pageCurl,
         navigationOrientation: UIPageViewController.NavigationOrientation = .horizontal,

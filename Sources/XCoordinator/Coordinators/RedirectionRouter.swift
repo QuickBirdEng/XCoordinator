@@ -43,8 +43,8 @@ open class RedirectionRouter<ParentRoute: Route, RouteType: Route>: Router {
     /// and an optional mapping.
     ///
     /// - Note:
-    ///     Make sure to either override `mapToSuperRoute` or to specify a closure for the `map` parameter.
-    ///     If you override `mapToSuperRoute`, the `map` parameter is ignored.
+    ///     Make sure to either override ``mapToParentRoute(_:)`` or to specify a closure for the `map` parameter.
+    ///     If you override ``mapToParentRoute(_:)``, the `map` parameter is ignored.
     ///
     /// - Parameters:
     ///     - viewController:

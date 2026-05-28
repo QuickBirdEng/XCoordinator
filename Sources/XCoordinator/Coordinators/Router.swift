@@ -9,13 +9,12 @@
 import Foundation
 
 ///
-/// The Router protocol is used to abstract the transition-type specific characteristics of a Coordinator.
+/// The Router protocol abstracts a coordinator down to its route-triggering capability.
 ///
-/// A Router can trigger routes, which lead to transitions being executed. In constrast to the Coordinator protocol,
-/// the router does not specify a TransitionType and can therefore be used in the form of a
-/// `StrongRouter`, `UnownedRouter` or `WeakRouter` to reduce a coordinator's capabilities to
-/// the triggering of routes.
-/// This may especially be useful in viewModels when using them in different contexts.
+/// In contrast to ``Coordinator``, `Router` does not specify a `TransitionType` and can therefore be
+/// used as `any Router<RouteType>` to expose only the trigger surface to view models and views.
+/// Pair the existential with the ARC qualifier that matches the relationship — `unowned`/`weak` for
+/// child holding parent, `strong` for ownership.
 ///
 @MainActor
 public protocol Router<RouteType>: Presentable, AnyObject {
@@ -87,16 +86,14 @@ extension Router {
 
 }
 
-#if swift(>=5.5.2)
-
-@available(iOS 13.0, tvOS 13.0, *)
 extension Router {
 
     ///
     /// Triggers the specified route with default transition options enabling the animation of the transition.
     ///
-    /// - Parameters:
-    ///     - route: The route to be triggered.
+    /// Suspends until the underlying transition has completed (including any animations).
+    ///
+    /// - Parameter route: The route to be triggered.
     ///
     @MainActor public func trigger(_ route: RouteType) async {
         await trigger(route, with: .default)
@@ -104,6 +101,8 @@ extension Router {
 
     ///
     /// Triggers the specified route by performing a transition.
+    ///
+    /// Suspends until the underlying transition has completed (including any animations).
     ///
     /// - Parameters:
     ///     - route: The route to be triggered.
@@ -114,21 +113,15 @@ extension Router {
     }
 
     ///
-    /// Triggers routes and returns context in completion-handler.
+    /// Triggers a route and returns the resulting transition context.
     ///
-    /// Useful for deep linking. It is encouraged to use `trigger` instead, if the context is not needed.
+    /// Useful for deep linking. Prefer ``trigger(_:with:)`` if the context is not needed.
     ///
     /// - Parameters:
     ///     - route: The route to be triggered.
-    ///     - options:
-    ///         Transition options configuring the execution of transitions, e.g. whether it should be animated.
-    ///     - completion:
-    ///         If present, this completion handler is executed once the transition is completed
-    ///         (including animations).
+    ///     - options: Transition options configuring the execution of transitions, e.g. whether it should be animated.
     ///
-    /// - Returns:
-    ///     The transition context of the performed transition(s).
-    ///     If the context is not needed, use `trigger` instead.
+    /// - Returns: The transition context of the performed transition(s).
     ///
     @MainActor public func contextTrigger(_ route: RouteType, with options: TransitionOptions) async -> any TransitionProtocol {
         await withCheckedContinuation { continuation in
@@ -139,5 +132,3 @@ extension Router {
     }
 
 }
-
-#endif

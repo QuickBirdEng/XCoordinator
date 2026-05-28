@@ -1,10 +1,10 @@
-// swift-tools-version:5.8
+// swift-tools-version:5.9
 
 import PackageDescription
 
 let package = Package(
     name: "XCoordinator",
-    platforms: [.iOS(.v11), .tvOS(.v11)],
+    platforms: [.iOS(.v14), .tvOS(.v14)],
     products: [
         .library(
             name: "XCoordinator",
@@ -14,8 +14,8 @@ let package = Package(
             targets: ["XCoordinatorRx"]),
     ],
     dependencies: [
-        .package(url: "https://github.com/apple/swift-docc-plugin", from: "1.0.0"),
-        .package(url: "https://github.com/ReactiveX/RxSwift.git", from: "6.0.0"),
+        .package(url: "https://github.com/apple/swift-docc-plugin", from: "1.3.0"),
+        .package(url: "https://github.com/ReactiveX/RxSwift.git", from: "6.5.0"),
     ],
     targets: [
         .target(

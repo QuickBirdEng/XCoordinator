@@ -33,7 +33,7 @@ extension Coordinator where Self: AnyObject {
     ///
     /// Deep-Linking can be used to chain routes of different types together.
     ///
-    /// - Parameters
+    /// - Parameters:
     ///     - route:
     ///         The first route in the chain.
     ///         It is given a special place because its exact type can be specified.

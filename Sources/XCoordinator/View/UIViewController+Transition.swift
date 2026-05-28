@@ -96,25 +96,3 @@ extension UIViewController {
         completion?()
     }
 }
-
-extension Presentable where Self: UIViewController {
-
-    @available(iOS, introduced: 9.0, deprecated: 13.0, message: "Use `UIContextMenuInteraction` instead.")
-    func registerPeek<TransitionType: TransitionProtocol>(
-        from sourceView: UIView,
-        transitionGenerator: @escaping () -> TransitionType,
-        completion: PresentationHandler?) where TransitionType.RootViewController == Self {
-        let delegate = CoordinatorPreviewingDelegateObject(
-            transition: transitionGenerator,
-            rootViewController: self,
-            completion: completion
-        )
-
-        if let context = sourceView.removePreviewingContext(for: TransitionType.self) {
-            unregisterForPreviewing(withContext: context)
-        }
-
-        sourceView.strongReferences.append(delegate)
-        delegate.context = registerForPreviewing(with: delegate, sourceView: sourceView)
-    }
-}

@@ -1,11 +1,14 @@
 #!/bin/sh
 
-# Preparation
+# Builds the XCoordinator package against the iOS Simulator SDK.
+# Works on both Apple Silicon and Intel Macs — the toolchain selects the appropriate arch.
 
-set -o pipefail
+set -e -o pipefail
 
-# Execution
+cd "$(dirname "$0")/.."
 
-swift build \
-    -Xswiftc "-sdk" -Xswiftc "`xcrun --sdk iphonesimulator --show-sdk-path`" \
-    -Xswiftc "-target" -Xswiftc "x86_64-apple-ios13.0-simulator"
+xcodebuild build \
+    -scheme XCoordinator \
+    -destination 'generic/platform=iOS Simulator' \
+    -skipPackagePluginValidation \
+    CODE_SIGNING_ALLOWED=NO

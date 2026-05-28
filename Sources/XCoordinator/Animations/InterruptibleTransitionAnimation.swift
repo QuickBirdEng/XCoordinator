@@ -9,10 +9,8 @@ import UIKit
 
 ///
 /// Use InterruptibleTransitionAnimation to define interactive transitions based on the
-/// [UIViewPropertyAnimator](https://developer.apple.com/documentation/uikit/UIViewPropertyAnimator)
-/// APIs introduced in iOS 10.
+/// [UIViewPropertyAnimator](https://developer.apple.com/documentation/uikit/UIViewPropertyAnimator) APIs.
 ///
-@available(iOS 10.0, tvOS 10.0, *)
 open class InterruptibleTransitionAnimation: InteractiveTransitionAnimation {
 
     // MARK: Stored properties

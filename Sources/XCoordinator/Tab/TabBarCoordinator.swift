@@ -23,13 +23,8 @@ open class TabBarCoordinator<RouteType: Route>: BaseCoordinator<RouteType, TabBa
 
     // MARK: Stored properties
 
-    ///
-    /// The animation delegate controlling the rootViewController's transition animations.
-    /// This animation delegate is set to be the rootViewController's rootViewController, if you did not set one earlier.
-    ///
-    /// - Note:
-    ///     Use the `delegate` property to set a custom delegate and use transition animations provided by XCoordinator.
-    ///
+    /// Internal animation delegate installed as the tab-bar controller's `delegate` when none was set.
+    /// External callers should install their own delegate via the public ``delegate`` property.
     private let animationDelegate = TabBarAnimationDelegate()
     // swiftlint:disable:previous weak_delegate
     
@@ -56,6 +51,13 @@ open class TabBarCoordinator<RouteType: Route>: BaseCoordinator<RouteType, TabBa
 
     // MARK: Initialization
 
+    ///
+    /// Creates a TabBarCoordinator and optionally triggers an initial route.
+    ///
+    /// - Parameters:
+    ///   - rootViewController: The `UITabBarController` to host transitions. Defaults to a fresh instance.
+    ///   - initialRoute: A route to trigger once the coordinator is shown.
+    ///
     public override init(rootViewController: RootViewController = .init(), initialRoute: RouteType?) {
         if rootViewController.delegate == nil {
             rootViewController.delegate = animationDelegate
@@ -66,8 +68,9 @@ open class TabBarCoordinator<RouteType: Route>: BaseCoordinator<RouteType, TabBa
     ///
     /// Creates a TabBarCoordinator with a specified set of tabs.
     ///
-    /// - Parameter tabs:
-    ///     The presentables to be used as tabs.
+    /// - Parameters:
+    ///   - rootViewController: The `UITabBarController` to host transitions. Defaults to a fresh instance.
+    ///   - tabs: The presentables to use as tabs.
     ///
     public init(rootViewController: RootViewController = .init(), tabs: [Presentable]) {
         if rootViewController.delegate == nil {
@@ -80,10 +83,9 @@ open class TabBarCoordinator<RouteType: Route>: BaseCoordinator<RouteType, TabBa
     /// Creates a TabBarCoordinator with a specified set of tabs and selects a specific presentable.
     ///
     /// - Parameters:
-    ///     - tabs: The presentables to be used as tabs.
-    ///     - select:
-    ///         The presentable to be selected before displaying. Make sure, this presentable is one of the
-    ///         specified tabs in the other parameter.
+    ///   - rootViewController: The `UITabBarController` to host transitions. Defaults to a fresh instance.
+    ///   - tabs: The presentables to use as tabs.
+    ///   - select: The presentable to select before displaying. Must be one of `tabs`.
     ///
     public init(rootViewController: RootViewController = .init(), tabs: [Presentable], select: Presentable) {
         if rootViewController.delegate == nil {
@@ -97,8 +99,9 @@ open class TabBarCoordinator<RouteType: Route>: BaseCoordinator<RouteType, TabBa
     /// Creates a TabBarCoordinator with a specified set of tabs and selects a presentable at a given index.
     ///
     /// - Parameters:
-    ///     - tabs: The presentables to be used as tabs.
-    ///     - select: The index of the presentable to be selected before displaying.
+    ///   - rootViewController: The `UITabBarController` to host transitions. Defaults to a fresh instance.
+    ///   - tabs: The presentables to use as tabs.
+    ///   - select: The index of the tab to select before displaying.
     ///
     public init(rootViewController: RootViewController = .init(), tabs: [Presentable], select: Int) {
         if rootViewController.delegate == nil {
@@ -110,7 +113,18 @@ open class TabBarCoordinator<RouteType: Route>: BaseCoordinator<RouteType, TabBa
     
     #if canImport(Combine) && canImport(SwiftUI)
 
-    @available(iOS 13, tvOS 13, *)
+    ///
+    /// Creates a tab bar coordinator whose selection is driven by a SwiftUI `Binding`.
+    ///
+    /// The `selection` binding stays in sync with the tab bar's selected item: external changes to
+    /// the binding update the selected tab, and user-driven tab changes write back to the binding.
+    ///
+    /// - Parameters:
+    ///   - rootViewController: The tab bar controller. Defaults to a fresh instance.
+    ///   - items: The data items to render as tabs.
+    ///   - selection: A binding to the currently selected item.
+    ///   - content: A closure that builds a view controller for each item.
+    ///
     public init<Items: Collection>(
         rootViewController: RootViewController = .init(),
         items: Items,
@@ -138,7 +152,17 @@ open class TabBarCoordinator<RouteType: Route>: BaseCoordinator<RouteType, TabBa
         strongReferences.append(cancellable)
     }
     
-    @available(iOS 13, tvOS 13, *)
+    ///
+    /// Creates a tab bar coordinator whose selection is a `CaseIterable & Equatable` enum.
+    ///
+    /// Convenience over ``init(rootViewController:items:selection:content:)`` for enum-typed
+    /// selections — the `items` are derived from `Item.allCases`.
+    ///
+    /// - Parameters:
+    ///   - rootViewController: The tab bar controller. Defaults to a fresh instance.
+    ///   - selection: A binding to the currently selected case.
+    ///   - content: A closure that builds a view controller for each case.
+    ///
     public init<Item: CaseIterable & Equatable>(
         rootViewController: RootViewController = .init(),
         selection: Binding<Item>,
