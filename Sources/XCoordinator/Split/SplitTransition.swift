@@ -15,6 +15,10 @@ public typealias SplitTransition = Transition<UISplitViewController>
 
 extension Transition where RootViewController: UISplitViewController {
 
+    ///
+    /// Replaces the split view controller's `viewControllers` with the given presentables.
+    ///
+    /// - Parameter presentables: The presentables that become the split controller's columns, in order.
     public static func set(_ presentables: [any Presentable]) -> Transition {
         Transition(presentables: presentables, animationInUse: nil) { rootViewController, _, completion in
             CATransaction.begin()
@@ -29,6 +33,12 @@ extension Transition where RootViewController: UISplitViewController {
         }
     }
 
+    ///
+    /// Sets a single presentable into the given `UISplitViewController.Column` (iOS 14+ triple-column API).
+    ///
+    /// - Parameters:
+    ///   - presentable: The presentable for the column. Pass `nil` to clear the column.
+    ///   - column: The column to set.
     @available(iOS 14, *)
     public static func set(_ presentable: (any Presentable)?, for column: UISplitViewController.Column) -> Transition {
         Transition(presentables: [presentable].compactMap { $0 }, animationInUse: nil) { rootViewController, _, completion in

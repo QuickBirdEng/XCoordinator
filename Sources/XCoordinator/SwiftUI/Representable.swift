@@ -9,7 +9,6 @@
 
 import SwiftUI
 
-@available(iOS 13, tvOS 13, *)
 internal struct Representable<C: Presentable>: UIViewControllerRepresentable {
     // MARK: Stored Properties
     

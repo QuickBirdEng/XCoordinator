@@ -1,19 +1,13 @@
 #!/bin/sh
 
-# Preparation
+# Previews DocC documentation in a local web server.
+# Runs unchanged on Apple Silicon and Intel Macs.
 
-set -o pipefail
+set -e -o pipefail
 
-# Constants
-
-TARGET_PLATFORM="iphoneos"
-TARGET_SDK="arm64-apple-ios16.4"
-
-# Execution
+cd "$(dirname "$0")/.."
 
 swift package \
-    -Xswiftc "-sdk" -Xswiftc "`xcrun --sdk $TARGET_PLATFORM --show-sdk-path`" \
-    -Xswiftc "-target" -Xswiftc $TARGET_SDK \
     --disable-sandbox \
     preview-documentation \
     --product XCoordinator

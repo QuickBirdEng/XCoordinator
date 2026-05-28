@@ -1,37 +1,60 @@
 <p align="center">
-  <img src="https://user-images.githubusercontent.com/15239005/221913790-9c2b89fc-7497-49a1-9087-c3277f3ab4f2.png">
+  <img src="https://user-images.githubusercontent.com/15239005/221913790-9c2b89fc-7497-49a1-9087-c3277f3ab4f2.png" alt="XCoordinator logo">
 </p>
 
-# [![Build Status](https://travis-ci.com/quickbirdstudios/XCoordinator.svg?branch=master)](https://travis-ci.com/quickbirdstudios/XCoordinator) [![CocoaPods Compatible](https://img.shields.io/cocoapods/p/XCoordinator)](https://cocoapods.org/pods/XCoordinator) [![Carthage Compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage) [![Documentation](https://img.shields.io/badge/documentation-100%25-brightgreen)](https://quickbirdstudios.github.io/XCoordinator) [![Platform](https://img.shields.io/badge/platform-iOS-lightgrey.svg)](https://github.com/quickbirdstudios/XCoordinator) [![License](https://img.shields.io/cocoapods/l/XCoordinator.svg)](https://github.com/quickbirdstudios/XCoordinator/blob/master/LICENSE)
+# XCoordinator
 
+[![CI](https://github.com/quickbirdstudios/XCoordinator/actions/workflows/ci.yml/badge.svg)](https://github.com/quickbirdstudios/XCoordinator/actions/workflows/ci.yml)
+[![Swift](https://img.shields.io/badge/Swift-5.9-orange.svg)](https://swift.org)
+[![Platforms](https://img.shields.io/badge/platforms-iOS%2014%20%7C%20tvOS%2014-lightgrey.svg)](https://github.com/quickbirdstudios/XCoordinator)
+[![SwiftPM](https://img.shields.io/badge/SPM-compatible-brightgreen.svg)](https://swift.org/package-manager/)
+[![CocoaPods](https://img.shields.io/cocoapods/v/XCoordinator)](https://cocoapods.org/pods/XCoordinator)
+[![License](https://img.shields.io/cocoapods/l/XCoordinator.svg)](LICENSE)
 
+**Type-safe, enum-driven navigation for UIKit and SwiftUI based on the Coordinator pattern.**
 
-⚠️ We have recently released XCoordinator 3.0. To upgrade your app to the newest version, please make sure to replace all occurrences of `WeakRouter` with `weak any Router`, `UnownedRouter` with `unowned any Router` and `StrongRouter` with `any Router`. The Combine extensions are now available right within the main framework, so no need to import/specify it separately. Further, make sure to check out the new SwiftUI additions!
+XCoordinator decouples navigation from view controllers and view models: you describe a flow as a `Route` enum, and a `Coordinator` decides which `Transition` to perform for each route. The result is reusable views, view models without navigation logic, and a single place to evolve the flow of your app.
 
-“How does an app transition from one view controller to another?”.
-This question is common and puzzling regarding iOS development. There are many answers, as every architecture has different implementation variations. Some do it from within the implementation of a view controller, while some use a router/coordinator, an object connecting view models.
+- 📚 **API reference** — [hosted DocC documentation](https://quickbirdstudios.github.io/XCoordinator/)
+- 🧪 **Example app** — [XCoordinator-Example](https://github.com/quickbirdstudios/XCoordinator-Example) — a complete MVVM-C app using XCoordinator
+- 🚀 **What's new in 3.0** — see [Migrating from 2.x to 3.0](#-migrating-from-2x-to-30) below
 
-To better answer the question, we are building **XCoordinator**, a navigation framework based on the **Coordinator** pattern.
-It's especially useful for implementing MVVM-C, Model-View-ViewModel-Coordinator:
+## Table of contents
+
+- [Why XCoordinator](#-why-xcoordinator)
+- [Getting started](#%EF%B8%8F-getting-started)
+- [SwiftUI interop](#-swiftui-interop)
+- [Choosing a router reference](#-choosing-a-router-reference)
+- [Custom transitions](#-custom-transitions)
+- [Deep linking](#-deep-linking)
+- [RedirectionRouter](#-redirectionrouter)
+- [Combine and RxSwift](#-combine-and-rxswift)
+- [Migrating from 2.x to 3.0](#-migrating-from-2x-to-30)
+- [Installation](#-installation)
+- [Requirements](#-requirements)
+- [Contributing](#%EF%B8%8F-contributing)
+
+## 🤔 Why XCoordinator
+
+- **Type-safe routes** — enums give you autocompletion and compile-time errors instead of stringly-typed paths.
+- **One place for navigation** — view models trigger routes; the coordinator decides what each route does.
+- **UIKit and SwiftUI** — a single coordinator can mix `UIViewController` flows with SwiftUI views via `RoutingController`, `WrappedRouter`, and `@Routing`.
+- **Reusable** — coordinators, transitions, and animations compose; the same view model works inside different flows.
+- **Custom transitions and deep linking** built in — interactive transitions, presentation animations, and route chains across coordinator boundaries.
 
 <p align="center">
-  <img src="https://user-images.githubusercontent.com/15239005/221913797-1ebf0fc8-36d5-4a93-b6da-0a86b6105e6a.png">
+  <img src="https://user-images.githubusercontent.com/15239005/221913797-1ebf0fc8-36d5-4a93-b6da-0a86b6105e6a.png" alt="MVVM-C diagram showing how Coordinator connects View, ViewModel, and Model">
+  <br><em>How Coordinator fits into MVVM</em>
 </p>
 
-## 🏃‍♂️Getting started
+## 🏃‍♂️ Getting started
 
-Create an enum with all of the navigation paths for a particular flow, i.e. a group of closely connected scenes. (It is up to you when to create a `Route/Coordinator`. As **our rule of thumb**, create a new `Route/Coordinator` whenever a new root view controller, e.g. a new `navigation controller` or a `tab bar controller`, is needed.).
-
-Whereas the `Route` describes which routes can be triggered in a flow, the `Coordinator` is responsible for the preparation of transitions based on routes being triggered. We could, therefore, prepare multiple coordinators for the same route, which differ in which transitions are executed for each route.
-
-In the following example, we create the `UserListRoute` enum to define triggers of a flow of our application. `UserListRoute` offers routes to open the home screen, display a list of users, to open a specific user and to log out. The `UserListCoordinator` is implemented to prepare transitions for the triggered routes. When a `UserListCoordinator` is shown, it triggers the `.home` route to display a `HomeViewController`.
+Define a `Route` enum and a `Coordinator` that prepares a transition for each case:
 
 ```swift
 enum UserListRoute: Route {
     case home
-    case users
     case user(String)
-    case registerUsersPeek(from: Container)
     case logout
 }
 
@@ -43,20 +66,9 @@ class UserListCoordinator: NavigationCoordinator<UserListRoute> {
     override func prepareTransition(for route: UserListRoute) -> NavigationTransition {
         switch route {
         case .home:
-            let viewController = HomeViewController.instantiateFromNib()
-            let viewModel = HomeViewModelImpl(router: unownedRouter)
-            viewController.bind(to: viewModel)
-            return .push(viewController)
-        case .users:
-            let viewController = UsersViewController.instantiateFromNib()
-            let viewModel = UsersViewModelImpl(router: unownedRouter)
-            viewController.bind(to: viewModel)
-            return .push(viewController, animation: .interactiveFade)
-        case .user(let username):
-            let coordinator = UserCoordinator(user: username)
-            return .present(coordinator, animation: .default)
-        case .registerUsersPeek(let source):
-            return registerPeek(for: source, route: .users)
+            return .push(HomeViewController())
+        case .user(let name):
+            return .present(UserCoordinator(user: name), animation: .default)
         case .logout:
             return .dismiss()
         }
@@ -64,35 +76,23 @@ class UserListCoordinator: NavigationCoordinator<UserListRoute> {
 }
 ```
 
-Routes are triggered from within Coordinators or ViewModels. In the following, we describe how to trigger routes from within a ViewModel. The router of the current flow is injected into the ViewModel.
+Trigger routes from a view model that holds a typed router reference:
 
 ```swift
 class HomeViewModel {
-    unowned let router: any Router<HomeRoute>
+    unowned let router: any Router<UserListRoute>
 
-    init(router: any Router<HomeRoute>) {
+    init(router: any Router<UserListRoute>) {
         self.router = router
     }
 
-    /* ... */
-
-    func usersButtonPressed() {
-        router.trigger(.users)
+    func userButtonPressed(name: String) {
+        router.trigger(.user(name))
     }
 }
 ```
 
-### 🏗 Organizing an app's structure with XCoordinator
-
-In general, an app's structure is defined by nesting coordinators and view controllers. You can transition (i.e. `push`, `present`, `pop`, `dismiss`) to a different coordinator whenever your app changes to a different flow. Within a flow, we transition between viewControllers.
-
-Example: In `UserListCoordinator.prepareTransition(for:)` we change from the `UserListRoute` to the `UserRoute` whenever the `UserListRoute.user` route is triggered. By dismissing a viewController in `UserListRoute.logout`, we additionally switch back to the previous flow - in this case the `HomeRoute`.
-
-To achieve this behavior, every Coordinator has its own `rootViewController`. This would be a `UINavigationController` in the case of a `NavigationCoordinator`, a `UITabBarController` in the case of a `TabBarCoordinator`, etc. When transitioning to a Coordinator/Router, this `rootViewController` is used as the destination view controller.
-
-### 🏁 Using XCoordinator from App Launch
-
-To use coordinators from the launch of the app, make sure to create the app's `window` programmatically in `AppDelegate.swift` (Don't forget to remove `Main Storyboard file base name` from `Info.plist`). Then, set the coordinator as the root of the `window`'s view hierarchy in the `AppDelegate.didFinishLaunching`. Make sure to hold a strong reference to your app's initial coordinator or a `strongRouter` reference.
+Bootstrap the initial coordinator from your app delegate or `@main` entry point — hold a strong `any Router<AppRoute>` to keep it alive:
 
 ```swift
 @UIApplicationMain
@@ -107,15 +107,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 }
 ```
 
-## 🤸‍♂️ Extras
+### How transitions compose
 
-For more advanced use, XCoordinator offers many more customization options. We introduce SwiftUI interoperability, custom animated transitions and deep linking. Furthermore, extensions for use in reactive programming with RxSwift/Combine and options to split up huge routes are described.
+An app's structure is defined by nesting coordinators. Whenever your app changes flow (a new navigation stack, a new tab bar) introduce a new coordinator. Each coordinator owns a `rootViewController` (a `UINavigationController`, `UITabBarController`, etc.) that becomes the destination when another coordinator pushes or presents it.
 
-### 🚀 SwiftUI
+## 🚀 SwiftUI interop
 
-To make the use of XCoordinator with SwiftUI easier, we provide the following capabilities:
+XCoordinator integrates with SwiftUI in two directions.
 
-You can use an existing coordinator in your SwiftUI app by using the `WrappedRouter` view. The closure is performed when the view appears initially and the coordinator stays the same instance while being displayed.
+**Embed a coordinator inside SwiftUI** with `WrappedRouter`. The closure builds the coordinator on first appearance and the instance is retained for the lifetime of the view:
 
 ```swift
 struct ContentView: View {
@@ -127,321 +127,196 @@ struct ContentView: View {
 }
 ```
 
-But how do you navigate to a SwiftUI view from a given coordinator, you are asking? Simply use `RoutingController`, a subclass of `UIHostingController` with some added functionality.
+**Push or present a SwiftUI view from a UIKit coordinator** with `RoutingController`, a `UIHostingController` subclass that propagates the current `RoutingContext` into the SwiftUI environment:
 
 ```swift
 class UsersCoordinator: NavigationCoordinator<UserRoute> {
-
-    /* ... */
-    
     override func prepareTransition(for route: UserRoute) -> NavigationTransition {
         switch route {
         case .user(let name):
-            let viewController = RoutingController {
-                UserView(name: name)
-            }
-            return .push(viewController)
-        /* ... */
+            return .push(RoutingController { UserView(name: name) })
         }
     }
 }
 ```
 
-To gain access to a given parent router, you can use the `Routing<RouteType>` property wrapper. Simply specify it in your SwiftUI view like this:
+**Trigger routes from inside a SwiftUI view** with `@Routing`:
 
 ```swift
 struct ChildView: View {
     @Routing<UsersRoute> var usersRouter
-    
+
     var body: some View {
-        Button {
-            usersRouter.trigger(...)
-        } label: {
-            Text("Trigger")
+        Button("Open") {
+            usersRouter.trigger(.user("Bob"))
         }
     }
 }
 ```
 
-Further, if you happen to not want to trigger a UIKit transition, but instead would like to perform some SwiftUI state change, you can use one of the SwiftUI transitions, e.g. `Transition.withAnimation`.
+**Drive SwiftUI state changes from `prepareTransition`** without performing a UIKit transition — use `Transition.withAnimation` or `Transition.withTransaction`:
 
 ```swift
-class HomeCoordinator: TabCoordinator<HomeRoute> {
+class HomeCoordinator: TabBarCoordinator<HomeRoute> {
     @Binding var selection: HomeTab
-    
-    override func prepareTransition(for route: HomeRoute) -> TabTransition {
+
+    override func prepareTransition(for route: HomeRoute) -> TabBarTransition {
         switch route {
-        case .select(let index):
-            return .withAnimation { selection = HomeTab.allCases[index] }
-        /* ... */
+        case .select(let tab):
+            return .withAnimation { selection = tab }
         }
     }
 }
 ```
 
-### 🌗 Custom Transitions
+For declarative triggering, `triggerOnAppear`, `triggerOnChange(of:)`, and `trigger(when:)` view modifiers fire routes through `@Routing` automatically.
 
-Custom animated transitions define presentation and dismissal animations. You can specify `Animation` objects in `prepareTransition(for:)` in your coordinator for several common transitions, such as `present`, `dismiss`, `push` and `pop`. Specifying no animation (`nil`) results in not overriding previously set animations. Use `Animation.default` to reset previously set animation to the default animations UIKit offers.
+## 🧭 Choosing a router reference
+
+Since 3.0, type erasure is provided by Swift's parameterized existential `any Router<RouteType>`. The previously dedicated `AnyRouter`, `StrongRouter`, `UnownedRouter`, and `WeakRouter` types are gone. Pick the ARC qualifier that matches the relationship:
 
 ```swift
-class UsersCoordinator: NavigationCoordinator<UserRoute> {
+let strongRouter: any Router<ExampleRoute> = ...               // own the coordinator
+weak var weakRouter: (any Router<ExampleRoute>)? = ...         // sibling/parent reference
+unowned let unownedRouter: any Router<ExampleRoute> = ...      // child holding parent
+```
 
-    /* ... */
-    
-    override func prepareTransition(for route: UserRoute) -> NavigationTransition {
-        switch route {
-        case .user(let name):
-            let animation = Animation(
-                presentationAnimation: YourAwesomePresentationTransitionAnimation(),
-                dismissalAnimation: YourAwesomeDismissalTransitionAnimation()
-            )
-            let viewController = UserViewController.instantiateFromNib()
-            let viewModel = UserViewModelImpl(name: name, router: unownedRouter)
-            viewController.bind(to: viewModel)
-            return .push(viewController, animation: animation)
-        /* ... */
-        }
+- **strong** — the app delegate or whatever object owns the coordinator's lifetime; also used to hold child coordinators.
+- **weak** — view models or view controllers referring to a sibling or parent coordinator.
+- **unowned** — same use case as weak when the holder is guaranteed not to outlive the coordinator.
+
+## 🌗 Custom transitions
+
+Pass a custom `Animation` to common transitions (`push`, `pop`, `present`, `dismiss`). Pass `nil` to keep the previously configured animation; pass `Animation.default` to reset to UIKit defaults.
+
+```swift
+override func prepareTransition(for route: UserRoute) -> NavigationTransition {
+    switch route {
+    case .user(let name):
+        let animation = Animation(
+            presentationAnimation: YourAwesomePresentationTransitionAnimation(),
+            dismissalAnimation: YourAwesomeDismissalTransitionAnimation()
+        )
+        return .push(UserViewController(name: name), animation: animation)
     }
 }
 ```
 
-### 🛤 Deep Linking
+For interactive transitions driven by gesture recognizers, see `BaseCoordinator.registerInteractiveTransition(for:triggeredBy:handler:completion:)` and its progress-based overload.
 
-Deep Linking can be used to chain different routes together. In contrast to the `.multiple` transition, deep linking can identify routers based on previous transitions (e.g. when pushing or presenting a router), which enables chaining of routes of different types. Keep in mind, that you cannot access higher-level routers anymore once you trigger a route on a lower level of the router hierarchy.
+## 🛤 Deep linking
+
+> [!IMPORTANT]
+> Deep links are not validated at compile time. If a router for one of the chained route types cannot be located at runtime, XCoordinator calls `assertionFailure`. Be careful when reshaping your coordinator hierarchy.
+
+Chain routes across coordinator boundaries using `deepLink(_:_:)`. The deep link walks the coordinator tree, switching to whichever router can handle the next route type:
 
 ```swift
-class AppCoordinator: NavigationCoordinator<AppRoute> {
-
-    /* ... */
-
-    override func prepareTransition(for route: AppRoute) -> NavigationTransition {
-        switch route {
-        /* ... */
-        case .deep:
-            return deepLink(AppRoute.login, AppRoute.home, HomeRoute.news, HomeRoute.dismiss)
-        }
+override func prepareTransition(for route: AppRoute) -> NavigationTransition {
+    switch route {
+    case .deep:
+        return deepLink(AppRoute.login, AppRoute.home, HomeRoute.news, HomeRoute.dismiss)
     }
 }
 ```
 
-⚠️ XCoordinator does not check at compile-time, whether a deep link can be executed. Rather it uses assertionFailures to inform about incorrect chaining at runtime, when it cannot find an appropriate router for a given route. Keep this in mind when changing the structure of your app.
+## 🚏 RedirectionRouter
 
-### 🚏 RedirectionRouter
-
-Let's assume, there is a route type called `HugeRoute` with more than 10 routes. To decrease coupling, `HugeRoute` needs to be split up into multiple route types. As you will discover, many routes in `HugeRoute` use transitions dependent on a specific rootViewController, such as `push`, `show`, `pop`, etc. If splitting up routes by introducing a new router/coordinator is not an option, XCoordinator has two solutions for you to solve such a case: `RedirectionRouter` or using multiple coordinators with the same rootViewController ([see this section for more information](#using-multiple-coordinators-with-the-same-rootviewcontroller)).
-
-A `RedirectionRouter` can be used to map a new route type onto a generalized `ParentRoute`. A `RedirectionRouter` is independent of the `TransitionType` of its parent router. You can use `RedirectionRouter.init(viewController:parent:map:)` or subclassing by overriding `mapToParentRoute(_:)` to create a `RedirectionRouter`.
-
-The following code example illustrates how a `RedirectionRouter` is initialized and used.
+When a route enum has grown too large but you cannot introduce a new root view controller, `RedirectionRouter` lets you split a child route type onto a parent route type without owning its own transition type:
 
 ```swift
-class ParentCoordinator: NavigationCoordinator<ParentRoute> {
-    /* ... */
-    
-    override func prepareTransition(for route: ParentRoute) -> NavigationTransition {
-        switch route {
-        /* ... */
-        case .child:
-            let childCoordinator = ChildCoordinator(parent: unownedRouter)
-            return .push(childCoordinator)
-        }
-    }
-}
-
 class ChildCoordinator: RedirectionRouter<ParentRoute, ChildRoute> {
     init(parent: any Router<ParentRoute>) {
-        let viewController = UIViewController() 
-        // this viewController is used when performing transitions with the Subcoordinator directly.
-        super.init(viewController: viewController, parent: parent, map: nil)
+        super.init(viewController: UIViewController(), parent: parent, map: nil)
     }
-    
-    /* ... */
-    
+
     override func mapToParentRoute(for route: ChildRoute) -> ParentRoute {
-        // you can map your ChildRoute enum to ParentRoute cases here that will get triggered on the parent router.
+        // map ChildRoute cases onto ParentRoute cases
     }
 }
 ```
 
-### 🚏Using multiple coordinators with the same rootViewController
+Alternatively, two sibling coordinators can share the same `rootViewController` by passing it into the second coordinator's initializer.
 
-With XCoordinator 2.0, we introduce the option to use different coordinators with the same rootViewController.
-Since you can specify the rootViewController in the initializer of a new coordinator, you can specify an existing coordinator's rootViewController as in the following:
+## 🔀 Combine and RxSwift
 
-```swift
-class FirstCoordinator: NavigationCoordinator<FirstRoute> {
-    /* ... */
-    
-    override func prepareTransition(for route: FirstRoute) -> NavigationTransition {
-        switch route {
-        case .secondCoordinator:
-            let secondCoordinator = SecondCoordinator(rootViewController: self.rootViewController)
-            addChild(secondCoordinator)
-            return .none() 
-            // you could also trigger a specific initial route at this point, 
-            // such as `.trigger(SecondRoute.initial, on: secondCoordinator)`
-        }
-    }
-}
-```
-
-We suggest to not use initial routes in the initializers of sibling coordinators, but instead using the transition option in the `FirstCoordinator` instead. 
-
-⚠️ If you perform transitions involving a sibling coordinator directly (e.g. pushing a sibling coordinator without overriding its `viewController` property), your app will most likely crash.
-
-### 🚀 RxSwift/Combine extensions
-
-Reactive programming can be very useful to keep the state of view and model consistent in a MVVM architecture. Instead of relying on the completion handler of the `trigger` method available in any `Router`, you can also use our RxSwift-extension. In the example application, we use Actions (from the [Action](https://github.com/RxSwiftCommunity/Action) framework) to trigger routes on certain UI events - e.g. to trigger `LoginRoute.home` in `LoginViewModel`, when the login button is tapped.
+The Combine extensions are built into the main `XCoordinator` module. Use `router.publishers.trigger(_:)` to obtain a `Future<Void, Never>` for a triggered route:
 
 ```swift
-class LoginViewModelImpl: LoginViewModel, LoginViewModelInput, LoginViewModelOutput {
-
-    private unowned let router: any Router<AppRoute>
-
-    private lazy var loginAction = CocoaAction { [unowned self] in
-        return self.router.rx.trigger(.home)
-    }
-
-    /* ... */
-}
-
+router.publishers.trigger(.home)
+    .sink { /* transition finished */ }
 ```
 
-In addition to the above-mentioned approach, the reactive `trigger` extension can also be used to sequence different transitions by using the `flatMap` operator, as can be seen in the following:
+For RxSwift, add the `XCoordinatorRx` product. The `router.rx.trigger(_:)` accessor returns an `Observable<Void>`:
 
 ```swift
-let doneWithBothTransitions = 
-    router.rx.trigger(.home)
-        .flatMap { [unowned self] in self.router.rx.trigger(.news) }
-        .map { true }
-        .startWith(false)
+router.rx.trigger(.home)
+    .flatMap { [unowned self] in self.router.rx.trigger(.news) }
 ```
 
-When using `XCoordinator` with `Combine`, you can use `router.publishers.trigger` instead of `router.rx.trigger`.
+## ⬆️ Migrating from 2.x to 3.0
 
-## 📚 Documentation & Example app
+3.0 removes the type-erased router wrappers and folds Combine into the main module. Migration is mechanical:
 
-To get more information about XCoordinator, check out the [documentation](https://quickbirdeng.github.io/XCoordinator/).
-Additionally, this [repository](https://github.com/quickbirdstudios/XCoordinator-Example) serves as an example project using a MVVM architecture with XCoordinator.
+| 2.x | 3.0 |
+| --- | --- |
+| `AnyRouter<Route>` | `any Router<Route>` |
+| `StrongRouter<Route>` | `any Router<Route>` |
+| `WeakRouter<Route>` | `weak var router: (any Router<Route>)?` |
+| `UnownedRouter<Route>` | `unowned let router: any Router<Route>` |
+| `coordinator.unownedRouter` | pass `self` directly or capture explicitly |
+| `pod 'XCoordinator/Combine'` | the Combine extensions are bundled into `XCoordinator` |
 
-For a MVC example app, have a look at [some presentations](https://github.com/quickbirdstudios/XCoordinator-Talks) we did about the Coordinator pattern and XCoordinator.
-
-## 👨‍✈️ Why coordinators
-
-* **Separation of responsibilities** with the coordinator being the only component knowing anything related to the flow of your application.
-* **Reusable Views and ViewModels** because they do not contain any navigation logic.
-* **Less coupling between components**
-
-* **Changeable navigation**: Each coordinator is only responsible for one component and does not need to make assumptions about its parent. It can therefore be placed wherever we want to.
-
-> [The Coordinator](http://khanlou.com/2015/01/the-coordinator/) by **Soroush Khanlou**
-
-
-## ⁉️ Why XCoordinator
-
-* Actual **navigation code is already written** and abstracted away.
-* Clear **separation of concerns**:
-  - Coordinator: Coordinates routing of a set of routes.
-  - Route: Describes navigation path.
-  - Transition: Describe transition type and animation to new view.
-* **Reuse** coordinators, routers and transitions in different combinations.
-* Full support for **custom transitions/animations**.
-* Support for **embedding child views** / container views.
-* Generic `BasicCoordinator` classes suitable for many use cases and therefore **less** need to write your **own coordinators**.
-* Full **support** for your **own coordinator classes** conforming to our Coordinator protocol
-  - You can also start with one of the following types to get a head start: `NavigationCoordinator`, `ViewCoordinator`, `TabBarCoordinator` and more.
-* Generic AnyRouter type erasure class encapsulates all types of coordinators and routers supporting the same set of routes. Therefore you can **easily replace coordinators**.
-* Use of enum for routes gives you **autocompletion** and **type safety** to perform only transition to routes supported by the coordinator.
-
-## 🔩 Components
-
-### 🎢 Route
-
-Describes possible navigation paths within a flow, a collection of closely related scenes.
-
-### 👨‍✈️ Coordinator / Router
-
-An object loading views and creating viewModels based on triggered routes. A Coordinator creates and performs transitions to these scenes based on the data transferred via the route. In contrast to the coordinator, a router can be seen as an abstraction from that concept limited to triggering routes. Often, a Router is used to abstract from a specific coordinator in ViewModels.
-
-#### When to use which Router abstraction
-
-You can create different router abstractions using the `unownedRouter`, `weakRouter` or `strongRouter` properties of your `Coordinator`.
-You can decide between the following router abstractions of your coordinator:
-
-- **StrongRouter** holds a strong reference to the original coordinator. You can use this to hold child coordinators or to specify a certain router in the `AppDelegate`.
-- **WeakRouter** holds a weak reference to the original coordinator. You can use this to hold a coordinator in a viewController or viewModel. It can also be used to keep a reference to a sibling or parent coordinator. 
-- **UnownedRouter** holds an unowned reference to the original coordinator. You can use this to hold a coordinator in a viewController or viewModel. It can also be used to keep a reference to a sibling or parent coordinator.
-
-If you want to know more about the differences on how references can be held, have a look [here](https://docs.swift.org/swift-book/LanguageGuide/AutomaticReferenceCounting.html).
-
-### 🌗 Transition
-
-Transitions describe the navigation from one view to another. Transitions are available based on the type of the root view controller in use. Example: Whereas `ViewTransition` only supports basic transitions that every root view controller supports, `NavigationTransition` adds navigation controller specific transitions.
-
-The available transition types include:
-  - **present** presents a view controller on top of the view hierarchy - use **presentOnRoot** in case you want to present from the root view controller
-  - **embed** embeds a view controller into a container view
-  - **dismiss** dismisses the top most presented view controller - use **dismissToRoot** to call dismiss on the root view controller
-  - **none** does nothing, may be used to ignore routes or for testing purposes
-  - **push** pushes a view controller to the navigation stack (only in `NavigationTransition`)
-  - **pop** pops the top view controller from the navigation stack (only in `NavigationTransition`)
-  - **popToRoot** pops all the view controllers on the navigation stack except the root view controller (only in `NavigationTransition`)
-  
-  XCoordinator additionally supports common transitions for `UITabBarController`, `UISplitViewController` and `UIPageViewController` root view controllers.
+The SwiftUI interop layer (`RoutingController`, `WrappedRouter`, `@Routing`, `Transition.withAnimation`, …) is new in 3.0 — see [SwiftUI interop](#-swiftui-interop).
 
 ## 🛠 Installation
 
-#### CocoaPods
+### Swift Package Manager (recommended)
 
-To integrate XCoordinator into your Xcode project using CocoaPods, add this to your `Podfile`:
+Add the package to your `Package.swift`:
+
+```swift
+.package(url: "https://github.com/quickbirdstudios/XCoordinator.git", from: "3.0.0")
+```
+
+Then add the product you need to your target's dependencies — either `XCoordinator` (core + Combine + SwiftUI) or `XCoordinatorRx` (adds RxSwift).
+
+In Xcode, use **File → Add Package Dependencies** and paste the same URL.
+
+### CocoaPods
 
 ```ruby
 pod 'XCoordinator', '~> 3.0'
 ```
 
-To use the RxSwift extensions, add this to your `Podfile`:
+For RxSwift bindings:
 
 ```ruby
 pod 'XCoordinator/RxSwift', '~> 3.0'
 ```
 
-Since XCoordinator 3.0, we have now integrated the `Combine` extensions into `XCoordinator` directly.
+Combine is bundled into the main pod; no separate subspec is needed.
 
-#### Carthage
-
-To integrate XCoordinator into your Xcode project using Carthage, add this to your `Cartfile`:
+### Carthage
 
 ```
 github "quickbirdstudios/XCoordinator" ~> 3.0
 ```
 
-Then run `carthage update`.
+## ✅ Requirements
 
-If this is your first time using Carthage in the project, you'll need to go through some additional steps as explained [over at Carthage](https://github.com/Carthage/Carthage#adding-frameworks-to-an-application).
-
-#### Swift Package Manager
-
-See [this WWDC presentation](https://developer.apple.com/videos/play/wwdc2019/408/) about more information how to adopt Swift packages in your app.
-
-Specify `https://github.com/quickbirdstudios/XCoordinator.git` as the `XCoordinator` package link. 
-You can then decide between two different frameworks: `XCoordinator` and`XCoordinatorRx`. 
-While `XCoordinator` contains the main framework and the `Combine` extensions, you can choose `XCoordinatorRx` to get `RxSwift` extensions as well.
-
-#### Manually
-
-If you prefer not to use any of the dependency managers, you can integrate XCoordinator into your project manually, by downloading the source code and placing the files on your project directory.  
-
-## 👤 Author
-This framework is created with ❤️ by [QuickBird Studios](https://quickbirdstudios.com).
-
-To get more information on XCoordinator check out [our blog post](https://quickbirdstudios.com/blog/ios-navigation-library-based-on-the-coordinator-pattern/).
+- iOS 14 / tvOS 14
+- Swift 5.9
+- Xcode 15
 
 ## ❤️ Contributing
 
-Open an issue if you need help, if you found a bug, or if you want to discuss a feature request. If you feel like having a chat about XCoordinator with the developers and other users, join our [Slack Workspace](https://join.slack.com/t/xcoordinator/shared_invite/enQtNDg4NDAxNTk1ODQ1LTkxYzE3MDM5ZGY1MTVmY2NhNjI0Y2JiYmQ5NTdjZDczZDRjZTg1ZmJlOTZmODYyYzMyYWQ0NzhlNGNkMGIzYjQ).
+- Open an [issue](https://github.com/quickbirdstudios/XCoordinator/issues) if you found a bug, want to discuss a feature request, or need help.
+- Use [GitHub Discussions](https://github.com/quickbirdstudios/XCoordinator/discussions) for usage questions.
+- Open a [pull request](https://github.com/quickbirdstudios/XCoordinator/pulls) if you want to contribute a change — please include tests where applicable.
 
-Open a PR if you want to make changes to XCoordinator.
+XCoordinator is created and maintained by [QuickBird Studios](https://quickbirdstudios.com).
 
 ## 📃 License
 
-XCoordinator is released under an MIT license. See [License.md](https://github.com/quickbirdstudios/XCoordinator/blob/master/LICENSE) for more information.
+XCoordinator is released under the MIT License. See [LICENSE](LICENSE) for more information.

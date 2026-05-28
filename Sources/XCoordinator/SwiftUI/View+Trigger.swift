@@ -11,9 +11,9 @@ import SwiftUI
 
 @available(iOS 15, tvOS 15, *)
 private struct TriggerViewModifier<Item: Equatable, RouteType: Route>: ViewModifier {
-    
+
     // MARK: Properties
-    
+
     let item: Item
     let priority: TaskPriority
     let skipFirst: Bool
@@ -23,9 +23,9 @@ private struct TriggerViewModifier<Item: Equatable, RouteType: Route>: ViewModif
 
     @Routing<RouteType> private var router
     @State private var isFirstCall = true
-    
+
     // MARK: Methods
-    
+
     func body(content: Content) -> some View {
         content.task(id: item, priority: priority) {
             guard skipFirst || !isFirstCall else {
@@ -39,12 +39,25 @@ private struct TriggerViewModifier<Item: Equatable, RouteType: Route>: ViewModif
             await onCompleted()
         }
     }
-    
+
 }
 
 @available(iOS 15, tvOS 15, *)
 extension View {
-    
+
+    ///
+    /// Triggers the given route once when the view first appears.
+    ///
+    /// Resolves the router for `RouteType` via `@Routing` and fires the route from within a `.task`.
+    /// Returning `nil` from the `route` closure suppresses the trigger.
+    ///
+    /// - Parameters:
+    ///   - priority: The task priority used to run the trigger. Defaults to `.userInitiated`.
+    ///   - route: An auto-closure producing the route to trigger. Re-evaluated each time the task runs.
+    ///   - options: An auto-closure producing the transition options. Defaults to `.init(animated: true)`.
+    ///   - onCompleted: An async closure invoked after the transition completes.
+    /// - Returns: A view that triggers the route on first appearance.
+    ///
     public func triggerOnAppear<RouteType: Route>(
         priority: TaskPriority = .userInitiated,
         route: @autoclosure @escaping () -> RouteType?,
@@ -62,7 +75,22 @@ extension View {
             )
         )
     }
-    
+
+    ///
+    /// Triggers the given route whenever `item` changes, skipping the initial value.
+    ///
+    /// Useful for kicking off a navigation in response to a model change. The first invocation
+    /// (when the view appears with its initial `item`) is intentionally skipped to avoid firing
+    /// during the initial render.
+    ///
+    /// - Parameters:
+    ///   - item: The value whose changes drive the trigger.
+    ///   - priority: The task priority used to run the trigger. Defaults to `.userInitiated`.
+    ///   - route: An auto-closure producing the route to trigger.
+    ///   - options: An auto-closure producing the transition options. Defaults to `.init(animated: true)`.
+    ///   - onCompleted: An async closure invoked after the transition completes.
+    /// - Returns: A view that triggers the route whenever `item` changes.
+    ///
     public func triggerOnChange<Item: Equatable, RouteType: Route>(
         of item: Item,
         priority: TaskPriority = .userInitiated,
@@ -81,8 +109,23 @@ extension View {
             )
         )
     }
-    
-    public func trigger<Item: Equatable, RouteType: Route>(
+
+    ///
+    /// Triggers the given route when `condition` becomes `true`.
+    ///
+    /// The route is only fired when `condition` transitions to `true`; setting it back to `false`
+    /// does not trigger another transition. Like ``triggerOnChange(of:priority:route:with:onCompleted:)``,
+    /// the initial value is skipped.
+    ///
+    /// - Parameters:
+    ///   - condition: The boolean whose `true` transitions drive the trigger.
+    ///   - priority: The task priority used to run the trigger. Defaults to `.userInitiated`.
+    ///   - route: An auto-closure producing the route to trigger when `condition` is `true`.
+    ///   - options: An auto-closure producing the transition options. Defaults to `.init(animated: true)`.
+    ///   - onCompleted: An async closure invoked after the transition completes.
+    /// - Returns: A view that triggers the route whenever `condition` becomes `true`.
+    ///
+    public func trigger<RouteType: Route>(
         when condition: Bool,
         priority: TaskPriority = .userInitiated,
         route: @autoclosure @escaping () -> RouteType,

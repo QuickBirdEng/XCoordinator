@@ -1,8 +1,8 @@
-# Mac OS X
-*.DS_Store
+# macOS
+**/.DS_Store
 
 # Xcode
-.build
+.build/
 *.pbxuser
 *.mode1v3
 *.mode2v3
@@ -12,17 +12,21 @@ project.xcworkspace/
 xcuserdata/
 Pods/*.xcodeproj/xcuserdata/
 
+# Swift Package Manager
+/.swiftpm/xcode/xcuserdata/
+/.swiftpm/xcode/package.xcworkspace/xcuserdata/
+/.swiftpm/configuration/
+Package.resolved
+
 # Generated files
 *.o
 *.pyc
 
-# Docs
-docs/docsets/XCoordinator.tgz
-docs/undocumented.json
+# Documentation outputs
+/Documentation/
+*.doccarchive/
 
 # Backup files
 *~.nib
 \#*#
 .#*
-
-.swiftpm

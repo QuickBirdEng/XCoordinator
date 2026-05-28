@@ -251,36 +251,22 @@ extension Transition {
 
 }
 
-extension Coordinator where Self: AnyObject {
-
-    ///
-    /// Use this transition to register 3D Touch Peek and Pop functionality.
-    ///
-    /// - Parameters:
-    ///     - source: The view to register peek and pop on.
-    ///     - route: The route to be triggered for peek and pop.
-    ///
-    @available(iOS, introduced: 9.0, deprecated: 13.0, message: "Use `UIContextMenuInteraction` instead.")
-    public func registerPeek<RootViewController>(for source: Container,
-                                                 route: RouteType
-        ) -> Transition<RootViewController> where Self.TransitionType == Transition<RootViewController> {
-        let transitionGenerator = { [weak self] () -> TransitionType in
-            self?.prepareTransition(for: route) ?? .none()
-        }
-        return Transition(presentables: [], animationInUse: nil) { rootViewController, _, completion in
-            rootViewController.registerPeek(from: source.view,
-                                            transitionGenerator: transitionGenerator,
-                                            completion: completion)
-        }
-    }
-
-}
-
-#if swift(>=5.5.2)
-
-@available(iOS 13, tvOS 13, *)
 extension Transition {
 
+    ///
+    /// Creates a transition that runs an async closure on the main actor and completes once the closure returns.
+    ///
+    /// Use this to bridge async work into the coordinator transition pipeline — for example, awaiting a
+    /// loading operation before triggering a follow-up transition.
+    ///
+    /// - Parameters:
+    ///   - presentables: The presentables this transition introduces into the view hierarchy, if any.
+    ///     These are used by deep-linking and child tracking. Defaults to empty.
+    ///   - animationInUse: The transition animation to expose, if any. Defaults to `nil`.
+    ///   - priority: The task priority used to run `perform`. Defaults to the inherited priority.
+    ///   - perform: The async closure to run.
+    /// - Returns: A transition that completes once `perform` returns.
+    ///
     public static func perform(
         presentables: [any Presentable] = [],
         animationInUse: TransitionAnimation? = nil,
@@ -296,5 +282,3 @@ extension Transition {
     }
 
 }
-
-#endif

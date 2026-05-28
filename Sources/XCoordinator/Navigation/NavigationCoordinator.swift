@@ -21,10 +21,11 @@ open class NavigationCoordinator<RouteType: Route>: BaseCoordinator<RouteType, N
 
     ///
     /// The animation delegate controlling the rootViewController's transition animations.
-    /// This animation delegate is set to be the rootViewController's rootViewController, if you did not set one earlier.
+    /// It is installed as the navigation controller's `delegate` if no delegate was set earlier.
     ///
     /// - Note:
-    ///     Use the `delegate` property to set a custom delegate and use transition animations provided by XCoordinator.
+    ///     Use the ``delegate`` property to install your own delegate while keeping XCoordinator's
+    ///     transition animations.
     ///
     public let animationDelegate = NavigationAnimationDelegate()
     // swiftlint:disable:previous weak_delegate
@@ -32,8 +33,8 @@ open class NavigationCoordinator<RouteType: Route>: BaseCoordinator<RouteType, N
     // MARK: Computed properties
 
     ///
-    /// This represents a fallback-delegate to be notified about navigation controller events.
-    /// It is further used to call animation methods when no animation has been specified in the transition.
+    /// A fallback delegate that receives navigation-controller events not consumed by XCoordinator,
+    /// and is used to drive transition animations when no animation is specified by the route.
     ///
     public var delegate: UINavigationControllerDelegate? {
         get {
@@ -49,8 +50,9 @@ open class NavigationCoordinator<RouteType: Route>: BaseCoordinator<RouteType, N
     ///
     /// Creates a NavigationCoordinator and optionally triggers an initial route.
     ///
-    /// - Parameter initialRoute:
-    ///     The route to be triggered.
+    /// - Parameters:
+    ///   - rootViewController: The `UINavigationController` to host transitions. Defaults to a fresh instance.
+    ///   - initialRoute: A route to trigger once the coordinator is shown. Defaults to `nil`.
     ///
     public override init(rootViewController: RootViewController = .init(), initialRoute: RouteType? = nil) {
         if rootViewController.delegate == nil {
@@ -63,8 +65,9 @@ open class NavigationCoordinator<RouteType: Route>: BaseCoordinator<RouteType, N
     ///
     /// Creates a NavigationCoordinator and pushes a presentable onto the navigation stack right away.
     ///
-    /// - Parameter root:
-    ///     The presentable to be pushed.
+    /// - Parameters:
+    ///   - rootViewController: The `UINavigationController` to host transitions. Defaults to a fresh instance.
+    ///   - root: The presentable to push as the initial view controller.
     ///
     public init(rootViewController: RootViewController = .init(), root: any Presentable) {
         if rootViewController.delegate == nil {
