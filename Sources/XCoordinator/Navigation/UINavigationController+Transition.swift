@@ -25,22 +25,17 @@ extension UINavigationController {
         To set another delegate of a rootViewController in a NavigationCoordinator, have a look at `NavigationCoordinator.delegate`.
         """)
 
-        CATransaction.begin()
-        CATransaction.setCompletionBlock { [self] in
-            if let transitionCoordinator {
-                transitionCoordinator.animate(alongsideTransition: nil) { _ in
-                    completion?()
-                }
-            } else {
-                completion?()
-            }
-        }
-
         autoreleasepool {
             pushViewController(viewController, animated: options.animated)
         }
 
-        CATransaction.commit()
+        if let transitionCoordinator {
+            transitionCoordinator.animate(alongsideTransition: nil) { _ in
+                completion?()
+            }
+        } else {
+            completion?()
+        }
     }
 
     func pop(toRoot: Bool, with options: TransitionOptions, animation: Animation?, completion: PresentationHandler?) {

@@ -4,7 +4,7 @@ import PackageDescription
 
 let package = Package(
     name: "XCoordinator",
-    platforms: [.iOS(.v14), .tvOS(.v14)],
+    platforms: [.iOS(.v16), .tvOS(.v16)],
     products: [
         .library(
             name: "XCoordinator",
@@ -24,8 +24,5 @@ let package = Package(
         .target(
             name: "XCoordinatorRx",
             dependencies: ["XCoordinator", "RxSwift"]),
-        .testTarget(
-            name: "XCoordinatorTests",
-            dependencies: ["XCoordinator", "XCoordinatorRx"]),
     ]
 )

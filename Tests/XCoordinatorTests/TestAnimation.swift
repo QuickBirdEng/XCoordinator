@@ -26,16 +26,24 @@ class TestAnimation: Animation {
     }
 
     private static func interactiveTransitionAnimation(for expectation: XCTestExpectation?) -> TransitionAnimation {
-        InteractiveTransitionAnimation(duration: 0.1) {
+        InteractiveTransitionAnimation(duration: 0.1) { context in
             expectation?.fulfill()
-            $0.completeTransition(true)
+            // Complete asynchronously, like a real animator does after its duration.
+            // Completing synchronously finishes the transition before UIKit's
+            // transitionCoordinator-based completion can register, which drops the
+            // completion handler (notably for navigation push/pop and tab selection).
+            DispatchQueue.main.async {
+                context.completeTransition(true)
+            }
         }
     }
 
     private static func staticTransitionAnimation(for expectation: XCTestExpectation?) -> TransitionAnimation {
-        StaticTransitionAnimation(duration: 0.1) {
+        StaticTransitionAnimation(duration: 0.1) { context in
             expectation?.fulfill()
-            $0.completeTransition(true)
+            DispatchQueue.main.async {
+                context.completeTransition(true)
+            }
         }
     }
 

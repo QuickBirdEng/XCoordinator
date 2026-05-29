@@ -115,7 +115,7 @@ extension Router {
     ///
     /// Triggers a route and returns the resulting transition context.
     ///
-    /// Useful for deep linking. Prefer ``trigger(_:with:)`` if the context is not needed.
+    /// Useful for deep linking. Prefer `trigger(_:with:)` if the context is not needed.
     ///
     /// - Parameters:
     ///     - route: The route to be triggered.
