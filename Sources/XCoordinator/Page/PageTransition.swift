@@ -30,11 +30,16 @@ extension Transition where RootViewController: UIPageViewController {
     ///
     public static func set(_ first: any Presentable, _ second: (any Presentable)? = nil,
                            direction: UIPageViewController.NavigationDirection) -> Transition {
-        Transition {
-            PageSet(direction: direction) {
-                first
-            } secondary: {
-                second
+        let presentables = [first, second].compactMap { $0 }
+        return Transition(presentables: presentables,
+                          animationInUse: nil
+        ) { rootViewController, options, completion in
+            rootViewController.set(presentables.map { $0.viewController },
+                                   direction: direction,
+                                   with: options
+            ) {
+                presentables.forEach { $0.presented(from: rootViewController) }
+                completion?()
             }
         }
     }
@@ -53,18 +58,34 @@ extension Transition where RootViewController: UIPageViewController {
     ///
     public static func setReliably(_ page: any Presentable,
                                    direction: UIPageViewController.NavigationDirection) -> Transition {
-        Transition {
-            PageSetReliably(direction: direction) {
-                page
+        Transition(presentables: [page], animationInUse: nil) { rootViewController, options, completion in
+            guard let target = page.viewController else {
+                completion?()
+                return
+            }
+            let isAlreadyVisible = rootViewController.viewControllers?.count == 1
+                && rootViewController.viewControllers?.first === target
+            guard !isAlreadyVisible else {
+                // The page is already displayed — UIKit would not call the completion, so do it ourselves.
+                // `presented(from:)` was already invoked when this page was first set, so it is not repeated.
+                completion?()
+                return
+            }
+            rootViewController.set([target], direction: direction, with: options) {
+                page.presented(from: rootViewController)
+                completion?()
             }
         }
     }
 
     static func initial(pages: [any Presentable]) -> Transition {
-        Transition {
-            PageSetInitial {
-                pages
+        Transition(presentables: pages, animationInUse: nil) { rootViewController, _, completion in
+            CATransaction.begin()
+            CATransaction.setCompletionBlock {
+                pages.forEach { $0.presented(from: rootViewController) }
+                completion?()
             }
+            CATransaction.commit()
         }
     }
 

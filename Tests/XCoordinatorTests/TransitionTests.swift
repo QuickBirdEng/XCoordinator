@@ -69,6 +69,20 @@ class TransitionTests: XCTestCase {
         testCompletionCalled(on: coordinator, transition: .pop(to: viewControllers[0]))
     }
 
+    // MARK: Regression coverage
+
+    /// `Transition.set(_:animation:)` on a `UITabBarController` must expose its presentation animation
+    /// via `transition.animation` (used by `registerInteractiveTransition`). Regression guard: a previous
+    /// refactor dropped it (`animationInUse: nil`).
+    func testSetTabsExposesAnimation() {
+        let animation = Animation(
+            presentation: StaticTransitionAnimation(duration: 0) { $0.completeTransition(true) },
+            dismissal: StaticTransitionAnimation(duration: 0) { $0.completeTransition(true) }
+        )
+        let transition: TabBarTransition = .set([UIViewController()], animation: animation)
+        XCTAssertNotNil(transition.animation)
+    }
+
     // MARK: Helpers
 
     private func testStandardTransitions<C: Coordinator>(on coordinator: C) {
