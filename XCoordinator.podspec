@@ -8,8 +8,8 @@ Pod::Spec.new do |spec|
     spec.source       = { :git => 'https://github.com/quickbirdstudios/XCoordinator.git', :tag => spec.version }
     spec.module_name = 'XCoordinator'
     spec.swift_version = '5.9'
-    spec.ios.deployment_target = '14.0'
-    spec.tvos.deployment_target = '14.0'
+    spec.ios.deployment_target = '16.0'
+    spec.tvos.deployment_target = '16.0'
     spec.source_files = 'Sources/XCoordinator/**/*.swift'
     spec.default_subspec = 'Core'
 

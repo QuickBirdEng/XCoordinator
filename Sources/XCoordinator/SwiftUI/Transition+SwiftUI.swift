@@ -35,7 +35,7 @@ extension Transition {
     ) -> Transition {
         return Transition(
             presentables: [],
-            animationInUse: nil,
+            animationInUse: nil
         ) { _, options, completion in
             if #available(iOS 17, tvOS 17, *) {
                 SwiftUI.withAnimation(
@@ -79,7 +79,7 @@ extension Transition {
     ) -> Transition {
         return Transition(
             presentables: [],
-            animationInUse: nil,
+            animationInUse: nil
         ) { _, options, completion in
             var transaction = transaction()
             transaction.disablesAnimations = !options.animated

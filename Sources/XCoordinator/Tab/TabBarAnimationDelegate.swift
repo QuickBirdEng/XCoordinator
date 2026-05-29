@@ -128,6 +128,7 @@ extension TabBarAnimationDelegate: UITabBarControllerDelegate {
     /// - Parameters:
     ///     - tabBarController: The delegate owner.
     ///     - viewControllers: The source viewControllers.
+    ///     - changed: Whether the order of the viewControllers changed.
     ///
     open func tabBarController(_ tabBarController: UITabBarController,
                                didEndCustomizing viewControllers: [UIViewController], changed: Bool) {
@@ -143,6 +144,7 @@ extension TabBarAnimationDelegate: UITabBarControllerDelegate {
     /// - Parameters:
     ///     - tabBarController: The delegate owner.
     ///     - viewControllers: The source viewControllers.
+    ///     - changed: Whether the order of the viewControllers changed.
     ///
     open func tabBarController(_ tabBarController: UITabBarController,
                                willEndCustomizing viewControllers: [UIViewController], changed: Bool) {

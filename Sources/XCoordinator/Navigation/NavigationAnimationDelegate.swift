@@ -127,8 +127,8 @@ extension NavigationAnimationDelegate: UINavigationControllerDelegate {
     ///
     /// - Parameters:
     ///     - navigationController: The delegate owner.
-    ///     - operation: The operation being executed. Possible values are push, pop or none.
     ///     - viewController: The target view controller.
+    ///     - animated: Whether the transition was animated.
     ///
     open func navigationController(_ navigationController: UINavigationController,
                                    didShow viewController: UIViewController, animated: Bool) {
@@ -145,8 +145,8 @@ extension NavigationAnimationDelegate: UINavigationControllerDelegate {
     ///
     /// - Parameters:
     ///     - navigationController: The delegate owner.
-    ///     - operation: The operation being executed. Possible values are push, pop or none.
     ///     - viewController: The view controller to be shown.
+    ///     - animated: Whether the transition is animated.
     ///
     open func navigationController(_ navigationController: UINavigationController,
                                    willShow viewController: UIViewController,

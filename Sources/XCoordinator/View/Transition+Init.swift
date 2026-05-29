@@ -169,7 +169,7 @@ extension Transition {
 
     ///
     /// No transition at all. May be useful for testing or debugging purposes, or to ignore specific
-    /// routes. See also the ``Ignore`` transition component for use inside a transition builder.
+    /// routes.
     ///
     public static func none() -> Transition {
         Transition(presentables: [], animationInUse: nil) { _, _, completion in

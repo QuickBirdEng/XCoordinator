@@ -25,7 +25,7 @@ import UIKit
 /// }
 /// ```
 ///
-/// Multiple statements are chained with ``Transition/multiple(_:)-(some Collection<Transition>)`` and
+/// Multiple statements are chained with ``Transition/multiple(_:)-(Collection<Transition>)`` and
 /// performed strictly in order. An empty builder block is a compile-time error — use ``Transition/none()``
 /// to express an intentional no-op.
 ///

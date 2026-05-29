@@ -38,10 +38,8 @@ open class StaticTransitionAnimation: NSObject, TransitionAnimation {
     ///
     /// - Parameters:
     ///     - duration: The total duration of the animation.
-    ///     - performAnimation: A closure performing the animation.
-    ///     - context:
-    ///         From the context, you can access source and destination views and
-    ///         viewControllers and the containerView.
+    ///     - performAnimation: A closure performing the animation. From the closure's `context`,
+    ///         you can access source and destination views and viewControllers and the containerView.
     ///
     public init(duration: TimeInterval, performAnimation: @escaping (_ context: UIViewControllerContextTransitioning) -> Void) {
         self.duration = duration
