@@ -20,10 +20,16 @@ extension Transition where RootViewController: UISplitViewController {
     ///
     /// - Parameter presentables: The presentables that become the split controller's columns, in order.
     public static func set(_ presentables: [any Presentable]) -> Transition {
-        Transition {
-            SplitSetAll {
-                presentables
+        Transition(presentables: presentables, animationInUse: nil) { rootViewController, _, completion in
+            CATransaction.begin()
+            CATransaction.setCompletionBlock {
+                presentables.forEach { $0.presented(from: rootViewController) }
+                completion?()
             }
+            autoreleasepool {
+                rootViewController.viewControllers = presentables.map { $0.viewController }
+            }
+            CATransaction.commit()
         }
     }
 
@@ -35,15 +41,17 @@ extension Transition where RootViewController: UISplitViewController {
     ///   - column: The column to set.
     @available(iOS 14, *)
     public static func set(_ presentable: (any Presentable)?, for column: UISplitViewController.Column) -> Transition {
-        Transition {
-            SplitSetColumn(column) {
-                presentable
+        Transition(presentables: [presentable].compactMap { $0 }, animationInUse: nil) { rootViewController, _, completion in
+            CATransaction.begin()
+            CATransaction.setCompletionBlock {
+                presentable?.presented(from: rootViewController)
+                completion?()
             }
+            autoreleasepool {
+                rootViewController.setViewController(presentable?.viewController, for: column)
+            }
+            CATransaction.commit()
         }
-
     }
 
 }
-
-
-

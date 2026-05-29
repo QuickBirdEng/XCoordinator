@@ -1,62 +1,83 @@
 //
-//  File.swift
-//  
+//  TransitionBuilder.swift
+//  XCoordinator
 //
 //  Created by Paul Kraft on 08.05.23.
 //
 
 import UIKit
 
+///
+/// A result builder that assembles a single ``Transition`` from one or more `Transition` values.
+///
+/// Use it to describe a coordinator's transitions inline — e.g. in `prepareTransition(for:)` or a
+/// `BasicCoordinator`'s `prepare` closure — by listing the `Transition.…` factories that apply to the
+/// coordinator's root view controller:
+///
+/// ```swift
+/// override func prepareTransition(for route: AppRoute) -> NavigationTransition {
+///     switch route {
+///     case .home:           Transition.push(HomeViewController())
+///     case .detail(let id): Transition.push(DetailViewController(id: id))
+///     case .ignored:        Transition.none()
+///     }
+/// }
+/// ```
+///
+/// Multiple statements are chained with ``Transition/multiple(_:)-(some Collection<Transition>)`` and
+/// performed strictly in order. An empty builder block is a compile-time error — use ``Transition/none()``
+/// to express an intentional no-op.
+///
 @MainActor
 @resultBuilder
 public enum TransitionBuilder<RootViewController: UIViewController> {
 
-    public typealias Component = TransitionGroup<RootViewController>
-
-    public static func buildExpression(_ expression: some TransitionComponent<RootViewController>) -> Component {
-        TransitionGroup([expression.build])
+    public static func buildExpression(_ expression: Transition<RootViewController>) -> Transition<RootViewController> {
+        expression
     }
 
-    /// Accepts a plain `Transition` as a builder expression, so the `Transition.…` factories
-    /// (`.push`, `.present`, `.set`, `.setReliably`, `.deepLink`, …) can be used directly inside a
-    /// transition builder alongside the `TransitionComponent` types.
-    public static func buildExpression(_ expression: Transition<RootViewController>) -> Component {
-        TransitionGroup([{ expression }])
-    }
+    public static func buildExpression(_ expression: Never) -> Transition<RootViewController> {}
 
-    public static func buildExpression(_ expression: Void) -> Component {
-        TransitionGroup([])
-    }
-
-    public static func buildExpression(_ expression: Never) -> Component {}
-
-    public static func buildEither(first component: Component) -> Component {
+    public static func buildEither(first component: Transition<RootViewController>) -> Transition<RootViewController> {
         component
     }
 
-    public static func buildEither(second component: Component) -> Component {
+    public static func buildEither(second component: Transition<RootViewController>) -> Transition<RootViewController> {
         component
     }
 
-    public static func buildOptional(_ component: Component?) -> Component {
-        buildArray([component].compactMap { $0 })
+    public static func buildOptional(_ component: Transition<RootViewController>?) -> Transition<RootViewController> {
+        component ?? .none()
     }
 
-    public static func buildLimitedAvailability(_ component: Component) -> Component {
+    public static func buildLimitedAvailability(_ component: Transition<RootViewController>) -> Transition<RootViewController> {
         component
     }
 
-    public static func buildBlock(_ components: Component...) -> Component {
-        buildArray(components)
+    public static func buildBlock(
+        _ first: Transition<RootViewController>,
+        _ rest: Transition<RootViewController>...
+    ) -> Transition<RootViewController> {
+        rest.isEmpty ? first : .multiple([first] + rest)
     }
 
-    public static func buildArray(_ components: [Component]) -> Component {
-        TransitionGroup(components.map { $0.build })
+    public static func buildArray(_ components: [Transition<RootViewController>]) -> Transition<RootViewController> {
+        .multiple(components)
     }
 
-    public static func buildFinalResult(_ component: Component) -> Transition<RootViewController> {
-        component.build()
+    public static func buildFinalResult(_ component: Transition<RootViewController>) -> Transition<RootViewController> {
+        component
     }
 
 }
 
+extension Transition {
+
+    ///
+    /// Creates a transition from a transition-builder closure.
+    ///
+    public init(@TransitionBuilder<RootViewController> transitions: () -> Self) {
+        self = transitions()
+    }
+
+}

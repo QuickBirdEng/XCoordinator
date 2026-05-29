@@ -30,11 +30,11 @@ class UserListCoordinator: NavigationCoordinator<UserListRoute> {
     override func prepareTransition(for route: UserListRoute) -> NavigationTransition {
         switch route {
         case .home:
-            Push { HomeViewController() }
+            Transition.push(HomeViewController())
         case .user(let name):
-            Present(animation: .default) { UserCoordinator(user: name) }
+            Transition.present(UserCoordinator(user: name), animation: .default)
         case .logout:
-            Dismiss()
+            Transition.dismiss()
         }
     }
 }
@@ -81,13 +81,10 @@ There are two supported ways to define the transition for a route — both produ
 ### The transition builder (recommended, new in 3.0)
 
 Annotate your override with `@TransitionBuilder<RootViewController>` to compose transitions declaratively.
-Two interchangeable vocabularies are available inside the builder, and you can freely mix them:
-
-- **Component types** — `Push`, `Pop`, `Present`, `Dismiss`, `Embed`, `Show`, `SelectTab`, `SetTabs`,
-  `PageSet`, `Redirect`, `Trigger`, … Each reads like a declarative element.
-- **`Transition.…` factories** — `.push(_:)`, `.present(_:)`, `.dismiss()`, `.set(_:)`, `.select(_:)`,
-  `.deepLink(_:_:)`, `.withAnimation { … }`, … Each returns a ``Transition`` and is accepted directly
-  by the builder.
+The builder operates on ``Transition`` values, so its body simply lists the `Transition.…` factories that
+apply to the coordinator's root view controller — `.push(_:)`, `.present(_:)`, `.dismiss()`, `.set(_:)`,
+`.select(_:)`, `.deepLink(_:_:)`, `.withAnimation { … }`, `.none()`, … Listing several in one block chains
+them in order (equivalent to `.multiple`).
 
 ```swift
 class AppCoordinator: NavigationCoordinator<AppRoute> {
@@ -95,12 +92,14 @@ class AppCoordinator: NavigationCoordinator<AppRoute> {
     override func prepareTransition(for route: AppRoute) -> NavigationTransition {
         switch route {
         case .home:
-            Push { HomeViewController() }             // component
+            Transition.push(HomeViewController())
         case .detail(let id):
-            .push(DetailViewController(id: id))        // factory — also fine
+            Transition.push(DetailViewController(id: id))
         case .reset:
-            Pop(toRoot: true)                          // list several to combine them (like `.multiple`)
-            Push { HomeViewController() }
+            Transition.popToRoot()                     // list several to combine them (like `.multiple`)
+            Transition.push(HomeViewController())
+        case .ignored:
+            Transition.none()                          // an empty builder block is a compile-time error
         }
     }
 }
@@ -302,8 +301,6 @@ The available transitions depend on the coordinator's `RootViewController` type.
 ### Transition builder
 
 - ``TransitionBuilder``
-- ``TransitionComponent``
-- ``TransitionGroup``
 
 ### Animations
 

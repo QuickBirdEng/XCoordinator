@@ -69,19 +69,19 @@ class UserListCoordinator: NavigationCoordinator<UserListRoute> {
     override func prepareTransition(for route: UserListRoute) -> NavigationTransition {
         switch route {
         case .home:
-            Push { HomeViewController() }
+            Transition.push(HomeViewController())
         case .user(let name):
-            Present(animation: .default) { UserCoordinator(user: name) }
+            Transition.present(UserCoordinator(user: name), animation: .default)
         case .logout:
-            Dismiss()
+            Transition.dismiss()
         }
     }
 }
 ```
 
 > ✨ **New in 3.0 — the transition builder.** A `@resultBuilder` DSL lets you compose transitions
-> declaratively from components (`Push`, `Present`, `SelectTab`, …) and freely mix in the classic
-> `Transition.…` factories. It's opt-in and additive.
+> declaratively by listing the `Transition.…` factories (`.push`, `.present`, `.select`, …) — list
+> several in one block to chain them (like `.multiple`). It's opt-in and additive.
 
 <details>
 <summary><strong>Classic style (still supported, non-breaking)</strong></summary>

@@ -51,13 +51,13 @@ open class BasicCoordinator<RouteType: Route, RootViewController: UIViewControll
     ///
     /// Creates a BasicCoordinator whose transitions are defined inline with the transition builder.
     ///
-    /// The `prepare` closure is a `@TransitionBuilder`, so its body uses the same component / factory
-    /// syntax as an overridden `prepareTransition(for:)`:
+    /// The `prepare` closure is a `@TransitionBuilder`, so its body lists the same `Transition.…`
+    /// factories as an overridden `prepareTransition(for:)`:
     ///
     /// ```swift
     /// BasicNavigationCoordinator<AppRoute>(rootViewController: .init(), initialRoute: .home) { route in
     ///     switch route {
-    ///     case .home:   Show { HomeViewController() }
+    ///     case .home:   Transition.show(HomeViewController())
     ///     case .detail: Transition.push(DetailViewController())
     ///     }
     /// }
