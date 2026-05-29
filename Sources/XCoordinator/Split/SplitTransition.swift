@@ -1,5 +1,5 @@
 //
-//  UISplitViewController+Transition.swift
+//  SplitTransition.swift
 //  XCoordinator
 //
 //  Created by Paul Kraft on 10.01.19.

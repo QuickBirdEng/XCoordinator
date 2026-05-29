@@ -3,6 +3,7 @@
 //  XCoordinator
 //
 //  Created by Paul Kraft on 19.12.18.
+//  Copyright © 2018 QuickBird Studios. All rights reserved.
 //
 
 import UIKit
