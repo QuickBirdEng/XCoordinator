@@ -10,17 +10,8 @@ import UIKit
 import XCoordinator
 import XCTest
 
+@MainActor
 class AnimationTests: XCTestCase {
-
-    // MARK: Static properties
-
-    static let allTests = [
-        ("testPageCoordinator", testPageCoordinator),
-        ("testSplitCoordinator", testSplitCoordinator),
-        ("testTabBarCoordinator", testTabBarCoordinator),
-        ("testViewCoordinator", testViewCoordinator),
-        ("testNavigationCoordinator", testNavigationCoordinator),
-    ]
 
     // MARK: Stored properties
 
@@ -101,7 +92,7 @@ class AnimationTests: XCTestCase {
 
     // MARK: Helpers
 
-    private func testStandardAnimationsCalled<C: Coordinator, RootViewController>(on coordinator: C) where C.TransitionType == Transition<RootViewController> {
+    private func testStandardAnimationsCalled<C: Coordinator>(on coordinator: C) {
         testStaticAnimationCalled(on: coordinator, transition: { .present(UIViewController(), animation: $0) })
         testStaticAnimationCalled(on: coordinator, transition: { .dismiss(animation: $0) })
         testStaticAnimationCalled(
@@ -122,7 +113,7 @@ class AnimationTests: XCTestCase {
     }
 
     private func testStaticAnimationCalled<C: Coordinator>(on coordinator: C,
-                                                           transition: (Animation) -> C.TransitionType) {
+                                                           transition: (Animation) -> Transition<C.RootViewController>) {
         let animationExpectation = expectation(description: "Animation \(Date().timeIntervalSince1970)")
         let completionExpectation = expectation(description: "Completion \(Date().timeIntervalSince1970)")
         print(#function, animationExpectation)
@@ -136,7 +127,7 @@ class AnimationTests: XCTestCase {
     }
 
     private func testInteractiveAnimationCalled<C: Coordinator>(on coordinator: C,
-                                                                transition: (Animation) -> C.TransitionType) {
+                                                                transition: (Animation) -> Transition<C.RootViewController>) {
         let animationExpectation = expectation(description: "Animation \(Date().timeIntervalSince1970)")
         let completionExpectation = expectation(description: "Completion \(Date().timeIntervalSince1970)")
         print(#function, animationExpectation)

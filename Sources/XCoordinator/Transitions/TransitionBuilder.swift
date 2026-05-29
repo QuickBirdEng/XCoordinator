@@ -17,6 +17,13 @@ public enum TransitionBuilder<RootViewController: UIViewController> {
         TransitionGroup([expression.build])
     }
 
+    /// Accepts a plain `Transition` as a builder expression, so the `Transition.…` factories
+    /// (`.push`, `.present`, `.set`, `.setReliably`, `.deepLink`, …) can be used directly inside a
+    /// transition builder alongside the `TransitionComponent` types.
+    public static func buildExpression(_ expression: Transition<RootViewController>) -> Component {
+        TransitionGroup([{ expression }])
+    }
+
     public static func buildExpression(_ expression: Void) -> Component {
         TransitionGroup([])
     }

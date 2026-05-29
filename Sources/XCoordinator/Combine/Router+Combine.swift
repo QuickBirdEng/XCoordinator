@@ -69,7 +69,7 @@ extension Router {
     public func contextTriggerPublisher(
         _ route: RouteType,
         with options: TransitionOptions = .init(animated: true)
-    ) -> Future<any TransitionProtocol, Never> {
+    ) -> Future<any TransitionContext, Never> {
         Future { completion in
             self.contextTrigger(route, with: options) {
                 completion(.success($0))
@@ -101,7 +101,7 @@ extension PublisherExtension where Base: Router {
     public func contextTrigger(
         _ route: Base.RouteType,
         with options: TransitionOptions = .init(animated: true)
-    ) -> Future<any TransitionProtocol, Never> {
+    ) -> Future<any TransitionContext, Never> {
         base.contextTriggerPublisher(route, with: options)
     }
 

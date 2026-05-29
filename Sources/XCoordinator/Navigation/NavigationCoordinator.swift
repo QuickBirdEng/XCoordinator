@@ -15,7 +15,7 @@ import UIKit
 /// NavigationCoordinator especially ensures that transition animations are called,
 /// which would not be the case when creating a `BaseCoordinator<RouteType, NavigationTransition>`.
 ///
-open class NavigationCoordinator<RouteType: Route>: BaseCoordinator<RouteType, NavigationTransition> {
+open class NavigationCoordinator<RouteType: Route>: BaseCoordinator<RouteType, UINavigationController> {
 
     // MARK: Stored properties
 
@@ -74,6 +74,37 @@ open class NavigationCoordinator<RouteType: Route>: BaseCoordinator<RouteType, N
             rootViewController.delegate = animationDelegate
         }
         super.init(rootViewController: rootViewController, initialTransition: .push(root))
+        animationDelegate.presentable = self
+    }
+
+    ///
+    /// Creates a NavigationCoordinator and optionally performs an initial transition.
+    ///
+    /// - Parameters:
+    ///   - rootViewController: The `UINavigationController` to host transitions.
+    ///   - initialTransition: A transition to perform once the coordinator is shown. Pass `nil` to skip.
+    ///
+    public override init(rootViewController: RootViewController, initialTransition: NavigationTransition?) {
+        if rootViewController.delegate == nil {
+            rootViewController.delegate = animationDelegate
+        }
+        super.init(rootViewController: rootViewController, initialTransition: initialTransition)
+        animationDelegate.presentable = self
+    }
+
+    ///
+    /// Creates a NavigationCoordinator and performs an initial transition described with the transition builder.
+    ///
+    /// - Parameters:
+    ///   - rootViewController: The `UINavigationController` to host transitions.
+    ///   - initialTransition: A transition-builder closure describing the transition to perform.
+    ///
+    public override init(rootViewController: RootViewController,
+                         @TransitionBuilder<UINavigationController> initialTransition: () -> NavigationTransition) {
+        if rootViewController.delegate == nil {
+            rootViewController.delegate = animationDelegate
+        }
+        super.init(rootViewController: rootViewController, initialTransition: initialTransition())
         animationDelegate.presentable = self
     }
 

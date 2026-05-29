@@ -9,7 +9,7 @@
 import UIKit
 
 ///
-/// This struct represents the common implementation of the `TransitionProtocol`.
+/// This struct is the single transition type used by every coordinator.
 /// It is used in every of the provided `BaseCoordinator` subclasses and provides all transitions implemented in XCoordinator.
 ///
 /// `Transitions` are defined by a `Transition.Perform` closure.
@@ -23,7 +23,7 @@ import UIKit
 ///     Make sure to specify the `RootViewController` type of the `TransitionType` of your coordinator as precise as possible
 ///     to get all already available transitions.
 ///
-public struct Transition<RootViewController: UIViewController>: TransitionProtocol {
+public struct Transition<RootViewController: UIViewController>: TransitionContext {
 
     // MARK: Typealias
 

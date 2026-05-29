@@ -49,7 +49,9 @@ XCoordinator decouples navigation from view controllers and view models: you des
 
 ## 🏃‍♂️ Getting started
 
-Define a `Route` enum and a `Coordinator` that prepares a transition for each case:
+Define a `Route` enum and a `Coordinator` that prepares a transition for each case. Since 3.0 you can
+describe transitions with the **transition builder** ✨ — opt in by annotating your override with
+`@TransitionBuilder<RootViewController>`:
 
 ```swift
 enum UserListRoute: Route {
@@ -63,18 +65,44 @@ class UserListCoordinator: NavigationCoordinator<UserListRoute> {
         super.init(initialRoute: .home)
     }
 
+    @TransitionBuilder<UINavigationController>
     override func prepareTransition(for route: UserListRoute) -> NavigationTransition {
         switch route {
         case .home:
-            return .push(HomeViewController())
+            Push { HomeViewController() }
         case .user(let name):
-            return .present(UserCoordinator(user: name), animation: .default)
+            Present(animation: .default) { UserCoordinator(user: name) }
         case .logout:
-            return .dismiss()
+            Dismiss()
         }
     }
 }
 ```
+
+> ✨ **New in 3.0 — the transition builder.** A `@resultBuilder` DSL lets you compose transitions
+> declaratively from components (`Push`, `Present`, `SelectTab`, …) and freely mix in the classic
+> `Transition.…` factories. It's opt-in and additive.
+
+<details>
+<summary><strong>Classic style (still supported, non-breaking)</strong></summary>
+
+The original style — a plain `prepareTransition(for:)` returning `Transition.…` factories — keeps working
+exactly as before. Just omit the `@TransitionBuilder` annotation:
+
+```swift
+class UserListCoordinator: NavigationCoordinator<UserListRoute> {
+    override func prepareTransition(for route: UserListRoute) -> NavigationTransition {
+        switch route {
+        case .home:          .push(HomeViewController())
+        case .user(let name): .present(UserCoordinator(user: name), animation: .default)
+        case .logout:        .dismiss()
+        }
+    }
+}
+```
+
+The builder is a modern convenience, not a requirement — you opt into it per override by adding the attribute.
+</details>
 
 Trigger routes from a view model that holds a typed router reference:
 
@@ -154,7 +182,7 @@ struct ChildView: View {
 }
 ```
 
-**Drive SwiftUI state changes from `prepareTransition`** without performing a UIKit transition — use `Transition.withAnimation` or `Transition.withTransaction`:
+**Drive SwiftUI state changes from `prepareTransition(for:)`** without performing a UIKit transition — use `Transition.withAnimation` or `Transition.withTransaction`:
 
 ```swift
 class HomeCoordinator: TabBarCoordinator<HomeRoute> {

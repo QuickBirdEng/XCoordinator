@@ -145,6 +145,16 @@ extension Transition {
     /// - Parameter transitions:
     ///     The transitions to be chained to form the new transition.
     ///
+    public static func multiple(_ transitions: Transition...) -> Transition {
+        multiple(transitions)
+    }
+
+    ///
+    /// With this transition you can chain multiple transitions of the same type together.
+    ///
+    /// - Parameter transitions:
+    ///     The transitions to be chained to form the new transition.
+    ///
     public static func multiple(_ transitions: some Collection<Transition>) -> Transition {
         Transition(presentables: transitions.flatMap { $0.presentables },
                    animationInUse: transitions.compactMap { $0.animation }.last
@@ -201,11 +211,26 @@ extension Transition {
     ///     - transition: The transition to be performed.
     ///     - viewController: The viewController to perform the transition on.
     ///
-    public static func perform<TransitionType: TransitionProtocol>(_ transition: TransitionType,
-                                                                   on viewController: TransitionType.RootViewController) -> Transition {
+    public static func perform<OtherRoot: UIViewController>(_ transition: Transition<OtherRoot>,
+                                                            on viewController: OtherRoot) -> Transition {
         Transition(presentables: transition.presentables, animationInUse: transition.animation) { _, options, completion in
             transition.perform(on: viewController, with: options, completion: completion)
         }
+    }
+
+    ///
+    /// Performs a transition — described with the transition builder — on a different viewController
+    /// than the coordinator's rootViewController.
+    ///
+    /// - Parameters:
+    ///     - viewController: The viewController to perform the transition on.
+    ///     - transition: A transition-builder closure describing the transition to perform.
+    ///
+    public static func perform<OtherRoot: UIViewController>(
+        on viewController: OtherRoot,
+        @TransitionBuilder<OtherRoot> _ transition: () -> Transition<OtherRoot>
+    ) -> Transition {
+        perform(transition(), on: viewController)
     }
 
 }

@@ -66,7 +66,7 @@ extension ReactiveRouter {
     }
 
     ///
-    /// Wraps a route trigger in an `Observable<any TransitionProtocol>` that emits the resulting
+    /// Wraps a route trigger in an `Observable<any TransitionContext>` that emits the resulting
     /// transition context once the transition has completed.
     ///
     /// Useful for deep linking when the resulting context is required for further processing.
@@ -79,7 +79,7 @@ extension ReactiveRouter {
     public func contextTrigger(
         _ route: RouteType,
         with options: TransitionOptions = .init(animated: true)
-    ) -> Observable<any TransitionProtocol> {
+    ) -> Observable<any TransitionContext> {
         Observable.create { [base] observer -> Disposable in
             base.contextTrigger(route, with: options) {
                 observer.onNext($0)

@@ -6,22 +6,24 @@
 //  Copyright © 2018 QuickBird Studios. All rights reserved.
 //
 
+import UIKit
+
 /// A BasicCoordinator with a `UINavigationController` as its rootViewController.
-public typealias BasicNavigationCoordinator<R: Route> = BasicCoordinator<R, NavigationTransition>
+public typealias BasicNavigationCoordinator<R: Route> = BasicCoordinator<R, UINavigationController>
 
 /// A BasicCoordinator with a `UIViewController` as its rootViewController.
-public typealias BasicViewCoordinator<R: Route> = BasicCoordinator<R, ViewTransition>
+public typealias BasicViewCoordinator<R: Route> = BasicCoordinator<R, UIViewController>
 
 /// A BasicCoordinator with a `UITabBarController` as its rootViewController.
-public typealias BasicTabBarCoordinator<R: Route> = BasicCoordinator<R, TabBarTransition>
+public typealias BasicTabBarCoordinator<R: Route> = BasicCoordinator<R, UITabBarController>
 
 ///
 /// BasicCoordinator is a coordinator class that can be used without subclassing.
 ///
 /// Although subclassing of coordinators is encouraged for more complex cases, a `BasicCoordinator` can easily
-/// be created by only providing a `prepareTransition` closure, an `initialRoute` and an `initialLoadingType`.
+/// be created by only providing a `prepare` closure, an `initialRoute` and an `initialLoadingType`.
 ///
-open class BasicCoordinator<RouteType: Route, TransitionType: TransitionProtocol>: BaseCoordinator<RouteType, TransitionType> {
+open class BasicCoordinator<RouteType: Route, RootViewController: UIViewController>: BaseCoordinator<RouteType, RootViewController> {
 
     // MARK: Nested types
 
@@ -42,27 +44,60 @@ open class BasicCoordinator<RouteType: Route, TransitionType: TransitionProtocol
 
     private let initialRoute: RouteType?
     private let initialLoadingType: InitialLoadingType
-    private let prepareTransition: ((RouteType) -> TransitionType)?
+    private let prepareClosure: ((RouteType) -> Transition<RootViewController>)?
 
     // MARK: Initialization
 
     ///
-    /// Creates a BasicCoordinator.
+    /// Creates a BasicCoordinator whose transitions are defined inline with the transition builder.
+    ///
+    /// The `prepare` closure is a `@TransitionBuilder`, so its body uses the same component / factory
+    /// syntax as an overridden `prepareTransition(for:)`:
+    ///
+    /// ```swift
+    /// BasicNavigationCoordinator<AppRoute>(rootViewController: .init(), initialRoute: .home) { route in
+    ///     switch route {
+    ///     case .home:   Show { HomeViewController() }
+    ///     case .detail: Transition.push(DetailViewController())
+    ///     }
+    /// }
+    /// ```
     ///
     /// - Parameters:
     ///   - rootViewController: The view controller that hosts the coordinator's transitions.
     ///   - initialRoute: If specified, this route is triggered depending on `initialLoadingType`.
     ///   - initialLoadingType: Determines when `initialRoute` is triggered. See ``InitialLoadingType``.
-    ///   - prepareTransition: A closure that returns a transition for each triggered route.
-    ///     Make sure to subclass and override `prepareTransition(for:)` if you pass `nil` here.
+    ///   - prepare: A transition-builder closure returning the transition for each triggered route.
     ///
     public init(rootViewController: RootViewController,
                 initialRoute: RouteType? = nil,
                 initialLoadingType: InitialLoadingType = .presented,
-                prepareTransition: ((RouteType) -> TransitionType)?) {
+                @TransitionBuilder<RootViewController> prepare: @escaping (RouteType) -> Transition<RootViewController>) {
         self.initialRoute = initialRoute
         self.initialLoadingType = initialLoadingType
-        self.prepareTransition = prepareTransition
+        self.prepareClosure = prepare
+
+        if initialLoadingType == .immediately {
+            super.init(rootViewController: rootViewController, initialRoute: initialRoute)
+        } else {
+            super.init(rootViewController: rootViewController, initialRoute: nil)
+        }
+    }
+
+    ///
+    /// Creates a BasicCoordinator that defines its transitions by overriding ``prepareTransition(for:)`` in a subclass.
+    ///
+    /// - Parameters:
+    ///   - rootViewController: The view controller that hosts the coordinator's transitions.
+    ///   - initialRoute: If specified, this route is triggered depending on `initialLoadingType`.
+    ///   - initialLoadingType: Determines when `initialRoute` is triggered. See ``InitialLoadingType``.
+    ///
+    public init(rootViewController: RootViewController,
+                initialRoute: RouteType? = nil,
+                initialLoadingType: InitialLoadingType = .presented) {
+        self.initialRoute = initialRoute
+        self.initialLoadingType = initialLoadingType
+        self.prepareClosure = nil
 
         if initialLoadingType == .immediately {
             super.init(rootViewController: rootViewController, initialRoute: initialRoute)
@@ -90,11 +125,11 @@ open class BasicCoordinator<RouteType: Route, TransitionType: TransitionProtocol
         }
     }
 
-    open override func prepareTransition(for route: RouteType) -> TransitionType {
-        if let prepareTransition = prepareTransition {
-            return prepareTransition(route)
+    open override func prepareTransition(for route: RouteType) -> Transition<RootViewController> {
+        if let prepareClosure = prepareClosure {
+            return prepareClosure(route)
         } else {
-            fatalError("Either pass a \(#function) closure to the initializer or override this method.")
+            fatalError("Either pass a `prepare` closure to the initializer or override this method.")
         }
     }
 }

@@ -10,17 +10,8 @@ import UIKit
 import XCoordinator
 import XCTest
 
+@MainActor
 class TransitionTests: XCTestCase {
-
-    // MARK: Static properties
-
-    static let allTests = [
-        ("testPageCoordinator", testPageCoordinator),
-        ("testSplitCoordinator", testSplitCoordinator),
-        ("testTabBarCoordinator", testTabBarCoordinator),
-        ("testViewCoordinator", testViewCoordinator),
-        ("testNavigationCoordinator", testNavigationCoordinator),
-    ]
 
     // MARK: Stored properties
 
@@ -80,7 +71,7 @@ class TransitionTests: XCTestCase {
 
     // MARK: Helpers
 
-    private func testStandardTransitions<C: Coordinator, RootViewController>(on coordinator: C) where C.TransitionType == Transition<RootViewController> {
+    private func testStandardTransitions<C: Coordinator>(on coordinator: C) {
         testCompletionCalled(on: coordinator, transition: .none())
         testCompletionCalled(on: coordinator, transition: .present(UIViewController()))
         testCompletionCalled(on: coordinator, transition: .dismiss())
@@ -89,7 +80,7 @@ class TransitionTests: XCTestCase {
         testCompletionCalled(on: coordinator, transition: .multiple())
     }
 
-    private func testCompletionCalled<C: Coordinator>(on coordinator: C, transition: C.TransitionType) {
+    private func testCompletionCalled<C: Coordinator>(on coordinator: C, transition: Transition<C.RootViewController>) {
         let exp = expectation(description: "\(Date().timeIntervalSince1970)")
         DispatchQueue.main.async {
             coordinator.performTransition(transition, with: .init(animated: true)) {

@@ -14,7 +14,7 @@ import UIKit
 /// - Note:
 ///     PageCoordinator sets the dataSource of the rootViewController to reflect the parameters in the initializer.
 ///
-open class PageCoordinator<RouteType: Route>: BaseCoordinator<RouteType, PageTransition> {
+open class PageCoordinator<RouteType: Route>: BaseCoordinator<RouteType, UIPageViewController> {
 
     // MARK: Stored properties
 
@@ -26,6 +26,11 @@ open class PageCoordinator<RouteType: Route>: BaseCoordinator<RouteType, PageTra
     public let dataSource: UIPageViewControllerDataSource
 
     // MARK: Initialization
+
+    // Note: PageCoordinator intentionally does NOT expose BaseCoordinator's bare
+    // `init(rootViewController:initialRoute:)` / `init(rootViewController:initialTransition:)` inits.
+    // A page view controller needs a `dataSource` to drive swipe navigation, and that `dataSource`
+    // is fixed at init — so every PageCoordinator must be built with `pages:` or `dataSource:` below.
 
     ///
     /// Creates a PageCoordinator with several sequential (potentially looping) pages.

@@ -11,7 +11,7 @@ import Foundation
 ///
 /// The Router protocol abstracts a coordinator down to its route-triggering capability.
 ///
-/// In contrast to ``Coordinator``, `Router` does not specify a `TransitionType` and can therefore be
+/// In contrast to ``Coordinator``, `Router` does not specify a `RootViewController` and can therefore be
 /// used as `any Router<RouteType>` to expose only the trigger surface to view models and views.
 /// Pair the existential with the ARC qualifier that matches the relationship — `unowned`/`weak` for
 /// child holding parent, `strong` for ownership.
@@ -123,7 +123,7 @@ extension Router {
     ///
     /// - Returns: The transition context of the performed transition(s).
     ///
-    @MainActor public func contextTrigger(_ route: RouteType, with options: TransitionOptions) async -> any TransitionProtocol {
+    @MainActor public func contextTrigger(_ route: RouteType, with options: TransitionOptions) async -> any TransitionContext {
         await withCheckedContinuation { continuation in
             contextTrigger(route, with: options) { context in
                 continuation.resume(returning: context)

@@ -26,18 +26,22 @@ class UserListCoordinator: NavigationCoordinator<UserListRoute> {
         super.init(initialRoute: .home)
     }
 
+    @TransitionBuilder<UINavigationController>
     override func prepareTransition(for route: UserListRoute) -> NavigationTransition {
         switch route {
         case .home:
-            return .push(HomeViewController())
+            Push { HomeViewController() }
         case .user(let name):
-            return .present(UserCoordinator(user: name), animation: .default)
+            Present(animation: .default) { UserCoordinator(user: name) }
         case .logout:
-            return .dismiss()
+            Dismiss()
         }
     }
 }
 ```
+
+The classic style — a plain `prepareTransition(for:)` (no attribute) returning `Transition.…` factories —
+remains fully supported and non-breaking; see <doc:#Building-transitions>.
 
 Trigger routes from a view model that holds a typed router reference:
 
@@ -66,6 +70,61 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         router.setRoot(for: window)
         return true
+    }
+}
+```
+
+## Building transitions
+
+There are two supported ways to define the transition for a route — both produce a `Transition<RootViewController>`.
+
+### The transition builder (recommended, new in 3.0)
+
+Annotate your override with `@TransitionBuilder<RootViewController>` to compose transitions declaratively.
+Two interchangeable vocabularies are available inside the builder, and you can freely mix them:
+
+- **Component types** — `Push`, `Pop`, `Present`, `Dismiss`, `Embed`, `Show`, `SelectTab`, `SetTabs`,
+  `PageSet`, `Redirect`, `Trigger`, … Each reads like a declarative element.
+- **`Transition.…` factories** — `.push(_:)`, `.present(_:)`, `.dismiss()`, `.set(_:)`, `.select(_:)`,
+  `.deepLink(_:_:)`, `.withAnimation { … }`, … Each returns a ``Transition`` and is accepted directly
+  by the builder.
+
+```swift
+class AppCoordinator: NavigationCoordinator<AppRoute> {
+    @TransitionBuilder<UINavigationController>
+    override func prepareTransition(for route: AppRoute) -> NavigationTransition {
+        switch route {
+        case .home:
+            Push { HomeViewController() }             // component
+        case .detail(let id):
+            .push(DetailViewController(id: id))        // factory — also fine
+        case .reset:
+            Pop(toRoot: true)                          // list several to combine them (like `.multiple`)
+            Push { HomeViewController() }
+        }
+    }
+}
+```
+
+> Note: Swift does not inherit a result-builder attribute onto an override, so you must restate
+> `@TransitionBuilder<RootViewController>` on each override that uses builder syntax.
+
+The same builder closure is accepted anywhere a transition is expected — ``BasicCoordinator``'s initializer,
+`performTransition(_:)`, `Transition.perform(on:_:)`, and the `initialTransition:` initializers.
+
+### The classic style (still supported, non-breaking)
+
+A plain `prepareTransition(for:)` (no attribute) that returns `Transition.…` factories works exactly as it
+did in 2.x — nothing to migrate:
+
+```swift
+class AppCoordinator: NavigationCoordinator<AppRoute> {
+    override func prepareTransition(for route: AppRoute) -> NavigationTransition {
+        switch route {
+        case .home:           .push(HomeViewController())
+        case .detail(let id): .push(DetailViewController(id: id))
+        case .reset:          .multiple(.popToRoot(), .push(HomeViewController()))
+        }
     }
 }
 ```
@@ -125,7 +184,7 @@ struct ChildView: View {
 }
 ```
 
-**Drive SwiftUI state changes from `prepareTransition`** with `Transition.withAnimation` or `Transition.withTransaction`, which run a body closure inside `SwiftUI.withAnimation`/`withTransaction` without performing any UIKit transition:
+**Drive SwiftUI state changes from `prepareTransition(for:)`** with `Transition.withAnimation` or `Transition.withTransaction`, which run a body closure inside `SwiftUI.withAnimation`/`withTransaction` without performing any UIKit transition:
 
 ```swift
 class HomeCoordinator: TabBarCoordinator<HomeRoute> {
@@ -228,18 +287,23 @@ The available transitions depend on the coordinator's `RootViewController` type.
 - ``Route``
 - ``Router``
 - ``Presentable``
-- ``TransitionPerformer``
 
 ### Transitions
 
 - ``Transition``
-- ``TransitionProtocol``
+- ``TransitionContext``
 - ``TransitionOptions``
 - ``NavigationTransition``
 - ``TabBarTransition``
 - ``SplitTransition``
 - ``PageTransition``
 - ``ViewTransition``
+
+### Transition builder
+
+- ``TransitionBuilder``
+- ``TransitionComponent``
+- ``TransitionGroup``
 
 ### Animations
 

@@ -58,8 +58,8 @@ extension Coordinator where Self: AnyObject {
     ///     Keep in mind that changes in the app's structure and changes of transitions
     ///     behind the given routes can lead to runtime errors and, therefore, crashes of your app.
     ///
-    public func deepLink<RootViewController, S: Sequence>(_ route: RouteType, _ remainingRoutes: S)
-        -> Transition<RootViewController> where S.Element == Route, TransitionType == Transition<RootViewController> {
+    public func deepLink<S: Sequence>(_ route: RouteType, _ remainingRoutes: S)
+        -> Transition<RootViewController> where S.Element == Route {
         .deepLink(with: self, route, array: Array(remainingRoutes))
     }
 
@@ -76,8 +76,8 @@ extension Coordinator where Self: AnyObject {
     ///         Keep in mind that changes in the app's structure and changes of transitions
     ///         behind the given routes can lead to runtime errors and, therefore, crashes of your app.
     ///
-    public func deepLink<RootViewController>(_ route: RouteType, _ remainingRoutes: Route...)
-        -> Transition<RootViewController> where TransitionType == Transition<RootViewController> {
+    public func deepLink(_ route: RouteType, _ remainingRoutes: Route...)
+        -> Transition<RootViewController> {
         .deepLink(with: self, route, array: remainingRoutes)
     }
 }
