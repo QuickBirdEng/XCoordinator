@@ -8,11 +8,6 @@
 
 import UIKit
 
-extension BaseCoordinator {
-    /// Shortcut for `BaseCoordinator.TransitionType.RootViewController`
-    public typealias RootViewController = TransitionType.RootViewController
-}
-
 ///
 /// BaseCoordinator can (and is encouraged to) be used as a superclass for any custom implementation of a coordinator.
 ///
@@ -21,7 +16,7 @@ extension BaseCoordinator {
 /// and `PageCoordinator`.
 ///
 @MainActor
-open class BaseCoordinator<RouteType: Route, TransitionType: TransitionProtocol>: Coordinator {
+open class BaseCoordinator<RouteType: Route, RootViewController: UIViewController>: Coordinator {
 
     // MARK: Stored properties
 
@@ -39,9 +34,8 @@ open class BaseCoordinator<RouteType: Route, TransitionType: TransitionProtocol>
 
     /// The root view controller of this coordinator's flow.
     ///
-    /// The root view controller's concrete type is determined by `TransitionType.RootViewController` —
-    /// e.g. a `UINavigationController` for a `NavigationCoordinator`. Transitions on this coordinator
-    /// are performed against this view controller.
+    /// Its concrete type is the coordinator's `RootViewController` — e.g. a `UINavigationController`
+    /// for a `NavigationCoordinator`. Transitions on this coordinator are performed against it.
     public private(set) var rootViewController: RootViewController
 
     /// The presentable view controller for this coordinator. Returns ``rootViewController`` by default.
@@ -70,15 +64,29 @@ open class BaseCoordinator<RouteType: Route, TransitionType: TransitionProtocol>
     ///   - rootViewController: The root view controller for this coordinator's flow.
     ///   - initialTransition: A transition to perform before the coordinator becomes visible. Pass `nil` to skip.
     ///
-    public init(rootViewController: RootViewController, initialTransition: TransitionType?) {
+    public init(rootViewController: RootViewController, initialTransition: Transition<RootViewController>?) {
         self.rootViewController = rootViewController
         initialTransition.map(performTransitionAfterWindowAppeared)
+    }
+
+    ///
+    /// Creates a coordinator and performs an initial transition — described with the transition builder —
+    /// before the coordinator is made visible.
+    ///
+    /// - Parameters:
+    ///   - rootViewController: The root view controller for this coordinator's flow.
+    ///   - initialTransition: A transition-builder closure describing the transition to perform.
+    ///
+    public init(rootViewController: RootViewController,
+                @TransitionBuilder<RootViewController> initialTransition: () -> Transition<RootViewController>) {
+        self.rootViewController = rootViewController
+        performTransitionAfterWindowAppeared(initialTransition())
     }
 
     // MARK: Open methods
 
     public func router<R: Route>(for route: R.Type) -> (any Router<R>)? {
-        self as? BaseCoordinator<R, TransitionType>
+        self as? BaseCoordinator<R, RootViewController>
     }
 
     open func presented(from presentable: (any Presentable)?) {}
@@ -98,13 +106,9 @@ open class BaseCoordinator<RouteType: Route, TransitionType: TransitionProtocol>
         removeChildrenIfNeeded()
     }
 
-    @TransitionBuilder<RootViewController> open func prepare(for route: RouteType) -> Transition<RootViewController> {
-        fatalError("Please override the \(#function) method.")
-    }
-
     ///
     /// This method prepares transitions for routes.
-    /// Override this method to define transitions for triggered routes.
+    /// Override this method to define transitions for triggered routes, using the transition builder DSL.
     ///
     /// - Parameter route:
     ///     The triggered route for which a transition is to be prepared.
@@ -112,14 +116,11 @@ open class BaseCoordinator<RouteType: Route, TransitionType: TransitionProtocol>
     /// - Returns:
     ///     The prepared transition.
     ///
-    open func prepareTransition(for route: RouteType) -> TransitionType {
-        if let transition = prepare(for: route) as? TransitionType {
-            return transition
-        } else {
-            fatalError("Please override the \(#function) method.")
-        }
+    @TransitionBuilder<RootViewController>
+    open func prepareTransition(for route: RouteType) -> Transition<RootViewController> {
+        fatalError("Please override the \(#function) method.")
     }
-    
+
     public func registerParent(_ presentable: any Presentable & AnyObject) {
         let previous = removeParentChildren
         removeParentChildren = { [weak presentable] in
@@ -130,7 +131,7 @@ open class BaseCoordinator<RouteType: Route, TransitionType: TransitionProtocol>
 
     // MARK: Private methods
 
-    private func performTransitionAfterWindowAppeared(_ transition: TransitionType) {
+    private func performTransitionAfterWindowAppeared(_ transition: Transition<RootViewController>) {
         guard !UIApplication.shared.windows.contains(where: { $0.isKeyWindow }) else {
             return performTransition(transition, with: TransitionOptions(animated: false))
         }

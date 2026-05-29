@@ -22,7 +22,7 @@ public typealias ViewTransition = Transition<UIViewController>
 ///
 /// ViewCoordinator is a base class for custom coordinators with a `UIViewController` rootViewController.
 ///
-open class ViewCoordinator<RouteType: Route>: BaseCoordinator<RouteType, ViewTransition> {
+open class ViewCoordinator<RouteType: Route>: BaseCoordinator<RouteType, UIViewController> {
 
     // MARK: Initialization
     
@@ -32,9 +32,21 @@ open class ViewCoordinator<RouteType: Route>: BaseCoordinator<RouteType, ViewTra
     /// - Parameters:
     ///   - rootViewController: The view controller that hosts the coordinator's transitions.
     ///   - initialTransition: A transition to perform once the coordinator is shown. Pass `nil` to skip.
-    public override init(rootViewController: RootViewController, initialTransition: TransitionType?) {
+    public override init(rootViewController: RootViewController, initialTransition: ViewTransition?) {
         super.init(rootViewController: rootViewController,
                    initialTransition: initialTransition)
+    }
+
+    ///
+    /// Creates a view coordinator and performs an initial transition described with the transition builder.
+    ///
+    /// - Parameters:
+    ///   - rootViewController: The view controller that hosts the coordinator's transitions.
+    ///   - initialTransition: A transition-builder closure describing the transition to perform.
+    public override init(rootViewController: RootViewController,
+                         @TransitionBuilder<UIViewController> initialTransition: () -> ViewTransition) {
+        super.init(rootViewController: rootViewController,
+                   initialTransition: initialTransition())
     }
 
     ///
@@ -74,12 +86,29 @@ open class ViewCoordinator<RouteType: Route>: BaseCoordinator<RouteType, ViewTra
     ///   - initialTransition: A transition to perform once the coordinator is shown.
     ///   - body: A view-builder producing the SwiftUI content.
     public init<Content: View>(
-        initialTransition: TransitionType?,
+        initialTransition: ViewTransition?,
         @ViewBuilder body: () -> Content
     ) {
         super.init(
             rootViewController: RoutingController(rootView: body()),
             initialTransition: initialTransition
+        )
+    }
+
+    ///
+    /// Creates a view coordinator whose root is a SwiftUI view, performing an initial transition
+    /// described with the transition builder.
+    ///
+    /// - Parameters:
+    ///   - initialTransition: A transition-builder closure describing the transition to perform.
+    ///   - body: A view-builder producing the SwiftUI content.
+    public init<Content: View>(
+        @TransitionBuilder<UIViewController> initialTransition: () -> ViewTransition,
+        @ViewBuilder body: () -> Content
+    ) {
+        super.init(
+            rootViewController: RoutingController(rootView: body()),
+            initialTransition: initialTransition()
         )
     }
 

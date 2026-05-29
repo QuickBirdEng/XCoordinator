@@ -19,7 +19,7 @@ import UIKit
 /// Use a TabBarCoordinator to coordinate a flow where a `UITabbarController` serves as a rootViewController.
 /// With a TabBarCoordinator, you get access to all tabbarController-related transitions.
 ///
-open class TabBarCoordinator<RouteType: Route>: BaseCoordinator<RouteType, TabBarTransition> {
+open class TabBarCoordinator<RouteType: Route>: BaseCoordinator<RouteType, UITabBarController> {
 
     // MARK: Stored properties
 
@@ -63,6 +63,35 @@ open class TabBarCoordinator<RouteType: Route>: BaseCoordinator<RouteType, TabBa
             rootViewController.delegate = animationDelegate
         }
         super.init(rootViewController: rootViewController, initialRoute: initialRoute)
+    }
+
+    ///
+    /// Creates a TabBarCoordinator and optionally performs an initial transition.
+    ///
+    /// - Parameters:
+    ///   - rootViewController: The `UITabBarController` to host transitions.
+    ///   - initialTransition: A transition to perform once the coordinator is shown. Pass `nil` to skip.
+    ///
+    public override init(rootViewController: RootViewController, initialTransition: TabBarTransition?) {
+        if rootViewController.delegate == nil {
+            rootViewController.delegate = animationDelegate
+        }
+        super.init(rootViewController: rootViewController, initialTransition: initialTransition)
+    }
+
+    ///
+    /// Creates a TabBarCoordinator and performs an initial transition described with the transition builder.
+    ///
+    /// - Parameters:
+    ///   - rootViewController: The `UITabBarController` to host transitions.
+    ///   - initialTransition: A transition-builder closure describing the transition to perform.
+    ///
+    public override init(rootViewController: RootViewController,
+                         @TransitionBuilder<UITabBarController> initialTransition: () -> TabBarTransition) {
+        if rootViewController.delegate == nil {
+            rootViewController.delegate = animationDelegate
+        }
+        super.init(rootViewController: rootViewController, initialTransition: initialTransition())
     }
 
     ///

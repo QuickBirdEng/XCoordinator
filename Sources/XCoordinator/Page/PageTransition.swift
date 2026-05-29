@@ -39,6 +39,27 @@ extension Transition where RootViewController: UIPageViewController {
         }
     }
 
+    ///
+    /// A reliable variant of ``set(_:_:direction:)`` for a single page that **always** calls its completion
+    /// handler — even when the requested page is already on-screen.
+    ///
+    /// `UIPageViewController` skips its completion block when asked to set the page it is already showing,
+    /// which stalls `deepLink` (it chains the next route inside the completion). Use this in a deep-link
+    /// chain whose page step might target the currently-visible page.
+    ///
+    /// - Parameters:
+    ///     - page: The page to show.
+    ///     - direction: The direction in which the transition should be animated.
+    ///
+    public static func setReliably(_ page: any Presentable,
+                                   direction: UIPageViewController.NavigationDirection) -> Transition {
+        Transition {
+            PageSetReliably(direction: direction) {
+                page
+            }
+        }
+    }
+
     static func initial(pages: [any Presentable]) -> Transition {
         Transition {
             PageSetInitial {
