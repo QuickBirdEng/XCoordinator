@@ -1,5 +1,5 @@
 //
-//  RouteTrigger.swift
+//  Router.swift
 //  XCoordinator
 //
 //  Created by Paul Kraft on 28.07.18.

@@ -3,6 +3,7 @@
 //  XCoordinator
 //
 //  Created by Paul Kraft on 09.05.2025.
+//  Copyright © 2018 QuickBird Studios. All rights reserved.
 //
 
 #if canImport(SwiftUI)

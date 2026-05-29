@@ -3,6 +3,7 @@
 //  XCoordinator
 //
 //  Created by Paul Kraft on 08.05.23.
+//  Copyright © 2018 QuickBird Studios. All rights reserved.
 //
 
 import UIKit
@@ -67,17 +68,6 @@ public enum TransitionBuilder<RootViewController: UIViewController> {
 
     public static func buildFinalResult(_ component: Transition<RootViewController>) -> Transition<RootViewController> {
         component
-    }
-
-}
-
-extension Transition {
-
-    ///
-    /// Creates a transition from a transition-builder closure.
-    ///
-    public init(@TransitionBuilder<RootViewController> transitions: () -> Self) {
-        self = transitions()
     }
 
 }

@@ -1,5 +1,5 @@
 //
-//  PageViewTransition.swift
+//  PageTransition.swift
 //  XCoordinator
 //
 //  Created by Paul Kraft on 29.07.18.
@@ -31,48 +31,26 @@ extension Transition where RootViewController: UIPageViewController {
     public static func set(_ first: any Presentable, _ second: (any Presentable)? = nil,
                            direction: UIPageViewController.NavigationDirection) -> Transition {
         let presentables = [first, second].compactMap { $0 }
-        return Transition(presentables: presentables,
-                          animationInUse: nil
-        ) { rootViewController, options, completion in
-            rootViewController.set(presentables.map { $0.viewController },
-                                   direction: direction,
-                                   with: options
-            ) {
-                presentables.forEach { $0.presented(from: rootViewController) }
-                completion?()
-            }
-        }
-    }
+        return Transition(presentables: presentables, animationInUse: nil) { rootViewController, options, completion in
+            let viewControllers: [UIViewController] = presentables.map { $0.viewController }
+            rootViewController.isDoubleSided = viewControllers.count > 1
 
-    ///
-    /// A reliable variant of ``set(_:_:direction:)`` for a single page that **always** calls its completion
-    /// handler — even when the requested page is already on-screen.
-    ///
-    /// `UIPageViewController` skips its completion block when asked to set the page it is already showing,
-    /// which stalls `deepLink` (it chains the next route inside the completion). Use this in a deep-link
-    /// chain whose page step might target the currently-visible page.
-    ///
-    /// - Parameters:
-    ///     - page: The page to show.
-    ///     - direction: The direction in which the transition should be animated.
-    ///
-    public static func setReliably(_ page: any Presentable,
-                                   direction: UIPageViewController.NavigationDirection) -> Transition {
-        Transition(presentables: [page], animationInUse: nil) { rootViewController, options, completion in
-            guard let target = page.viewController else {
+            // `UIPageViewController.setViewControllers(_:direction:animated:completion:)` skips its completion
+            // block when asked to display the pages it is already showing (a long-standing UIKit quirk).
+            // `deepLink` chains the next route inside this completion, so short-circuit the no-op case and
+            // invoke the completion ourselves to keep chained transitions flowing. `presented(from:)` already
+            // fired when these pages were first set, so it is not repeated here.
+            guard rootViewController.viewControllers != viewControllers else {
                 completion?()
                 return
             }
-            let isAlreadyVisible = rootViewController.viewControllers?.count == 1
-                && rootViewController.viewControllers?.first === target
-            guard !isAlreadyVisible else {
-                // The page is already displayed — UIKit would not call the completion, so do it ourselves.
-                // `presented(from:)` was already invoked when this page was first set, so it is not repeated.
-                completion?()
-                return
-            }
-            rootViewController.set([target], direction: direction, with: options) {
-                page.presented(from: rootViewController)
+
+            rootViewController.setViewControllers(
+                viewControllers,
+                direction: direction,
+                animated: options.animated
+            ) { _ in
+                presentables.forEach { $0.presented(from: rootViewController) }
                 completion?()
             }
         }
