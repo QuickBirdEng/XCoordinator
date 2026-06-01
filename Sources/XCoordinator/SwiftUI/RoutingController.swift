@@ -11,6 +11,25 @@
 import SwiftUI
 
 ///
+/// An observable wrapper around a ``RoutingContext`` so that updates made after a
+/// ``RoutingController`` has been created (e.g. a coordinator registering itself during
+/// `performTransition`, or routers merged back up through a `PreferenceKey`) are re-injected
+/// into the hosted SwiftUI environment.
+///
+/// `RoutingContext` is a value type, so storing it in a plain property captures a snapshot.
+/// Routing every mutation through this reference type lets SwiftUI observe the change and
+/// re-evaluate the injecting view.
+///
+@MainActor
+internal final class RoutingContextBox: ObservableObject {
+    @Published var context: RoutingContext
+
+    init(_ context: RoutingContext) {
+        self.context = context
+    }
+}
+
+///
 /// A `UIHostingController` subclass that bridges a SwiftUI view tree into a UIKit coordinator flow.
 ///
 /// `RoutingController` is the SwiftUI counterpart to ``ViewCoordinator``'s root view controller: it injects
@@ -35,7 +54,7 @@ public class RoutingController<Content: View>: UIHostingController<RoutingContro
 
         // MARK: Stored Properties
 
-        private let routingContext: RoutingContext
+        @ObservedObject private var box: RoutingContextBox
         private let content: Content
         private let onUpdate: (RoutingContext) -> Void
 
@@ -43,18 +62,18 @@ public class RoutingController<Content: View>: UIHostingController<RoutingContro
 
         public var body: some View {
             content
-                .environment(\.routingContext, routingContext)
+                .environment(\.routingContext, box.context)
                 .onRoutingContextChanged(perform: onUpdate)
         }
 
         // MARK: Initialization
 
         fileprivate init(
-            context: RoutingContext,
+            box: RoutingContextBox,
             content: Content,
             onUpdate: @escaping (RoutingContext) -> Void
         ) {
-            self.routingContext = context
+            self._box = ObservedObject(wrappedValue: box)
             self.content = content
             self.onUpdate = onUpdate
         }
@@ -63,9 +82,16 @@ public class RoutingController<Content: View>: UIHostingController<RoutingContro
 
     // MARK: Properties
 
+    private let box: RoutingContextBox
+
     /// The routing context currently propagated into the hosted SwiftUI environment.
-    public var routingContext: RoutingContext
-    private var routingContent = RoutingContext()
+    ///
+    /// Mutating it (e.g. via `routingContext.add(_:)`) re-injects the updated context into the
+    /// hosted SwiftUI environment, so descendant `@Routing` lookups resolve against the latest routers.
+    public var routingContext: RoutingContext {
+        get { box.context }
+        set { box.context = newValue }
+    }
 
     // MARK: Initialization
 
@@ -81,19 +107,17 @@ public class RoutingController<Content: View>: UIHostingController<RoutingContro
         context: RoutingContext = .init(),
         rootView: Content
     ) {
-        self.routingContext = context
-        var onUpdate: ((RoutingContext) -> Void)?
+        let box = RoutingContextBox(context)
+        self.box = box
         super.init(
             rootView: InjectorView(
-                context: context,
+                box: box,
                 content: rootView
-            ) { updatedContext in
-                onUpdate?(updatedContext)
+            ) { [box] updatedContext in
+                // Merge routers flowing UP via the PreferenceKey back into the injected context.
+                box.context.add(updatedContext)
             }
         )
-        onUpdate = { [weak self] updatedContext in
-            self?.routingContext = updatedContext
-        }
     }
 
     ///
@@ -111,7 +135,7 @@ public class RoutingController<Content: View>: UIHostingController<RoutingContro
     }
 
     public required init?(coder aDecoder: NSCoder) {
-        self.routingContext = .init()
+        self.box = RoutingContextBox(.init())
         super.init(coder: aDecoder)
     }
 

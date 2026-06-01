@@ -85,6 +85,12 @@ open class BaseCoordinator<RouteType: Route, RootViewController: UIViewControlle
 
     // MARK: Open methods
 
+    /// Returns this coordinator as a router for `route`, if it handles that route type.
+    ///
+    /// - Note: This matches only when `self` is a `BaseCoordinator<R, RootViewController>` — i.e. the
+    ///   same `RouteType` *and* the same `RootViewController`. It intentionally does not search child
+    ///   coordinators; deep linking traverses the coordinator tree via the transition's `presentables`
+    ///   (see `DeepLinking.swift`), and SwiftUI lookups register routers explicitly in the `RoutingContext`.
     public func router<R: Route>(for route: R.Type) -> (any Router<R>)? {
         self as? BaseCoordinator<R, RootViewController>
     }
@@ -132,7 +138,11 @@ open class BaseCoordinator<RouteType: Route, RootViewController: UIViewControlle
     // MARK: Private methods
 
     private func performTransitionAfterWindowAppeared(_ transition: Transition<RootViewController>) {
-        guard !UIApplication.shared.windows.contains(where: { $0.isKeyWindow }) else {
+        let hasKeyWindow = UIApplication.shared.connectedScenes
+            .compactMap { $0 as? UIWindowScene }
+            .flatMap(\.windows)
+            .contains(where: \.isKeyWindow)
+        guard !hasKeyWindow else {
             return performTransition(transition, with: TransitionOptions(animated: false))
         }
 

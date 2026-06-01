@@ -28,60 +28,70 @@ extension Router {
 
     /// The Combine namespace for this router.
     ///
-    /// Use `router.publishers.trigger(_:)` to obtain a `Future<Void, Never>` that completes when the
-    /// route's transition finishes.
+    /// Use `router.publishers.trigger(_:)` to obtain a publisher that performs the route's transition
+    /// when subscribed to and completes when the transition finishes.
     public var publishers: PublisherExtension<Self> {
         .init(base: self)
     }
 
     ///
-    /// Triggers a route and returns a future that completes when the transition finishes.
+    /// Triggers a route and returns a publisher that completes when the transition finishes.
     ///
-    /// Prefer the convenience accessor ``publishers`` for new code: `router.publishers.trigger(.home)`.
+    /// The transition is performed on **subscription** (the returned publisher is lazy), so no
+    /// navigation happens until a subscriber attaches. Prefer the convenience accessor ``publishers``
+    /// for new code: `router.publishers.trigger(.home)`.
     ///
     /// - Parameters:
     ///   - route: The route to trigger.
     ///   - options: Transition options. Defaults to animated.
-    /// - Returns: A `Future` that emits `()` and finishes once the transition completes.
+    /// - Returns: A publisher that emits `()` and finishes once the transition completes.
     ///
     public func triggerPublisher(
         _ route: RouteType,
         with options: TransitionOptions = .init(animated: true)
-    ) -> Future<Void, Never> {
-        Future { completion in
-            self.trigger(route, with: options) {
-                completion(.success(()))
+    ) -> AnyPublisher<Void, Never> {
+        Deferred {
+            Future { completion in
+                self.trigger(route, with: options) {
+                    completion(.success(()))
+                }
             }
         }
+        .eraseToAnyPublisher()
     }
 
     ///
-    /// Triggers a route and returns a future that emits the resulting transition context.
+    /// Triggers a route and returns a publisher that emits the resulting transition context.
     ///
-    /// Useful for deep linking. Prefer ``publishers`` for new code:
-    /// `router.publishers.contextTrigger(.home)`.
+    /// The transition is performed on **subscription** (the returned publisher is lazy). Useful for
+    /// deep linking. Prefer ``publishers`` for new code: `router.publishers.contextTrigger(.home)`.
     ///
     /// - Parameters:
     ///   - route: The route to trigger.
     ///   - options: Transition options. Defaults to animated.
-    /// - Returns: A `Future` that emits the transition context and finishes.
+    /// - Returns: A publisher that emits the transition context and finishes.
     ///
     public func contextTriggerPublisher(
         _ route: RouteType,
         with options: TransitionOptions = .init(animated: true)
-    ) -> Future<any TransitionContext, Never> {
-        Future { completion in
-            self.contextTrigger(route, with: options) {
-                completion(.success($0))
+    ) -> AnyPublisher<any TransitionContext, Never> {
+        Deferred {
+            Future { completion in
+                self.contextTrigger(route, with: options) {
+                    completion(.success($0))
+                }
             }
         }
+        .eraseToAnyPublisher()
     }
 
 }
 
 extension PublisherExtension where Base: Router {
 
-    /// Triggers a route on the wrapped router and returns a future that completes when the transition finishes.
+    /// Triggers a route on the wrapped router and returns a publisher that completes when the transition finishes.
+    ///
+    /// The transition is performed on subscription (lazy).
     ///
     /// - Parameters:
     ///   - route: The route to trigger.
@@ -89,11 +99,13 @@ extension PublisherExtension where Base: Router {
     public func trigger(
         _ route: Base.RouteType,
         with options: TransitionOptions = .init(animated: true)
-    ) -> Future<Void, Never> {
+    ) -> AnyPublisher<Void, Never> {
         base.triggerPublisher(route, with: options)
     }
 
-    /// Triggers a route on the wrapped router and returns a future emitting the resulting transition context.
+    /// Triggers a route on the wrapped router and returns a publisher emitting the resulting transition context.
+    ///
+    /// The transition is performed on subscription (lazy).
     ///
     /// - Parameters:
     ///   - route: The route to trigger.
@@ -101,7 +113,7 @@ extension PublisherExtension where Base: Router {
     public func contextTrigger(
         _ route: Base.RouteType,
         with options: TransitionOptions = .init(animated: true)
-    ) -> Future<any TransitionContext, Never> {
+    ) -> AnyPublisher<any TransitionContext, Never> {
         base.contextTriggerPublisher(route, with: options)
     }
 

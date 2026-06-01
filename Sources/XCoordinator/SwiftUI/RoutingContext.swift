@@ -80,7 +80,7 @@ public struct RoutingContext: Equatable {
         router.add(to: &self)
     }
 
-    private mutating func add(_ context: RoutingContext) {
+    internal mutating func add(_ context: RoutingContext) {
         for (key, value) in context.routers {
             routers[key] = value
         }

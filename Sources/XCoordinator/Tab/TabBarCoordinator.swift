@@ -160,27 +160,37 @@ open class TabBarCoordinator<RouteType: Route>: BaseCoordinator<RouteType, UITab
         selection: Binding<Items.Element>,
         content: (Items.Element) -> UIViewController
     ) where Items.Index == Int, Items.Element: Equatable {
+        // Work against a 0-based array so the tab bar's 0-based selectedIndex always lines up
+        // with both `tabs` and the items (the source collection's indices may be offset, e.g. a slice).
+        let items = Array(items)
         let tabs = items.map(content)
-        let selectedTab = tabs[items.firstIndex(of: selection.wrappedValue) ?? 0]
         if rootViewController.delegate == nil {
             rootViewController.delegate = animationDelegate
         }
-        super.init(rootViewController: rootViewController,
-                   initialTransition: .multiple(.set(tabs), .select(selectedTab)))
-        
+
+        if let selectedOffset = items.firstIndex(of: selection.wrappedValue) {
+            super.init(rootViewController: rootViewController,
+                       initialTransition: .multiple(.set(tabs), .select(tabs[selectedOffset])))
+        } else {
+            super.init(rootViewController: rootViewController, initialTransition: .set(tabs))
+        }
+
         let cancellable = Publishers.Merge(
                 rootViewController
-                    .publisher(for: \.selectedViewController)
+                    .publisher(for: \.selectedViewController, options: [.new])
                     .compactMap { [weak self] _ in self?.rootViewController.selectedIndex },
                 rootViewController
-                    .publisher(for: \.selectedIndex)
+                    .publisher(for: \.selectedIndex, options: [.new])
             )
             .removeDuplicates()
             .receive(on: DispatchQueue.main)
-            .sink { selection.wrappedValue = items[$0] }
+            .sink { index in
+                guard items.indices.contains(index) else { return }
+                selection.wrappedValue = items[index]
+            }
         strongReferences.append(cancellable)
     }
-    
+
     ///
     /// Creates a tab bar coordinator whose selection is a `CaseIterable & Equatable` enum.
     ///
@@ -197,24 +207,34 @@ open class TabBarCoordinator<RouteType: Route>: BaseCoordinator<RouteType, UITab
         selection: Binding<Item>,
         content: (Item) -> UIViewController
     ) where Item.AllCases.Index == Int {
-        let tabs = Item.allCases.map(content)
-        let selectedTab = tabs[Item.allCases.firstIndex(of: selection.wrappedValue) ?? 0]
+        // Work against a 0-based array so the tab bar's 0-based selectedIndex always lines up
+        // with both `tabs` and the cases (AllCases indices may be offset).
+        let cases = Array(Item.allCases)
+        let tabs = cases.map(content)
         if rootViewController.delegate == nil {
             rootViewController.delegate = animationDelegate
         }
-        super.init(rootViewController: rootViewController,
-                   initialTransition: .multiple(.set(tabs), .select(selectedTab)))
-        
+
+        if let selectedOffset = cases.firstIndex(of: selection.wrappedValue) {
+            super.init(rootViewController: rootViewController,
+                       initialTransition: .multiple(.set(tabs), .select(tabs[selectedOffset])))
+        } else {
+            super.init(rootViewController: rootViewController, initialTransition: .set(tabs))
+        }
+
         let cancellable = Publishers.Merge(
                 rootViewController
-                    .publisher(for: \.selectedViewController)
+                    .publisher(for: \.selectedViewController, options: [.new])
                     .compactMap { [weak self] _ in self?.rootViewController.selectedIndex },
                 rootViewController
-                    .publisher(for: \.selectedIndex)
+                    .publisher(for: \.selectedIndex, options: [.new])
             )
             .removeDuplicates()
             .receive(on: DispatchQueue.main)
-            .sink { selection.wrappedValue = Item.allCases[$0] }
+            .sink { index in
+                guard cases.indices.contains(index) else { return }
+                selection.wrappedValue = cases[index]
+            }
         strongReferences.append(cancellable)
     }
     #endif

@@ -6,7 +6,7 @@
 
 [![CI](https://github.com/quickbirdstudios/XCoordinator/actions/workflows/ci.yml/badge.svg)](https://github.com/quickbirdstudios/XCoordinator/actions/workflows/ci.yml)
 [![Swift](https://img.shields.io/badge/Swift-5.9-orange.svg)](https://swift.org)
-[![Platforms](https://img.shields.io/badge/platforms-iOS%2014%20%7C%20tvOS%2014-lightgrey.svg)](https://github.com/quickbirdstudios/XCoordinator)
+[![Platforms](https://img.shields.io/badge/platforms-iOS%2016%20%7C%20tvOS%2016-lightgrey.svg)](https://github.com/quickbirdstudios/XCoordinator)
 [![SwiftPM](https://img.shields.io/badge/SPM-compatible-brightgreen.svg)](https://swift.org/package-manager/)
 [![CocoaPods](https://img.shields.io/cocoapods/v/XCoordinator)](https://cocoapods.org/pods/XCoordinator)
 [![License](https://img.shields.io/cocoapods/l/XCoordinator.svg)](LICENSE)
@@ -268,7 +268,7 @@ Alternatively, two sibling coordinators can share the same `rootViewController` 
 
 ## 🔀 Combine and RxSwift
 
-The Combine extensions are built into the main `XCoordinator` module. Use `router.publishers.trigger(_:)` to obtain a `Future<Void, Never>` for a triggered route:
+The Combine extensions are built into the main `XCoordinator` module. Use `router.publishers.trigger(_:)` to obtain a publisher for a triggered route. The publisher is **lazy** — the transition is performed when you subscribe, not when the publisher is created:
 
 ```swift
 router.publishers.trigger(.home)
@@ -284,7 +284,7 @@ router.rx.trigger(.home)
 
 ## ⬆️ Migrating from 2.x to 3.0
 
-3.0 removes the type-erased router wrappers and folds Combine into the main module. Migration is mechanical:
+3.0 removes the type-erased router/coordinator wrappers, replaces the `TransitionPerformer`/`TransitionProtocol` layer with the single generic `Transition<RootViewController>`, and folds Combine into the main module. Most of the migration is mechanical:
 
 | 2.x | 3.0 |
 | --- | --- |
@@ -292,8 +292,17 @@ router.rx.trigger(.home)
 | `StrongRouter<Route>` | `any Router<Route>` |
 | `WeakRouter<Route>` | `weak var router: (any Router<Route>)?` |
 | `UnownedRouter<Route>` | `unowned let router: any Router<Route>` |
-| `coordinator.unownedRouter` | pass `self` directly or capture explicitly |
+| `WeakErased` / `UnownedErased` | use `weak`/`unowned` on an `any Router<Route>` directly |
+| `coordinator.unownedRouter` / `coordinator.weakRouter` | pass `self` directly or capture explicitly with `unowned`/`weak` |
+| `AnyCoordinator<…>` / `coordinator.anyCoordinator` | use the coordinator directly, or `any Router<Route>` where erasure is needed |
+| `TransitionPerformer`, `TransitionProtocol`, `AnyTransitionPerformer` | removed — coordinators now use `Transition<RootViewController>` directly |
+| `Coordinator.TransitionType` associatedtype | removed — `prepareTransition(for:)` returns `Transition<RootViewController>`; specify `RootViewController` instead of `TransitionType` |
 | `pod 'XCoordinator/Combine'` | the Combine extensions are bundled into `XCoordinator` |
+
+### Other breaking changes
+
+- **Minimum platforms raised to iOS 16 / tvOS 16** (from iOS 9 / tvOS 9), and the package now uses **swift-tools 5.9** (Xcode 15+).
+- **Combine publishers are now lazy.** `router.publishers.trigger(_:)` / `triggerPublisher(_:)` previously returned an eager `Future` that fired the transition immediately on creation; they now return a lazy `AnyPublisher` that performs the transition on **subscription**. Make sure you subscribe (e.g. `.sink`) to actually run the navigation.
 
 The SwiftUI interop layer (`RoutingController`, `WrappedRouter`, `@Routing`, `Transition.withAnimation`, …) is new in 3.0 — see [SwiftUI interop](#-swiftui-interop).
 
@@ -325,15 +334,9 @@ pod 'XCoordinator/RxSwift', '~> 3.0'
 
 Combine is bundled into the main pod; no separate subspec is needed.
 
-### Carthage
-
-```
-github "quickbirdstudios/XCoordinator" ~> 3.0
-```
-
 ## ✅ Requirements
 
-- iOS 14 / tvOS 14
+- iOS 16 / tvOS 16
 - Swift 5.9
 - Xcode 15
 

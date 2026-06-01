@@ -125,7 +125,13 @@ extension Router {
     ///
     @MainActor public func contextTrigger(_ route: RouteType, with options: TransitionOptions) async -> any TransitionContext {
         await withCheckedContinuation { continuation in
+            // Some transitions (e.g. interactive ones, or custom `Transition.PerformClosure`s) may invoke
+            // their completion more than once. A checked continuation must be resumed exactly once, so we
+            // guard against the redundant calls to avoid a hard crash.
+            var resumed = false
             contextTrigger(route, with: options) { context in
+                guard !resumed else { return }
+                resumed = true
                 continuation.resume(returning: context)
             }
         }

@@ -29,23 +29,44 @@ import SwiftUI
 ///
 public struct WrappedRouter<RouterType: Router>: View {
 
+    // MARK: Nested Types
+
+    /// Holds the lazily-created router and its routing context for the lifetime of the view.
+    ///
+    /// This is a reference type so the router is created exactly once and the context can be built
+    /// without mutating SwiftUI `@State` during a view update.
+    @MainActor
+    private final class Holder: ObservableObject {
+        private var router: RouterType?
+        private(set) var routingContext = RoutingContext()
+
+        func makeRouter(_ create: () -> RouterType) -> RouterType {
+            if let router {
+                return router
+            }
+            let router = create()
+            routingContext.add(router)
+            self.router = router
+            return router
+        }
+    }
+
     // MARK: Stored Properties
 
-    @State private var routingContext = RoutingContext()
+    @StateObject private var holder = Holder()
     private let create: () -> RouterType
     private let update: (UIViewController, any RepresentableContext<RouterType>) -> Void
 
     // MARK: Computed Properties
 
     public var body: some View {
-        Representable {
-            let router = create()
-            routingContext.add(router)
-            return router
+        let router = holder.makeRouter(create)
+        return Representable {
+            router
         } update: {
             update($0, $1)
         }
-        .routingContext(routingContext)
+        .routingContext(holder.routingContext)
     }
 
     // MARK: Initialization

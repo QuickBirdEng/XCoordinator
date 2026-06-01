@@ -242,14 +242,16 @@ class ChildCoordinator: RedirectionRouter<ParentRoute, ChildRoute> {
 
 ## Combine and RxSwift
 
-The Combine extensions ship in the main `XCoordinator` module. Use `router.publishers.trigger(_:)` to obtain a `Future<Void, Never>` for a triggered route:
+The Combine extensions ship in the main `XCoordinator` module. Use `router.publishers.trigger(_:)` to obtain a publisher that performs the route's transition on subscription and completes when it finishes:
 
 ```swift
 router.publishers.trigger(.home)
     .sink { /* transition finished */ }
 ```
 
-For RxSwift, add the `XCoordinatorRx` product. The `router.rx.trigger(_:)` accessor returns a `Single<Void>`:
+> Note: The returned publisher is lazy — the transition is performed when you subscribe (e.g. `.sink`), not when the publisher is created.
+
+For RxSwift, add the `XCoordinatorRx` product. The `router.rx.trigger(_:)` accessor returns an `Observable<Void>`:
 
 ```swift
 router.rx.trigger(.home)
@@ -262,7 +264,7 @@ The available transitions depend on the coordinator's `RootViewController` type.
 
 - `present` / `presentOnRoot` — present on top of the view hierarchy
 - `dismiss` / `dismissToRoot`
-- `embed` — embed a view controller in a container view
+- `embed` — embed a view controller in a container (any ``Container`` — both `UIView` and `UIViewController` conform)
 - `none` — no-op (useful in tests or to ignore routes)
 
 `NavigationTransition` (``NavigationCoordinator``) additionally provides `push`, `pop`, and `popToRoot`. ``TabBarCoordinator``, ``SplitCoordinator``, and ``PageCoordinator`` each provide transitions specific to their root view controller.
@@ -292,6 +294,7 @@ The available transitions depend on the coordinator's `RootViewController` type.
 - ``Transition``
 - ``TransitionContext``
 - ``TransitionOptions``
+- ``Container``
 - ``NavigationTransition``
 - ``TabBarTransition``
 - ``SplitTransition``
@@ -309,6 +312,14 @@ The available transitions depend on the coordinator's `RootViewController` type.
 - ``StaticTransitionAnimation``
 - ``InteractiveTransitionAnimation``
 - ``InterruptibleTransitionAnimation``
+- ``PercentDrivenInteractionController``
+- ``NavigationAnimationDelegate``
+- ``TabBarAnimationDelegate``
+- ``PageCoordinatorDataSource``
+
+### Combine
+
+- ``PublisherExtension``
 
 ### SwiftUI
 

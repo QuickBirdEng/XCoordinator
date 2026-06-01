@@ -73,10 +73,12 @@ open class ViewCoordinator<RouteType: Route>: BaseCoordinator<RouteType, UIViewC
         initialRoute: RouteType? = nil,
         @ViewBuilder body: () -> Content
     ) {
+        let controller = RoutingController(rootView: body())
         super.init(
-            rootViewController: RoutingController(rootView: body()),
+            rootViewController: controller,
             initialRoute: initialRoute
         )
+        controller.routingContext.add(self)
     }
 
     ///
@@ -89,10 +91,12 @@ open class ViewCoordinator<RouteType: Route>: BaseCoordinator<RouteType, UIViewC
         initialTransition: ViewTransition?,
         @ViewBuilder body: () -> Content
     ) {
+        let controller = RoutingController(rootView: body())
         super.init(
-            rootViewController: RoutingController(rootView: body()),
+            rootViewController: controller,
             initialTransition: initialTransition
         )
+        controller.routingContext.add(self)
     }
 
     ///
@@ -106,10 +110,12 @@ open class ViewCoordinator<RouteType: Route>: BaseCoordinator<RouteType, UIViewC
         @TransitionBuilder<UIViewController> initialTransition: () -> ViewTransition,
         @ViewBuilder body: () -> Content
     ) {
+        let controller = RoutingController(rootView: body())
         super.init(
-            rootViewController: RoutingController(rootView: body()),
+            rootViewController: controller,
             initialTransition: initialTransition()
         )
+        controller.routingContext.add(self)
     }
 
     #endif

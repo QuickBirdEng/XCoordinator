@@ -10,7 +10,6 @@
 
 import SwiftUI
 
-@available(iOS 15, tvOS 15, *)
 private struct TriggerViewModifier<Item: Equatable, RouteType: Route>: ViewModifier {
 
     // MARK: Properties
@@ -29,8 +28,9 @@ private struct TriggerViewModifier<Item: Equatable, RouteType: Route>: ViewModif
 
     func body(content: Content) -> some View {
         content.task(id: item, priority: priority) {
-            guard skipFirst || !isFirstCall else {
-                isFirstCall = false
+            let wasFirst = isFirstCall
+            isFirstCall = false
+            guard !(skipFirst && wasFirst) else {
                 return
             }
             guard let route = route() else {
@@ -43,7 +43,6 @@ private struct TriggerViewModifier<Item: Equatable, RouteType: Route>: ViewModif
 
 }
 
-@available(iOS 15, tvOS 15, *)
 extension View {
 
     ///

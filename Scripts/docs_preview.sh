@@ -10,8 +10,8 @@ cd "$(dirname "$0")/.."
 echo "1. Building documentation archive for iOS..."
 (./Scripts/docs.sh)
 
-# Locate the generated archive
-DOCC_ARCHIVE=$(find .build/Documentation -type d -name "XCoordinator.doccarchive" | head -n 1)
+# Locate the generated archive (docs.sh builds into .build/docs-derived-data)
+DOCC_ARCHIVE=$(find .build/docs-derived-data -type d -name "XCoordinator.doccarchive" | head -n 1)
 
 if [ -z "$DOCC_ARCHIVE" ]; then
   echo "Error: Could not find the generated XCoordinator.doccarchive artifact."

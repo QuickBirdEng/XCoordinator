@@ -58,11 +58,25 @@ open class SplitCoordinator<RouteType: Route>: BaseCoordinator<RouteType, UISpli
     ///   - primary: The presentable shown in the primary column.
     ///   - secondary: The presentable shown in the secondary (detail) column. Optional, because a small-screen
     ///     device may not want to show a detail right away.
-    ///   - supplementary: The presentable shown in the supplementary column (iOS 14+ triple-column splits). Optional.
+    ///   - supplementary: The presentable shown in the supplementary column. Optional. When provided,
+    ///     each column is set individually via the triple-column API, so `rootViewController` must be a
+    ///     triple-column split controller (`UISplitViewController(style: .tripleColumn)`); otherwise the
+    ///     supplementary column is ignored by UIKit.
     ///
     public init(rootViewController: RootViewController = .init(), primary: any Presentable, secondary: (any Presentable)?, supplementary: (any Presentable)? = nil) {
-        super.init(rootViewController: rootViewController,
-                   initialTransition: .set([primary, secondary, supplementary].compactMap { $0 }))
+        if let supplementary {
+            // Use the per-column API so the supplementary column is actually populated
+            // (assigning `viewControllers` only honors primary + secondary on a legacy split).
+            super.init(rootViewController: rootViewController,
+                       initialTransition: .multiple(
+                        .set(primary, for: .primary),
+                        .set(secondary, for: .secondary),
+                        .set(supplementary, for: .supplementary)
+                       ))
+        } else {
+            super.init(rootViewController: rootViewController,
+                       initialTransition: .set([primary, secondary].compactMap { $0 }))
+        }
     }
 
 }

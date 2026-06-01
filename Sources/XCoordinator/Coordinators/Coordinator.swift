@@ -122,9 +122,14 @@ extension Coordinator where Self: AnyObject {
                                   with options: TransitionOptions,
                                   completion: PresentationHandler? = nil) {
         #if canImport(SwiftUI)
-        if #available(iOS 13, tvOS 13, *) {
-            for presentable in transition.presentables {
-                (presentable as? RoutingContextProvider)?.routingContext.add(self)
+        for presentable in transition.presentables {
+            // The provider is usually the presentable's view controller (a `RoutingController`),
+            // not the presentable (a coordinator) itself — so check both.
+            if let provider = presentable as? RoutingContextProvider {
+                provider.routingContext.add(self)
+            } else if let viewController = presentable.viewController,
+                      let provider = viewController as? RoutingContextProvider {
+                provider.routingContext.add(self)
             }
         }
         #endif

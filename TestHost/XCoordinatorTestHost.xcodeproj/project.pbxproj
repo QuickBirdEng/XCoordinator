@@ -13,7 +13,13 @@
 		0A0000000000000000000041 /* TestAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A0000000000000000000021 /* TestAnimation.swift */; };
 		0A0000000000000000000042 /* TestRoute.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A0000000000000000000022 /* TestRoute.swift */; };
 		0A0000000000000000000043 /* TransitionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A0000000000000000000023 /* TransitionTests.swift */; };
-		0A0000000000000000000044 /* XCText+Extras.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A0000000000000000000024 /* XCText+Extras.swift */; };
+		0A0000000000000000000044 /* XCTest+Extras.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A0000000000000000000024 /* XCTest+Extras.swift */; };
+		0A0000000000000000000045 /* SwiftUIRoutingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A0000000000000000000025 /* SwiftUIRoutingTests.swift */; };
+		0A0000000000000000000046 /* TriggerModifierTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A0000000000000000000026 /* TriggerModifierTests.swift */; };
+		0A0000000000000000000047 /* TransitionSwiftUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A0000000000000000000027 /* TransitionSwiftUITests.swift */; };
+		0A0000000000000000000048 /* TransitionBuilderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A0000000000000000000028 /* TransitionBuilderTests.swift */; };
+		0A0000000000000000000049 /* AsyncCombineTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A0000000000000000000029 /* AsyncCombineTests.swift */; };
+		0A000000000000000000004A /* TabSplitBindingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A000000000000000000002A /* TabSplitBindingTests.swift */; };
 		0A0000000000000000000050 /* XCoordinator in Frameworks */ = {isa = PBXBuildFile; productRef = 0A00000000000000000000A1 /* XCoordinator */; };
 /* End PBXBuildFile section */
 
@@ -37,7 +43,13 @@
 		0A0000000000000000000021 /* TestAnimation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestAnimation.swift; sourceTree = "<group>"; };
 		0A0000000000000000000022 /* TestRoute.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestRoute.swift; sourceTree = "<group>"; };
 		0A0000000000000000000023 /* TransitionTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransitionTests.swift; sourceTree = "<group>"; };
-		0A0000000000000000000024 /* XCText+Extras.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "XCText+Extras.swift"; sourceTree = "<group>"; };
+		0A0000000000000000000024 /* XCTest+Extras.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "XCTest+Extras.swift"; sourceTree = "<group>"; };
+		0A0000000000000000000025 /* SwiftUIRoutingTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftUIRoutingTests.swift; sourceTree = "<group>"; };
+		0A0000000000000000000026 /* TriggerModifierTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TriggerModifierTests.swift; sourceTree = "<group>"; };
+		0A0000000000000000000027 /* TransitionSwiftUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransitionSwiftUITests.swift; sourceTree = "<group>"; };
+		0A0000000000000000000028 /* TransitionBuilderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransitionBuilderTests.swift; sourceTree = "<group>"; };
+		0A0000000000000000000029 /* AsyncCombineTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AsyncCombineTests.swift; sourceTree = "<group>"; };
+		0A000000000000000000002A /* TabSplitBindingTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabSplitBindingTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -94,7 +106,13 @@
 				0A0000000000000000000021 /* TestAnimation.swift */,
 				0A0000000000000000000022 /* TestRoute.swift */,
 				0A0000000000000000000023 /* TransitionTests.swift */,
-				0A0000000000000000000024 /* XCText+Extras.swift */,
+				0A0000000000000000000024 /* XCTest+Extras.swift */,
+				0A0000000000000000000025 /* SwiftUIRoutingTests.swift */,
+				0A0000000000000000000026 /* TriggerModifierTests.swift */,
+				0A0000000000000000000027 /* TransitionSwiftUITests.swift */,
+				0A0000000000000000000028 /* TransitionBuilderTests.swift */,
+				0A0000000000000000000029 /* AsyncCombineTests.swift */,
+				0A000000000000000000002A /* TabSplitBindingTests.swift */,
 			);
 			name = XCoordinatorTests;
 			path = ../Tests/XCoordinatorTests;
@@ -219,7 +237,13 @@
 				0A0000000000000000000041 /* TestAnimation.swift in Sources */,
 				0A0000000000000000000042 /* TestRoute.swift in Sources */,
 				0A0000000000000000000043 /* TransitionTests.swift in Sources */,
-				0A0000000000000000000044 /* XCText+Extras.swift in Sources */,
+				0A0000000000000000000044 /* XCTest+Extras.swift in Sources */,
+				0A0000000000000000000045 /* SwiftUIRoutingTests.swift in Sources */,
+				0A0000000000000000000046 /* TriggerModifierTests.swift in Sources */,
+				0A0000000000000000000047 /* TransitionSwiftUITests.swift in Sources */,
+				0A0000000000000000000048 /* TransitionBuilderTests.swift in Sources */,
+				0A0000000000000000000049 /* AsyncCombineTests.swift in Sources */,
+				0A000000000000000000004A /* TabSplitBindingTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
