@@ -20,6 +20,8 @@
 		0A0000000000000000000048 /* TransitionBuilderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A0000000000000000000028 /* TransitionBuilderTests.swift */; };
 		0A0000000000000000000049 /* AsyncCombineTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A0000000000000000000029 /* AsyncCombineTests.swift */; };
 		0A000000000000000000004A /* TabSplitBindingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A000000000000000000002A /* TabSplitBindingTests.swift */; };
+		0A000000000000000000004B /* CoordinatorChildLifecycleTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A000000000000000000002B /* CoordinatorChildLifecycleTests.swift */; };
+		0A000000000000000000004C /* ContextMenuInteractionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A000000000000000000002C /* ContextMenuInteractionTests.swift */; };
 		0A0000000000000000000050 /* XCoordinator in Frameworks */ = {isa = PBXBuildFile; productRef = 0A00000000000000000000A1 /* XCoordinator */; };
 /* End PBXBuildFile section */
 
@@ -50,6 +52,8 @@
 		0A0000000000000000000028 /* TransitionBuilderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransitionBuilderTests.swift; sourceTree = "<group>"; };
 		0A0000000000000000000029 /* AsyncCombineTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AsyncCombineTests.swift; sourceTree = "<group>"; };
 		0A000000000000000000002A /* TabSplitBindingTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabSplitBindingTests.swift; sourceTree = "<group>"; };
+		0A000000000000000000002B /* CoordinatorChildLifecycleTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoordinatorChildLifecycleTests.swift; sourceTree = "<group>"; };
+		0A000000000000000000002C /* ContextMenuInteractionTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContextMenuInteractionTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -113,6 +117,8 @@
 				0A0000000000000000000028 /* TransitionBuilderTests.swift */,
 				0A0000000000000000000029 /* AsyncCombineTests.swift */,
 				0A000000000000000000002A /* TabSplitBindingTests.swift */,
+				0A000000000000000000002B /* CoordinatorChildLifecycleTests.swift */,
+				0A000000000000000000002C /* ContextMenuInteractionTests.swift */,
 			);
 			name = XCoordinatorTests;
 			path = ../Tests/XCoordinatorTests;
@@ -244,6 +250,8 @@
 				0A0000000000000000000048 /* TransitionBuilderTests.swift in Sources */,
 				0A0000000000000000000049 /* AsyncCombineTests.swift in Sources */,
 				0A000000000000000000004A /* TabSplitBindingTests.swift in Sources */,
+				0A000000000000000000004B /* CoordinatorChildLifecycleTests.swift in Sources */,
+				0A000000000000000000004C /* ContextMenuInteractionTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

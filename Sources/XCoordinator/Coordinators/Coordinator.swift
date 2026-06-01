@@ -59,6 +59,13 @@ public protocol Coordinator<RouteType, RootViewController>: Router {
                            completion: PresentationHandler?)
 
     ///
+    /// The child coordinators currently in the view hierarchy.
+    /// They are added and removed automatically during transitions depending on whether they are in the
+    /// view hierarchy.
+    ///
+    var children: [any Presentable] { get }
+
+    ///
     /// This method adds a child to a coordinator's children.
     ///
     /// - Parameter presentable:
