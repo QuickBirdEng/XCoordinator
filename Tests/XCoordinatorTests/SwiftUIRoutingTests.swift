@@ -125,4 +125,50 @@ final class SwiftUIRoutingTests: XCTestCase {
         asyncWait(for: 0.5)
         XCTAssertEqual(createCount, 1, "WrappedRouter should build the router exactly once")
     }
+
+    // MARK: Retain-cycle regression
+
+    /// `RoutingContext` must hold its routers **weakly**. A coordinator registers itself into the
+    /// context of a `RoutingController` it (transitively) owns, so a strong reference here would form a
+    /// retain cycle. Registering a router and then releasing its external owner must let it deallocate,
+    /// and the context must then resolve it to `nil`.
+    func testRoutingContextHoldsRoutersWeakly() {
+        var context = RoutingContext()
+        weak var weakRouter: ViewCoordinator<TestRoute>?
+
+        autoreleasepool {
+            let router = ViewCoordinator<TestRoute>(rootViewController: UIViewController())
+            weakRouter = router
+            context.add(router)
+            XCTAssertTrue(context[TestRoute.self] === router, "Router should resolve while it is alive")
+        }
+
+        XCTAssertNil(weakRouter, "RoutingContext retained its router strongly — retain cycle")
+        XCTAssertNil(context[TestRoute.self], "A deallocated router must resolve to nil")
+    }
+
+    /// End-to-end proof that the routing context no longer forms a retain cycle. This reproduces the
+    /// exact cycle shape — `coordinator → children → RoutingController → box → context → coordinator` —
+    /// and asserts the whole graph is reclaimed once the external references are dropped. Before the
+    /// weak-storage fix, the `context → coordinator` strong edge kept both objects alive forever.
+    func testCoordinatorAndRoutingControllerDeallocateWithoutCycle() {
+        weak var weakCoordinator: ViewCoordinator<TestRoute>?
+        weak var weakController: UIViewController?
+
+        autoreleasepool {
+            let coordinator = ViewCoordinator<TestRoute>(rootViewController: UIViewController())
+            let controller = RoutingController { RouterProbeView<TestRoute> { _ in } }
+
+            // context → coordinator (the edge that used to be strong)
+            controller.routingContext.add(coordinator)
+            // coordinator → children → controller
+            coordinator.addChild(controller)
+
+            weakCoordinator = coordinator
+            weakController = controller
+        }
+
+        XCTAssertNil(weakCoordinator, "Coordinator leaked — RoutingContext retained it strongly")
+        XCTAssertNil(weakController, "RoutingController leaked as part of the coordinator/context cycle")
+    }
 }
