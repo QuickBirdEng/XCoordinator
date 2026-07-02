@@ -1,0 +1,454 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 56;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		0A0000000000000000000030 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A0000000000000000000010 /* AppDelegate.swift */; };
+		0A0000000000000000000031 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A0000000000000000000011 /* SceneDelegate.swift */; };
+		0A0000000000000000000040 /* AnimationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A0000000000000000000020 /* AnimationTests.swift */; };
+		0A0000000000000000000041 /* TestAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A0000000000000000000021 /* TestAnimation.swift */; };
+		0A0000000000000000000042 /* TestRoute.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A0000000000000000000022 /* TestRoute.swift */; };
+		0A0000000000000000000043 /* TransitionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A0000000000000000000023 /* TransitionTests.swift */; };
+		0A0000000000000000000044 /* XCTest+Extras.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A0000000000000000000024 /* XCTest+Extras.swift */; };
+		0A0000000000000000000045 /* SwiftUIRoutingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A0000000000000000000025 /* SwiftUIRoutingTests.swift */; };
+		0A0000000000000000000046 /* TriggerModifierTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A0000000000000000000026 /* TriggerModifierTests.swift */; };
+		0A0000000000000000000047 /* TransitionSwiftUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A0000000000000000000027 /* TransitionSwiftUITests.swift */; };
+		0A0000000000000000000048 /* TransitionBuilderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A0000000000000000000028 /* TransitionBuilderTests.swift */; };
+		0A0000000000000000000049 /* AsyncCombineTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A0000000000000000000029 /* AsyncCombineTests.swift */; };
+		0A000000000000000000004A /* TabSplitBindingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A000000000000000000002A /* TabSplitBindingTests.swift */; };
+		0A000000000000000000004B /* CoordinatorChildLifecycleTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A000000000000000000002B /* CoordinatorChildLifecycleTests.swift */; };
+		0A000000000000000000004C /* ContextMenuInteractionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A000000000000000000002C /* ContextMenuInteractionTests.swift */; };
+		0A000000000000000000004D /* ChildPruningOnTeardownTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A000000000000000000002D /* ChildPruningOnTeardownTests.swift */; };
+		0A0000000000000000000050 /* XCoordinator in Frameworks */ = {isa = PBXBuildFile; productRef = 0A00000000000000000000A1 /* XCoordinator */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		0A00000000000000000000B1 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 0A0000000000000000000001 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 0A0000000000000000000060;
+			remoteInfo = XCoordinatorTestHost;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		0A0000000000000000000010 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		0A0000000000000000000011 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
+		0A0000000000000000000012 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		0A0000000000000000000013 /* XCoordinatorTestHost.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = XCoordinatorTestHost.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		0A0000000000000000000014 /* XCoordinatorTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = XCoordinatorTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		0A0000000000000000000020 /* AnimationTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimationTests.swift; sourceTree = "<group>"; };
+		0A0000000000000000000021 /* TestAnimation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestAnimation.swift; sourceTree = "<group>"; };
+		0A0000000000000000000022 /* TestRoute.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestRoute.swift; sourceTree = "<group>"; };
+		0A0000000000000000000023 /* TransitionTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransitionTests.swift; sourceTree = "<group>"; };
+		0A0000000000000000000024 /* XCTest+Extras.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "XCTest+Extras.swift"; sourceTree = "<group>"; };
+		0A0000000000000000000025 /* SwiftUIRoutingTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftUIRoutingTests.swift; sourceTree = "<group>"; };
+		0A0000000000000000000026 /* TriggerModifierTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TriggerModifierTests.swift; sourceTree = "<group>"; };
+		0A0000000000000000000027 /* TransitionSwiftUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransitionSwiftUITests.swift; sourceTree = "<group>"; };
+		0A0000000000000000000028 /* TransitionBuilderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransitionBuilderTests.swift; sourceTree = "<group>"; };
+		0A0000000000000000000029 /* AsyncCombineTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AsyncCombineTests.swift; sourceTree = "<group>"; };
+		0A000000000000000000002A /* TabSplitBindingTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabSplitBindingTests.swift; sourceTree = "<group>"; };
+		0A000000000000000000002B /* CoordinatorChildLifecycleTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoordinatorChildLifecycleTests.swift; sourceTree = "<group>"; };
+		0A000000000000000000002C /* ContextMenuInteractionTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContextMenuInteractionTests.swift; sourceTree = "<group>"; };
+		0A000000000000000000002D /* ChildPruningOnTeardownTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChildPruningOnTeardownTests.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		0A0000000000000000000071 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		0A0000000000000000000074 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0A0000000000000000000050 /* XCoordinator in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		0A0000000000000000000002 = {
+			isa = PBXGroup;
+			children = (
+				0A0000000000000000000004 /* App */,
+				0A0000000000000000000005 /* XCoordinatorTests */,
+				0A0000000000000000000003 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		0A0000000000000000000003 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				0A0000000000000000000013 /* XCoordinatorTestHost.app */,
+				0A0000000000000000000014 /* XCoordinatorTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		0A0000000000000000000004 /* App */ = {
+			isa = PBXGroup;
+			children = (
+				0A0000000000000000000010 /* AppDelegate.swift */,
+				0A0000000000000000000011 /* SceneDelegate.swift */,
+				0A0000000000000000000012 /* Info.plist */,
+			);
+			path = App;
+			sourceTree = "<group>";
+		};
+		0A0000000000000000000005 /* XCoordinatorTests */ = {
+			isa = PBXGroup;
+			children = (
+				0A0000000000000000000020 /* AnimationTests.swift */,
+				0A0000000000000000000021 /* TestAnimation.swift */,
+				0A0000000000000000000022 /* TestRoute.swift */,
+				0A0000000000000000000023 /* TransitionTests.swift */,
+				0A0000000000000000000024 /* XCTest+Extras.swift */,
+				0A0000000000000000000025 /* SwiftUIRoutingTests.swift */,
+				0A0000000000000000000026 /* TriggerModifierTests.swift */,
+				0A0000000000000000000027 /* TransitionSwiftUITests.swift */,
+				0A0000000000000000000028 /* TransitionBuilderTests.swift */,
+				0A0000000000000000000029 /* AsyncCombineTests.swift */,
+				0A000000000000000000002A /* TabSplitBindingTests.swift */,
+				0A000000000000000000002B /* CoordinatorChildLifecycleTests.swift */,
+				0A000000000000000000002C /* ContextMenuInteractionTests.swift */,
+				0A000000000000000000002D /* ChildPruningOnTeardownTests.swift */,
+			);
+			name = XCoordinatorTests;
+			path = ../Tests/XCoordinatorTests;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		0A0000000000000000000060 /* XCoordinatorTestHost */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 0A0000000000000000000081 /* Build configuration list for PBXNativeTarget "XCoordinatorTestHost" */;
+			buildPhases = (
+				0A0000000000000000000070 /* Sources */,
+				0A0000000000000000000071 /* Frameworks */,
+				0A0000000000000000000072 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = XCoordinatorTestHost;
+			packageProductDependencies = (
+			);
+			productName = XCoordinatorTestHost;
+			productReference = 0A0000000000000000000013 /* XCoordinatorTestHost.app */;
+			productType = "com.apple.product-type.application";
+		};
+		0A0000000000000000000061 /* XCoordinatorTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 0A0000000000000000000082 /* Build configuration list for PBXNativeTarget "XCoordinatorTests" */;
+			buildPhases = (
+				0A0000000000000000000073 /* Sources */,
+				0A0000000000000000000074 /* Frameworks */,
+				0A0000000000000000000075 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				0A00000000000000000000B0 /* PBXTargetDependency */,
+			);
+			name = XCoordinatorTests;
+			packageProductDependencies = (
+				0A00000000000000000000A1 /* XCoordinator */,
+			);
+			productName = XCoordinatorTests;
+			productReference = 0A0000000000000000000014 /* XCoordinatorTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		0A0000000000000000000001 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1540;
+				LastUpgradeCheck = 1540;
+				TargetAttributes = {
+					0A0000000000000000000060 = {
+						CreatedOnToolsVersion = 15.4;
+					};
+					0A0000000000000000000061 = {
+						CreatedOnToolsVersion = 15.4;
+						TestTargetID = 0A0000000000000000000060;
+					};
+				};
+			};
+			buildConfigurationList = 0A0000000000000000000080 /* Build configuration list for PBXProject "XCoordinatorTestHost" */;
+			compatibilityVersion = "Xcode 14.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 0A0000000000000000000002;
+			packageReferences = (
+				0A00000000000000000000A0 /* XCLocalSwiftPackageReference "XCoordinator" */,
+			);
+			productRefGroup = 0A0000000000000000000003 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				0A0000000000000000000060 /* XCoordinatorTestHost */,
+				0A0000000000000000000061 /* XCoordinatorTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		0A0000000000000000000072 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		0A0000000000000000000075 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		0A0000000000000000000070 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0A0000000000000000000030 /* AppDelegate.swift in Sources */,
+				0A0000000000000000000031 /* SceneDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		0A0000000000000000000073 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0A0000000000000000000040 /* AnimationTests.swift in Sources */,
+				0A0000000000000000000041 /* TestAnimation.swift in Sources */,
+				0A0000000000000000000042 /* TestRoute.swift in Sources */,
+				0A0000000000000000000043 /* TransitionTests.swift in Sources */,
+				0A0000000000000000000044 /* XCTest+Extras.swift in Sources */,
+				0A0000000000000000000045 /* SwiftUIRoutingTests.swift in Sources */,
+				0A0000000000000000000046 /* TriggerModifierTests.swift in Sources */,
+				0A0000000000000000000047 /* TransitionSwiftUITests.swift in Sources */,
+				0A0000000000000000000048 /* TransitionBuilderTests.swift in Sources */,
+				0A0000000000000000000049 /* AsyncCombineTests.swift in Sources */,
+				0A000000000000000000004A /* TabSplitBindingTests.swift in Sources */,
+				0A000000000000000000004B /* CoordinatorChildLifecycleTests.swift in Sources */,
+				0A000000000000000000004C /* ContextMenuInteractionTests.swift in Sources */,
+				0A000000000000000000004D /* ChildPruningOnTeardownTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		0A00000000000000000000B0 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 0A0000000000000000000060 /* XCoordinatorTestHost */;
+			targetProxy = 0A00000000000000000000B1 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		0A0000000000000000000090 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+		0A0000000000000000000091 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_VERSION = 5.0;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		0A0000000000000000000092 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GENERATE_ASSET_SYMBOLS = NO;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = App/Info.plist;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = studios.quickbird.XCoordinatorTestHost;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		0A0000000000000000000093 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GENERATE_ASSET_SYMBOLS = NO;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = App/Info.plist;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = studios.quickbird.XCoordinatorTestHost;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		0A0000000000000000000094 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = studios.quickbird.XCoordinatorTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/XCoordinatorTestHost.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/XCoordinatorTestHost";
+			};
+			name = Debug;
+		};
+		0A0000000000000000000095 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = studios.quickbird.XCoordinatorTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/XCoordinatorTestHost.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/XCoordinatorTestHost";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		0A0000000000000000000080 /* Build configuration list for PBXProject "XCoordinatorTestHost" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				0A0000000000000000000090 /* Debug */,
+				0A0000000000000000000091 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		0A0000000000000000000081 /* Build configuration list for PBXNativeTarget "XCoordinatorTestHost" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				0A0000000000000000000092 /* Debug */,
+				0A0000000000000000000093 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		0A0000000000000000000082 /* Build configuration list for PBXNativeTarget "XCoordinatorTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				0A0000000000000000000094 /* Debug */,
+				0A0000000000000000000095 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCLocalSwiftPackageReference section */
+		0A00000000000000000000A0 /* XCLocalSwiftPackageReference "XCoordinator" */ = {
+			isa = XCLocalSwiftPackageReference;
+			relativePath = ..;
+		};
+/* End XCLocalSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		0A00000000000000000000A1 /* XCoordinator */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = XCoordinator;
+		};
+/* End XCSwiftPackageProductDependency section */
+	};
+	rootObject = 0A0000000000000000000001 /* Project object */;
+}

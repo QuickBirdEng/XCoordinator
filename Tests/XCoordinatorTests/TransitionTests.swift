@@ -10,21 +10,12 @@ import UIKit
 import XCoordinator
 import XCTest
 
+@MainActor
 class TransitionTests: XCTestCase {
-
-    // MARK: Static properties
-
-    static let allTests = [
-        ("testPageCoordinator", testPageCoordinator),
-        ("testSplitCoordinator", testSplitCoordinator),
-        ("testTabBarCoordinator", testTabBarCoordinator),
-        ("testViewCoordinator", testViewCoordinator),
-        ("testNavigationCoordinator", testNavigationCoordinator),
-    ]
 
     // MARK: Stored properties
 
-    lazy var window = UIWindow()
+    lazy var window = makeWindow()
 
     // MARK: Tests
 
@@ -39,7 +30,7 @@ class TransitionTests: XCTestCase {
     }
 
     func testSplitCoordinator() {
-        let coordinator = SplitCoordinator<TestRoute>(master: UIViewController(), detail: UIViewController())
+        let coordinator = SplitCoordinator<TestRoute>(primary: UIViewController(), secondary: UIViewController())
         coordinator.setRoot(for: window)
         testStandardTransitions(on: coordinator)
         testCompletionCalled(
@@ -78,24 +69,32 @@ class TransitionTests: XCTestCase {
         testCompletionCalled(on: coordinator, transition: .pop(to: viewControllers[0]))
     }
 
+    // MARK: Regression coverage
+
+    /// `Transition.set(_:animation:)` on a `UITabBarController` must expose its presentation animation
+    /// via `transition.animation` (used by `registerInteractiveTransition`). Regression guard: a previous
+    /// refactor dropped it (`animationInUse: nil`).
+    func testSetTabsExposesAnimation() {
+        let animation = Animation(
+            presentation: StaticTransitionAnimation(duration: 0) { $0.completeTransition(true) },
+            dismissal: StaticTransitionAnimation(duration: 0) { $0.completeTransition(true) }
+        )
+        let transition: TabBarTransition = .set([UIViewController()], animation: animation)
+        XCTAssertNotNil(transition.animation)
+    }
+
     // MARK: Helpers
 
-    private func testStandardTransitions<C: Coordinator, RootViewController>(on coordinator: C) where C.TransitionType == Transition<RootViewController> {
-        print("none")
+    private func testStandardTransitions<C: Coordinator>(on coordinator: C) {
         testCompletionCalled(on: coordinator, transition: .none())
-        print("present")
         testCompletionCalled(on: coordinator, transition: .present(UIViewController()))
-        print("dismiss")
         testCompletionCalled(on: coordinator, transition: .dismiss())
-        print("embed")
         testCompletionCalled(on: coordinator, transition: .embed(UIViewController(), in: UIViewController()))
-        print("multiple(none)")
         testCompletionCalled(on: coordinator, transition: .multiple(.none()))
-        print("multiple(empty)")
         testCompletionCalled(on: coordinator, transition: .multiple())
     }
 
-    private func testCompletionCalled<C: Coordinator>(on coordinator: C, transition: C.TransitionType) {
+    private func testCompletionCalled<C: Coordinator>(on coordinator: C, transition: Transition<C.RootViewController>) {
         let exp = expectation(description: "\(Date().timeIntervalSince1970)")
         DispatchQueue.main.async {
             coordinator.performTransition(transition, with: .init(animated: true)) {

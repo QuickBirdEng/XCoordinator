@@ -8,33 +8,54 @@
 
 #if canImport(XCoordinator) && canImport(RxSwift)
 
-import XCoordinator
 import RxSwift
+import XCoordinator
+
+///
+/// A namespace for RxSwift observables exposed by a `Router`.
+///
+/// Routers expose this namespace via ``Router/rx``, mirroring the `Router.publishers` Combine namespace.
+/// Use the methods on this type — `trigger(_:with:)` and `contextTrigger(_:with:)` — to obtain
+/// observables that emit when transitions complete.
+///
+@MainActor
+public struct ReactiveRouter<RouteType: Route> {
+
+    // MARK: Stored Properties
+
+    fileprivate let base: any Router<RouteType>
+
+    // MARK: Initialization
+
+    fileprivate init(_ base: any Router<RouteType>) {
+        self.base = base
+    }
+
+}
 
 extension Router {
 
     /// Use this to access the reactive extensions of `Router` objects.
-    public var rx: Reactive<Self> {
+    public var rx: ReactiveRouter<RouteType> {
         // swiftlint:disable:previous identifier_name
-        Reactive(self)
+        ReactiveRouter(self)
     }
+
 }
 
-extension Reactive where Base: Router {
+extension ReactiveRouter {
+
+    // MARK: Convenience methods
 
     ///
-    /// This method transforms the completion block of a router's trigger method into an observable.
+    /// Wraps a route trigger in an `Observable<Void>` that emits once the transition has completed.
     ///
-    /// - Parameter route:
-    ///     The route to be triggered.
+    /// - Parameters:
+    ///   - route: The route to trigger.
+    ///   - options: Transition options. Defaults to animated.
+    /// - Returns: An observable emitting `()` and then completing when the transition finishes.
     ///
-    /// - Parameter options:
-    ///     Transition options, e.g. defining whether or not the transition should be animated.
-    ///
-    /// - Returns:
-    ///     An observable informing about the completion of the transition.
-    ///
-    public func trigger(_ route: Base.RouteType, with options: TransitionOptions) -> Observable<Void> {
+    public func trigger(_ route: RouteType, with options: TransitionOptions = .init(animated: true)) -> Observable<Void> {
         Observable.create { [base] observer -> Disposable in
             base.trigger(route, with: options) {
                 observer.onNext(())
@@ -44,22 +65,30 @@ extension Reactive where Base: Router {
         }
     }
 
-    // MARK: Convenience methods
-
     ///
-    /// This method transforms the completion block of a router's trigger method into an observable.
+    /// Wraps a route trigger in an `Observable<any TransitionContext>` that emits the resulting
+    /// transition context once the transition has completed.
     ///
-    /// It uses the default transition options as specified in `Router.trigger`.
+    /// Useful for deep linking when the resulting context is required for further processing.
     ///
-    /// - Parameter route:
-    ///     The route to be triggered.
+    /// - Parameters:
+    ///   - route: The route to trigger.
+    ///   - options: Transition options. Defaults to animated.
+    /// - Returns: An observable emitting the transition context and then completing.
     ///
-    /// - Returns:
-    ///     An observable informing about the completion of the transition.
-    ///
-    public func trigger(_ route: Base.RouteType) -> Observable<Void> {
-        trigger(route, with: TransitionOptions(animated: true))
+    public func contextTrigger(
+        _ route: RouteType,
+        with options: TransitionOptions = .init(animated: true)
+    ) -> Observable<any TransitionContext> {
+        Observable.create { [base] observer -> Disposable in
+            base.contextTrigger(route, with: options) {
+                observer.onNext($0)
+                observer.onCompleted()
+            }
+            return Disposables.create()
+        }
     }
+
 }
 
 #endif
