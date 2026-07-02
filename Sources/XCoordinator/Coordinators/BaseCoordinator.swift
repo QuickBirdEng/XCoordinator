@@ -105,10 +105,14 @@ open class BaseCoordinator<RouteType: Route, RootViewController: UIViewControlle
     public func addChild(_ presentable: any Presentable) {
         children.append(presentable)
         presentable.registerParent(self)
+        attachLifecycleObserver(to: presentable)
     }
-    
+
     public func removeChild(_ presentable: any Presentable) {
         children.removeAll { $0.viewController === presentable.viewController }
+        presentable.viewController?.viewIfLoaded?.subviews
+            .compactMap { $0 as? ChildLifecycleObserver }
+            .forEach { $0.removeFromSuperview() }
         removeChildrenIfNeeded()
     }
 
@@ -136,6 +140,40 @@ open class BaseCoordinator<RouteType: Route, RootViewController: UIViewControlle
     }
 
     // MARK: Private methods
+
+    /// Attaches a ``ChildLifecycleObserver`` to a child's view controller so that when its view leaves
+    /// the window — through any teardown path, including ones XCoordinator does not mediate — a sweep is
+    /// scheduled. Gated on `isViewLoaded`: on-screen children (presented/pushed/set/embedded) are already
+    /// loaded when `addChild` runs in the transition completion, whereas `.initial(pages:)` preload pages
+    /// are not — and those must not be force-loaded and are reuse-safe (retained by the page data source),
+    /// so skipping them is exactly correct.
+    private func attachLifecycleObserver(to presentable: any Presentable) {
+        guard let viewController = presentable.viewController, viewController.isViewLoaded else { return }
+        let hostView = viewController.view
+
+        if let existing = hostView?.subviews.compactMap({ $0 as? ChildLifecycleObserver }).first {
+            existing.repoint { [weak self, weak viewController] in
+                self?.scheduleSweepIfChildLeft(viewController)
+            }
+            return
+        }
+
+        let observer = ChildLifecycleObserver { [weak self, weak viewController] in
+            self?.scheduleSweepIfChildLeft(viewController)
+        }
+        hostView?.addSubview(observer)
+    }
+
+    /// Defers to the next runloop so UIKit's hierarchy state settles, then prunes only if the child's view
+    /// controller is genuinely gone. `removeChildrenIfNeeded()` is idempotent and self-guards on
+    /// `isInViewHierarchy`, so a controller that is merely covered/backgrounded/transiently hidden survives.
+    private func scheduleSweepIfChildLeft(_ viewController: UIViewController?) {
+        DispatchQueue.main.async { [weak self, weak viewController] in
+            guard let self else { return }
+            if let viewController, viewController.isInViewHierarchy { return }
+            self.removeChildrenIfNeeded()
+        }
+    }
 
     private func performTransitionAfterWindowAppeared(_ transition: Transition<RootViewController>) {
         let hasKeyWindow = UIApplication.shared.connectedScenes

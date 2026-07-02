@@ -55,7 +55,7 @@ open class PageCoordinator<RouteType: Route>: BaseCoordinator<RouteType, UIPageV
                 set firstPage: (any Presentable)? = nil,
                 _ secondPage: (any Presentable)? = nil,
                 direction: UIPageViewController.NavigationDirection = .forward) {
-        self.dataSource = PageCoordinatorDataSource(pages: pages.map { $0.viewController }, loop: loop)
+        self.dataSource = PageCoordinatorDataSource(pages: pages, loop: loop)
         rootViewController.dataSource = dataSource
 
         let setInitialPages = [firstPage, secondPage].compactMap { $0 }

@@ -22,7 +22,12 @@ open class PageCoordinatorDataSource: NSObject, UIPageViewControllerDataSource {
     // MARK: Stored properties
 
     /// The pages of the `UIPageViewController` in sequential order.
-    open var pages: [UIViewController]
+    ///
+    /// Held as `Presentable`s (rather than bare `UIViewController`s) so that page coordinators/routers stay
+    /// alive for as long as the data source. Otherwise a page held only by the parent's `children` would be
+    /// deallocated the moment it scrolls off-screen — leaving a live-but-unrouted controller when the page
+    /// view controller reuses it.
+    open var pages: [any Presentable]
 
     /// Whether or not the pages of the `UIPageViewController` should be in a loop,
     /// i.e. whether a swipe to the left of the last page should result in the first page being shown
@@ -43,7 +48,7 @@ open class PageCoordinatorDataSource: NSObject, UIPageViewControllerDataSource {
     ///         (or the last shown when swiping right on the first page)
     ///         If you specify `false` here, the user cannot swipe left on the last page and right on the first.
     ///
-    public init(pages: [UIViewController], loop: Bool) {
+    public init(pages: [any Presentable], loop: Bool) {
         self.pages = pages
         self.loop = loop
     }
@@ -77,7 +82,7 @@ open class PageCoordinatorDataSource: NSObject, UIPageViewControllerDataSource {
     ///
     open func presentationIndex(for pageViewController: UIPageViewController) -> Int {
         guard let viewController = pageViewController.viewControllers?.first else { return 0 }
-        return pages.firstIndex(of: viewController) ?? 0
+        return pages.firstIndex { $0.viewController === viewController } ?? 0
     }
 
     ///
@@ -96,7 +101,7 @@ open class PageCoordinatorDataSource: NSObject, UIPageViewControllerDataSource {
     ///
     open func pageViewController(_ pageViewController: UIPageViewController,
                                  viewControllerBefore viewController: UIViewController) -> UIViewController? {
-        guard let index = pages.firstIndex(of: viewController) else {
+        guard let index = pages.firstIndex(where: { $0.viewController === viewController }) else {
             // swiftlint:disable:next line_length
             assertionFailure("\(String(describing: UIPageViewController.self)) is displaying viewController not available in the provided pages-array.")
             return nil
@@ -122,7 +127,7 @@ open class PageCoordinatorDataSource: NSObject, UIPageViewControllerDataSource {
     ///
     open func pageViewController(_ pageViewController: UIPageViewController,
                                  viewControllerAfter viewController: UIViewController) -> UIViewController? {
-        guard let index = pages.firstIndex(of: viewController) else {
+        guard let index = pages.firstIndex(where: { $0.viewController === viewController }) else {
             // swiftlint:disable:next line_length
             assertionFailure("\(String(describing: UIPageViewController.self)) is displaying viewController not available in the provided pages-array.")
             return nil

@@ -22,6 +22,7 @@
 		0A000000000000000000004A /* TabSplitBindingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A000000000000000000002A /* TabSplitBindingTests.swift */; };
 		0A000000000000000000004B /* CoordinatorChildLifecycleTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A000000000000000000002B /* CoordinatorChildLifecycleTests.swift */; };
 		0A000000000000000000004C /* ContextMenuInteractionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A000000000000000000002C /* ContextMenuInteractionTests.swift */; };
+		0A000000000000000000004D /* ChildPruningOnTeardownTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A000000000000000000002D /* ChildPruningOnTeardownTests.swift */; };
 		0A0000000000000000000050 /* XCoordinator in Frameworks */ = {isa = PBXBuildFile; productRef = 0A00000000000000000000A1 /* XCoordinator */; };
 /* End PBXBuildFile section */
 
@@ -54,6 +55,7 @@
 		0A000000000000000000002A /* TabSplitBindingTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabSplitBindingTests.swift; sourceTree = "<group>"; };
 		0A000000000000000000002B /* CoordinatorChildLifecycleTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoordinatorChildLifecycleTests.swift; sourceTree = "<group>"; };
 		0A000000000000000000002C /* ContextMenuInteractionTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContextMenuInteractionTests.swift; sourceTree = "<group>"; };
+		0A000000000000000000002D /* ChildPruningOnTeardownTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChildPruningOnTeardownTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -119,6 +121,7 @@
 				0A000000000000000000002A /* TabSplitBindingTests.swift */,
 				0A000000000000000000002B /* CoordinatorChildLifecycleTests.swift */,
 				0A000000000000000000002C /* ContextMenuInteractionTests.swift */,
+				0A000000000000000000002D /* ChildPruningOnTeardownTests.swift */,
 			);
 			name = XCoordinatorTests;
 			path = ../Tests/XCoordinatorTests;
@@ -252,6 +255,7 @@
 				0A000000000000000000004A /* TabSplitBindingTests.swift in Sources */,
 				0A000000000000000000004B /* CoordinatorChildLifecycleTests.swift in Sources */,
 				0A000000000000000000004C /* ContextMenuInteractionTests.swift in Sources */,
+				0A000000000000000000004D /* ChildPruningOnTeardownTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
